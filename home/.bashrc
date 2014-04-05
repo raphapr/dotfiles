@@ -266,74 +266,115 @@ function wininfo() {
 ########### Systemd Shorcuts ##############
 ########### Comandos simplificados #######
 
-## simplified systemd command, for instance "sudo systemctl stop xxx.service" - > "0.stop xxx"
-if ! systemd-notify --booted;
-then  # for not systemd
-    0.start() {
-        sudo rc.d start $1
-    }
+############### Systemctl ############### 
 
-    0.restart() {
-        sudo rc.d restart $1
-    }
-
-    0.stop() {
-        sudo rc.d stop $1
-    }
-else
-# start systemd service
-    0.start() {
-        sudo systemctl start $1.service
+0.start() {
+    sudo systemctl start $1.service
     }
 # restart systemd service
-    0.restart() {
-        sudo systemctl restart $1.service
+0.restart() {
+     sudo systemctl restart $1.service
     }
 # stop systemd service
-    0.stop() {
-        sudo systemctl stop $1.service
+0.stop() {
+    sudo systemctl stop $1.service
     }
 # enable systemd service
     0.enable() {
         sudo systemctl enable $1.service
     }
 # disable a systemd service
-    0.disable() {
-        sudo systemctl disable $1.service
+0.disable() {
+         sudo systemctl disable $1.service
     }
 # show the status of a service
-    0.status() {
+0.status() {
         systemctl status $1.service
     }
 # reload a service configuration
-    0.reload() {
+0.reload() {
         sudo systemctl reload $1.service
     }
 # list all running service
-    0.list() {
+0.list() {
         systemctl
     }
 # list all failed service
-    0.failed () {
+0.failed () {
         systemctl --failed
     }
 # list all systemd available unit files
-    0.list-files() {
+0.list-files() {
         systemctl list-unit-files
     }
 # check the log
-    0.log() {
+0.log() {
         sudo journalctl
     }
 # show wants
-    0.wants() {
+0.wants() {
         systemctl show -p "Wants" $1.target
     }
 # analyze the system
-    0.analyze() {
-        systemd-analyze $1
+0.analyze() {
+     systemd-analyze $1
     }
-fi
+
+
+############### Systemctl --user ############### 
+
+
+1.start() {
+    systemctl --user start $1.service
+    }
+# restart systemd service
+1.restart() {
+    systemctl --user restart $1.service
+    }
+# stop systemd service
+1.stop() {
+    systemctl --user stop $1.service
+    }
+# enable systemd service
+1.enable() {
+    systemctl --user enable $1.service
+    }
+# disable a systemd service
+1.disable() {
+    systemctl --user disable $1.service
+    }
+# show the status of a service
+1.status() {
+    systemctl --user status $1.service
+    }
+# reload a service configuration
+1.reload() {
+    systemctl --user reload $1.service
+    }
+# list all running service
+1.list() {
+    systemctl --user
+    }
+# list all failed service
+1.failed () {
+    systemctl --user --failed
+    }
+# list all systemd available unit files
+1.list-files() {
+    systemctl --user list-unit-files
+    }
+# check the log
+1.log() {
+    journalctl --user
+    }
+# show wants
+1.wants() {
+    systemctl --user show -p "Wants" $1.target
+    }
+
+
+################################################################
+
 
 # 256 cores no terminal (para utilizar cores no vim)
 export TERM="xterm-256color"
