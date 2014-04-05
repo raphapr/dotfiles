@@ -353,10 +353,12 @@ export PATH
 
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel awt.useSystemAAFontSettings=on' 
 
-#Outras aliases
+#SSH aliases
 alias controller='ssh -p 5116 raphael@200.17.114.136'
 alias compute01='ssh -p 5115 raphael@200.17.114.136'
 alias lcontroller='ssh raphael@192.168.2.223'
 alias lcompute01='ssh raphael@192.168.2.224'
 alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
 alias startx='startx &> ~/.xlog'
+
+source ~/.local/credentials.sh
