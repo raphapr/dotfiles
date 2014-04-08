@@ -179,6 +179,7 @@ alias eb='vim ~/.bashrc'
 alias rclua='vim ~/.config/awesome/rc.lua'
 alias bkp='cp ~/.bashrc ~/Dropbox/Backup/shell-config && cp ~/.vimrc ~/Dropbox/Backup/shell-config && cp ~/.tmux.conf ~/Dropbox/Backup/shell-config && cp -r ~/.vim ~/Dropbox/Backup/shell-config/'
 alias pacbkp='tar -cjf ~/Dropbox/Backup/pacman-database.tar.bz2 /var/lib/pacman/local' # pacman database backup # Extrair na raíz: tar -xjvf pacman-database.tar.bz2
+alias k='kill -9'
 
 ## control cd commands
 # get rid of command not found ##
@@ -259,6 +260,19 @@ function top10() {
 function wininfo() {
 	xprop | grep -w "WM_NAME\|WM_CLASS\|WM_WINDOW_ROLE\|_NET_WM_STATE"
 }
+
+
+# Compilando com OpenGL
+function gl() {
+    if [ -f main ]; then rm -rf main
+    fi
+    if [ $1 == '-r'  ]; then
+        g++ $2 -o main -lGLU -lGL -lglut && ./main
+    else
+        g++ $1 -o main -lGLU -lGL -lglut
+    fi
+}
+
 
 # Busca os 10 mirrors mais rápidos e salva no mirrorlist
 #alias ref='sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist'
@@ -394,12 +408,17 @@ export PATH
 
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel awt.useSystemAAFontSettings=on' 
 
-#SSH aliases
+# SSH aliases
 alias controller='ssh -p 5116 raphael@200.17.114.136'
 alias compute01='ssh -p 5115 raphael@200.17.114.136'
 alias lcontroller='ssh raphael@192.168.2.223'
 alias lcompute01='ssh raphael@192.168.2.224'
+
+# VPN
 alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
+
+# Grava log do startx
 alias startx='startx &> ~/.xlog'
 
-source ~/.local/credentials.sh
+# Credenciais
+#source ~/.local/credentials.sh
