@@ -264,12 +264,12 @@ function wininfo() {
 
 # Compilando com OpenGL
 function gl() {
-    if [ -f main ]; then rm -rf main
+    if [ -f a.out ]; then rm -rf a.out
     fi
     if [ $1 == '-r'  ]; then
-        g++ $2 -o main -lGLU -lGL -lglut && ./main
+        g++ $2 -o a.out -lGLU -lGL -lglut && ./a.out
     else
-        g++ $1 -o main -lGLU -lGL -lglut
+        g++ $1 -o a.out -lGLU -lGL -lglut
     fi
 }
 
@@ -421,4 +421,4 @@ alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
 alias startx='startx &> ~/.xlog'
 
 # Credenciais
-#source ~/.local/credentials.sh
+source ~/.local/credentials.sh

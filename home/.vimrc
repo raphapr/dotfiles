@@ -44,12 +44,6 @@ Bundle 'Townk/vim-autoclose'
 "
 "" Abaixo estão os Bundles que precisam de algumas opções/personalizações
 "
-
-" ===== latex-box
-" Permite a compilação de arquivos .tex no vim
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-nnoremap <F9> :Latexmk<CR>
-
 " ===== vim-powerline
 " Linha de status bem completa
 " Se os glifos ficarem estranhos:
@@ -149,3 +143,6 @@ endif
 
 " ativa/desativa o auto ident para copiar/colar
 set pastetoggle=<F2>
+
+" compilar com openGL (CG)
+map <F9> :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
