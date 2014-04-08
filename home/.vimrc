@@ -41,6 +41,13 @@ Bundle "honza/vim-snippets"
 " Fecha automaticamente aspas, chaves, parênteses...
 Bundle 'Townk/vim-autoclose'
 
+
+
+" ===== vim-tagbar
+" Navega entre as tags do código fonte
+" Precisa pacote ctags instalado para gerar as tags
+Bundle 'majutsushi/tagbar'
+
 "
 "" Abaixo estão os Bundles que precisam de algumas opções/personalizações
 "
@@ -70,7 +77,7 @@ map <Leader>t :NERDTreeToggle<CR>
 " ===== numbers.vim
 " Números das linhas relativo no modo normal e absoluto no modo insert
 Bundle 'myusuf3/numbers.vim'
-"nnoremap <F2> :NumbersToggle<CR>
+nnoremap <Leader>n :NumbersToggle<CR>
 
 "==================== Minhas opções ===========================
 "
@@ -100,12 +107,20 @@ set smartcase       " Pesquisa considera caixa alta apenas se ouver uma ou mais 
 " Meus aliases
 
 " Cancela o highlight da busca atual
-nnoremap <F3> :noh<CR>
+nnoremap <silent> <F3> :noh<CR>
 
 "" Opções para que blocos selecionados sejam reselecionados após identações.
 " Ajuda muito na hora de identar grandes e confusos blocos =)
 vnoremap < <gv
 vnoremap > >gv
+
+" compilar com openGL (CG)
+nnoremap <F9> :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
+
+" tagbar
+nnoremap <F8> :TagbarToggle<CR>
+
+
 "
 " Para as cores funcionarem bem é preciso usar 256 cores no terminal.
 " " No bashrc, zshrc ou similar, faça algo como
@@ -143,6 +158,3 @@ endif
 
 " ativa/desativa o auto ident para copiar/colar
 set pastetoggle=<F2>
-
-" compilar com openGL (CG)
-map <F9> :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
