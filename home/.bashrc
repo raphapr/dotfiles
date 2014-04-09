@@ -17,7 +17,9 @@ shopt -s histappend
 shopt -s cmdhist
 
 # After each command, save and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # ao dar startx dá erro com essa linha
+export PROMPT_COMMAND="history -a"
+
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=20000
@@ -124,7 +126,6 @@ alias desk='cd ~/Desktop'
 alias h='history'
 alias vim='vim --servername vim'
 alias v='vim'
-alias svlc='vlc --extraintf=luahttp --fullscreen --qt-start-minimized' # VLC HTTP Server
 alias iup='imgurbash' # image upload # precisa do imgurbash
 alias myip='curl ifconfig.me' # show extern ip
 alias chromium='chromium --disk-cache-dir=/tmp/cache'
@@ -157,28 +158,15 @@ alias pbpaste='xclip -selection clipboard -o'
 #cp com barra de progresso (requer o pacote pycp-git)
 alias pcp='pycp'
 
-#(requer a instalação do autojump)
-#[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
-#alias jt='j --stat'
-
-#[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
-
-#arch-wiki-lite em português
-export wiki_lang="Português" 
-
-#alias do arch-wiki-lite
-alias wiki='wiki-search'
-
 #Monta e desmonta a partição NTFS /dev/sda3
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'
-alias umount-nfs='sudo umount /mnt'
+alias umount-ntfs='sudo umount /mnt'
 
 #Conveniencias do Shell
 alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
 alias rclua='vim ~/.config/awesome/rc.lua'
-alias bkp='cp ~/.bashrc ~/Dropbox/Backup/shell-config && cp ~/.vimrc ~/Dropbox/Backup/shell-config && cp ~/.tmux.conf ~/Dropbox/Backup/shell-config && cp -r ~/.vim ~/Dropbox/Backup/shell-config/'
-alias pacbkp='tar -cjf ~/Dropbox/Backup/pacman-database.tar.bz2 /var/lib/pacman/local' # pacman database backup # Extrair na raíz: tar -xjvf pacman-database.tar.bz2
+alias pacbkp='tar -cjf ~/Copy/pacman-database.tar.bz2 /var/lib/pacman/local' # pacman database backup # Extrair na raíz: tar -xjvf pacman-database.tar.bz2
 alias k='kill -9'
 
 ## control cd commands
@@ -200,6 +188,17 @@ alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+i
 alias hdmion='xrandr --output HDMI1 --auto --right-of LVDS1'
 alias rauto='/usr/bin/xrandr --auto'
 
+# SSH aliases
+alias controller='ssh -p 5116 raphael@200.17.114.136'
+alias compute01='ssh -p 5115 raphael@200.17.114.136'
+alias lcontroller='ssh raphael@192.168.2.223'
+alias lcompute01='ssh raphael@192.168.2.224'
+
+# VPN
+alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
+
+# Grava log do startx
+alias startx='startx &> ~/.xlog'
 
 ################################# Funções ##########################################
 
@@ -407,18 +406,6 @@ export PATH
 #source "$ZZPATH"
 
 #export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel awt.useSystemAAFontSettings=on' 
-
-# SSH aliases
-alias controller='ssh -p 5116 raphael@200.17.114.136'
-alias compute01='ssh -p 5115 raphael@200.17.114.136'
-alias lcontroller='ssh raphael@192.168.2.223'
-alias lcompute01='ssh raphael@192.168.2.224'
-
-# VPN
-alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
-
-# Grava log do startx
-alias startx='startx &> ~/.xlog'
 
 # Credenciais
 source ~/.local/credentials.sh

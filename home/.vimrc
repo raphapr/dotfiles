@@ -41,13 +41,6 @@ Bundle "honza/vim-snippets"
 " Fecha automaticamente aspas, chaves, parênteses...
 Bundle 'Townk/vim-autoclose'
 
-
-
-" ===== vim-tagbar
-" Navega entre as tags do código fonte
-" Precisa pacote ctags instalado para gerar as tags
-Bundle 'majutsushi/tagbar'
-
 "
 "" Abaixo estão os Bundles que precisam de algumas opções/personalizações
 "
@@ -73,6 +66,13 @@ endif
 " Navegador de arquivos e diretórios
 Bundle 'scrooloose/nerdtree'
 map <Leader>t :NERDTreeToggle<CR>
+
+" ===== vim-tagbar
+" Navega entre as tags do código fonte
+" Precisa pacote ctags instalado para gerar as tags
+Bundle 'majutsushi/tagbar'
+
+" ################ Lembrar que <ctrl> ww troca de janela
 
 " ===== numbers.vim
 " Números das linhas relativo no modo normal e absoluto no modo insert
