@@ -65,12 +65,13 @@ endif
 " ===== NERDTree
 " Navegador de arquivos e diretórios
 Bundle 'scrooloose/nerdtree'
-map <Leader>t :NERDTreeToggle<CR>
+map <F9> :NERDTreeToggle<CR>
 
 " ===== vim-tagbar
 " Navega entre as tags do código fonte
 " Precisa pacote ctags instalado para gerar as tags
 Bundle 'majutsushi/tagbar'
+nnoremap <F8> :TagbarToggle<CR>
 
 " ################ Lembrar que <ctrl> ww troca de janela
 
@@ -83,26 +84,28 @@ nnoremap <Leader>n :NumbersToggle<CR>
 "
 "" Daqui para baixo são as minhas opções
 
-syntax enable       " Habilita a marcação de sintaxe
+syntax enable               " Habilita a marcação de sintaxe
 set encoding=utf-8
-set showmode        " Exibe o modo atual
-set wildmenu        " Menu com as opções do vim usando tab
-set background=dark " Define o fundo preto (É melhor usar isso com a sintaxe)
-set nu              " Mostra o número de linhas
-set ai              " Faz o auto tab/auto indent
-set ts=4            " tab vale 4 espaços
-set sw=4            " tab com 4 espaços
-set softtabstop=4   " Operações como o backspace também com 4 espaços
-set et              " Troca tabs por espaços
-set ruler           " Mostra a posição do cursor
-set cursorline      " Destaca a linha atual
-set laststatus=2    " Sempre exibe a barra de status
-set autoread       " Recarrega arquivos alterados em disco automaticamente
-"set tw=80           " Define a largura do texto como 80 caracteres
-set incsearch       " Pesquisa incremental
-set hlsearch        " Highlight search :)
-set ignorecase      " Pesquisa ignora caixa alta e baixa
-set smartcase       " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
+set showmode                " Exibe o modo atual
+set wildmenu                " Menu com as opções do vim usando tab
+set background=dark         " Define o fundo preto (É melhor usar isso com a sintaxe)
+set nu                      " Mostra o número de linhas
+set ai                      " Faz o auto tab/auto indent
+set ts=4                    " tab vale 4 espaços
+set sw=4                    " tab com 4 espaços
+set softtabstop=4           " Operações como o backspace também com 4 espaços
+set et                      " Troca tabs por espaços
+set ruler                   " Mostra a posição do cursor
+set cursorline              " Destaca a linha atual
+set laststatus=2            " Sempre exibe a barra de status
+set autoread                " Recarrega arquivos alterados em disco automaticamente
+"set tw=80                  " Define a largura do texto como 80 caracteres
+set incsearch               " Pesquisa incremental
+set hlsearch                " Highlight search :)
+set ignorecase              " Pesquisa ignora caixa alta e baixa
+set smartcase               " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
+set pastetoggle=<F2>        " ativa/desativa o auto ident para copiar/colar
+colorscheme molokai
 
 " Meus aliases
 
@@ -115,25 +118,17 @@ vnoremap < <gv
 vnoremap > >gv
 
 " compilar com openGL (CG)
-nnoremap <F9> :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
-
-" tagbar
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
 
-"
 " Para as cores funcionarem bem é preciso usar 256 cores no terminal.
 " " No bashrc, zshrc ou similar, faça algo como
 " " export TERM="xterm-256color"
 "
-" " Cores a considerar:
-" " colo zenburn
 " " let g:solarized_termcolors=256
 
-colorscheme molokai
  
-"""" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e terminal
-
+"""" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e konsole
 if &term =~ '256color'
       " Disable Background Color Erase (BCE) so that color schemes
       "   " work properly when Vim is used inside tmux and GNU screen.
@@ -156,5 +151,43 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
-" ativa/desativa o auto ident para copiar/colar
-set pastetoggle=<F2>
+
+""""""""""""""
+" Vim Splits "
+""""""""""""""
+
+" Navegação entre janelas,
+" <ctrl><j> em vez de <ctrl><w><j>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+""Lembrete 
+
+"vertical split
+":vsplit
+":vsp
+
+"horizontal split
+":sp 
+":split
+
+"Maximiza a largura do split atual
+"ctrl + w _
+
+
+"Maximiza a altura do split atual
+"ctrl + w |
+
+"Normaliza o tamanho de todos os splits
+"ctrl + w =
+
+"Troca os splits topo/baixo ou esquerda/direita
+"ctrl+w r
+
+"Fecha todas as janelas da aba atual menos a janela atual.
+"ctrl+w o
