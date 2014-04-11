@@ -1,14 +1,16 @@
 " <Leader> por default é \
 let mapleader=","
 let maplocalleader = ","
-
-" Estou usando o Vundle para gerenciar os bundles
-"====================== Vundle ===============================
-
 set nocompatible
 filetype off
 filetype plugin on
 filetype plugin indent on
+
+" Caso eu esteja afim de usar o powerline (:
+let powerline="ON"
+
+" Estou usando o Vundle para gerenciar os bundles
+"====================== Vundle ===============================
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -44,34 +46,35 @@ Bundle 'Townk/vim-autoclose'
 "
 "" Abaixo estão os Bundles que precisam de algumas opções/personalizações
 "
+
 " ===== vim-powerline
 " Linha de status bem completa
 " Se os glifos ficarem estranhos:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
-
-" Acaba com o delay do esc (no .tmux.conf: set -sg escape-time 0)
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
+if powerline=="ON"
+    Bundle 'Lokaltog/vim-powerline'
+    let g:Powerline_symbols = 'fancy'
+    " Acaba com o delay do esc (no .tmux.conf: set -sg escape-time 0)
+    if ! has('gui_running')
+        set ttimeoutlen=10
+        augroup FastEscape
+            autocmd!
+            au InsertEnter * set timeoutlen=0
+            au InsertLeave * set timeoutlen=1000
+        augroup END
+    endif
 endif
-
 
 " ===== NERDTree
 " Navegador de arquivos e diretórios
 Bundle 'scrooloose/nerdtree'
-map <F9> :NERDTreeToggle<CR>
+map <F10> :NERDTreeToggle<CR>
 
 " ===== vim-tagbar
 " Navega entre as tags do código fonte
 " Precisa pacote ctags instalado para gerar as tags
 Bundle 'majutsushi/tagbar'
-nnoremap <F8> :TagbarToggle<CR>
+nnoremap <F9> :TagbarToggle<CR>
 
 " ################ Lembrar que <ctrl> ww troca de janela
 
@@ -105,6 +108,8 @@ set hlsearch                " Highlight search :)
 set ignorecase              " Pesquisa ignora caixa alta e baixa
 set smartcase               " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
 set pastetoggle=<F2>        " ativa/desativa o auto ident para copiar/colar
+set splitbelow              " Nova janela aparece abaixo da atual
+set splitright              " Nova janela aparece a direita da atual
 colorscheme molokai
 
 " Meus aliases
@@ -117,9 +122,17 @@ nnoremap <silent> <F3> :noh<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" salva rapido
+nnoremap <leader>s :w!<CR>
+
+" quit all
+nnoremap <leader>qt :quitall<CR>
+
 " compilar com openGL (CG)
 nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Para as cores funcionarem bem é preciso usar 256 cores no terminal.
 " " No bashrc, zshrc ou similar, faça algo como
@@ -151,22 +164,46 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""
+" Navegação entre abas Tabs       "
+"""""""""""""""""""""""""""""""""""
+
+"navegação de abas fácil, semelhante a navegadores
+nnoremap <Leader><Leader>       :tabnext<CR>
+nnoremap <Leader>t              :tabnew<CR>
+nnoremap <Leader>w              :tabclose<CR>
+nnoremap <Leader>r              :tabrewind<CR>
+
 
 """"""""""""""
 " Vim Splits "
 """"""""""""""
 
-" Navegação entre janelas,
-" <ctrl><j> em vez de <ctrl><w><j>
+"Navegação entre janelas,
+"<ctrl><j> em vez de <ctrl><w><j>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-set splitbelow
-set splitright
+"open splits
+nnoremap <Leader>v :vsplit<cr>
+nnoremap <Leader>h :split<cr>
 
-""Lembrete 
+"Resize vsplit
+nmap <Leader>c :vertical resize +5<cr>
+nmap <Leader>x :vertical resize -5<cr>
+nmap 25 :vertical resize 40<cr>
+nmap 50 <c-w>=
+nmap 75 :vertical resize 120<cr>
+
+
+
+""""""""""""""
+" Lembrete   "
+""""""""""""""
 
 "vertical split
 ":vsplit
@@ -176,9 +213,25 @@ set splitright
 ":sp 
 ":split
 
+"Resize horizontal split
+":res +5
+":res -5
+
+"Resize vertical split
+":vertical resize +5
+":vertical resize -5
+
+
+"Aumenta/diminui altura o split atual
+"<ctrl>w +
+"<ctrl>w -
+
+"Aumenta/diminui largura  do split atual
+"<ctrl>w >
+"<ctrl>w <
+
 "Maximiza a largura do split atual
 "ctrl + w _
-
 
 "Maximiza a altura do split atual
 "ctrl + w |

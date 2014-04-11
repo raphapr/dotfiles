@@ -140,6 +140,7 @@ alias pacrem='sudo pacman -Rns'
 alias pacreps='sudo pacman -Ss'
 alias y='yaourt'
 alias yup='yaourt -Syua' # Atualiza os repositorios do Arch + AUR
+alias mirror-update='sudo pacman-mirrors -g'
 
 #Baixar videos do Youtube (requer youtube-dl)
 alias utube='youtube-dl -c -t'
@@ -168,6 +169,11 @@ alias eb='vim ~/.bashrc'
 alias rclua='vim ~/.config/awesome/rc.lua'
 alias pacbkp='tar -cjf ~/Copy/pacman-database.tar.bz2 /var/lib/pacman/local' # pacman database backup # Extrair na raíz: tar -xjvf pacman-database.tar.bz2
 alias k='kill -9'
+
+## VIM
+alias vv='vim -O'
+alias vh='vim -o'
+alias vt='vim -p'
 
 ## control cd commands
 # get rid of command not found ##
