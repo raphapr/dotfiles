@@ -2,6 +2,20 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+##########################################################################
+
+export POWERLINE=0 # Usar ou não usar powerline no vim/tmux? Eis a questão.
+
+# .tmux_powerloff.conf -> sem tmux-powerline
+
+if [ $POWERLINE == 1 ]; then
+    alias tmux='tmux' # limpar alias
+else
+    alias tmux='tmux -f ~/.tmux-poweroff.conf'
+fi
+
+##########################################################################
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 

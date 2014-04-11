@@ -7,7 +7,7 @@ filetype plugin on
 filetype plugin indent on
 
 " Caso eu esteja afim de usar o powerline (:
-let powerline="ON"
+let powerline = $POWERLINE
 
 " Estou usando o Vundle para gerenciar os bundles
 "====================== Vundle ===============================
@@ -51,7 +51,7 @@ Bundle 'Townk/vim-autoclose'
 " Linha de status bem completa
 " Se os glifos ficarem estranhos:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
-if powerline=="ON"
+if powerline
     Bundle 'Lokaltog/vim-powerline'
     let g:Powerline_symbols = 'fancy'
     " Acaba com o delay do esc (no .tmux.conf: set -sg escape-time 0)
