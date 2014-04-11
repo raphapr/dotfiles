@@ -3,17 +3,7 @@
 # for examples
 
 ##########################################################################
-
-export POWERLINE=0 # Usar ou não usar powerline no vim/tmux? Eis a questão.
-
-# .tmux_powerloff.conf -> sem tmux-powerline
-
-if [ $POWERLINE == 1 ]; then
-    alias tmux='tmux' # limpar alias
-else
-    alias tmux='tmux -f ~/.tmux-poweroff.conf'
-fi
-
+export POWERLINE=1 # Usar ou não usar powerline no vim/tmux? 
 ##########################################################################
 
 # If not running interactively, don't do anything
@@ -219,6 +209,14 @@ alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
 
 # Grava log do startx
 alias startx='startx &> ~/.xlog'
+
+# Tmux/VIM Powerline
+# .tmux_powerloff.conf -> sem tmux-powerline
+if [ $POWERLINE == 1 ]; then
+    alias tmux='tmux' # limpar alias
+else
+    alias tmux='tmux -f ~/.tmux-poweroff.conf'
+fi
 
 ################################# Funções ##########################################
 
