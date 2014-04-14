@@ -131,6 +131,9 @@ nnoremap <leader>qt :quitall<CR>
 " compilar com openGL (CG)
 nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
+" ,c para copiar pra área de transferência
+map <Leader>c "+y<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -189,12 +192,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "open splits
-nnoremap <Leader>v :vsplit<cr>
-nnoremap <Leader>h :split<cr>
+nnoremap <Leader>\| :vsplit<cr>
+nnoremap <Leader>- :split<cr>
 
 "Resize vsplit
-nmap <Leader>c :vertical resize +5<cr>
-nmap <Leader>x :vertical resize -5<cr>
+nmap <Leader>2 :vertical resize +5<cr>
+nmap <Leader>1 :vertical resize -5<cr>
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
