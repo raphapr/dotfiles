@@ -21,8 +21,8 @@ shopt -s histappend
 shopt -s cmdhist
 
 # After each command, save and reload history
-#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # ao dar startx dá erro com essa linha
-export PROMPT_COMMAND="history -a"
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+#export PROMPT_COMMAND="history -a"
 
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
