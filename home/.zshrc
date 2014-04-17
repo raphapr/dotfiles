@@ -1,1 +1,0 @@
-/home/raphael/.zprezto/runcoms/zshrc
