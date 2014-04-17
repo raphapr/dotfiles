@@ -12,14 +12,13 @@ bindkey ";5D" backward-word
 # ctrl keys no tmux
 bindkey '5D' backward-word
 bindkey '5C' forward-word
-
 # -------------------------------------------------------------------
 # Minha configuração
 # -------------------------------------------------------------------
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
-export POWERLINE=1 # Usar ou não usar powerline no vim/tmux? 
+export POWERLINE=1 # Usar ou não usar powerline no vim 
 export TERM="xterm-256color" # 256 cores no terminal (para utilizar cores no vim)
 export EDITOR='vim'
 source ~/.local/credentials.sh
@@ -95,6 +94,7 @@ alias lcontroller='ssh raphael@192.168.2.223'
 alias lcompute01='ssh raphael@192.168.2.224'
 
 #Tmux
+alias tmux='tmux -f ~/.tmux/tmux.conf'
 alias tmuxl='tmux ls'
 alias tmuxa='tmux attach -t'
 
@@ -103,13 +103,6 @@ alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
 
 #Grava log do startx
 alias startx='startx &> ~/.xlog'
-
-
-if [[ $POWERLINE == 1 ]]; then
-    alias tmux='tmux' # limpar alias
-else
-    alias tmux='tmux -f ~/.tmux-poweroff.conf'
-fi
 
 # -------------------------------------------------------------------
 # Funções
