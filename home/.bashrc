@@ -266,6 +266,9 @@ extract() {
    fi
 }
 
+function pasteb(){
+pastebinit $1 | pbcopy
+}
 
 function top10() {
 	# copyright 2007 - 2010 Christopher Bratusek
