@@ -3,9 +3,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# ctrl keys
+# ctrl keys no konsole
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
+
+# ctrl keys no tmux
+bindkey '5D' backward-word
+bindkey '5C' forward-word
 
 # -------------------------------------------------------------------
 # Minha configuração
@@ -13,7 +17,7 @@ bindkey ";5D" backward-word
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
-export POWERLINE=0 # Usar ou não usar powerline no vim/tmux? 
+export POWERLINE=1 # Usar ou não usar powerline no vim/tmux? 
 export TERM="xterm-256color" # 256 cores no terminal (para utilizar cores no vim)
 export EDITOR='vim'
 source ~/.local/credentials.sh
@@ -61,9 +65,6 @@ alias yahoo='ping -i 3 www.yahoo.com'
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
-#cp com barra de progresso (requer o pacote pycp-git)
-alias pcp='pycp'
-
 #Monta e desmonta a partição NTFS /dev/sda3
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'
 alias umount-ntfs='sudo umount /mnt'
@@ -90,6 +91,10 @@ alias controller='ssh -p 5116 raphael@200.17.114.136'
 alias compute01='ssh -p 5115 raphael@200.17.114.136'
 alias lcontroller='ssh raphael@192.168.2.223'
 alias lcompute01='ssh raphael@192.168.2.224'
+
+#Tmux
+alias tmuxl='tmux ls'
+alias tmuxa='tmux attach -t'
 
 #VPN
 alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
