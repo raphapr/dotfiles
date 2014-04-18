@@ -5,13 +5,10 @@ fi
 
 #unsetopt MULTIBYTE
 
-# ctrl keys no konsole
+# ctrl arrows funcionando
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
-# ctrl keys no tmux
-bindkey '5D' backward-word
-bindkey '5C' forward-word
 # -------------------------------------------------------------------
 # Minha configuração
 # -------------------------------------------------------------------
