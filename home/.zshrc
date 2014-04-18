@@ -1,9 +1,8 @@
+# chsh -s $(which zsh)
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
-
-#unsetopt MULTIBYTE
 
 # ctrl arrows funcionando
 bindkey ";5C" forward-word
