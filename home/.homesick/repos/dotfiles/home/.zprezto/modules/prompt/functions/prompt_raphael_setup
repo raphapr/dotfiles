@@ -53,7 +53,7 @@ function prompt_nicoulaj_setup {
   zstyle ':vcs_info:*' nvcsformats "%~" ""
 
   # Define prompts.
-  PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'%n ${vcs_info_msg_0_%%.}'"%<<%(!.${root_char}. ${user_char})%b%f "
+  PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'%n %F{93}${vcs_info_msg_0_%%.}'"%<<%(!.${root_char}.%F{071} ${user_char})%b%f "
   RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
 }
 
