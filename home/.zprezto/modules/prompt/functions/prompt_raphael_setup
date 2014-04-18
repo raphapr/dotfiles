@@ -1,22 +1,4 @@
-#
-# A simple theme that displays only relevant information.
-#
-# Authors:
-#   Julien Nicoulaud <julien.nicoulaud@gmail.com>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-# Features:
-#   - One line.
-#   - VCS information in the right prompt.
-#   - Only shows the path on the left prompt by default.
-#   - Crops the path to a defined length and only shows the path relative to
-#     the current VCS repository root.
-#   - Uses a different color depending on if the last command succeeded/failed.
-#   - Shows user@hostname if connected through SSH.
-#   - Shows if logged in as root or not.
-#
-# Screenshots:
-#   http://i.imgur.com/Xe1bu.png
+# Raphael Prompt
 #
 
 function prompt_nicoulaj_precmd {
@@ -36,12 +18,8 @@ function prompt_nicoulaj_setup {
   add-zsh-hook precmd prompt_nicoulaj_precmd
 
   # Customizable parameters.
-  local max_path_chars=60
-  local user_char=' ❯❯'
-  local root_char='❯❯❯'
-  local success_color='%F{071}'
-  local failure_color='%F{124}'
   local vcs_info_color='%F{242}'
+  local vcs_info_color2='%F{MAGENTA}'
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' enable bzr git hg svn
@@ -51,12 +29,22 @@ function prompt_nicoulaj_setup {
   zstyle ':vcs_info:*' actionformats "%S" "%r/%s/%b %u%c (%a)"
   zstyle ':vcs_info:*' formats "%S" "%r/%s/%b %u%c"
   zstyle ':vcs_info:*' nvcsformats "%~" ""
-
+   
   # Define prompts.
-  PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_0_%%.}'"%<<%(!.${root_char}.${user_char})%b%f "
-  RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+ 
+if [[ ! -z $SSH_TTY ]]; then
+     PROMPT="${PROMPT}"' @ %m '
+fi
+
+   #PROMPT_CHAR='%(?,%F{MAGENTA}$,%F{124}$)'
+   #PROMPT='%F{071}%n %F{104}%~ ${PROMPT_CHAR} %f'
+   #RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+   ### RPROMPT='%(?,:),:()' # se saída true, imprime (:, else ):
+
+   PROMPT_CHAR='%(?,%F{MAGENTA}$,!)'
+   PROMPT='%n %~ ${PROMPT_CHAR} %f'
+   RPROMPT="${vcs_info_color2}"'${vcs_info_msg_1_}'"%f"
+
 }
 
 prompt_nicoulaj_setup "$@"
-
-
