@@ -1,0 +1,50 @@
+# Raphael Prompt
+#
+
+function prompt_nicoulaj_precmd {
+  vcs_info
+}
+
+function prompt_nicoulaj_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_nicoulaj_precmd
+
+  # Customizable parameters.
+  local vcs_info_color='%F{242}'
+  local vcs_info_color2='%F{MAGENTA}'
+
+  # Set vcs_info parameters.
+  zstyle ':vcs_info:*' enable bzr git hg svn
+  zstyle ':vcs_info:*' check-for-changes true
+  zstyle ':vcs_info:*' unstagedstr '!'
+  zstyle ':vcs_info:*' stagedstr '+'
+  zstyle ':vcs_info:*' actionformats "%S" "%r/%s/%b %u%c (%a)"
+  zstyle ':vcs_info:*' formats "%S" "%r/%s/%b %u%c"
+  zstyle ':vcs_info:*' nvcsformats "%~" ""
+   
+  # Define prompts.
+ 
+if [[ ! -z $SSH_TTY ]]; then
+     PROMPT="${PROMPT}"' @ %m '
+fi
+
+   #PROMPT_CHAR='%(?,%F{MAGENTA}$,%F{124}$)'
+   #PROMPT='%F{071}%n %F{104}%~ ${PROMPT_CHAR} %f'
+   #RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+   ### RPROMPT='%(?,:),:()' # se saída true, imprime (:, else ):
+
+   PROMPT_CHAR='%(?,%F{MAGENTA}$,!)'
+   PROMPT='%n %~ ${PROMPT_CHAR} %f'
+   RPROMPT="${vcs_info_color2}"'${vcs_info_msg_1_}'"%f"
+
+}
+
+prompt_nicoulaj_setup "$@"
