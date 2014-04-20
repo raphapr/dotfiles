@@ -18,8 +18,12 @@ function prompt_nicoulaj_setup {
   add-zsh-hook precmd prompt_nicoulaj_precmd
 
   # Customizable parameters.
-  local vcs_info_color='%F{242}'
-  local vcs_info_color2='%F{MAGENTA}'
+  local user_char='❯'
+  local root_char='❯❯❯'
+  local success_color='%F{071}'
+  local failure_color='%F{124}'
+  local vcs_info_color='%F{82}'
+  local vcs_info_nocolor='%F{MAGENTA}'
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' enable bzr git hg svn
@@ -32,18 +36,14 @@ function prompt_nicoulaj_setup {
    
   # Define prompts.
  
-if [[ ! -z $SSH_TTY ]]; then
-     PROMPT="${PROMPT}"' @ %m '
-fi
-
-   #PROMPT_CHAR='%(?,%F{MAGENTA}$,%F{124}$)'
-   #PROMPT='%F{071}%n %F{104}%~ ${PROMPT_CHAR} %f'
-   #RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
-   ### RPROMPT='%(?,:),:()' # se saída true, imprime (:, else ):
-
-   PROMPT_CHAR='%(?,%F{MAGENTA}$,!)'
-   PROMPT='%n %~ ${PROMPT_CHAR} %f'
-   RPROMPT="${vcs_info_color2}"'${vcs_info_msg_1_}'"%f"
+   PROMPT_CHAR=%(?.${success_color}.${failure_color})${user_char}
+   
+   if [[ ("$TERM" == "linux") || (! -z $SSH_TTY) ]]; then
+      PROMPT='%n@%m:%~$ %f'
+   else
+      PROMPT='%B%F{071}%n %F{104}%~ ${PROMPT_CHAR} %b%f'
+      RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
+   fi
 
 }
 
