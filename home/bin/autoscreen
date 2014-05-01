@@ -27,8 +27,11 @@ set -o nounset                              # Treat unset variables as an error
 
 #HDMI_audio=0
 
-export MONITOR2=/sys/class/drm/card0-VGA-1/status
-#export HDMI=/sys/class/drm/card0-HDMI-A-1/status
+if [[ -d /sys/class/drm/card1-VGA-1/ ]]; then
+    export MONITOR2=/sys/class/drm/card1-VGA-1/status
+else
+    export MONITOR2=/sys/class/drm/card0-VGA-1/status
+fi
 
 while inotifywait -e modify,create,delete,open,close,close_write,access $MONITOR2;
 #while inotifywait -e modify,create,delete,open,close,close_write,access $HDMI;

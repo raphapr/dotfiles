@@ -41,7 +41,7 @@ function prompt_nicoulaj_setup {
    if [[ ("$TERM" == "linux") || (! -z $SSH_TTY) ]]; then
       PROMPT='%n@%m:%~$ %f'
    else
-      PROMPT='%B%F{071}%n %F{104}%~ ${PROMPT_CHAR} %b%f'
+      PROMPT='%B'${success_color}'%n %F{104}%~ ${PROMPT_CHAR} %b%f'
       RPROMPT="${vcs_info_color}"'${vcs_info_msg_1_}'"%f"
    fi
 
