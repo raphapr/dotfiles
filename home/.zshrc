@@ -95,7 +95,7 @@ alias tmuxl='tmux ls'
 alias tmuxa='tmux attach -t'
 
 #VPN
-alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
+alias vpn='sudo openvpn ~/.openvpn/users.conf'
 
 #Grava log do startx
 alias startx='startx &> ~/.xlog'

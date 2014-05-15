@@ -1,6 +1,6 @@
 [user]
 	name = Raphael
-	email = $EMAIL
+	email = raphaelpr01@gmail.com
 [credential]
 	helper = cache --timeout=3600
 
@@ -31,3 +31,5 @@
   lll = log -u
 [push]
   default = simple
+[gitreview]
+	raphapr = raphapr
