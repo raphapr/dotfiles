@@ -27,7 +27,7 @@ zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete
 #alias ls='ls --color=always'
 alias lash='ls -lash'
 alias l='ls -CF'
-alias sudo='sudo '
+alias sudo='my_sudo '
 alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias desk='cd ~/Desktop'
 alias h='history'
@@ -284,5 +284,22 @@ function gl() {
     systemctl --user show -p "Wants" $1.target
     }
 
+
+# FIX noglob nocorrect problem
+
+function my_sudo {
+    while [[ $# > 0 ]]; do
+        case "$1" in
+        command) shift ; break ;;
+        nocorrect|noglob) shift ;;
+        *) break ;;
+        esac
+    done
+    if [[ $# = 0 ]]; then
+        command sudo zsh
+    else
+        noglob command sudo $@
+    fi
+}
 
 # ----------------------------------------------------------
