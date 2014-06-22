@@ -60,8 +60,8 @@ alias globo='ping -i 3 www.globo.com'
 alias yahoo='ping -i 3 www.yahoo.com'
 
 #comando para copiar/colar via terminal para a área de transferência
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+alias pbcopy='xclip -sel clip'
+alias pbpaste='xclip -sel clip -o'
 
 #Monta e desmonta a partição NTFS /dev/sda3
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'

@@ -132,7 +132,8 @@ nnoremap <leader>qt :quitall<CR>
 nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
 " ,c para copiar pra área de transferência
-map <Leader>c "+y<CR>
+map <Leader>y "+y<CR>
+map <Leader>p "+p<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,10 +204,12 @@ nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
 "Copia conteúdo selecionado para o arquivo .vimbuffer. Bom para copiar de uma aba tmux para outra.
-vmap <C-c> :w! ~/.vimbuffer<CR>
-nmap <C-c> :.w! ~/.vimbuffer<CR>
-" paste from buffer
-map <C-p> :r ~/.vimbuffer<CR>
+vmap <Leader>c :w! ~/.vimbuffer<CR>
+nmap <Leader>c :.w! ~/.vimbuffer<CR>
+" cut to ~/.vimbuffer
+vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
+" paste from ~/.vimbuffer
+map <Leader>v :r ~/.vimbuffer<CR>
 
 """"""""""""""
 " Lembrete   "
