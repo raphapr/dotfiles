@@ -202,7 +202,11 @@ nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
-
+"Copia conteúdo selecionado para o arquivo .vimbuffer. Bom para copiar de uma aba tmux para outra.
+vmap <C-c> :w! ~/.vimbuffer<CR>
+nmap <C-c> :.w! ~/.vimbuffer<CR>
+" paste from buffer
+map <C-p> :r ~/.vimbuffer<CR>
 
 """"""""""""""
 " Lembrete   "
@@ -247,3 +251,4 @@ nmap 75 :vertical resize 120<cr>
 
 "Fecha todas as janelas da aba atual menos a janela atual.
 "ctrl+w o
+"
