@@ -19,6 +19,7 @@ export TERM="xterm-256color" # 256 cores no terminal (para utilizar cores no vim
 export EDITOR='vim'
 source ~/.local/credentials.sh
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
+sudo loadkeys br-abnt2.map # teclado layout tty
 
 # -------------------------------------------------------------------
 # Aliases
