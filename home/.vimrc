@@ -26,10 +26,6 @@ Bundle 'godlygeek/csapprox'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spf13/vim-colors'
 
-" ===== SuperTab
-" Usa a tecla tab para auto-completar
-Bundle 'ervandew/supertab'
-
 " ===== BASH IDE
 Bundle 'vim-scripts/bash-support.vim'
 
@@ -83,6 +79,11 @@ nnoremap <F9> :TagbarToggle<CR>
 Bundle 'myusuf3/numbers.vim'
 nnoremap <Leader>n :NumbersToggle<CR>
 
+" ===== Gundo
+" Ver undo tree em estilo 
+Bundle 'sjl/gundo.vim'
+nnoremap <Leader>g :GundoToggle<CR>
+
 "==================== Minhas opções ===========================
 "
 "" Daqui para baixo são as minhas opções
@@ -102,7 +103,6 @@ set ruler                   " Mostra a posição do cursor
 set cursorline              " Destaca a linha atual
 set laststatus=2            " Sempre exibe a barra de status
 set autoread                " Recarrega arquivos alterados em disco automaticamente
-"set tw=80                  " Define a largura do texto como 80 caracteres
 set incsearch               " Pesquisa incremental
 set hlsearch                " Highlight search :)
 set ignorecase              " Pesquisa ignora caixa alta e baixa
@@ -111,6 +111,17 @@ set pastetoggle=<F2>        " ativa/desativa o auto ident para copiar/colar
 set splitbelow              " Nova janela aparece abaixo da atual
 set splitright              " Nova janela aparece a direita da atual
 colorscheme molokai
+
+
+" Torna o Undo List persistente
+set undofile
+set undodir=$HOME/.vim/undodir
+set undolevels=1000 "máximo numero de mudanças que podem ser desfeitas
+set undoreload=10000 "máximo número de linhas a serem salvar pra buffer reload
+
+" Tecla espaço para procurar uma palavra
+map <space> /
+map <c-space> ?
 
 " Meus aliases
 
@@ -175,7 +186,7 @@ endif
 """""""""""""""""""""""""""""""""""
 
 "navegação de abas fácil, semelhante a navegadores
-nnoremap <Leader><Leader>       :tabnext<CR>
+nnoremap <tab>                  :tabnext<CR>
 nnoremap <Leader>t              :tabnew<CR>
 nnoremap <Leader>w              :tabclose<CR>
 nnoremap <Leader>r              :tabrewind<CR>
