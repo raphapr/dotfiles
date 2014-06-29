@@ -6,6 +6,7 @@ filetype off
 filetype plugin on
 filetype plugin indent on
 
+
 " Caso eu esteja afim de usar o powerline (:
 let powerline = $POWERLINE
 
@@ -67,22 +68,21 @@ Bundle 'scrooloose/nerdtree'
 map <F10> :NERDTreeToggle<CR>
 
 " ===== vim-tagbar
-" Navega entre as tags do código fonte
-" Precisa pacote ctags instalado para gerar as tags
+" Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
+" Lembrar que <ctrl> ww troca de janela
 Bundle 'majutsushi/tagbar'
 nnoremap <F9> :TagbarToggle<CR>
-
-" ################ Lembrar que <ctrl> ww troca de janela
-
-" ===== numbers.vim
-" Números das linhas relativo no modo normal e absoluto no modo insert
-Bundle 'myusuf3/numbers.vim'
-nnoremap <Leader>n :NumbersToggle<CR>
 
 " ===== Gundo
 " Ver undo tree em estilo 
 Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
+
+" ===== vim-numbertoggle
+" Números das linhas relativo no modo normal e absoluto no modo insert
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+let g:NumberToggleTrigger="<Leader>n"
+ 
 
 "==================== Minhas opções ===========================
 "
@@ -110,8 +110,8 @@ set smartcase               " Pesquisa considera caixa alta apenas se ouver uma 
 set pastetoggle=<F2>        " ativa/desativa o auto ident para copiar/colar
 set splitbelow              " Nova janela aparece abaixo da atual
 set splitright              " Nova janela aparece a direita da atual
+set number
 colorscheme molokai
-
 
 " Torna o Undo List persistente
 set undofile
@@ -121,12 +121,12 @@ set undoreload=10000 "máximo número de linhas a serem salvar pra buffer reload
 
 " Tecla espaço para procurar uma palavra
 map <space> /
-map <c-space> ?
+map <Leader><space> ?
 
 " Meus aliases
 
 " Cancela o highlight da busca atual
-nnoremap <silent> <F3> :noh<CR>
+nnoremap <silent><F3> :noh<CR>
 
 "" Opções para que blocos selecionados sejam reselecionados após identações.
 " Ajuda muito na hora de identar grandes e confusos blocos =)
@@ -203,13 +203,21 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+put map <silent> <Leader>1 :tabn 1<cr>
+put map <silent> <Leader>2 :tabn 2<cr>
+put map <silent> <Leader>3 :tabn 3<cr>
+put map <silent> <Leader>4 :tabn 4<cr>
+put map <silent> <Leader>5 :tabn 5<cr>
+put map <silent> <Leader>6 :tabn 6<cr>
+put map <silent> <Leader>7 :tabn 7<cr>
+
 "open splits
 nnoremap <Leader>\| :vsplit<cr>
-nnoremap <Leader>- :split<cr>
+nnoremap <Leader>_ :split<cr>
 
 "Resize vsplit
-nmap <Leader>2 :vertical resize +5<cr>
-nmap <Leader>1 :vertical resize -5<cr>
+nmap <Leader>= :vertical resize +5<cr>
+nmap <Leader>- :vertical resize -5<cr>
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>

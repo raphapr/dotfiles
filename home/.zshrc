@@ -71,7 +71,6 @@ alias umount-ntfs='sudo umount /mnt'
 #Conveniencias do Shell
 alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
-alias pacbkp='tar -cjf ~/Copy/pacman-database.tar.bz2 /var/lib/pacman/local' # pacman database backup # Extrair na raíz: tar -xjvf pacman-database.tar.bz2
 alias k='kill -9'
 
 #VIM
@@ -84,12 +83,6 @@ alias hdmiaudion='sudo -u $USER pactl set-card-profile 0 output:hdmi-surround' #
 alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo ' # Ativa saída de audio padrão
 ## Quando usar HDMI
 alias hdmion='xrandr --output HDMI1 --auto --right-of LVDS1'
-
-#SSH aliases
-alias controller='ssh -p 5116 raphael@200.17.114.136'
-alias compute01='ssh -p 5115 raphael@200.17.114.136'
-alias lcontroller='ssh raphael@192.168.2.223'
-alias lcompute01='ssh raphael@192.168.2.224'
 
 #Tmux
 alias tmux='tmux -f ~/.tmux/tmux.conf'
@@ -105,6 +98,13 @@ alias startx='startx &> ~/.xlog'
 # -------------------------------------------------------------------
 # Funções
 # -------------------------------------------------------------------
+
+# gist upload com xclip funcionando
+function gistc()
+{
+gist $1 | xclip -sel clip && xclip -sel clip -o
+}
+
 
 #Baixa pacote no AUR pelo Yaourt sem confirmação
 function ys()
@@ -147,15 +147,6 @@ extract() {
   echo "\`$1' is not a valid file"
    fi
 }
-
-function pasteb(){
-pastebinit $1 | pbcopy
-}
-
-function top10() {
-	# copyright 2007 - 2010 Christopher Bratusek
-	history | awk '{a[$2]++ } END{for(i in a){print a[i] " " i}}' | sort -rn | head
-     }
 
 ###### info about current open windows
 # copyright 2007 - 2010 Christopher Bratusek
