@@ -203,13 +203,13 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-put map <silent> <Leader>1 :tabn 1<cr>
-put map <silent> <Leader>2 :tabn 2<cr>
-put map <silent> <Leader>3 :tabn 3<cr>
-put map <silent> <Leader>4 :tabn 4<cr>
-put map <silent> <Leader>5 :tabn 5<cr>
-put map <silent> <Leader>6 :tabn 6<cr>
-put map <silent> <Leader>7 :tabn 7<cr>
+map <silent> <Leader>1 :tabn 1<cr>
+map <silent> <Leader>2 :tabn 2<cr>
+map <silent> <Leader>3 :tabn 3<cr>
+map <silent> <Leader>4 :tabn 4<cr>
+map <silent> <Leader>5 :tabn 5<cr>
+map <silent> <Leader>6 :tabn 6<cr>
+map <silent> <Leader>7 :tabn 7<cr>
 
 "open splits
 nnoremap <Leader>\| :vsplit<cr>
