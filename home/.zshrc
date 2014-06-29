@@ -17,9 +17,11 @@ export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export POWERLINE=1 # Usar ou não usar powerline no vim 
 export TERM="xterm-256color" # 256 cores no terminal (para utilizar cores no vim)
 export EDITOR='vim'
+export BROWSER='chromium'
 source ~/.local/credentials.sh
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
 sudo loadkeys br-abnt2.map # teclado layout tty
+
 
 # -------------------------------------------------------------------
 # Aliases
@@ -100,9 +102,9 @@ alias startx='startx &> ~/.xlog'
 # -------------------------------------------------------------------
 
 # gist upload com xclip funcionando
-function gistc()
+function gistt()
 {
-gist $1 | xclip -sel clip && xclip -sel clip -o
+    gist $1 | pbcopy && pbpaste && $BROWSER $(pbpaste)
 }
 
 

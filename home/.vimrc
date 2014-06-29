@@ -1,3 +1,9 @@
+" vimrc
+" Raphael P. Ribeiro
+
+
+" Preambulo ---------------------------------------------------------------- ###
+
 " <Leader> por default é \
 let mapleader=","
 let maplocalleader = ","
@@ -5,13 +11,11 @@ set nocompatible
 filetype off
 filetype plugin on
 filetype plugin indent on
+let powerline = $POWERLINE " Caso eu esteja afim de usar o powerline (:
 
-
-" Caso eu esteja afim de usar o powerline (:
-let powerline = $POWERLINE
+" Bundles   ---------------------------------------------------------------- ###
 
 " Estou usando o Vundle para gerenciar os bundles
-"====================== Vundle ===============================
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -39,6 +43,11 @@ Bundle "honza/vim-snippets"
 " ===== vim-autoclose
 " Fecha automaticamente aspas, chaves, parênteses...
 Bundle 'Townk/vim-autoclose'
+
+
+" ===== vim-markdown-folding
+"
+"Bundle 'nelstrom/vim-markdown-folding'
 
 "
 "" Abaixo estão os Bundles que precisam de algumas opções/personalizações
@@ -83,50 +92,81 @@ nnoremap <Leader>g :GundoToggle<CR>
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
  
+" Opções Básicas  ---------------------------------------------------------- ###
 
-"==================== Minhas opções ===========================
-"
-"" Daqui para baixo são as minhas opções
+syntax enable                           " Habilita a marcação de sintaxe
+set encoding=utf-8                      " 
+set showmode                            " Exibe o modo atual
+set wildmenu                            " Menu com as opções do vim usando tab
+set background=dark                     " Define o fundo preto (É melhor usar isso com a sintaxe)
+set nu                                  " Mostra o número de linhas
+set ai                                  " Faz o auto tab/auto indent
+set ts=4                                " tab vale 4 espaços
+set sw=4                                " tab com 4 espaços
+set softtabstop=4                       " Operações como o backspace também com 4 espaços
+set et                                  " Troca tabs por espaços
+set ruler                               " Mostra a posição do cursor
+set cursorline                          " Destaca a linha atual
+set laststatus=2                        " Sempre exibe a barra de status
+set autoread                            " Recarrega arquivos alterados em disco automaticamente
+set incsearch                           " Pesquisa incremental
+set hlsearch                            " Highlight search :)
+set ignorecase                          " Pesquisa ignora caixa alta e baixa
+set smartcase                           " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
+set pastetoggle=<F2>                    " ativa/desativa o auto ident para copiar/colar
+set splitbelow                          " Nova janela aparece abaixo da atual
+set splitright                          " Nova janela aparece a direita da atual
+set backupskip=/tmp/*,/private/tmp/*"   " Faz o Vim editar arquivos crontab
+set number                              " Enumera as linhas
+set undofile                            " Estabelece o uso de um arquivo persistente para undo list
+set undolevels=1000                     " Máximo numero de mudanças que podem ser desfeitas
+set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
+au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
+colorscheme molokai                     
 
-syntax enable               " Habilita a marcação de sintaxe
-set encoding=utf-8
-set showmode                " Exibe o modo atual
-set wildmenu                " Menu com as opções do vim usando tab
-set background=dark         " Define o fundo preto (É melhor usar isso com a sintaxe)
-set nu                      " Mostra o número de linhas
-set ai                      " Faz o auto tab/auto indent
-set ts=4                    " tab vale 4 espaços
-set sw=4                    " tab com 4 espaços
-set softtabstop=4           " Operações como o backspace também com 4 espaços
-set et                      " Troca tabs por espaços
-set ruler                   " Mostra a posição do cursor
-set cursorline              " Destaca a linha atual
-set laststatus=2            " Sempre exibe a barra de status
-set autoread                " Recarrega arquivos alterados em disco automaticamente
-set incsearch               " Pesquisa incremental
-set hlsearch                " Highlight search :)
-set ignorecase              " Pesquisa ignora caixa alta e baixa
-set smartcase               " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
-set pastetoggle=<F2>        " ativa/desativa o auto ident para copiar/colar
-set splitbelow              " Nova janela aparece abaixo da atual
-set splitright              " Nova janela aparece a direita da atual
-set number
-colorscheme molokai
+" Folding   ---------------------------------------------------------------- ###
 
-" Torna o Undo List persistente
-set undofile
-set undodir=$HOME/.vim/undodir
-set undolevels=1000 "máximo numero de mudanças que podem ser desfeitas
-set undoreload=10000 "máximo número de linhas a serem salvar pra buffer reload
+set foldlevelstart=0
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+
+" Salvar os folders
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
+" Maps    ------------------------------------------------------------------ ###
+
+" Menos trabalhoso
+nnoremap ; :
+
+" Recarrega vimrc
+map <Leader>r :so %<CR>
 
 " Tecla espaço para procurar uma palavra
-map <space> /
+"map <space> /
 map <Leader><space> ?
 
-" Meus aliases
-
 " Cancela o highlight da busca atual
-nnoremap <silent><F3> :noh<CR>
+noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 
 "" Opções para que blocos selecionados sejam reselecionados após identações.
 " Ajuda muito na hora de identar grandes e confusos blocos =)
@@ -146,8 +186,34 @@ nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 map <Leader>y "+y<CR>
 map <Leader>p "+p<CR>
 
+"Copia conteúdo selecionado para o arquivo .vimbuffer. Bom para copiar de uma aba tmux para outra.
+vmap <Leader>c :w! ~/.vimbuffer<CR>
+nmap <Leader>c :.w! ~/.vimbuffer<CR>
+" cut to ~/.vimbuffer
+vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
+" paste from ~/.vimbuffer
+map <Leader>v :r ~/.vimbuffer<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Backups ------------------------------------------------------------------ ###
+
+set backup                          " habilita backups
+set noswapfile                      " não cria mais os malditos .swp
+
+set undodir=~/.vim/undodir          " undo list
+set backupdir=~/.vim/tmp/backup/    " backups
+set directory=~/.vim/tmp/swap/      " swap files
+
+" Certifica-se de que as pastas sejam criadas automaticamente se já não existirem.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+" tmux    ------------------------------------------------------------------ ###
 
 " Para as cores funcionarem bem é preciso usar 256 cores no terminal.
 " " No bashrc, zshrc ou similar, faça algo como
@@ -178,23 +244,14 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""
-" Navegação entre abas Tabs       "
-"""""""""""""""""""""""""""""""""""
+" Navegação entre abas  ---------------------------------------------------- ###
 
 "navegação de abas fácil, semelhante a navegadores
 nnoremap <tab>                  :tabnext<CR>
 nnoremap <Leader>t              :tabnew<CR>
 nnoremap <Leader>w              :tabclose<CR>
-nnoremap <Leader>r              :tabrewind<CR>
 
-
-""""""""""""""
-" Vim Splits "
-""""""""""""""
+" Vim Splits  -------------------------------------------------------------- ###
 
 "Navegação entre janelas,
 "<ctrl><j> em vez de <ctrl><w><j>
@@ -221,56 +278,60 @@ nmap <Leader>- :vertical resize -5<cr>
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
+" Highlight Word  ---------------------------------------------------------- ###
 
-"Copia conteúdo selecionado para o arquivo .vimbuffer. Bom para copiar de uma aba tmux para outra.
-vmap <Leader>c :w! ~/.vimbuffer<CR>
-nmap <Leader>c :.w! ~/.vimbuffer<CR>
-" cut to ~/.vimbuffer
-vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
-" paste from ~/.vimbuffer
-map <Leader>v :r ~/.vimbuffer<CR>
+" " This mini-plugin provides a few mappings for highlighting words
+" temporarily.
+" "
+" " Sometimes you're looking at a hairy piece of code and would like a certain
+" " word or two to stand out temporarily.  You can search for it, but that
+" only
+" " gives you one color of highlighting.  Now you can use <leader>N where N is
+" " a number from 1-6 to highlight the current word in a specific color.
 
-""""""""""""""
-" Lembrete   "
-""""""""""""""
+function! HiInterestingWord(n)
+    " Save our location.
+    normal! mz
 
-"vertical split
-":vsplit
-":vsp
+    " Yank the current word into the z register.
+    normal! "zyiw
 
-"horizontal split
-":sp 
-":split
+    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+    let mid = 86750 + a:n
 
-"Resize horizontal split
-":res +5
-":res -5
+    " Clear existing matches, but don't worry if they don't exist.
+    silent! call matchdelete(mid)
 
-"Resize vertical split
-":vertical resize +5
-":vertical resize -5
+    " Construct a literal pattern that has to match at boundaries.
+    let pat = '\V\<' . escape(@z, '\') . '\>'
+
+    " Actually match the words.
+    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+
+    " Move back to our original location.
+    normal! `z
+endfunction
+
+nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
+nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
+nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
+nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
+nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
+nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+
+hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
+hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
+hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
+hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
+hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
+hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 
-"Aumenta/diminui altura o split atual
-"<ctrl>w +
-"<ctrl>w -
+" etc   -------------------------------------------------------------------- ###
 
-"Aumenta/diminui largura  do split atual
-"<ctrl>w >
-"<ctrl>w <
+" Certifica-se que o Vim retorna para a mesma linha quando abre o arquivo
+if has("autocmd")
+      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+          \| exe "normal! g'\"" | endif
+endif
 
-"Maximiza a largura do split atual
-"ctrl + w _
-
-"Maximiza a altura do split atual
-"ctrl + w |
-
-"Normaliza o tamanho de todos os splits
-"ctrl + w =
-
-"Troca os splits topo/baixo ou esquerda/direita
-"ctrl+w r
-
-"Fecha todas as janelas da aba atual menos a janela atual.
-"ctrl+w o
-"
