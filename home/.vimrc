@@ -168,24 +168,19 @@ set foldtext=MyFoldText()
 " }}}
 " Maps    -----------------------------------------------------------------  {{{
 
-" Recarrega vimrc
-map <Leader>r :so %<CR>
+" Atalhos rápidos   {{{
 
-" Cancela o highlight da busca atual
-noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
-
-"" Opções para que blocos selecionados sejam reselecionados após identações.
-vnoremap < <gv
-vnoremap > >gv
-
-" salva rapido
-nnoremap <leader>s :w!<CR>
-
+" Mata a janela
+nnoremap K :q<cr>
+" Salva e sai da janela
+nnoremap X :x<cr>
+" Salva arquivo
+nnoremap W :w<cr>
 " quit all
 nnoremap <leader>qt :quitall<CR>
 
-" compilar com openGL (CG)
-nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
+" }}}
+" Copy/Paste        {{{
 
 " ,c para copiar pra área de transferência
 map <Leader>y "+y<CR>
@@ -199,17 +194,33 @@ vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
 " paste from ~/.vimbuffer
 map <Leader>v :r ~/.vimbuffer<CR>
 
-" Mata a janela
-nnoremap K :q<cr>
+" }}}
+" txt2tags          {{{
 
-" Salva e sai da janela
-nnoremap X :x<cr>
+map 2h :w<CR>:!txt2tags -t html % ; $BROWSER %<.html<CR>
+map 2l :w<CR>:!txt2tags -t tex % ; xelatex %<.tex ; okular %<.pdf<CR>
+map 2t :w<CR>:!txt2tags -t txt % <CR>
 
-" Salva arquivo
-nnoremap W :w<cr>
+" }}}
+" etc               {{{
 
 " Dois <Enter> para quebrar linha sem entrar no insert mode
 nmap <CR><CR> o<ESC>
+
+" compilar com openGL (CG)
+nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
+
+" Recarrega vimrc
+map <Leader>r :so %<CR>
+
+" Cancela o highlight da busca atual
+noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
+
+"" Opções para que blocos selecionados sejam reselecionados após identações.
+vnoremap < <gv
+vnoremap > >gv
+
+" }}}
 
 " }}}
 " Backups ------------------------------------------------------------------ {{{
