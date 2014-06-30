@@ -2,7 +2,7 @@
 " Raphael P. Ribeiro
 
 
-" Preambulo ---------------------------------------------------------------- ###
+" Preambulo ---------------------------------------------------------------- {{{
 
 " <Leader> por default é \
 let mapleader=","
@@ -13,48 +13,45 @@ filetype plugin on
 filetype plugin indent on
 let powerline = $POWERLINE " Caso eu esteja afim de usar o powerline (:
 
-" Bundles   ---------------------------------------------------------------- ###
+" }}}
+" Bundles   ---------------------------------------------------------------- {{{
 
-" Estou usando o Vundle para gerenciar os bundles
+" ===== Vundle           {{{
 
+" P/ gerenciar os bundles
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-" ===== Vundle
-" P/ gerenciar os bundles
 Bundle 'gmarik/vundle'
 
-" Melhora os temas para terminais
-Bundle 'godlygeek/csapprox'
+" }}}
+" ===== Esquema de cores {{{
 
-" Esquemas de cores
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spf13/vim-colors'
+Bundle 'godlygeek/csapprox'
 
-" ===== BASH IDE
+" }}}
+" ===== Bash IDE         {{{
+
 Bundle 'vim-scripts/bash-support.vim'
 
-" ===== Snipmate
+" }}}
+" ===== Snipmate         {{{
+
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 
-" ===== vim-autoclose
+" }}}
+" ===== vim-autoclose    {{{
+
 " Fecha automaticamente aspas, chaves, parênteses...
 Bundle 'Townk/vim-autoclose'
 
+" }}}
+" ===== vim-powerline    {{{
 
-" ===== vim-markdown-folding
-"
-"Bundle 'nelstrom/vim-markdown-folding'
-
-"
-"" Abaixo estão os Bundles que precisam de algumas opções/personalizações
-"
-
-" ===== vim-powerline
-" Linha de status bem completa
 " Se os glifos ficarem estranhos:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
 if powerline
@@ -71,28 +68,39 @@ if powerline
     endif
 endif
 
-" ===== NERDTree
+" }}}
+" ===== NERDTree         {{{
+
 " Navegador de arquivos e diretórios
 Bundle 'scrooloose/nerdtree'
 map <F10> :NERDTreeToggle<CR>
 
-" ===== vim-tagbar
+" }}}
+" ===== vim-tagbar       {{{
+
 " Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
 " Lembrar que <ctrl> ww troca de janela
 Bundle 'majutsushi/tagbar'
 nnoremap <F9> :TagbarToggle<CR>
 
-" ===== Gundo
+" }}}
+" ===== Gundo            {{{
+
 " Ver undo tree em estilo 
 Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
 
-" ===== vim-numbertoggle
+" }}}
+" ===== vim-numbertoggle {{{
+
 " Números das linhas relativo no modo normal e absoluto no modo insert
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
  
-" Opções Básicas  ---------------------------------------------------------- ###
+" }}}
+
+" }}}
+" Opções Básicas  ---------------------------------------------------------- {{{
 
 syntax enable                           " Habilita a marcação de sintaxe
 set encoding=utf-8                      " 
@@ -124,15 +132,18 @@ set undoreload=10000                    " Máximo número de linhas a serem salv
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 colorscheme molokai                     
 
-" Folding   ---------------------------------------------------------------- ###
+" }}}
+" Folding   ---------------------------------------------------------------- {{{
 
-set foldlevelstart=0
+set foldmethod=marker
+set foldmarker={{{,}}} " marker para abrir folder e fechar folder
+set foldlevelstart=0   " Começa com todas os folders fechados
 
 " Space to toggle folds.
 nnoremap <Space> za
 vnoremap <Space> za
 
-function! MyFoldText() " {{{
+function! MyFoldText() " 
     let line = getline(v:foldstart)
 
     let nucolwidth = &fdc + &number * &numberwidth
@@ -146,14 +157,11 @@ function! MyFoldText() " {{{
     let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " }}}
+endfunction " 
 set foldtext=MyFoldText()
 
-" Salvar os folders
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
-
-" Maps    ------------------------------------------------------------------ ###
+" }}}
+" Maps    ------------------------------------------------------------------ {{{
 
 " Menos trabalhoso
 nnoremap ; :
@@ -161,15 +169,10 @@ nnoremap ; :
 " Recarrega vimrc
 map <Leader>r :so %<CR>
 
-" Tecla espaço para procurar uma palavra
-"map <space> /
-map <Leader><space> ?
-
 " Cancela o highlight da busca atual
 noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 
 "" Opções para que blocos selecionados sejam reselecionados após identações.
-" Ajuda muito na hora de identar grandes e confusos blocos =)
 vnoremap < <gv
 vnoremap > >gv
 
@@ -194,7 +197,14 @@ vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
 " paste from ~/.vimbuffer
 map <Leader>v :r ~/.vimbuffer<CR>
 
-" Backups ------------------------------------------------------------------ ###
+" Mata a janela
+nnoremap K :q<cr>
+
+" Salva e sai da janela
+nnoremap X :x<cr>
+
+" }}}
+" Backups ------------------------------------------------------------------ {{{
 
 set backup                          " habilita backups
 set noswapfile                      " não cria mais os malditos .swp
@@ -213,7 +223,9 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
-" tmux    ------------------------------------------------------------------ ###
+
+" }}}
+" tmux    ------------------------------------------------------------------ {{{
 
 " Para as cores funcionarem bem é preciso usar 256 cores no terminal.
 " " No bashrc, zshrc ou similar, faça algo como
@@ -244,14 +256,24 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
-" Navegação entre abas  ---------------------------------------------------- ###
+
+" }}}
+" Edição Rápida  ----------------------------------------------------------- {{{
+
+nnoremap <leader>vi :vsplit ~/.vimrc<cr> 
+nnoremap <leader>zs :vsplit ~/.zshrc<cr> 
+nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr> 
+
+" }}}
+" Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
 nnoremap <tab>                  :tabnext<CR>
 nnoremap <Leader>t              :tabnew<CR>
 nnoremap <Leader>w              :tabclose<CR>
 
-" Vim Splits  -------------------------------------------------------------- ###
+" }}}
+" Vim Splits  -------------------------------------------------------------- {{{
 
 "Navegação entre janelas,
 "<ctrl><j> em vez de <ctrl><w><j>
@@ -278,7 +300,9 @@ nmap <Leader>- :vertical resize -5<cr>
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
-" Highlight Word  ---------------------------------------------------------- ###
+
+" }}}
+" Highlight Word  ---------------------------------------------------------- {{{
 
 " " This mini-plugin provides a few mappings for highlighting words
 " temporarily.
@@ -327,7 +351,8 @@ hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
 hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 
-" etc   -------------------------------------------------------------------- ###
+" }}}
+" Ajustes  ----------------------------------------------------------------- {{{
 
 " Certifica-se que o Vim retorna para a mesma linha quando abre o arquivo
 if has("autocmd")
@@ -335,3 +360,10 @@ if has("autocmd")
           \| exe "normal! g'\"" | endif
 endif
 
+
+let @z = "{{{"
+let @x = "}}}"
+map <Leader><Leader> "zp<CR>
+map <Leader>. "xp<CR>
+
+" }}}

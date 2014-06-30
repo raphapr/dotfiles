@@ -1,5 +1,10 @@
-# chsh -s $(which zsh)
+# zshrc
+# Raphael P. Ribeiro
 # Source Prezto.
+#
+
+# Preambulo -------------------------------------------------------- {{{
+
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
@@ -8,9 +13,8 @@ fi
 bindkey ";5C" forward-word
 bindkey ";5D" backward-word
 
-# -------------------------------------------------------------------
-# Minha configuração
-# -------------------------------------------------------------------
+# }}}
+# Minha configuração  ---------------------------------------------- {{{
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
@@ -22,12 +26,9 @@ source ~/.local/credentials.sh
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
 sudo loadkeys br-abnt2.map # teclado layout tty
 
+# }}}
+# Aliases ---------------------------------------------------------- {{{
 
-# -------------------------------------------------------------------
-# Aliases
-# -------------------------------------------------------------------
-
-#alias ls='ls --color=always'
 alias lash='ls -lash'
 alias l='ls -CF'
 alias sudo='my_sudo '
@@ -97,9 +98,10 @@ alias vpn='sudo openvpn ~/.openvpn/users.conf'
 #Grava log do startx
 alias startx='startx &> ~/.xlog'
 
-# -------------------------------------------------------------------
-# Funções
-# -------------------------------------------------------------------
+# }}}
+# Funções ---------------------------------------------------------- {{{
+
+# gistt             {{{
 
 # gist upload com xclip funcionando
 function gistt()
@@ -107,57 +109,36 @@ function gistt()
     gist $1 | pbcopy && pbpaste && $BROWSER $(pbpaste)
 }
 
+# }}}
+# ys                {{{ 
 
-#Baixa pacote no AUR pelo Yaourt sem confirmação
+# yaourt sem confirmação
 function ys()
 {
     yaourt -S $1 --noconfirm
 }
 
+# }}}
+# aux               {{{
 
-# Lista os detalhes de um determinado padrão de processos
+# lista os detalhes de um determinado padrão de processos 
 function aux()
 {
     ps aux | grep  $1
 }
 
-## Zipar arquivos ou diretórios.
-function zipf() { zip -r "$1".zip "$1" ; }
+# }}}
+# wininfo           {{{
+# info about open windows 
 
-## Archive extractor.
-## usage: ex <file>
-extract() {
- if [ -f $1 ] ; then
-  case $1 in
-   *.tar.bz2) tar xvjf $1 ;;
- *.tar.gz) tar xvzf $1 ;;
-  *.tar.xz) tar xvJf $1 ;;
-   *.bz2) bunzip2 $1 ;;
- *.rar) unrar x $1 ;;
-  *.gz) gunzip $1 ;;
-   *.tar) tar xvf $1 ;;
- *.tbz2) tar xvjf $1 ;;
-  *.tgz) tar xvzf $1 ;;
-   *.zip) unzip $1 ;;
- *.Z) uncompress $1 ;;
-  *.7z) 7z x $1 ;;
-   *.xz) unxz $1 ;;
- *.exe) cabextract $1 ;;
-  *) echo "\`$1': unrecognized file compression" ;;
-   esac
- else
-  echo "\`$1' is not a valid file"
-   fi
-}
-
-###### info about current open windows
 # copyright 2007 - 2010 Christopher Bratusek
 function wininfo() {
 	xprop | grep -w "WM_NAME\|WM_CLASS\|WM_WINDOW_ROLE\|_NET_WM_STATE"
 }
 
-
-# Compilando com OpenGL
+# }}}
+# gl                {{{
+# compilando com OpenGL
 function gl() {
     if [ -f a.out ]; then rm -rf a.out
     fi
@@ -168,11 +149,8 @@ function gl() {
     fi
 }
 
-
-########### Systemd Shorcuts ##############
-########### Comandos simplificados #######
-
-############### Systemctl ############### 
+# }}}
+# Systemd Shortcuts {{{
 
 0.start() {
     sudo systemctl start $1.service
@@ -226,9 +204,8 @@ function gl() {
      systemd-analyze $1
     }
 
-
-############### Systemctl --user ############### 
-
+# }}}
+# Systemd --user    {{{
 
 1.start() {
     systemctl --user start $1.service
@@ -278,9 +255,10 @@ function gl() {
     systemctl --user show -p "Wants" $1.target
     }
 
+# }}}
+# FIX  ----------------------------------------------------------- {{{
 
-# FIX noglob nocorrect problem
-
+# FIX noglob nocorrect problem 
 function my_sudo {
     while [[ $# > 0 ]]; do
         case "$1" in
@@ -296,4 +274,6 @@ function my_sudo {
     fi
 }
 
-# ----------------------------------------------------------
+# }}}
+
+# }}}
