@@ -98,6 +98,11 @@ Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
  
 " }}}
+" ===== Nerd Commenter   {{{
+
+Bundle 'scrooloose/nerdcommenter'
+ 
+" }}}
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
@@ -161,10 +166,7 @@ endfunction "
 set foldtext=MyFoldText()
 
 " }}}
-" Maps    ------------------------------------------------------------------ {{{
-
-" Menos trabalhoso
-nnoremap ; :
+" Maps    -----------------------------------------------------------------  {{{
 
 " Recarrega vimrc
 map <Leader>r :so %<CR>
@@ -202,6 +204,12 @@ nnoremap K :q<cr>
 
 " Salva e sai da janela
 nnoremap X :x<cr>
+
+" Salva arquivo
+nnoremap W :w<cr>
+
+" Dois <Enter> para quebrar linha sem entrar no insert mode
+nmap <CR><CR> o<ESC>
 
 " }}}
 " Backups ------------------------------------------------------------------ {{{
@@ -268,9 +276,9 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 " Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
-nnoremap <tab>                  :tabnext<CR>
-nnoremap <Leader>t              :tabnew<CR>
-nnoremap <Leader>w              :tabclose<CR>
+nnoremap <tab>  :tabnext<CR>
+nnoremap <C-t>  :tabnew<CR>
+nnoremap <C-w>  :tabclose<CR>
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{
