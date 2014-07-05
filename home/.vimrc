@@ -1,7 +1,6 @@
 " vimrc
 " Raphael P. Ribeiro
 
-
 " Preambulo ---------------------------------------------------------------- {{{
 
 " <Leader> por default é \
@@ -86,7 +85,7 @@ nnoremap <F9> :TagbarToggle<CR>
 " }}}
 " ===== Gundo            {{{
 
-" Ver undo tree em estilo 
+" Ver undo tree em estilo
 Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
 
@@ -96,19 +95,29 @@ nnoremap <Leader>g :GundoToggle<CR>
 " Números das linhas relativo no modo normal e absoluto no modo insert
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
- 
+
 " }}}
 " ===== Nerd Commenter   {{{
 
 Bundle 'scrooloose/nerdcommenter'
- 
+
+" }}}
+" ===== Command-T        {{{
+
+" FIX: could not load the C extension
+" cd ~/.vim/ruby/command-t
+" ruby extconf.rb
+" make
+
+Bundle 'wincent/Command-T'
+
 " }}}
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
 
 syntax enable                           " Habilita a marcação de sintaxe
-set encoding=utf-8                      " 
+set encoding=utf-8                      "
 set showmode                            " Exibe o modo atual
 set wildmenu                            " Menu com as opções do vim usando tab
 set background=dark                     " Define o fundo preto (É melhor usar isso com a sintaxe)
@@ -135,7 +144,7 @@ set undofile                            " Estabelece o uso de um arquivo persist
 set undolevels=1000                     " Máximo numero de mudanças que podem ser desfeitas
 set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
-colorscheme molokai                     
+colorscheme molokai
 
 " }}}
 " Folding   ---------------------------------------------------------------- {{{
@@ -148,7 +157,7 @@ set foldlevelstart=0   " Começa com todas os folders fechados
 nnoremap <Space> za
 vnoremap <Space> za
 
-function! MyFoldText() " 
+function! MyFoldText() "
     let line = getline(v:foldstart)
 
     let nucolwidth = &fdc + &number * &numberwidth
@@ -162,7 +171,7 @@ function! MyFoldText() "
     let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction " 
+endfunction "
 set foldtext=MyFoldText()
 
 " }}}
@@ -211,14 +220,13 @@ nmap <CR><CR> o<ESC>
 nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
 " Recarrega vimrc
-map <Leader>r :so %<CR>
-
-" Cancela o highlight da busca atual
-noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
-
+map <Leader>re :so %<CR>
+" Cancela o highlight da busca atual noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 "" Opções para que blocos selecionados sejam reselecionados após identações.
 vnoremap < <gv
 vnoremap > >gv
+
+"inoremap jj <ESC>
 
 " }}}
 
@@ -252,7 +260,7 @@ endif
 "
 " " let g:solarized_termcolors=256
 
- 
+
 """" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e konsole
 if &term =~ '256color'
       " Disable Background Color Erase (BCE) so that color schemes
@@ -279,9 +287,9 @@ endif
 " }}}
 " Edição Rápida  ----------------------------------------------------------- {{{
 
-nnoremap <leader>vi :vsplit ~/.vimrc<cr> 
-nnoremap <leader>zs :vsplit ~/.zshrc<cr> 
-nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr> 
+nnoremap <leader>vi :vsplit ~/.vimrc<cr>
+nnoremap <leader>zs :vsplit ~/.zshrc<cr>
+nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 
 " }}}
 " Navegação entre abas  ---------------------------------------------------- {{{
@@ -289,7 +297,6 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 "navegação de abas fácil, semelhante a navegadores
 nnoremap <tab>  :tabnext<CR>
 nnoremap <C-t>  :tabnew<CR>
-nnoremap <C-w>  :tabclose<CR>
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{
@@ -385,4 +392,45 @@ let @x = "}}}"
 map <Leader><Leader> "zp<CR>
 map <Leader>. "xp<CR>
 
+
+" Ajustes GUI
+if has('gui_running')
+    " GUI Vim
+
+    set guifont=Menlo\ Regular\ for\ Powerline:h12
+
+    " Remove all the UI cruft
+    set go-=T
+    set go-=l
+    set go-=L
+    set go-=r
+    set go-=R
+
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
+
+    " Different cursors for different modes.
+    set guicursor=n-c:block-Cursor-blinkon0
+    set guicursor+=v:block-vCursor-blinkon0
+    set guicursor+=i-ci:ver20-iCursor
+else
+    " Console Vim
+    " For me, this means iTerm2, possibly through tmux
+
+    " Mouse support
+    set mouse=a
+endif
+
+" Só assim eu aprendo a usar o hjkl
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
 " }}}
+
