@@ -1,5 +1,5 @@
-" vimrc
-" Raphael P. Ribeiro
+" .vimrc
+" Author: Raphael P. Ribeiro
 
 " Preambulo ---------------------------------------------------------------- {{{
 
@@ -109,6 +109,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'wincent/Command-T'
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
+let g:CommandTAlwaysShowDotFiles = 1
 
 " FIX: could not load the C extension
 " cd ~/.vim/ruby/command-t
@@ -139,6 +140,11 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " }}}
+" ===== vim-ctrlspace    {{{
+
+Bundle 'szw/vim-ctrlspace'
+
+ " }}}
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
@@ -248,7 +254,7 @@ nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
 
 " Recarrega vimrc
-map <Leader>r :so %<CR>
+map <Leader>re :so %<CR>
 
 " Cancela o highlight da busca atual
 noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
@@ -348,11 +354,11 @@ nnoremap <C-H> <C-W><C-H>
 
 "open splits
 nnoremap <Leader>\| :vsplit<cr>
-nnoremap <Leader>_ :split<cr>
+nnoremap <Leader>- :split<cr>
 
 "Resize vsplit
-nnoremap + :vertical resize +5<cr>
-nnoremap - :vertical resize -5<cr>
+nnoremap > :vertical resize +5<cr>
+nnoremap < :vertical resize -5<cr>
 nmap = <c-w>=
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
@@ -437,9 +443,6 @@ if has('gui_running')
     set guicursor+=v:block-vCursor-blinkon0
     set guicursor+=i-ci:ver20-iCursor
 else
-    " Console Vim
-    " For me, this means iTerm2, possibly through tmux
-
     " Mouse support
     set mouse=a
 endif
