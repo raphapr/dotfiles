@@ -10,7 +10,7 @@ set nocompatible
 filetype off
 filetype plugin on
 filetype plugin indent on
-let powerline = $POWERLINE " Caso eu esteja afim de usar o powerline (:
+let powerline = $POWERLINE
 
 " }}}
 " Bundles   ---------------------------------------------------------------- {{{
@@ -99,17 +99,44 @@ let g:NumberToggleTrigger="<Leader>n"
 " }}}
 " ===== Nerd Commenter   {{{
 
+" <leader>cc para comentar e <leader>cu para descomentar
 Bundle 'scrooloose/nerdcommenter'
 
 " }}}
 " ===== Command-T        {{{
+
+" Mecanismo p/ abrir arquivos rapidamente
+
+Bundle 'wincent/Command-T'
+map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 
 " FIX: could not load the C extension
 " cd ~/.vim/ruby/command-t
 " ruby extconf.rb
 " make
 
-Bundle 'wincent/Command-T'
+" }}}
+" ===== EasyMotion       {{{
+
+" Navegação de texto aka vimium
+
+Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+nmap f <Plug>(easymotion-s)
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Método de highlight diferenciado
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
 " }}}
 
@@ -219,14 +246,16 @@ nmap <CR><CR> o<ESC>
 " compilar com openGL (CG)
 nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
+
 " Recarrega vimrc
-map <Leader>re :so %<CR>
-" Cancela o highlight da busca atual noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
+map <Leader>r :so %<CR>
+
+" Cancela o highlight da busca atual
+noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
+
 "" Opções para que blocos selecionados sejam reselecionados após identações.
 vnoremap < <gv
 vnoremap > >gv
-
-"inoremap jj <ESC>
 
 " }}}
 
@@ -298,6 +327,15 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 nnoremap <tab>  :tabnext<CR>
 nnoremap <C-t>  :tabnew<CR>
 
+map <silent> <Leader>1 :tabn 1<cr>
+map <silent> <Leader>2 :tabn 2<cr>
+map <silent> <Leader>3 :tabn 3<cr>
+map <silent> <Leader>4 :tabn 4<cr>
+map <silent> <Leader>5 :tabn 5<cr>
+map <silent> <Leader>6 :tabn 6<cr>
+map <silent> <Leader>7 :tabn 7<cr>
+
+
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{
 
@@ -308,21 +346,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-map <silent> <Leader>1 :tabn 1<cr>
-map <silent> <Leader>2 :tabn 2<cr>
-map <silent> <Leader>3 :tabn 3<cr>
-map <silent> <Leader>4 :tabn 4<cr>
-map <silent> <Leader>5 :tabn 5<cr>
-map <silent> <Leader>6 :tabn 6<cr>
-map <silent> <Leader>7 :tabn 7<cr>
-
 "open splits
 nnoremap <Leader>\| :vsplit<cr>
 nnoremap <Leader>_ :split<cr>
 
 "Resize vsplit
-nmap <Leader>= :vertical resize +5<cr>
-nmap <Leader>- :vertical resize -5<cr>
+nnoremap + :vertical resize +5<cr>
+nnoremap - :vertical resize -5<cr>
+nmap = <c-w>=
 nmap 25 :vertical resize 40<cr>
 nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
@@ -386,13 +417,6 @@ if has("autocmd")
           \| exe "normal! g'\"" | endif
 endif
 
-
-let @z = "{{{"
-let @x = "}}}"
-map <Leader><Leader> "zp<CR>
-map <Leader>. "xp<CR>
-
-
 " Ajustes GUI
 if has('gui_running')
     " GUI Vim
@@ -433,4 +457,3 @@ nnoremap j gj
 nnoremap k gk
 
 " }}}
-
