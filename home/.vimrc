@@ -109,6 +109,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'wincent/Command-T'
 map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
+map <leader>f :CommandTFlush<cr>\|:CommandT .<cr>
 let g:CommandTAlwaysShowDotFiles = 1
 
 " FIX: could not load the C extension
