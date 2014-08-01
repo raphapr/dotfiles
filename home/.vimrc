@@ -103,21 +103,6 @@ let g:NumberToggleTrigger="<Leader>n"
 Bundle 'scrooloose/nerdcommenter'
 
 " }}}
-" ===== Command-T        {{{
-
-" Mecanismo p/ abrir arquivos rapidamente
-
-Bundle 'wincent/Command-T'
-map <leader>t :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT .<cr>
-let g:CommandTAlwaysShowDotFiles = 1
-
-" FIX: could not load the C extension
-" cd ~/.vim/ruby/command-t
-" ruby extconf.rb
-" make
-
-" }}}
 " ===== EasyMotion       {{{
 
 " Navegação de texto aka vimium
@@ -134,18 +119,23 @@ nmap f <Plug>(easymotion-s)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-" Método de highlight diferenciado
+" Método de highlight diferenciado na procura
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " }}}
-" ===== vim-ctrlspace    {{{
+" ===== vim-latex        {{{
 
-Bundle 'szw/vim-ctrlspace'
+Bundle 'jcf/vim-latex'
 
- " }}}
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+" View PDF macro; '%:r' is current file's root (base) name.
+nnoremap <leader><leader> :!okular %:r.pdf &<CR><CR>
+
+" }}}
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
@@ -253,6 +243,8 @@ nmap <CR><CR> o<ESC>
 " compilar com openGL (CG)
 nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
+" ruby
+nnoremap <Leader>ru :!clear && ruby %<CR>
 
 " Recarrega vimrc
 map <Leader>re :so %<CR>
@@ -333,14 +325,6 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 "navegação de abas fácil, semelhante a navegadores
 nnoremap <tab>  :tabnext<CR>
 nnoremap <C-t>  :tabnew<CR>
-
-map <silent> <Leader>1 :tabn 1<cr>
-map <silent> <Leader>2 :tabn 2<cr>
-map <silent> <Leader>3 :tabn 3<cr>
-map <silent> <Leader>4 :tabn 4<cr>
-map <silent> <Leader>5 :tabn 5<cr>
-map <silent> <Leader>6 :tabn 6<cr>
-map <silent> <Leader>7 :tabn 7<cr>
 
 
 " }}}

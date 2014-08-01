@@ -42,6 +42,7 @@ alias myip='curl ifconfig.me' # show extern ip
 alias chromium='chromium --disk-cache-dir=/tmp/cache'
 alias showbb='cat /proc/acpi/bbswitch'
 alias grubconf='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias automhwd='sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee && sudo mhwd -a pci nonfree 0300'
 
 # Pacman/Yaourt aliases 
 alias p='sudo pacman'
