@@ -122,7 +122,7 @@ Bundle 'jcf/vim-latex'
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 " View PDF macro; '%:r' is current file's root (base) name.
-nnoremap <leader><leader> :!okular %:r.pdf &<CR><CR>
+" nnoremap <leader><leader> :!okular %:r.pdf &<CR><CR>
 
 " }}}
 
@@ -158,6 +158,24 @@ set undolevels=1000                     " Máximo numero de mudanças que podem 
 set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 colorscheme molokai
+
+" }}}
+" Omni completion ---------------------------------------------------------- {{{
+
+" ctrl+space para completar código
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+            \ "\<lt>C-n>" :
+            \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
+
+" Smart omni completion
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
 " }}}
 " Folding   ---------------------------------------------------------------- {{{
@@ -312,7 +330,7 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 " Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
-nnoremap <tab>  :tabnext<CR>
+nnoremap <leader><leader>  :tabnext<CR>
 nnoremap <C-t>  :tabnew<CR>
 
 " }}}
