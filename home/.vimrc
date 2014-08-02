@@ -110,6 +110,7 @@ let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 nmap f <Plug>(easymotion-s)
 
+" JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
