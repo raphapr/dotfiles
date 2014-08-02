@@ -30,11 +30,6 @@ Bundle 'spf13/vim-colors'
 Bundle 'godlygeek/csapprox'
 
 " }}}
-" ===== Bash IDE         {{{
-
-Bundle 'vim-scripts/bash-support.vim'
-
-" }}}
 " ===== Snipmate         {{{
 
 Bundle "MarcWeber/vim-addon-mw-utils"
@@ -115,15 +110,8 @@ let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 nmap f <Plug>(easymotion-s)
 
-" JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
-" Método de highlight diferenciado na procura
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
 
 " }}}
 " ===== vim-latex        {{{
@@ -325,7 +313,6 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 "navegação de abas fácil, semelhante a navegadores
 nnoremap <tab>  :tabnext<CR>
 nnoremap <C-t>  :tabnew<CR>
-
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{

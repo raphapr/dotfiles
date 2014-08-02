@@ -29,13 +29,14 @@ sudo loadkeys br-abnt2.map # teclado layout tty
 # }}}
 # Aliases ---------------------------------------------------------- {{{
 
+# Conveniências do shell
 alias lash='ls -lash'
 alias l='ls -CF'
 alias sudo='my_sudo '
 alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias desk='cd ~/Desktop'
 alias h='history'
-alias vim='vim --servername vim'
+alias vim='vim -X --servername vim'
 alias v='vim'
 alias iup='imgurbash' # image upload # precisa do imgurbash
 alias myip='curl ifconfig.me' # show extern ip
@@ -43,6 +44,9 @@ alias chromium='chromium --disk-cache-dir=/tmp/cache'
 alias showbb='cat /proc/acpi/bbswitch'
 alias grubconf='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias automhwd='sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee && sudo mhwd -a pci nonfree 0300'
+alias sz='source ~/.zshrc'
+alias ez='vim ~/.zshrc'
+alias k='kill -9'
 
 # Pacman/Yaourt aliases 
 alias p='sudo pacman'
@@ -71,16 +75,6 @@ alias pbpaste='xclip -sel clip -o'
 #Monta e desmonta a partição NTFS /dev/sda3
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'
 alias umount-ntfs='sudo umount /mnt'
-
-#Conveniencias do Shell
-alias sz='source ~/.zshrc'
-alias ez='vim ~/.zshrc'
-alias k='kill -9'
-
-#VIM
-alias vv='vim -O'
-alias vh='vim -o'
-alias vt='vim -p'
 
 #aliases para a saída de audio
 alias hdmiaudion='sudo -u $USER pactl set-card-profile 0 output:hdmi-surround' # Ativa saída de audio HDMI
@@ -257,7 +251,9 @@ function gl() {
     }
 
 # }}}
-# FIX  ----------------------------------------------------------- {{{
+
+# }}}
+# FIX    ----------------------------------------------------------- {{{
 
 # FIX noglob nocorrect problem 
 function my_sudo {
@@ -274,7 +270,5 @@ function my_sudo {
         noglob command sudo $@
     fi
 }
-
-# }}}
 
 # }}}
