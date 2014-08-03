@@ -156,6 +156,7 @@ set number                              " Enumera as linhas
 set undofile                            " Estabelece o uso de um arquivo persistente para undo list
 set undolevels=1000                     " Máximo numero de mudanças que podem ser desfeitas
 set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
+set re=1                                " Corrige os arquivos ruby que estavam lentos por causa da nova regex engine do vim
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 colorscheme molokai
 
@@ -426,9 +427,6 @@ if has('gui_running')
     set guicursor=n-c:block-Cursor-blinkon0
     set guicursor+=v:block-vCursor-blinkon0
     set guicursor+=i-ci:ver20-iCursor
-else
-    " Mouse support
-    set mouse=a
 endif
 
 " Só assim eu aprendo a usar o hjkl
