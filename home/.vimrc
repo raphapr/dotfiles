@@ -15,7 +15,7 @@ let powerline = $POWERLINE
 " }}}
 " Bundles   ---------------------------------------------------------------- {{{
 
-" ===== Vundle           {{{
+" ===== Vundle                  {{{
 
 " P/ gerenciar os bundles
 set rtp+=~/.vim/bundle/vundle/
@@ -23,14 +23,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " }}}
-" ===== Esquema de cores {{{
+" ===== Esquema de cores        {{{
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spf13/vim-colors'
 Bundle 'godlygeek/csapprox'
 
 " }}}
-" ===== Snipmate         {{{
+" ===== Snipmate                {{{
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -38,13 +38,13 @@ Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
 
 " }}}
-" ===== vim-autoclose    {{{
+" ===== vim-autoclose           {{{
 
 " Fecha automaticamente aspas, chaves, parênteses...
 Bundle 'Townk/vim-autoclose'
 
 " }}}
-" ===== vim-powerline    {{{
+" ===== vim-powerline           {{{
 
 " Se os glifos ficarem estranhos:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
@@ -63,14 +63,14 @@ if powerline
 endif
 
 " }}}
-" ===== NERDTree         {{{
+" ===== NERDTree                {{{
 
 " Navegador de arquivos e diretórios
 Bundle 'scrooloose/nerdtree'
 map <F10> :NERDTreeToggle<CR>
 
 " }}}
-" ===== vim-tagbar       {{{
+" ===== vim-tagbar              {{{
 
 " Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
 " Lembrar que <ctrl> ww troca de janela
@@ -78,27 +78,27 @@ Bundle 'majutsushi/tagbar'
 nnoremap <F9> :TagbarToggle<CR>
 
 " }}}
-" ===== Gundo            {{{
+" ===== Gundo                   {{{
 
 " Ver undo tree em estilo
 Bundle 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
 
 " }}}
-" ===== vim-numbertoggle {{{
+" ===== vim-numbertoggle        {{{
 
 " Números das linhas relativo no modo normal e absoluto no modo insert
 Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
 
 " }}}
-" ===== Nerd Commenter   {{{
+" ===== Nerd Commenter          {{{
 
 " <leader>cc para comentar e <leader>cu para descomentar
 Bundle 'scrooloose/nerdcommenter'
 
 " }}}
-" ===== EasyMotion       {{{
+" ===== EasyMotion              {{{
 
 " Navegação de texto aka vimium
 
@@ -115,7 +115,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 " }}}
-" ===== vim-latex        {{{
+" ===== vim-latex               {{{
 
 Bundle 'jcf/vim-latex'
 
@@ -123,6 +123,17 @@ let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 " View PDF macro; '%:r' is current file's root (base) name.
 " nnoremap <leader><leader> :!okular %:r.pdf &<CR><CR>
+
+" }}}
+" ===== vim-instant-markdown    {{{
+
+" NEED: 
+" nodejs/xdg-utils
+" sudo gem install pygments.rb, recartpet,
+" sudo npm -g install instant-markdown-d 
+Bundle 'suan/vim-instant-markdown'
+
+let g:instant_markdown_autostart = 0
 
 " }}}
 
@@ -229,11 +240,11 @@ vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
 map <Leader>v :r ~/.vimbuffer<CR>
 
 " }}}
-" txt2tags          {{{
+" markdown          {{{
 
-map 2h :w<CR>:!txt2tags -t html % ; $BROWSER %<.html<CR>
-map 2l :w<CR>:!txt2tags -t tex % ; xelatex %<.tex ; okular %<.pdf<CR>
-map 2t :w<CR>:!txt2tags -t txt % <CR>
+map 2h :w<CR>:!pandoc % -f markdown -t html -s -o %<.html<CR>
+map 2p :w<CR>:!pandoc % -o %<.pdf<CR>
+map 2v :w<CR>:!pandoc % -o %<.pdf ; okular %<.pdf<CR>
 
 " }}}
 " etc               {{{
