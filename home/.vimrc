@@ -119,6 +119,8 @@ let g:airline#extensions#tabline#enabled = 1
 Bundle 'fholgado/minibufexpl.vim'
 map <F5> :MBEToggle<CR>
 
+let g:miniBufExplorerAutoStart = 0
+
 " }}}
 " ===== Syntastic               {{{
 
@@ -263,7 +265,7 @@ nmap <S-h> :bprevious<CR>
 nmap <leader>bn :enew<CR>
 
 " fecha buffer
-nmap <leader>q :bd <BAR> bd #<CR>
+nmap <leader>bq :bd <BAR> bd #<CR>
 
 "}}}
 " etc               {{{
