@@ -47,9 +47,9 @@ alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
 alias k='kill -9'
 
-# Pacman/Yaourt aliases 
+# Pacman/Yaourt aliases
 alias p='sudo pacman'
-alias pacup='sudo pacman -Syuu' 
+alias pacup='sudo pacman -Syuu'
 alias pacin='sudo pacman -S'
 alias pacrem='sudo pacman -Rns'
 alias pacreps='sudo pacman -Ss'
@@ -104,7 +104,7 @@ function gistt()
 }
 
 # }}}
-# ys                {{{ 
+# ys                {{{
 
 # yaourt sem confirmação
 function ys()
@@ -115,7 +115,7 @@ function ys()
 # }}}
 # aux               {{{
 
-# lista os detalhes de um determinado padrão de processos 
+# lista os detalhes de um determinado padrão de processos
 function aux()
 {
     ps aux | grep  $1
@@ -123,7 +123,7 @@ function aux()
 
 # }}}
 # wininfo           {{{
-# info about open windows 
+# info about open windows
 
 # copyright 2007 - 2010 Christopher Bratusek
 function wininfo() {
@@ -254,7 +254,7 @@ function gl() {
 # }}}
 # FIX    ----------------------------------------------------------- {{{
 
-# FIX noglob nocorrect problem 
+# FIX noglob nocorrect problem
 function my_sudo {
     while [[ $# > 0 ]]; do
         case "$1" in

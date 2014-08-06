@@ -109,9 +109,8 @@ Bundle 'bling/vim-airline'
 let g:airline_theme = 'bubblegum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
 " Retirando o trailing check
-let g:airline#extensions#whitespace#checks = ['indent']
+"let g:airline#extensions#whitespace#checks = ['indent']
 
 " }}}
 " ===== minibufexpl             {{{
@@ -125,6 +124,14 @@ map <F5> :MBEToggle<CR>
 
 " Checa erro de sintaxe
 Bundle 'scrooloose/syntastic'
+
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_aggregate_errors = 1
 
 " }}}
 " ===== Surround                {{{
@@ -224,7 +231,7 @@ nnoremap <leader>qt :quitall<CR>
 " }}}
 " Copy/Paste        {{{
 
-" ,c para copiar pra área de transferência
+" ,y para copiar pra área de transferência
 map <Leader>y "+y<CR>
 map <Leader>p "+p<CR>
 
@@ -247,15 +254,16 @@ map 2v :w<CR>:!pandoc % -o %<.pdf ; okular %<.pdf<CR>
 " }}}
 " buffers           {{{
 
-" Move to the next buffer
+" navegação
 nmap <leader>l :bnext<CR>
+nmap <S-l> :bnext<CR>
+nmap <S-h> :bprevious<CR>
 
-" Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+" abre buffer
+nmap <leader>bn :enew<CR>
 
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+" fecha buffer
+nmap <leader>q :bd <BAR> bd #<CR>
 
 "}}}
 " etc               {{{
@@ -368,54 +376,15 @@ nmap 50 <c-w>=
 nmap 75 :vertical resize 120<cr>
 
 " }}}
-" Highlight Word  ---------------------------------------------------------- {{{
+" Trailing whitespace  ------------------------------------------------------ {{{
 
-" " This mini-plugin provides a few mappings for highlighting words
-" temporarily.
-" "
-" " Sometimes you're looking at a hairy piece of code and would like a certain
-" " word or two to stand out temporarily.  You can search for it, but that
-" only
-" " gives you one color of highlighting.  Now you can use <leader>N where N is
-" " a number from 1-6 to highlight the current word in a specific color.
-
-function! HiInterestingWord(n)
-    " Save our location.
-    normal! mz
-
-    " Yank the current word into the z register.
-    normal! "zyiw
-
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
-
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
-
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
-
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
-
-    " Move back to our original location.
-    normal! `z
+function TrimWhiteSpace()
+  let @*=line(".")
+  %s/\s*$//e
+  ''
 endfunction
 
-nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>
-nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>
-nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
-nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
-nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
-nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
-
-hi def InterestingWord1 guifg=#000000 ctermfg=16 guibg=#ffa724 ctermbg=214
-hi def InterestingWord2 guifg=#000000 ctermfg=16 guibg=#aeee00 ctermbg=154
-hi def InterestingWord3 guifg=#000000 ctermfg=16 guibg=#8cffba ctermbg=121
-hi def InterestingWord4 guifg=#000000 ctermfg=16 guibg=#b88853 ctermbg=137
-hi def InterestingWord5 guifg=#000000 ctermfg=16 guibg=#ff9eb8 ctermbg=211
-hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
-
+nnoremap <leader>tw :call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 " }}}
 " Ajustes  ----------------------------------------------------------------- {{{
