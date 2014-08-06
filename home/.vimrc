@@ -10,7 +10,6 @@ set nocompatible
 filetype off
 filetype plugin on
 filetype plugin indent on
-let powerline = $POWERLINE
 
 " }}}
 " Bundles   ---------------------------------------------------------------- {{{
@@ -42,25 +41,6 @@ Bundle "honza/vim-snippets"
 
 " Fecha automaticamente aspas, chaves, parênteses...
 Bundle 'Townk/vim-autoclose'
-
-" }}}
-" ===== vim-powerline           {{{
-
-" Se os glifos ficarem estranhos:
-" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
-if powerline
-    Bundle 'Lokaltog/vim-powerline'
-    let g:Powerline_symbols = 'fancy'
-    " Acaba com o delay do esc (no .tmux.conf: set -sg escape-time 0)
-    if ! has('gui_running')
-        set ttimeoutlen=10
-        augroup FastEscape
-            autocmd!
-            au InsertEnter * set timeoutlen=0
-            au InsertLeave * set timeoutlen=1000
-        augroup END
-    endif
-endif
 
 " }}}
 " ===== NERDTree                {{{
@@ -98,23 +78,6 @@ let g:NumberToggleTrigger="<Leader>n"
 Bundle 'scrooloose/nerdcommenter'
 
 " }}}
-" ===== EasyMotion              {{{
-
-" Navegação de texto aka vimium
-
-Bundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
-
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-nmap f <Plug>(easymotion-s)
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-" }}}
 " ===== vim-latex               {{{
 
 Bundle 'jcf/vim-latex'
@@ -125,15 +88,49 @@ set grepprg=grep\ -nH\ $*
 " nnoremap <leader><leader> :!okular %:r.pdf &<CR><CR>
 
 " }}}
-" ===== vim-instant-markdown    {{{
+" ===== matchit.vim             {{{
 
-" NEED: 
-" nodejs/xdg-utils
-" sudo gem install pygments.rb, recartpet,
-" sudo npm -g install instant-markdown-d 
-Bundle 'suan/vim-instant-markdown'
+" Estende o uso do %
+Bundle 'matchit.zip'
 
-let g:instant_markdown_autostart = 0
+" }}}
+" ===== vim-ruby-refactoring    {{{
+
+Bundle 'ecomba/vim-ruby-refactoring'
+
+" }}}
+" ===== vim-airline             {{{
+
+" Se os glifos ficarem estranhos:
+" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
+
+Bundle 'bling/vim-airline'
+
+let g:airline_theme = 'bubblegum'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" Retirando o trailing check
+let g:airline#extensions#whitespace#checks = ['indent']
+
+" }}}
+" ===== minibufexpl             {{{
+
+"Janela que lista os buffers
+Bundle 'fholgado/minibufexpl.vim'
+map <F5> :MBEToggle<CR>
+
+" }}}
+" ===== Syntastic               {{{
+
+" Checa erro de sintaxe
+Bundle 'scrooloose/syntastic'
+
+" }}}
+" ===== Surround                {{{
+
+" Fornece mapeamento para modificação de tags, aspas, parenteses etc
+Bundle 'tpope/vim-surround'
 
 " }}}
 
@@ -242,11 +239,25 @@ map <Leader>v :r ~/.vimbuffer<CR>
 " }}}
 " markdown          {{{
 
+" Precisa do pacote haskell-pandoc (Adicionar o repo haskell)
 map 2h :w<CR>:!pandoc % -f markdown -t html -s -o %<.html<CR>
 map 2p :w<CR>:!pandoc % -o %<.pdf<CR>
 map 2v :w<CR>:!pandoc % -o %<.pdf ; okular %<.pdf<CR>
 
 " }}}
+" buffers           {{{
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+"}}}
 " etc               {{{
 
 " Dois <Enter> para quebrar linha sem entrar no insert mode
@@ -343,14 +354,10 @@ nnoremap <C-t>  :tabnew<CR>
 
 "Navegação entre janelas,
 "<ctrl><j> em vez de <ctrl><w><j>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"open splits
-nnoremap <Leader>\| :vsplit<cr>
-nnoremap <Leader>- :split<cr>
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
 
 "Resize vsplit
 nnoremap > :vertical resize +5<cr>
@@ -412,6 +419,16 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 " }}}
 " Ajustes  ----------------------------------------------------------------- {{{
+
+"" Acaba com o delay do esc (no .tmux.conf: set -sg escape-time 0)
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+   augroup END
+endif
 
 " Certifica-se que o Vim retorna para a mesma linha quando abre o arquivo
 if has("autocmd")
