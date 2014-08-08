@@ -23,7 +23,6 @@ export EDITOR='vim'
 export BROWSER='chromium'
 source ~/.local/credentials.sh
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
-sudo loadkeys br-abnt2.map # teclado layout tty
 
 # }}}
 # Aliases ---------------------------------------------------------- {{{
@@ -45,6 +44,7 @@ alias grubconf='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias automhwd='sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee && sudo mhwd -a pci nonfree 0300'
 alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
+alias ev='vim ~/.vimrc'
 alias k='kill -9'
 
 # Pacman/Yaourt aliases

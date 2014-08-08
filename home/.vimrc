@@ -12,75 +12,71 @@ filetype plugin on
 filetype plugin indent on
 
 " }}}
-" Bundles   ---------------------------------------------------------------- {{{
+" Plugins   ---------------------------------------------------------------- {{{
 
-" ===== Vundle                  {{{
+call plug#begin('~/.vim/plugged')
 
-" P/ gerenciar os bundles
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
-" }}}
 " ===== Esquema de cores        {{{
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'spf13/vim-colors'
-Bundle 'godlygeek/csapprox'
+Plug 'altercation/vim-colors-solarized'
+Plug 'spf13/vim-colors'
+Plug 'godlygeek/csapprox'
 
 " }}}
 " ===== Snipmate                {{{
 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " }}}
 " ===== vim-autoclose           {{{
 
 " Fecha automaticamente aspas, chaves, parênteses...
-Bundle 'Townk/vim-autoclose'
+Plug 'Townk/vim-autoclose'
 
 " }}}
 " ===== NERDTree                {{{
 
 " Navegador de arquivos e diretórios
-Bundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 map <F10> :NERDTreeToggle<CR>
+
+let NERDTreeShowBookmarks=1
 
 " }}}
 " ===== vim-tagbar              {{{
 
 " Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
 " Lembrar que <ctrl> ww troca de janela
-Bundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 nnoremap <F9> :TagbarToggle<CR>
 
 " }}}
 " ===== Gundo                   {{{
 
 " Ver undo tree em estilo
-Bundle 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 nnoremap <Leader>g :GundoToggle<CR>
 
 " }}}
 " ===== vim-numbertoggle        {{{
 
 " Números das linhas relativo no modo normal e absoluto no modo insert
-Bundle 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
 
 " }}}
 " ===== Nerd Commenter          {{{
 
 " <leader>cc para comentar e <leader>cu para descomentar
-Bundle 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " }}}
 " ===== vim-latex               {{{
 
-Bundle 'jcf/vim-latex'
+Plug 'jcf/vim-latex'
 
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
@@ -91,12 +87,12 @@ set grepprg=grep\ -nH\ $*
 " ===== matchit.vim             {{{
 
 " Estende o uso do %
-Bundle 'matchit.zip'
+Plug 'matchit.zip'
 
 " }}}
 " ===== vim-ruby-refactoring    {{{
 
-Bundle 'ecomba/vim-ruby-refactoring'
+Plug 'ecomba/vim-ruby-refactoring'
 
 " }}}
 " ===== vim-airline             {{{
@@ -104,11 +100,12 @@ Bundle 'ecomba/vim-ruby-refactoring'
 " Se os glifos ficarem estranhos:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
 
-Bundle 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 let g:airline_theme = 'bubblegum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
 " Retirando o trailing check
 "let g:airline#extensions#whitespace#checks = ['indent']
 
@@ -116,7 +113,7 @@ let g:airline#extensions#tabline#enabled = 1
 " ===== minibufexpl             {{{
 
 "Janela que lista os buffers
-Bundle 'fholgado/minibufexpl.vim'
+Plug 'fholgado/minibufexpl.vim'
 map <F5> :MBEToggle<CR>
 
 let g:miniBufExplorerAutoStart = 0
@@ -125,7 +122,7 @@ let g:miniBufExplorerAutoStart = 0
 " ===== Syntastic               {{{
 
 " Checa erro de sintaxe
-Bundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -139,9 +136,17 @@ let g:syntastic_aggregate_errors = 1
 " ===== Surround                {{{
 
 " Fornece mapeamento para modificação de tags, aspas, parenteses etc
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " }}}
+" ===== fugitive                {{{
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" }}}
+
+call plug#end()
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
@@ -265,7 +270,18 @@ nmap <S-h> :bprevious<CR>
 nmap <leader>bn :enew<CR>
 
 " fecha buffer
-nmap <leader>bq :bd <BAR> bd #<CR>
+nmap <leader>bq :bd<CR>
+
+"}}}
+" git               {{{
+
+noremap <Leader>ga :!git add .<CR>
+noremap <Leader>gc :!git commit -m '<C-R>="'"<CR>
+noremap <Leader>gsh :!git push<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gd :Gvdiff<CR>
+noremap <Leader>gr :Gremove<CR>'
 
 "}}}
 " etc               {{{
@@ -349,7 +365,7 @@ endif
 " Edição Rápida  ----------------------------------------------------------- {{{
 
 nnoremap <leader>vi :vsplit ~/.vimrc<cr>
-nnoremap <leader>zs :vsplit ~/.zshrc<cr>
+nnoremap <leader>ez :vsplit ~/.zshrc<cr>
 nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 
 " }}}
@@ -380,7 +396,7 @@ nmap 75 :vertical resize 120<cr>
 " }}}
 " Trailing whitespace  ------------------------------------------------------ {{{
 
-function TrimWhiteSpace()
+function! TrimWhiteSpace()
   let @*=line(".")
   %s/\s*$//e
   ''
