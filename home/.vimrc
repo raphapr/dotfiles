@@ -114,7 +114,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 "Janela que lista os buffers
 Plug 'fholgado/minibufexpl.vim'
-map <F5> :MBEToggle<CR>
+map <F8> :MBEToggle<CR>
 
 let g:miniBufExplorerAutoStart = 0
 
@@ -145,18 +145,25 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 
 " }}}
-" ===== ctrlp                   {{{
+" ===== CtrlP                   {{{
 
 Plug 'kien/ctrlp.vim'
+
+" F5 - Refresh
+
+" Abre no home
+noremap <C-P> :CtrlPRoot<CR>
+" Abre no diretório atual do arquivo
+noremap <Leader>p :CtrlP<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>bt :CtrlPBufTag<CR>
+noremap <leader>mru :CtrlPMRU<CR>
 
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_use_caching = 0
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-noremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_working_path_mode='c'
 
 " }}}
 
@@ -253,16 +260,8 @@ nnoremap <leader>qt :quitall<CR>
 " Copy/Paste        {{{
 
 " ,y para copiar pra área de transferência
-map <Leader>y "+y<CR>
-map <Leader>p "+p<CR>
-
-"Copia conteúdo selecionado para o arquivo .vimbuffer. Bom para copiar de uma aba tmux para outra.
-vmap <Leader>c :w! ~/.vimbuffer<CR>
-nmap <Leader>c :.w! ~/.vimbuffer<CR>
-" cut to ~/.vimbuffer
-vmap <Leader>x :w! ~/.vimbuffer<CR>gvx
-" paste from ~/.vimbuffer
-map <Leader>v :r ~/.vimbuffer<CR>
+map <Leader>c "ay<CR>
+map <Leader>v "ap<CR>
 
 " }}}
 " markdown          {{{
