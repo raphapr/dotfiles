@@ -245,18 +245,6 @@ set foldtext=MyFoldText()
 " }}}
 " Maps    -----------------------------------------------------------------  {{{
 
-" Atalhos rápidos   {{{
-
-" Mata a janela
-nnoremap K :q<cr>
-" Salva e sai da janela
-nnoremap X :x<cr>
-" Salva arquivo
-nnoremap W :w<cr>
-" quit all
-nnoremap <leader>qt :quitall<CR>
-
-" }}}
 " Copy/Paste        {{{
 
 " ,y para copiar pra área de transferência
@@ -274,16 +262,12 @@ map 2v :w<CR>:!pandoc % -o %<.pdf ; okular %<.pdf<CR>
 " }}}
 " buffers           {{{
 
-" navegação
-nmap <leader>l :bnext<CR>
-nmap <S-l> :bnext<CR>
-nmap <S-h> :bprevious<CR>
-
-" abre buffer
-nmap <leader>bn :enew<CR>
+" navegação entre buffers
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprevious<CR>
 
 " fecha buffer
-nmap <leader>bq :bd<CR>
+nmap <C-E> :bd<CR>
 
 "}}}
 " git               {{{
@@ -298,6 +282,11 @@ noremap <Leader>gr :Gremove<CR>'
 
 "}}}
 " etc               {{{
+
+" Mata a janela
+nnoremap K :q<cr>
+" quit all
+nnoremap <leader>qt :quitall<CR>
 
 " Dois <Enter> para quebrar linha sem entrar no insert mode
 nmap <CR><CR> o<ESC>
@@ -392,19 +381,22 @@ nnoremap <C-t>  :tabnew<CR>
 " Vim Splits  -------------------------------------------------------------- {{{
 
 "Navegação entre janelas,
-"<ctrl><j> em vez de <ctrl><w><j>
+"<ctrl><hjkl> em vez de <ctrl><w><hjkl>
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 "Resize vsplit
-nnoremap > :vertical resize +5<cr>
-nnoremap < :vertical resize -5<cr>
+nnoremap + :vertical resize +5<cr>
+nnoremap - :vertical resize -5<cr>
 nmap = <c-w>=
-nmap 25 :vertical resize 40<cr>
-nmap 50 <c-w>=
-nmap 75 :vertical resize 120<cr>
+
+"Alt + Arrow is for minimizing/maximizing splits
+nnoremap <M-Up>      <C-W>_
+nnoremap <M-Down>    <C-W>=
+nnoremap <M-Left>    <C-W>=
+nnoremap <M-Right>   <C-W><Bar>
 
 " }}}
 " Trailing whitespace  ------------------------------------------------------ {{{
