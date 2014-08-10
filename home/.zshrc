@@ -22,6 +22,7 @@ export TERM="xterm-256color" # 256 cores no terminal (para utilizar cores no vim
 export EDITOR='vim'
 export BROWSER='chromium'
 source ~/.local/credentials.sh
+source ~/.bin/tmuxinator.zsh # NEED: gem isntall tmuxinator
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
 
 # }}}
@@ -85,6 +86,8 @@ alias hdmion='xrandr --output HDMI1 --auto --right-of LVDS1'
 alias tmux='tmux -f ~/.tmux/tmux.conf'
 alias tmuxl='tmux ls'
 alias tmuxa='tmux attach -t'
+alias tmuxk='tmux kill-session -t'
+alias tm='tmuxinator start main'
 
 #VPN
 alias vpn='sudo openvpn ~/.openvpn/users.conf'
