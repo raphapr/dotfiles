@@ -203,6 +203,9 @@ set re=1                                " Corrige os arquivos ruby que estavam l
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 colorscheme molokai
 
+
+
+
 " }}}
 " Omni completion ---------------------------------------------------------- {{{
 
@@ -245,11 +248,10 @@ set foldtext=MyFoldText()
 " }}}
 " Maps    -----------------------------------------------------------------  {{{
 
-" Copy/Paste        {{{
+" System Clipboard  {{{
 
-" ,y para copiar pra área de transferência
-map <Leader>c "ay<CR>
-map <Leader>v "ap<CR>
+" Copia para a área de transferência do X
+map <leader>c !xclip -sel clip<CR>u
 
 " }}}
 " markdown          {{{
@@ -388,15 +390,18 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 "Resize vsplit
-nnoremap + :vertical resize +5<cr>
+nnoremap = :vertical resize +5<cr>
 nnoremap - :vertical resize -5<cr>
-nmap = <c-w>=
+"nmap = <c-w>=
 
 "Alt + Arrow is for minimizing/maximizing splits
 nnoremap <M-Up>      <C-W>_
 nnoremap <M-Down>    <C-W>=
 nnoremap <M-Left>    <C-W>=
 nnoremap <M-Right>   <C-W><Bar>
+
+
+
 
 " }}}
 " Trailing whitespace  ------------------------------------------------------ {{{

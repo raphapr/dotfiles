@@ -24,7 +24,7 @@ export BROWSER='chromium'
 source ~/.local/credentials.sh
 source ~/.bin/tmuxinator.zsh # NEED: gem isntall tmuxinator
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
-xset r rate 200 30
+xset r rate 200 30 # Acaba com o delay entre teclas repetidas
 
 # }}}
 # Aliases ---------------------------------------------------------- {{{
@@ -48,6 +48,7 @@ alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
 alias k='kill -9'
+alias wcu='wicd-curses'
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'

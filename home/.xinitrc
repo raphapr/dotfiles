@@ -7,4 +7,5 @@
 #
 
 exec startkde
+#exec i3
 #exec awesome
