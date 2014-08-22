@@ -203,9 +203,6 @@ set re=1                                " Corrige os arquivos ruby que estavam l
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 colorscheme molokai
 
-
-
-
 " }}}
 " Omni completion ---------------------------------------------------------- {{{
 
