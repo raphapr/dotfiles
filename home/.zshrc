@@ -24,6 +24,7 @@ export BROWSER='chromium'
 source ~/.local/credentials.sh
 source ~/.bin/tmuxinator.zsh # NEED: gem isntall tmuxinator
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
+xset r rate 200 30
 
 # }}}
 # Aliases ---------------------------------------------------------- {{{
@@ -84,9 +85,10 @@ alias hdmion='xrandr --output HDMI1 --auto --right-of LVDS1'
 
 #Tmux
 alias tmux='tmux -f ~/.tmux/tmux.conf'
-alias tmuxl='tmux ls'
-alias tmuxa='tmux attach -t'
-alias tmuxk='tmux kill-session -t'
+alias t='tmux -f ~/.tmux/tmux.conf'
+alias tml='tmux ls'
+alias tma='tmux attach -t'
+alias tmk='tmux kill-session -t'
 alias tm='tmuxinator start main'
 
 #VPN
