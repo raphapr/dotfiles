@@ -8,5 +8,6 @@
 
 xset r rate 200 30
 
-exec startkde
+exec startkde -V >> ~/klogs/kdelog-$(date +'%d-%m-%Y%kh%Mm%Ss') 2>&1
+
 #exec i3
