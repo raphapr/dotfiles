@@ -4,6 +4,7 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
+#
 
 # Start X
 alias startx='startx &> ~/.xlog'

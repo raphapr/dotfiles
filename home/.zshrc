@@ -48,6 +48,7 @@ alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
 alias k='kill -9'
 alias wcu='wicd-curses'
+alias r='ranger'
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'
