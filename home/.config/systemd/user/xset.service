@@ -1,11 +1,22 @@
+# tlp - systemd suspend/resume service
+#
+# Copyright (c) 2014 Thomas Koch <linrunner at gmx.net>
+# This software is licensed under the GPL v2 or later.
+
 [Unit]
 Description=xset
-After=xinitrc.target
+After=basic.target
+After=suspend.target
+After=hibernate.target
 
 [Service]
+User=raphael
 Type=oneshot
+RemainsAfterExit=yes
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/xset r rate 200 30
 
 [Install]
-WantedBy=default.target
+WantedBy=basic.target
+WantedBy=suspend.target
+WantedBy=hibernate.target
