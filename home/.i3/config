@@ -24,6 +24,7 @@ set $mod Mod4
 # startup apps
 exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id CopyAgent
+exec --no-startup-id kdeinit4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -59,9 +60,10 @@ bindsym Print exec $PRINT
 exec --no-startup-id feh --bg-scale ~/.wallpaper.png
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
+bindsym XF86AudioMute        exec amixer -q set Master toggle && killall -USR1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute && killall -USR1 i3blocks
 
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
@@ -191,8 +193,16 @@ bindsym $mod+r mode "resize"
 
 bar {
   position top
-  font pango:Convergence, Icons 9
-  status_command i3status
+  font pango:Convergence FontAwesome, Icons 9
+  #status_command i3status
+  status_command i3blocks
+  colors { 
+            statusline #AAAAAA
+            #background #333333
+            focused_workspace #000000 #000000 #0080ff
+            inactive_workspace #00000 #000000 #AAAAAA
+            urgent_workspace #d33682 #d33682 #fdf6e3
+  }
 }
 
 # borders
@@ -200,8 +210,6 @@ bar {
 new_float normal 1
 new_window pixel 1
 hide_edge_borders none
-#for_window [class="Konsole"] border 1pixel
-#for_window [class="dolphin"] border 2pixel
 
 set $mode_system System
 
@@ -219,10 +227,28 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+F4 mode "$mode_system"
+bindsym $mod+F1 mode "$mode_system"
 
-# quick terminal
-exec_always --no-startup-id konsole -name metask
-for_window [instance="metask"] floating enable;
-for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
-bindsym F4 [instance="metask"] scratchpad show
+# scratchpads
+
+# dropdown terminal
+#exec_always --no-startup-id $TERM -name metask
+#for_window [instance="metask"] floating enable;
+#for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
+#bindsym F4 [instance="metask"] scratchpad show
+
+# htop
+exec --no-startup-id $TERM -name htop -e "htop -d 10"
+for_window [instance="htop"] move scratchpad
+bindsym $mod+BackSpace [instance="htop"] scratchpad show
+
+# alsamixer
+exec --no-startup-id $TERM -name alsamixer -e "alsamixer"
+for_window [instance="alsamixer"] move scratchpad
+bindsym $mod+shift+a [instance="alsamixer"] scratchpad show
+
+
+# ranger
+exec --no-startup-id $TERM -name ranger -e "ranger"
+for_window [instance="ranger"] move scratchpad
+bindsym F12 [instance="ranger"] scratchpad show

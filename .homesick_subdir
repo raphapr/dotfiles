@@ -6,3 +6,4 @@
 .homesick/repos/dotfiles/home/bin
 .config/systemd
 .config
+.homesick/repos/dotfiles/home/.i3
