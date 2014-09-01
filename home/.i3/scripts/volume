@@ -13,15 +13,17 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Modified by Raphael P. Ribeiro <raphaelpr01@gmail.com>
 
 CARD="${1:-0}"
 MIXER="${2:-default}" # use pulse for pulseaudio, default is alsa
-ISMUTED=$(amixer -c $CARD -M -D $MIXER get Master | tail -n1 | cut -d "[" -f4 | cut -d "]" -f1)
+PLAYBACK=$(amixer -c $CARD -M -D $MIXER get Master | tail -n1 | cut -d "[" -f4 | cut -d "]" -f1) # muted or not?
 
-if [ "$ISMUTED" == "on" ]; then
-    amixer -c $CARD -M -D $MIXER get Master |
+if [ "$PLAYBACK" == "on" ]; then # if not muted
+        amixer -c $CARD -M -D $MIXER get Master |
         sed -n 's/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/\1/p' |
         head -n1
 else
-    echo "M"    
+    echo "M"
 fi

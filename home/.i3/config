@@ -46,32 +46,33 @@ floating_modifier $mod
 ###################################
 
 # start a terminal
-bindsym $mod+Return exec $TERM
+bindsym $mod+Return exec --no-startup-id $TERM
 
 # browser
-bindsym $mod+q exec $BROWSER
+bindsym $mod+q exec --no-startup-id $BROWSER
 
 # dolphin
-bindsym $mod+d exec $FM
+bindsym $mod+d exec --no-startup-id $FM
 
 # printscreen
-bindsym Print exec $PRINT
+bindsym Print exec --no-startup-id $PRINT
 
 # wallpaper (need feh)
 exec --no-startup-id feh --bg-scale ~/.wallpaper.png
 
 # volume
 
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
-bindsym XF86AudioMute        exec amixer -q set Master toggle && killall -USR1 i3blocks
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute && killall -USR1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && killall -USR1 i3blocks
+bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle && killall -USR1 i3blocks
+bindsym $mod+m               exec --no-startup-id amixer -q set Master toggle && killall -USR1 i3blocks
 
 # mopidy
 
-bindsym $mod+p exec ncmpcpp toggle && killall -USR1 i3blocks
-bindsym XF86AudioNext exec ncmpcpp next
-bindsym XF86AudioPrev exec ncmpcpp prev
-bindsym XF86AudioPlay exec ncmpcpp toggle
+bindsym $mod+p exec --no-startup-id ncmpcpp toggle && killall -USR1 i3blocks
+bindsym XF86AudioNext exec --no-startup-id ncmpcpp next
+bindsym XF86AudioPrev exec --no-startup-id ncmpcpp prev
+bindsym XF86AudioPlay exec --no-startup-id ncmpcpp toggle
 
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
@@ -82,7 +83,7 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec j4-dmenu-desktop --dmenu="dmenu -i -b -p 'dmenu'"
+bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -b -p 'dmenu'"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -204,7 +205,7 @@ bar {
   font pango:Convergence FontAwesome, Icons 9
   #status_command i3status
   status_command i3blocks
-  colors { 
+  colors {
             statusline #AAAAAA
             #background #333333
             focused_workspace #0080ff #0080ff #000000
