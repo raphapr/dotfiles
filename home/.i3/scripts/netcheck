@@ -1,1 +1,8 @@
-ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null && echo ON || echo OFF
+#!/bin/bash
+
+ISON=$(ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null && echo ON || echo OFF)
+echo $ISON #full_text
+echo $ISON #short_text
+if [ "$ISON" = "OFF" ]; then
+    echo "#FF0000"
+fi

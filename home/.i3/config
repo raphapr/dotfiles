@@ -23,6 +23,7 @@ set $mod Mod4
 
 # startup apps
 exec_always --no-startup-id xfce4-power-manager
+exec --no-startup-id compton
 exec --no-startup-id CopyAgent
 exec --no-startup-id kdeinit4
 
@@ -65,6 +66,13 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute && killall -U
 bindsym XF86AudioMute        exec amixer -q set Master toggle && killall -USR1 i3blocks
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute && killall -USR1 i3blocks
 
+# mopidy
+
+bindsym $mod+p exec ncmpcpp toggle && killall -USR1 i3blocks
+bindsym XF86AudioNext exec ncmpcpp next
+bindsym XF86AudioPrev exec ncmpcpp prev
+bindsym XF86AudioPlay exec ncmpcpp toggle
+
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
@@ -106,10 +114,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+b split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+b split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -247,8 +255,12 @@ exec --no-startup-id $TERM -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
 bindsym $mod+shift+a [instance="alsamixer"] scratchpad show
 
-
 # ranger
 exec --no-startup-id $TERM -name ranger -e "ranger"
 for_window [instance="ranger"] move scratchpad
 bindsym F12 [instance="ranger"] scratchpad show
+
+# wicd
+exec --no-startup-id $TERM -name wicd -e "wicd-curses"
+for_window [instance="wicd"] move scratchpad
+bindsym F11 [instance="wicd"] scratchpad show;
