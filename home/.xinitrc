@@ -7,6 +7,7 @@
 #
 
 xset r rate 200 30
+xrdb -merge ~/.Xresources
 
 #exec startkde -V >> ~/xlog/kdelog-$(date +'%d-%m-%Y %kh%Mm%Ss') 2>&1
 exec i3 -V >> ~/xlog/i3log-$(date +'%d-%m-%Y %kh%Mm%Ss') 2>&1

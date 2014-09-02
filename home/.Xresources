@@ -6,3 +6,86 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xcursor.theme: default
+
+! Dependencias: urxvt-perls, urxvt-font-size-git (AUR)
+
+!! URxvt
+
+URxvt*title: urxvt
+URxvt*termName: screen-256color
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.scrollBar: false
+URxvt.letterSpace: -1
+URxvt.font: xft:monospace:size=10:antialias=true:hinting=true
+URxvt*saveLines: 5000
+URxvt.urlLauncher: /usr/bin/xdg-open
+URxvt*iso14755: False
+URxvt*iso14755_52: False
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
+
+! Clipboard
+
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+
+URxvt.keysym.C-S-c:   perl:clipboard:copy
+URxvt.keysym.C-S-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+! URL
+
+URxvt.matcher.button: 1
+URxvt.colorUL: #4682B4
+
+! URL without mouse
+! NEED: urxvt-perls
+
+URxvt.perl-ext: default,url-select
+URxvt.keysym.C-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+! ctrl arrows
+
+!URxvt.keysym.Control-Up:        \033[1;5A
+!URxvt.keysym.Control-Down:      \033[1;5B
+!URxvt.keysym.Control-Left:      \033[1;
+!URxvt.keysym.Control-Right:     \033[1;
+
+! resize font on the fly
+! NEED urxvt-font-size-git (AUR)
+!
+URxvt.keysym.C-Up:     perl:font-size:increase
+URxvt.keysym.C-Down:   perl:font-size:decrease
+
+!! colorscheme
+
+! to match gnome-terminal "Linux console" scheme
+! foreground/background
+URxvt*background: #000000
+URxvt*foreground: #ffffff
+! black
+URxvt.color0  : #000000
+URxvt.color8  : #555555
+! red
+URxvt.color1  : #AA0000
+URxvt.color9  : #FF5555
+! green
+URxvt.color2  : #00AA00
+URxvt.color10 : #55FF55
+! yellow
+URxvt.color3  : #AA5500
+URxvt.color11 : #FFFF55
+! blue
+URxvt.color4  : #0000AA
+URxvt.color12 : #5555FF
+! magenta
+URxvt.color5  : #AA00AA
+URxvt.color13 : #FF55FF
+! cyan
+URxvt.color6  : #00AAAA
+URxvt.color14 : #55FFFF
+! white
+URxvt.color7  : #AAAAAA
+URxvt.color15 : #FFFFFF
