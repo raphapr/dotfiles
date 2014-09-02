@@ -25,6 +25,7 @@ set $mod Mod4
 exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id compton
 exec --no-startup-id CopyAgent
+exec --no-startup-id xautolock -time 5 -locker "i3lock -c 000000" &
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -55,6 +56,9 @@ bindsym $mod+d exec --no-startup-id $FM
 
 # printscreen
 bindsym Print exec --no-startup-id $PRINT
+
+# power manager toggle
+bindsym $mod+t exec --no-startup-id ~/.bin/power-toggle
 
 # wallpaper (need feh)
 exec --no-startup-id feh --bg-scale ~/.wallpaper.png
