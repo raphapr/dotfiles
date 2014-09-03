@@ -27,7 +27,6 @@ exec --no-startup-id compton
 exec --no-startup-id kdeinit4
 exec --no-startup-id CopyAgent
 exec --no-startup-id xautolock -time 5 -locker "i3lock -c 000000" &
-exec --no-startup-id ~/.i3/scripts/powermanager
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
