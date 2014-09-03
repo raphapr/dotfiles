@@ -489,12 +489,13 @@ mpd_music_dir = "~/Música"
 #
 #active_window_border = "red"
 #
+#
 
 visualizer_in_stereo = "yes
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "FIFO"
 visualizer_sync_interval = "30"
-visualizer_type = "spectrum"
+visualizer_type = "spectrum" (spectrum/wave)
 visualizer_look = "◆▋"
 message_delay_time = "3"
 playlist_shorten_total_times = "yes"
