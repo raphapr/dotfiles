@@ -12,9 +12,11 @@
 # APPS
 
 set $BROWSER    chromium
-set $TERM       konsole
+set $TERM       lxterminal
+set $TERM2      urxvt
 set $FM         dolphin
 set $PRINT      ksnapshot
+
 
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -22,7 +24,7 @@ set $PRINT      ksnapshot
 set $mod Mod4
 
 # startup apps
-exec_always --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id compton
 exec --no-startup-id kdeinit4
 exec --no-startup-id CopyAgent
@@ -244,27 +246,27 @@ bindsym $mod+F1 mode "$mode_system"
 # scratchpads
 
 # dropdown terminal
-exec --no-startup-id $TERM -name metask
+exec --no-startup-id $TERM2 -name metask
 for_window [instance="metask"] floating enable;
 for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
 bindsym F4 [instance="metask"] scratchpad show
 
 # htop
-exec --no-startup-id $TERM -name htop -e "htop -d 10"
-for_window [instance="htop"] move scratchpad
-bindsym $mod+BackSpace [instance="htop"] scratchpad show
+exec --no-startup-id $TERM2 -name monitor -e "htop"
+for_window [instance="monitor"] move scratchpad
+bindsym $mod+BackSpace [instance="monitor"] scratchpad show
 
 # alsamixer
-exec --no-startup-id $TERM -name alsamixer -e "alsamixer"
+exec --no-startup-id $TERM2 -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
-bindsym $mod+shift+a [instance="alsamixer"] scratchpad show
+bindsym $mod+F10 [instance="alsamixer"] scratchpad show
 
 # ranger
-exec --no-startup-id $TERM -name ranger -e "ranger"
+exec --no-startup-id $TERM2 -name ranger -e "ranger"
 for_window [instance="ranger"] move scratchpad
-bindsym F12 [instance="ranger"] scratchpad show
+bindsym $mod+F11 [instance="ranger"] scratchpad show
 
 # wicd
-exec --no-startup-id $TERM -name wicd -e "wicd-curses"
+exec --no-startup-id $TERM2 -name wicd -e "wicd-curses"
 for_window [instance="wicd"] move scratchpad
-bindsym F11 [instance="wicd"] scratchpad show;
+bindsym $mod+F12 [instance="wicd"] scratchpad show;
