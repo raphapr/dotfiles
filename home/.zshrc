@@ -49,6 +49,7 @@ alias ev='vim ~/.vimrc'
 alias k='kill -9'
 alias wcu='wicd-curses'
 alias r='ranger'
+alias trans='transmission-remote-cli'
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'

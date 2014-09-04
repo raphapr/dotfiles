@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# Author: Raphael P. Ribeiro <raphaelpr01@gmailcom>
+
+ACPI="/usr/bin/acpi"
+PERCENT=$(acpi -b | cut -d ',' -f2 | tr -d ' ' | tr -d '%')
+BATSTATE=$(acpi -b | cut -d ' ' -f3 | tr -d ',')
+CRITICAL_LEVEL=8
+LOW_LEVEL=15
+
+if [ "$BATSTATE" == "Discharging" ]; then
+    if [ "$PERCENT" -le "$LOW_LEVEL" ]; then
+        notify-send -u critical 'AVISO' 'Bateria fraca'
+    elif [ "$PERCENT" -le "$CRITICAL_LEVEL" ];then
+        notify-send -u critical 'AVISO' 'O computador hibernará em 30 segundos'
+        sleep 30 && i3exit hibernate
+    fi
+fi
