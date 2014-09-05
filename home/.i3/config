@@ -19,6 +19,7 @@ set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 
 
+
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
