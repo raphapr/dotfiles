@@ -15,7 +15,8 @@ set $BROWSER    chromium
 set $TERM       lxterminal
 set $TERM2      urxvt
 set $FM         dolphin
-set $PRINT      ksnapshot
+set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
+set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 
 
 # font for window titles. ISO 10646 = Unicode
@@ -58,7 +59,8 @@ bindsym $mod+q exec --no-startup-id $BROWSER
 bindsym $mod+d exec --no-startup-id $FM
 
 # printscreen
-bindsym Print exec --no-startup-id $PRINT
+bindsym --release Print exec --no-startup-id $PRINT
+bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área retangular para o print
 
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/power-toggle
