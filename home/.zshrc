@@ -22,7 +22,6 @@ export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vi
 export EDITOR='vim'
 export BROWSER='chromium'
 source ~/.local/credentials.sh
-source ~/.bin/tmuxinator.zsh # NEED: gem isntall tmuxinator
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
 
 # }}}

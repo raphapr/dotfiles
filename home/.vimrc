@@ -133,18 +133,6 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " }}}
-" ===== Surround                {{{
-
-" Fornece mapeamento para modificação de tags, aspas, parenteses etc
-Plug 'tpope/vim-surround'
-
-" }}}
-" ===== fugitive                {{{
-
-" Git
-Plug 'tpope/vim-fugitive'
-
-" }}}
 " ===== CtrlP                   {{{
 
 Plug 'kien/ctrlp.vim'
