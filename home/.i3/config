@@ -273,3 +273,9 @@ for_window [instance="wicd"] move scratchpad
 bindsym $mod+F12 [instance="wicd"] scratchpad show;
 
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
+
+# xrandr
+bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary
+bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary
+workspace 10 output VGA1
