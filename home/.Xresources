@@ -16,7 +16,7 @@ URxvt*termName: screen-256color
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
 URxvt.scrollBar: false
 URxvt.letterSpace: -1
-URxvt.font: xft:monospace:size=10:antialias=true:hinting=true
+URxvt.font: xft:monospace:size=9:antialias=true:hinting=true
 URxvt*saveLines: 5000
 URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt*iso14755: False

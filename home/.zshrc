@@ -21,7 +21,6 @@ export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
 export EDITOR='vim'
 export BROWSER='chromium'
-source ~/.local/credentials.sh
 zstyle ":completion:*:commands" rehash 1 # Atualiza o cache para o auto complete, principalmente depois de instalar pacotes novos.
 
 # }}}

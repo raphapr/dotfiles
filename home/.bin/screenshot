@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ $1 == '1' ]; then
     scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 else
