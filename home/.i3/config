@@ -213,7 +213,7 @@ bindsym $mod+r mode "resize"
 
 bar {
   position top
-  font pango:Convergence FontAwesome, Icons 9
+  font pango:FontAwesome, Icons 9
   #status_command i3status
   status_command i3blocks
   colors {
