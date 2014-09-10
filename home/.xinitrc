@@ -14,4 +14,4 @@ xrdb -merge ~/.Xresources
 
 #xfce4+i3
 date=$(date +'%d-%m-%Y %kh%Mm%Ss')
-exec startxfce4 -V >> ~/xlog/xfce4log-$date 2>&1
+exec startxfce4 -V >> ~/xlog/xlog-$date 2>&1
