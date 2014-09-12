@@ -12,13 +12,11 @@
 # APPS
 
 set $BROWSER    chromium
-set $TERM       sakura
+set $TERM       lxterminal
 set $TERM2      urxvt
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
-
-
 
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -26,11 +24,13 @@ set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.soun
 set $mod Mod4
 
 # startup apps
-#exec --no-startup-id xfce4-power-manager
-#exec --no-startup-id CopyAgent
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-volumed
+exec --no-startup-id xfsettingsd
+exec --no-startup-id CopyAgent
 exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
-exec --no-startup-id xautolock -time 5 -locker "i3lock -c 000000" &
+exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -80,12 +80,12 @@ bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle &&
 bindsym $mod+p exec --no-startup-id ncmpcpp toggle && killall -USR1 i3blocks
 bindsym XF86AudioNext exec --no-startup-id ncmpcpp next
 bindsym XF86AudioPrev exec --no-startup-id ncmpcpp prev
-bindsym XF86AudioPlay exec --no-startup-id ncmpcpp toggle
+bindsym XF86AudioPlay exec --no-startup-id ncmpcpp toggle && killall -USR1 i3blocks
 
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
-# meta+x lock screen
+# kill current notification
 bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd
 
 ###################################
@@ -272,6 +272,7 @@ exec --no-startup-id $TERM2 -name wicd -e "wicd-curses"
 for_window [instance="wicd"] move scratchpad
 bindsym $mod+F12 [instance="wicd"] scratchpad show;
 
+# regras
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 
 # xrandr

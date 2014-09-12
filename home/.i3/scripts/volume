@@ -16,8 +16,8 @@
 #
 # Modified by Raphael P. Ribeiro <raphaelpr01@gmail.com>
 
-CARD="${1:-0}"
-MIXER="${2:-default}" # use pulse for pulseaudio, default is alsa
+CARD=0
+MIXER=default # use pulse for pulseaudio, default is alsa
 PLAYBACK=$(amixer -c $CARD -M -D $MIXER get Master | tail -n1 | cut -d "[" -f4 | cut -d "]" -f1) # muted or not?
 VOLUME=$(amixer -c $CARD -M -D $MIXER get Master | sed -n 's/^[^:]*: Playback [0-9]* \[\([0-9]*%\)\] .*/\1/p' | head -n1)
 PRINT=$([ "$PLAYBACK" == "on" ] && echo $VOLUME || echo "M")

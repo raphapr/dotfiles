@@ -92,10 +92,11 @@ alias tmk='tmux kill-session -t'
 alias tm='tmuxinator start main'
 
 #VPN
-alias vpn='sudo openvpn ~/.openvpn/users.conf'
+alias vpn='cd ~/.openvpn && openvpn pfsense-udp-1194.ovpn'
 
-#Grava log do startx
-alias startx='startx &> ~/.xlog'
+#Log do X
+alias xlogf='tail -f $XLOGFILE'
+alias xlog='cat $XLOGFILE'
 
 # }}}
 # Funções ---------------------------------------------------------- {{{
