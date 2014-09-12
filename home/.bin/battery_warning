@@ -3,14 +3,14 @@
 SLEEP_TIME=5   # Default time between checks.
 SAFE_PERCENT=30  # Still safe at this level.
 DANGER_PERCENT=15  # Warn when battery at this level.
-CRITICAL_PERCENT=5  # Hibernate when battery at this level.
+CRITICAL_PERCENT=8  # Hibernate when battery at this level.
  
 NAGBAR_PID=0
 export DISPLAY=:0.0
  
 function launchNagBar
 {
-    i3-nagbar -m 'Battery low!' -b 'Hibernate!' 'i3exit hibernate' >/dev/null 2>&1 &
+    i3-nagbar -m 'Bateria baixa!' -b 'Hibernar' 'i3exit hibernate' >/dev/null 2>&1 &
     NAGBAR_PID=$!
 }
  

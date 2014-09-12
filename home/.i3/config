@@ -87,7 +87,7 @@ bindsym XF86AudioPlay exec --no-startup-id ncmpcpp toggle && killall -USR1 i3blo
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
 # kill current notification
-bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd
+bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd i3-nagbar
 
 ###################################
 
