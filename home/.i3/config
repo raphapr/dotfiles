@@ -26,7 +26,8 @@ set $mod Mod4
 # startup apps
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
-exec --no-startup-id xfsettingsd
+exec --no-startup-id ~/.bin/battery_warning
+#exec --no-startup-id xfsettingsd
 exec --no-startup-id CopyAgent
 exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
@@ -218,10 +219,13 @@ bar {
   status_command i3blocks
   colors {
             statusline #AAAAAA
-            #background #333333
             focused_workspace #0080ff #0080ff #000000
             inactive_workspace #00000 #000000 #AAAAAA
             urgent_workspace #d33682 #d33682 #fdf6e3
+            #focused_workspace #0088CC #0088CC #FFFFFF
+            #active_workspace #333333 #333333 #FFFFFF
+            #inactive_workspace #333333 #333333 #888888
+            #urgent_workspace #2F343A #900000 #FFFFFF
   }
 }
 
@@ -280,3 +284,10 @@ bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
 bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary
 workspace 10 output VGA1
+
+# Theme colors
+
+client.focused #0088CC #0088CC #FFFFFF #DDDDDD
+client.focused_inactive #333333 #333333 #888888 #292D2E
+client.unfocused #333333 #333333 #888888 #292D2E
+client.urgent #2F343A #900000 #FFFFFF #900000
