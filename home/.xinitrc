@@ -9,5 +9,4 @@
 xset r rate 200 30
 xrdb -merge ~/.Xresources
 
-export XLOGFILE=~/xlog/i3log-$(date +'%d-%m-%Y %kh%Mm%Ss') 
-exec i3 -V >> ~/xlog/i3log-$(date +'%d-%m-%Y %kh%Mm%Ss') 2>&1
+exec i3 --shmlog-size=26214400

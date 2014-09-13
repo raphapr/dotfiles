@@ -64,7 +64,7 @@ alias utube='youtube-dl -c -t'
 #Baixar apenas o audio do video
 alias atube='youtube-dl --extract-audio --audio-format=mp3 -t'
 
-# Pings:
+# Pings
 alias google='ping -i 3 www.google.com'
 alias globo='ping -i 3 www.globo.com'
 alias yahoo='ping -i 3 www.yahoo.com'

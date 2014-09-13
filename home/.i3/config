@@ -30,6 +30,7 @@ exec --no-startup-id CopyAgent
 exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
+exec --no-startup-id "seafile-applet &"
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{
@@ -302,10 +303,8 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 #}}}
 # Window rules          ----------------------------------------------------- {{{
 
-# browser pop-ups
 for_window [window_role="pop-up"] floating enable border normal
-
-# XFCE Notify
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
+for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 
 #}}}
