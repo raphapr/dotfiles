@@ -9,8 +9,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# APPS
+# Variables             ----------------------------------------------------- {{{
 
+set $mod Mod4
 set $BROWSER    chromium
 set $TERM       lxterminal
 set $TERM2      urxvt
@@ -18,12 +19,9 @@ set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 
-# font for window titles. ISO 10646 = Unicode
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# }}}
+# Startup apps          ----------------------------------------------------- {{{
 
-set $mod Mod4
-
-# startup apps
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 exec --no-startup-id ~/.bin/battery_warning
@@ -32,6 +30,9 @@ exec --no-startup-id CopyAgent
 exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
+
+#}}}i
+# Font                  ----------------------------------------------------- {{{
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -49,7 +50,8 @@ font pango:Lucida Grande 9
 
 floating_modifier $mod
 
-###################################
+#}}}
+# Personal Shortcuts    ----------------------------------------------------- {{{
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $TERM
@@ -71,13 +73,11 @@ bindsym $mod+t exec --no-startup-id ~/.bin/power-toggle
 exec --no-startup-id feh --bg-scale ~/.wallpaper.png
 
 # volume
-
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && killall -USR1 i3blocks
 bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle && killall -USR1 i3blocks
 
 # mopidy
-
 bindsym $mod+p exec --no-startup-id ncmpcpp toggle && killall -USR1 i3blocks
 bindsym XF86AudioNext exec --no-startup-id ncmpcpp next
 bindsym XF86AudioPrev exec --no-startup-id ncmpcpp prev
@@ -89,7 +89,14 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 # kill current notification
 bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd i3-nagbar
 
-###################################
+# xrandr
+bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary
+bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary
+workspace 10 output VGA1
+
+#}}}
+# i3 Shortcuts          ----------------------------------------------------- {{{
 
 # kill focused window
 bindsym $mod+c kill
@@ -209,6 +216,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+#}}}
+# bar                   ----------------------------------------------------- {{{
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
@@ -229,11 +239,15 @@ bar {
   }
 }
 
-# borders
+#}}}
+# borders               ----------------------------------------------------- {{{
 
 new_float normal 1
 new_window pixel 1
 hide_edge_borders none
+
+#}}}
+# i3exit                ----------------------------------------------------- {{{
 
 set $mode_system System
 
@@ -253,7 +267,8 @@ mode "$mode_system" {
 
 bindsym $mod+F1 mode "$mode_system"
 
-# scratchpads
+#}}}
+# scratchpads           ----------------------------------------------------- {{{
 
 # dropdown terminal
 #exec --no-startup-id $TERM2 -name metask
@@ -276,18 +291,21 @@ exec --no-startup-id $TERM2 -name wicd -e "wicd-curses"
 for_window [instance="wicd"] move scratchpad
 bindsym $mod+F12 [instance="wicd"] scratchpad show;
 
-# regras
-for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
-
-# xrandr
-bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
-bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary
-bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary
-workspace 10 output VGA1
-
-# Theme colors
+#}}}
+# Theme colors          ----------------------------------------------------- {{{
 
 client.focused #0088CC #0088CC #FFFFFF #DDDDDD
 client.focused_inactive #333333 #333333 #888888 #292D2E
 client.unfocused #333333 #333333 #888888 #292D2E
 client.urgent #2F343A #900000 #FFFFFF #900000
+
+#}}}
+# Window rules          ----------------------------------------------------- {{{
+
+# browser pop-ups
+for_window [window_role="pop-up"] floating enable border normal
+
+# XFCE Notify
+for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
+
+#}}}
