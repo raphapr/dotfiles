@@ -1,6 +1,18 @@
 #!/bin/bash
 
-#!/bin/bash
+# Criar arquivo /usr/share/applications/magnet.desktop com conteúdo:
+#
+#    [Desktop Entry]
+#    Name=Magnet
+#    Type=Application
+#    Comment=Open a magnet link remotly with the help of a script
+#    Exec=/home/raphael/.bin/magnetlink %U
+#    Categories=Network;WebBrowser;
+#    MimeType=x-scheme-handler/magnet;
+#
+# Depois associar em ~/.local/share/applications/mimeapps.list
+
+
 test -z $1 && echo "need magnet link!
 $0 <magnet link>" && exit -1
  
@@ -14,3 +26,4 @@ LINK="$1"
 PAUSED="false"
 SESSID=$(curl --silent --anyauth --user $USER "http://$HOST:$PORT/transmission/rpc" | sed 's/.*<code>//g;s/<\/code>.*//g')
 curl --silent --anyauth --user $USER --header "$SESSID" "http://$HOST:$PORT/transmission/rpc" -d "{\"method\":\"torrent-add\",\"arguments\":{\"paused\":${PAUSED},\"filename\":\"${LINK}\"}}"
+notify-send "Magnet link" "Torrent adicionado"
