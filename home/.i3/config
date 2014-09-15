@@ -24,8 +24,8 @@ set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.soun
 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
+exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
-#exec --no-startup-id xfsettingsd
 exec --no-startup-id CopyAgent
 exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
@@ -89,6 +89,10 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
 # kill current notification
 bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd i3-nagbar
+
+# ntfs mount
+bindsym $mod+Shift+w exec --no-startup-id sudo ntfs-3g /dev/sda2 /media/Windows
+bindsym $mod+Shift+u exec --no-startup-id sudo umount /dev/sda2
 
 # xrandr
 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
@@ -296,9 +300,9 @@ bindsym $mod+F12 [instance="wicd"] scratchpad show;
 # Theme colors          ----------------------------------------------------- {{{
 
 client.focused #0088CC #0088CC #FFFFFF #DDDDDD
-client.focused_inactive #333333 #333333 #888888 #292D2E
-client.unfocused #333333 #333333 #888888 #292D2E
-client.urgent #2F343A #900000 #FFFFFF #900000
+#client.focused_inactive #333333 #333333 #888888 #292D2E
+#client.unfocused #333333 #333333 #888888 #292D2E
+#client.urgent #2F343A #900000 #FFFFFF #900000
 
 #}}}
 # Window rules          ----------------------------------------------------- {{{
@@ -306,5 +310,6 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
+for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 
 #}}}

@@ -139,14 +139,9 @@ function wininfo() {
 # }}}
 # gl                {{{
 # compilando com OpenGL
-function gl() {
-    if [ -f a.out ]; then rm -rf a.out
-    fi
-    if [ $1 == '-r'  ]; then
-        g++ $2 -o a.out -lGLU -lGL -lglut && ./a.out
-    else
-        g++ $1 -o a.out -lGLU -lGL -lglut
-    fi
+function cgl() {
+    if [ -f a.out ]; then rm -rf a.out; fi
+    g++ $1 -o a.out -lGLU -lGL -lglut && ./a.out
 }
 
 # }}}
