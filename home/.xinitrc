@@ -10,3 +10,5 @@ xset r rate 200 30
 xrdb -merge ~/.Xresources
 
 exec i3 --shmlog-size=26214400
+
+

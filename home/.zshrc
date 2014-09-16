@@ -60,7 +60,7 @@ alias yup='yaourt -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update='sudo pacman-mirrors -g'
 
 #Baixar videos do Youtube (requer youtube-dl)
-alias utube='youtube-dl -c -t'
+alias utube='youtube-dl -c'
 #Baixar apenas o audio do video
 alias atube='youtube-dl --extract-audio --audio-format=mp3 -t'
 

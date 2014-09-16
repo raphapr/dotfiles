@@ -31,6 +31,7 @@ exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id "seafile-applet &"
+exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{
@@ -60,7 +61,7 @@ bindsym $mod+Return exec --no-startup-id $TERM
 # browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
-# dolphin
+# file Manager
 bindsym $mod+d exec --no-startup-id $FM
 
 # printscreen
@@ -69,9 +70,6 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área 
 
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/power-toggle
-
-# wallpaper (need feh)
-exec --no-startup-id feh --bg-scale ~/.wallpaper.png
 
 # volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
@@ -94,14 +92,26 @@ bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd i3-nagbar
 bindsym $mod+Shift+w exec --no-startup-id sudo ntfs-3g /dev/sda2 /media/Windows
 bindsym $mod+Shift+u exec --no-startup-id sudo umount /dev/sda2
 
+# quickswitch-for-i3
+bindsym $mod+Tab exec --no-startup-id ~/.i3-quickswitch/quickswitch.py
+
 # xrandr
 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
-bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary
-bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+Shift+p exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1 # presentations VGA1
+bindsym $mod+Shift+i exec --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as LVDS1 # presentations HDMI1
+
+# move workspace to another output
+bindsym $mod+Shift+x move workspace to output right
+
 workspace 10 output VGA1
 
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
+
+# disable mouse warp to the center of the window 
+mouse_warping none
 
 # kill focused window
 bindsym $mod+c kill
@@ -248,8 +258,10 @@ bar {
 # borders               ----------------------------------------------------- {{{
 
 new_float normal 1
-new_window pixel 1
-hide_edge_borders none
+new_window 1pixel
+#hide_edge_borders none
+
+bindsym $mod+Shift+g border none
 
 #}}}
 # i3exit                ----------------------------------------------------- {{{
@@ -300,9 +312,9 @@ bindsym $mod+F12 [instance="wicd"] scratchpad show;
 # Theme colors          ----------------------------------------------------- {{{
 
 client.focused #0088CC #0088CC #FFFFFF #DDDDDD
-#client.focused_inactive #333333 #333333 #888888 #292D2E
-#client.unfocused #333333 #333333 #888888 #292D2E
-#client.urgent #2F343A #900000 #FFFFFF #900000
+client.focused_inactive #333333 #333333 #888888 #292D2E
+client.unfocused #333333 #333333 #888888 #292D2E
+client.urgent #2F343A #900000 #FFFFFF #900000
 
 #}}}
 # Window rules          ----------------------------------------------------- {{{
