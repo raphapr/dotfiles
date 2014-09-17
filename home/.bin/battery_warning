@@ -12,7 +12,6 @@ read lastPID < $lf
 echo not running
 # save my pid in the lock file
 echo $$ > $lf
-# sleep just to make testing easier
 
 ########################################
 
@@ -32,6 +31,7 @@ function final_warning
 {
     killall notify-osd
     notify-send "Bateria em nível crítico" "O notebook irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/32x32/status/dialog-error.svg
+    sleep 60
 }
 
 while [ true ]; do
