@@ -24,6 +24,7 @@ set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.soun
 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
+exec --no-startup-id guake
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id CopyAgent
@@ -32,6 +33,7 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id "seafile-applet &"
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
+exec_always --no-startup-id xset r rate 200 30
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{
@@ -96,9 +98,10 @@ bindsym $mod+Shift+u exec --no-startup-id sudo umount /dev/sda2
 bindsym $mod+Tab exec --no-startup-id ~/.i3-quickswitch/quickswitch.py
 
 # xrandr
-bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off
-bindsym $mod+Shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && xrandr --output LVDS1 --primary && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && xrandr --output LVDS1 --primary && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off
+bindsym $mod+shift+m exec --no-startup-id xrandr --output vga1 --auto --right-of lvds1 && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1
 bindsym $mod+Shift+p exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1 # presentations VGA1
 bindsym $mod+Shift+i exec --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as LVDS1 # presentations HDMI1
 
@@ -288,10 +291,10 @@ bindsym $mod+F1 mode "$mode_system"
 # scratchpads           ----------------------------------------------------- {{{
 
 # dropdown terminal
-#exec --no-startup-id $TERM2 -name metask
-#for_window [instance="metask"] floating enable;
-#for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
-#bindsym F4 [instance="metask"] scratchpad show
+#exec --no-startup-id $TERM2 -title metask
+#for_window [title="metask"] floating enable;
+#for_window [title="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
+#bindsym F4 [title="metask"] scratchpad show
 
 # htop
 exec --no-startup-id $TERM2 -name monitor -e "htop"
@@ -323,5 +326,6 @@ for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
+for_window [class="Guake"] floating enable
 
 #}}}
