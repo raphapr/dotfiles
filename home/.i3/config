@@ -88,7 +88,7 @@ bindsym XF86AudioPlay exec --no-startup-id ncmpcpp toggle && killall -USR1 i3blo
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
 # kill current notification
-bindsym ctrl+space exec --no-startup-id killall xfce4-notifyd i3-nagbar
+bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 
 # ntfs mount
 bindsym $mod+Shift+w exec --no-startup-id sudo ntfs-3g /dev/sda2 /media/Windows
@@ -264,8 +264,6 @@ new_float normal 1
 new_window 1pixel
 #hide_edge_borders none
 
-bindsym $mod+Shift+g border none
-
 #}}}
 # i3exit                ----------------------------------------------------- {{{
 
@@ -323,7 +321,6 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 # Window rules          ----------------------------------------------------- {{{
 
 for_window [window_role="pop-up"] floating enable border normal
-for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
 for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Guake"] floating enable

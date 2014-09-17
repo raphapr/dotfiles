@@ -4,9 +4,9 @@ pid=$(pidof xfce4-power-manager)
 if [ -z $pid ]; then # Se não está rodando
     xfce4-power-manager
     xautolock -time 4 -locker "i3lock -c 000000" &
-    killall xfce4-notifyd && notify-send "Gerenciamento de energia" "ON" -t 6
+    killall notify-osd && notify-send "Gerenciamento de energia" "ON"
 else
+    killall notify-osd && notify-send "Gerenciamento de energia" "OFF"
     kill -9 $pid
     pkill xautolock
-    killall xfce4-notifyd && notify-send "Gerenciamento de energia" "OFF" -t 6
 fi
