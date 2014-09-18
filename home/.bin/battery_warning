@@ -24,13 +24,13 @@ export DISPLAY=:0.0
 
 function notify
 {
-    notify-send "Bateria baixa" "Conecte o notebook a um adaptador!" -i /usr/share/icons/Numix/32x32/status/dialog-error.svg
+    notify-send "Bateria baixa" "Conecte o notebook a um adaptador!" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
 }
  
 function final_warning
 {
     killall notify-osd
-    notify-send "Bateria em nível crítico" "O notebook irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/32x32/status/dialog-error.svg
+    notify-send "Bateria em nível crítico" "O notebook irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
     sleep 60
 }
 
