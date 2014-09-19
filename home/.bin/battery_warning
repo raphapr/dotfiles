@@ -30,7 +30,7 @@ function notify
 function final_warning
 {
     killall notify-osd
-    notify-send "Bateria em nível crítico" "O notebook irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
+    notify-send "Alerta! " "O computador irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
     sleep 60
 }
 

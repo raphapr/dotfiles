@@ -44,6 +44,7 @@ alias automhwd='sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee && sudo mhw
 alias sz='source ~/.zshrc'
 alias ez='vim ~/.zshrc'
 alias ev='vim ~/.vimrc'
+alias i3c='vim ~/.i3/config'
 alias k='kill -9'
 alias wcu='wicd-curses'
 alias r='ranger'

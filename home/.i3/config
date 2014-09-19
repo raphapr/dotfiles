@@ -71,7 +71,7 @@ bindsym --release Print exec --no-startup-id $PRINT
 bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área retangular para o print
 
 # power manager toggle
-bindsym $mod+t exec --no-startup-id ~/.bin/power-toggle
+bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
 
 # volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
@@ -89,10 +89,6 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
 # kill current notification
 bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
-
-# ntfs mount
-bindsym $mod+Shift+w exec --no-startup-id sudo ntfs-3g /dev/sda2 /media/Windows
-bindsym $mod+Shift+u exec --no-startup-id sudo umount /dev/sda2
 
 # quickswitch-for-i3
 bindsym $mod+Tab exec --no-startup-id ~/.i3-quickswitch/quickswitch.py
