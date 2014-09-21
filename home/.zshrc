@@ -47,6 +47,7 @@ alias k='kill -9'
 alias wcu='wicd-curses'
 alias r='ranger'
 alias trans='transmission-remote-cli'
+alias gt='google-translate eng pt'
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'

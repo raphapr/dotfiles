@@ -1,0 +1,42 @@
+colorscheme solarized-light
+
+set hintkeys=,asdflkj
+hi -a Hint font-size: 9pt !important;
+
+map -b j 4j
+map -b k 4k
+map K gt
+map J gT
+
+map -count -modes=i,n,v <C-c> <count><Pass>
+map -count -modes=i,n,v <C-v> <count><Pass>
+map -count -modes=i,n,v <C-a> <count><Pass>
+
+"" disable smooth scroll
+set scrollsteps=1
+set scrolltime=0
+
+"" U list closed tabs
+nmap -builtin U :undo<Space>
+
+"" toggle menubar
+nmap -builtin gm :set guioptions!=m<CR>
+
+"" tab move 
+map -g user mt :tabmove 
+
+"" prev selected tab
+nmap -builtin x <C-^>
+
+"" display download
+nmap -builtin ,d :downloads<CR>
+
+"" source pentadactyl
+nmap -builtin ,s :source ~/.pentadactylrc<CR>
+
+"" fullscreen
+nmap -builtin ,f :set fullscreen!<CR>
+
+"" jumping at hint mode, see http://code.google.com/p/dactyl/issues/detail?id=158
+map -modes hints <C-f> -ex normal! <C-f>
+map -modes hints <C-b> -ex normal! <C-b>
