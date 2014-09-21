@@ -2,34 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-##########################################################################
-export POWERLINE=1 # Usar ou não usar powerline no vim/tmux? 
-##########################################################################
+# Preambulo           ---------------------------------------------- {{{
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-
-########### HISTORY CONTROL ##############
-
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-# Combine multiline commands into one in history
-shopt -s cmdhist
-
-# After each command, save and reload history
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-#export PROMPT_COMMAND="history -a"
-
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=20000
-HISTFILESIZE=10000
-
-##########################################
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -112,33 +88,63 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#Cor nas manpages (requer pacote most)
-export MANPAGER="/usr/bin/most -s"
+#}}}
+# History Control     ---------------------------------------------- {{{
 
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
 
+# append to the history file, don't overwrite it
+shopt -s histappend
+# Combine multiline commands into one in history
+shopt -s cmdhist
 
-################################# Aliases ##########################################
+# After each command, save and reload history
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+#export PROMPT_COMMAND="history -a"
 
-#Minhas modificaçoes
-complete -cf sudo
-alias ls='ls --color=always'
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=100000
+HISTFILESIZE=100000
+
+#}}}
+# Minha configuração  ---------------------------------------------- {{{
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/.bin:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin"
+export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
+export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
+
+# }}}
+# Aliases ---------------------------------------------------------- {{{
+
+# Conveniências do shell
 alias lash='ls -lash'
 alias l='ls -CF'
-alias sudo='sudo '
 alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias desk='cd ~/Desktop'
 alias h='history'
-alias vim='vim --servername vim'
+alias vim='vim -X --servername vim'
 alias v='vim'
 alias iup='imgurbash' # image upload # precisa do imgurbash
 alias myip='curl ifconfig.me' # show extern ip
 alias chromium='chromium --disk-cache-dir=/tmp/cache'
 alias showbb='cat /proc/acpi/bbswitch'
 alias grubconf='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias automhwd='sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee && sudo mhwd -a pci nonfree 0300'
+alias sb='source ~/.bashrc'
+alias eb='vim ~/.bashrc'
+alias ev='vim ~/.vimrc'
+alias i3c='vim ~/.i3/config'
+alias k='kill -9'
+alias wcu='wicd-curses'
+alias r='ranger'
+alias trans='transmission-remote-cli'
+alias gt='google-translate eng pt'
 
-# Pacman/Yaourt aliases 
+# Pacman/Yaourt aliases
 alias p='sudo pacman'
-alias pacup='sudo pacman -Syuu' 
+alias pacup='sudo pacman -Syuu'
 alias pacin='sudo pacman -S'
 alias pacrem='sudo pacman -Rns'
 alias pacreps='sudo pacman -Ss'
@@ -147,160 +153,92 @@ alias yup='yaourt -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update='sudo pacman-mirrors -g'
 
 #Baixar videos do Youtube (requer youtube-dl)
-alias utube='youtube-dl -c -t'
+alias utube='youtube-dl -c'
 #Baixar apenas o audio do video
 alias atube='youtube-dl --extract-audio --audio-format=mp3 -t'
 
-# Pings:
+# Pings
 alias google='ping -i 3 www.google.com'
 alias globo='ping -i 3 www.globo.com'
 alias yahoo='ping -i 3 www.yahoo.com'
 
 #comando para copiar/colar via terminal para a área de transferência
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
-
-#cp com barra de progresso (requer o pacote pycp-git)
-alias pcp='pycp'
+alias pbcopy='xclip -sel clip'
+alias pbpaste='xclip -sel clip -o'
 
 #Monta e desmonta a partição NTFS /dev/sda3
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'
 alias umount-ntfs='sudo umount /mnt'
 
-#Conveniencias do Shell
-alias sb='source ~/.bashrc'
-alias eb='vim ~/.bashrc'
-alias rclua='vim ~/.config/awesome/rc.lua'
-alias pacbkp='tar -cjf ~/Copy/pacman-database.tar.bz2 /var/lib/pacman/local' # pacman database backup # Extrair na raíz: tar -xjvf pacman-database.tar.bz2
-alias k='kill -9'
-
-## VIM
-alias vv='vim -O'
-alias vh='vim -o'
-alias vt='vim -p'
-
-## control cd commands
-# get rid of command not found ##
-alias cd..='cd ..'
- 
-## a quick way to get out of current directory ##
-alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-alias .....='cd ../../../../'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../..'
-
-## aliases para a saída de audio
+#aliases para a saída de audio
 alias hdmiaudion='sudo -u $USER pactl set-card-profile 0 output:hdmi-surround' # Ativa saída de audio HDMI
 alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo ' # Ativa saída de audio padrão
 ## Quando usar HDMI
 alias hdmion='xrandr --output HDMI1 --auto --right-of LVDS1'
-alias rauto='/usr/bin/xrandr --auto'
 
-# SSH aliases
-alias controller='ssh -p 5116 raphael@200.17.114.136'
-alias compute01='ssh -p 5115 raphael@200.17.114.136'
-alias lcontroller='ssh raphael@192.168.2.223'
-alias lcompute01='ssh raphael@192.168.2.224'
+#Tmux
+alias tmux='tmux -f ~/.tmux/tmux.conf'
+alias t='tmux -f ~/.tmux/tmux.conf'
+alias tml='tmux ls'
+alias tma='tmux attach -t'
+alias tmk='tmux kill-session -t'
+alias tm='tmuxinator start main'
 
-# VPN
-alias vpn='cd ~/.openvpn && sudo openvpn users.conf'
+#VPN
+alias vpn='cd ~/.openvpn && sudo openvpn pfsense-udp-1194.ovpn'
 
-# Grava log do startx
-alias startx='startx &> ~/.xlog'
+#Log do X
+alias xlogf='tail -f $XLOGFILE'
+alias xlog='cat $XLOGFILE'
 
-# Tmux/VIM Powerline
-# .tmux_powerloff.conf -> sem tmux-powerline
-if [ $POWERLINE == 1 ]; then
-    alias tmux='tmux' # limpar alias
-else
-    alias tmux='tmux -f ~/.tmux-poweroff.conf'
-fi
+# }}}
+# Funções ---------------------------------------------------------- {{{
 
-################################# Funções ##########################################
+# gistt             {{{
 
-#Função para baixar pacote no AUR pelo Yaourt sem confirmação
+# gist upload com xclip funcionando
+function gistt()
+{
+    gist $1 | pbcopy && pbpaste && $BROWSER $(pbpaste)
+}
+
+# }}}
+# ys                {{{
+
+# yaourt sem confirmação
 function ys()
 {
     yaourt -S $1 --noconfirm
 }
 
+# }}}
+# aux               {{{
 
-# Lista os detalhes de um determinado padrão de processos
-
+# lista os detalhes de um determinado padrão de processos
 function aux()
 {
     ps aux | grep  $1
 }
 
-#
-## Zipar arquivos ou diretórios.
-function zipf() { zip -r "$1".zip "$1" ; }
+# }}}
+# wininfo           {{{
+# info about open windows
 
-#
-## Archive extractor.
-## usage: ex <file>
-#
-extract() {
- if [ -f $1 ] ; then
-  case $1 in
-   *.tar.bz2) tar xvjf $1 ;;
- *.tar.gz) tar xvzf $1 ;;
-  *.tar.xz) tar xvJf $1 ;;
-   *.bz2) bunzip2 $1 ;;
- *.rar) unrar x $1 ;;
-  *.gz) gunzip $1 ;;
-   *.tar) tar xvf $1 ;;
- *.tbz2) tar xvjf $1 ;;
-  *.tgz) tar xvzf $1 ;;
-   *.zip) unzip $1 ;;
- *.Z) uncompress $1 ;;
-  *.7z) 7z x $1 ;;
-   *.xz) unxz $1 ;;
- *.exe) cabextract $1 ;;
-  *) echo "\`$1': unrecognized file compression" ;;
-   esac
- else
-  echo "\`$1' is not a valid file"
-   fi
-}
-
-function pasteb(){
-pastebinit $1 | pbcopy
-}
-
-function top10() {
-	# copyright 2007 - 2010 Christopher Bratusek
-	history | awk '{a[$2]++ } END{for(i in a){print a[i] " " i}}' | sort -rn | head
-     }
-
-###### info about current open windows
 # copyright 2007 - 2010 Christopher Bratusek
 function wininfo() {
 	xprop | grep -w "WM_NAME\|WM_CLASS\|WM_WINDOW_ROLE\|_NET_WM_STATE"
 }
 
-
-# Compilando com OpenGL
-function gl() {
-    if [ -f a.out ]; then rm -rf a.out
-    fi
-    if [ $1 == '-r'  ]; then
-        g++ $2 -o a.out -lGLU -lGL -lglut && ./a.out
-    else
-        g++ $1 -o a.out -lGLU -lGL -lglut
-    fi
+# }}}
+# gl                {{{
+# compilando com OpenGL
+function cgl() {
+    if [ -f a.out ]; then rm -rf a.out; fi
+    g++ $1 -o a.out -lGLU -lGL -lglut && ./a.out
 }
 
-
-# Busca os 10 mirrors mais rápidos e salva no mirrorlist
-#alias ref='sudo reflector -l 10 --sort rate --save /etc/pacman.d/mirrorlist'
-
-########### Systemd Shorcuts ##############
-########### Comandos simplificados #######
-
-############### Systemctl ############### 
+# }}}
+# Systemd Shortcuts {{{
 
 0.start() {
     sudo systemctl start $1.service
@@ -354,9 +292,8 @@ function gl() {
      systemd-analyze $1
     }
 
-
-############### Systemctl --user ############### 
-
+# }}}
+# Systemd --user    {{{
 
 1.start() {
     systemctl --user start $1.service
@@ -406,27 +343,6 @@ function gl() {
     systemctl --user show -p "Wants" $1.target
     }
 
+# }}}
 
-################################################################
-
-
-# 256 cores no terminal (para utilizar cores no vim)
-export TERM="xterm-256color"
-
-# Carregar tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-export EDITOR='vim'
-
-# PATH
-PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin:$HOME/bin
-export PATH
-
-# Instalacao das Funcoes ZZ (www.funcoeszz.net)
-#export ZZOFF=""  # desligue funcoes indesejadas
-#export ZZPATH="/usr/bin/funcoeszz"  # script
-#source "$ZZPATH"
-
-#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel awt.useSystemAAFontSettings=on' 
-
-# Credenciais
-source ~/.local/credentials.sh
+# }}}
