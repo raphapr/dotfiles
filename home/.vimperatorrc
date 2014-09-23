@@ -1,0 +1,18 @@
+nnoremap j 3j
+nnoremap k 3k
+
+nnoremap K gt
+nnoremap J gT
+
+set gui=none,tabs
+
+colorscheme indigo
+
+"" tab move 
+nnoremap mt :tabmove 
+
+"" display download
+nnoremap ,d :downloads<CR>
+
+"" fullscreen
+nnoremap ,f :set fullscreen!<CR>
