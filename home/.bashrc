@@ -112,14 +112,14 @@ HISTSIZE=100000
 HISTFILESIZE=100000
 
 #}}}
-# Minha configuração  ---------------------------------------------- {{{
+# PATHS               ---------------------------------------------- {{{
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/.bin:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
 
 # }}}
-# Aliases ---------------------------------------------------------- {{{
+# Aliases             ---------------------------------------------- {{{
 
 # Conveniências do shell
 alias lash='ls -lash'
@@ -177,25 +177,27 @@ alias umount-ntfs='sudo umount /mnt'
 alias hdmiaudion='sudo -u $USER pactl set-card-profile 0 output:hdmi-surround' # Ativa saída de audio HDMI
 alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo ' # Ativa saída de audio padrão
 ## Quando usar HDMI
-alias hdmion='xrandr --output HDMI1 --auto --right-of LVDS1'
 
 #Tmux
 alias tmux='tmux -f ~/.tmux/tmux.conf'
 alias t='tmux -f ~/.tmux/tmux.conf'
-alias tml='tmux ls'
-alias tma='tmux attach -t'
-alias tmk='tmux kill-session -t'
-alias tm='tmuxinator start main'
+alias tl='tmux ls'
+alias ta='tmux attach -t'
+alias tk='tmux kill-session -t'
 
 #VPN
 alias vpn='cd ~/.openvpn && sudo openvpn pfsense-udp-1194.ovpn'
 
-#Log do X
-alias xlogf='tail -f $XLOGFILE'
-alias xlog='cat $XLOGFILE'
-
 # }}}
-# Funções ---------------------------------------------------------- {{{
+# Autojump            ---------------------------------------------- {{{
+
+source /etc/profile.d/autojump.bash
+alias j='autojump --complete'
+alias jt='autojump --stat'
+alias ja='autojump --add'
+
+#}}}
+# Funções             ---------------------------------------------- {{{
 
 # gistt             {{{
 

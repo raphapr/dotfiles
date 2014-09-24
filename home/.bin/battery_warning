@@ -8,8 +8,8 @@ lf=/tmp/pidLockFile
 touch $lf
 read lastPID < $lf
 # if lastPID is not null and a process with that pid exists , exit
-[ ! -z "$lastPID" -a -d /proc/$lastPID ] && exit
-echo not running
+#[ ! -z "$lastPID" -a -d /proc/$lastPID ] && exit
+[ ! -z "$lastPID" -a -d /proc/$lastPID ] && kill $lastPID
 # save my pid in the lock file
 echo $$ > $lf
 

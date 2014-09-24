@@ -12,7 +12,7 @@
 # Variables             ----------------------------------------------------- {{{
 
 set $mod Mod4
-set $BROWSER    firefox
+set $BROWSER    chromium
 set $TERM       lxterminal
 set $TERM2      urxvt
 set $FM         thunar
