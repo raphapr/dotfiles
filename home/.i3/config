@@ -109,6 +109,9 @@ workspace 10 output VGA1
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
 
+# border toggle
+bindsym $mod+Shift+b border toggle
+
 # disable mouse warp to the center of the window 
 mouse_warping none
 
@@ -322,3 +325,4 @@ for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Guake"] floating enable
 
 #}}}
+

@@ -389,7 +389,7 @@ nnoremap <M-Right>   <C-W><Bar>
 
 
 " }}}
-" Trailing whitespace  ------------------------------------------------------ {{{
+" Trailing whitespace  ----------------------------------------------------- {{{
 
 function! TrimWhiteSpace()
   let @*=line(".")

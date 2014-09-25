@@ -144,6 +144,7 @@ alias wcu='wicd-curses'
 alias r='ranger'
 alias trans='transmission-remote-cli'
 alias gt='google-translate eng pt'
+alias xmerge='xrdb -merge ~/.Xresources'
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'
@@ -181,7 +182,7 @@ alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+i
 #Tmux
 alias tmux='tmux -f ~/.tmux/tmux.conf'
 alias t='tmux -f ~/.tmux/tmux.conf'
-alias tl='tmux ls'
+alias tls='tmux ls'
 alias ta='tmux attach -t'
 alias tk='tmux kill-session -t'
 
