@@ -1,0 +1,12 @@
+[Unit]
+Description=Start tmux in detached session
+
+[Service]
+Type=forking
+User=%I
+WorkingDirectory=/home/raphael
+ExecStart=/usr/bin/tmux -f /home/raphael/.tmux/tmux.conf new-session -s guake -d
+ExecStop=/usr/bin/tmux kill-session -t guake
+
+[Install]
+WantedBy=multi-user.target
