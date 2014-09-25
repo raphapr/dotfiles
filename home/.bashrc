@@ -190,14 +190,6 @@ alias tk='tmux kill-session -t'
 alias vpn='cd ~/.openvpn && sudo openvpn pfsense-udp-1194.ovpn'
 
 # }}}
-# Autojump            ---------------------------------------------- {{{
-
-source /etc/profile.d/autojump.bash
-alias j='autojump --complete'
-alias jt='autojump --stat'
-alias ja='autojump --add'
-
-#}}}
 # Funções             ---------------------------------------------- {{{
 
 # gistt             {{{

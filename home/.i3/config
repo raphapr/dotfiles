@@ -322,5 +322,6 @@ for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Guake"] floating enable
+for_window [class="chromium"] normal 0 px
 
 #}}}
