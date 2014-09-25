@@ -7,21 +7,29 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xcursor.theme: default
 
-! Dependencias: urxvt-perls, urxvt-font-size-git (AUR)
+! Dependencias: urxvt-perls, urxvt-font-size-git (AUR), ttf-dejavusansmono-powerline-git (AUR)
 
 !! URxvt
 
 URxvt*title: urxvt
 URxvt*termName: screen-256color
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
 URxvt.scrollBar: false
 URxvt.letterSpace: -2
-URxvt.font: xft:DejaVu Sans Mono:size=9:antialias=true:hinting=true
+URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true:hinting=true
 URxvt*saveLines: 5000
 URxvt.urlLauncher: /usr/bin/xdg-open
+URxvt*iso14755: False
 URxvt*iso14755_52: False
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 2
+
+! font size on the fly
+
+URxvt.keysym.C-S-Up:     perl:font-size:increase
+URxvt.keysym.C-S-Down:   perl:font-size:decrease
+!URxvt.keysym.C-Up:   perl:font-size:incglobal
+!URxvt.keysym.C-Down: perl:font-size:decglobal
 
 ! Keyboard Select
 
@@ -33,8 +41,8 @@ URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.clipboard.copycmd:  xclip -sel clip
 URxvt.clipboard.pastecmd: xclip -sel clip -o
 
-URxvt.keysym.Control-Shift-c:   perl:clipboard:copy
-URxvt.keysym.Control-Shift-v:   perl:clipboard:paste
+URxvt.keysym.Control-Shift-C:   perl:clipboard:copy
+URxvt.keysym.Control-Shift-V:   perl:clipboard:paste
 URxvt.keysym.M-v:   perl:clipboard:paste_escaped
 
 ! URL
@@ -63,13 +71,6 @@ URxvt.keysym.Control-Right:  \033[1;5C
 *URxvt*keysym.F2:\033OQ
 *URxvt*keysym.F3:\033OR
 *URxvt*keysym.F4:\033OS             
-
-
-! resize font on the fly
-! NEED urxvt-font-size-git (AUR)
-!
-URxvt.keysym.C-Up:     perl:font-size:increase
-URxvt.keysym.C-Down:   perl:font-size:decrease
 
 !! colorscheme
 

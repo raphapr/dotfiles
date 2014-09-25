@@ -13,8 +13,7 @@
 
 set $mod Mod4
 set $BROWSER    chromium
-set $TERM       lxterminal
-set $TERM2      urxvt
+set $TERM       urxvt
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
@@ -288,23 +287,23 @@ bindsym $mod+F1 mode "$mode_system"
 # scratchpads           ----------------------------------------------------- {{{
 
 # dropdown terminal
-#exec --no-startup-id $TERM2 -title metask
+#exec --no-startup-id $TERM -title metask
 #for_window [title="metask"] floating enable;
 #for_window [title="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
 #bindsym F4 [title="metask"] scratchpad show
 
 # htop
-exec --no-startup-id $TERM2 -name monitor -e "htop"
+exec --no-startup-id $TERM -name monitor -e "htop"
 for_window [instance="monitor"] move scratchpad
 bindsym $mod+BackSpace [instance="monitor"] scratchpad show
 
 # alsamixer
-exec --no-startup-id $TERM2 -name alsamixer -e "alsamixer"
+exec --no-startup-id $TERM -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
 bindsym $mod+F11 [instance="alsamixer"] scratchpad show
 
 # wicd
-exec --no-startup-id $TERM2 -name wicd -e "wicd-curses"
+exec --no-startup-id $TERM -name wicd -e "wicd-curses"
 for_window [instance="wicd"] move scratchpad
 bindsym $mod+F12 [instance="wicd"] scratchpad show;
 
@@ -325,4 +324,3 @@ for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Guake"] floating enable
 
 #}}}
-
