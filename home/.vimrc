@@ -362,7 +362,7 @@ nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 
 "navegação de abas fácil, semelhante a navegadores
 nnoremap <leader><leader>  :tabnext<CR>
-nnoremap <C-t>  :tabnew<CR>
+nnoremap <C-S-t>  :tabnew<CR>
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{

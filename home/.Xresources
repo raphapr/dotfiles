@@ -7,13 +7,13 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xcursor.theme: default
 
-! Dependencias: urxvt-perls, urxvt-font-size-git (AUR), ttf-dejavusansmono-powerline-git (AUR)
+! Dependencias: urxvt-perls, urxvt-font-size-git (AUR), ttf-dejavusansmono-powerline-git (AUR), urxvt-tabbedex (AUR)
 
 !! URxvt
 
 URxvt*title: urxvt
 URxvt*termName: screen-256color
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size,tabbedex
 URxvt.scrollBar: false
 URxvt.letterSpace: -2
 URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true:hinting=true
@@ -24,12 +24,29 @@ URxvt*iso14755_52: False
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 2
 
+! tabs
+
+URxvt.tabbed.autohide: true
+URXvt.tabbed.reopen-on-close: yes
+URxvt.keysym.Control-t: perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+URxvt.keysym.Control-w: perl:tabbedex:destroy_tab
+
+URxvt.tabbed.tabbar-fg:   244
+URxvt.tabbed.tabbar-bg:   16
+URxvt.tabbed.tab-fg:      255
+URxvt.tabbed.tab-bg:      52
+URxvt.tabbed.bell-tab-fg: 255
+URxvt.tabbed.bell-tab-bg: 160
+URxvt.tabbed.bell-fg:     244
+URxvt.tabbed.bell-bg:     17
+URxvt.tabbed.title-fg:    28
+URxvt.tabbed.title-bg:    16
+
 ! font size on the fly
 
 URxvt.keysym.C-S-Up:     perl:font-size:increase
 URxvt.keysym.C-S-Down:   perl:font-size:decrease
-!URxvt.keysym.C-Up:   perl:font-size:incglobal
-!URxvt.keysym.C-Down: perl:font-size:decglobal
 
 ! Keyboard Select
 

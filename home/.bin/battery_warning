@@ -24,14 +24,18 @@ export DISPLAY=:0.0
 
 function notify
 {
+    killall notify-osd
     notify-send "Bateria baixa" "Conecte o notebook a um adaptador!" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
 }
  
-function final_warning
+function notify_n_hibernate
 {
     killall notify-osd
     notify-send "Alerta! " "O computador irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
     sleep 60
+    if [[ -n $(acpi -b | grep -i discharging) ]]; then # Se o notebook continuar fora da tomada, hiberna.
+        i3exit hibernate
+    fi
 }
 
 while [ true ]; do
@@ -48,9 +52,8 @@ while [ true ]; do
                 notify
             fi
             if [[ $rem_bat -le $CRITICAL_PERCENT ]]; then
-                final_warning
+                notify_n_hibernate
                 SLEEP_TIME=1
-                i3exit hibernate
             fi
         fi
     else
