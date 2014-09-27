@@ -6,9 +6,7 @@ nnoremap J gT
 
 let mapleader = ","
 
-set gui=none,tabs
-
-colorscheme indigo
+"set gui=none,tabs
 
 "" tab move 
 nnoremap mt :tabmove 
@@ -19,9 +17,6 @@ nnoremap <leader>d :downloads<CR>
 "" fullscreen
 nnoremap <leader>f :set fullscreen!<CR>
 
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
-
-
 " find as you type
 set incsearch
 " make searches case-insensitive
@@ -29,8 +24,5 @@ set ignorecase
 
 " disable search highlight
 map <silent> <F3> :noh<CR>
-
-" Turn on delicious completions for :open and :tabopen
-autocmd VimperatorEnter ".*" :set complete+=D  "
 
 inoremap <C-a> <Ins><C-a><Ins>

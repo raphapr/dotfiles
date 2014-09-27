@@ -22,7 +22,7 @@ URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 2
+URxvt.cursorUnderline: 1
 
 ! tabs
 
