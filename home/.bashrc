@@ -4,6 +4,8 @@
 
 # Preambulo           ---------------------------------------------- {{{
 
+export EDITOR=vim
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -145,6 +147,7 @@ alias r='ranger'
 alias trans='transmission-remote-cli'
 alias gt='google-translate eng pt'
 alias xmerge='xrdb -merge ~/.Xresources'
+alias cs='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Counter-Strike\ 1.6\ -\ 2014/Counter-Strike.ex'
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'

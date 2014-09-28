@@ -18,9 +18,8 @@ call plug#begin('~/.vim/plugged')
 
 " ===== Esquema de cores        {{{
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'spf13/vim-colors'
-Plug 'godlygeek/csapprox'
+Plug 'tomasr/molokai'
+"Plug 'godlygeek/csapprox'
 
 " }}}
 " ===== Snipmate                {{{
@@ -90,11 +89,6 @@ set grepprg=grep\ -nH\ $*
 Plug 'matchit.zip'
 
 " }}}
-" ===== vim-ruby-refactoring    {{{
-
-Plug 'ecomba/vim-ruby-refactoring'
-
-" }}}
 " ===== vim-airline             {{{
 
 " Se os glifos ficarem estranhos:
@@ -152,6 +146,14 @@ set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_working_path_mode='c'
+
+" }}}
+" ===== markdown.vim            {{{
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+let g:vim_markdown_folding_disabled=1
 
 " }}}
 
@@ -244,7 +246,7 @@ map <leader>c !xclip -sel clip<CR>u
 " Precisa do pacote haskell-pandoc (Adicionar o repo haskell)
 map 2h :w<CR>:!pandoc % -f markdown -t html -s -o %<.html<CR>
 map 2p :w<CR>:!pandoc % -o %<.pdf<CR>
-map 2v :w<CR>:!pandoc % -o %<.pdf ; okular %<.pdf<CR>
+map 2v :w<CR>:!pandoc % -o %<.pdf ; zathura %<.pdf<CR>
 
 " }}}
 " buffers           {{{

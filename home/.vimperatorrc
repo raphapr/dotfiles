@@ -1,5 +1,5 @@
-nnoremap j 3j
-nnoremap k 3k
+nnoremap j 4j
+nnoremap k 4k
 
 nnoremap K gt
 nnoremap J gT

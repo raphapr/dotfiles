@@ -7,7 +7,7 @@
 #
 
 xset r rate 200 30
-xrdb -merge ~/.Xresources
+[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
 #exec i3 --shmlog-size=26214400
 exec dbus-launch --sh-syntax --exit-with-session i3 --shmlog-size=26214400

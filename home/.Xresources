@@ -13,7 +13,7 @@ Xcursor.theme: default
 
 URxvt*title: urxvt
 URxvt*termName: screen-256color
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size,tabbedex
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
 URxvt.scrollBar: false
 URxvt.letterSpace: -2
 URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9:antialias=true:hinting=true
@@ -22,26 +22,26 @@ URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 1
+URxvt.cursorUnderline: 2
 
 ! tabs
 
-URxvt.tabbed.autohide: true
-URXvt.tabbed.reopen-on-close: yes
-URxvt.keysym.Control-t: perl:tabbedex:new_tab
-URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-URxvt.keysym.Control-w: perl:tabbedex:destroy_tab
+!URxvt.tabbed.autohide: true
+!URXvt.tabbed.reopen-on-close: yes
+!URxvt.keysym.Control-t: perl:tabbedex:new_tab
+!URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
+!URxvt.keysym.Control-w: perl:tabbedex:destroy_tab
 
-URxvt.tabbed.tabbar-fg:   244
-URxvt.tabbed.tabbar-bg:   16
-URxvt.tabbed.tab-fg:      255
-URxvt.tabbed.tab-bg:      52
-URxvt.tabbed.bell-tab-fg: 255
-URxvt.tabbed.bell-tab-bg: 160
-URxvt.tabbed.bell-fg:     244
-URxvt.tabbed.bell-bg:     17
-URxvt.tabbed.title-fg:    28
-URxvt.tabbed.title-bg:    16
+!URxvt.tabbed.tabbar-fg:   244
+!URxvt.tabbed.tabbar-bg:   16
+!URxvt.tabbed.tab-fg:      255
+!URxvt.tabbed.tab-bg:      52
+!URxvt.tabbed.bell-tab-fg: 255
+!URxvt.tabbed.bell-tab-bg: 160
+!URxvt.tabbed.bell-fg:     244
+!URxvt.tabbed.bell-bg:     17
+!URxvt.tabbed.title-fg:    28
+!URxvt.tabbed.title-bg:    16
 
 ! font size on the fly
 
