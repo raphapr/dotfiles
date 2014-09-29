@@ -26,3 +26,8 @@ set ignorecase
 map <silent> <F3> :noh<CR>
 
 inoremap <C-a> <Ins><C-a><Ins>
+
+" undo list
+noremap U :undo<Space>
+
+set focuscontent
