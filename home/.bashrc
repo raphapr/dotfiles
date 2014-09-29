@@ -1,3 +1,4 @@
+#
 # bashrc
 # Raphael P. Ribeiro
 
