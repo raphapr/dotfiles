@@ -1,5 +1,6 @@
 " .vimrc
 " Author: Raphael P. Ribeiro
+"
 
 " Preambulo ---------------------------------------------------------------- {{{
 
@@ -156,6 +157,20 @@ Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
 
 " }}}
+" ===== vim-fugitive (git)      {{{
+
+Plug 'tpope/vim-fugitive'
+
+" }}}
+"" ===== vim-session             {{{
+
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-session'
+
+"let g:session_autosave='yes'
+"let g:session_autoload='yes'
+
+"" }}}
 
 call plug#end()
 

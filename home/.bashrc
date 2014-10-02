@@ -114,11 +114,12 @@ HISTSIZE=100000
 HISTFILESIZE=100000
 
 #}}}
-# PATHS               ---------------------------------------------- {{{
+# Paths & Sources     ---------------------------------------------- {{{
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/.bin:/home/raphael/.gem/ruby/2.1.0/bin:/home/raphael/bin"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
+source ~/.git-completion.bash
 
 # }}}
 # Aliases             ---------------------------------------------- {{{
@@ -126,11 +127,14 @@ export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vi
 # Conveniências do shell
 alias lash='ls -lash'
 alias l='ls -CF'
+alias v='vim'
+alias k='kill -9'
+alias r='ranger'
+alias h='history'
+alias g='git'
 alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias desk='cd ~/Desktop'
-alias h='history'
 alias vim='vim -X --servername vim'
-alias v='vim'
 alias iup='imgurbash' # image upload # precisa do imgurbash
 alias myip='curl ifconfig.me' # show extern ip
 alias chromium='chromium --disk-cache-dir=/tmp/cache'
@@ -141,9 +145,7 @@ alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
 alias ev='vim ~/.vimrc'
 alias i3c='vim ~/.i3/config'
-alias k='kill -9'
-alias wcu='wicd-curses'
-alias r='ranger'
+alias wc='wicd-curses'
 alias trans='transmission-remote-cli'
 alias gt='google-translate eng pt'
 alias xmerge='xrdb -merge ~/.Xresources'
