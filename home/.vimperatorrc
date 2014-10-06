@@ -1,9 +1,13 @@
+set focuscontent
+
+let mapleader = ","
 nnoremap j 4j
 nnoremap k 4k
 nnoremap K gt
 nnoremap J gT
 
-let mapleader = ","
+ignorekeys add feedly.com
+ignorekeys add mail.google.com
 
 "set gui=none,tabs
 
@@ -28,8 +32,3 @@ inoremap <C-a> <Ins><C-a><Ins>
 
 " undo list
 noremap U :undo<Space>
-
-set focuscontent
-
-ignorekeys add feedly.com
-ignorekeys add mail.google.com

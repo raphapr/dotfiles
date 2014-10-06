@@ -58,7 +58,7 @@ nnoremap <F9> :TagbarToggle<CR>
 
 " Ver undo tree em estilo
 Plug 'sjl/gundo.vim'
-nnoremap <Leader>g :GundoToggle<CR>
+nnoremap <Leader>gu :GundoToggle<CR>
 
 " }}}
 " ===== vim-numbertoggle        {{{
@@ -162,15 +162,24 @@ let g:vim_markdown_folding_disabled=1
 Plug 'tpope/vim-fugitive'
 
 " }}}
-"" ===== vim-session             {{{
+" ===== EasyMotion              {{{
 
-"Plug 'xolox/vim-misc'
-"Plug 'xolox/vim-session'
+" Navegação de texto igual vimperator
+Plug 'Lokaltog/vim-easymotion'
 
-"let g:session_autosave='yes'
-"let g:session_autoload='yes'
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
 
-"" }}}
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+
+nmap f <Plug>(easymotion-s)
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" }}}
 
 call plug#end()
 
@@ -287,6 +296,9 @@ noremap <Leader>gr :Gremove<CR>'
 "}}}
 " etc               {{{
 
+"Salva arquivos mesmo sem permissão
+nmap <leader>w :w !sudo tee > /dev/null %<CR>
+
 " Mata a janela
 nnoremap K :q<cr>
 " quit all
@@ -343,7 +355,6 @@ endif
 "
 " " let g:solarized_termcolors=256
 
-
 """" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e konsole
 if &term =~ '256color'
       " Disable Background Color Erase (BCE) so that color schemes
@@ -371,7 +382,7 @@ endif
 " Edição Rápida  ----------------------------------------------------------- {{{
 
 nnoremap <leader>vi :vsplit ~/.vimrc<cr>
-nnoremap <leader>ez :vsplit ~/.zshrc<cr>
+nnoremap <leader>ez :vsplit ~/.bashrc<cr>
 nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
 
 " }}}
