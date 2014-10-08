@@ -135,9 +135,9 @@ Plug 'kien/ctrlp.vim'
 " F5 - Refresh
 
 " Abre no home
-noremap <C-P> :CtrlPRoot<CR>
+noremap <C-P> :CtrlP<CR>
 " Abre no diretório atual do arquivo
-noremap <Leader>p :CtrlP<CR>
+noremap <Leader>p :CtrlPRoot<CR>
 noremap <leader>b :CtrlPBuffer<CR>
 noremap <leader>bt :CtrlPBufTag<CR>
 noremap <leader>mru :CtrlPMRU<CR>
@@ -294,6 +294,21 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>'
 
 "}}}
+" sessions          {{{
+
+silent !mkdir ~/.vim/sessions > /dev/null 2>&1
+nnoremap <leader>ss :mksession! ~/.vim/sessions/default<CR>
+nnoremap <leader>sa :mksession! ~/.vim/sessions/session_a<CR>
+nnoremap <leader>sb :mksession! ~/.vim/sessions/session_b<CR>
+
+"}}}
+" edição rápida     {{{
+
+nnoremap <leader>vi :vsplit ~/.vimrc<cr>
+nnoremap <leader>eb :vsplit ~/.bashrc<cr>
+nnoremap <leader>i3 :vsplit ~/.i3/config<cr>
+
+" }}}
 " etc               {{{
 
 "Salva arquivos mesmo sem permissão
@@ -319,7 +334,7 @@ map <Leader>re :so %<CR>
 " Cancela o highlight da busca atual
 noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 
-"" Opções para que blocos selecionados sejam reselecionados após identações.
+" Opções para que blocos selecionados sejam reselecionados após identações.
 vnoremap < <gv
 vnoremap > >gv
 
@@ -379,13 +394,6 @@ if &term =~ '^screen'
 endif
 
 " }}}
-" Edição Rápida  ----------------------------------------------------------- {{{
-
-nnoremap <leader>vi :vsplit ~/.vimrc<cr>
-nnoremap <leader>ez :vsplit ~/.bashrc<cr>
-nnoremap <leader>tm :vsplit ~/.tmux/tmux.conf<cr>
-
-" }}}
 " Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
@@ -412,9 +420,6 @@ nnoremap <M-Up>      <C-W>_
 nnoremap <M-Down>    <C-W>=
 nnoremap <M-Left>    <C-W>=
 nnoremap <M-Right>   <C-W><Bar>
-
-
-
 
 " }}}
 " Trailing whitespace  ----------------------------------------------------- {{{

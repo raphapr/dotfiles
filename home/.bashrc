@@ -132,9 +132,7 @@ alias k='kill -9'
 alias r='ranger'
 alias h='history'
 alias g='git'
-alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias desk='cd ~/Desktop'
-alias vim='vim -X --servername vim'
 alias iup='imgurbash' # image upload # precisa do imgurbash
 alias myip='curl ifconfig.me' # show extern ip
 alias chromium='chromium --disk-cache-dir=/tmp/cache'
@@ -152,12 +150,20 @@ alias xmerge='xrdb -merge ~/.Xresources'
 alias cs='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Counter-Strike\ 1.6\ -\ 2014/Counter-Strike.ex'
 alias repos='cd ~/Copy/repos'
 
+# vim
+alias vim='vim -X --servername vim'
+alias vs='vim -X --servername vim -S ~/.vim/sessions/default'
+alias vsa='vim -X --servername vim -S ~/.vim/sessions/session_a'
+alias vsb='vim -X --servername vim -S ~/.vim/sessions/session_b'
+
+
 # Pacman/Yaourt aliases
 alias p='sudo pacman'
 alias pacup='sudo pacman -Syuu'
 alias pacin='sudo pacman -S'
 alias pacrem='sudo pacman -Rns'
 alias pacreps='sudo pacman -Ss'
+alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias y='yaourt'
 alias yup='yaourt -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update='sudo pacman-mirrors -g'
