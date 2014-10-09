@@ -180,6 +180,13 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 " }}}
+" ===== goyo                    {{{
+
+let g:goyo_width = 180
+map <F7> :Goyo<CR>
+Plug 'junegunn/goyo.vim'
+
+" }}}
 
 call plug#end()
 
