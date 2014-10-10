@@ -41,7 +41,7 @@ Plug 'Townk/vim-autoclose'
 
 " Navegador de arquivos e diretórios
 Plug 'scrooloose/nerdtree'
-map <F10> :NERDTreeToggle<CR>
+nnoremap <F10> :NERDTreeToggle<CR>
 
 let NERDTreeShowBookmarks=1
 
@@ -74,14 +74,9 @@ let g:NumberToggleTrigger="<Leader>n"
 Plug 'scrooloose/nerdcommenter'
 
 " }}}
-" ===== vim-latex               {{{
+" ===== latex-box               {{{
 
-Plug 'jcf/vim-latex'
-
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*
-" View PDF macro; '%:r' is current file's root (base) name.
-" nnoremap <leader><leader> :!okular %:r.pdf &<CR><CR>
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " }}}
 " ===== matchit.vim             {{{
@@ -118,6 +113,8 @@ let g:miniBufExplorerAutoStart = 0
 
 " Checa erro de sintaxe
 Plug 'scrooloose/syntastic'
+
+nnoremap <leader>st :SyntasticToggleMode<CR>
 
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -183,7 +180,7 @@ map <Leader>k <Plug>(easymotion-k)
 " ===== goyo                    {{{
 
 let g:goyo_width = 180
-map <F7> :Goyo<CR>
+nnoremap <F7> :Goyo<CR>
 Plug 'junegunn/goyo.vim'
 
 " }}}
@@ -227,13 +224,18 @@ colorscheme molokai
 " }}}
 " Omni completion ---------------------------------------------------------- {{{
 
-" ctrl+space para completar código
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-            \ "\<lt>C-n>" :
-            \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
+" <C-x><C-o> auto completar sintaxe
+" <C-n> auto completar geral
+
+" h cancela sem completar
+" l completa
+inoremap <expr> h ((pumvisible())?("\<C-e>"):("h"))
+inoremap <expr> l ((pumvisible())?("\<C-y>"):("l"))
+
+" usa jk para mover a janela do popup omnicomplete
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+
 
 " }}}
 " Folding   ---------------------------------------------------------------- {{{
@@ -318,19 +320,21 @@ nnoremap <leader>i3 :vsplit ~/.i3/config<cr>
 " }}}
 " etc               {{{
 
-"Salva arquivos mesmo sem permissão
-nmap <leader>w :w !sudo tee > /dev/null %<CR>
+
+" quick save
+nmap S :w<CR>
 
 " Mata a janela
 nnoremap K :q<cr>
-" quit all
-nnoremap <leader>qt :quitall<CR>
+
+"Salva arquivos mesmo sem permissão
+nmap <leader>ww :w !sudo tee > /dev/null %<CR>
 
 " Dois <Enter> para quebrar linha sem entrar no insert mode
 nmap <CR><CR> o<ESC>
 
 " compilar com openGL (CG)
-nnoremap <Leader>o :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
+nnoremap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
 " ruby
 nnoremap <Leader>ru :!clear && ruby %<CR>

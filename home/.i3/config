@@ -104,8 +104,6 @@ bindsym $mod+Shift+i exec --no-startup-id xrandr --output HDMI1 --mode 1024x768 
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output right
 
-workspace 10 output VGA1
-
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
 
