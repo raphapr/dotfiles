@@ -20,7 +20,6 @@ call plug#begin('~/.vim/plugged')
 " ===== Esquema de cores        {{{
 
 Plug 'tomasr/molokai'
-"Plug 'godlygeek/csapprox'
 
 " }}}
 " ===== Snipmate                {{{
@@ -181,7 +180,15 @@ map <Leader>k <Plug>(easymotion-k)
 
 let g:goyo_width = 180
 nnoremap <F7> :Goyo<CR>
+
 Plug 'junegunn/goyo.vim'
+
+" }}}
+" ===== quickrun                {{{
+
+map <leader><leader> :QuickRun<CR>
+
+Plug 'thinca/vim-quickrun'
 
 " }}}
 
@@ -339,6 +346,9 @@ nnoremap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 " ruby
 nnoremap <Leader>ru :!clear && ruby %<CR>
 
+" bash
+nnoremap <Leader>ba :!clear && . %<CR>
+
 " Recarrega vimrc
 map <Leader>re :so %<CR>
 
@@ -408,7 +418,7 @@ endif
 " Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
-nnoremap <leader><leader>  :tabnext<CR>
+nnoremap tn  :tabnext<CR>
 nnoremap <C-S-t>  :tabnew<CR>
 
 " }}}
