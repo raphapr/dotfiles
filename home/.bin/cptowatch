@@ -12,4 +12,4 @@
 #
 # Depois associar em ~/.local/share/applications/mimeapps.list
 
-cp $1 ~/Torrents/Watch/ && notify-send "Torrent adicionado" "$(basename $1)"
+cp "$1" ~/Torrents/Watch/ && notify-send "Torrent adicionado" "$(basename "$1")"
