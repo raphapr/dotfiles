@@ -312,12 +312,15 @@ noremap <Leader>gr :Gremove<CR>'
 "}}}
 " sessions          {{{
 
-silent !mkdir ~/.vim/sessions > /dev/null 2>&1
+if !isdirectory("/home/raphael/.vim/sessions")
+    call mkdir("/home/raphael/.vim/sessions", "p")
+endif
+
 nnoremap <leader>ss :mksession! ~/.vim/sessions/default<CR>
 nnoremap <leader>sa :mksession! ~/.vim/sessions/session_a<CR>
 nnoremap <leader>sb :mksession! ~/.vim/sessions/session_b<CR>
 
-"}}}
+""}}}
 " edição rápida     {{{
 
 nnoremap <leader>vi :vsplit ~/.vimrc<cr>

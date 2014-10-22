@@ -91,7 +91,7 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 
 # quickswitch-for-i3
-bindsym $mod+Tab exec --no-startup-id ~/.i3-quickswitch/quickswitch.py
+bindsym $mod+Tab exec --no-startup-id python2.7 ~/.i3-quickswitch/quickswitch.py
 
 # xrandr
 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off
