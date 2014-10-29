@@ -31,6 +31,8 @@ exec --no-startup-id CopyAgent
 exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
+exec --no-startup-id compton
+exec --no-startup-id redshift -c ~/.config/redshift
 #exec --no-startup-id "seafile-applet &"
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec_always --no-startup-id xset r rate 200 30
@@ -74,15 +76,15 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área 
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
 
 # volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && killall -USR1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && killall -USR1 i3blocks
-bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle && killall -USR1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle && pkill -RTMIN+1 i3blocks
 
 # mopidy
-bindsym $mod+p exec --no-startup-id mpc toggle && killall -USR1 i3blocks
+bindsym $mod+p exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioNext exec --no-startup-id mpc next
 bindsym XF86AudioPrev exec --no-startup-id mpc prev
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle && killall -USR1 i3blocks
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
 
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
