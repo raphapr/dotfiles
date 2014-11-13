@@ -204,6 +204,15 @@ alias vpn='cd ~/.openvpn && sudo openvpn pfsense-udp-1194.ovpn'
 # }}}
 # Funções             ---------------------------------------------- {{{
 
+# wallchange        {{{
+
+# gist upload com xclip funcionando
+function wallc()
+{
+    cp $1 ~/.wallpaper.png && feh --bg-fill ~/.wallpaper.png
+}
+
+# }}}
 # gistt             {{{
 
 # gist upload com xclip funcionando
