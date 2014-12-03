@@ -143,7 +143,6 @@ alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
 alias ev='vim ~/.vimrc'
 alias i3c='vim ~/.i3/config'
-alias wc='wicd-curses'
 alias trans='transmission-remote-cli'
 alias gt='google-translate eng pt'
 alias xmerge='xrdb -merge ~/.Xresources'
@@ -177,6 +176,10 @@ alias atube='youtube-dl --extract-audio --audio-format=mp3 -t'
 alias google='ping -i 3 www.google.com'
 alias globo='ping -i 3 www.globo.com'
 alias yahoo='ping -i 3 www.yahoo.com'
+
+# connman
+alias wfscan="connmanctl services"
+alias wfcon="connmanctl connect"
 
 #comando para copiar/colar via terminal para a área de transferência
 alias pbcopy='xclip -sel clip'
