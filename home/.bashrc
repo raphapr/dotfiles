@@ -143,8 +143,7 @@ alias sb='source ~/.bashrc'
 alias eb='vim ~/.bashrc'
 alias ev='vim ~/.vimrc'
 alias i3c='vim ~/.i3/config'
-alias trans='transmission-remote-cli'
-alias gt='google-translate eng pt'
+alias transm='transmission-remote-cli'
 alias xmerge='xrdb -merge ~/.Xresources'
 alias cs='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Counter-Strike\ 1.6\ -\ 2014/Counter-Strike.ex'
 alias repos='cd ~/Copy/repos'
@@ -155,13 +154,15 @@ alias vs='vim -X --servername vim -S ~/.vim/sessions/default'
 alias vsa='vim -X --servername vim -S ~/.vim/sessions/session_a'
 alias vsb='vim -X --servername vim -S ~/.vim/sessions/session_b'
 
+# translate-shell
+alias gt='trans' # (AUR: translate-shell-git)
+alias gte='trans -b :en' # portuguese to english
+alias gtb='trans -b' # english to portuguese
+alias gtb='trans :en -p -b' # pronuncia
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'
 alias pacup='sudo pacman -Syuu'
-alias pacin='sudo pacman -S'
-alias pacrem='sudo pacman -Rns'
-alias pacreps='sudo pacman -Ss'
 alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
 alias y='yaourt'
 alias yup='yaourt -Syua' # Atualiza os repositorios do Arch + AUR
@@ -185,16 +186,16 @@ alias wfcon="connmanctl connect"
 alias pbcopy='xclip -sel clip'
 alias pbpaste='xclip -sel clip -o'
 
-#Monta e desmonta a partição NTFS /dev/sda3
+# Monta e desmonta a partição NTFS /dev/sda3
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'
 alias umount-ntfs='sudo umount /mnt'
 
-#aliases para a saída de audio
+# aliases para a saída de audio
 alias hdmiaudion='sudo -u $USER pactl set-card-profile 0 output:hdmi-surround' # Ativa saída de audio HDMI
 alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo ' # Ativa saída de audio padrão
 ## Quando usar HDMI
 
-#Tmux
+# tmux
 alias tmux='tmux -f ~/.tmux/tmux.conf'
 alias t='tmux -f ~/.tmux/tmux.conf'
 alias tls='tmux ls'

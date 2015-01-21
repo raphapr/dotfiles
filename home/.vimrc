@@ -226,6 +226,7 @@ set undolevels=1000                     " Máximo numero de mudanças que podem 
 set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
 set re=1                                " Corrige os arquivos ruby que estavam lentos por causa da nova regex engine do vim
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
+set keywordprg=trans\ -b :pt            " Traduz para o inglês ao pressionar Shift+K quando o texto estiver selecionado pelo vim. NEED: translate-shell-git (AUR)
 colorscheme molokai
 
 " }}}
