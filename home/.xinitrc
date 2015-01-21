@@ -11,3 +11,4 @@ xset r rate 200 30
 
 #exec i3 --shmlog-size=26214400
 exec dbus-launch --sh-syntax --exit-with-session i3 --shmlog-size=26214400
+sleep 10 && systemctl --user restart mopidy

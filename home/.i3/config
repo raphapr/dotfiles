@@ -32,6 +32,7 @@ exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id redshift -c ~/.config/redshift
+exec --no-startup-id "cmst --minimized"
 #exec --no-startup-id "seafile-applet &"
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec_always --no-startup-id xset r rate 200 30
@@ -302,11 +303,6 @@ exec --no-startup-id $TERM -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
 bindsym $mod+F11 [instance="alsamixer"] scratchpad show
 
-# wicd
-exec --no-startup-id $TERM -name wicd -e "wicd-curses"
-for_window [instance="wicd"] move scratchpad
-bindsym $mod+F12 [instance="wicd"] scratchpad show;
-
 #}}}
 # Theme colors          ----------------------------------------------------- {{{
 
@@ -321,7 +317,7 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
-for_window [class="Guake"] floating enable
+for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="chromium"] normal 0 px
 
 #}}}
