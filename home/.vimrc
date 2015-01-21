@@ -216,7 +216,8 @@ set incsearch                           " Pesquisa incremental
 set hlsearch                            " Highlight search :)
 set ignorecase                          " Pesquisa ignora caixa alta e baixa
 set smartcase                           " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
-set pastetoggle=<F2>                    " ativa/desativa o auto ident para copiar/colar
+set pastetoggle=<F2>                    " ativa/desativa o paste mode para copiar/colar
+au InsertLeave * set nopaste            " Desativa paste mode ao sair do insert mode
 set splitbelow                          " Nova janela aparece abaixo da atual
 set splitright                          " Nova janela aparece a direita da atual
 set backupskip=/tmp/*,/private/tmp/*"   " Faz o Vim editar arquivos crontab
@@ -226,7 +227,7 @@ set undolevels=1000                     " Máximo numero de mudanças que podem 
 set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
 set re=1                                " Corrige os arquivos ruby que estavam lentos por causa da nova regex engine do vim
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
-set keywordprg=trans\ -b\ :pt            " Traduz para o inglês ao pressionar Shift+K quando o texto estiver selecionado pelo vim. NEED: translate-shell-git (AUR)
+set keywordprg=trans\ -b\ :pt           " Traduz para o inglês ao pressionar Shift+K quando o texto estiver selecionado pelo vim. NEED: translate-shell-git (AUR)
 colorscheme molokai
 
 " }}}
@@ -331,15 +332,14 @@ nnoremap <leader>i3 :vsplit ~/.i3/config<cr>
 " }}}
 " etc               {{{
 
-
 " quick save
 nmap S :w<CR>
 
 " Mata a janela
 nnoremap K :q<cr>
 
-"Salva arquivos mesmo sem permissão
-nmap <leader>ww :w !sudo tee > /dev/null %<CR>
+"Salva arquivos que requerem permissão root
+cmap w!! %!sudo tee > /dev/null %
 
 " Dois <Enter> para quebrar linha sem entrar no insert mode
 nmap <CR><CR> o<ESC>
