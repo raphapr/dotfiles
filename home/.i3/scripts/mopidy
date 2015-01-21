@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Author: Raphael P. Ribeiro <raphaelpr01@gmail.com> 
+
+MPCSTAT=`mpc | grep -v '^volume:'`
+if [ -z "${MPCSTAT}" ]; then # if not playing, exit
+    echo "$line" || exit 1
+else
+    if [ $1 == '1' ]; then # if arg = 1, show music symbols
+        MPCSTAT2=`echo "${MPCSTAT}" | sed 's,  *, ,g; 1h;1d;2G' | head -n1 | cut -d ']' -f 1 | tr -d [`
+        PLAY=""
+        PAUSE=""
+        [ "$MPCSTAT2" = "playing" ] && echo $PLAY || echo $PAUSE
+    else # else, show what's playing
+        PLAYING=`echo "${MPCSTAT}" | sed 's,  *, ,g; 1h;1d;2G' | paste -d' ' -s - | cut -d ')' -f2`
+        TIME=`echo "${MPCSTAT}" | sed 's,  *, ,g; 1h;1d;2G' | paste -d' ' -s - | head -n1 | cut -d ' ' -f3`
+        echo "$PLAYING ($TIME)"
+    fi
+fi
