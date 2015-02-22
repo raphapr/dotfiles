@@ -106,6 +106,9 @@ bindsym $mod+Shift+i exec --no-startup-id xrandr --output HDMI1 --mode 1024x768 
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output right
 
+# whatsapp
+bindsym $mod+Shift+w exec --no-startup-id chromium --app=https://web.whatsapp.com
+
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
 

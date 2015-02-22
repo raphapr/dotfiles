@@ -422,8 +422,12 @@ endif
 " Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
-nnoremap tn  :tabnext<CR>
-nnoremap <C-S-t>  :tabnew<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-b> :tabprevious<CR>
+nnoremap <C-n> :tabnext<CR>
+inoremap <C-t> <Esc>:tabnew<CR>
+inoremap <C-b> <Esc>:tabprevious<CR>i
+inoremap <C-n> <Esc>:tabnext<CR>i
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{
