@@ -4,7 +4,9 @@
 
 # Preambulo           ---------------------------------------------- {{{
 
-xset r rate 200 30
+if [ "$DISPLAY" ]; then
+    xset r rate 200 30
+fi
 
 export EDITOR=vim
 
