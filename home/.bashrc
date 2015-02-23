@@ -4,6 +4,8 @@
 
 # Preambulo           ---------------------------------------------- {{{
 
+xset r rate 200 30
+
 export EDITOR=vim
 
 # If not running interactively, don't do anything
