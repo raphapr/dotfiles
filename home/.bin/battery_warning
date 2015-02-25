@@ -17,8 +17,8 @@ echo $$ > $lf
 
 SLEEP_TIME=5   # Default time between checks.
 SAFE_PERCENT=30  # Still safe at this level.
-DANGER_PERCENT=15  # Warn when battery at this level.
-CRITICAL_PERCENT=8  # Hibernate when battery at this level.
+DANGER_PERCENT=18  # Warn when battery at this level.
+CRITICAL_PERCENT=13  # Hibernate when battery at this level.
  
 export DISPLAY=:0.0
 
@@ -33,15 +33,15 @@ function notify_n_hibernate
     killall notify-osd
     notify-send "Alerta! " "O computador irá hibernar dentro de 60 segundos" -i /usr/share/icons/Numix/scalable/status/battery-empty-symbolic.svg
     sleep 60
-    if [[ -n $(acpi -b | grep -i discharging) ]]; then # Se o notebook continuar fora da tomada, hiberna.
+    if [[ -n $(acpi -b | tail -n 1 | grep -i discharging) ]]; then # Se o notebook continuar fora da tomada, hiberna.
         i3exit hibernate
     fi
 }
 
 while [ true ]; do
-    if [[ -n $(acpi -b | grep -i discharging) ]]; then
+    if [[ -n $(acpi -b | tail -n 1 | grep -i discharging) ]]; then
         #pm-powersave true
-        rem_bat=$(acpi -b | grep -Eo "[0-9]+%" | grep -Eo "[0-9]+")
+        rem_bat=$(acpi -b | tail -n 1 | grep -Eo "[0-9]+%" | grep -Eo "[0-9]+")
  
         if [[ $rem_bat -gt $SAFE_PERCENT ]]; then
             SLEEP_TIME=10

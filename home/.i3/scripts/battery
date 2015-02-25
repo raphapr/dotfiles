@@ -11,8 +11,6 @@
 #
 # The color will gradually change for a percentage below 85%, and the urgency
 # (exit code 33) is set if there is less that 5% remaining.
-#
-# Modified by Raphael. Ribeiro <raphaelpr01@gmail.com>
 
 use strict;
 use warnings;
@@ -25,7 +23,7 @@ my $full_text;
 my $short_text;
 
 # read the first line of the "acpi" command output
-open (ACPI, 'acpi -b |') or die "Can't exec acpi: $!\n";
+open (ACPI, "acpi -b | tail -n 1 |") or die;
 $acpi = <ACPI>;
 close(ACPI);
 
@@ -39,11 +37,9 @@ $percent = $2;
 $full_text = "$percent%";
 
 if ($status eq 'Discharging') {
-        $full_text = ' DIS ' . $full_text ;
+    $full_text .= ' DIS';
 } elsif ($status eq 'Charging') {
-        $full_text = ' CHR ' . $full_text ;
-} elsif ($status eq 'Full') {
-        $full_text = ' FULL ' . $full_text ;
+    $full_text .= ' CHR';
 }
 
 $short_text = $full_text;
@@ -59,13 +55,13 @@ print "$short_text\n";
 # consider color and urgent flag only on discharge
 if ($status eq 'Discharging') {
 
-    if ($percent < 10) {
+    if ($percent < 20) {
         print "#FF0000\n";
     } elsif ($percent < 40) {
         print "#FFAE00\n";
     } elsif ($percent < 60) {
         print "#FFF600\n";
-    } elsif ($percent <= 100) {
+    } elsif ($percent < 85) {
         print "#A8FF00\n";
     }
 
