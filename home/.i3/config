@@ -73,6 +73,7 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área 
 
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
+bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 
 # volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && pkill -RTMIN+1 i3blocks
