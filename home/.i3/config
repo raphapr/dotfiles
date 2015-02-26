@@ -99,7 +99,7 @@ bindsym $mod+Tab exec --no-startup-id python2.7 ~/.i3-quickswitch/quickswitch.py
 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off
 bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1
+bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+Shift+p exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1 # presentations VGA1
 bindsym $mod+Shift+i exec --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as LVDS1 # presentations HDMI1
 
