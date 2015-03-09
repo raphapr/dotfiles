@@ -162,7 +162,7 @@ alias vsb='vim -X --servername vim -S ~/.vim/sessions/session_b'
 alias gt='trans' # (AUR: translate-shell-git)
 alias gte='trans -b :en' # portuguese to english
 alias gtb='trans -b' # english to portuguese
-alias gtb='trans :en -p -b' # pronuncia
+alias gtp='trans :en -p -b' # pronuncia
 
 # Pacman/Yaourt aliases
 alias p='sudo pacman'
@@ -194,11 +194,6 @@ alias pbpaste='xclip -sel clip -o'
 alias mount-ntfs='sudo ntfs-3g /dev/sda3 /mnt'
 alias umount-ntfs='sudo umount /mnt'
 
-# aliases para a saída de audio
-alias hdmiaudion='sudo -u $USER pactl set-card-profile 0 output:hdmi-surround' # Ativa saída de audio HDMI
-alias hdmiaudioff='sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo ' # Ativa saída de audio padrão
-## Quando usar HDMI
-
 # tmux
 alias tmux='tmux -f ~/.tmux/tmux.conf'
 alias t='tmux -f ~/.tmux/tmux.conf'
@@ -208,6 +203,12 @@ alias tk='tmux kill-session -t'
 
 #VPN
 alias vpn='cd ~/.openvpn && sudo openvpn pfsense-udp-1194.ovpn'
+
+# urserver
+alias urserver='/opt/urserver/urserver --daemon'
+
+# Ver diretórios com mais espaço em disco 
+alias topdir=' du -sh * | sort -nr | head -n10'
 
 # }}}
 # Funções             ---------------------------------------------- {{{

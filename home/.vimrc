@@ -77,6 +77,9 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 
+let g:LatexBox_quickfix = 4
+
+
 " }}}
 " ===== matchit.vim             {{{
 
@@ -128,6 +131,11 @@ let g:syntastic_aggregate_errors = 1
 
 Plug 'kien/ctrlp.vim'
 
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+let g:ctrlp_working_path_mode=""
+let g:ctrlp_follow_symlinks=1
+
 " F5 - Refresh
 
 " Abre no home
@@ -142,7 +150,6 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-let g:ctrlp_working_path_mode='c'
 
 " }}}
 " ===== markdown.vim            {{{
@@ -176,19 +183,14 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 " }}}
-" ===== goyo                    {{{
+" ===== supertab                {{{
 
-let g:goyo_width = 180
-nnoremap <F7> :Goyo<CR>
+" Tab para auto completar
 
-Plug 'junegunn/goyo.vim'
+Plug 'ervandew/supertab'
 
-" }}}
-" ===== quickrun                {{{
-
-map <leader><leader> :QuickRun<CR>
-
-Plug 'thinca/vim-quickrun'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+setlocal omnifunc=LatexBox_Complete
 
 " }}}
 
@@ -228,6 +230,7 @@ set undoreload=10000                    " Máximo número de linhas a serem salv
 set re=1                                " Corrige os arquivos ruby que estavam lentos por causa da nova regex engine do vim
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 set keywordprg=trans\ -b\ :pt           " Traduz para o inglês ao pressionar Shift+K quando o texto estiver selecionado pelo vim. NEED: translate-shell-git (AUR)
+let g:tex_flavor='latex'
 colorscheme molokai
 
 " }}}
