@@ -141,9 +141,7 @@ let g:ctrlp_follow_symlinks=1
 " Abre no home
 noremap <C-P> :CtrlP<CR>
 " Abre no diretório atual do arquivo
-noremap <Leader>p :CtrlPRoot<CR>
-noremap <leader>b :CtrlPBuffer<CR>
-noremap <leader>bt :CtrlPBufTag<CR>
+noremap <F11> :CtrlPBufTag<CR>
 noremap <leader>mru :CtrlPMRU<CR>
 
 set wildmode=list:longest,list:full

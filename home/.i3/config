@@ -28,13 +28,15 @@ exec --no-startup-id guake -e "tmux attach -t guake"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id CopyAgent
-exec --no-startup-id compton
+exec --no-startup-id compton -b --backend glx --vsync opengl
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
-exec --no-startup-id redshift -c ~/.config/redshift
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
-#exec --no-startup-id wicd-gtk -t
+exec --no-startup-id clipit --daemon
+exec --no-startup-id clipit
 exec_always --no-startup-id xset r rate 200 30
+#exec --no-startup-id compton
+#exec --no-startup-id redshift -c ~/.config/redshift
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{
