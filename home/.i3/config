@@ -28,7 +28,7 @@ exec --no-startup-id guake -e "tmux attach -t guake"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id CopyAgent
-exec --no-startup-id compton -b --backend glx --vsync opengl
+exec --no-startup-id compton
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
@@ -98,7 +98,7 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 bindsym $mod+Tab exec --no-startup-id python2.7 ~/.i3-quickswitch/quickswitch.py
 
 # xrandr
-bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off
+bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio
