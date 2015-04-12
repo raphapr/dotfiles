@@ -149,8 +149,9 @@ alias ev='vim ~/.vimrc'
 alias i3c='vim ~/.i3/config'
 alias transm='transmission-remote-cli'
 alias xmerge='xrdb -merge ~/.Xresources'
-alias cs='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Counter-Strike\ 1.6\ -\ 2014/Counter-Strike.ex'
 alias repos='cd ~/Copy/repos'
+alias cheatsh='zathura ~/Copy/cheats/canivete-shell.pdf'
+alias cheatsed='cat ~/Copy/cheats/sed | more'
 
 # vim
 alias vim='vim -X --servername vim'

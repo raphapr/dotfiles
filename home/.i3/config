@@ -74,7 +74,7 @@ bindsym --release Print exec --no-startup-id $PRINT
 bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área retangular para o print
 
 # power manager toggle
-bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
+bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
 bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 
 # volume
@@ -97,9 +97,14 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 # quickswitch-for-i3
 bindsym $mod+Tab exec --no-startup-id python2.7 ~/.i3-quickswitch/quickswitch.py
 
+# adding undetected resolution
+# xrandr --newmode "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+# xrandr --addmode VGA1 1440x900_60.00
+
 # xrandr
 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
+#bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --mode 1440x900_60.00 --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio
 bindsym $mod+Shift+p exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1 # presentations VGA1
