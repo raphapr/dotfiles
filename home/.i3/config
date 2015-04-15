@@ -97,24 +97,37 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 # quickswitch-for-i3
 bindsym $mod+Tab exec --no-startup-id python2.7 ~/.i3-quickswitch/quickswitch.py
 
-# adding undetected resolution
-# xrandr --newmode "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
-# xrandr --addmode VGA1 1440x900_60.00
-
-# xrandr
-bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
-#bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --mode 1440x900_60.00 --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio
-bindsym $mod+Shift+p exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1 # presentations VGA1
-bindsym $mod+Shift+i exec --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as LVDS1 # presentations HDMI1
-
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output right
 
 # whatsapp
 bindsym $mod+Shift+w exec --no-startup-id google-chrome-stable --app=https://web.whatsapp.com
+
+#}}}
+# Multi-monitor         ----------------------------------------------------- {{{
+
+# popular
+bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
+
+set $multi_monitor (1) Default, (2) VGA-L, (3) VGA-R, (4) HDMI-DVI, (5) HDMI, (6) PRES-VGA, (7) PRES-HDMI
+mode "$multi_monitor" {
+    bindsym 1 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 3 exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio, mode "default"
+    bindsym 6 exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1, mode "default"     # presentations VGA1
+    bindsym 7 --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as LVDS1, mode "default"         # presentations HDMI1
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+F12 mode "$multi_monitor"
 
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
@@ -296,12 +309,6 @@ bindsym $mod+F1 mode "$mode_system"
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
-
-# dropdown terminal
-#exec --no-startup-id $TERM -title metask
-#for_window [title="metask"] floating enable;
-#for_window [title="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 683px; move scratchpad
-#bindsym F4 [title="metask"] scratchpad show
 
 # htop
 exec --no-startup-id $TERM -name monitor -e "htop"

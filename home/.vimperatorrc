@@ -34,3 +34,6 @@ inoremap <C-a> <Ins><C-a><Ins>
 noremap U :undo<Space>
 
 set defsearch=google
+
+map <C-S-PageUp> :tabm -1<CR>
+map <C-S-PageDown> :tabm +1<CR>
