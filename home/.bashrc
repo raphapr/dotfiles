@@ -129,6 +129,9 @@ source ~/.git-completion.bash
 # quick access to files and directories for POSIX shells
 eval "$(fasd --init auto)"
 
+# fzf initialization
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # }}}
 # Aliases             ---------------------------------------------- {{{
 

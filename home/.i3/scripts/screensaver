@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pid=$(pidof xautolock)
+if [ -z $pid ]; then # Se não estiver rodando
+    ISON="OFF"
+else
+    ISON="ON"
+fi
+echo $ISON #full_text
+echo $ISON #short_text
+if [ "$ISON" = "OFF" ]; then # no internet? color will turn red
+    echo "#FF0000"
+fi
