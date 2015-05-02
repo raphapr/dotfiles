@@ -191,6 +191,12 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 setlocal omnifunc=LatexBox_Complete
 
 " }}}
+" ===== vim-fish                {{{
+
+Plug 'dag/vim-fish'
+
+
+" }}}
 
 call plug#end()
 
