@@ -194,7 +194,7 @@ setlocal omnifunc=LatexBox_Complete
 " ===== vim-fish                {{{
 
 Plug 'dag/vim-fish'
-
+autocmd FileType fish compiler fish
 
 " }}}
 

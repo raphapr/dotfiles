@@ -159,6 +159,7 @@ alias xmerge='xrdb -merge ~/.Xresources'
 alias repos='cd ~/Copy/repos'
 alias cheatsh='zathura ~/Copy/cheats/canivete-shell.pdf'
 alias cheatsed='cat ~/Copy/cheats/sed | more'
+alias x='dtrx'
 
 # fasd 
 alias a='fasd -a'        # any
@@ -201,6 +202,7 @@ alias globo='ping -i 3 www.globo.com'
 alias yahoo='ping -i 3 www.yahoo.com'
 
 # connman
+alias c="connmanctl"
 alias wfscan="connmanctl services"
 alias wfcon="connmanctl connect"
 
@@ -225,11 +227,8 @@ alias vpn='cd ~/.openvpn && sudo openvpn pfsense-udp-1194.ovpn'
 # urserver
 alias urserver='/opt/urserver/urserver --daemon'
 
-# Ver diretórios com mais espaço em disco 
-alias topdir=' du -sh * | sort -nr | head -n10'
-
 # }}}
-# Funções             ---------------------------------------------- {{{
+# Functions           ---------------------------------------------- {{{
 
 # wallchange        {{{
 
@@ -237,6 +236,22 @@ alias topdir=' du -sh * | sort -nr | head -n10'
 function wallc()
 {
     cp $1 ~/.wallpaper.png && feh --bg-fill ~/.wallpaper.png
+}
+
+# }}}
+# ag                {{{
+
+function ag()
+{
+    ag --smart-case $1
+}
+
+# }}}
+# f                 {{{
+
+function f()
+{
+    find . | ag $1
 }
 
 # }}}
@@ -281,6 +296,23 @@ function wininfo() {
 function cgl() {
     if [ -f a.out ]; then rm -rf a.out; fi
     g++ $1 -o a.out -lGLU -lGL -lglut && ./a.out
+}
+
+# }}}
+# vz                {{{
+
+function vz()
+{
+    fasd -fe vim $1
+}
+
+# }}}
+# take              {{{
+
+function take()
+{
+    mkdir -p $1
+    cd $1
 }
 
 # }}}
