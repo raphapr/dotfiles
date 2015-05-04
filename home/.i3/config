@@ -14,7 +14,7 @@
 
 set $mod Mod4
 set $BROWSER    firefox
-set $TERM       urxvt
+set $TERM       urxvt -e fish
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav

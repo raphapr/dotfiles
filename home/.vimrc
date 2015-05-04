@@ -116,7 +116,9 @@ let g:miniBufExplorerAutoStart = 0
 " Checa erro de sintaxe
 Plug 'scrooloose/syntastic'
 
-nnoremap <leader>st :SyntasticToggleMode<CR>
+" começa em passive mode
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>sk :SyntasticCheck<CR> :SyntasticToggleMode<CR> }
 
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -354,8 +356,8 @@ map 2v :w<CR>:!pandoc % -o %<.pdf ; zathura %<.pdf<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
-" fecha buffer
-nmap <C-E> :bd<CR>
+" fecha buffer (sem quebrar a janela do NERDTree)
+nnoremap <C-E> :bp<cr>:bd #<cr>
 
 "}}}
 " git               {{{
