@@ -37,3 +37,9 @@ set defsearch=google
 
 map <C-S-PageUp> :tabm -1<CR>
 map <C-S-PageDown> :tabm +1<CR>
+
+" Move the current tab to the left
+noremap <leader>h <Esc>:tabmove! -1<CR>
+
+" Move the current tab to the right
+noremap <leader>l <Esc>:tabmove! +1<CR> " "
