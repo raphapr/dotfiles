@@ -93,7 +93,7 @@ alias yahoo 'ping -i 3 www.yahoo.com'
 # }}}
 # connman          {{{
 
-alias co "connmanctl"
+alias c "connmanctl"
 alias wfscan "connmanctl services"
 alias wfcon "connmanctl connect"
 

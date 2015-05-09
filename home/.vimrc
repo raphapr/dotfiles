@@ -12,6 +12,9 @@ filetype off
 filetype plugin on
 filetype plugin indent on
 
+" Sem setar o bash como shell padrão, o syntastic demora no tmux
+set shell=/bin/bash
+
 " }}}
 " Plugins   ---------------------------------------------------------------- {{{
 
@@ -102,15 +105,6 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#whitespace#checks = ['indent']
 
 " }}}
-" ===== minibufexpl             {{{
-
-"Janela que lista os buffers
-Plug 'fholgado/minibufexpl.vim'
-map <F8> :MBEToggle<CR>
-
-let g:miniBufExplorerAutoStart = 0
-
-" }}}
 " ===== Syntastic               {{{
 
 " Checa erro de sintaxe
@@ -135,7 +129,8 @@ Plug 'kien/ctrlp.vim'
 
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
-let g:ctrlp_working_path_mode=""
+let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_switch_buffer='Et'
 let g:ctrlp_follow_symlinks=1
 
 " F5 - Refresh
@@ -143,6 +138,7 @@ let g:ctrlp_follow_symlinks=1
 " Abre no home
 noremap <C-P> :CtrlP<CR>
 " Abre no diretório atual do arquivo
+noremap <F8> :CtrlPBuffer<CR>
 noremap <F11> :CtrlPBufTag<CR>
 noremap <leader>mru :CtrlPMRU<CR>
 
@@ -196,7 +192,6 @@ setlocal omnifunc=LatexBox_Complete
 " ===== vim-fish                {{{
 
 Plug 'dag/vim-fish'
-autocmd FileType fish compiler fish
 
 " }}}
 

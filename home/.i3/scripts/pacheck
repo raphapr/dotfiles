@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sudo pacman -Sy >> /dev/null
+
+list=($(pacman -Quq))
+size=${#list[@]}
+#if [ "$size" != "0" ]; then
+    #size=$((size + 1))
+#fi
+echo $size #full_text
+echo $size #short_text
+if [ "$size" != "0" ]; then
+    echo "#52FF46"
+fi
