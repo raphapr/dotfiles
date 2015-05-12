@@ -15,6 +15,7 @@
 set $mod Mod4
 set $BROWSER    firefox
 set $TERM       urxvt -e fish
+set $TERM1      urxvt
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
@@ -311,12 +312,12 @@ bindsym $mod+F1 mode "$mode_system"
 # scratchpads           ----------------------------------------------------- {{{
 
 # htop
-exec --no-startup-id $TERM -name monitor -e "htop"
+exec --no-startup-id $TERM1 -name monitor -e "htop"
 for_window [instance="monitor"] move scratchpad
 bindsym $mod+BackSpace [instance="monitor"] scratchpad show
 
 # alsamixer
-exec --no-startup-id $TERM -name alsamixer -e "alsamixer"
+exec --no-startup-id $TERM1 -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
 bindsym $mod+F11 [instance="alsamixer"] scratchpad show
 
