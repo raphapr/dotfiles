@@ -15,11 +15,13 @@
 #!/bin/bash
 test -z $1 && echo "need magnet link!
 $0 <magnet link>" && exit -1
+
+
  
 HOST=127.0.0.1 #YourRemoteHostNameOrIP
 PORT=9091 #YourPort(default is 9091)
 USER=raphael
-PASS=pass
+PASS=$(cat .passwdlist)
  
 LINK="$1"
 # set true if you want every torrent to be paused initially

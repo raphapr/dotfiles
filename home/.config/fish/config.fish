@@ -38,6 +38,7 @@ alias i3c 'vim ~/.i3/config'
 alias transm 'transmission-remote-cli'
 alias xmerge 'xrdb -merge ~/.Xresources'
 alias repos 'cd ~/Copy/repos'
+alias miniman 'zathura ~/Copy/cheats/miniman.pdf'
 alias cheatsh 'zathura ~/Copy/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Copy/cheats/sed | more'
 alias x 'dtrx'
@@ -60,7 +61,7 @@ alias vsb 'vim -X --servername vim -S ~/.vim/sessions/session_b'
 # }}}
 # translate-shell  {{{
 
-alias gt 'trans' # (AUR: translate-shell-git)
+alias t 'trans' # (AUR: translate-shell-git)
 alias gte 'trans -b :en' # portuguese to english
 alias gtb 'trans -b' # english to portuguese
 alias gtp 'trans :en -p -b' # pronuncia
@@ -115,7 +116,7 @@ alias umount-ntfs 'sudo umount /mnt'
 # tmux             {{{
 
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
-alias t 'tmux -f ~/.tmux/tmux.conf'
+alias tm 'tmux -f ~/.tmux/tmux.conf'
 alias tls 'tmux ls'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
@@ -131,6 +132,16 @@ alias tk 'tmux kill-session -t'
 function browser
     /usr/bin/xdg-open $argv
 end
+
+# }}}
+# openl             {{{
+
+# move most recent file from download folder
+function openl
+    #set -l file (find ~/Downloads/ -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
+    xdg-open (find ~/Downloads/ -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
+end
+
 
 # }}}
 # ag                {{{
@@ -426,6 +437,14 @@ end
 function 1.wants
     systemctl --user show -p "Wants" $argv.target
 end
+
+# }}}
+# su                {{{
+
+function su
+        /bin/su --shell=/usr/bin/fish $argv
+end
+funcsave su
 
 # }}}
 

@@ -95,9 +95,6 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 # kill current notification
 bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 
-# quickswitch-for-i3
-bindsym $mod+Tab exec --no-startup-id python2.7 ~/.i3-quickswitch/quickswitch.py
-
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output right
 
@@ -142,8 +139,10 @@ mouse_warping none
 # kill focused window
 bindsym $mod+c kill
 
-# start dmenu (a program launcher)
+# start rofi (a program launcher)
 bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -b -p 'dmenu'"
+#bindsym $mod+space exec --no-startup-id rofi -show run -font "snap 10" -fg "#BBB5B5" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+Tab exec --no-startup-id rofi -show window -font "snap 10" -fg "#BBB5B5" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that

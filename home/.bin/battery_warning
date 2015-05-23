@@ -17,8 +17,8 @@ echo $$ > $lf
 
 SLEEP_TIME=5   # Default time between checks.
 SAFE_PERCENT=30  # Still safe at this level.
-DANGER_PERCENT=18  # Warn when battery at this level.
-CRITICAL_PERCENT=13  # Hibernate when battery at this level.
+DANGER_PERCENT=20  # Warn when battery at this level.
+CRITICAL_PERCENT=15  # Hibernate when battery at this level.
  
 export DISPLAY=:0.0
 

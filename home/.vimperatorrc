@@ -6,8 +6,8 @@ nnoremap k 4k
 nnoremap K gt
 nnoremap J gT
 
-ignorekeys add feedly.com
 ignorekeys add mail.google.com
+ignorekeys add feedly.com
 
 "set gui=none,tabs
 
@@ -35,11 +35,15 @@ noremap U :undo<Space>
 
 set defsearch=google
 
-map <C-S-PageUp> :tabm -1<CR>
-map <C-S-PageDown> :tabm +1<CR>
+" Use <C-h>,<C-l> to move a tab one position left,right
+nnoremap <C-h> :tabmove!<Space>-1<Return>
+nnoremap <C-l> :tabmove!<Space>+1<Return>"
 
-" Move the current tab to the left
-noremap <leader>h <Esc>:tabmove! -1<CR>
+" add to bookmark
+nnoremap <leader>b :bmark<CR>
 
-" Move the current tab to the right
-noremap <leader>l <Esc>:tabmove! +1<CR> " "
+" show bookmark
+nnoremap <leader>B :bmarks<space>
+
+" reload vimperator
+nnoremap <leader>re :source ~/.vimperatorrc<CR>
