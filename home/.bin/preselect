@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Abre o thunar e preseleciona arquivo mais recente baixado
+
+file=$(find ~/Downloads/ -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
+
+if [ -z "$file" ]; then
+    echo 'No file selected' 1>&2
+    exit 1
+fi
+
+if [[ ! $(command -v thunar) ]]; then
+    echo 'Thunar is not installed' 1>&2
+    exit 1
+fi
+
+if [ -d "$file" ]; then
+    thunar "$file" &
+else
+    if [ ! -f "$file" ]; then
+        echo 'File does not exist' 1>&2
+        exit 1
+    fi
+
+    if [[ ! $(command -v xdotool) ]]; then
+        echo 'Xdotool is not installed' 1>&2
+        exit 1
+    fi
+
+    set -e #exit on any error
+    thunar "$(dirname "$file")" &
+    window_id=`xdotool search --sync --onlyvisible --class 'Thunar' | head -n1`
+    xdotool key --clearmodifiers 'ctrl+s'
+    xdotool type "$(basename "$file")"
+    xdotool key Return
+fi
