@@ -25,7 +25,7 @@ set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.soun
 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
-exec --no-startup-id guake -e "tmux attach -t guake"
+exec --no-startup-id guake -e "~/.startupGuake.sh"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id CopyAgent

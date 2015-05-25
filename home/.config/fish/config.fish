@@ -49,6 +49,7 @@ alias vpn 'cd ~/.openvpn ; sudo openvpn pfsense-udp-1194.ovpn'
 alias urserver '/opt/urserver/urserver --daemon'
 # Ver diretórios com mais espaço em disco 
 alias topdir 'du -sh * | sort -nr | head -n10'
+alias guake 'guake -e ~/.startupGuake.sh'
 
 # }}}
 # vim              {{{
