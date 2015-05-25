@@ -134,16 +134,6 @@ function browser
 end
 
 # }}}
-# openl             {{{
-
-# move most recent file from download folder
-function openl
-    #set -l file (find ~/Downloads/ -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
-    xdg-open (find ~/Downloads/ -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" ")
-end
-
-
-# }}}
 # ag                {{{
 
 function ag
@@ -444,7 +434,6 @@ end
 function su
         /bin/su --shell=/usr/bin/fish $argv
 end
-funcsave su
 
 # }}}
 
