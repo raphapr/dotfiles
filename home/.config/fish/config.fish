@@ -50,6 +50,7 @@ alias urserver '/opt/urserver/urserver --daemon'
 # Ver diretórios com mais espaço em disco 
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
+alias sieweb 'ruby ~/Copy/sistemaAcademico.rb'
 
 # }}}
 # vim              {{{
@@ -62,7 +63,6 @@ alias vsb 'vim -X --servername vim -S ~/.vim/sessions/session_b'
 # }}}
 # translate-shell  {{{
 
-alias t 'trans' # (AUR: translate-shell-git)
 alias gte 'trans -b :en' # portuguese to english
 alias gtb 'trans -b' # english to portuguese
 alias gtp 'trans :en -p -b' # pronuncia
@@ -117,8 +117,7 @@ alias umount-ntfs 'sudo umount /mnt'
 # tmux             {{{
 
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
-alias tm 'tmux -f ~/.tmux/tmux.conf'
-alias tls 'tmux ls'
+alias t 'tmux -f ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 

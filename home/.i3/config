@@ -25,7 +25,7 @@ set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.soun
 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
-exec --no-startup-id guake -e "~/.startupGuake.sh"
+exec --no-startup-id "guake -e '~/.startupGuake.sh'"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id CopyAgent
@@ -110,6 +110,7 @@ bindsym $mod+shift+m exec --no-startup-id xrandr --output VGA1 --auto --right-of
 bindsym $mod+Shift+n exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+F2      exec --no-startup-id xrandr --output HDMI1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+F3      exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F4      exec --no-startup-id xrandr --output HDMI1 --auto --output LVDS1 --off && feh --bg-fill ~/.wallpaper.png
 
 set $multi_monitor (1) DEFAULT  (2) VGA-L  (3) VGA-R  (4) HDMI-DVI-L  (5) HDMI-DVI-R  (6) HDMI  (7) PRES-VGA  (8) PRES-HDMI
 mode "$multi_monitor" {

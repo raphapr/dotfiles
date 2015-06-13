@@ -111,7 +111,7 @@ let g:airline#extensions#tabline#enabled = 1
 Plug 'scrooloose/syntastic'
 
 " começa em passive mode
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'],'passive_filetypes': [] }
 nnoremap <leader>sk :SyntasticCheck<CR> :SyntasticToggleMode<CR> }
 
 let g:syntastic_always_populate_loc_list=1
