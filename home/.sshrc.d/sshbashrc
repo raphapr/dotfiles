@@ -1,0 +1,161 @@
+#
+# sshbashrc
+# Raphael P. Ribeiro
+
+# History Control     ---------------------------------------------- {{{
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+# Combine multiline commands into one in history
+shopt -s cmdhist
+
+# After each command, save and reload history
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+#export PROMPT_COMMAND="history -a"
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=100000
+HISTFILESIZE=100000
+
+#}}}
+# Aliases             ---------------------------------------------- {{{
+
+# Conveniências do shell
+alias lash='ls -lash'
+alias l='ls -CF'
+alias v='vim'
+alias k='kill -9'
+alias r='ranger'
+alias h='history 1000'
+alias g='git'
+alias desk='cd ~/Desktop'
+alias myip='curl ifconfig.me' # show extern ip
+alias sb='source ~/.bashrc'
+alias eb='vim ~/.bashrc'
+alias ev='vim ~/.vimrc'
+
+# Pings
+alias google='ping -i 3 www.google.com'
+alias globo='ping -i 3 www.globo.com'
+alias yahoo='ping -i 3 www.yahoo.com'
+
+# tmux
+alias tls='tmux ls'
+alias ta='tmux attach -t'
+alias tk='tmux kill-session -t'
+
+# }}}
+# Functions           ---------------------------------------------- {{{
+
+# Systemd Shortcuts {{{
+
+0.start() {
+    sudo systemctl start $1.service
+    }
+# restart systemd service
+0.restart() {
+     sudo systemctl restart $1.service
+    }
+# stop systemd service
+0.stop() {
+    sudo systemctl stop $1.service
+    }
+# enable systemd service
+    0.enable() {
+        sudo systemctl enable $1.service
+    }
+# disable a systemd service
+0.disable() {
+         sudo systemctl disable $1.service
+    }
+# show the status of a service
+0.status() {
+        systemctl status $1.service
+    }
+# reload a service configuration
+0.reload() {
+        sudo systemctl reload $1.service
+    }
+# list all running service
+0.list() {
+        systemctl
+    }
+# list all failed service
+0.failed () {
+        systemctl --failed
+    }
+# list all systemd available unit files
+0.list-files() {
+        systemctl list-unit-files
+    }
+# check the log
+0.log() {
+        sudo journalctl
+    }
+# show wants
+0.wants() {
+        systemctl show -p "Wants" $1.target
+    }
+# analyze the system
+0.analyze() {
+     systemd-analyze $1
+    }
+
+# }}}
+# Systemd --user    {{{
+
+1.start() {
+    systemctl --user start $1.service
+    }
+# restart systemd service
+1.restart() {
+    systemctl --user restart $1.service
+    }
+# stop systemd service
+1.stop() {
+    systemctl --user stop $1.service
+    }
+# enable systemd service
+1.enable() {
+    systemctl --user enable $1.service
+    }
+# disable a systemd service
+1.disable() {
+    systemctl --user disable $1.service
+    }
+# show the status of a service
+1.status() {
+    systemctl --user status $1.service
+    }
+# reload a service configuration
+1.reload() {
+    systemctl --user reload $1.service
+    }
+# list all running service
+1.list() {
+    systemctl --user
+    }
+# list all failed service
+1.failed () {
+    systemctl --user --failed
+    }
+# list all systemd available unit files
+1.list-files() {
+    systemctl --user list-unit-files
+    }
+# check the log
+1.log() {
+    journalctl --user
+    }
+# show wants
+1.wants() {
+    systemctl --user show -p "Wants" $1.target
+    }
+
+# }}}
+
+# }}}

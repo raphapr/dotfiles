@@ -1,0 +1,6 @@
+# my sshrc file
+
+export VIM=$SSHHOME/.sshrc.d
+source $SSHHOME/.sshrc.d/sshbashrc
+alias vim='vim -u $SSHHOME/.sshrc.d/sshvimrc'
+alias tmux='tmux -f $SSHHOME/.sshrc.d/tmux.conf'

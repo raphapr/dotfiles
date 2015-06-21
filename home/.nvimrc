@@ -232,7 +232,6 @@ au InsertLeave * set nopaste            " Desativa paste mode ao sair do insert 
 set splitbelow                          " Nova janela aparece abaixo da atual
 set splitright                          " Nova janela aparece a direita da atual
 set backupskip=/tmp/*,/private/tmp/*"   " Faz o Vim editar arquivos crontab
-set number                              " Enumera as linhas
 set undofile                            " Estabelece o uso de um arquivo persistente para undo list
 set undolevels=1000                     " Máximo numero de mudanças que podem ser desfeitas
 set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
@@ -440,9 +439,9 @@ vnoremap > >gv
 set backup                          " habilita backups
 set noswapfile                      " não cria mais os malditos .swp
 
-set undodir=~/.vim/undodir          " undo list
-set backupdir=~/.vim/tmp/backup/    " backups
-set directory=~/.vim/tmp/swap/      " swap files
+set undodir=~/.nvim/undodir          " undo list
+set backupdir=~/.nvim/tmp/backup/    " backups
+set directory=~/.nvim/tmp/swap/      " swap files
 
 " Certifica-se de que as pastas sejam criadas automaticamente se já não existirem.
 if !isdirectory(expand(&undodir))
