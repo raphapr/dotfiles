@@ -1,4 +1,4 @@
-" .vimrc
+" .nvimrc
 " Author: Raphael P. Ribeiro
 "
 
@@ -7,10 +7,12 @@
 " <Leader> por default é \
 let mapleader=","
 let maplocalleader = ","
-set nocompatible
 filetype off
 filetype plugin on
 filetype plugin indent on
+
+" clipboard unificado
+set clipboard+=unnamedplus
 
 " Sem setar o bash como shell padrão, o syntastic demora no tmux
 set shell=/bin/bash
@@ -18,7 +20,7 @@ set shell=/bin/bash
 " }}}
 " Plugins   ---------------------------------------------------------------- {{{
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.nvim/plugged')
 
 " ===== Esquema de cores        {{{
 
@@ -337,10 +339,22 @@ set foldtext=MyFoldText()
 " }}}
 " Maps    -----------------------------------------------------------------  {{{
 
-" System Clipboard  {{{
+" terminal          {{{
 
-" Copia para a área de transferência do X
-map <leader>c !xclip -sel clip<CR>u
+" Open :Terminal with fish shell
+command! -bang Terminal terminal<bang> fish
+
+" This maps Leader + e to exit terminal mode. 
+tnoremap <esc><esc> <C-\><C-n>
+
+" horizontal split terminal
+map <Leader>te :split<CR>:Terminal<CR>
+
+" vertical split terminal
+map <Leader>tv :vsp<CR>:Terminal<CR>
+
+" Muda para o terminal em insert mode
+autocmd WinEnter term://* startinsert
 
 " }}}
 " markdown          {{{
@@ -372,22 +386,26 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>'
 
 "}}}
-" sessions          {{{
-
-if !isdirectory("/home/raphael/.vim/sessions")
-    call mkdir("/home/raphael/.vim/sessions", "p")
-endif
-
-nnoremap <leader>ss :mksession! ~/.vim/sessions/default<CR>
-nnoremap <leader>sa :mksession! ~/.vim/sessions/session_a<CR>
-nnoremap <leader>sb :mksession! ~/.vim/sessions/session_b<CR>
-
-""}}}
 " edição rápida     {{{
 
-nnoremap <leader>vi :vsplit ~/.vimrc<cr>
-nnoremap <leader>eb :vsplit ~/.bashrc<cr>
+nnoremap <leader>vi :vsplit ~/.nvimrc<cr>
+nnoremap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nnoremap <leader>i3 :vsplit ~/.i3/config<cr>
+
+" }}}
+" programação       {{{
+
+" compilar com openGL (CG)
+nnoremap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
+
+" ruby
+nnoremap <Leader>ru :split<CR>:term ruby %<CR>
+
+" julia
+nnoremap <Leader>ju :split<CR>:term julia %<CR>
+
+" bash
+nnoremap <Leader>ba :split<CR>:term . %<CR>
 
 " }}}
 " etc               {{{
@@ -403,18 +421,6 @@ cmap w!! %!sudo tee > /dev/null %
 
 " Dois <Enter> para quebrar linha sem entrar no insert mode
 nmap <CR><CR> o<ESC>
-
-" compilar com openGL (CG)
-nnoremap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
-
-" ruby
-nnoremap <Leader>ru :!clear && ruby %<CR>
-
-" julia
-nnoremap <Leader>ju :!clear && julia %<CR>
-
-" bash
-nnoremap <Leader>ba :!clear && . %<CR>
 
 " Recarrega vimrc
 map <Leader>re :so %<CR>
@@ -495,12 +501,15 @@ inoremap <C-n> <Esc>:tabnext<CR>i
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{
 
-"Navegação entre janelas,
-"<ctrl><hjkl> em vez de <ctrl><w><hjkl>
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
+" move from the neovim terminal window to somewhere else
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "Resize vsplit
 nnoremap = :vertical resize +5<cr>
@@ -514,54 +523,17 @@ nnoremap <M-Left>    <C-W>=
 nnoremap <M-Right>   <C-W><Bar>
 
 " }}}
-" Trailing whitespace  ----------------------------------------------------- {{{
-
-function! TrimWhiteSpace()
-  let @*=line(".")
-  %s/\s*$//e
-  ''
-endfunction
-
-nnoremap <leader>tw :call TrimWhiteSpace()<cr>:let @/=''<CR>
-
-" }}}
 " Ajustes  ----------------------------------------------------------------- {{{
 
-"" Acaba com o delay do esc (no .tmux.conf: set -sg escape-time 0)
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-   augroup END
+" Hack to get C-h working in neovim
+if has('nvim')
+     nmap <BS> <C-W>h
 endif
 
 " Certifica-se que o Vim retorna para a mesma linha quando abre o arquivo
 if has("autocmd")
       au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
           \| exe "normal! g'\"" | endif
-endif
-
-" Ajustes GUI
-if has('gui_running')
-    " GUI Vim
-
-    set guifont=Menlo\ Regular\ for\ Powerline:h12
-
-    " Remove all the UI cruft
-    set go-=T
-    set go-=l
-    set go-=L
-    set go-=r
-    set go-=R
-
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
-
-    " Different cursors for different modes.
-    set guicursor=n-c:block-Cursor-blinkon0
-    set guicursor+=v:block-vCursor-blinkon0
-    set guicursor+=i-ci:ver20-iCursor
 endif
 
 " Só assim eu aprendo a usar o hjkl

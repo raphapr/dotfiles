@@ -17,7 +17,9 @@ end
 
 alias lash 'ls -lash'
 alias l 'ls -CF'
-alias v 'vim'
+alias vim 'nvim'
+alias v 'nvim'
+alias nv 'nvim'
 alias k 'kill -9'
 alias r 'ranger'
 alias g 'git'
@@ -31,10 +33,10 @@ alias grubconf 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias automhwd 'sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee ; sudo mhwd -a pci nonfree 0300'
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
-alias ef 'vim ~/.config/fish/config.fish'
-alias eb 'vim ~/.bashrc'
-alias ev 'vim ~/.vimrc'
-alias i3c 'vim ~/.i3/config'
+alias ef 'v ~/.config/fish/config.fish'
+alias eb 'v ~/.bashrc'
+alias ev 'v ~/.nvimrc'
+alias i3c 'v ~/.i3/config'
 alias transm 'transmission-remote-cli'
 alias xmerge 'xrdb -merge ~/.Xresources'
 alias repos 'cd ~/Copy/repos'
@@ -51,14 +53,6 @@ alias urserver '/opt/urserver/urserver --daemon'
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
 alias sieweb 'ruby ~/Copy/sistemaAcademico.rb'
-
-# }}}
-# vim              {{{
-
-alias vim 'vim -X --servername vim'
-alias vs 'vim -X --servername vim -S ~/.vim/sessions/default'
-alias vsa 'vim -X --servername vim -S ~/.vim/sessions/session_a'
-alias vsb 'vim -X --servername vim -S ~/.vim/sessions/session_b'
 
 # }}}
 # translate-shell  {{{
