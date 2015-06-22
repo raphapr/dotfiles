@@ -227,7 +227,6 @@ set incsearch                           " Pesquisa incremental
 set hlsearch                            " Highlight search :)
 set ignorecase                          " Pesquisa ignora caixa alta e baixa
 set smartcase                           " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
-set pastetoggle=<F2>                    " ativa/desativa o paste mode para copiar/colar
 au InsertLeave * set nopaste            " Desativa paste mode ao sair do insert mode
 set splitbelow                          " Nova janela aparece abaixo da atual
 set splitright                          " Nova janela aparece a direita da atual
@@ -526,7 +525,7 @@ nnoremap <M-Right>   <C-W><Bar>
 
 " Hack to get C-h working in neovim
 if has('nvim')
-     nmap <BS> <C-W>h
+    nmap <BS> <C-W>h
 endif
 
 " Certifica-se que o Vim retorna para a mesma linha quando abre o arquivo
