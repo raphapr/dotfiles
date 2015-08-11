@@ -263,8 +263,7 @@ bindsym $mod+r mode "resize"
 # shortcuts             ----------------------------------------------------- {{{
 
 # open last recent file
-bindsym $mod++o         exec --no-startup-id openl
-bindsym $mod+Shift+o    exec --no-startup-id preselect
+bindsym $mod+o         exec --no-startup-id openl
 
 #}}}
 # bar                   ----------------------------------------------------- {{{

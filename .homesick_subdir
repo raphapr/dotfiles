@@ -11,3 +11,4 @@
 .config/dunst
 .homesick/repos/dotfiles/home/.bin
 .bin
+.config/systemd/user

@@ -518,5 +518,6 @@ state_flags_color = "red"
 progressbar_color = "yellow"
 statusbar_color = "cyan"
 visualizer_color = "red"
+media_library_primary_tag = artist
 
 mpd_host "$MPD_PASS@localhost"

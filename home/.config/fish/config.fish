@@ -22,7 +22,6 @@ alias v 'nvim'
 alias nv 'nvim'
 alias k 'kill -9'
 alias r 'ranger'
-alias g 'git'
 alias desk 'cd ~/Desktop'
 alias iup 'imgurbash'
 alias h 'history'
@@ -46,7 +45,8 @@ alias cheatsed 'cat ~/Copy/cheats/sed | more'
 alias x 'dtrx'
 alias zz 'fasd'
 #VPN
-alias vpn 'cd ~/.openvpn ; sudo openvpn pfsense-udp-1194.ovpn'
+alias vpnlccv 'cd ~/.vpn/lccv ; sudo openvpn --config ~/.vpn/lccv/pfsense-udp-1194.ovpn'
+alias vpn 'cd ~/.vpn/lancassolar ; sudo openvpn --config ~/.vpn/lancassolar/client.conf'
 # urserver
 alias urserver '/opt/urserver/urserver --daemon'
 # Ver diretórios com mais espaço em disco 
@@ -116,6 +116,15 @@ alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 
 # }}}
+# git              {{{
+
+alias g 'git'
+alias gt 'git status'
+alias gd 'git diff'
+alias gp 'git push origin master'
+alias gl 'git log'
+
+# }}}
 
 # }}}
 # Functions       ---------------------------------------------- {{{
@@ -125,6 +134,13 @@ alias tk 'tmux kill-session -t'
 # gist upload com xclip funcionando
 function browser
     /usr/bin/xdg-open $argv
+end
+
+# }}}
+# tarc              {{{
+
+function tarc
+    tar zxvf $argv.tar.gz -C $argv
 end
 
 # }}}
