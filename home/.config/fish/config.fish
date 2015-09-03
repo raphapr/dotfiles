@@ -42,7 +42,6 @@ alias repos 'cd ~/Copy/repos'
 alias miniman 'zathura ~/Copy/cheats/miniman.pdf'
 alias cheatsh 'zathura ~/Copy/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Copy/cheats/sed | more'
-alias x 'dtrx'
 alias zz 'fasd'
 #VPN
 alias vpnlccv 'cd ~/.vpn/lccv ; sudo openvpn --config ~/.vpn/lccv/pfsense-udp-1194.ovpn'
@@ -52,7 +51,7 @@ alias urserver '/opt/urserver/urserver --daemon'
 # Ver diretórios com mais espaço em disco 
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
-alias sieweb 'ruby ~/Copy/sistemaAcademico.rb'
+alias youtube-viewer 'youtube-viewer -C'
 
 # }}}
 # translate-shell  {{{
@@ -129,6 +128,14 @@ alias gl 'git log'
 # }}}
 # Functions       ---------------------------------------------- {{{
 
+# copy           {{{
+
+# copy file content
+function copy
+   xclip -sel clip < $argv
+end
+
+# }}}
 # browser           {{{
 
 # gist upload com xclip funcionando
