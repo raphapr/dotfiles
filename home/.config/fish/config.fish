@@ -43,6 +43,7 @@ alias miniman 'zathura ~/Copy/cheats/miniman.pdf'
 alias cheatsh 'zathura ~/Copy/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Copy/cheats/sed | more'
 alias zz 'fasd'
+alias az 'azure'
 #VPN
 alias vpnlccv 'cd ~/.vpn/lccv ; sudo openvpn --config ~/.vpn/lccv/pfsense-udp-1194.ovpn'
 alias vpn 'cd ~/.vpn/lancassolar ; sudo openvpn --config ~/.vpn/lancassolar/client.conf'
@@ -52,6 +53,7 @@ alias urserver '/opt/urserver/urserver --daemon'
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
 alias youtube-viewer 'youtube-viewer -C'
+alias wakeup 'wol 00:1c:25:4b:57:d3'
 
 # }}}
 # translate-shell  {{{

@@ -8,7 +8,7 @@ if [ "$DISPLAY" ]; then
     xset r rate 200 30
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return

@@ -24,13 +24,18 @@ URxvt*iso14755_52: False
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 2
 
-! tabs
+!! tabbdex
 
 !URxvt.tabbed.autohide: true
 !URXvt.tabbed.reopen-on-close: yes
+!URxvt.tabbed.no-tabbedex-keys: true
 !URxvt.keysym.Control-t: perl:tabbedex:new_tab
 !URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
-!URxvt.keysym.Control-w: perl:tabbedex:destroy_tab
+!URxvt.keysym.Control-Shift-Left: perl:tabbedex:move_tab_left
+!URxvt.keysym.Control-Shift-Right: perl:tabbedex:move_tab_right
+!URxvt.keysym.Control-Shift-R: perl:tabbedex:rename_tab
+
+!! tabbedex colors
 
 !URxvt.tabbed.tabbar-fg:   244
 !URxvt.tabbed.tabbar-bg:   16

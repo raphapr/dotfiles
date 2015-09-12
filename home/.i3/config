@@ -15,7 +15,8 @@
 set $mod Mod4
 set $BROWSER    firefox
 set $TERM       urxvt -e fish
-set $TERM1      urxvt
+set $TERM2      urxvt
+set $TMUX       urxvt -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
@@ -63,6 +64,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $TERM
+
+# start a terminal with tmux session
+bindsym $mod+shift+Return exec --no-startup-id $TMUX
 
 # browser
 bindsym $mod+q exec --no-startup-id $BROWSER
@@ -321,12 +325,12 @@ bindsym $mod+F1 mode "$mode_system"
 # scratchpads           ----------------------------------------------------- {{{
 
 # htop
-exec --no-startup-id $TERM1 -name monitor -e "htop"
+exec --no-startup-id $TERM2 -name monitor -e "htop"
 for_window [instance="monitor"] move scratchpad
 bindsym $mod+BackSpace [instance="monitor"] scratchpad show
 
 # alsamixer
-exec --no-startup-id $TERM1 -name alsamixer -e "alsamixer"
+exec --no-startup-id $TERM2 -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
 bindsym $mod+F11 [instance="alsamixer"] scratchpad show
 
