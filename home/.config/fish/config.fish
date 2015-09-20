@@ -54,6 +54,11 @@ alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
 alias youtube-viewer 'youtube-viewer -C'
 alias wakeup 'wol 00:1c:25:4b:57:d3'
+# connman
+alias wcon 'connmanctl connect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
+alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
+# ssh
+alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 
 # }}}
 # translate-shell  {{{

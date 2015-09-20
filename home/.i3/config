@@ -103,7 +103,7 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 bindsym $mod+Shift+x move workspace to output right
 
 # whatsapp
-bindsym $mod+Shift+w exec --no-startup-id google-chrome-stable --app=https://web.whatsapp.com
+bindsym $mod+Shift+w exec --no-startup-id chromium --app=https://web.whatsapp.com
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{

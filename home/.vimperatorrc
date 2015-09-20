@@ -47,3 +47,9 @@ nnoremap <leader>B :bmarks<space>
 
 " reload vimperator
 nnoremap <leader>re :source ~/.vimperatorrc<CR>
+
+set hintchars=asdfhlkj
+
+" google search
+noremap s :open google 
+noremap S :tabopen google 

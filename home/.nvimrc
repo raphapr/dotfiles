@@ -125,31 +125,6 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " }}}
-" ===== CtrlP                   {{{
-
-Plug 'kien/ctrlp.vim'
-
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_switch_buffer='Et'
-let g:ctrlp_follow_symlinks=1
-
-" F5 - Refresh
-
-" Abre no home
-noremap <C-P> :CtrlP<CR>
-" Abre no diretório atual do arquivo
-noremap <F8> :CtrlPBuffer<CR>
-noremap <F11> :CtrlPBufTag<CR>
-noremap <leader>mru :CtrlPMRU<CR>
-
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-
-" }}}
 " ===== markdown.vim            {{{
 
 Plug 'godlygeek/tabular'
@@ -201,7 +176,23 @@ Plug 'dag/vim-fish'
 Plug 'JuliaLang/julia-vim'
 
 " }}}
-"
+" ===== vim-startify            {{{
+
+Plug 'mhinz/vim-startify'
+let g:startify_session_dir = '~/.nvim/session'
+let g:startify_change_to_dir = 1
+let g:startify_custom_header = [
+            \ '                                ',
+            \ '            __                  ',
+            \ '    __  __ /\_\    ___ ___      ',
+            \ '   /\ \/\ \\/\ \ /'' __` __`\   ',
+            \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \   ',
+            \ '    \ \___/  \ \_\ \_\ \_\ \_\  ',
+            \ '     \/__/    \/_/\/_/\/_/\/_/  ',
+            \ '',
+            \ '',
+            \ ]
+" }}}              __                
 
 call plug#end()
 
