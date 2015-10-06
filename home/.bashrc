@@ -120,7 +120,7 @@ HISTFILESIZE=100000
 #}}}
 # Paths & Sources     ---------------------------------------------- {{{
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/java/bin:/opt/java/db/bin:/opt/java/jre/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.gem/ruby/2.2.0/bin:/home/raphael/.bin:/etc/profile.d/jre.sh"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/raphael/.gem/ruby/2.2.0/bin:/home/raphael/.bin:/etc/profile.d/jre.sh:/opt/julia/bin"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
 source ~/.git-completion.bash

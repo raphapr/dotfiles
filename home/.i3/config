@@ -101,7 +101,7 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 bindsym $mod+Shift+x move workspace to output up
 
 # whatsapp
-bindsym $mod+Shift+w exec --no-startup-id chromium --app=https://web.whatsapp.com
+bindsym $mod+Shift+w exec --no-startup-id google-chrome-stable --app=https://web.whatsapp.com
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
@@ -349,5 +349,6 @@ for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] fl
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="chromium"] normal 0 px
+for_window [class="Google-chrome"] normal 0 px
 
 #}}}

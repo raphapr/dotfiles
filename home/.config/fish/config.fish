@@ -63,9 +63,9 @@ alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-ses
 # }}}
 # translate-shell  {{{
 
-alias gte 'trans -b :en' # portuguese to english
-alias gtb 'trans -b' # english to portuguese
-alias gtp 'trans :en -p -b' # pronuncia
+alias gt 'trans -b' # english to portuguese
+alias gt-eng 'trans -b :en' # portuguese to english
+alias gt-audio 'trans :en -p -b' # pronuncia
 
 # }}}
 # Pacman/Yaourt    {{{
@@ -117,7 +117,7 @@ alias umount-ntfs 'sudo umount /mnt'
 # tmux             {{{
 
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
-alias t 'tmux -f ~/.tmux/tmux.conf'
+alias tm 'tmux -f ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 
@@ -125,7 +125,7 @@ alias tk 'tmux kill-session -t'
 # git              {{{
 
 alias g 'git'
-alias gt 'git status'
+alias gst 'git status'
 alias gd 'git diff'
 alias gp 'git push origin master'
 alias gl 'git log'
@@ -135,7 +135,7 @@ alias gl 'git log'
 # }}}
 # Functions       ---------------------------------------------- {{{
 
-# copy           {{{
+# copy              {{{
 
 # copy file content
 function copy
