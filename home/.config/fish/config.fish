@@ -10,6 +10,8 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
+set PATH $PATH /opt/julia/bin
+
 # }}}
 # Aliases         ---------------------------------------------- {{{
 
@@ -59,13 +61,17 @@ alias wcon 'connmanctl connect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
 alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
+# bash
+alias b "bash"
+
 
 # }}}
 # translate-shell  {{{
 
-alias gt 'trans -b' # english to portuguese
-alias gt-eng 'trans -b :en' # portuguese to english
-alias gt-audio 'trans :en -p -b' # pronuncia
+alias gt 'trans :pt -b' # english to portuguese
+alias gt-d 'trans -pager more -d' # dictionary
+alias gt-en 'trans :en' # portuguese to english
+alias gt-au 'trans -p -b' # pronuncia
 
 # }}}
 # Pacman/Yaourt    {{{

@@ -6,6 +6,7 @@
 # Executed by startx (run your window manager from here)
 #
 
+setxkbmap -option keypad:pointerkeys
 xset r rate 200 30
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 

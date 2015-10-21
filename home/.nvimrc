@@ -58,13 +58,6 @@ Plug 'majutsushi/tagbar'
 nnoremap <F9> :TagbarToggle<CR>
 
 " }}}
-" ===== Gundo                   {{{
-
-" Ver undo tree em estilo
-Plug 'sjl/gundo.vim'
-nnoremap <Leader>gu :GundoToggle<CR>
-
-" }}}
 " ===== vim-numbertoggle        {{{
 
 " Números das linhas relativo no modo normal e absoluto no modo insert
@@ -176,23 +169,11 @@ Plug 'dag/vim-fish'
 Plug 'JuliaLang/julia-vim'
 
 " }}}
-" ===== vim-startify            {{{
+" ===== fzf                     {{{
 
-Plug 'mhinz/vim-startify'
-let g:startify_session_dir = '~/.nvim/session'
-let g:startify_change_to_dir = 1
-let g:startify_custom_header = [
-            \ '                                ',
-            \ '            __                  ',
-            \ '    __  __ /\_\    ___ ___      ',
-            \ '   /\ \/\ \\/\ \ /'' __` __`\   ',
-            \ '   \ \ \_/ |\ \ \/\ \/\ \/\ \   ',
-            \ '    \ \___/  \ \_\ \_\ \_\ \_\  ',
-            \ '     \/__/    \/_/\/_/\/_/\/_/  ',
-            \ '',
-            \ '',
-            \ ]
-" }}}              __                
+Plug 'junegunn/fzf'
+
+" }}}
 
 call plug#end()
 
