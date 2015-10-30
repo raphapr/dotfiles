@@ -14,3 +14,4 @@
 .config/systemd/user
 .config/fontconfig
 .config/fish/functions
+.config/nvim
