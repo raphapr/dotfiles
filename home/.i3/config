@@ -107,8 +107,8 @@ bindsym $mod+Shift+w exec --no-startup-id google-chrome-stable --app=https://web
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # popular
-bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+F2      exec --no-startup-id autorandr --change
+bindsym $mod+m      exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 
 set $multi_monitor (1) DEFAULT  (2) VGA-L  (3) VGA-R (4) VGA-U (5) HDMI-L  (6) HDMI-R (7) HDMI-U  (8) HDMI  (9) PRES-VGA  (0) PRES-HDMI
 mode "$multi_monitor" {

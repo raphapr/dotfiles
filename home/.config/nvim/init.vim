@@ -173,6 +173,9 @@ Plug 'JuliaLang/julia-vim'
 
 Plug 'junegunn/fzf'
 
+    command! -nargs=1 Locate call fzf#run(
+      \ {'source': 'locate <q-args>', 'sink': 'e', 'options': '-m'})
+
 " }}}
 
 call plug#end()
@@ -358,7 +361,7 @@ noremap <Leader>gr :Gremove<CR>'
 "}}}
 " edição rápida     {{{
 
-nnoremap <leader>vi :vsplit ~/.nvimrc<cr>
+nnoremap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nnoremap <leader>i3 :vsplit ~/.i3/config<cr>
 
@@ -376,6 +379,29 @@ nnoremap <Leader>ju :split<CR>:term julia %<CR>
 
 " bash
 nnoremap <Leader>ba :split<CR>:term . %<CR>
+
+" }}}
+" setas             {{{
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+" Usar setas p/ algo mais útil
+
+nnoremap <UP> ddkP
+nnoremap <DOWN> ddp
+nnoremap <LEFT> <<
+nnoremap <RIGHT> >>
+vnoremap <LEFT> <gv
+vnoremap <RIGHT> >gv
 
 " }}}
 " etc               {{{
@@ -410,9 +436,9 @@ vnoremap > >gv
 set backup                          " habilita backups
 set noswapfile                      " não cria mais os malditos .swp
 
-set undodir=~/.nvim/undodir          " undo list
-set backupdir=~/.nvim/tmp/backup/    " backups
-set directory=~/.nvim/tmp/swap/      " swap files
+set undodir=~/.config/nvim/undodir          " undo list
+set backupdir=~/.config/nvim/tmp/backup/    " backups
+set directory=~/.config/nvim/tmp/swap/      " swap files
 
 " Certifica-se de que as pastas sejam criadas automaticamente se já não existirem.
 if !isdirectory(expand(&undodir))
@@ -505,17 +531,5 @@ if has("autocmd")
       au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
           \| exe "normal! g'\"" | endif
 endif
-
-" Só assim eu aprendo a usar o hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
 
 " }}}
