@@ -29,6 +29,7 @@
   l = log --pretty=format:"%C(yellow)%h%C(blue)\\ [%cn]\\ %C(green)%ad%C(red)%d\\ %C(reset)%s" --decorate --date=relative
   ll = log --pretty=format:"%C(yellow)%h%C(blue)\\ [%cn]\\ %C(green)%ad%C(red)%d\\ %C(reset)%s" --decorate --numstat
   lll = log -u
+  pl = pull --ff-only
 [push]
   default = simple
 [gitreview]

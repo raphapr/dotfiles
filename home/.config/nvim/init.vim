@@ -177,6 +177,25 @@ Plug 'junegunn/fzf'
       \ {'source': 'locate <q-args>', 'sink': 'e', 'options': '-m'})
 
 " }}}
+" ===== vim-peekaboo            {{{
+
+Plug 'junegunn/vim-peekaboo'
+
+" extende Ctrl + R
+
+" Default peekaboo window
+let g:peekaboo_window = 'vertical botright 30new'
+
+" }}}
+" ===== ag.vim                  {{{
+
+Plug 'rking/ag.vim'
+
+let g:ag_working_path_mode="r"
+
+nnoremap <Leader>a :Ag 
+
+" }}}
 
 call plug#end()
 
