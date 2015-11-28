@@ -63,6 +63,8 @@ alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
 alias b "bash"
+# gcalcli
+alias gcal "gcalcli agenda ; gcalcli calw 2"
 
 
 # }}}

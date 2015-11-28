@@ -22,7 +22,7 @@ set shell=/bin/bash
 
 call plug#begin('~/.nvim/plugged')
 
-" ===== Esquema de cores        {{{
+" ===== Molokai Color Scheme    {{{
 
 Plug 'tomasr/molokai'
 
@@ -148,6 +148,16 @@ nmap f <Plug>(easymotion-s)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+" n-character search motion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
 " }}}
 " ===== supertab                {{{
 
@@ -194,6 +204,16 @@ Plug 'rking/ag.vim'
 let g:ag_working_path_mode="r"
 
 nnoremap <Leader>a :Ag 
+
+" }}}
+" ===== vim-surround            {{{
+
+Plug 'tpope/vim-surround'
+
+" surround word
+nmap <Leader>sw ysiw
+" surround line
+nmap <Leader>sl yss
 
 " }}}
 
@@ -394,7 +414,7 @@ nnoremap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 nnoremap <Leader>ru :split<CR>:term ruby %<CR>
 
 " julia
-nnoremap <Leader>ju :split<CR>:term julia %<CR>
+"nnoremap <Leader>ju :split<CR>:term julia %<CR>
 
 " bash
 nnoremap <Leader>ba :split<CR>:term . %<CR>

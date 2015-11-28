@@ -1,0 +1,5 @@
+vimrc /home/raphael/.config/nvim/init.vim
+config.fish /home/raphael/.config/fish/config.fish
+CloudArray /home/raphael/.julia/v0.4/CloudArray
+dev /home/raphael/Copy/dev
+azure.txt /home/raphael/Copy/azure
