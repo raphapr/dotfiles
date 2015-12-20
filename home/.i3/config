@@ -100,9 +100,6 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output up
 
-# whatsapp
-bindsym $mod+Shift+w exec --no-startup-id google-chrome-stable --app=https://web.whatsapp.com
-
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
@@ -147,7 +144,8 @@ mouse_warping none
 bindsym $mod+c kill
 
 # start rofi (a program launcher)
-bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -b -p 'dmenu'"
+#bindsym $mod+space exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -fn 'DejaVu Sans Mono for Powerline-9' -i -b -p 'dmenu'"
+bindsym $mod+space exec --no-startup-id rofi -show run window -font "snap 10" -fg "#BBB5B5" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 #bindsym $mod+space exec --no-startup-id rofi -show run -font "snap 10" -fg "#BBB5B5" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 bindsym $mod+Tab exec --no-startup-id rofi -show window -font "snap 10" -fg "#BBB5B5" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 
@@ -348,7 +346,5 @@ for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
-for_window [class="chromium"] normal 0 px
-for_window [class="Google-chrome"] normal 0 px
 
 #}}}

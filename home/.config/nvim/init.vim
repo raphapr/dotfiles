@@ -3,6 +3,7 @@
 "
 
 " Preambulo ---------------------------------------------------------------- {{{
+"
 
 " <Leader> por default é \
 let mapleader=","
@@ -29,10 +30,29 @@ Plug 'tomasr/molokai'
 " }}}
 " ===== Snipmate                {{{
 
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+" Dependency: sudo pip install neovim
+"(https://github.com/neovim/neovim/issues/2906)
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" }}}
+" ===== AutoComplPop            {{{
+
+Plug 'jordwalke/AutoComplPop'
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippet()"
 
 " }}}
 " ===== vim-autoclose           {{{
@@ -157,16 +177,6 @@ omap / <Plug>(easymotion-tn)
 " different highlight method and have some other features )
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
-
-" }}}
-" ===== supertab                {{{
-
-" Tab para auto completar
-
-Plug 'ervandew/supertab'
-
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-setlocal omnifunc=LatexBox_Complete
 
 " }}}
 " ===== vim-fish                {{{
