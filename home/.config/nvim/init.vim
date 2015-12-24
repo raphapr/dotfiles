@@ -49,12 +49,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 
 " }}}
-" ===== AutoComplPop            {{{
-
-Plug 'jordwalke/AutoComplPop'
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<C-R>=UltiSnips#ExpandSnippet()"
-
-" }}}
 " ===== vim-autoclose           {{{
 
 " Fecha automaticamente aspas, chaves, parênteses...

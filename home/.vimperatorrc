@@ -43,7 +43,7 @@ nnoremap <C-l> :tabmove!<Space>+1<Return>"
 nnoremap <leader>b :bmark<CR>
 
 " show bookmark
-nnoremap <leader>B :bmarks<space>
+nnoremap <leader>B :dialog bookmarks<CR>
 
 " reload vimperator
 nnoremap <leader>re :source ~/.vimperatorrc<CR>
@@ -56,3 +56,5 @@ noremap S :tabopen google
 
 map <silent> <leader>g :set gui=none<CR>
 map <silent> <leader>h :set gui=navigation,tabs<CR>
+
+map <leader>m :set gui=invmenu<CR>
