@@ -15,3 +15,4 @@
 .config/fontconfig
 .config/fish/functions
 .config/nvim
+.vimperator/colors

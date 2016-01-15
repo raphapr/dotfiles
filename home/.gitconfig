@@ -34,3 +34,5 @@
   default = simple
 [gitreview]
 	raphapr = raphapr
+[github]
+	user = raphapr
