@@ -220,6 +220,15 @@ nmap <Leader>sw ysiw
 nmap <Leader>sl yss
 
 " }}}
+" ===== vim-notes               {{{
+
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+
+nnoremap <F11> :vsplit note:cheatsheet<CR>
+let g:notes_directories = ['~/Copy/Notes']
+
+" }}}
 
 call plug#end()
 

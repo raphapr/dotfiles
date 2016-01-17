@@ -1,5 +1,3 @@
-colorscheme zenburn
-
 set focuscontent
 
 let mapleader = ","
@@ -60,3 +58,5 @@ map <silent> <leader>g :set gui=none<CR>
 map <silent> <leader>h :set gui=navigation,tabs<CR>
 
 map <leader>m :set gui=invmenu<CR>
+
+set editor="urxvt -e vim"
