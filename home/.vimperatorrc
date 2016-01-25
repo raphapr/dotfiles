@@ -59,4 +59,4 @@ map <silent> <leader>h :set gui=navigation,tabs<CR>
 
 map <leader>m :set gui=invmenu<CR>
 
-set editor="urxvt -e vim"
+set editor="urxvt -e nvim"

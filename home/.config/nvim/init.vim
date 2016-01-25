@@ -139,6 +139,12 @@ Plug 'plasticboy/vim-markdown'
 
 let g:vim_markdown_folding_disabled=1
 
+"Markdown preview
+" REQUIRE: sudo npm install -g livedown
+Plug 'shime/vim-livedown'
+
+let g:vim_markdown_folding_disabled=1
+
 " }}}
 " ===== vim-fugitive (git)      {{{
 
@@ -225,7 +231,6 @@ nmap <Leader>sl yss
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 
-nnoremap <F11> :vsplit note:cheatsheet<CR>
 let g:notes_directories = ['~/Copy/Notes']
 
 " }}}
