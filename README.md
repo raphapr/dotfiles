@@ -1,5 +1,55 @@
-my dotfiles backup
+# dotfiles
 
-Dependencies:
+This repository contains configuration files I use on my Manjaro GNU/Linux which have been inspired by the rest of the dotfiles community. 
 
-gvim, ranger, imgurbash, chromium, bbswitch, transmission-remote-cli, zathura, zathurap-pdf-mupdf, fasd, fzf, translate-shell-git, youtube-dl, xclip, tmux, openvpn, feh, gist, most, j4-dmenu-desktop-git, dmenu, scrot, thunar, firefox, firefox-i18n-pt-br, xautolock, udiskie, compton, clipit, ttf-font-awesome, i3-quickswitch, google-chrome-stable, rxvt-unicode, urxvt-perls, urxvt-font-size-git, ttf-dejavusansmono-powerline-git, htop, ncdu, ncmpcpp, mopidy, mopidy-scrobbler, mopidy-spotify, texlive-most, i3-git, i3blocks, i3lock, git-completion.bash, dtrx, ntfs-3g, rofi, autorandr-git
+## Install
+
+Install homesick first:
+
+`gem install homesick`
+
+Next, you need to clone this repository:
+
+`homesick clone raphapr/dotfiles`
+
+You can now link its contents into your home dir:
+
+`homesick symlink dotfiles`
+
+### Pacman/yaourt install script
+
+`chmod +x ~/.yaourt && ./.yaourt`
+
+### Neovim
+
+Install plug.vim
+
+`curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
+## Main programs
+
+* neovim
+* i3wm
+* i3blocks
+* fish shell
+* tmux
+* ranger
+* glances
+* firefox
+* thunar
+* imgurbash
+* urxvt
+* transmission-remote-cli
+* zathura
+* fasd
+* translate-shell
+* youtube-dl
+* feh
+* fzf
+* gist
+* rofi
+* scrot
+* htop
+* ncmpcpp
+* mopidy

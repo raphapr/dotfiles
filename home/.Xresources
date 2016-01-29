@@ -7,7 +7,7 @@ Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 Xcursor.theme: default
 
-! Dependencias: urxvt-perls, urxvt-font-size-git (AUR), ttf-dejavusansmono-powerline-git (AUR)
+! Deps: urxvt-perls, urxvt-font-size-git (AUR), ttf-dejavusansmono-powerline-git (AUR)
 
 !! URxvt
 
