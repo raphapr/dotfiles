@@ -329,12 +329,6 @@ exec --no-startup-id $TERM2 -name alsamixer -e "alsamixer"
 for_window [instance="alsamixer"] move scratchpad
 bindsym $mod+F11 [instance="alsamixer"] scratchpad show
 
-# vim notes
-exec --no-startup-id $TERM2 -name monitor -name "urxvt_cheatsheet" -e nvim ~/Copy/Notes/cheatsheet
-for_window [instance="urxvt_cheatsheet"] move to scratchpad, border 1pixel
-bindsym $mod+n [instance="urxvt_cheatsheet"] scratchpad show
-
-
 #}}}
 # Theme colors          ----------------------------------------------------- {{{
 

@@ -71,6 +71,28 @@ let NERDTreeShowBookmarks=1
 Plug 'majutsushi/tagbar'
 nnoremap <F9> :TagbarToggle<CR>
 
+let g:tagbar_type_julia = {
+    \ 'ctagstype' : 'julia',
+    \ 'kinds'     : [
+        \ 'f:functions',
+        \ 'm:macro',
+        \ 'c:constant',
+        \ 't:type'
+    \ ]
+    \ }
+
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds'     : [
+        \ 'h:Heaging_L1',
+        \ 'i:Heaging_L2',
+        \ 'k:Heaging_L3',
+        \ 'k:Heaging_L4',
+        \ 'k:Heaging_L5',
+        \ 'k:Heaging_L6'
+    \ ]
+    \ }
+
 " }}}
 " ===== vim-numbertoggle        {{{
 
@@ -104,7 +126,8 @@ Plug 'matchit.zip'
 " Se os glifos ficarem estranhos:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
 
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 let g:airline_theme = 'bubblegum'
 let g:airline_powerline_fonts = 1
@@ -189,14 +212,6 @@ Plug 'dag/vim-fish'
 Plug 'JuliaLang/julia-vim'
 
 " }}}
-" ===== fzf                     {{{
-
-Plug 'junegunn/fzf'
-
-    command! -nargs=1 Locate call fzf#run(
-      \ {'source': 'locate <q-args>', 'sink': 'e', 'options': '-m'})
-
-" }}}
 " ===== vim-peekaboo            {{{
 
 Plug 'junegunn/vim-peekaboo'
@@ -207,13 +222,29 @@ Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_window = 'vertical botright 30new'
 
 " }}}
-" ===== ag.vim                  {{{
+" ===== ctrlp.vim               {{{
 
-Plug 'rking/ag.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-let g:ag_working_path_mode="r"
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_switch_buffer='Et'
+let g:ctrlp_follow_symlinks=1
 
-nnoremap <Leader>a :Ag 
+" F5 - Refresh
+
+" Abre no home
+noremap <C-P> :CtrlP<CR>
+" Abre no diretório atual do arquivo
+noremap <F8> :CtrlPBuffer<CR>
+"noremap <F11> :CtrlPBufTag<CR>
+noremap <leader>mru :CtrlPMRU<CR>
+
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 
 " }}}
 " ===== vim-surround            {{{
@@ -226,12 +257,19 @@ nmap <Leader>sw ysiw
 nmap <Leader>sl yss
 
 " }}}
-" ===== vim-notes               {{{
+" ===== vim-quickrun            {{{
 
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
+Plug 'thinca/vim-quickrun'
 
-let g:notes_directories = ['~/Copy/Notes']
+nnoremap <F11> :QuickRun<CR>
+
+" }}}
+" ===== gist-vim                {{{
+
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+
+let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
 
@@ -239,7 +277,7 @@ call plug#end()
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
-
+"
 syntax enable                           " Habilita a marcação de sintaxe
 set encoding=utf-8                      "
 set showmode                            " Exibe o modo atual

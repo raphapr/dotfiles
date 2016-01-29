@@ -1,0 +1,23 @@
+--exclude=.git
+--exclude=log
+--exclude=tmp
+--exclude=deps
+
+--langdef=julia
+--langmap=julia:.jl
+--regex-julia=/^[ \t]*(function|abstract|typealias|immutable)[ \t]+([^ \t({[]+).*$/\2/f,function/
+--regex-julia=/^[ \t]*(macro)[ \t]+([^ \t({[]+).*$/\2/m,macro/
+--regex-julia=/^[ \t]*(const)[ \t]+([^ \t({[]+).*$/\2/c,constant/
+--regex-julia=/^[ \t]*(type)[ \t]+([^ \t({[]+).*$/\2/t,type/
+--regex-julia=/^[ \t]*(([^@#$ \t({[]+)|\(([^@#$ \t({[]+)\)|\((\$)\))[ \t]*(\{.*\})?[ \t]*\([^#]*\)[ \t]*=([^=].*$|$)/\2\3\4/f,function/
+
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^#[ \t]+(.*)/\1/h,Heading_L1/
+--regex-markdown=/^##[ \t]+(.*)/\1/i,Heading_L2/
+--regex-markdown=/^###[ \t]+(.*)/\1/k,Heading_L3/
+--regex-markdown=/^####[ \t]+(.*)/\1/k,Heading_L4/
+--regex-markdown=/^#####[ \t]+(.*)/\1/k,Heading_L5/
+--regex-markdown=/^######[ \t]+(.*)/\1/k,Heading_L6/
+
+

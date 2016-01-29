@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Criar arquivo /usr/share/applications/magnet-remote.desktop com conteúdo:
+#
+#    [Desktop Entry]
+#    Name=Magnet
+#    Type=Application
+#    Comment=Open a magnet link remotly with the help of a script
+#    Exec=/home/raphael/.bin/magnetlink-lancassolar %U
+#    Categories=Network;WebBrowser;
+#    MimeType=x-scheme-handler/magnet;
+#
+# Depois associar em ~/.local/share/applications/mimeapps.list
+
+#!/bin/bash
+test -z $1 && echo "need magnet link!
+$0 <magnet link>" && exit -1
+
+
+ 
+HOST=192.168.25.100 #YourRemoteHostNameOrIP
+PORT=9091 #YourPort(default is 9091)
+USER=raphael
+PASS=$(cat ~/.passwdlist)
+ 
+LINK="$1"
+# set true if you want every torrent to be paused initially
+#PAUSED="true"
+PAUSED="false"
+SESSID=$(curl --silent --anyauth --user $USER:$PASS "http://$HOST:$PORT/transmission/rpc" | sed 's/.*<code>//g;s/<\/code>.*//g')
+curl --silent --anyauth --user $USER:$PASS --header "$SESSID" "http://$HOST:$PORT/transmission/rpc" -d "{\"method\":\"torrent-add\",\"arguments\":{\"paused\":${PAUSED},\"filename\":\"${LINK}\"}}"  ""
+
+notify-send "Magnet link (lancassolar)" "Torrent adicionado"
