@@ -3,7 +3,6 @@ include "/usr/share/themes/Numix-ArchBlue/gtk-2.0/gtkrc"
 
 # Font
 style "myfont" {
-    #font_name = "DejaVu Sans Mono Book 9"
     font_name = "Lucida Grande 9"
 }
 widget_class "*" style "myfont"
