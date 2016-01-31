@@ -5,10 +5,10 @@ if [ -z $pid ]; then # Se não estiver rodando
     xautolock -time 4 -locker "i3lock -c 000000" &
     xset +dpms; xset s on
     killall notify-osd
-    notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32x32/devices/system.svg
+    notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
 else
     pkill xautolock
     xset -dpms; xset s off
     killall notify-osd
-    notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32x32/devices/system.svg
+    notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
 fi

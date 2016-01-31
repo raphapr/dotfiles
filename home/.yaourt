@@ -3,7 +3,7 @@
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
 for PKG in $(sed '1,9d' ~/.yaourt | grep -v COMMENT); do
-    yaourt -S --noconfirm $PKG || echo $PKG failed.
+    yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 
 <<COMMENT
@@ -28,7 +28,10 @@ most
 dmenu
 scrot
 thunar
-firefox
+thunar-archive-plugin
+thunar-volman
+thunar-media-tags-plugin
+firefox-gtk2
 firefox-i18n-pt-br
 xautolock
 udiskie
@@ -53,10 +56,9 @@ i3blocks
 git-completion.bash
 ntfs-3g
 rofi
-autorandr-git 
 glances
 gvim
-neovim-git
+neovim
 git
 google-talkplugin
 nmap
@@ -74,4 +76,9 @@ guake
 gcalcli
 xfce4-power-manager
 xfce4-volumed
+imgurbash
+jabref
+notify-osd-customizable
+profile-sync-daemon
+smplayer
 COMMENT
