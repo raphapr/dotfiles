@@ -273,7 +273,7 @@ bindsym $mod+o         exec --no-startup-id openl
 
 bar {
   position top
-  font pango:FontAwesome, Icons 9
+  font pango:FontAwesome, Icons 8
   #status_command i3status
   status_command i3blocks
   colors {
@@ -341,7 +341,6 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 # Window rules          ----------------------------------------------------- {{{
 
 for_window [window_role="pop-up"] floating enable border normal
-for_window [class="Seafile-applet" instance="seafile-applet" title="Seafile"] floating enable
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable

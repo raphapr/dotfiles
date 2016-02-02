@@ -81,4 +81,7 @@ jabref
 notify-osd-customizable
 profile-sync-daemon
 smplayer
+mpc
+wine
+ctags
 COMMENT

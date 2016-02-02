@@ -272,11 +272,11 @@ Plug 'mattn/gist-vim'
 let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
-" ===== vim-better-whitespace   {{{
+"" ===== vim-better-whitespace   {{{
 
-Plug 'ntpeters/vim-better-whitespace'
+"Plug 'ntpeters/vim-better-whitespace'
 
-" }}}
+"" }}}
 
 call plug#end()
 
