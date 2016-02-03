@@ -31,6 +31,7 @@ thunar
 thunar-archive-plugin
 thunar-volman
 thunar-media-tags-plugin
+tumbler
 firefox-gtk2
 firefox-i18n-pt-br
 xautolock
@@ -71,7 +72,6 @@ wget
 the_silver_searcher
 xclip
 fish-shell-git
-copy-agent
 guake
 gcalcli
 xfce4-power-manager
@@ -84,4 +84,5 @@ smplayer
 mpc
 wine
 ctags
+psyncgui
 COMMENT

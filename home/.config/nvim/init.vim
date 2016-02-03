@@ -59,7 +59,7 @@ Plug 'Townk/vim-autoclose'
 
 " Navegador de arquivos e diretórios
 Plug 'scrooloose/nerdtree'
-nnoremap <F10> :NERDTreeToggle<CR>
+nmap <F10> :NERDTreeToggle<CR>
 
 let NERDTreeShowBookmarks=1
 
@@ -69,7 +69,7 @@ let NERDTreeShowBookmarks=1
 " Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
 " Lembrar que <ctrl> ww troca de janela
 Plug 'majutsushi/tagbar'
-nnoremap <F9> :TagbarToggle<CR>
+nmap <F9> :TagbarToggle<CR>
 
 let g:tagbar_type_julia = {
     \ 'ctagstype' : 'julia',
@@ -144,7 +144,7 @@ Plug 'scrooloose/syntastic'
 
 " começa em passive mode
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'],'passive_filetypes': [] }
-nnoremap <leader>sk :SyntasticCheck<CR> :SyntasticToggleMode<CR> }
+nmap <leader>ss :SyntasticToggleMode<CR>
 
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
@@ -184,8 +184,7 @@ let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-
-nmap f <Plug>(easymotion-s)
+nmap f <Plug>(easymotion-overwin-f)
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
@@ -261,7 +260,7 @@ nmap <Leader>sl yss
 
 Plug 'thinca/vim-quickrun'
 
-nnoremap <F11> :QuickRun<CR>
+nmap <F11> :QuickRun<CR>
 
 " }}}
 " ===== gist-vim                {{{
@@ -272,11 +271,6 @@ Plug 'mattn/gist-vim'
 let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
-"" ===== vim-better-whitespace   {{{
-
-"Plug 'ntpeters/vim-better-whitespace'
-
-"" }}}
 
 call plug#end()
 
@@ -323,12 +317,12 @@ colorscheme molokai
 
 " h cancela sem completar
 " l completa
-inoremap <expr> h ((pumvisible())?("\<C-e>"):("h"))
-inoremap <expr> l ((pumvisible())?("\<C-y>"):("l"))
+imap <expr> h ((pumvisible())?("\<C-e>"):("h"))
+imap <expr> l ((pumvisible())?("\<C-y>"):("l"))
 
 " usa jk para mover a janela do popup omnicomplete
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+imap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+imap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 
 
 " }}}
@@ -339,8 +333,8 @@ set foldmarker={{{,}}} " marker para abrir folder e fechar folder
 set foldlevelstart=0   " Começa com todas os folders fechados
 
 " Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
+nmap <Space> za
+vmap <Space> za
 
 function! MyFoldText() "
     let line = getline(v:foldstart)
@@ -362,24 +356,6 @@ set foldtext=MyFoldText()
 " }}}
 " Maps    -----------------------------------------------------------------  {{{
 
-" terminal          {{{
-
-" Open :Terminal with fish shell
-command! -bang Terminal terminal<bang> fish
-
-" This maps Leader + e to exit terminal mode. 
-tnoremap <esc><esc> <C-\><C-n>
-
-" horizontal split terminal
-map <Leader>te :split<CR>:Terminal<CR>
-
-" vertical split terminal
-map <Leader>tv :vsp<CR>:Terminal<CR>
-
-" Muda para o terminal em insert mode
-autocmd WinEnter term://* startinsert
-
-" }}}
 " markdown          {{{
 
 " Precisa do pacote haskell-pandoc (Adicionar o repo haskell)
@@ -395,7 +371,7 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
 " fecha buffer (sem quebrar a janela do NERDTree)
-nnoremap <C-E> :bp<cr>:bd #<cr>
+nmap <C-E> :bp<cr>:bd #<cr>
 
 "}}}
 " git               {{{
@@ -411,47 +387,47 @@ noremap <Leader>gr :Gremove<CR>'
 "}}}
 " edição rápida     {{{
 
-nnoremap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
-nnoremap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
-nnoremap <leader>i3 :vsplit ~/.i3/config<cr>
+nmap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
+nmap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
+nmap <leader>i3 :vsplit ~/.i3/config<cr>
 
 " }}}
 " programação       {{{
 
 " compilar com openGL (CG)
-nnoremap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
+nmap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 
 " ruby
-nnoremap <Leader>ru :split<CR>:term ruby %<CR>
+nmap <Leader>ru :split<CR>:term ruby %<CR>
 
 " julia
-"nnoremap <Leader>ju :split<CR>:term julia %<CR>
+"nmap <Leader>ju :split<CR>:term julia %<CR>
 
 " bash
-nnoremap <Leader>ba :split<CR>:term . %<CR>
+nmap <Leader>ba :split<CR>:term . %<CR>
 
 " }}}
 " setas             {{{
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
+nmap <up> <nop>
+nmap <down> <nop>
+nmap <left> <nop>
+nmap <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+nmap j gj
+nmap k gk
 
 " Usar setas p/ algo mais útil
 
-nnoremap <UP> ddkP
-nnoremap <DOWN> ddp
-nnoremap <LEFT> <<
-nnoremap <RIGHT> >>
-vnoremap <LEFT> <gv
-vnoremap <RIGHT> >gv
+nmap <UP> ddkP
+nmap <DOWN> ddp
+nmap <LEFT> <<
+nmap <RIGHT> >>
+vmap <LEFT> <gv
+vmap <RIGHT> >gv
 
 " }}}
 " etc               {{{
@@ -460,7 +436,7 @@ vnoremap <RIGHT> >gv
 nmap S :w<CR>
 
 " Mata a janela
-nnoremap K :q<cr>
+nmap K :q<cr>
 
 "Salva arquivos que requerem permissão root
 cmap w!! %!sudo tee > /dev/null %
@@ -472,11 +448,11 @@ nmap <CR><CR> o<ESC>
 map <Leader>re :so %<CR>
 
 " Cancela o highlight da busca atual
-noremap <silent> <F3> :noh<cr>:call clearmatches()<cr>
+nmap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 
 " Opções para que blocos selecionados sejam reselecionados após identações.
-vnoremap < <gv
-vnoremap > >gv
+vmap < <gv
+vmap > >gv
 
 " }}}
 
@@ -537,12 +513,12 @@ endif
 " Navegação entre abas  ---------------------------------------------------- {{{
 
 "navegação de abas fácil, semelhante a navegadores
-nnoremap <C-t> :tabnew<CR>
-nnoremap <C-b> :tabprevious<CR>
-nnoremap <C-n> :tabnext<CR>
-inoremap <C-t> <Esc>:tabnew<CR>
-inoremap <C-b> <Esc>:tabprevious<CR>i
-inoremap <C-n> <Esc>:tabnext<CR>i
+nmap <C-t> :tabnew<CR>
+nmap <C-b> :tabprevious<CR>
+nmap <C-n> :tabnext<CR>
+imap <C-t> <Esc>:tabnew<CR>
+imap <C-b> <Esc>:tabprevious<CR>i
+imap <C-n> <Esc>:tabnext<CR>i
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{
@@ -552,21 +528,21 @@ tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-j> <C-\><C-n><C-w>j
 tnoremap <C-k> <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 
 "Resize vsplit
-nnoremap = :vertical resize +5<cr>
-nnoremap - :vertical resize -5<cr>
+nmap = :vertical resize +5<cr>
+nmap - :vertical resize -5<cr>
 "nmap = <c-w>=
 
 "Alt + Arrow is for minimizing/maximizing splits
-nnoremap <M-Up>      <C-W>_
-nnoremap <M-Down>    <C-W>=
-nnoremap <M-Left>    <C-W>=
-nnoremap <M-Right>   <C-W><Bar>
+nmap <M-Up>      <C-W>_
+nmap <M-Down>    <C-W>=
+nmap <M-Left>    <C-W>=
+nmap <M-Right>   <C-W><Bar>
 
 " }}}
 " Ajustes  ----------------------------------------------------------------- {{{
