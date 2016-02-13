@@ -162,12 +162,6 @@ Plug 'plasticboy/vim-markdown'
 
 let g:vim_markdown_folding_disabled=1
 
-"Markdown preview
-" REQUIRE: sudo npm install -g livedown
-Plug 'shime/vim-livedown'
-
-let g:vim_markdown_folding_disabled=1
-
 " }}}
 " ===== vim-fugitive (git)      {{{
 
@@ -246,16 +240,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 
 " }}}
-" ===== vim-surround            {{{
-
-Plug 'tpope/vim-surround'
-
-" surround word
-nmap <Leader>sw ysiw
-" surround line
-nmap <Leader>sl yss
-
-" }}}
 " ===== vim-quickrun            {{{
 
 Plug 'thinca/vim-quickrun'
@@ -276,7 +260,7 @@ call plug#end()
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
-"
+
 syntax enable                           " Habilita a marcação de sintaxe
 set encoding=utf-8                      "
 set showmode                            " Exibe o modo atual
@@ -356,14 +340,6 @@ set foldtext=MyFoldText()
 " }}}
 " Maps    -----------------------------------------------------------------  {{{
 
-" markdown          {{{
-
-" Precisa do pacote haskell-pandoc (Adicionar o repo haskell)
-map 2h :w<CR>:!pandoc % -f markdown -t html -s -o %<.html<CR>
-map 2p :w<CR>:!pandoc % -o %<.pdf<CR>
-map 2v :w<CR>:!pandoc % -o %<.pdf ; zathura %<.pdf<CR>
-
-" }}}
 " buffers           {{{
 
 " navegação entre buffers
@@ -453,6 +429,12 @@ nmap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 " Opções para que blocos selecionados sejam reselecionados após identações.
 vmap < <gv
 vmap > >gv
+
+" Search and replace last selected word
+nnoremap <Leader>s :%s///g<left><left>
+
+" Search for visually selected text
+vnoremap // y/<C-R>"<CR>
 
 " }}}
 

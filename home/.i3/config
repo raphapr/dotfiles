@@ -35,6 +35,7 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec --no-startup-id clipit --daemon
+exec --no-startup-id telegram -startintray
 exec_always --no-startup-id xset r rate 200 30
 #exec --no-startup-id redshift -c ~/.config/redshift
 
@@ -45,7 +46,7 @@ exec_always --no-startup-id xset r rate 200 30
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Lucida Grande 9
+font pango:Lucida Grande 8
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -61,7 +62,7 @@ floating_modifier $mod
 # Personal Shortcuts    ----------------------------------------------------- {{{
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id $TERM
+bindsym $mod+Return exec --no-startup-id $TERM 
 
 # start a terminal with tmux session
 bindsym $mod+shift+Return exec --no-startup-id $TMUX
@@ -99,6 +100,9 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output up
+
+# telegram
+bindsym $mod+Shift+t exec telegram
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
@@ -344,5 +348,6 @@ for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable
+for_window [class="Telegram"] floating enable
 
 #}}}

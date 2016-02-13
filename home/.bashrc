@@ -2,6 +2,7 @@
 # bashrc
 # Raphael P. Ribeiro
 
+
 # Preambulo           ---------------------------------------------- {{{
 
 if [ "$DISPLAY" ]; then
@@ -123,6 +124,7 @@ HISTFILESIZE=100000
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/raphael/.gem/ruby/2.2.0/bin:/home/raphael/.bin:/etc/profile.d/jre.sh"
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
+export BROWSER=firefox
 source ~/.git-completion.bash
 
 # fasd initalization

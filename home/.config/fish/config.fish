@@ -11,6 +11,7 @@ if test "$DISPLAY"
 end
 
 set PATH $PATH /opt/julia/bin
+set BROWSER firefox
 
 # }}}
 # Aliases         ---------------------------------------------- {{{
@@ -46,7 +47,7 @@ alias cheatsh 'zathura ~/Cloud/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Cloud/cheats/sed | more'
 alias zz 'fasd'
 alias az 'azure'
-alias notes 'nvim ~/Cloud/.notes'
+alias notes 'nvim ~/Cloud/notes/txt'
 #VPN
 alias vpnlccv 'cd ~/.vpn/lccv ; sudo openvpn --config ~/.vpn/lccv/pfsense-udp-1194.ovpn'
 alias vpn 'cd ~/.vpn/lancassolar ; sudo openvpn --config ~/.vpn/lancassolar/client.conf'
