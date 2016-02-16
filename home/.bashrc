@@ -174,10 +174,7 @@ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
 alias zz='fasd_cd -d -i' # cd with interactive selection
 
 # vim
-alias vim='vim -X --servername vim'
-alias vs='vim -X --servername vim -S ~/.vim/sessions/default'
-alias vsa='vim -X --servername vim -S ~/.vim/sessions/session_a'
-alias vsb='vim -X --servername vim -S ~/.vim/sessions/session_b'
+alias vim='nvim'
 
 # translate-shell
 alias gt='trans' # (AUR: translate-shell-git)

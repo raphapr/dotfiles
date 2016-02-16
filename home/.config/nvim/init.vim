@@ -255,6 +255,14 @@ Plug 'mattn/gist-vim'
 let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
+" ===== vim gams                {{{
+
+" vim syntax file for the GAMS programming language
+Plug 'zorab47/vim-gams'
+
+au BufEnter *.gms set ft=gams 
+
+" }}}
 
 call plug#end()
 
@@ -262,7 +270,7 @@ call plug#end()
 " Opções Básicas  ---------------------------------------------------------- {{{
 
 syntax enable                           " Habilita a marcação de sintaxe
-set encoding=utf-8                      "
+"set encoding=utf-8                     "
 set showmode                            " Exibe o modo atual
 set wildmenu                            " Menu com as opções do vim usando tab
 set background=dark                     " Define o fundo preto (É melhor usar isso com a sintaxe)
@@ -421,7 +429,7 @@ cmap w!! %!sudo tee > /dev/null %
 nmap <CR><CR> o<ESC>
 
 " Recarrega vimrc
-map <Leader>re :so %<CR>
+map <Leader>re :so ~/.config/nvim/init.vim<CR>
 
 " Cancela o highlight da busca atual
 nmap <silent> <F3> :noh<cr>:call clearmatches()<cr>
@@ -468,7 +476,7 @@ endif
 "
 " " let g:solarized_termcolors=256
 
-"""" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e konsole
+"""" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e urxvt
 if &term =~ '256color'
       " Disable Background Color Erase (BCE) so that color schemes
       "   " work properly when Vim is used inside tmux and GNU screen.

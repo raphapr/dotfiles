@@ -1,4 +1,4 @@
+
 config.fish ~/.config/fish/config.fish
 vimrc ~/.config/nvim/init.vim
-
-Notes ~/Cloud/.notes
+Notes ~/Cloud/notes/txt
