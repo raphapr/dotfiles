@@ -10,7 +10,7 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
-set PATH $PATH /opt/julia/bin /home/raphael/gams24.6_linux_x64_64_sfx
+set PATH $PATH /opt/julia/bin
 set BROWSER firefox
 
 # }}}
@@ -70,7 +70,7 @@ alias gcal "gcalcli agenda ; gcalcli calw 2"
 # diff dotfiles
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 # gams
-alias gams "/home/raphael/gams24.6_linux_x64_64_sfx/gams"
+alias gams "/media/hdd/Software/gams24.6/gams"
 
 # }}}
 # translate-shell  {{{
