@@ -49,6 +49,31 @@ let g:UltiSnipsEditSplit="vertical"
 
 
 " }}}
+" ===== Languages support       {{{
+
+Plug 'dag/vim-fish'
+Plug 'JuliaLang/julia-vim'
+Plug 'zorab47/vim-gams'
+
+au BufEnter *.gms set ft=gams 
+
+" }}}
+" ===== vim-airline             {{{
+
+" Se os glifos ficarem estranhos:
+" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+let g:airline_theme = 'bubblegum'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" Retirando o trailing check
+"let g:airline#extensions#whitespace#checks = ['indent']
+
+" }}}
 " ===== vim-autoclose           {{{
 
 " Fecha automaticamente aspas, chaves, parênteses...
@@ -121,22 +146,6 @@ let g:LatexBox_quickfix = 4
 Plug 'matchit.zip'
 
 " }}}
-" ===== vim-airline             {{{
-
-" Se os glifos ficarem estranhos:
-" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-let g:airline_theme = 'bubblegum'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
-" Retirando o trailing check
-"let g:airline#extensions#whitespace#checks = ['indent']
-
-" }}}
 " ===== Syntastic               {{{
 
 " Checa erro de sintaxe
@@ -195,21 +204,10 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " }}}
-" ===== vim-fish                {{{
-
-Plug 'dag/vim-fish'
-
-" }}}
-" ===== julia-vim               {{{
-
-Plug 'JuliaLang/julia-vim'
-
-" }}}
 " ===== vim-peekaboo            {{{
 
-Plug 'junegunn/vim-peekaboo'
-
 " extende Ctrl + R
+Plug 'junegunn/vim-peekaboo'
 
 " Default peekaboo window
 let g:peekaboo_window = 'vertical botright 30new'
@@ -255,12 +253,9 @@ Plug 'mattn/gist-vim'
 let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
-" ===== vim gams                {{{
+" ===== tabular                 {{{
 
-" vim syntax file for the GAMS programming language
-Plug 'zorab47/vim-gams'
-
-au BufEnter *.gms set ft=gams 
+Plug 'godlygeek/tabular'
 
 " }}}
 
@@ -385,7 +380,7 @@ nmap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
 nmap <Leader>ru :split<CR>:term ruby %<CR>
 
 " julia
-"nmap <Leader>ju :split<CR>:term julia %<CR>
+nmap <Leader>ju :split<CR>:term julia %<CR>
 
 " bash
 nmap <Leader>ba :split<CR>:term . %<CR>
@@ -438,23 +433,25 @@ nmap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 vmap < <gv
 vmap > >gv
 
-" Search and replace last selected word
-nnoremap <Leader>s :%s///g<left><left>
-
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
+
+" regex
+" These mappings save you some keystrokes and put you where you start typing your search pattern. After typing it you move to the replacement part , type it and hit return. The second version adds confirmation flag.
+noremap ;; :%s:::g<Left><Left><Left>
+noremap ;' :%s:::cg<Left><Left><Left><Left>
 
 " }}}
 
 " }}}
 " Backups ------------------------------------------------------------------ {{{
 
-set backup                          " habilita backups
-set noswapfile                      " não cria mais os malditos .swp
+set backup                                " habilita backups
+set noswapfile                            " não cria mais os malditos .swp
 
-set undodir=~/.config/nvim/undodir          " undo list
-set backupdir=~/.config/nvim/tmp/backup/    " backups
-set directory=~/.config/nvim/tmp/swap/      " swap files
+set undodir=~/.config/nvim/undodir        " undo list
+set backupdir=~/.config/nvim/tmp/backup/  " backups
+set directory=~/.config/nvim/tmp/swap/    " swap files
 
 " Certifica-se de que as pastas sejam criadas automaticamente se já não existirem.
 if !isdirectory(expand(&undodir))
@@ -498,17 +495,6 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
-
-" }}}
-" Navegação entre abas  ---------------------------------------------------- {{{
-
-"navegação de abas fácil, semelhante a navegadores
-nmap <C-t> :tabnew<CR>
-nmap <C-b> :tabprevious<CR>
-nmap <C-n> :tabnext<CR>
-imap <C-t> <Esc>:tabnew<CR>
-imap <C-b> <Esc>:tabprevious<CR>i
-imap <C-n> <Esc>:tabnext<CR>i
 
 " }}}
 " Vim Splits  -------------------------------------------------------------- {{{

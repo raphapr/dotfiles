@@ -113,7 +113,7 @@ bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.
 
 set $multi_monitor (1) DEFAULT  (2) VGA-L  (3) VGA-R (4) VGA-U (5) HDMI-L  (6) HDMI-R (7) HDMI-U  (8) HDMI  (9) PRES-VGA  (0) PRES-HDMI
 mode "$multi_monitor" {
-    bindsym 1 bindsym $mod+m exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 1 exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 3 exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 4 exec --no-startup-id xrandr --output VGA1 --auto --above LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
@@ -349,5 +349,6 @@ for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Telegram"] floating enable
+for_window [class="Anki"] floating enable
 
 #}}}
