@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-cd ~/eclipse && ./eclipse
+cd ~/Software/eclipse && ./eclipse

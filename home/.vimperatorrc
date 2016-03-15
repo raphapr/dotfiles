@@ -11,6 +11,8 @@ ignorekeys add feedly.com
 
 "set gui=none,tabs
 
+set editor="urxvt -e nvim"
+
 "" tab move 
 nnoremap mt :tabmove 
 
@@ -59,4 +61,5 @@ map <silent> <leader>h :set gui=navigation,tabs<CR>
 
 map <leader>m :set gui=invmenu<CR>
 
-set editor="urxvt -e nvim"
+" youtube-play
+nnoremap <silent> <leader>y :!youtube-play<CR>

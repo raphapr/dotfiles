@@ -267,7 +267,13 @@ bindsym $mod+r mode "resize"
 # shortcuts             ----------------------------------------------------- {{{
 
 # open last recent file
-bindsym $mod+o         exec --no-startup-id openl
+bindsym $mod+o          exec --no-startup-id openl
+
+# select last recent file using thunar
+bindsym $mod+shift+o    exec --no-startup-id openl
+
+# set video window
+bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20
 
 #}}}
 # bar                   ----------------------------------------------------- {{{
@@ -348,7 +354,6 @@ for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable
-for_window [class="Telegram"] floating enable
 for_window [class="Anki"] floating enable
 
 #}}}
