@@ -17,6 +17,7 @@ set $BROWSER    firefox
 set $TERM       urxvt -e fish
 set $TERM2      urxvt
 set $TMUX       urxvt -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
+set $LANC       urxvt -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
@@ -66,6 +67,9 @@ bindsym $mod+Return exec --no-startup-id $TERM
 
 # start a terminal with tmux session
 bindsym $mod+shift+Return exec --no-startup-id $TMUX
+
+# start a terminal with ssh
+bindsym $mod+shift+s exec --no-startup-id $LANC
 
 # browser
 bindsym $mod+q exec --no-startup-id $BROWSER
@@ -270,7 +274,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+o          exec --no-startup-id openl
 
 # select last recent file using thunar
-bindsym $mod+shift+o    exec --no-startup-id openl
+bindsym $mod+shift+o    exec --no-startup-id selectl
 
 # set video window
 bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20
