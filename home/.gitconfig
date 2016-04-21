@@ -5,7 +5,7 @@
 	helper = cache --timeout=3600
 
 [core]
-  editor = vim
+  editor = nvim
 [alias]
   aa = add -A
   ap = add --patch

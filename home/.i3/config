@@ -21,10 +21,12 @@ set $LANC       urxvt -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
+set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav && lastfile ~/Imagens/Screenshots
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
 
+exec --no-startup-id redshift -l -9.653916:-35.705566
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 exec --no-startup-id "guake -e '~/.startupGuake.sh'"
@@ -38,7 +40,6 @@ exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec --no-startup-id clipit --daemon
 exec --no-startup-id telegram -startintray
 exec_always --no-startup-id xset r rate 200 30
-#exec --no-startup-id redshift -c ~/.config/redshift
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{
@@ -80,6 +81,7 @@ bindsym $mod+d exec --no-startup-id $FM
 # printscreen
 bindsym --release Print exec --no-startup-id $PRINT
 bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área retangular para o print
+bindsym --release $mod+shift+Print exec --no-startup-id $SSPRINT # Seleciona uma área retangular para o print e abre o thunar com a imagem selecionada
 
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
@@ -274,7 +276,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+o          exec --no-startup-id openl
 
 # select last recent file using thunar
-bindsym $mod+shift+o    exec --no-startup-id selectl
+bindsym $mod+shift+o    exec --no-startup-id lastfile /media/hdd/Downloads
 
 # set video window
 bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20

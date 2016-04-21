@@ -20,8 +20,8 @@ $0 <magnet link>" && exit -1
  
 HOST=192.168.25.100 #YourRemoteHostNameOrIP
 PORT=9091 #YourPort(default is 9091)
-USER=raphael
-PASS=$(cat ~/.passwdlist)
+USER=transmission
+PASS=$(cat ~/.passwdlist | tail -n1)
  
 LINK="$1"
 # set true if you want every torrent to be paused initially
