@@ -60,6 +60,3 @@ map <silent> <leader>g :set gui=none<CR>
 map <silent> <leader>h :set gui=navigation,tabs<CR>
 
 map <leader>m :set gui=invmenu<CR>
-
-" youtube-play
-nnoremap <silent> <leader>y :!youtube-play<CR>

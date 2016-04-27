@@ -14,10 +14,10 @@
 
 set $mod Mod4
 set $BROWSER    firefox
-set $TERM       urxvt -e fish
-set $TERM2      urxvt
-set $TMUX       urxvt -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
-set $LANC       urxvt -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
+set $TERM       urxvtc -e fish
+set $TERM2      urxvtc
+set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
+set $LANC       urxvtc -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 set $FM         thunar
 set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
 set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
@@ -27,6 +27,7 @@ set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.soun
 # Startup apps          ----------------------------------------------------- {{{
 
 exec --no-startup-id redshift -l -9.653916:-35.705566
+exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xfce4-volumed
 exec --no-startup-id "guake -e '~/.startupGuake.sh'"
@@ -154,8 +155,8 @@ mouse_warping none
 bindsym $mod+c kill
 
 # start rofi (a program launcher)
-bindsym $mod+space exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd" -font "System San Francisco Display 18"
-bindsym $mod+Tab exec --no-startup-id rofi -show window -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "#2f343f" -bg "#2f343f" -fg "#f3f4f5" -hlbg "#2f343f" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+space exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 18"
+bindsym $mod+Tab exec --no-startup-id rofi -show window -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 18"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
