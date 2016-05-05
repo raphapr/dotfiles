@@ -15,7 +15,7 @@
 set $mod Mod4
 set $BROWSER    firefox
 set $TERM       urxvtc -e fish
-set $TERM2      urxvtc
+set $TERM2      urxvt
 set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
 set $LANC       urxvtc -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 set $FM         thunar
