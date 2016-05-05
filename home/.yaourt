@@ -1,8 +1,17 @@
 #!/bin/bash
 
+# install plug vim
+
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
-for PKG in $(sed '1,9d' ~/.yaourt | grep -v COMMENT); do
+for PKG in $(sed '1,18d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 
@@ -10,13 +19,10 @@ done
 connman
 ranger
 imgurbash
-chromium
-bbswitch
 transmission-remote-cli
 zathura
 zathura-pdf-mupdf
 fasd
-fzf
 translate-shell-git
 youtube-dl
 xclip
@@ -39,7 +45,7 @@ udiskie
 compton
 clipit
 ttf-font-awesome
-google-chrome-stable
+google-chrome
 rxvt-unicode
 urxvt-perls
 urxvt-font-size-git
@@ -51,7 +57,6 @@ mopidy
 mopidy-scrobbler
 mopidy-spotify
 texlive-most
-i3-git
 i3lock
 i3blocks
 git-completion.bash
@@ -71,7 +76,6 @@ unrar
 wget
 the_silver_searcher
 xclip
-fish-shell-git
 guake
 gcalcli
 xfce4-power-manager
@@ -84,7 +88,12 @@ smplayer
 mpc
 wine
 ctags
-psyncgui
 telegram-desktop-bin
 redshift
+i3-wm
+numix-themes-archblue
+pcloud
+ttf-mac-fonts 
+fish
+python-pip
 COMMENT
