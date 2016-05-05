@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # install plug vim
-
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -11,7 +10,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
-for PKG in $(sed '1,18d' ~/.yaourt | grep -v COMMENT); do
+for PKG in $(sed '1,17d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 
@@ -59,7 +58,6 @@ mopidy-spotify
 texlive-most
 i3lock
 i3blocks
-git-completion.bash
 ntfs-3g
 rofi
 glances
@@ -97,4 +95,9 @@ ttf-mac-fonts
 fish
 python-pip
 ttf-dejavu-sans-mono-powerline
+numix-icon-theme-git
+oxygen-gtk2
+adwaita-icon-theme
+w3m
+notifyconf
 COMMENT

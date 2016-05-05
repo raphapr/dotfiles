@@ -109,7 +109,7 @@ bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
 bindsym $mod+Shift+x move workspace to output up
 
 # telegram
-bindsym $mod+Shift+t exec telegram
+bindsym $mod+Shift+t exec telegram-desktop
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
