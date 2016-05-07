@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function up() {
+    amixer -q set Master 2dB+ unmute
+    pkill -RTMIN+1 i3blocks
+    amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show
+}
+
+function down() {
+amixer -q set Master 2dB- unmute
+pkill -RTMIN+1 i3blocks
+amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show
+}
+
+
+function mute() {
+amixer -q -D pulse sset Master toggle
+pkill -RTMIN+1 i3blocks
+if [[ -n $(amixer get Master | grep 'Mono:' | grep -o "\[off\]") ]] ; then volnoti-show -m -v; else amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show; fi
+    
+}
+
+case $1 in
+  up)   up;;
+  down) down;;
+  mute) mute;;
+esac
