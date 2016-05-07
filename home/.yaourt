@@ -77,7 +77,6 @@ xclip
 guake
 gcalcli
 xfce4-power-manager
-xfce4-volumed
 imgurbash
 jabref
 notify-osd-customizable
@@ -100,4 +99,5 @@ oxygen-gtk2
 adwaita-icon-theme
 w3m
 notifyconf
+volnoti
 COMMENT

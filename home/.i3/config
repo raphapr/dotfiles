@@ -19,17 +19,17 @@ set $TERM2      urxvt
 set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
 set $LANC       urxvtc -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 set $FM         thunar
-set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
-set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav
-set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && aplay ~/.sounds/ss.wav && lastfile ~/Imagens/Screenshots
+set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sounds/ss.wav
+set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sounds/ss.wav
+set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sounds/ss.wav && lastfile ~/Imagens/Screenshots
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
 
 exec --no-startup-id redshift -l -9.653916:-35.705566
+exec --no-startup-id volnoti
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id xfce4-volumed
 exec --no-startup-id "guake -e '~/.startupGuake.sh'"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
@@ -89,9 +89,9 @@ bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3block
 bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 
 # volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 2dB- unmute && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 2dB+ unmute && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute        exec --no-startup-id amixer -q set Master toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/audiolowervolume
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/audioraisevolume
+bindsym XF86AudioMute        exec --no-startup-id ~/.bin/audiomute
 
 # mopidy
 bindsym $mod+p exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
@@ -103,7 +103,7 @@ bindsym XF86AudioPlay exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
 # kill current notification
-bindsym ctrl+space exec --no-startup-id killall notify-osd i3-nagbar
+bindsym ctrl+space exec --no-startup-id "killall notify-osd; pkill volnoti && volnoti"
 
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output up
