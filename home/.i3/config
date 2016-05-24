@@ -193,6 +193,7 @@ bindsym $mod+v split h
 # split in vertical orientation
 bindsym $mod+b split v
 
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
@@ -209,6 +210,9 @@ bindsym $mod+z focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# The opposite of focus parent, sets the focus to the last focused child container. 
+bindsym $mod+u focus child
 
 # focus the child container
 #bindsym $mod+d focus child

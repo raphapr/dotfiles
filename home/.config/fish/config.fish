@@ -71,6 +71,8 @@ alias gcal "gcalcli agenda ; gcalcli calw 2"
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 # gams
 alias gams "/media/hdd/Software/gams24.6/gams"
+# command line pastebin
+alias pasteb "curl -F 'f:1=<-' ix.io"
 
 # }}}
 # translate-shell  {{{
