@@ -1,0 +1,35 @@
+session_name: guake
+windows:
+- layout: 5997,194x41,0,0,37
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: ncmpcpp
+  start_directory: /home/raphael
+  window_name: ncmpcpp
+- layout: 6015,194x41,0,0[194x20,0,0,38,194x20,0,21{97x20,0,21,39,96x20,98,21,40}]
+  options:
+    automatic-rename: 'off'
+  panes:
+  - glances
+  - htop
+  - dmesg -Hw
+  start_directory: /home/raphael
+  window_name: monitoring
+- layout: d991,194x41,0,0,41
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: notes
+  start_directory: /home/raphael
+  window_name: notes
+- focus: 'true'
+  layout: d995,194x41,0,0,45
+  options:
+    automatic-rename: 'off'
+  panes:
+  - pane
+  start_directory: /home/raphael
+  window_name: shell

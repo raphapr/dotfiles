@@ -136,7 +136,9 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 
-let g:LatexBox_quickfix = 4
+let g:LatexBox_quickfix         = 4
+let g:LatexBox_Folding          = 1
+let g:LatexBox_latexmk_async    = 1
 
 
 " }}}
@@ -415,7 +417,8 @@ vmap <RIGHT> >gv
 nmap S :w<CR>
 
 " Mata a janela
-nmap K :q<cr>
+"nmap K :q<cr>
+"
 
 "Salva arquivos que requerem permissão root
 cmap w!! %!sudo tee > /dev/null %

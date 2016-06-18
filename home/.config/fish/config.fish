@@ -10,7 +10,7 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
-set PATH $PATH /opt/julia/bin
+set PATH $PATH /opt/julia/bin /home/raphael/.gem/ruby/2.3.0/bin
 set BROWSER firefox
 
 # }}}
@@ -73,6 +73,8 @@ alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 alias gams "/media/hdd/Software/gams24.6/gams"
 # command line pastebin
 alias pasteb "curl -F 'f:1=<-' ix.io"
+# weather in terminal
+alias weather "curl wttr.in/maceio"
 
 # }}}
 # translate-shell  {{{

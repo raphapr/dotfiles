@@ -6,5 +6,6 @@
 if [[ -n $(tmux -f ~/.tmux/tmux.conf ls | grep guake) ]]; then # existe guake session?
     /usr/bin/tmux attach -t guake
 else # não existe guake session
-    tmux -f ~/.tmux/tmux.conf new-session -s guake
+    tmuxp load guake
+    #tmux -f ~/.tmux/tmux.conf new-session -s guake
 fi
