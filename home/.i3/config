@@ -88,6 +88,11 @@ bindsym --release $mod+shift+Print exec --no-startup-id $SSPRINT # Seleciona uma
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
 bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 
+
+# Sreen brightness controls
+bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
+bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
+
 # volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down

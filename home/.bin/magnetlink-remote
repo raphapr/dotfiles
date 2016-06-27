@@ -5,8 +5,8 @@
 #    [Desktop Entry]
 #    Name=Magnet
 #    Type=Application
-#    Comment=Open a magnet link remotly with the help of a script
-#    Exec=/home/raphael/.bin/magnetlink-lancassolar %U
+#    Comment=Open a magnet link remotely with the help of a script
+#    Exec=/home/raphael/.bin/magnetlink-remote %U
 #    Categories=Network;WebBrowser;
 #    MimeType=x-scheme-handler/magnet;
 #
@@ -20,7 +20,7 @@ $0 <magnet link>" && exit -1
  
 HOST=192.168.25.100 #YourRemoteHostNameOrIP
 PORT=9091 #YourPort(default is 9091)
-USER=transmission
+USER=raphael
 PASS=$(cat ~/.passwdlist | tail -n1)
  
 LINK="$1"

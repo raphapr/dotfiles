@@ -5,7 +5,7 @@
 #    [Desktop Entry]
 #    Name=Magnet
 #    Type=Application
-#    Comment=Open a magnet link remotly with the help of a script
+#    Comment=Open a magnet link remotely with the help of a script
 #    Exec=/home/raphael/.bin/magnetlink %U
 #    Categories=Network;WebBrowser;
 #    MimeType=x-scheme-handler/magnet;
