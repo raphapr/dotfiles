@@ -47,7 +47,7 @@ alias cheatsh 'zathura ~/Cloud/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Cloud/cheats/sed | more'
 alias zz 'fasd'
 alias az 'azure'
-alias notes 'nvim ~/Cloud/notes/txt'
+alias notes 'nvim ~/Cloud/notes/txt.notes'
 #VPN
 alias vpnlccv 'cd ~/.vpn/lccv ; sudo openvpn --config ~/.vpn/lccv/pfsense-udp-1194.ovpn'
 alias vpn 'cd ~/.vpn/lancassolar ; sudo openvpn --config ~/.vpn/lancassolar/client.conf'
@@ -157,6 +157,14 @@ alias gl 'git log'
 # copy file content
 function copy
    xclip -sel clip < $argv
+end
+
+# }}}
+# tube              {{{
+
+# assistir algum video do youtube pelo smplayer
+function tube
+     command smplayer "$argv" &
 end
 
 # }}}

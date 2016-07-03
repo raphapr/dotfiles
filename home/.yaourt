@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# install tmux session manager
-sudo pip install tmuxp
+# install pip / python packages
+sudo pacman -S --noconfirm python-pip
+sudo pip install tmuxp stormssh ds4drv
 
 # install plug vim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
@@ -13,7 +14,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
-for PKG in $(sed '1,17d' ~/.yaourt | grep -v COMMENT); do
+for PKG in $(sed '1,20d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 

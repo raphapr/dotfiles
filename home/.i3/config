@@ -88,10 +88,12 @@ bindsym --release $mod+shift+Print exec --no-startup-id $SSPRINT # Seleciona uma
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
 bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 
+# controller toggle
+bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle && pkill -RTMIN+1 i3blocks
 
 # Sreen brightness controls
-bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
-bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
+#bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
+#bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
 
 # volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
@@ -247,7 +249,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+o reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -286,7 +288,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+o          exec --no-startup-id openl
 
 # select last recent file using thunar
-bindsym $mod+shift+o    exec --no-startup-id lastfile /media/hdd/Downloads
+bindsym $mod+shift+d    exec --no-startup-id lastfile /media/hdd/Downloads
 
 # set video window
 bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20

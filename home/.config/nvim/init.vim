@@ -215,31 +215,6 @@ Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_window = 'vertical botright 30new'
 
 " }}}
-" ===== ctrlp.vim               {{{
-
-Plug 'ctrlpvim/ctrlp.vim'
-
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_switch_buffer='Et'
-let g:ctrlp_follow_symlinks=1
-
-" F5 - Refresh
-
-" Abre no home
-noremap <C-P> :CtrlP<CR>
-" Abre no diretório atual do arquivo
-noremap <F8> :CtrlPBuffer<CR>
-"noremap <F11> :CtrlPBufTag<CR>
-noremap <leader>mru :CtrlPMRU<CR>
-
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
-
-" }}}
 " ===== vim-quickrun            {{{
 
 Plug 'thinca/vim-quickrun'
@@ -258,6 +233,14 @@ let g:gist_clip_command = 'xclip -sel clip'
 " ===== tabular                 {{{
 
 Plug 'godlygeek/tabular'
+
+" }}}
+" ===== vim-notes               {{{
+
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+
+autocmd BufNewFile,BufRead *.notes setlocal filetype=notes
 
 " }}}
 
