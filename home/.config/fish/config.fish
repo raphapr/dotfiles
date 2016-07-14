@@ -133,8 +133,8 @@ alias umount-ntfs 'sudo umount /mnt'
 # }}}
 # tmux             {{{
 
+alias t 'tmux'
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
-alias tm 'tmux -f ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 

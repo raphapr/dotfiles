@@ -230,17 +230,17 @@ Plug 'mattn/gist-vim'
 let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
-" ===== tabular                 {{{
-
-Plug 'godlygeek/tabular'
-
-" }}}
 " ===== vim-notes               {{{
 
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 
 autocmd BufNewFile,BufRead *.notes setlocal filetype=notes
+
+" }}}
+" ===== vim-obsession           {{{
+
+Plug 'tpope/vim-obsession'
 
 " }}}
 
@@ -392,6 +392,18 @@ nmap <LEFT> <<
 nmap <RIGHT> >>
 vmap <LEFT> <gv
 vmap <RIGHT> >gv
+
+" }}}
+" sessions          {{{
+let session_dir="~/.config/nvim/sessions"
+
+if !isdirectory(expand(session_dir))
+    call mkdir(expand(session_dir), "p")
+endif
+
+nnoremap <leader>ss :mks! ~/.config/nvim/sessions/default<CR>
+nnoremap <leader>sa :mks! ~/.config/nvim/sessions/session_a<CR>
+nnoremap <leader>sb :mks! ~/.config/nvim/sessions/session_b<CR>
 
 " }}}
 " etc               {{{

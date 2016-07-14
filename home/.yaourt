@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file contains packages I use on Linux and install with Pacman/yaourt.
+
 # install pip / python packages
 sudo pacman -S --noconfirm python-pip
 sudo pip install tmuxp stormssh ds4drv
@@ -11,8 +13,6 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-
-# This file contains packages I use on Linux and install with Pacman/yaourt.
 
 for PKG in $(sed '1,20d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
