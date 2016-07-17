@@ -2,20 +2,19 @@
 " Author: Raphael P. Ribeiro
 "
 
-" Preambulo ---------------------------------------------------------------- {{{
+" Preambule ---------------------------------------------------------------- {{{
 "
 
-" <Leader> por default é \
 let mapleader=","
 let maplocalleader = ","
 filetype off
 filetype plugin on
 filetype plugin indent on
 
-" clipboard unificado
+" unified clipboard
 set clipboard+=unnamedplus
 
-" Sem setar o bash como shell padrão, o syntastic demora no tmux
+" fix Syntastic + tmux bug
 set shell=/bin/bash
 
 " }}}
@@ -47,20 +46,21 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-
 " }}}
-" ===== Languages support       {{{
+" ===== Syntax highlighting     {{{
 
 Plug 'dag/vim-fish'
 Plug 'JuliaLang/julia-vim'
-Plug 'zorab47/vim-gams'
 
-au BufEnter *.gms set ft=gams 
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
 
 " }}}
 " ===== vim-airline             {{{
 
-" Se os glifos ficarem estranhos:
+" fix strange glyphs:
 " fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
 
 Plug 'vim-airline/vim-airline'
@@ -70,19 +70,16 @@ let g:airline_theme = 'bubblegum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" Retirando o trailing check
-"let g:airline#extensions#whitespace#checks = ['indent']
-
 " }}}
 " ===== vim-autoclose           {{{
 
-" Fecha automaticamente aspas, chaves, parênteses...
+" It automatically closes quotes, keys, parentesis...
 Plug 'Townk/vim-autoclose'
 
 " }}}
 " ===== NERDTree                {{{
 
-" Navegador de arquivos e diretórios
+" File browser
 Plug 'scrooloose/nerdtree'
 nmap <F10> :NERDTreeToggle<CR>
 
@@ -91,8 +88,7 @@ let NERDTreeShowBookmarks=1
 " }}}
 " ===== vim-tagbar              {{{
 
-" Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
-" Lembrar que <ctrl> ww troca de janela
+" Tags browser (It needs ctags package)
 Plug 'majutsushi/tagbar'
 nmap <F9> :TagbarToggle<CR>
 
@@ -121,14 +117,15 @@ let g:tagbar_type_markdown = {
 " }}}
 " ===== vim-numbertoggle        {{{
 
-" Números das linhas relativo no modo normal e absoluto no modo insert
+" It quickly toggles between relative and absolute line numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 let g:NumberToggleTrigger="<Leader>n"
 
 " }}}
 " ===== Nerd Commenter          {{{
 
-" <leader>cc para comentar e <leader>cu para descomentar
+" <leader>cc comment
+" <leader>cu uncomment
 Plug 'scrooloose/nerdcommenter'
 
 " }}}
@@ -136,6 +133,7 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 
+let g:tex_flavor='latex'
 let g:LatexBox_quickfix         = 4
 let g:LatexBox_Folding          = 1
 let g:LatexBox_latexmk_async    = 1
@@ -144,16 +142,15 @@ let g:LatexBox_latexmk_async    = 1
 " }}}
 " ===== matchit.vim             {{{
 
-" Estende o uso do %
+" It extends % usage
 Plug 'matchit.zip'
 
 " }}}
 " ===== Syntastic               {{{
 
-" Checa erro de sintaxe
+" Syntax checker
 Plug 'scrooloose/syntastic'
 
-" começa em passive mode
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'],'passive_filetypes': [] }
 nmap <leader>ss :SyntasticToggleMode<CR>
 
@@ -166,22 +163,9 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " }}}
-" ===== markdown.vim            {{{
-
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-
-let g:vim_markdown_folding_disabled=1
-
-" }}}
-" ===== vim-fugitive (git)      {{{
-
-Plug 'tpope/vim-fugitive'
-
-" }}}
 " ===== EasyMotion              {{{
 
-" Navegação de texto igual vimperator
+" Text navigation like vimperator
 Plug 'Lokaltog/vim-easymotion'
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -208,26 +192,11 @@ map  N <Plug>(easymotion-prev)
 " }}}
 " ===== vim-peekaboo            {{{
 
-" extende Ctrl + R
+" extends Ctrl + R
 Plug 'junegunn/vim-peekaboo'
 
 " Default peekaboo window
 let g:peekaboo_window = 'vertical botright 30new'
-
-" }}}
-" ===== vim-quickrun            {{{
-
-Plug 'thinca/vim-quickrun'
-
-nmap <F11> :QuickRun<CR>
-
-" }}}
-" ===== gist-vim                {{{
-
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
-
-let g:gist_clip_command = 'xclip -sel clip'
 
 " }}}
 " ===== vim-notes               {{{
@@ -238,71 +207,40 @@ Plug 'xolox/vim-misc'
 autocmd BufNewFile,BufRead *.notes setlocal filetype=notes
 
 " }}}
-" ===== vim-obsession           {{{
-
-Plug 'tpope/vim-obsession'
-
-" }}}
 
 call plug#end()
 
 " }}}
-" Opções Básicas  ---------------------------------------------------------- {{{
+" Settings  ---------------------------------------------------------------- {{{
 
-syntax enable                           " Habilita a marcação de sintaxe
-"set encoding=utf-8                     "
-set showmode                            " Exibe o modo atual
-set wildmenu                            " Menu com as opções do vim usando tab
-set background=dark                     " Define o fundo preto (É melhor usar isso com a sintaxe)
-set nu                                  " Mostra o número de linhas
-set ai                                  " Faz o auto tab/auto indent
-set ts=4                                " tab vale 4 espaços
-set sw=4                                " tab com 4 espaços
-set softtabstop=4                       " Operações como o backspace também com 4 espaços
-set et                                  " Troca tabs por espaços
-set ruler                               " Mostra a posição do cursor
-set cursorline                          " Destaca a linha atual
-set laststatus=2                        " Sempre exibe a barra de status
-set autoread                            " Recarrega arquivos alterados em disco automaticamente
-set incsearch                           " Pesquisa incremental
-set hlsearch                            " Highlight search :)
-set ignorecase                          " Pesquisa ignora caixa alta e baixa
-set smartcase                           " Pesquisa considera caixa alta apenas se ouver uma ou mais maiúsculas na pesquisa
-au InsertLeave * set nopaste            " Desativa paste mode ao sair do insert mode
-set splitbelow                          " Nova janela aparece abaixo da atual
-set splitright                          " Nova janela aparece a direita da atual
-set backupskip=/tmp/*,/private/tmp/*"   " Faz o Vim editar arquivos crontab
-set undofile                            " Estabelece o uso de um arquivo persistente para undo list
-set undolevels=1000                     " Máximo numero de mudanças que podem ser desfeitas
-set undoreload=10000                    " Máximo número de linhas a serem salvar pra buffer reload
-set re=1                                " Corrige os arquivos ruby que estavam lentos por causa da nova regex engine do vim
-au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
-set keywordprg=trans\ -b\ :pt           " Traduz para o inglês ao pressionar Shift+K quando o texto estiver selecionado pelo vim. NEED: translate-shell-git (AUR)
-let g:tex_flavor='latex'
+syntax enable
 colorscheme molokai
+set background=dark
 
-" }}}
-" Omni completion ---------------------------------------------------------- {{{
+" Settings indentation style default
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set expandtab
+set autoindent
+set copyindent
+set smartindent
+set preserveindent
 
-" <C-x><C-o> auto completar sintaxe
-" <C-n> auto completar geral
-
-" h cancela sem completar
-" l completa
-imap <expr> h ((pumvisible())?("\<C-e>"):("h"))
-imap <expr> l ((pumvisible())?("\<C-y>"):("l"))
-
-" usa jk para mover a janela do popup omnicomplete
-imap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-imap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+" Undo settings files
+set undofile
+set undolevels=1000
+set undoreload=10000
+set backupskip=/tmp/*,/private/tmp/*"   " No backup file is created for these
 
 
 " }}}
 " Folding   ---------------------------------------------------------------- {{{
 
 set foldmethod=marker
-set foldmarker={{{,}}} " marker para abrir folder e fechar folder
-set foldlevelstart=0   " Começa com todas os folders fechados
+set foldmarker={{{,}}}
+set foldlevelstart=0   " It begins with marks closed
 
 " Space to toggle folds.
 nmap <Space> za
@@ -330,48 +268,34 @@ set foldtext=MyFoldText()
 
 " buffers           {{{
 
-" navegação entre buffers
+" buffers navigation
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
-" fecha buffer (sem quebrar a janela do NERDTree)
+" closes buffer
 nmap <C-E> :bp<cr>:bd #<cr>
 
 "}}}
-" git               {{{
-
-noremap <Leader>ga :!git add .<CR>
-noremap <Leader>gc :!git commit -m '<C-R>="'"<CR>
-noremap <Leader>gsh :!git push<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>'
-
-"}}}
-" edição rápida     {{{
+" fast edition      {{{
 
 nmap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
 nmap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nmap <leader>i3 :vsplit ~/.i3/config<cr>
 
 " }}}
-" programação       {{{
+" compiling         {{{
 
-" compilar com openGL (CG)
+" OpenGL
 nmap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
-
-" ruby
+" Ruby
 nmap <Leader>ru :split<CR>:term ruby %<CR>
-
-" julia
+" Julia
 nmap <Leader>ju :split<CR>:term julia %<CR>
-
-" bash
+" Bash
 nmap <Leader>ba :split<CR>:term . %<CR>
 
 " }}}
-" setas             {{{
+" keys              {{{
 
 nmap <up> <nop>
 nmap <down> <nop>
@@ -384,7 +308,7 @@ imap <right> <nop>
 nmap j gj
 nmap k gk
 
-" Usar setas p/ algo mais útil
+" keys for something more useful
 
 nmap <UP> ddkP
 nmap <DOWN> ddp
@@ -394,40 +318,18 @@ vmap <LEFT> <gv
 vmap <RIGHT> >gv
 
 " }}}
-" sessions          {{{
-let session_dir="~/.config/nvim/sessions"
-
-if !isdirectory(expand(session_dir))
-    call mkdir(expand(session_dir), "p")
-endif
-
-nnoremap <leader>ss :mks! ~/.config/nvim/sessions/default<CR>
-nnoremap <leader>sa :mks! ~/.config/nvim/sessions/session_a<CR>
-nnoremap <leader>sb :mks! ~/.config/nvim/sessions/session_b<CR>
-
-" }}}
 " etc               {{{
 
-" quick save
-nmap S :w<CR>
-
-" Mata a janela
-"nmap K :q<cr>
-"
-
-"Salva arquivos que requerem permissão root
+" Save files without sudo
 cmap w!! %!sudo tee > /dev/null %
 
-" Dois <Enter> para quebrar linha sem entrar no insert mode
-nmap <CR><CR> o<ESC>
-
-" Recarrega vimrc
+" Reload init.vim
 map <Leader>re :so ~/.config/nvim/init.vim<CR>
 
-" Cancela o highlight da busca atual
+" Cancel current highlight search
 nmap <silent> <F3> :noh<cr>:call clearmatches()<cr>
 
-" Opções para que blocos selecionados sejam reselecionados após identações.
+" Selected blocks are selected again before identations
 vmap < <gv
 vmap > >gv
 
@@ -444,14 +346,14 @@ noremap ;' :%s:::cg<Left><Left><Left><Left>
 " }}}
 " Backups ------------------------------------------------------------------ {{{
 
-set backup                                " habilita backups
-set noswapfile                            " não cria mais os malditos .swp
+set backup                                " enable backup
+set noswapfile                            " don't create swap files
 
 set undodir=~/.config/nvim/undodir        " undo list
 set backupdir=~/.config/nvim/tmp/backup/  " backups
 set directory=~/.config/nvim/tmp/swap/    " swap files
 
-" Certifica-se de que as pastas sejam criadas automaticamente se já não existirem.
+" folders creation
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
 endif
@@ -460,38 +362,6 @@ if !isdirectory(expand(&backupdir))
 endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
-endif
-
-" }}}
-" tmux    ------------------------------------------------------------------ {{{
-
-" Para as cores funcionarem bem é preciso usar 256 cores no terminal.
-" " No bashrc, zshrc ou similar, faça algo como
-" " export TERM="xterm-256color"
-"
-" " let g:solarized_termcolors=256
-
-"""" Faz com que o esquema de cores funcione perfeitamente dentro do tmux e urxvt
-if &term =~ '256color'
-      " Disable Background Color Erase (BCE) so that color schemes
-      "   " work properly when Vim is used inside tmux and GNU screen.
-      "     " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
-             set t_ut=
-endif
-
-" ~/.vimrc
-" " Make Vim recognize xterm escape sequences for Page and Arrow
-" " keys combined with modifiers such as Shift, Control, and Alt.
-" " See http://www.reddit.com/r/vim/comments/1a29vk/_/c8tze8p
-if &term =~ '^screen'
-"   " Page keys http://sourceforge.net/p/tmux/tmux-code/ci/master/tree/FAQ
-    execute "set t_kP=\e[5;*~"
-    execute "set t_kN=\e[6;*~"
-"       " Arrow keys http://unix.stackexchange.com/a/34723
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
 endif
 
 " }}}
@@ -519,14 +389,14 @@ nmap <M-Left>    <C-W>=
 nmap <M-Right>   <C-W><Bar>
 
 " }}}
-" Ajustes  ----------------------------------------------------------------- {{{
+" Adjusts  ----------------------------------------------------------------- {{{
 
 " Hack to get C-h working in neovim
 if has('nvim')
     nmap <BS> <C-W>h
 endif
 
-" Certifica-se que o Vim retorna para a mesma linha quando abre o arquivo
+" Returns to the same line when opened again
 if has("autocmd")
       au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
           \| exe "normal! g'\"" | endif
