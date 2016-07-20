@@ -5,6 +5,9 @@
 " Preambule ---------------------------------------------------------------- {{{
 "
 
+set splitbelow                          " Nova janela aparece abaixo da atual
+set splitright                          " Nova janela aparece a direita da atual
+
 let mapleader=","
 let maplocalleader = ","
 filetype off
@@ -216,6 +219,11 @@ call plug#end()
 syntax enable
 colorscheme molokai
 set background=dark
+set nu
+
+" settings for split windows
+set splitbelow
+set splitright
 
 " Settings indentation style default
 set tabstop=4
@@ -295,7 +303,7 @@ nmap <Leader>ju :split<CR>:term julia %<CR>
 nmap <Leader>ba :split<CR>:term . %<CR>
 
 " }}}
-" keys              {{{
+" arrow keys        {{{
 
 nmap <up> <nop>
 nmap <down> <nop>
@@ -308,7 +316,7 @@ imap <right> <nop>
 nmap j gj
 nmap k gk
 
-" keys for something more useful
+" arrow keys for something more useful
 
 nmap <UP> ddkP
 nmap <DOWN> ddp
