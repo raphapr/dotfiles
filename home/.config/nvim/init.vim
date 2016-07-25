@@ -210,6 +210,13 @@ Plug 'xolox/vim-misc'
 autocmd BufNewFile,BufRead *.notes setlocal filetype=notes
 
 " }}}
+" ===== vim-livedown            {{{
+
+" Dependencie: sudo npm install -g livedown
+Plug 'shime/vim-livedown'
+
+" }}}
+
 
 call plug#end()
 
