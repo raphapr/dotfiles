@@ -38,7 +38,7 @@ exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
-exec --no-startup-id clipit --daemon
+exec --no-startup-id clipit
 exec --no-startup-id telegram -startintray
 exec_always --no-startup-id xset r rate 200 30
 

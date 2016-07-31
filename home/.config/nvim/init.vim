@@ -212,11 +212,33 @@ autocmd BufNewFile,BufRead *.notes setlocal filetype=notes
 " }}}
 " ===== vim-livedown            {{{
 
-" Dependencie: sudo npm install -g livedown
+" Dependencies: sudo npm install -g livedown
 Plug 'shime/vim-livedown'
 
 " }}}
+" ===== ack                     {{{
 
+" Dependencies: sudo pacman -S the_silver_searcher
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep --smart-case'
+
+" }}}
+" ===== CtrlP                   {{{
+
+Plug 'ctrlpvim/ctrlp.vim'
+
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_switch_buffer='Et'
+let g:ctrlp_follow_symlinks=1
+
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+
+" }}}
 
 call plug#end()
 
@@ -248,7 +270,6 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 set backupskip=/tmp/*,/private/tmp/*"   " No backup file is created for these
-
 
 " }}}
 " Folding   ---------------------------------------------------------------- {{{
