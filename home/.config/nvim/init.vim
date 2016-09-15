@@ -140,7 +140,7 @@ let g:tex_flavor='latex'
 let g:LatexBox_quickfix         = 4
 let g:LatexBox_Folding          = 1
 let g:LatexBox_latexmk_async    = 1
-
+let g:LatexBox_fold_automatic   = 0
 
 " }}}
 " ===== matchit.vim             {{{
@@ -207,7 +207,7 @@ let g:peekaboo_window = 'vertical botright 30new'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 
-autocmd BufNewFile,BufRead *.notes setlocal filetype=notes
+autocmd BufNewFile,BufRead notes.txt setlocal filetype=notes
 
 " }}}
 " ===== vim-livedown            {{{
