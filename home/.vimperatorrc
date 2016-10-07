@@ -56,6 +56,9 @@ set hintchars=asdfhlkj
 noremap s :open google 
 noremap S :tabopen google 
 
+" open DownThemAll dialog
+map gd :emenu Ferramentas.DownThemAll!.Gestor<CR>
+
 map <silent> <leader>g :set gui=none<CR>
 map <silent> <leader>h :set gui=navigation,tabs<CR>
 

@@ -10,8 +10,9 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
-set PATH $PATH /opt/julia/bin /home/raphael/.gem/ruby/2.3.0/bin
+set PATH $PATH /opt/julia/bin ~/.gem/ruby/2.3.0/bin
 set BROWSER firefox
+set GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 
 # }}}
 # Aliases         ---------------------------------------------- {{{
