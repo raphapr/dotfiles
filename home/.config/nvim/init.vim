@@ -223,6 +223,11 @@ Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep --smart-case'
 
 " }}}
+" ===== vim-surround            {{{
+
+Plug 'tpope/vim-surround'
+
+" }}}
 
 call plug#end()
 
@@ -330,8 +335,8 @@ nmap k gk
 
 " arrow keys for something more useful
 
-nmap <UP> ddkP
-nmap <DOWN> ddp
+nmap <UP> <C-A>
+nmap <DOWN> <C-X>
 nmap <LEFT> <<
 nmap <RIGHT> >>
 vmap <LEFT> <gv
