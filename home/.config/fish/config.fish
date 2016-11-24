@@ -18,6 +18,7 @@ set GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 # ctrl+f only accept autosuggestion
 function fish_user_key_bindings
     fish_vi_mode
+    fzf_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
 end
@@ -84,6 +85,7 @@ alias gams "/media/hdd/Software/gams24.6/gams"
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
 alias weather "curl wttr.in/maceio"
+alias rancher-compose "~/.rancher-compose/rancher-compose"
 
 # }}}
 # translate-shell  {{{
@@ -157,10 +159,23 @@ alias gp 'git push origin master'
 alias gl 'git log'
 
 # }}}
+# docker           {{{
+
+alias dc 'docker-compose'
+alias dockerm 'docker rm -f (docker ps -a -q)'
+
+# }}}
 
 # }}}
 # Functions       ---------------------------------------------- {{{
 
+# dexec             {{{
+
+function dexec
+   docker exec -it $argv bash
+end
+
+# }}}
 # copy              {{{
 
 # copy file content
