@@ -56,10 +56,8 @@ alias miniman 'zathura ~/Cloud/cheats/miniman.pdf'
 alias cheatsh 'zathura ~/Cloud/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Cloud/cheats/sed | more'
 alias zz 'fasd'
-alias az 'azure'
 alias notes 'nvim ~/Cloud/notes/notes.txt'
 #VPN
-alias vpnlccv 'cd ~/.vpn/lccv ; sudo openvpn --config ~/.vpn/lccv/pfsense-udp-1194.ovpn'
 alias vpn 'cd ~/.vpn/lancassolar ; sudo openvpn --config ~/.vpn/lancassolar/client.conf'
 # urserver
 alias urserver '/opt/urserver/urserver --daemon'
@@ -67,7 +65,6 @@ alias urserver '/opt/urserver/urserver --daemon'
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
 alias youtube-viewer 'youtube-viewer -C'
-alias wakeup 'wol 00:1c:25:4b:57:d3'
 # connman
 alias wcon 'connmanctl connect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
 alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
@@ -163,6 +160,32 @@ alias gl 'git log'
 
 alias dc 'docker-compose'
 alias dockerm 'docker rm -f (docker ps -a -q)'
+
+# }}}
+# azure            {{{
+
+alias az 'azure'
+
+function azset
+    switch $argv
+    case rac
+        azure account set 2e0a89dc-7233-44fa-a214-649a52b6bbfd
+    case ral
+        azure account set c71119be-a373-4b00-a319-0c22a5cb003c
+    case men
+        azure account set 8d9f4e6b-ba1c-4992-86d3-cd0b11c38f04
+    case rod
+        azure account set e1f3f4d4-2716-4810-b2f1-081cbe6d67f8
+    case ls
+        echo "\
+        rac:    2e0a89dc-7233-44fa-a214-649a52b6bbfd
+        ral:    c71119be-a373-4b00-a319-0c22a5cb003c
+        men:    8d9f4e6b-ba1c-4992-86d3-cd0b11c38f04
+        rod:    e1f3f4d4-2716-4810-b2f1-081cbe6d67f8"
+    case '*'
+        echo "This command doesn't exists."
+    end
+end
 
 # }}}
 

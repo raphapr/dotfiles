@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# script de inicialização após execução do guake
-# Entra em sessão tmux
+# Guake post-script to create tmux session
 
-if [[ -n $(tmux -f ~/.tmux/tmux.conf ls | grep guake) ]]; then # existe guake session?
-    /usr/bin/tmux attach -t guake
-else # não existe guake session
-    tmuxp load guake
-    #tmux -f ~/.tmux/tmux.conf new-session -s guake
-fi
+tmuxp load guake -y
