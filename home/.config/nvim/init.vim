@@ -223,11 +223,6 @@ Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep --smart-case'
 
 " }}}
-" ===== vimwiki                 {{{
-
-Plug 'vimwiki/vimwiki'
-
-" }}}
 " ===== fzf                     {{{
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
