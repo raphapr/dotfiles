@@ -175,13 +175,13 @@ function azset
     case men
         azure account set 8d9f4e6b-ba1c-4992-86d3-cd0b11c38f04
     case rod
-        azure account set e1f3f4d4-2716-4810-b2f1-081cbe6d67f8
+        azure account set 16f898a3-c2eb-4a4e-87d0-05b8c11554b0
     case ls
         echo "\
         rac:    2e0a89dc-7233-44fa-a214-649a52b6bbfd
         ral:    c71119be-a373-4b00-a319-0c22a5cb003c
         men:    8d9f4e6b-ba1c-4992-86d3-cd0b11c38f04
-        rod:    e1f3f4d4-2716-4810-b2f1-081cbe6d67f8"
+        rod:    16f898a3-c2eb-4a4e-87d0-05b8c11554b0"
     case '*'
         echo "This command doesn't exists."
     end

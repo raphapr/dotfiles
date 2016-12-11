@@ -223,9 +223,65 @@ Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep --smart-case'
 
 " }}}
-" ===== vim-surround            {{{
+" ===== vimwiki                 {{{
 
-Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+
+" }}}
+" ===== fzf                     {{{
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" C-k C-j mapping up-down
+autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
+autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
+
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-m> :FZFMru<cr>
+
+function! s:all_files()
+  return extend(
+  \ filter(copy(v:oldfiles),
+  \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
+  \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
+endfunction
+
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" MRU
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
 
 " }}}
 
@@ -334,9 +390,10 @@ nmap j gj
 nmap k gk
 
 " arrow keys for something more useful
+"
 
-nmap <UP> <C-A>
-nmap <DOWN> <C-X>
+nmap <UP> ddkP
+nmap <DOWN> ddp
 nmap <LEFT> <<
 nmap <RIGHT> >>
 vmap <LEFT> <gv
