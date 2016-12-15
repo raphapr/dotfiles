@@ -397,6 +397,12 @@ vmap <RIGHT> >gv
 " }}}
 " etc               {{{
 
+" Set working directory to the current file just for current window
+map <leader>cd :lcd %:h<CR>
+
+" Open files located in the same dir in with the current file is edited
+map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+
 " Save files without sudo
 cmap w!! %!sudo tee > /dev/null %
 

@@ -70,6 +70,7 @@ alias wcon 'connmanctl connect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
 alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
+alias prismo "ssh root@prismo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
 alias b "bash"
 # gcalcli
@@ -154,6 +155,7 @@ alias gst 'git status'
 alias gd 'git diff'
 alias gp 'git push origin master'
 alias gl 'git log'
+alias gc 'git checkout'
 
 # }}}
 # docker           {{{
