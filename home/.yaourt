@@ -3,7 +3,7 @@
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
 # install pip / python packages
-sudo pacman -S --noconfirm python-pip
+sudo pacman -S --noconfirm python python-pip
 sudo pip install tmuxp stormssh ds4drv
 
 # install plug vim
@@ -19,9 +19,9 @@ for PKG in $(sed '1,20d' ~/.yaourt | grep -v COMMENT); do
 done
 
 <<COMMENT
+dbus-x11
 connman
 ranger
-imgurbash
 transmission-remote-cli
 zathura
 zathura-pdf-mupdf
@@ -56,6 +56,8 @@ ttf-dejavusansmono-powerline-git
 htop
 ncdu
 ncmpcpp
+libspotify
+python-spotify
 mopidy
 mopidy-scrobbler
 mopidy-spotify
@@ -81,7 +83,7 @@ xclip
 guake
 gcalcli
 xfce4-power-manager
-imgurbash
+imgurbash2
 jabref
 notify-osd-customizable
 profile-sync-daemon
@@ -96,7 +98,6 @@ numix-themes-archblue
 pcloud
 ttf-mac-fonts 
 fish
-python-pip
 ttf-dejavu-sans-mono-powerline
 numix-icon-theme-git
 oxygen-gtk2

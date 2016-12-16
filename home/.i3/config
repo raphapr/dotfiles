@@ -40,6 +40,7 @@ exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec --no-startup-id clipit
 exec --no-startup-id telegram -startintray
+exec --no-startup-id battery_warning &
 exec_always --no-startup-id xset r rate 200 30
 
 #}}}i
@@ -92,8 +93,8 @@ bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle && pkill -RTMIN+1 i3blocks
 
 # Sreen brightness controls
-#bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
-#bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
+bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
+bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
 
 # volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up

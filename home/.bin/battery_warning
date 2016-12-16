@@ -3,7 +3,7 @@
 ########################################
 # Check if script already running
 
-lf=/tmp/pidLockFile
+lf=/tmp/battery_warning.pidlock
 # create empty lock file if none exists
 touch $lf
 read lastPID < $lf
@@ -18,7 +18,7 @@ echo $$ > $lf
 SLEEP_TIME=5   # Default time between checks.
 SAFE_PERCENT=30  # Still safe at this level.
 DANGER_PERCENT=20  # Warn when battery at this level.
-CRITICAL_PERCENT=15  # Hibernate when battery at this level.
+CRITICAL_PERCENT=10  # Hibernate when battery at this level.
  
 export DISPLAY=:0.0
 
