@@ -18,190 +18,190 @@ set shell=/bin/bash
 " }}}
 " Plugins   ---------------------------------------------------------------- {{{
 
-call plug#begin('~/.vim/plugged')
+"call plug#begin('~/.vim/plugged')
 
-" ===== Esquema de cores        {{{
+"" ===== Esquema de cores        {{{
 
-Plug 'tomasr/molokai'
+"Plug 'tomasr/molokai'
 
-" }}}
-" ===== Snipmate                {{{
+"" }}}
+"" ===== Snipmate                {{{
 
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'tomtom/tlib_vim'
+"Plug 'garbas/vim-snipmate'
+"Plug 'honza/vim-snippets'
 
-" }}}
-" ===== vim-autoclose           {{{
+"" }}}
+"" ===== vim-autoclose           {{{
 
-" Fecha automaticamente aspas, chaves, parênteses...
-Plug 'Townk/vim-autoclose'
+"" Fecha automaticamente aspas, chaves, parênteses...
+"Plug 'Townk/vim-autoclose'
 
-" }}}
-" ===== NERDTree                {{{
+"" }}}
+"" ===== NERDTree                {{{
 
-" Navegador de arquivos e diretórios
-Plug 'scrooloose/nerdtree'
-nnoremap <F10> :NERDTreeToggle<CR>
+"" Navegador de arquivos e diretórios
+"Plug 'scrooloose/nerdtree'
+"nnoremap <F10> :NERDTreeToggle<CR>
 
-let NERDTreeShowBookmarks=1
+"let NERDTreeShowBookmarks=1
 
-" }}}
-" ===== vim-tagbar              {{{
+"" }}}
+"" ===== vim-tagbar              {{{
 
-" Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
-" Lembrar que <ctrl> ww troca de janela
-Plug 'majutsushi/tagbar'
-nnoremap <F9> :TagbarToggle<CR>
+"" Navega entre as tags do código fonte, precisa do ctags instalado para gerar as tags
+"" Lembrar que <ctrl> ww troca de janela
+"Plug 'majutsushi/tagbar'
+"nnoremap <F9> :TagbarToggle<CR>
 
-" }}}
-" ===== Gundo                   {{{
+"" }}}
+"" ===== Gundo                   {{{
 
-" Ver undo tree em estilo
-Plug 'sjl/gundo.vim'
-nnoremap <Leader>gu :GundoToggle<CR>
+"" Ver undo tree em estilo
+"Plug 'sjl/gundo.vim'
+"nnoremap <Leader>gu :GundoToggle<CR>
 
-" }}}
-" ===== vim-numbertoggle        {{{
+"" }}}
+"" ===== vim-numbertoggle        {{{
 
-" Números das linhas relativo no modo normal e absoluto no modo insert
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-let g:NumberToggleTrigger="<Leader>n"
+"" Números das linhas relativo no modo normal e absoluto no modo insert
+"Plug 'jeffkreeftmeijer/vim-numbertoggle'
+"let g:NumberToggleTrigger="<Leader>n"
 
-" }}}
-" ===== Nerd Commenter          {{{
+"" }}}
+"" ===== Nerd Commenter          {{{
 
-" <leader>cc para comentar e <leader>cu para descomentar
-Plug 'scrooloose/nerdcommenter'
+"" <leader>cc para comentar e <leader>cu para descomentar
+"Plug 'scrooloose/nerdcommenter'
 
-" }}}
-" ===== latex-box               {{{
+"" }}}
+"" ===== latex-box               {{{
 
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+"Plug 'LaTeX-Box-Team/LaTeX-Box'
 
-let g:LatexBox_quickfix = 4
+"let g:LatexBox_quickfix = 4
 
 
-" }}}
-" ===== matchit.vim             {{{
+"" }}}
+"" ===== matchit.vim             {{{
 
-" Estende o uso do %
-Plug 'matchit.zip'
+"" Estende o uso do %
+"Plug 'matchit.zip'
 
-" }}}
-" ===== vim-airline             {{{
+"" }}}
+"" ===== vim-airline             {{{
 
-" Se os glifos ficarem estranhos:
-" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
+"" Se os glifos ficarem estranhos:
+"" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
 
-Plug 'bling/vim-airline'
+"Plug 'bling/vim-airline'
 
-let g:airline_theme = 'bubblegum'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme = 'bubblegum'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
 
-" Retirando o trailing check
-"let g:airline#extensions#whitespace#checks = ['indent']
+"" Retirando o trailing check
+""let g:airline#extensions#whitespace#checks = ['indent']
 
-" }}}
-" ===== Syntastic               {{{
+"" }}}
+"" ===== Syntastic               {{{
 
-" Checa erro de sintaxe
-Plug 'scrooloose/syntastic'
+"" Checa erro de sintaxe
+"Plug 'scrooloose/syntastic'
 
-" começa em passive mode
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'],'passive_filetypes': [] }
-nnoremap <leader>sk :SyntasticCheck<CR> :SyntasticToggleMode<CR> }
+"" começa em passive mode
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'],'passive_filetypes': [] }
+"nnoremap <leader>sk :SyntasticCheck<CR> :SyntasticToggleMode<CR> }
 
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_error_symbol='✗'
+"let g:syntastic_warning_symbol='⚠'
+"let g:syntastic_style_error_symbol = '✗'
+"let g:syntastic_style_warning_symbol = '⚠'
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_aggregate_errors = 1
 
-" }}}
-" ===== CtrlP                   {{{
+"" }}}
+"" ===== CtrlP                   {{{
 
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_switch_buffer='Et'
-let g:ctrlp_follow_symlinks=1
+"let g:ctrlp_max_files=0
+"let g:ctrlp_max_depth=40
+"let g:ctrlp_working_path_mode='ra'
+"let g:ctrlp_switch_buffer='Et'
+"let g:ctrlp_follow_symlinks=1
 
-" F5 - Refresh
+"" F5 - Refresh
 
-" Abre no home
-noremap <C-P> :CtrlP<CR>
-" Abre no diretório atual do arquivo
-noremap <F8> :CtrlPBuffer<CR>
-noremap <F11> :CtrlPBufTag<CR>
-noremap <leader>mru :CtrlPMRU<CR>
+"" Abre no home
+"noremap <C-P> :CtrlP<CR>
+"" Abre no diretório atual do arquivo
+"noremap <F8> :CtrlPBuffer<CR>
+"noremap <F11> :CtrlPBufTag<CR>
+"noremap <leader>mru :CtrlPMRU<CR>
 
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
-let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
+"set wildmode=list:longest,list:full
+"set wildignore+=*.o,*.obj,.git,*.rbc,.pyc,__pycache__
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tox)$'
+"let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 
-" }}}
-" ===== markdown.vim            {{{
+"" }}}
+"" ===== markdown.vim            {{{
 
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
 
-let g:vim_markdown_folding_disabled=1
+"let g:vim_markdown_folding_disabled=1
 
-" }}}
-" ===== vim-fugitive (git)      {{{
+"" }}}
+"" ===== vim-fugitive (git)      {{{
 
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 
-" }}}
-" ===== EasyMotion              {{{
+"" }}}
+"" ===== EasyMotion              {{{
 
-" Navegação de texto igual vimperator
-Plug 'Lokaltog/vim-easymotion'
+"" Navegação de texto igual vimperator
+"Plug 'Lokaltog/vim-easymotion'
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
+"let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
 
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+"" Bi-directional find motion
+"" Jump to anywhere you want with minimal keystrokes, with just one key binding.
 
-nmap f <Plug>(easymotion-s)
+"nmap f <Plug>(easymotion-s)
 
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+"" JK motions: Line motions
+"map <Leader>j <Plug>(easymotion-j)
+"map <Leader>k <Plug>(easymotion-k)
 
-" }}}
-" ===== supertab                {{{
+"" }}}
+"" ===== supertab                {{{
 
-" Tab para auto completar
+"" Tab para auto completar
 
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-setlocal omnifunc=LatexBox_Complete
+"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+"setlocal omnifunc=LatexBox_Complete
 
-" }}}
-" ===== vim-fish                {{{
+"" }}}
+"" ===== vim-fish                {{{
 
-Plug 'dag/vim-fish'
+"Plug 'dag/vim-fish'
 
-" }}}
-" ===== julia-vim               {{{
+"" }}}
+"" ===== julia-vim               {{{
 
-Plug 'JuliaLang/julia-vim'
+"Plug 'JuliaLang/julia-vim'
 
-" }}}
-"
+"" }}}
+""
 
-call plug#end()
+"call plug#end()
 
 " }}}
 " Opções Básicas  ---------------------------------------------------------- {{{
@@ -238,7 +238,7 @@ set re=1                                " Corrige os arquivos ruby que estavam l
 au VimResized * :wincmd =               " Ajusta os splits quando a janela é redimensionada
 set keywordprg=trans\ -b\ :pt           " Traduz para o inglês ao pressionar Shift+K quando o texto estiver selecionado pelo vim. NEED: translate-shell-git (AUR)
 let g:tex_flavor='latex'
-colorscheme molokai
+"colorscheme molokai
 
 " }}}
 " Omni completion ---------------------------------------------------------- {{{

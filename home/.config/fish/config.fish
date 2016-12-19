@@ -29,7 +29,7 @@ end
 # Shell aliases    {{{
 
 alias lash 'ls -lash'
-alias l 'ls -CF'
+alias l 'ls -l'
 alias vim 'nvim'
 alias v 'nvim'
 alias nv 'nvim'

@@ -129,15 +129,15 @@ bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.
 set $multi_monitor (1) DEFAULT  (2) VGA-L  (3) VGA-R (4) VGA-U (5) HDMI-L  (6) HDMI-R (7) HDMI-U  (8) HDMI  (9) PRES-VGA  (0) PRES-HDMI
 mode "$multi_monitor" {
     bindsym 1 exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 2 exec --no-startup-id xrandr --output VGA1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 3 exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 4 exec --no-startup-id xrandr --output VGA1 --auto --above LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --left-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 7 exec --no-startup-id xrandr --output HDMI1 --auto --above LVDS1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 8 exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio, mode "default"
-    bindsym 9 exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as LVDS1, mode "default"     # presentations VGA1
-    bindsym 0 --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as LVDS1, mode "default"         # presentations HDMI1
+    bindsym 2 exec --no-startup-id xrandr --output VGA1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 3 exec --no-startup-id xrandr --output VGA1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 4 exec --no-startup-id xrandr --output VGA1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 7 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 8 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio, mode "default"
+    bindsym 9 exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as eDP1, mode "default"     # presentations VGA1
+    bindsym 0 --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as eDP1, mode "default"         # presentations HDMI1
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
