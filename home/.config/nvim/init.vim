@@ -386,9 +386,9 @@ nmap k gk
 
 " arrow keys for something more useful
 "
-
-nmap <UP> ddkP
-nmap <DOWN> ddp
+"
+nmap <UP> <C-A>
+nmap <DOWN> <C-X>
 nmap <LEFT> <<
 nmap <RIGHT> >>
 vmap <LEFT> <gv

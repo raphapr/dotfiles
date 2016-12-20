@@ -2,8 +2,11 @@
 
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
+# symlinking tmux
+ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
+
 # install pip / python packages
-sudo pacman -S --noconfirm python python-pip
+sudo pacman -S --noconfirm python python-pip fish
 sudo pip install tmuxp stormssh ds4drv
 
 # install plug vim
@@ -14,7 +17,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-for PKG in $(sed '1,20d' ~/.yaourt | grep -v COMMENT); do
+for PKG in $(sed '1,24d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 
@@ -97,7 +100,6 @@ i3-wm
 numix-themes-archblue
 pcloud
 ttf-mac-fonts 
-fish
 ttf-dejavu-sans-mono-powerline
 numix-icon-theme-git
 oxygen-gtk2
