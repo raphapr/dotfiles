@@ -83,7 +83,8 @@ alias gams "/media/hdd/Software/gams24.6/gams"
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
 alias weather "curl wttr.in/maceio"
-alias rancher-compose "~/.rancher-compose/rancher-compose"
+# googler
+alias go "googler"
 
 # }}}
 # translate-shell  {{{

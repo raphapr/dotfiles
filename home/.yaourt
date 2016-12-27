@@ -9,6 +9,9 @@ ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
 sudo pacman -S --noconfirm python python-pip fish
 sudo pip install tmuxp stormssh ds4drv
 
+# install googler
+sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v2.9/googler && sudo chmod +x /usr/local/bin/googler<Paste>
+
 # install plug vim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -17,7 +20,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-for PKG in $(sed '1,24d' ~/.yaourt | grep -v COMMENT); do
+for PKG in $(sed '1,26d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 

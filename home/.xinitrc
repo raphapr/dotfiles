@@ -7,7 +7,7 @@
 #
 
 setxkbmap -option keypad:pointerkeys
-xset r rate 200 30
+xset r rate 210 30
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
 #exec i3 --shmlog-size=26214400

@@ -41,7 +41,7 @@ exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec --no-startup-id clipit
 exec --no-startup-id telegram -startintray
 exec --no-startup-id battery_warning &
-exec_always --no-startup-id xset r rate 200 30
+exec_always --no-startup-id xset r rate 210 30
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{

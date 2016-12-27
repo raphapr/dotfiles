@@ -6,7 +6,7 @@
 # Preambulo           ---------------------------------------------- {{{
 
 if [ "$DISPLAY" ]; then
-    xset r rate 200 30
+    xset r rate 210 30
 fi
 
 export EDITOR=nvim
