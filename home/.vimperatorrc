@@ -62,6 +62,8 @@ map gd :emenu Tools.DownThemAll!.Gestor<CR>
 map <silent> <leader>g :set gui=none<CR>
 map <silent> <leader>h :set gui=navigation,tabs<CR>
 
+" menu
 map <leader>m :set gui=invmenu<CR>
 
-js services.services.autoCompleteSearch.class_="@mozilla.org/autocomplete/search;1?name=unifiedcomplete"
+" give ctrl+shift+P back
+nnoremap <c-s-p> i<c-s-p>

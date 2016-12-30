@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm python python-pip fish
 sudo pip install tmuxp stormssh ds4drv
 
 # install googler
-sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v2.9/googler && sudo chmod +x /usr/local/bin/googler<Paste>
+sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v2.9/googler && sudo chmod +x /usr/local/bin/googler
 
 # install plug vim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
