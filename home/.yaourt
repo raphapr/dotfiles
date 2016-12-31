@@ -69,7 +69,6 @@ mopidy-scrobbler
 mopidy-spotify
 texlive-most
 i3lock
-i3blocks
 ntfs-3g
 rofi
 glances
@@ -112,4 +111,7 @@ notifyconf
 volnoti
 pass
 xf86-input-synaptics
+arandr
+polybar
+siji-git
 COMMENT

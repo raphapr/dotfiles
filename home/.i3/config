@@ -26,6 +26,7 @@ set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sou
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
 
+exec_always --no-startup-id polybar-launch
 exec --no-startup-id redshift -l -9.653916:-35.705566
 exec --no-startup-id volnoti
 exec --no-startup-id urxvtd -q -o -f
@@ -33,7 +34,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "guake -e '~/.startupGuake.sh'"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
-exec --no-startup-id psyncgui
+exec --no-startup-id sleep 2 && psyncgui
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
@@ -86,11 +87,11 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área 
 bindsym --release $mod+shift+Print exec --no-startup-id $SSPRINT # Seleciona uma área retangular para o print e abre o thunar com a imagem selecionada
 
 # power manager toggle
-bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
+bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
 bindsym $mod+shift+a exec --no-startup-id ~/.bin/hdmiaudio
 
 # controller toggle
-bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle && pkill -RTMIN+1 i3blocks
+bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle
 
 # Sreen brightness controls
 bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
@@ -102,10 +103,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
 # mopidy
-bindsym $mod+p exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
+bindsym $mod+p exec --no-startup-id mpc toggle
 bindsym XF86AudioNext exec --no-startup-id mpc next
 bindsym XF86AudioPrev exec --no-startup-id mpc prev
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
 
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
@@ -122,22 +123,17 @@ bindsym $mod+Shift+t exec telegram-desktop
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
-# popular
-bindsym $mod+m      exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
-bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
+# most used
+bindsym $mod+m      exec --no-startup-id xrandr --output HDMI1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png && polybar-launch
 
-set $multi_monitor (1) DEFAULT  (2) VGA-L  (3) VGA-R (4) VGA-U (5) HDMI-L  (6) HDMI-R (7) HDMI-U  (8) HDMI  (9) PRES-VGA  (0) PRES-HDMI
+set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
 mode "$multi_monitor" {
-    bindsym 1 exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 2 exec --no-startup-id xrandr --output VGA1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 3 exec --no-startup-id xrandr --output VGA1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 4 exec --no-startup-id xrandr --output VGA1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 7 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 8 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio, mode "default"
-    bindsym 9 exec --no-startup-id xrandr --output VGA1 --mode 1024x768 --same-as eDP1, mode "default"     # presentations VGA1
-    bindsym 0 --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as eDP1, mode "default"         # presentations HDMI1
+    bindsym 1 exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png && polybar-launch, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png && polybar-launch, mode "default"
+    bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png && polybar-launch, mode "default"
+    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png && polybar-launch, mode "default" 
+    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio && polybar-launch, mode "default"
+    bindsym 6 --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as eDP1 && polybar-launch, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -146,6 +142,7 @@ mode "$multi_monitor" {
 
 bindsym $mod+F12 mode "$multi_monitor"
 
+#bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 #bindsym $mod+a exec --no-startup-id autorandr --change
 
 #}}}
@@ -300,22 +297,22 @@ bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky e
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-bar {
-  position top
-  font pango:FontAwesome, Icons 8
-  #status_command i3status
-  status_command i3blocks
-  colors {
-            statusline #AAAAAA
-            focused_workspace #0080ff #0080ff #000000
-            inactive_workspace #00000 #000000 #AAAAAA
-            urgent_workspace #d33682 #d33682 #fdf6e3
-            #focused_workspace #0088CC #0088CC #FFFFFF
-            #active_workspace #333333 #333333 #FFFFFF
-            #inactive_workspace #333333 #333333 #888888
-            #urgent_workspace #2F343A #900000 #FFFFFF
-  }
-}
+#bar {
+  #position top
+  #font pango:FontAwesome, Icons 8
+  ##status_command i3status
+  #status_command i3blocks
+  #colors {
+            #statusline #AAAAAA
+            #focused_workspace #0080ff #0080ff #000000
+            #inactive_workspace #00000 #000000 #AAAAAA
+            #urgent_workspace #d33682 #d33682 #fdf6e3
+            ##focused_workspace #0088CC #0088CC #FFFFFF
+            ##active_workspace #333333 #333333 #FFFFFF
+            ##inactive_workspace #333333 #333333 #888888
+            ##urgent_workspace #2F343A #900000 #FFFFFF
+  #}
+#}
 
 #}}}
 # borders               ----------------------------------------------------- {{{
@@ -329,9 +326,8 @@ new_window 1pixel
 
 set $mode_system System
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+pid=$(pidof xautolock)
+if [ -z $pid ]; then
+    echo "%{F#dfdfdf} %{F#FF0000} OFF"
+else
+    echo "%{F#dfdfdf} %{F#268bd2} ON"
+fi

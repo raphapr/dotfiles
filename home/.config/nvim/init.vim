@@ -290,6 +290,9 @@ colorscheme molokai
 set background=dark
 set nu
 
+" turn on syntax for config files
+autocmd BufRead,BufNewFile config setf dosini
+
 " settings for split windows
 set splitbelow
 set splitright

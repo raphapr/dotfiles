@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo pacman -Sy >> /dev/null
+
+list=($(pacman -Quq))
+size=${#list[@]}
+
+if [ "$size" != "0" ]; then
+    update_size="  "$size
+    echo "%{F#c6e600}   $size "
+else
+    echo "%{F#dfdfdf}   $size "
+fi

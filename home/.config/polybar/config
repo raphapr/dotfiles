@@ -1,0 +1,366 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+; colors                ----------------------------------------------------- {{{
+
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #55
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+high = #268bd2
+
+; }}}
+; global wm             ----------------------------------------------------- {{{
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; }}}
+; i3 bar                ----------------------------------------------------- {{{
+
+[bar/i3bar]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 16
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
+
+border-top = 2
+border-top-color = ${colors.background}
+
+border-bottom = 2
+border-bottom-color = #333
+
+spacing = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Sans-Regular:size=8;0
+font-1 = MaterialIcons:size=8;0
+font-2 = FontAwesome:size=8;0
+font-3 = Siji:size=8;0
+font-4 = Monospace:size=8;0
+
+modules-left = i3 xwindow
+modules-center = 
+modules-right = mpd cpu memory updates volume wlan battery date
+
+tray-position = right
+tray-padding = 2
+tray-transparent = false
+
+; }}}
+; HDMI bar              ----------------------------------------------------- {{{
+
+[bar/hdmi]
+monitor = ${env:MONITOR:HDMI1}
+width = 100%
+height = 16
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
+
+border-top = 2
+border-top-color = ${colors.background}
+
+border-bottom = 2
+border-bottom-color = #333
+
+spacing = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Sans-Regular:size=8;0
+font-1 = MaterialIcons:size=8;0
+font-2 = FontAwesome:size=8;0
+font-3 = Siji:size=8;0
+font-4 = Monospace:size=8;0
+
+modules-left = i3 xwindow
+modules-center = 
+modules-right = mpd cpu memory updates volume wlan battery date
+
+; }}}
+; xwindow               ----------------------------------------------------- {{{
+
+[module/xwindow]
+type = internal/xwindow
+;label = %title:0:25:...%
+label = 
+
+; }}}
+; modules               ----------------------------------------------------- {{{
+
+; ===== filesystem                  {{{
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+mount-2 = /invalid/mountpoint
+
+label-mounted = %mountpoint%: %percentage_free%
+
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+; }}}
+; ===== bspwm                       {{{
+
+[module/bspwm]
+type = internal/bspwm
+ws-icon-default = x
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+; }}}
+; ===== i3                          {{{
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+enable-click = true
+enable-scroll = true
+
+pin-workspaces = true
+wrapping-scroll = true
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %index%
+label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-padding = ${module/bspwm.label-focused-padding}
+
+label-unfocused = %index%
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+
+label-urgent = %index%!
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; }}}
+; ===== mpd                         {{{
+
+[module/mpd]
+type = internal/mpd
+
+format-online = <toggle>  <label-song> <bar-progress>
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+icon-play = 
+icon-pause = 
+
+bar-progress-foreground-0 = #55aa55
+bar-progress-width = 10
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+toggle-on-foreground = ${colors.primary}
+toggle-off-foreground = #66
+
+; }}}
+; ===== screensaver                 {{{
+
+[module/screensaver]
+type = custom/script
+exec = ~/.config/polybar/scripts/screensaver
+interval = 0
+;format-underline = #ffffff
+
+; }}}
+; ===== updates                     {{{
+
+[module/updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/checkupdates
+;format-foreground = #c6e600
+interval = 3600
+;format-underline = #ec1ece
+
+; }}}
+; ===== wlan                        {{{
+
+[module/wlan]
+type = internal/network
+interface = wlp6s0
+interval = 3.0
+
+format-connected = <label-connected>
+;format-connected-underline = #9f78e1
+;format-disconnected-underline = ${self.format-connected-underline}
+
+;label-connected = " %local_ip% %signal% %downspeed% %upspeed%"
+label-connected = "%{F#dfdfdf} %{F#268bd2} %essid% [ %{F#dfdfdf} %{F#268bd2} %downspeed% ] [ %{F#dfdfdf} %{F#268bd2} %upspeed% ]"
+label-disconnected = "OFFLINE"
+label-connected-foreground = ${colors.high}
+label-disconnected-foreground = ${colors.alert}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+; }}}
+; ===== date                        {{{
+
+[module/date]
+type = internal/date
+date = %%{F#dfdfdf} %%{F#dfdfdf} %H:%M %%{F#cc} %d/%m/%y
+interval = 5
+;format-underline = #02d402
+
+; }}}
+; ===== volume                      {{{
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume>
+label-volume = "%{F#dfdfdf} %{F#268bd2}%percentage%"
+label-volume-foreground = ${root.foreground}
+;format-volume-underline = #1e89ec
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = muted
+
+; }}}}
+; ===== battery                     {{{
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 99
+
+label-discharging = %percentage%
+
+format-charging = <animation-charging> <label-charging>
+;format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground}
+;format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+; }}}
+; ===== cpu                         {{{
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label> <bar-load>
+label = CPU 
+
+bar-load-width = 10
+bar-load-foreground-0 = #55aa55
+bar-load-foreground-1 = #557755
+bar-load-foreground-2 = #f5a70a
+bar-load-foreground-3 = #ff5555
+bar-load-fill = ▐
+bar-load-empty = ▐
+bar-load-empty-foreground = #444444
+bar-load-indicator = 
+
+; }}}
+; ===== memory                      {{{
+
+[module/memory]
+type = internal/memory
+format = <label> <bar-used>
+label = RAM
+;label = RAM %gb_used%/%gb_free%
+
+bar-used-width = 10
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+bar-used-indicator = 
+
+; }}}
+
+; }}}
