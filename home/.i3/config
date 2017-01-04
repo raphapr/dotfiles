@@ -142,7 +142,7 @@ mode "$multi_monitor" {
 
 bindsym $mod+F12 mode "$multi_monitor"
 
-#bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png && polybar-launch
 #bindsym $mod+a exec --no-startup-id autorandr --change
 
 #}}}

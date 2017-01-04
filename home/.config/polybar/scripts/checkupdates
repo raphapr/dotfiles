@@ -1,13 +1,9 @@
 #!/bin/bash
 
-sudo pacman -Sy >> /dev/null
+pac=$(checkupdates | wc -l)
 
-list=($(pacman -Quq))
-size=${#list[@]}
-
-if [ "$size" != "0" ]; then
-    update_size="  "$size
-    echo "%{F#c6e600}   $size "
+if [ "$pac" != "0" ]; then
+    echo "%{F#c6e600}   $pac "
 else
-    echo "%{F#dfdfdf}   $size "
+    echo "%{F#dfdfdf}   $pac "
 fi

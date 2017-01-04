@@ -108,7 +108,7 @@ font-4 = Monospace:size=8;0
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = mpd cpu memory updates volume wlan battery date
+modules-right = mpd cpu memory volume wlan battery date
 
 ; }}}
 ; xwindow               ----------------------------------------------------- {{{
@@ -295,7 +295,9 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 99
+;time-format = %H:%M
 
+;label-discharging = %percentage% %time%
 label-discharging = %percentage%
 
 format-charging = <animation-charging> <label-charging>
