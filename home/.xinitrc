@@ -7,6 +7,11 @@
 #
 
 setxkbmap -option keypad:pointerkeys
+
+# remove caps lock function
+xmodmap -e 'clear Lock'
+xmodmap -e 'keycode 66 = F7'
+
 xset r rate 210 30
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 

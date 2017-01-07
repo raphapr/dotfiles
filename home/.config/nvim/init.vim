@@ -54,6 +54,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 Plug 'dag/vim-fish'
 Plug 'JuliaLang/julia-vim'
+Plug 'pearofducks/ansible-vim'
 
 " Markdown
 Plug 'godlygeek/tabular'
@@ -277,6 +278,8 @@ command! FZFMru call fzf#run({
 \  'sink':    'e',
 \  'options': '-m -x +s',
 \  'down':    '40%'})
+
+" }}}
 
 " }}}
 

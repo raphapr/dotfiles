@@ -30,6 +30,15 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
+  - focus: 'true'
+    shell_command: ranger
+  start_directory: /home/raphael
+  window_name: ranger
+- focus: 'true'
+  layout: d995,194x41,0,0,45
+  options:
+    automatic-rename: 'off'
+  panes:
   - pane
   start_directory: /home/raphael
   window_name: shell

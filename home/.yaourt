@@ -114,4 +114,6 @@ xf86-input-synaptics
 arandr
 polybar
 siji-git
+i3blocks
+npm
 COMMENT

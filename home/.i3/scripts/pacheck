@@ -1,12 +1,7 @@
 #!/bin/bash
 
-sudo pacman -Sy >> /dev/null
+size=$(checkupdates | wc -l)
 
-list=($(pacman -Quq))
-size=${#list[@]}
-#if [ "$size" != "0" ]; then
-    #size=$((size + 1))
-#fi
 echo $size #full_text
 echo $size #short_text
 if [ "$size" != "0" ]; then

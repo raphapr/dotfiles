@@ -73,6 +73,9 @@ tray-transparent = false
 ; }}}
 ; HDMI bar              ----------------------------------------------------- {{{
 
+[settings]
+screenchange-reload = true
+
 [bar/hdmi]
 monitor = ${env:MONITOR:HDMI1}
 width = 100%
