@@ -85,6 +85,8 @@ alias pasteb "curl -F 'f:1=<-' ix.io"
 alias weather "curl wttr.in/maceio"
 # googler
 alias go "googler"
+# buku
+alias bk "buku"
 
 # }}}
 # translate-shell  {{{

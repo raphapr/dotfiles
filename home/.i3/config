@@ -151,6 +151,9 @@ workspace_layout tabbed
 # border toggle
 bindsym $mod+Shift+b border toggle
 
+# buku add
+bindsym $mod+o exec --no-startup-id bukuadd
+
 # disable mouse warp to the center of the window 
 mouse_warping none
 
@@ -281,7 +284,7 @@ bindsym $mod+r mode "resize"
 # shortcuts             ----------------------------------------------------- {{{
 
 # open last recent file
-bindsym $mod+o          exec --no-startup-id openl
+#bindsym $mod+o exec --no-startup-id openl
 
 # select last recent file using thunar
 bindsym $mod+shift+d    exec --no-startup-id lastfile /media/hdd/Downloads
