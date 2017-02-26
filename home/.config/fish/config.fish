@@ -87,6 +87,8 @@ alias weather "curl wttr.in/maceio"
 alias go "googler"
 # buku
 alias bk "buku"
+# jenkins
+alias jenkins "java -jar .jekins-cli.jar -s http://jenkins.stant.com.br"
 
 # }}}
 # translate-shell  {{{
@@ -390,10 +392,6 @@ end
 
 # }}}
 # fasd              {{{
-
-function -e fish_preexec _run_fasd
-     fasd --proc (fasd --sanitize $argv) > /dev/null 2>&1
-end
 
 function z
     set -l dir (fasd -de "printf %s" "$argv")
