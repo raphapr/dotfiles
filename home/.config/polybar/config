@@ -44,10 +44,10 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-border-top = 2
+border-top-size = 2
 border-top-color = ${colors.background}
 
-border-bottom = 2
+border-bottom-size = 2
 border-bottom-color = #333
 
 spacing = 1
@@ -91,10 +91,10 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-border-top = 2
+border-top-size = 2
 border-top-color = ${colors.background}
 
-border-bottom = 2
+border-bottom-size = 2
 border-bottom-color = #333
 
 spacing = 1
@@ -282,7 +282,7 @@ interval = 5
 type = internal/volume
 
 format-volume = <label-volume>
-label-volume = "%{F#dfdfdf} %{F#268bd2}%percentage%"
+label-volume = "%{F#dfdfdf} %{F#268bd2}%percentage%%"
 label-volume-foreground = ${root.foreground}
 ;format-volume-underline = #1e89ec
 
@@ -300,8 +300,8 @@ adapter = AC
 full-at = 99
 ;time-format = %H:%M
 
-;label-discharging = %percentage% %time%
-label-discharging = %percentage%
+label-discharging = %percentage%% (%time%)
+;label-discharging = %percentage%
 
 format-charging = <animation-charging> <label-charging>
 ;format-charging-underline = #ffb52a

@@ -131,7 +131,7 @@ mode "$multi_monitor" {
     bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default" 
     bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png && . /home/raphael/.bin/hdmiaudio, mode "default"
-    bindsym 6 --no-startup-id xrandr --output HDMI1 --mode 1024x768 --same-as eDP1, mode "default"
+    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --same-as eDP1, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -140,8 +140,8 @@ mode "$multi_monitor" {
 
 bindsym $mod+F12 mode "$multi_monitor"
 
-bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
-#bindsym $mod+a exec --no-startup-id autorandr --change
+#bindsym $mod+F2     exec --no-startup-id autorandr --change && polybar-launch && feh --bg-fill ~/.wallpaper.png 
+bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png 
 
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
