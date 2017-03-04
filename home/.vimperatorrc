@@ -1,5 +1,9 @@
 set focuscontent
 
+
+set gui=none
+set gui=tabs
+
 let mapleader = ","
 nnoremap j 4j
 nnoremap k 4k

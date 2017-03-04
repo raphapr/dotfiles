@@ -26,15 +26,15 @@ set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sou
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
 
-#exec_always --no-startup-id polybar-launch
-exec --no-startup-id redshift -l -9.653916:-35.705566
+exec_always --no-startup-id polybar-launch
+exec --no-startup-id run_redshift
 exec --no-startup-id volnoti
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "guake -e '~/.startupGuake.sh'"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
-exec --no-startup-id sleep 2 && psyncgui
+exec --no-startup-id "sleep 3 && psyncgui &"
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
@@ -51,7 +51,9 @@ exec_always --no-startup-id xset r rate 210 30
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Lucida Grande 8
+font pango:tewi-medium 7
+#font pango:Lucida Grande 6
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -140,8 +142,8 @@ mode "$multi_monitor" {
 
 bindsym $mod+F12 mode "$multi_monitor"
 
-#bindsym $mod+F2     exec --no-startup-id autorandr --change && polybar-launch && feh --bg-fill ~/.wallpaper.png 
-bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png 
+bindsym $mod+F2     exec --no-startup-id autorandr --change && polybar-launch && feh --bg-fill ~/.wallpaper.png 
+#bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png 
 
 #}}}
 # i3 Shortcuts          ----------------------------------------------------- {{{
@@ -298,22 +300,22 @@ bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky e
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-bar {
-  position top
-  font pango:FontAwesome, Icons 8
-  #status_command i3status
-  status_command i3blocks
-  colors {
-            statusline #AAAAAA
-            focused_workspace #0080ff #0080ff #000000
-            inactive_workspace #00000 #000000 #AAAAAA
-            urgent_workspace #d33682 #d33682 #fdf6e3
-            #focused_workspace #0088CC #0088CC #FFFFFF
-            #active_workspace #333333 #333333 #FFFFFF
-            #inactive_workspace #333333 #333333 #888888
-            #urgent_workspace #2F343A #900000 #FFFFFF
-  }
-}
+#bar {
+  #position top
+  #font pango:FontAwesome, Icons 8
+  ##status_command i3status
+  #status_command i3blocks
+  #colors {
+            #statusline #AAAAAA
+            #focused_workspace #0080ff #0080ff #000000
+            #inactive_workspace #00000 #000000 #AAAAAA
+            #urgent_workspace #d33682 #d33682 #fdf6e3
+            ##focused_workspace #0088CC #0088CC #FFFFFF
+            ##active_workspace #333333 #333333 #FFFFFF
+            ##inactive_workspace #333333 #333333 #888888
+            ##urgent_workspace #2F343A #900000 #FFFFFF
+  #}
+#}
 
 #}}}
 # borders               ----------------------------------------------------- {{{

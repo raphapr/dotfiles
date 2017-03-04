@@ -32,7 +32,7 @@ margin-bottom = 5
 [bar/i3bar]
 monitor = ${env:MONITOR:eDP1}
 width = 100%
-height = 16
+height = 15
 offset-x = 0
 offset-y = 0
 
@@ -44,10 +44,10 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-border-top-size = 2
+border-top-size = 4
 border-top-color = ${colors.background}
 
-border-bottom-size = 2
+border-bottom-size = 1
 border-bottom-color = #333
 
 spacing = 1
@@ -64,7 +64,7 @@ font-4 = Monospace:size=8;0
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = mpd cpu memory updates volume wlan battery date
+modules-right = mpd cpu memory redshift updates netcheck screensaver volume wlan battery date
 
 tray-position = right
 tray-padding = 2
@@ -79,7 +79,7 @@ screenchange-reload = true
 [bar/hdmi]
 monitor = ${env:MONITOR:HDMI1}
 width = 100%
-height = 16
+height = 15
 offset-x = 0
 offset-y = 0
 
@@ -91,10 +91,10 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-border-top-size = 2
+border-top-size = 4
 border-top-color = ${colors.background}
 
-border-bottom-size = 2
+border-bottom-size = 1
 border-bottom-color = #333
 
 spacing = 1
@@ -112,6 +112,7 @@ font-4 = Monospace:size=8;0
 modules-left = i3 xwindow
 modules-center = 
 modules-right = mpd cpu memory volume wlan battery date
+
 
 ; }}}
 ; xwindow               ----------------------------------------------------- {{{
@@ -228,7 +229,7 @@ toggle-off-foreground = #66
 [module/screensaver]
 type = custom/script
 exec = ~/.config/polybar/scripts/screensaver
-interval = 0
+interval = 1
 ;format-underline = #ffffff
 
 ; }}}
@@ -254,7 +255,8 @@ format-connected = <label-connected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 
 ;label-connected = " %local_ip% %signal% %downspeed% %upspeed%"
-label-connected = "%{F#dfdfdf} %{F#268bd2} %essid% [ %{F#dfdfdf} %{F#268bd2} %downspeed% ] [ %{F#dfdfdf} %{F#268bd2} %upspeed% ]"
+;label-connected = "%{F#dfdfdf} %{F#268bd2} %essid% [ %{F#dfdfdf} %{F#268bd2} %downspeed% ] [ %{F#dfdfdf} %{F#268bd2} %upspeed% ]"
+label-connected = "%{F#dfdfdf} %{F#268bd2} %essid% (%local_ip%)"
 label-disconnected = "OFFLINE"
 label-connected-foreground = ${colors.high}
 label-disconnected-foreground = ${colors.alert}
@@ -365,6 +367,24 @@ bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
 bar-used-indicator = 
+
+; }}}
+; ===== redshift                    {{{
+
+[module/redshift]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/scripts/redshift
+
+; }}}
+; ===== netcheck                    {{{
+
+[module/netcheck]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/scripts/netcheck
 
 ; }}}
 

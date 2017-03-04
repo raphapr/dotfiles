@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if ! pgrep -x "redshift"
+then
+    redshift -l -9.653916:-35.705566 &
+fi
