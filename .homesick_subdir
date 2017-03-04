@@ -15,6 +15,6 @@
 .config/fontconfig
 .config/fish/functions
 .config/nvim
-.vimperator/colors
 .config/fish
 .icons/default
+.vimperator

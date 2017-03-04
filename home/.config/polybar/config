@@ -214,7 +214,7 @@ label-song-ellipsis = true
 icon-play = 
 icon-pause = 
 
-bar-progress-foreground-0 = #55aa55
+bar-progress-foreground-0 = #55aa55 
 bar-progress-width = 10
 bar-progress-indicator = |
 bar-progress-fill = ─

@@ -1,8 +1,6 @@
 set focuscontent
 
-
-set gui=none
-set gui=tabs
+colorscheme arc-dark
 
 let mapleader = ","
 nnoremap j 4j
