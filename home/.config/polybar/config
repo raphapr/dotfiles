@@ -64,7 +64,7 @@ font-4 = Monospace:size=8;0
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = mpd cpu memory redshift updates netcheck screensaver volume wlan battery date
+modules-right = mpd cpu memory updates netcheck screensaver volume wlan battery date
 
 tray-position = right
 tray-padding = 2

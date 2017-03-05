@@ -9,65 +9,66 @@
 hi clear
 
 hi CompDesc					color: #BAC3CF; width: 50%;
-hi CompItem[selected]		background: #5294E2;
+"hi CompItem[selected]		background: #94EDC7; color: #000000
+hi CompItem[selected]       background: #588E77;
 
 " Used in Command Line
 " Entire bottom line
-hi CmdLine                  color: #BAC3CF; background: #2B2E37; font-family: Hack; font-size: 12px; padding: 0px; vertical-align: middle; border: none;
+hi CmdLine                  color: #BAC3CF; background: #2B2E37; font-family: Hack; font-size: 11px; padding: 0px; vertical-align: middle; border: none;
 
 " Used in the URL column of `bmarks`
-hi CompResult				color: #BAC3CF; width: 45%; overflow: hidden; font-family: Hack; font-size: 12px
-hi CompTitle				color: #BAC3CF; background: #2B2E37; font-weight: bold; font-family: Hack; font-size: 12px
-hi CompTitle>*				color: #BAC3CF; font-weight: bold; border-top: 1px solid gray; border-bottom: 1px solid #BAC3CF; padding: 1px 0.5ex; font-family: Hack; font-size: 12px
+hi CompResult				color: #BAC3CF; width: 45%; overflow: hidden; font-family: Hack; font-size: 11px
+hi CompTitle				color: #BAC3CF; background: #2B2E37; font-weight: bold; font-family: Hack; font-size: 11px
+hi CompTitle>*				color: #BAC3CF; font-weight: bold; border-top: 1px solid gray; border-bottom: 1px solid #BAC3CF; padding: 1px 0.5ex; font-family: Hack; font-size: 11px
 
 " Hints!
 hi Hint						color: black; background-color: #FFCC66; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding 0 1px;
-hi Hint::after				content: attr(number); font-family: Hack; font-size: 12px;
+hi Hint::after				content: attr(number); font-family: Hack; font-size: 11px;
 hi HintActive				color: black; background: #F27779;
 hi HintElem					color: white; background-color: #5294E2; 
 hi HintImage				opacity: .5;
 
 " Used also in wrapping error messages as the background, simple speaking
-hi InfoMsg					color: #BAC3CF; background: #2B2E37; font-family: Hack; font-size: 12px
+hi InfoMsg					color: #BAC3CF; background: #2B2E37; font-family: Hack; font-size: 11px
 
 " Used when error on syntax error in vimperatorrc, etc.
-hi LineNr					color: orange; background-color: #2B2E37; font-family: Hack; font-size: 12px
+hi LineNr					color: orange; background-color: #2B2E37; font-family: Hack; font-size: 11px
 
-hi ErrorMsg					color: #c22; background-color: #2B2E37; font-weight: bold; font-family: Hack; font-size: 12px
+hi ErrorMsg					color: #c22; background-color: #2B2E37; font-weight: bold; font-family: Hack; font-size: 11px
 
 " Used in CARET or COMMAND modes
-hi ModeMsg					color: #F27779; background: #2B2E37; font-family: Hack; font-size: 12px; font-weight: bold; -moz-border-radius: 5px; padding-left: 5px;
+hi ModeMsg					color: #F27779; background: #2B2E37; font-family: Hack; font-size: 11px; font-weight: bold; -moz-border-radius: 5px; padding-left: 5px;
 
-hi MoreMsg					color: #F27779; background: #2B2E37; font-family: Hack; font-size: 12px; font-weight: bold; -moz-border-radius: 5px; padding-left: 5px;
+hi MoreMsg					color: #F27779; background: #2B2E37; font-family: Hack; font-size: 11px; font-weight: bold; -moz-border-radius: 5px; padding-left: 5px;
 
-hi Normal					color: #ddc; background: #2B2E37; font-family: Hack; font-size: 12px
+hi Normal					color: #ddc; background: #2B2E37; font-family: Hack; font-size: 11px
 
 " Used in :`js tr<TAB>`
-hi Boolean					color: #f00; font-family: Hack; font-size: 12px;
-hi Function					color: #04c; font-family: Hack; font-size: 12px;
-hi Null						color: #00c; font-family: Hack; font-size: 12px;
-hi Number					color: #00c; font-family: Hack; font-size: 12px;
-hi Object					color: #c40; font-family: Hack; font-size: 12px;
-hi String					color: #0c0; font-family: Hack; font-size: 12px;
+hi Boolean					color: #f00; font-family: Hack; font-size: 11px;
+hi Function					color: #04c; font-family: Hack; font-size: 11px;
+hi Null						color: #00c; font-family: Hack; font-size: 11px;
+hi Number					color: #00c; font-family: Hack; font-size: 11px;
+hi Object					color: #c40; font-family: Hack; font-size: 11px;
+hi String					color: #0c0; font-family: Hack; font-size: 11px;
 
 " Used in "Press ENTER..." of `jumps` or `bmarks`, or "Follow Hint..." or `f`
-hi Question					color: #BAC3CF; background: #2B2E37; font-weight: bold; -moz-border-radius: 5px; padding-left: 5px; font-family: Hack; font-size: 12px
+hi Question					color: #BAC3CF; background: #2B2E37; font-weight: bold; -moz-border-radius: 5px; padding-left: 5px; font-family: Hack; font-size: 11px
 
-" hi Search					color: #BAC3CF; background-color: #2B2E37; font-size: inherit; padding: 2; padding: 0; font-family: Hack; font-size: 12px
+" hi Search					color: #BAC3CF; background-color: #2B2E37; font-size: inherit; padding: 2; padding: 0; font-family: Hack; font-size: 11px
 
-hi StatusLine				color: #BAC3CF; background: #2B2E37; font-family: Hack; font-size: 12px; margin-top: 1px;
+hi StatusLine				color: #94EDC7; background: #2B2E37; font-family: Hack; font-size: 11px; margin-top: 1px;
 
 " Firefox's tabs
-hi TabNumber				color: #BAC3CF; font-weight: bold; margin: 0; padding-right: .3ex; text-shadow: #000 -1px 0 0, #000 0 1px 0, #000 1px 0 0, #000 0 -1px 0; font-family: Hack; font-size: 12px
+hi TabNumber				color: #BAC3CF; font-weight: bold; margin: 0; padding-right: .3ex; text-shadow: #000 -1px 0 0, #000 0 1px 0, #000 1px 0 0, #000 0 -1px 0; font-family: Hack; font-size: 11px
 
 " Used in `pageinfo` or `jumps`
-hi Title					color: #BAC3CF; background: #2B2E37; font-weight: bold; font-family: Hack; font-size: 12px
+hi Title					color: #BAC3CF; background: #2B2E37; font-weight: bold; font-family: Hack; font-size: 11px
 
 " Used in items of Info field of `bmarks`
-hi Keyword					color: #CC0; font-family: Hack; font-size: 12px
-hi Tag						color: #0CC; font-family: Hack; font-size: 12px
-hi URL						color: #080; text-decoration: none; padding: 0 2px; font-family: Hack; font-size: 12px
-hi URL:hover				color: #880; background-color: #222; -moz-border-radius: 5px; cursor: pointer; font-family: Hack; font-size: 12px
+hi Keyword					color: #CC0; font-family: Hack; font-size: 11px
+hi Tag						color: #0CC; font-family: Hack; font-size: 11px
+hi URL						color: #080; text-decoration: none; padding: 0 2px; font-family: Hack; font-size: 11px
+hi URL:hover				color: #880; background-color: #222; -moz-border-radius: 5px; cursor: pointer; font-family: Hack; font-size: 11px
 
 hi ContentSeparator			border:none;
 

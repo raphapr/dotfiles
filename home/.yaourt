@@ -29,7 +29,12 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
-for PKG in $(sed '1,36d' ~/.yaourt | grep -v COMMENT); do
+# install powerline-fonts
+git clone https://github.com/powerline/fonts.git /tmp/fonts
+sh /tmp/fonts/install.sh
+ln -s ~/.local/share/fonts ~/.fonts 
+
+for PKG in $(sed '1,41d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 
@@ -68,7 +73,6 @@ google-chrome
 rxvt-unicode
 urxvt-perls
 urxvt-font-size-git
-ttf-dejavusansmono-powerline-git
 htop
 ncdu
 ncmpcpp

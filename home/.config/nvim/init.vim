@@ -65,13 +65,23 @@ let g:vim_markdown_folding_disabled=1
 " }}}
 " ===== vim-airline             {{{
 
-" fix strange glyphs:
-" fontforge -script ~/.vim/bundle/vim-powerline/fontpatcher/fontpatcher ~/Downloads/Menlo+Regular+for+Powerline.ttf
+" install powerline-fonts
+" git clone https://github.com/powerline/fonts.git /tmp/fonts
+" sh /tmp/fonts/install.sh
+" ln -s ~/.local/share/fonts ~/.fonts 
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+let g:airline_symbols = {}
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.branch = '↪'
+let g:airline#extensions#branch#prefix = '➔'
+let g:airline_symbols.linenr = '❒'
+let g:airline_symbols.maxlinenr = ''
+
 let g:airline_theme = 'bubblegum'
+"let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
@@ -279,6 +289,11 @@ command! FZFMru call fzf#run({
 \  'sink':    'e',
 \  'options': '-m -x +s',
 \  'down':    '40%'})
+
+" }}}
+" ===== vim-fugitive            {{{
+
+Plug 'tpope/vim-fugitive'
 
 " }}}
 

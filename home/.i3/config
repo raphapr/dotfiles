@@ -360,7 +360,7 @@ bindsym $mod+F11 [instance="alsamixer"] scratchpad show
 #}}}
 # Theme colors          ----------------------------------------------------- {{{
 
-client.focused #000000 #99B8D7 #000000 #DDDDDD
+client.focused #4398EB #4398EB #000000 #DDDDDD
 client.focused_inactive #333333 #333333 #888888 #292D2E
 client.unfocused #333333 #333333 #888888 #292D2E
 client.urgent #2F343A #900000 #FFFFFF #900000
