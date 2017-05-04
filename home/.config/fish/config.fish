@@ -10,14 +10,18 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
-set PATH $PATH /opt/julia/bin ~/.gem/ruby/2.3.0/bin
-set BROWSER firefox
-set GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+# Env variables
+set -x PATH $PATH ~/.local/bin
+set -Ux BROWSER firefox
+set -Ux GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+
+# aws complete
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
 # fish vi mode
 # ctrl+f only accept autosuggestion
 function fish_user_key_bindings
-    fish_vi_mode
+    fish_vi_key_bindings
     fzf_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
@@ -107,6 +111,16 @@ alias pblock "sudo rm -rf /var/lib/pacman/db.lck"
 alias y 'yaourt'
 alias yup 'yaourt -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update 'sudo pacman-mirrors -g'
+
+# }}}
+# DNF              {{{
+
+alias d 'sudo dnf'
+alias di 'sudo dnf install'
+alias dr 'sudo dnf remove'
+alias ds 'sudo dnf search'
+alias dli 'sudo dnf list installed'
+alias dla 'sudo dnf list available'
 
 # }}}
 # youtube-dl       {{{
@@ -560,6 +574,20 @@ function fish_mode_prompt --description 'Displays the current mode'
 end
 
 # }}}
+# EC2 variables     {{{
+
+function ec2var
+    switch "$argv[1]"
+      case "ops"
+        source ~/.ec2_vars/operations
+        echo ":: EC2 vars operations loaded"
+      case "*"
+        echo ":: This option doesn't exists"
+    end
+end
+
+# }}}
+
 
 # }}}
 # history subst   ---------------------------------------------- {{{

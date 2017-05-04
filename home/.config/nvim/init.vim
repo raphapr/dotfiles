@@ -158,7 +158,7 @@ let g:LatexBox_fold_automatic   = 0
 " ===== matchit.vim             {{{
 
 " It extends % usage
-Plug 'matchit.zip'
+Plug 'tmhedberg/matchit'
 
 " }}}
 " ===== Syntastic               {{{
@@ -296,6 +296,11 @@ command! FZFMru call fzf#run({
 Plug 'tpope/vim-fugitive'
 
 " }}}
+" ===== ansible-vim             {{{
+
+Plug 'pearofducks/ansible-vim'
+
+" }}}
 
 call plug#end()
 
@@ -377,6 +382,8 @@ nmap <C-E> :bp<cr>:bd #<cr>
 nmap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
 nmap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nmap <leader>i3 :vsplit ~/.i3/config<cr>
+
+nmap <F2> :w<cr>
 
 " }}}
 " compiling         {{{
