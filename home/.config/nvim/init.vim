@@ -54,7 +54,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 Plug 'dag/vim-fish'
 Plug 'JuliaLang/julia-vim'
-Plug 'pearofducks/ansible-vim'
 Plug 'rdolgushin/groovy.vim'
 
 " Markdown
@@ -296,9 +295,10 @@ command! FZFMru call fzf#run({
 Plug 'tpope/vim-fugitive'
 
 " }}}
-" ===== ansible-vim             {{{
+" ===== ansible-vim-yaml        {{{
 
-Plug 'pearofducks/ansible-vim'
+Plug 'chase/vim-ansible-yaml'
+let g:ansible_options = {'documentation_mapping': '<C-k>'}
 
 " }}}
 

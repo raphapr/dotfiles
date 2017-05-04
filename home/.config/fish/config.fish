@@ -12,8 +12,8 @@ end
 
 # Env variables
 set -x PATH $PATH ~/.local/bin
-set -Ux BROWSER firefox
-set -Ux GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+set -x BROWSER firefox
+set -x GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 
 # aws complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
