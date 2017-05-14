@@ -10,6 +10,8 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
+set PATH $PATH /opt/julia/bin ~/.gem/ruby/2.4.0/bin
+
 # Env variables
 set -x PATH $PATH ~/.local/bin
 set -x BROWSER firefox
