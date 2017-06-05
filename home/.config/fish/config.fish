@@ -63,8 +63,6 @@ alias cheatsh 'zathura ~/Cloud/cheats/canivete-shell.pdf'
 alias cheatsed 'cat ~/Cloud/cheats/sed | more'
 alias zz 'fasd'
 alias notes 'nvim ~/Cloud/notes/notes.txt'
-#VPN
-alias vpn 'cd ~/.vpn/lancassolar ; sudo openvpn --config ~/.vpn/lancassolar/client.conf'
 # urserver
 alias urserver '/opt/urserver/urserver --daemon'
 # Ver diretórios com mais espaço em disco 
@@ -579,17 +577,31 @@ end
 # EC2 variables     {{{
 
 function ec2var
-    switch "$argv[1]"
-      case "ops"
-        source ~/.ec2_vars/operations
-        echo ":: EC2 vars operations loaded"
-      case "*"
-        echo ":: This option doesn't exists"
+    if count $argv > /dev/null
+        if test -e ~/.ec2_vars/"$argv[1]"
+            source ~/.ec2_vars/"$argv[1]"
+            echo ":: EC2 vars $argv[1] loaded"
+        else
+            echo ":: This option doesn't exists"
+        end
+    else
+        echo "No arguments provided! Options:" (ls ~/.ec2_vars/)
     end
 end
 
 # }}}
+# VPN
 
+function vpn
+    switch $argv
+    case fln
+        sudo pon cfln
+    case neemu
+        cd ~/.vpn/c.neemu ; sudo openvpn --config ~/.vpn/c.neemu/raphael.ribeiro.ovpn
+    case '*'
+        echo "This command doesn't exists."
+    end
+end
 
 # }}}
 # history subst   ---------------------------------------------- {{{
