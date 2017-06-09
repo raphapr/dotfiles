@@ -10,7 +10,9 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
-set PATH $PATH /opt/julia/bin ~/.gem/ruby/2.4.0/bin
+if test -e /opt/julia/bin; and test -e ~/.gem/ruby/1.4.0/bin
+    set PATH $PATH /opt/julia/bin ~/.gem/ruby/2.4.0/bin
+end
 
 # Env variables
 set -x PATH $PATH ~/.local/bin

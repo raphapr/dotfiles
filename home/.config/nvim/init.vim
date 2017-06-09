@@ -160,23 +160,6 @@ let g:LatexBox_fold_automatic   = 0
 Plug 'tmhedberg/matchit'
 
 " }}}
-" ===== Syntastic               {{{
-
-" Syntax checker
-Plug 'scrooloose/syntastic'
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'],'passive_filetypes': [] }
-nmap <leader>ss :SyntasticToggleMode<CR>
-
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-
-" }}}
 " ===== EasyMotion              {{{
 
 " Text navigation like vimperator
@@ -295,10 +278,14 @@ command! FZFMru call fzf#run({
 Plug 'tpope/vim-fugitive'
 
 " }}}
+" ===== async lint engine       {{{
+
+Plug 'w0rp/ale'
+
+" }}}
 " ===== ansible-vim-yaml        {{{
 
 Plug 'chase/vim-ansible-yaml'
-let g:ansible_options = {'documentation_mapping': '<C-k>'}
 
 " }}}
 
