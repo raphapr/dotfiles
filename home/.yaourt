@@ -7,7 +7,7 @@ ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
 
 # install pip / python packages
 sudo pacman -S --noconfirm python python-pip fish
-sudo pip install tmuxp stormssh ds4drv buku virtualenv yamllint
+sudo pip install tmuxp stormssh ds4drv buku virtualenv ansible-lint ansible
 sudo npm install -g livedown
 
 # buku fish completion
