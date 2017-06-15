@@ -164,7 +164,7 @@ bindsym $mod+c kill
 
 # start rofi (a program launcher)
 bindsym $mod+space exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 18"
-bindsym $mod+Tab exec --no-startup-id rofi -show window -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 18"
+bindsym $mod+Tab exec --no-startup-id rofi -show window -lines 3 -eh 1 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 15"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that

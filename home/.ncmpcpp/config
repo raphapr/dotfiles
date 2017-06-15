@@ -176,13 +176,9 @@ color1 = "blue"
 #
 color2 = "cyan"
 #
-main_window_highlight_color = "white"
-#
 progressbar_color = "blue"
 #
 statusbar_color = "white"
-#
-active_column_color = "white"
 #
 window_border_color = "white"
 #
