@@ -34,6 +34,10 @@ git clone https://github.com/powerline/fonts.git /tmp/fonts
 sh /tmp/fonts/install.sh
 ln -s ~/.local/share/fonts ~/.fonts 
 
+# install update-resolv-conf script
+sudo wget https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh -O /etc/openvpn/update-resolv-conf.sh
+sudo chmod +x /etc/openvpn/update-resolv-conf.sh
+
 for PKG in $(sed '1,41d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
@@ -134,4 +138,5 @@ xsel
 bdf-tewi-git
 preload
 ttf-hack
+openresolv
 COMMENT

@@ -599,7 +599,7 @@ function vpn
     case fln
         sudo pon cfln
     case neemu
-        cd ~/.vpn/c.neemu ; sudo openvpn --config ~/.vpn/c.neemu/raphael.ribeiro.ovpn
+        cd ~/.vpn/c.neemu ; sudo openvpn --config ~/.vpn/c.neemu/raphael.ribeiro.ovpn --script-security 2 --up /etc/openvpn/update-resolv-conf.sh --down /etc/openvpn/update-resolv-conf.sh
     case '*'
         echo "This command doesn't exists."
     end
