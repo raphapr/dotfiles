@@ -36,7 +36,7 @@ function fish_user_key_bindings
 end
 
 # virtualfish settings
-eval (python -m virtualfish)
+eval (python -m virtualfish auto_activation)
 
 # }}}
 # Aliases         ---------------------------------------------- {{{
