@@ -38,7 +38,7 @@ ln -s ~/.local/share/fonts ~/.fonts
 sudo wget https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh -O /etc/openvpn/update-resolv-conf.sh
 sudo chmod +x /etc/openvpn/update-resolv-conf.sh
 
-for PKG in $(sed '1,41d' ~/.yaourt | grep -v COMMENT); do
+for PKG in $(sed '1,45d' ~/.yaourt | grep -v COMMENT); do
     yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
 done
 
@@ -138,5 +138,6 @@ xsel
 bdf-tewi-git
 preload
 ttf-hack
+resolvconf
 openresolv
 COMMENT
