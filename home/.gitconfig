@@ -6,6 +6,7 @@
 
 [core]
   editor = nvim
+	excludesfile = /home/raphael/.gitignore_global
 [alias]
   aa = add -A
   ap = add --patch
