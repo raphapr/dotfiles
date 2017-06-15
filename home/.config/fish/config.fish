@@ -10,8 +10,12 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
-if test -e /opt/julia/bin; and test -e ~/.gem/ruby/2.4.0/bin
-    set PATH $PATH /opt/julia/bin ~/.gem/ruby/2.4.0/bin
+if test -e /opt/julia/bin
+    set PATH $PATH /opt/julia/bin
+end
+
+if test -e ~/.gem/ruby/2.4.0/bin
+    set PATH $PATH  ~/.gem/ruby/2.4.0/bin
 end
 
 # Env variables
@@ -30,6 +34,9 @@ function fish_user_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
 end
+
+# virtualfish settings
+eval (python -m virtualfish)
 
 # }}}
 # Aliases         ---------------------------------------------- {{{

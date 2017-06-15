@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Author: Raphael P. Ribeiro <raphaelpr01@gmail.com> 
+
+# check with duckduckgo.com if you're connected to internet
+NETWORK=$(ping -q -w 2 -c 1 176.34.135.167 > /dev/null 2>&1 && echo ON || echo OFF)
+if [ $NETWORK == "ON" ]; then
+    echo "%{F#dfdfdf} %{F#268bd2} ON"
+else
+    echo "%{F#dfdfdf} %{F#FF0000} OFF"
+fi
