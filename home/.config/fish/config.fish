@@ -585,16 +585,16 @@ end
 # }}}
 # EC2 variables     {{{
 
-function ec2var
+function awsvars
     if count $argv > /dev/null
-        if test -e ~/.ec2_vars/"$argv[1]"
-            source ~/.ec2_vars/"$argv[1]"
-            echo ":: EC2 vars $argv[1] loaded"
+        if test -e ~/.aws_vars/"$argv[1]"
+            source ~/.aws_vars/"$argv[1]"
+            echo ":: AWS vars $argv[1] loaded"
         else
             echo ":: This option doesn't exists"
         end
     else
-        echo "No arguments provided! Options:" (ls ~/.ec2_vars/)
+        echo "No arguments provided! Options:" (ls ~/.aws_vars/)
     end
 end
 
