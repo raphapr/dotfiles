@@ -3,23 +3,12 @@
 # This file contains packages I use on Linux and install with Pacman/yaourt.
 
 # symlinking tmux
-ln -s ~/.tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 
 # install pip / python packages
 sudo pacman -S --noconfirm python python-pip fish
 sudo pip install tmuxp stormssh ds4drv buku virtualenv ansible-lint ansible
 sudo npm install -g livedown
-
-# buku fish completion
-wget https://raw.githubusercontent.com/jarun/Buku/master/auto-completion/fish/buku.fish -O ~/.config/fish/functions/buku.fish
-
-# sync buku database
-if [ -e ~/Cloud/buku/bookmarks.db ]; then
-    ln -s ~/Cloud/buku/bookmarks.db ~/.local/share/buku/bookmarks.db
-fi
-
-# install googler
-sudo curl -o /usr/local/bin/googler https://raw.githubusercontent.com/jarun/googler/v2.9/googler && sudo chmod +x /usr/local/bin/googler
 
 # install plug vim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
