@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# This file contains packages I use on Linux and install with Pacman/yaourt.
+# This file contains packages I use on Linux and install with pacman/pacaur.
 
 # symlinking tmux
 ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 
 # install pip / python packages
-sudo pacman -S --noconfirm python python-pip fish
+sudo pacman -S --noconfirm python python-pip fish pacaur
 sudo pip install tmuxp stormssh ds4drv buku virtualenv ansible-lint ansible
 sudo npm install -g livedown
 
@@ -27,8 +27,8 @@ ln -s ~/.local/share/fonts ~/.fonts
 sudo wget https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh -O /etc/openvpn/update-resolv-conf.sh
 sudo chmod +x /etc/openvpn/update-resolv-conf.sh
 
-for PKG in $(sed '1,45d' ~/.yaourt | grep -v COMMENT); do
-    yaourt -S --noconfirm $PKG || echo $PKG failed. >> .yaourt.log
+for PKG in $(sed '1,36d' ~/.install | grep -v COMMENT); do
+    pacaur -S --noconfirm $PKG || echo $PKG failed. >> .pacaur.log
 done
 
 <<COMMENT
@@ -129,4 +129,5 @@ preload
 ttf-hack
 resolvconf
 openresolv
+dropbox
 COMMENT

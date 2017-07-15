@@ -35,6 +35,7 @@ exec --no-startup-id "guake -e '~/.startupGuake.sh'"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id "sleep 3 && psyncgui &"
+exec --no-startup-id dropbox
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &

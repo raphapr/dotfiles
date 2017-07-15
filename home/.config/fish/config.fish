@@ -604,7 +604,9 @@ end
 function vpn
     switch $argv
     case fln
-        sudo pon cfln
+        sudo openfortivpn
+    case route
+        sudo ~/Cloud/route.sh
     case neemu
         cd ~/.vpn/c.neemu ; sudo openvpn --config ~/.vpn/c.neemu/raphael.ribeiro.ovpn --script-security 2 --up /etc/openvpn/update-resolv-conf.sh --down /etc/openvpn/update-resolv-conf.sh
     case '*'

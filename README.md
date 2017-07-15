@@ -16,9 +16,9 @@ You can now link its contents into your home dir:
 
 `homesick symlink dotfiles`
 
-### Pacman/yaourt install script
+### Pacman/pacaur install script
 
-`chmod +x ~/.yaourt && ./.yaourt`
+`chmod +x ~/.install && ./.install`
 
 ## Main programs
 
