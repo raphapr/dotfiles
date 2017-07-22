@@ -25,7 +25,6 @@ SET fish_color_selection:\x2d\x2dbackground\x3dpurple
 SET fish_color_status:red
 SET fish_color_user:\x2do\x1egreen
 SET fish_color_valid_path:\x2d\x2dunderline
-SET fish_greeting:\x1d
 SET fish_key_bindings:fish_vi_key_bindings
 SET fish_pager_color_completion:normal
 SET fish_pager_color_description:555\x1eyellow

@@ -3,8 +3,8 @@
 
 # Preambulo       ---------------------------------------------- {{{
 
-# Disable the welcome text
-set --erase fish_greeting
+# disable fish greeting message
+set fish_greeting
 
 if test "$DISPLAY"
     xset r rate 200 30
@@ -102,6 +102,8 @@ alias go "googler"
 alias bk "buku"
 # jenkins
 alias jenkins "java -jar .jekins-cli.jar -s http://jenkins.stant.com.br"
+# jenkins
+alias repos "cd ~/Cloud/repos"
 
 # }}}
 # translate-shell  {{{
