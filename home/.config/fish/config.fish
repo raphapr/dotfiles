@@ -6,6 +6,8 @@
 # disable fish greeting message
 set fish_greeting
 
+export EDITOR="nvim"
+
 if test "$DISPLAY"
     xset r rate 200 30
 end
