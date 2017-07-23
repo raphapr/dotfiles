@@ -8,7 +8,7 @@ export EDITOR=vim
 [[ ! -f ~/.tmux.conf ]] && ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 
 # install pip / python packages
-sudo pacman -S --noconfirm python python-pip fish pacaur make cmake gcc
+sudo pacman -S --noconfirm python python-pip fish pacaur make cmake gcc fakeroot
 sudo pip install tmuxp stormssh ds4drv buku virtualenv ansible-lint ansible neovim
 sudo npm install -g livedown
 
@@ -32,7 +32,7 @@ ln -s ~/.local/share/fonts ~/.fonts
 sudo wget https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh -O /etc/openvpn/update-resolv-conf.sh
 sudo chmod +x /etc/openvpn/update-resolv-conf.sh
 
-for PKG in $(sed '1,37d' ~/.install | grep -v COMMENT); do
+for PKG in $(sed '1,39d' ~/.install | grep -v COMMENT); do
     pacaur -S --needed --noedit --noconfirm $PKG || echo $PKG failed. >> .pacaur.log
 done
 
