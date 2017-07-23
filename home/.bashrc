@@ -125,7 +125,11 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/home/raphael/.gem/ruby/2.2
 export MANPAGER="/usr/bin/most -s" #Cor nas manpages (requer pacote most)
 export TERM="screen-256color" # 256 cores no terminal (para utilizar cores no vim)
 export BROWSER=firefox
-source ~/.git-completion.bash
+
+# git completion
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
 
 # fasd initalization
 # quick access to files and directories for POSIX shells
