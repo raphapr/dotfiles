@@ -8,8 +8,8 @@ export EDITOR=vim
 [[ ! -f ~/.tmux.conf ]] && ln -s ~/.tmux/tmux.conf ~/.tmux.conf
 
 # install pip / python packages
-sudo pacman -S --noconfirm python python-pip fish pacaur make cmake gcc fakeroot
-sudo pip install tmuxp stormssh ds4drv buku virtualenv ansible-lint ansible neovim
+sudo pacman -S --noconfirm python python-pip fish pacaur make cmake gcc fakeroot patch dnsutils
+sudo pip install tmuxp stormssh ds4drv virtualenv ansible-lint ansible neovim virtualfish
 sudo npm install -g livedown
 
 # install plug vim
