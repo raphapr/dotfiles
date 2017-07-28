@@ -2,14 +2,12 @@
 .mpd
 .mpdscribble
 .homesick/repos/dotfiles/home/bin
-.config/systemd
 .config
 .homesick/repos/dotfiles/home/.i3
 .homesick/repos/dotfiles/home/.i3/scripts
 .config/dunst
 .homesick/repos/dotfiles/home/.bin
 .bin
-.config/systemd/user
 .config/fontconfig
 .config/fish/functions
 .config/nvim

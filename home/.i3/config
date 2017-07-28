@@ -19,9 +19,8 @@ set $TERM2      urxvt
 set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
 set $LANC       urxvtc -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 set $FM         thunar
-set $PRINT      scrot ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sounds/ss.wav
-set $SPRINT     scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sounds/ss.wav
-set $SSPRINT    scrot -s ~/Imagens/Screenshots/%b%d::%H%M%S.png && paplay ~/.sounds/ss.wav && lastfile ~/Imagens/Screenshots
+set $PRINT      take_screenshot
+set $SPRINT     take_screenshot -s
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
@@ -86,8 +85,7 @@ bindsym $mod+d exec --no-startup-id $FM
 
 # printscreen
 bindsym --release Print exec --no-startup-id $PRINT
-bindsym --release $mod+Print exec --no-startup-id $SPRINT # Seleciona uma área retangular para o print
-bindsym --release $mod+shift+Print exec --no-startup-id $SSPRINT # Seleciona uma área retangular para o print e abre o thunar com a imagem selecionada
+bindsym --release $mod+Print exec --no-startup-id $SPRINT
 
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
