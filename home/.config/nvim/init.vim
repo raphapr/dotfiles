@@ -204,12 +204,6 @@ Plug 'xolox/vim-misc'
 autocmd BufNewFile,BufRead notes.txt setlocal filetype=notes
 
 " }}}
-" ===== vim-livedown            {{{
-
-" Dependencies: sudo npm install -g livedown
-Plug 'shime/vim-livedown'
-
-" }}}
 " ===== ack                     {{{
 
 " Dependencies: sudo pacman -S the_silver_searcher
@@ -286,6 +280,11 @@ Plug 'w0rp/ale'
 " ===== ansible-vim-yaml        {{{
 
 Plug 'chase/vim-ansible-yaml'
+
+" }}}
+" ===== vim-gitgutter           {{{
+
+Plug 'airblade/vim-gitgutter'
 
 " }}}
 
