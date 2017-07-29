@@ -287,6 +287,11 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'airblade/vim-gitgutter'
 
 " }}}
+" ===== tabular                 {{{
+
+Plug 'godlygeek/tabular'
+
+" }}}
 
 call plug#end()
 
