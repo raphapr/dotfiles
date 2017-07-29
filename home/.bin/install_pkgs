@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# This file contains packages I use on Arch/Manjaro Linux and install with pacman/pacaur.
+
+export EDITOR=vim
+PKGLIST=~/.pkglist
+PKGLOG=~/.pacaur.log
+
+# eg.: do_slnk <original_path> <symlink_path>
+function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
+
+# install pip / python packages
+sudo pacman -Syu --needed
+sudo pacman -S --noconfirm --needed python python-pip fish pacaur make cmake gcc fakeroot patch dnsutils
+sudo pip install tmuxp stormssh ds4drv virtualenv ansible neovim virtualfish
+
+# install plug vim
+if [ ! -d ~/.config/nvim/autoload/plug.vim ]; then
+  echo "[ installpkgs ] :: install plug.vim"
+  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+else
+  echo "[ installpkgs ] :: plug.vim already installed!"
+fi
+
+# git completion for bash
+if [ ! -f ~/.git-completion.bash ]; then
+  echo "[ installpkgs ] :: install git-completion.bash"
+  wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash
+else
+  echo "[ installpkgs ] :: git-completion.bash already installed!"
+fi
+
+# install fzf
+if [ ! -d ~/.fzf ]; then
+  echo "[ installpkgs ] :: Install fzf"
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+else
+  echo "[ installpkgs ] :: fzf already installed!"
+fi
+
+# install powerline-fonts
+if [ ! -d ~/.fonts ]; then
+  echo "[ installpkgs ] :: Install powerline-fonts"
+  git clone https://github.com/powerline/fonts.git /tmp/fonts
+  sh /tmp/fonts/install.sh
+  ln -s ~/.local/share/fonts ~/.fonts 
+else
+  echo "[ installpkgs ] :: powerline-fonts already installed!"
+fi
+
+# install update-resolv-conf script
+if [ ! -f /etc/openvpn/update-resolv-conf.sh ]; then
+  echo "[ installpkgs ] :: Install update-resolv-conf script"
+  sudo wget https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh -O /etc/openvpn/update-resolv-conf.sh
+  sudo chmod +x /etc/openvpn/update-resolv-conf.sh
+else
+  echo "[ installpkgs ] :: update-resolv-conf script already installed!"
+fi
+
+# symlinks
+echo "[ installpkgs ] :: Symlinking files"
+#do_slnk ~/.tmux.conf ~/.tmux/tmux.conf
+#do_slnk ~/Cloud/sync/fish_history ~/.local/share/fish/fish_history
+#do_slnk ~/Cloud/sync/mimeapps.list ~/.config/mimeapps.list
+
+echo "[ installpkgs ] :: Installing pacman/aur packages"
+for PKG in $(cat $PKGLIST); do
+    pacaur -S --needed --noedit --noconfirm $PKG || echo "$PKG failed." >> $PKGLOG
+done

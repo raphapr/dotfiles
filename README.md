@@ -18,7 +18,7 @@ You can now link its contents into your home dir:
 
 ### Pacman/pacaur install script
 
-`chmod +x ~/.install && ./.install`
+`chmod +x ~/.bin/install_pkgs && bash ~/.bin/install_pkgs`
 
 ## Main programs
 
