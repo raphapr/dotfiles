@@ -60,9 +60,14 @@ fi
 
 # symlinks
 echo "[ installpkgs ] :: Symlinking files"
-#do_slnk ~/.tmux.conf ~/.tmux/tmux.conf
-#do_slnk ~/Cloud/sync/fish_history ~/.local/share/fish/fish_history
-#do_slnk ~/Cloud/sync/mimeapps.list ~/.config/mimeapps.list
+do_slnk ~/.tmux.conf ~/.tmux/tmux.conf
+do_slnk ~/Cloud/sync/fish_history ~/.local/share/fish/fish_history
+do_slnk ~/Cloud/sync/mimeapps.list ~/.config/mimeapps.list
+
+# install tmux-xpanes
+wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /tmp/xpanes
+sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
+rm -rf ~/tmp/xpanes
 
 echo "[ installpkgs ] :: Installing pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
