@@ -69,6 +69,9 @@ wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
 rm -rf ~/tmp/xpanes
 
+# install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 echo "[ installpkgs ] :: Installing pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
     pacaur -S --needed --noedit --noconfirm $PKG || echo "$PKG failed." >> $PKGLOG

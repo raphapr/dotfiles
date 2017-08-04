@@ -20,6 +20,8 @@ if test -e ~/.gem/ruby/2.4.0/bin
     set PATH $PATH  ~/.gem/ruby/2.4.0/bin
 end
 
+set PATH $PATH ~/.bin
+
 # Env variables
 set -x BROWSER firefox
 set -x GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
