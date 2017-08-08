@@ -588,23 +588,7 @@ function fish_mode_prompt --description 'Displays the current mode'
 end
 
 # }}}
-# EC2 variables     {{{
-
-function awsvars
-    if count $argv > /dev/null
-        if test -e ~/.aws_vars/"$argv[1]"
-            source ~/.aws_vars/"$argv[1]"
-            echo ":: AWS vars $argv[1] loaded"
-        else
-            echo ":: This option doesn't exists"
-        end
-    else
-        echo "No arguments provided! Options:" (ls ~/.aws_vars/)
-    end
-end
-
-# }}}
-# VPN
+# VPN               {{{
 
 function vpn
     switch $argv
@@ -618,6 +602,8 @@ function vpn
         echo "This command doesn't exists."
     end
 end
+
+# }}}
 
 # }}}
 # history subst   ---------------------------------------------- {{{
