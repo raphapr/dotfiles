@@ -87,6 +87,7 @@ alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 alias prismo "ssh root@prismo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
+alias beemo "ssh raphael@beemo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
 alias b "bash"
 # gcalcli
@@ -186,7 +187,8 @@ alias tk 'tmux kill-session -t'
 alias g 'git'
 alias gst 'git status'
 alias gd 'git diff'
-alias gp 'git push origin master'
+alias gdc 'git diff --cached'
+alias gp 'git pull origin (git rev-parse --abbrev-ref HEAD)'
 alias gl 'git log'
 alias gc 'git checkout'
 
