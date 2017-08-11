@@ -12,9 +12,8 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
-  - glances
-  - htop
-  - dmesg -Hw
+  - focus: 'true'
+    shell_command: gtop
   start_directory: /home/raphael
   window_name: monitoring
 - layout: d991,194x41,0,0,41
