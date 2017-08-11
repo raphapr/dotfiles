@@ -34,8 +34,12 @@
   lll = log -u
   pl = pull --ff-only
 [push]
-  default = simple
+	default = tracking
 [gitreview]
 	raphapr = raphapr
 [github]
 	user = raphapr
+[diff]
+	renames = copies
+[merge]
+	stat = true

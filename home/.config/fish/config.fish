@@ -188,7 +188,7 @@ alias g 'git'
 alias gst 'git status'
 alias gd 'git diff'
 alias gdc 'git diff --cached'
-alias gp 'git pull origin (git rev-parse --abbrev-ref HEAD)'
+alias gp 'git pull'
 alias gl 'git log'
 alias gc 'git checkout'
 
