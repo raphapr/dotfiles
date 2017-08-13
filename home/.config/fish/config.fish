@@ -90,8 +90,6 @@ alias prismo "ssh root@prismo -t 'tmux -q has-session -t 0 && tmux attach-sessio
 alias beemo "ssh raphael@beemo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
 alias b "bash"
-# gcalcli
-alias gcal "gcalcli agenda ; gcalcli calw 2"
 # diff dotfiles
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 # gams
@@ -118,13 +116,13 @@ alias gt-en 'trans :en' # portuguese to english
 alias gt-au 'trans -p -b' # pronuncia
 
 # }}}
-# Pacman/Yaourt    {{{
+# pacman/pacaur    {{{
 
 alias p 'sudo pacman'
 alias pacup 'sudo pacman -Syuu'
 alias pblock "sudo rm -rf /var/lib/pacman/db.lck"
-alias y 'yaourt'
-alias yup 'yaourt -Syua' # Atualiza os repositorios do Arch + AUR
+alias pr 'pacaur'
+alias prup 'pacaur -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update 'sudo pacman-mirrors -g'
 
 # }}}

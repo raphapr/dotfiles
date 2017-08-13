@@ -1,6 +1,6 @@
 session_name: guake
 windows:
-- layout: 5997,194x41,0,0,37
+- layout: b6c6,194x42,0,0,9
   options:
     automatic-rename: 'off'
   panes:
@@ -8,36 +8,34 @@ windows:
     shell_command: ncmpcpp
   start_directory: /home/raphael
   window_name: ncmpcpp
-- layout: 6015,194x41,0,0[194x20,0,0,38,194x20,0,21{97x20,0,21,39,96x20,98,21,40}]
+- layout: 5b95,194x42,0,0,16
   options:
     automatic-rename: 'off'
   panes:
   - focus: 'true'
-    shell_command: gtop
+    shell_command: transmission-remote-cli
   start_directory: /home/raphael
-  window_name: monitoring
-- layout: d991,194x41,0,0,41
-  options:
-    automatic-rename: 'off'
-  panes:
-  - focus: 'true'
-    shell_command: notes
-  start_directory: /home/raphael
-  window_name: notes
-- focus: 'true'
-  layout: d995,194x41,0,0,45
-  options:
-    automatic-rename: 'off'
-  panes:
-  - focus: 'true'
-    shell_command: ranger
-  start_directory: /home/raphael
-  window_name: ranger
-- focus: 'true'
-  layout: d995,194x41,0,0,45
+  window_name: torrent
+- layout: b6bf,194x42,0,0,2
   options:
     automatic-rename: 'off'
   panes:
   - pane
+  start_directory: /home/raphael
+  window_name: monitoring
+- layout: b6c0,194x42,0,0,3
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  start_directory: /home/raphael
+  window_name: notes
+- layout: b6c2,194x42,0,0,5
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: fish
   start_directory: /home/raphael
   window_name: shell
