@@ -104,8 +104,10 @@ alias go "googler"
 alias bk "buku"
 # jenkins
 alias jenkins "java -jar .jekins-cli.jar -s http://jenkins.stant.com.br"
-# jenkins
+# repos
 alias repos "cd ~/Cloud/repos"
+# ansible-playbook
+alias ansible-playbook "ansible-playbook -e 'ansible_python_interpreter=/usr/bin/env python2.7'"
 
 # }}}
 # translate-shell  {{{
