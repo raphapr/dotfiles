@@ -7,6 +7,7 @@
 set fish_greeting
 
 export EDITOR="nvim"
+export VIRTUALENV_PYTHON=/usr/bin/python2.7
 
 if test "$DISPLAY"
     xset r rate 200 30
@@ -599,6 +600,8 @@ function vpn
         sudo ~/Cloud/route.sh
     case neemu
         cd ~/.vpn/c.neemu ; sudo openvpn --config ~/.vpn/c.neemu/raphael.ribeiro.ovpn --script-security 2 --up /etc/openvpn/update-resolv-conf.sh --down /etc/openvpn/update-resolv-conf.sh
+    case sp
+        cd ~/.vpn/c.sp ; sudo openvpn --config ~/.vpn/c.sp/fwsp-udp-1194-raphael.ribeiro.ovpn --script-security 2 --up /etc/openvpn/update-resolv-conf.sh --down /etc/openvpn/update-resolv-conf.sh
     case '*'
         echo "This command doesn't exists."
     end
