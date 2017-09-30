@@ -373,7 +373,7 @@ for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable
-for_window [class="Anki"] floating enable
 for_window [title="Adicionar Transferências"] floating enable
+for_window [class="Pinentry"] floating enable
 
 #}}}

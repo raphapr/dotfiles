@@ -3,6 +3,6 @@
     "ratio": 0.85,
     "pos": "top",
     "shells": {
-        "shell": "tmuxp load guake -y"
+        "shell": "bash -c 'tmux -q has-session -t quickterm && tmux attach-session -d -t quickterm || tmux new-session -s quickterm'"
     }
 }
