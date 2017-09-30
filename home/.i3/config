@@ -30,7 +30,6 @@ exec --no-startup-id run_redshift
 exec --no-startup-id volnoti
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id "guake -e '~/.startupGuake.sh'"
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id "sleep 3 && psyncgui &"
@@ -102,7 +101,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
 # mopidy
-bindsym $mod+p exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
+#bindsym $mod+p exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioNext exec --no-startup-id mpc next
 bindsym XF86AudioPrev exec --no-startup-id mpc prev
 bindsym XF86AudioPlay exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
@@ -118,6 +117,9 @@ bindsym $mod+Shift+x move workspace to output up
 
 # telegram
 bindsym $mod+Shift+t exec telegram-desktop
+
+# quickterm
+bindsym F4 exec ~/.bin/i3-quickterm shell
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{

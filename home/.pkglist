@@ -56,7 +56,6 @@ unrar
 wget
 the_silver_searcher
 xclip
-guake
 xfce4-power-manager
 imgurbash2
 jabref
@@ -95,3 +94,4 @@ openresolv
 dropbox
 hub
 pacmanity
+dunst
