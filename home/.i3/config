@@ -19,8 +19,8 @@ set $TERM2      urxvt
 set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
 set $LANC       urxvtc -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 set $FM         thunar
-set $PRINT      take_screenshot
-set $SPRINT     take_screenshot -s
+set $PRINT      ~/.bin/take_screenshot
+set $SPRINT     ~/.bin/take_screenshot -s
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
@@ -111,7 +111,7 @@ bindsym XF86AudioPlay exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
 # kill current notification
-bindsym ctrl+space exec --no-startup-id "killall notify-osd; pkill volnoti && volnoti"
+#bindsym ctrl+space exec --no-startup-id "killall notify-osd; pkill volnoti && volnoti"
 
 # move workspace to another output
 bindsym $mod+Shift+x move workspace to output up
