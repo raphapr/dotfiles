@@ -292,6 +292,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 
 " }}}
+" ===== tabular                 {{{
+
+Plug 'tpope/vim-obsession'
+
+" }}}
 
 call plug#end()
 
