@@ -1,6 +1,5 @@
 gawk
 dbus-x11
-connman
 ranger
 transmission-remote-cli
 zathura
@@ -92,6 +91,7 @@ ttf-hack
 resolvconf
 openresolv
 dropbox
-hub
 pacmanity
 dunst
+networkmanager
+network-manager-applet

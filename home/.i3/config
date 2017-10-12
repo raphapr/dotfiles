@@ -26,6 +26,7 @@ set $SPRINT     ~/.bin/take_screenshot -s
 # Startup apps          ----------------------------------------------------- {{{
 
 #exec_always --no-startup-id polybar-launch
+exec --no-startup-id nm-applet
 exec --no-startup-id run_redshift
 exec --no-startup-id volnoti
 exec --no-startup-id urxvtd -q -o -f
@@ -39,7 +40,7 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec --no-startup-id clipit
-exec --no-startup-id telegram -startintray
+exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery_warning &
 exec_always --no-startup-id xset r rate 210 30
 
@@ -290,7 +291,7 @@ bindsym $mod+r mode "resize"
 #bindsym $mod+o exec --no-startup-id openl
 
 # select last recent file using thunar
-bindsym $mod+shift+d    exec --no-startup-id lastfile /media/hdd/Downloads
+bindsym $mod+shift+d exec --no-startup-id lastfile /media/hdd/Downloads
 
 # set video window
 bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20
@@ -332,10 +333,10 @@ set $mode_system System
 
 set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym e exec --no-startup-id ~/.bin/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.bin/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.bin/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.bin/i3exit reboot, mode "default"
     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
@@ -375,5 +376,6 @@ for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable
 for_window [title="Adicionar Transferências"] floating enable
 for_window [class="Pinentry"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
 
 #}}}

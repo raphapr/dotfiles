@@ -419,6 +419,7 @@ vmap <RIGHT> >gv
 
 " }}}
 " etc               {{{
+map <leader>w :%s/\s\+$//e<CR>
 
 " Set working directory to the current file just for current window
 map <leader>cd :lcd %:h<CR>

@@ -82,9 +82,6 @@ alias urserver '/opt/urserver/urserver --daemon'
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias guake 'guake -e ~/.startupGuake.sh'
 alias youtube-viewer 'youtube-viewer -C'
-# connman
-alias wcon 'connmanctl connect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
-alias wdis 'connmanctl disconnect wifi_e006e6dd924b_56616c66656e6461_managed_psk'
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 alias prismo "ssh root@prismo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
@@ -151,13 +148,6 @@ alias atube 'youtube-dl --extract-audio --audio-format mp3 -t'
 alias google 'ping -i 3 www.google.com'
 alias globo 'ping -i 3 www.globo.com'
 alias yahoo 'ping -i 3 www.yahoo.com'
-
-# }}}
-# connman          {{{
-
-alias c "connmanctl"
-alias wfscan "connmanctl services"
-alias wfcon "connmanctl connect"
 
 # }}}
 # xclip            {{{

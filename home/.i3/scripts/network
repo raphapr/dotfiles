@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-INTERFACE="${1:-wlan0}"
+INTERFACE="${1:-wlp8s0}"
 
 state="$(cat /sys/class/net/$INTERFACE/operstate)"
 

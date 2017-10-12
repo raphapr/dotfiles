@@ -12,10 +12,10 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        systemctl suspend
+        i3lock -c 000000 && systemctl suspend
         ;;
     hibernate)
-        systemctl hibernate
+        i3lock -c 000000 && systemctl hibernate
         ;;
     reboot)
         sudo systemctl reboot
