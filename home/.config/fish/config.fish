@@ -213,6 +213,10 @@ function azset
         echo "This command doesn't exists."
     end
 end
+# }}}
+# curl-trace       {{{
+
+alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 
 # }}}
 
