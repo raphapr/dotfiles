@@ -13,7 +13,7 @@
 # Variables             ----------------------------------------------------- {{{
 
 set $mod Mod4
-set $BROWSER    firefox
+set $BROWSER    waterfox
 set $TERM       urxvtc -e fish
 set $TERM2      urxvt
 set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
