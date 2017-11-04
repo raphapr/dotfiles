@@ -272,11 +272,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
 
 " }}}
-" ===== ansible-vim-yaml        {{{
-
-Plug 'chase/vim-ansible-yaml'
-
-" }}}
 " ===== vim-gitgutter           {{{
 
 Plug 'airblade/vim-gitgutter'
@@ -287,11 +282,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'godlygeek/tabular'
 
 " }}}
-" ===== tabular                 {{{
+" ===== vim-obsession           {{{
 
 Plug 'tpope/vim-obsession'
 
 " }}}
+" ===== identLine               {{{
+
+Plug 'Yggdroot/indentLine'
+let g:indentLine_enabled = 0
+nmap <leader>i :IndentLinesToggle<cr>
+
+" }}}
+
 
 call plug#end()
 
