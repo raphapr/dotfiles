@@ -30,24 +30,19 @@ call plug#begin('~/.nvim/plugged')
 Plug 'tomasr/molokai'
 
 " }}}
-" ===== Snipmate                {{{
+" ===== deoplete                {{{
 
-" Dependency: sudo pip install neovim
+" Dependency: sudo pip install neovim jedi
 "(https://github.com/neovim/neovim/issues/2906)
 
-" Track the engine.
-Plug 'SirVer/ultisnips'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:python3_host_prog = '/usr/bin/python3.6'
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case=1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " }}}
 " ===== Syntax highlighting     {{{
