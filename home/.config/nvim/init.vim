@@ -295,7 +295,6 @@ nmap <leader>i :IndentLinesToggle<cr>
 
 " }}}
 
-
 call plug#end()
 
 " }}}
