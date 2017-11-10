@@ -32,7 +32,7 @@ You can now link its contents into your home dir:
 * tmux
 * ranger
 * glances
-* firefox
+* waterfox
 * thunar
 * imgurbash
 * urxvt
