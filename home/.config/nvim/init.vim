@@ -40,7 +40,7 @@ Plug 'zchee/deoplete-jedi'
 
 let g:python3_host_prog = '/usr/bin/python3.6'
 let g:deoplete#enable_at_startup = 0
-let g:deoplete#enable_smart_case=1
+let g:deoplete#enable_smart_case = 1
 nmap <Leader>d :call deoplete#toggle()<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -293,6 +293,24 @@ Plug 'tpope/vim-obsession'
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
 nmap <leader>i :IndentLinesToggle<cr>
+
+" }}}
+" =====  vim-markdown-composer  {{{
+" dependencies: rustup
+
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+
+let g:markdown_composer_open_browser = 0
 
 " }}}
 
