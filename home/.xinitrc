@@ -9,8 +9,9 @@
 setxkbmap -option keypad:pointerkeys
 
 # remove caps lock function
+xmodmap -e 'keycode 66 = Control_L'
 xmodmap -e 'clear Lock'
-xmodmap -e 'keycode 66 = F7'
+xmodmap -e 'add Control = Control_L'
 
 xset r rate 215 35
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources

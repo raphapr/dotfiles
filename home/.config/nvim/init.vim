@@ -295,7 +295,7 @@ let g:indentLine_enabled = 0
 nmap <leader>i :IndentLinesToggle<cr>
 
 " }}}
-" =====  vim-markdown-composer  {{{
+" ===== vim-markdown-composer   {{{
 " dependencies: rustup
 
 function! BuildComposer(info)
@@ -311,6 +311,11 @@ endfunction
 Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 let g:markdown_composer_open_browser = 0
+
+" }}}
+" ===== surround                {{{
+
+Plug 'tpope/vim-surround'
 
 " }}}
 
