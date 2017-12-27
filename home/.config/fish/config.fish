@@ -220,6 +220,11 @@ end
 alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 
 # }}}
+# update-resolv     {{{
+
+alias update-resolv='bash /etc/openvpn/update-resolv-conf.sh'
+
+# }}}
 
 # }}}
 # Functions       ---------------------------------------------- {{{
