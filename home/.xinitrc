@@ -8,12 +8,11 @@
 
 setxkbmap -option keypad:pointerkeys
 
-# remove caps lock function
-xmodmap -e 'keycode 66 = Control_L'
-xmodmap -e 'clear Lock'
-xmodmap -e 'add Control = Control_L'
+# remapping keys
+sleep 5 && xmodmap ~/.Xmodmap
 
 xset r rate 215 35
+
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
 #exec i3 --shmlog-size=26214400

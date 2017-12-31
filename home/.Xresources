@@ -17,7 +17,7 @@ URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
 URxvt.scrollBar: false
 URxvt.letterSpace: -2
 URxvt.font: xft:DejaVu\ Sans\ Mono\ for\ Powerline:size=9:antialias=true:hinting=true
-URxvt*saveLines: 5000
+URxvt*saveLines: 1000000
 URxvt.urlLauncher: /usr/bin/xdg-open
 URxvt*iso14755: False
 URxvt*iso14755_52: False
