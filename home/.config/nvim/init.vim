@@ -216,7 +216,7 @@ autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
 autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
 
 nnoremap <c-p> :FZF<cr>
-"nnoremap <c-m> :FZFMru<cr>
+nnoremap <c-m> :FZF ~<cr>
 
 function! s:all_files()
   return extend(

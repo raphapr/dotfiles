@@ -69,3 +69,9 @@ map <leader>m :set gui=invmenu<CR>
 
 " give ctrl+shift+P back
 nnoremap <c-s-p> i<c-s-p>
+
+" pin tab
+map <leader>p :set apptab=true<CR>
+
+" unpin tab
+map <leader>u :set apptab=false<CR>

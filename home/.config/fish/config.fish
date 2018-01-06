@@ -24,7 +24,7 @@ end
 set PATH $PATH ~/.bin
 
 # Env variables
-set -x BROWSER firefox
+set -x BROWSER waterfox
 set -x GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 
 # aws complete
@@ -39,8 +39,13 @@ function fish_user_key_bindings
     bind \cf accept-autosuggestion
 end
 
-# virtualfish settings
+# }}}
+# Plugins         ---------------------------------------------- {{{
+
+# virtualfish
 eval (python -m virtualfish auto_activation)
+# direnv
+eval (direnv hook fish)
 
 # }}}
 # Aliases         ---------------------------------------------- {{{
@@ -223,6 +228,12 @@ alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 # update-resolv     {{{
 
 alias update-resolv='bash /etc/openvpn/update-resolv-conf.sh'
+
+# }}}
+# ansible           {{{
+
+alias ansible='ansible -e "ansible_python_interpreter=/usr/bin/python2.7"'
+alias ansible-playbook='ansible-playbook -e "ansible_python_interpreter=/usr/bin/python2.7"'
 
 # }}}
 
