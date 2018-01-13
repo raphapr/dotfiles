@@ -17,8 +17,8 @@ if test -e /opt/julia/bin
     set PATH $PATH /opt/julia/bin
 end
 
-if test -e ~/.gem/ruby/2.4.0/bin
-    set PATH $PATH  ~/.gem/ruby/2.4.0/bin
+if test -e ~/.gem/ruby/2.5.0/bin
+    set PATH $PATH  ~/.gem/ruby/2.5.0/bin
 end
 
 set PATH $PATH ~/.bin
@@ -228,12 +228,6 @@ alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 # update-resolv     {{{
 
 alias update-resolv='bash /etc/openvpn/update-resolv-conf.sh'
-
-# }}}
-# ansible           {{{
-
-alias ansible='ansible -e "ansible_python_interpreter=/usr/bin/python2.7"'
-alias ansible-playbook='ansible-playbook -e "ansible_python_interpreter=/usr/bin/python2.7"'
 
 # }}}
 

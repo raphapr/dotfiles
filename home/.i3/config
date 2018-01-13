@@ -42,7 +42,9 @@ exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
 exec --no-startup-id copyq
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery_warning &
-exec_always --no-startup-id xset r rate 210 30
+exec --no-startup-id pritunl-client-gtk
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec_always --no-startup-id xset r rate 215 35
 
 #}}}i
 # Font                  ----------------------------------------------------- {{{
@@ -68,6 +70,9 @@ floating_modifier $mod
 #}}}
 # Personal Shortcuts    ----------------------------------------------------- {{{
 
+# new workspace
+bindsym Menu exec --no-startup-id ~/.bin/i3_new_workspace
+
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $TERM 
 
@@ -89,6 +94,9 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT
 
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
+
+# keyboard layourt toggle
+bindsym $mod+F10 exec --no-startup-id ~/.bin/klayout-toggle && pkill -RTMIN+1 i3blocks
 
 # controller toggle
 bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle && pkill -RTMIN+1 i3blocks
@@ -114,7 +122,7 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 #bindsym ctrl+space exec --no-startup-id "killall notify-osd; pkill volnoti && volnoti"
 
 # move workspace to another output
-bindsym $mod+Shift+x move workspace to output up
+bindsym $mod+Shift+x move workspace to output left
 
 # telegram
 bindsym $mod+Shift+t exec telegram-desktop
