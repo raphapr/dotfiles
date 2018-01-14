@@ -3,7 +3,6 @@
 "
 
 " Preambule ---------------------------------------------------------------- {{{
-"
 
 set splitbelow                          " Nova janela aparece abaixo da atual
 set splitright                          " Nova janela aparece a direita da atual
@@ -68,12 +67,6 @@ let g:vim_markdown_folding_disabled=1
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-let g:airline_symbols = {}
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.branch = '↪'
-let g:airline#extensions#branch#prefix = '➔'
-let g:airline_symbols.linenr = '❒'
-let g:airline_symbols.maxlinenr = ''
 
 let g:airline_theme = 'bubblegum'
 "let g:airline_theme = 'jellybeans'
