@@ -400,8 +400,6 @@ nmap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
 nmap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nmap <leader>i3 :vsplit ~/.i3/config<cr>
 
-nmap <F2> :w<cr>
-
 " }}}
 " compiling         {{{
 
