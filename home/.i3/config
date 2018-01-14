@@ -14,10 +14,8 @@
 
 set $mod Mod4
 set $BROWSER    waterfox
-set $TERM       urxvtc -e fish
-set $TERM2      urxvt
-set $TMUX       urxvtc -e bash -c "tmux -q has-session -t shell && tmux attach-session -d -t shell || tmux -f ~/.tmux/tmux.conf new-session -s shell"
-set $LANC       urxvtc -e bash -c "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
+set $TERM       termite -e fish
+set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
 set $PRINT      ~/.bin/take_screenshot
 set $SPRINT     ~/.bin/take_screenshot -s
@@ -171,8 +169,8 @@ mouse_warping none
 bindsym $mod+BackSpace kill
 
 # start rofi (a program launcher)
-bindsym $mod+space exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 18"
-bindsym $mod+Tab exec --no-startup-id rofi -show window -lines 3 -eh 1 -width 100 -padding 300 -opacity "85" -bw 0 -font "System San Francisco Display 15"
+bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -theme ~/.config/rofi/bala.rasi
+bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -theme ~/.config/rofi/bala.rasi
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -367,8 +365,8 @@ for_window [class="Nm-connection-editor"] floating enable
 # scratchpads           ----------------------------------------------------- {{{
 
 # htop
-exec --no-startup-id $TERM2 -name monitor -e "htop"
-for_window [instance="monitor"] move scratchpad
-bindsym $mod+F12 [instance="monitor"] scratchpad show
+exec --no-startup-id termite -t htop -e "htop"
+for_window [title="htop"] move scratchpad
+bindsym $mod+F12 [title="htop"] scratchpad show
 
 #}}}

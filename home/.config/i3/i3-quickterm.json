@@ -1,5 +1,5 @@
 {
-    "term": "urxvt -title '{title}'",
+    "term": "urxvt -name '{title}'",
     "ratio": 0.85,
     "pos": "top",
     "shells": {

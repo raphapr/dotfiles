@@ -124,21 +124,3 @@ URxvt.color14 : #55FFFF
 ! white
 URxvt.color7  : #AAAAAA
 URxvt.color15 : #FFFFFF
-
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
-rofi.font:              SFNS Display 53 
-rofi.color-enabled:     true
-rofi.color-window:      argb:B3000000, argb:B3000000, argb:E6ffffff
-rofi.color-normal:      argb:00000000, argb:969896B3, argb:00000000, argb:00000000, argb:FFFFFFFF 
-rofi.color-urgent:      argb:00282a2e, argb:FFcc6666, argb:00282a2e, argb:ffcc6666, argb:e61d1f21
-rofi.color-active:      argb:00282a2e, argb:FF81a2be, argb:00282a2e, argb:ff81a2be, argb:e61d1f21
-rofi.separator-style:   solid
-rofi.fullscreen:        true
-rofi.padding:           650
-rofi.hide-scrollbar:    true
-rofi.line-margin:       5
-rofi.yoffset:           0
-rofi.xoffset:           0
-rofi.lines: 12 

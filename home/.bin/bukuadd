@@ -1,4 +1,0 @@
-#!/bin/bash
-
-notify-send "Buku" "Added to bookmarks" -i /usr/share/icons/Numix/32/status/starred.svg
-xsel | buku -a
