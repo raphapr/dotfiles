@@ -107,10 +107,10 @@ alias go "googler"
 alias bk "buku"
 # jenkins
 alias jenkins "java -jar .jekins-cli.jar -s http://jenkins.stant.com.br"
-# repos
-alias repos "cd ~/Cloud/repos"
-alias mypublicip "curl ipecho.net/plain ; echo"
-alias ssh_agent "eval (ssh-agent -c); ssh-add ~/.ssh/id_rsa"
+# load ssh agent to use ssh -A
+alias sshagent "eval (ssh-agent -c); ssh-add ~/.ssh/id_rsa"
+# '-' as shortcut to cd -
+abbr -a -- - 'cd -'
 
 # }}}
 # translate-shell  {{{

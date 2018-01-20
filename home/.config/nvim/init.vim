@@ -259,6 +259,7 @@ command! FZFMru call fzf#run({
 " ===== vim-fugitive            {{{
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " }}}
 " ===== async lint engine       {{{

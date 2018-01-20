@@ -27,8 +27,8 @@ set $SPRINT     ~/.bin/take_screenshot -s
 exec --no-startup-id nm-applet
 exec --no-startup-id run_redshift
 exec --no-startup-id volnoti
-exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id xfce4-power-manager
+exec --no-startup-id sudo modprobe r8169
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id "sleep 3 && psyncgui &"
@@ -77,9 +77,6 @@ bindsym Menu exec --no-startup-id ~/.bin/passmenu
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $TERM 
 
-# start a terminal with tmux session
-bindsym F1 exec --no-startup-id $TMUX
-
 # start a terminal with ssh
 bindsym $mod+shift+s exec --no-startup-id $LANC
 
@@ -124,9 +121,6 @@ bindsym $mod+Shift+x move workspace to output left
 
 # telegram
 bindsym $mod+Shift+t exec telegram-desktop
-
-# quickterm
-bindsym F4 exec ~/.bin/i3-quickterm shell
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
