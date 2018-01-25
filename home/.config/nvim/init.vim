@@ -62,11 +62,10 @@ let g:vim_markdown_folding_disabled=1
 " install powerline-fonts
 " git clone https://github.com/powerline/fonts.git /tmp/fonts
 " sh /tmp/fonts/install.sh
-" ln -s ~/.local/share/fonts ~/.fonts 
+" ln -s ~/.local/share/fonts ~/.fonts
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 
 let g:airline_theme = 'bubblegum'
 "let g:airline_theme = 'jellybeans'
@@ -84,9 +83,11 @@ Plug 'Townk/vim-autoclose'
 
 " File browser
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 nmap <F10> :NERDTreeToggle<CR>
 
-let NERDTreeShowBookmarks=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " }}}
 " ===== vim-tagbar              {{{
@@ -130,17 +131,6 @@ let g:NumberToggleTrigger="<Leader>n"
 " <leader>cc comment
 " <leader>cu uncomment
 Plug 'scrooloose/nerdcommenter'
-
-" }}}
-" ===== latex-box               {{{
-
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-
-let g:tex_flavor='latex'
-let g:LatexBox_quickfix         = 4
-let g:LatexBox_Folding          = 1
-let g:LatexBox_latexmk_async    = 1
-let g:LatexBox_fold_automatic   = 0
 
 " }}}
 " ===== matchit.vim             {{{
@@ -193,11 +183,10 @@ Plug 'xolox/vim-misc'
 autocmd BufNewFile,BufRead notes.txt setlocal filetype=notes
 
 " }}}
-" ===== ack                     {{{
+" ===== FlyGrep                 {{{
 
-" Dependencies: sudo pacman -S the_silver_searcher
-Plug 'mileszs/ack.vim'
-let g:ackprg = 'ag --vimgrep --smart-case'
+Plug 'wsdjeg/FlyGrep.vim'
+nnoremap <leader>g :FlyGrep<cr>
 
 " }}}
 " ===== fzf                     {{{
@@ -272,16 +261,6 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 
 " }}}
-" ===== tabular                 {{{
-
-Plug 'godlygeek/tabular'
-
-" }}}
-" ===== vim-obsession           {{{
-
-Plug 'tpope/vim-obsession'
-
-" }}}
 " ===== identLine               {{{
 
 Plug 'Yggdroot/indentLine'
@@ -307,11 +286,27 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 let g:markdown_composer_open_browser = 0
 
 " }}}
-" ===== surround                {{{
+" ===== vim-session             {{{
 
-Plug 'tpope/vim-surround'
+Plug 'xolox/vim-session'
+
+let g:session_autosave_periodic = 1
+let g:session_autoload = 'no'
 
 " }}}
+
+" Disabled
+"" ===== latex-box               {{{
+
+"Plug 'LaTeX-Box-Team/LaTeX-Box'
+
+"let g:tex_flavor='latex'
+"let g:LatexBox_quickfix         = 4
+"let g:LatexBox_Folding          = 1
+"let g:LatexBox_latexmk_async    = 1
+"let g:LatexBox_fold_automatic   = 0
+
+"" }}}
 
 call plug#end()
 
@@ -385,7 +380,7 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
 " closes buffer
-nmap <C-E> :bp<cr>:bd #<cr>
+nmap <C-E> :bd<cr>:bd #<cr>
 
 "}}}
 " fast edition      {{{
@@ -425,14 +420,18 @@ nmap k gk
 "
 nmap <UP> <C-A>
 nmap <DOWN> <C-X>
-nmap <LEFT> <<
-nmap <RIGHT> >>
-vmap <LEFT> <gv
-vmap <RIGHT> >gv
+
+" }}}
+" session           {{{
+
+map <leader>s :SaveSession<CR>
+map <leader>l :OpenSession<CR>
 
 " }}}
 " etc               {{{
-map <leader>w :%s/\s\+$//e<CR>
+
+" remove all trailing space
+map <leader>w :%s/\s\+$//e<cr>
 
 " Set working directory to the current file just for current window
 map <leader>cd :lcd %:h<CR>
