@@ -183,12 +183,6 @@ Plug 'xolox/vim-misc'
 autocmd BufNewFile,BufRead notes.txt setlocal filetype=notes
 
 " }}}
-" ===== FlyGrep                 {{{
-
-Plug 'wsdjeg/FlyGrep.vim'
-nnoremap <leader>g :FlyGrep<cr>
-
-" }}}
 " ===== fzf                     {{{
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -236,6 +230,13 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" }}}
+" ===== ack                     {{{
+
+" Dependencies: sudo pacman -S the_silver_searcher
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep --smart-case'
 
 " }}}
 " ===== vim-fugitive            {{{

@@ -6,6 +6,7 @@
 # disable fish greeting message
 set fish_greeting
 
+export TERM=xterm-256color
 export EDITOR="nvim"
 export VIRTUALENV_PYTHON=/usr/bin/python2.7
 
