@@ -13,7 +13,7 @@
 # Variables             ----------------------------------------------------- {{{
 
 set $mod Mod4
-set $BROWSER    waterfox
+set $BROWSER    firefox
 set $TERM       termite -e fish
 set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
@@ -68,14 +68,14 @@ floating_modifier $mod
 #}}}
 # Personal Shortcuts    ----------------------------------------------------- {{{
 
-# passmenu
-bindsym Menu exec --no-startup-id ~/.bin/passmenu
-
 # new workspace
 #bindsym Menu exec --no-startup-id ~/.bin/i3_new_workspace
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $TERM 
+
+# start a terminal with tmux
+bindsym $mod+shift+Return exec --no-startup-id $TMUX
 
 # start a terminal with ssh
 bindsym $mod+shift+s exec --no-startup-id $LANC
@@ -90,7 +90,7 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT
 # power manager toggle
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
 
-# keyboard layourt toggle
+# keyboard layout toggle
 bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle && pkill -RTMIN+1 i3blocks
 
 # controller toggle
@@ -163,8 +163,8 @@ mouse_warping none
 bindsym $mod+BackSpace kill
 
 # start rofi (a program launcher)
-bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -theme ~/.config/rofi/bala.rasi
-bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -theme ~/.config/rofi/bala.rasi
+bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run "run " -theme ~/.config/rofi/bala.rasi
+bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-window "window " -theme ~/.config/rofi/bala.rasi
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -329,12 +329,6 @@ mode "$mode_system" {
 }
 
 bindsym $mod+F1 mode "$mode_system"
-
-#}}}
-# Mark                  ----------------------------------------------------- {{{
-
-bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
-bindsym F2 exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 #}}}
 # Theme colors          ----------------------------------------------------- {{{

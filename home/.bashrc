@@ -9,6 +9,9 @@ if [ "$DISPLAY" ]; then
     xset r rate 210 30
 fi
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
 export EDITOR=nvim
 
 # If not running interactively, don't do anything
@@ -428,6 +431,3 @@ function take()
 # }}}
 
 # }}}
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
