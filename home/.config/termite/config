@@ -1,6 +1,7 @@
 [options]
-browser = waterfox
+browser = firefox
 clickable_url = true
+font = DejaVu Sans Mono 9
 
 [colors]
 

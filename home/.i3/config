@@ -80,6 +80,9 @@ bindsym $mod+shift+Return exec --no-startup-id $TMUX
 # start a terminal with ssh
 bindsym $mod+shift+s exec --no-startup-id $LANC
 
+# pass menu
+bindsym $mod+y exec --no-startup-id passmenu
+
 # browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
@@ -250,7 +253,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # set video window
-bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20
+#bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

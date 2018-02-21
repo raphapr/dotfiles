@@ -47,11 +47,15 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " }}}
 " ===== Syntax highlighting     {{{
 
+" fish
 Plug 'dag/vim-fish'
-Plug 'JuliaLang/julia-vim'
-Plug 'rdolgushin/groovy.vim'
 
-" Markdown
+" ansible
+Plug 'pearofducks/ansible-vim'
+au BufRead,BufNewFile */roles/*.yml set filetype=ansible
+au BufRead,BufNewFile */ansible/*.yml set filetype=ansible
+
+" markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
@@ -245,20 +249,23 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " }}}
-" ===== async lint engine       {{{
-
-Plug 'w0rp/ale'
-
-" }}}
 " ===== vim-gitgutter           {{{
 
 Plug 'airblade/vim-gitgutter'
 
 " }}}
+" ===== async lint engine       {{{
+
+" Used linters: flake8 (python)
+
+Plug 'w0rp/ale'
+let g:ale_completion_enabled = 1
+
+" }}}
 " ===== identLine               {{{
 
 Plug 'Yggdroot/indentLine'
-let g:indentLine_enabled = 0
+let g:indentLine_enabled = 1
 nmap <leader>i :IndentLinesToggle<cr>
 
 " }}}
@@ -289,19 +296,6 @@ let g:session_autoload = 'no'
 
 " }}}
 
-" Disabled
-"" ===== latex-box               {{{
-
-"Plug 'LaTeX-Box-Team/LaTeX-Box'
-
-"let g:tex_flavor='latex'
-"let g:LatexBox_quickfix         = 4
-"let g:LatexBox_Folding          = 1
-"let g:LatexBox_latexmk_async    = 1
-"let g:LatexBox_fold_automatic   = 0
-
-"" }}}
-
 call plug#end()
 
 " }}}
@@ -320,9 +314,9 @@ set splitbelow
 set splitright
 
 " Settings indentation style default
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set smarttab
 set expandtab
 set autoindent
@@ -423,6 +417,9 @@ map <leader>l :OpenSession<CR>
 
 " }}}
 " etc               {{{
+"
+" set paste/nopaste
+set pastetoggle=<F2>
 
 " remove all trailing space
 map <leader>w :%s/\s\+$//e<cr>
