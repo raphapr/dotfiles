@@ -32,10 +32,10 @@ You can now link its contents into your home dir:
 * tmux
 * ranger
 * glances
-* waterfox
+* firefox
 * thunar
 * imgurbash
-* urxvt
+* termite
 * transmission-remote-cli
 * zathura
 * fasd
