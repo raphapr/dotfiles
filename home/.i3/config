@@ -81,7 +81,7 @@ bindsym $mod+shift+Return exec --no-startup-id $TMUX
 bindsym $mod+shift+s exec --no-startup-id $LANC
 
 # pass menu
-bindsym $mod+y exec --no-startup-id passmenu
+bindsym $mod+y exec --no-startup-id rofi-pass
 
 # browser
 bindsym $mod+q exec --no-startup-id $BROWSER
