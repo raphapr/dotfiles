@@ -2,7 +2,6 @@
 # bashrc
 # Raphael P. Ribeiro
 
-
 # Preambulo           ---------------------------------------------- {{{
 
 if [ "$DISPLAY" ]; then

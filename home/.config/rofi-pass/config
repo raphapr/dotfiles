@@ -31,14 +31,14 @@ wait=0.2
 
 ## Programs to be used
 # Editor
-EDITOR='gvim -f'
+EDITOR='nvim -f'
 
 # Browser
 BROWSER='xdg-open'
 
 ## Misc settings
 
-default_do='menu' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
+default_do='copyPass' # menu, autotype, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
 auto_enter='false'
 notify='false'
 default_autotype='user :tab pass'
@@ -49,7 +49,7 @@ help_color="#4872FF"
 
 # Clipboard settings
 # Possible options: primary, clipboard, both
-clip=primary
+clip=both
 
 # Options for generating new password entries
 # default_user is also used for password files that have no user field.

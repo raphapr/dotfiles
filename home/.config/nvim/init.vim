@@ -430,9 +430,6 @@ map <leader>cd :lcd %:h<CR>
 " Open files located in the same dir in with the current file is edited
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 
-" Save files without sudo
-cmap w!! %!sudo tee > /dev/null %
-
 " Reload init.vim
 map <Leader>re :so ~/.config/nvim/init.vim<CR>
 

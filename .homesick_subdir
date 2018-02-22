@@ -16,3 +16,4 @@
 .config/i3
 .config/termite
 .config/rofi-pass
+.bin

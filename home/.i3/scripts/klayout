@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Author: Raphael P. Ribeiro <raphaelpr01@gmail.com> 
+
+layout=$(setxkbmap -query | awk 'FNR == 3 {print $2}')
+variant=$(setxkbmap -query | awk 'FNR == 4 {print $2}')
+
+echo "$layout-$variant"
