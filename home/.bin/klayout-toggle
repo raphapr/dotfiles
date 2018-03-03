@@ -1,13 +1,12 @@
 #!/bin/bash
 
-
 layout=$(setxkbmap -query | awk 'FNR == 3 {print $2}')
 variant=$(setxkbmap -query | awk 'FNR == 4 {print $2}')
 klayout="$layout-$variant"
 if [ "$klayout" == "br-abnt2" ]; then
-    setxkbmap us -variant alt-intl "default" && xmodmap ~/.Xmodmap
     notify-send "Keyboard Layourt" "US International"
+    setxkbmap us -variant alt-intl "default" && xmodmap ~/.Xmodmap
 else
-    setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
     notify-send "Keyboard Layourt" "BR ABNT2"
+    setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 fi
