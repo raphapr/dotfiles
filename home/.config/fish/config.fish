@@ -9,6 +9,7 @@ set fish_greeting
 export TERM=xterm-256color
 export EDITOR="nvim"
 export VIRTUALENV_PYTHON=/usr/bin/python2.7
+export GOPATH="$HOME/go"
 
 if test "$DISPLAY"
     xset r rate 200 30
@@ -101,13 +102,7 @@ alias gams "/media/hdd/Software/gams24.6/gams"
 # command line pastebin
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
-alias weather "curl wttr.in/maceio"
-# googler
-alias go "googler"
-# buku
-alias bk "buku"
-# jenkins
-alias jenkins "java -jar .jekins-cli.jar -s http://jenkins.stant.com.br"
+alias weather "curl wttr.in/florianopolis"
 # load ssh agent to use ssh -A
 alias sshagent "eval (ssh-agent -c); ssh-add ~/.ssh/id_rsa"
 # '-' as shortcut to cd -

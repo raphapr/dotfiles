@@ -269,30 +269,17 @@ let g:indentLine_enabled = 1
 nmap <leader>i :IndentLinesToggle<cr>
 
 " }}}
-" ===== vim-markdown-composer   {{{
-" dependencies: rustup
-
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release
-    else
-      !cargo build --release --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-
-let g:markdown_composer_open_browser = 0
-
-" }}}
 " ===== vim-session             {{{
 
 Plug 'xolox/vim-session'
 
 let g:session_autosave_periodic = 1
 let g:session_autoload = 'no'
+
+" }}}
+" ===== vim-go                  {{{
+
+Plug 'fatih/vim-go'
 
 " }}}
 
@@ -406,8 +393,10 @@ nmap k gk
 " arrow keys for something more useful
 "
 "
-nmap <UP> <C-A>
-nmap <DOWN> <C-X>
+"nmap <UP> <C-A>
+"nmap <DOWN> <C-X>
+nnoremap <UP> ddkP
+nnoremap <DOWN> ddp
 
 " }}}
 " session           {{{

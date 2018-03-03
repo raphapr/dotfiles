@@ -2,5 +2,5 @@
 
 if ! pgrep -x "redshift"
 then
-    redshift -l -9.653916:-35.705566 &
+    /usr/bin/redshift -l -27.57867:-48.4316 &
 fi
