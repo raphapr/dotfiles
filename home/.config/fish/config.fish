@@ -15,6 +15,10 @@ if test "$DISPLAY"
     xset r rate 200 30
 end
 
+if test -e $GOPATH/bin
+    set PATH $PATH  $GOPATH/bin
+end
+
 if test -e /opt/julia/bin
     set PATH $PATH /opt/julia/bin
 end
@@ -23,7 +27,9 @@ if test -e ~/.gem/ruby/2.5.0/bin
     set PATH $PATH  ~/.gem/ruby/2.5.0/bin
 end
 
-set PATH $PATH ~/.bin
+if test -e ~/.bin
+    set PATH $PATH ~/.bin
+end
 
 # Env variables
 set -x BROWSER waterfox

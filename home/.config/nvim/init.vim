@@ -2,7 +2,7 @@
 " Author: Raphael P. Ribeiro
 "
 
-" Preambule ---------------------------------------------------------------- {{{
+" Preambule   -------------------------------------------------------------- {{{
 
 set splitbelow                          " Nova janela aparece abaixo da atual
 set splitright                          " Nova janela aparece a direita da atual
@@ -20,7 +20,7 @@ set clipboard+=unnamedplus
 set shell=/bin/bash
 
 " }}}
-" Plugins   ---------------------------------------------------------------- {{{
+" Plugins     -------------------------------------------------------------- {{{
 
 call plug#begin('~/.nvim/plugged')
 
@@ -286,7 +286,7 @@ Plug 'fatih/vim-go'
 call plug#end()
 
 " }}}
-" Settings  ---------------------------------------------------------------- {{{
+" Settings    -------------------------------------------------------------- {{{
 
 syntax enable
 colorscheme molokai
@@ -318,7 +318,7 @@ set undoreload=10000
 set backupskip=/tmp/*,/private/tmp/*"   " No backup file is created for these
 
 " }}}
-" Folding   ---------------------------------------------------------------- {{{
+" Folding     -------------------------------------------------------------- {{{
 
 set foldmethod=marker
 set foldmarker={{{,}}}
@@ -346,7 +346,7 @@ endfunction "
 set foldtext=MyFoldText()
 
 " }}}
-" Maps    -----------------------------------------------------------------  {{{
+" Maps        -------------------------------------------------------------- {{{
 
 " buffers           {{{
 
@@ -395,8 +395,8 @@ nmap k gk
 "
 "nmap <UP> <C-A>
 "nmap <DOWN> <C-X>
-nnoremap <UP> ddkP
-nnoremap <DOWN> ddp
+"nnoremap <UP> ddkP
+"nnoremap <DOWN> ddp
 
 " }}}
 " session           {{{
@@ -440,7 +440,7 @@ noremap ;' :%s:::cg<Left><Left><Left><Left>
 " }}}
 
 " }}}
-" Backups ------------------------------------------------------------------ {{{
+" Backups     -------------------------------------------------------------- {{{
 
 set backup                                " enable backup
 set noswapfile                            " don't create swap files
@@ -474,9 +474,12 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 
 "Resize vsplit
-nmap = :vertical resize +5<cr>
-nmap - :vertical resize -5<cr>
-"nmap = <c-w>=
+nmap <Up> :resize +5<cr>
+nmap <Down> :resize -5<cr>
+"Resize split
+nmap <Right> :vertical resize +5<cr>
+nmap <Left> :vertical resize -5<cr>
+nmap = <c-w>=
 
 "Alt + Arrow is for minimizing/maximizing splits
 nmap <M-Up>      <C-W>_
@@ -485,7 +488,26 @@ nmap <M-Left>    <C-W>=
 nmap <M-Right>   <C-W><Bar>
 
 " }}}
-" Adjusts  ----------------------------------------------------------------- {{{
+" Functions   -------------------------------------------------------------- {{{
+
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+  if exists('t:zoomed') && t:zoomed
+    execute t:zoom_winrestcmd
+    let t:zoomed = 0
+  else
+    let t:zoom_winrestcmd = winrestcmd()
+    resize
+    vertical resize
+    let t:zoomed = 1
+  endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+
+nnoremap <silent> - :ZoomToggle<CR>
+
+" }}}
+" Adjusts     -------------------------------------------------------------- {{{
 
 " Hack to get C-h working in neovim
 if has('nvim')
