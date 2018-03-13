@@ -25,7 +25,6 @@ set $SPRINT     ~/.bin/take_screenshot -s
 
 #exec_always --no-startup-id polybar-launch
 exec --no-startup-id nm-applet
-exec --no-startup-id run_redshift
 exec --no-startup-id volnoti
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id sudo modprobe r8169
@@ -129,11 +128,12 @@ bindsym $mod+Shift+t exec telegram-desktop
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # most used
-#bindsym $mod+m      exec --no-startup-id xrandr --output HDMI1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F10  exec --no-startup-id xrandr --change && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+m  exec --no-startup-id autorandr --change --default mobile && feh --bg-fill ~/.wallpaper.png
 
 set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
 mode "$multi_monitor" {
-    bindsym 1 exec --no-startup-id xrandr --output VGA1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 1 exec --no-startup-id xrandr --output eDP1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default" 
