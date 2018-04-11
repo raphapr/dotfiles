@@ -47,6 +47,9 @@ function fish_user_key_bindings
     bind \cf accept-autosuggestion
 end
 
+# virtualgo
+command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
+
 # }}}
 # Plugins         ---------------------------------------------- {{{
 
@@ -199,7 +202,7 @@ alias dockerm 'docker rm -f (docker ps -a -q)'
 # }}}
 # azure            {{{
 
-alias az 'azure'
+#alias az 'azure'
 
 function azset
     switch $argv

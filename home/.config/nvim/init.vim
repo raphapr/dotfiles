@@ -52,8 +52,9 @@ Plug 'dag/vim-fish'
 
 " ansible
 Plug 'pearofducks/ansible-vim'
-au BufRead,BufNewFile */roles/*.yml set filetype=ansible
-au BufRead,BufNewFile */ansible/*.yml set filetype=ansible
+au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */vars/*.yml set filetype=yaml.ansible
 
 " markdown
 Plug 'godlygeek/tabular'
