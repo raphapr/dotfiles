@@ -77,7 +77,6 @@ alias r 'ranger'
 alias desk 'cd ~/Desktop'
 alias iup 'imgurbash'
 alias h 'history'
-alias hm 'history --merge'
 alias chromium 'chromium --disk-cache-dir /tmp/cache'
 alias showbb 'cat /proc/acpi/bbswitch'
 alias grubconf 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -148,6 +147,18 @@ alias dr 'sudo dnf remove'
 alias ds 'sudo dnf search'
 alias dli 'sudo dnf list installed'
 alias dla 'sudo dnf list available'
+
+# }}}
+# save_history      {{{
+
+# history across fishes
+function save_history --on-event fish_preexec
+    history --save
+end
+
+alias hm 'history --merge'  # read and merge history from disk
+
+bind \e\[A 'history --merge ; up-or-search'
 
 # }}}
 # youtube-dl       {{{
