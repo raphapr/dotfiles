@@ -2,9 +2,13 @@
 
 This repository contains configuration files I use on my Manjaro GNU/Linux which have been inspired by the rest of the dotfiles community. 
 
-## Install
+## Install packages
 
-Install homesick first:
+`chmod +x ./home/.bin/installpkgs && ./home/.bin/installpkgs`
+
+## Symlink dotfiles
+
+Install homesick:
 
 `gem install homesick`
 
@@ -36,7 +40,6 @@ You can now link its contents into your home dir:
 * thunar
 * imgurbash
 * termite
-* transmission-remote-cli
 * zathura
 * fasd
 * translate-shell
@@ -47,5 +50,5 @@ You can now link its contents into your home dir:
 * rofi
 * scrot
 * htop
-* ncmpcpp
-* mopidy
+* copyq
+* direnv

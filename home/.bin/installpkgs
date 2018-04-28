@@ -9,9 +9,10 @@ PKGLOG=~/.pacaur.log
 # eg.: do_slnk <original_path> <symlink_path>
 function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
 
-## symlinks
+## sync sensitive config to cloud
 # ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
 # ln -sf ~/Cloud/sync/copyq ~/.config/copyq
+# ln -sf ~/Dropbox ~/Cloud
 
 # pacman update and requirements
 sudo pacman -Syu --needed

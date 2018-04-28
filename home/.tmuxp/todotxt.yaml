@@ -1,0 +1,10 @@
+session_name: todotxt
+windows:
+- focus: 'true'
+  layout: af5d,136x34,0,0,182
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim ~/Dropbox/todo.txt
+  start_directory: /home/raphael
+  window_name: nvim
