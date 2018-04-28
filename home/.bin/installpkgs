@@ -10,9 +10,9 @@ PKGLOG=~/.pacaur.log
 function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
 
 ## sync sensitive config to cloud
+# ln -sf ~/Dropbox ~/Cloud
 # ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
 # ln -sf ~/Cloud/sync/copyq ~/.config/copyq
-# ln -sf ~/Dropbox ~/Cloud
 
 # pacman update and requirements
 sudo pacman -Syu --needed
