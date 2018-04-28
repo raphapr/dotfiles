@@ -276,6 +276,7 @@ Plug 'xolox/vim-session'
 
 let g:session_autosave_periodic = 1
 let g:session_autoload = 'no'
+let g:session_autosave = 'no'
 
 " }}}
 " ===== vim-go                  {{{

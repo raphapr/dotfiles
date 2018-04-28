@@ -31,6 +31,10 @@ if test -e ~/.bin
     set PATH $PATH ~/.bin
 end
 
+
+set PATH $PATH "(ruby -e 'print Gem.user_dir')/bin"
+
+
 # Env variables
 set -x BROWSER waterfox
 set -x GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C

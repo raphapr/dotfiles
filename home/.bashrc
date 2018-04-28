@@ -8,8 +8,7 @@ if [ "$DISPLAY" ]; then
     xset r rate 210 30
 fi
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 
 export EDITOR=nvim
 
