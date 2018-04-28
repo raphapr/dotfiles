@@ -5,6 +5,6 @@ windows:
   options: {}
   panes:
   - focus: 'true'
-    shell_command: nvim ~/Dropbox/todo.txt
+    shell_command: nvim ~/Cloud/todo.txt
   start_directory: /home/raphael
   window_name: nvim
