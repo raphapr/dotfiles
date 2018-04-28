@@ -200,7 +200,7 @@ bindsym $mod+b split v
 
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym F12 fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking

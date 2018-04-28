@@ -185,7 +185,7 @@ let g:peekaboo_window = 'vertical botright 30new'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 
-autocmd BufNewFile,BufRead notes.txt setlocal filetype=notes
+autocmd BufNewFile,BufRead todo.txt,notes.txt setlocal filetype=notes
 
 " }}}
 " ===== fzf                     {{{
