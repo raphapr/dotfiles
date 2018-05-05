@@ -67,8 +67,9 @@ floating_modifier $mod
 #}}}
 # Personal Shortcuts    ----------------------------------------------------- {{{
 
-# new workspace
-#bindsym Menu exec --no-startup-id ~/.bin/i3_new_workspace
+# xbacklight
+bindsym $mod+2 exec --no-startup-id xbacklight -inc 10
+bindsym $mod+1 exec --no-startup-id xbacklight -dec 10
 
 # start a terminal
 bindsym $mod+Return exec --no-startup-id $TERM 
