@@ -633,6 +633,13 @@ function vpn
 end
 
 # }}}
+# elb_log_parser    {{{
+
+function elb_log_parser
+    goaccess $argv --log-format='%^ %dT%t.%^ %v %h:%^ %^ %T %^ %^ %s %^ %b %^ "%r" "%u" %^' --date-format='%Y-%m-%d' --time-format=%T
+end
+
+# }}}
 
 # }}}
 # history subst   ---------------------------------------------- {{{
