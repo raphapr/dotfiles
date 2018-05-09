@@ -31,9 +31,7 @@ if test -e ~/.bin
     set PATH $PATH ~/.bin
 end
 
-
 set PATH $PATH "(ruby -e 'print Gem.user_dir')/bin"
-
 
 # Env variables
 set -x BROWSER waterfox
@@ -196,17 +194,6 @@ alias t 'tmux'
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
-
-# }}}
-# git              {{{
-
-alias g 'git'
-alias gst 'git status'
-alias gd 'git diff'
-alias gdc 'git diff --cached'
-alias gp 'git pull'
-alias gl 'git log'
-alias gc 'git checkout'
 
 # }}}
 # docker           {{{

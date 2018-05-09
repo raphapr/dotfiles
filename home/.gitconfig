@@ -14,8 +14,9 @@
   ap = add --patch
   df = diff
   dc = diff --cached
+  ds = diff --staged
   st = status -sb
-  ci = commit
+  ci = commit -m
   cia = commit --amend
   co = checkout
 
@@ -33,6 +34,9 @@
   ll = log --pretty=format:"%C(yellow)%h%C(blue)\\ [%cn]\\ %C(green)%ad%C(red)%d\\ %C(reset)%s" --decorate --numstat
   lll = log -u
   pl = pull --ff-only
+
+  pamadd= !FILES=`git status -s | awk '{ print $2 }' | fzf -x -m` && git add --all ${FILES}
+
 [push]
 	default = tracking
 [gitreview]

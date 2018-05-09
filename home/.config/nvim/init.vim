@@ -29,20 +29,26 @@ call plug#begin('~/.nvim/plugged')
 Plug 'tomasr/molokai'
 
 " }}}
-" ===== deoplete                {{{
+" ===== jedi                    {{{
 
 " Dependency: sudo pip install neovim jedi
 "(https://github.com/neovim/neovim/issues/2906)
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 
-let g:python3_host_prog = '/usr/bin/python3.6'
-let g:deoplete#enable_at_startup = 0
-let g:deoplete#enable_smart_case = 1
-nmap <Leader>d :call deoplete#toggle()<CR>
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
+let g:jedi#goto_definitions_command = '<Leader>gg'  " dynamically done for ft=python.
+let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
+let g:jedi#rename_command = '<Leader>gR'
+let g:jedi#usages_command = '<Leader>gu'
+let g:jedi#completions_enabled = 0
+let g:jedi#smart_auto_mappings = 1
+
+" Unite/ref and pydoc are more useful.
+let g:jedi#documentation_command = '<Leader>k'
+let g:jedi#auto_close_doc = 1
+
 
 " }}}
 " ===== Syntax highlighting     {{{
@@ -191,20 +197,17 @@ autocmd BufNewFile,BufRead todo.txt,notes.txt setlocal filetype=notes
 " ===== fzf                     {{{
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-" C-k C-j mapping up-down
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
+
+nnoremap <silent> <C-m> :Buffers<CR>
+nnoremap <silent> <C-p> :FZF -m<CR>
+ 
+"" C-k C-j mapping up-down
 autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
 autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
-
-nnoremap <c-p> :FZF<cr>
-nnoremap <c-m> :FZF ~<cr>
-
-function! s:all_files()
-  return extend(
-  \ filter(copy(v:oldfiles),
-  \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
-  \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
-endfunction
 
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
@@ -213,6 +216,9 @@ let g:fzf_action = {
 
 " Default fzf layout
 " - down / up / left / right
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split enew' }
 let g:fzf_layout = { 'down': '~40%' }
 
 " Customize fzf colors to match your color scheme
@@ -230,18 +236,26 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+"" Enable per-command history.
+"" CTRL-N and CTRL-P will be automatically bound to next-history and
+"" previous-history instead of down and up. If you don't like the change,
+"" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-" }}}
-" ===== ack                     {{{
-
-" Dependencies: sudo pacman -S the_silver_searcher
-Plug 'mileszs/ack.vim'
-let g:ackprg = 'ag --vimgrep --smart-case'
+" Augmenting Ag command using fzf#vim#with_preview function
+"   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+"     * For syntax-highlighting, Ruby and any of the following tools are required:
+"       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+"       - CodeRay: http://coderay.rubychan.de/
+"       - Rouge: https://github.com/jneen/rouge
+"
+"   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+"   :Ag! - Start fzf in fullscreen and display the preview window above
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
 
 " }}}
 " ===== vim-fugitive            {{{
@@ -411,6 +425,9 @@ map <leader>l :OpenSession<CR>
 "
 " set paste/nopaste
 set pastetoggle=<F2>
+
+
+map <F4> :cd %:p:h<CR>
 
 " remove all trailing space
 map <leader>w :%s/\s\+$//e<cr>
