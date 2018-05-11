@@ -105,6 +105,8 @@ alias prismo "ssh root@prismo -t 'tmux -q has-session -t 0 && tmux attach-sessio
 alias beemo "ssh raphael@beemo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
 alias b "bash"
+# git
+alias g "git"
 # diff dotfiles
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 # gams
@@ -241,6 +243,14 @@ alias update-resolv='bash /etc/openvpn/update-resolv-conf.sh'
 # }}}
 # Functions       ---------------------------------------------- {{{
 
+# create_csr        {{{
+
+function create_csr
+    set -l DOMAIN $argv
+    openssl req -newkey rsa:2048 -nodes -keyout $DOMAIN.key -out $DOMAIN.csr -subj "/C=BR/ST=SC/L=Florianopolis/O=Linx Sistemas e Consultoria/OU=ecommerce/CN=$DOMAIN"
+end
+
+# }}}
 # dexec             {{{
 
 function dexec
