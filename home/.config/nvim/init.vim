@@ -426,11 +426,12 @@ map <leader>l :OpenSession<CR>
 " set paste/nopaste
 set pastetoggle=<F2>
 
-
 map <F4> :cd %:p:h<CR>
 
+map <leader>a :Ag
+
 " remove all trailing space
-map <leader>w :%s/\s\+$//e<cr>
+map <leader>w :%s/\s\+$//e<CR>
 
 " Set working directory to the current file just for current window
 map <leader>cd :lcd %:h<CR>
@@ -442,7 +443,7 @@ map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>re :so ~/.config/nvim/init.vim<CR>
 
 " Cancel current highlight search
-nmap <silent> <F3> :noh<cr>:call clearmatches()<cr>
+nmap <silent> <F3> :noh<cr>:call clearmatches()<CR>
 
 " Selected blocks are selected again before identations
 vmap < <gv
