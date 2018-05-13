@@ -26,7 +26,7 @@ export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 gem install homesick
 
 # install pip / python packages
-sudo pip install tmuxp stormssh ds4drv virtualenv neovim virtualfish
+sudo pip install tmuxp stormssh ds4drv virtualenv neovim virtualfish flake8
 
 # install plug vim
 if [ ! -d ~/.config/nvim/autoload/plug.vim ]; then

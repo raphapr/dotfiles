@@ -29,6 +29,23 @@ call plug#begin('~/.nvim/plugged')
 Plug 'tomasr/molokai'
 
 " }}}
+" ===== Syntax highlighting     {{{
+
+" fish
+Plug 'dag/vim-fish'
+
+" ansible
+Plug 'pearofducks/ansible-vim'
+au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */vars/*.yml set filetype=yaml.ansible
+
+" markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
+
+" }}}
 " ===== jedi                    {{{
 
 " Dependency: sudo pip install neovim jedi
@@ -48,24 +65,10 @@ let g:jedi#smart_auto_mappings = 1
 " Unite/ref and pydoc are more useful.
 let g:jedi#documentation_command = '<Leader>k'
 let g:jedi#auto_close_doc = 1
+let g:jedi#force_py_version = 3.6
 
-
-" }}}
-" ===== Syntax highlighting     {{{
-
-" fish
-Plug 'dag/vim-fish'
-
-" ansible
-Plug 'pearofducks/ansible-vim'
-au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
-au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
-au BufRead,BufNewFile */vars/*.yml set filetype=yaml.ansible
-
-" markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
+let g:python3_host_prog = '/usr/bin/python3.6'
+let g:python_host_prog = '/usr/bin/python3.6'
 
 " }}}
 " ===== vim-airline             {{{
