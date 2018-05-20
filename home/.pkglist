@@ -93,3 +93,6 @@ copyq
 pavucontrol
 pygmentize
 tig
+httpie
+whois
+ngrep
