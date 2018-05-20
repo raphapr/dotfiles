@@ -6,10 +6,17 @@
 # disable fish greeting message
 set fish_greeting
 
+# venvs
 export TERM=xterm-256color
 export EDITOR="nvim"
 export VIRTUALENV_PYTHON=/usr/bin/python2.7
 export GOPATH="$HOME/go"
+export BROWSER waterfox
+export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+
+# aws-fuzzzy-finder
+export AWS_FUZZ_USER="raphaelribeiro"
+export AWS_FUZZ_PRIVATE_IP='true'
 
 if test "$DISPLAY"
     xset r rate 200 30
@@ -33,20 +40,19 @@ end
 
 set PATH $PATH "(ruby -e 'print Gem.user_dir')/bin"
 
-# Env variables
-set -x BROWSER waterfox
-set -x GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
-
 # aws complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
 # fish vi mode
 # ctrl+f only accept autosuggestion
+# ctrl+a awz-fuzzy
 function fish_user_key_bindings
     fish_vi_key_bindings
     fzf_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
+    bind -M insert \ca "aws-fuzzy"
+    bind \ca "aws-fuzzy"
 end
 
 # virtualgo
@@ -139,16 +145,6 @@ alias prup 'pacaur -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update 'sudo pacman-mirrors -g'
 
 # }}}
-# DNF              {{{
-
-alias d 'sudo dnf'
-alias di 'sudo dnf install'
-alias dr 'sudo dnf remove'
-alias ds 'sudo dnf search'
-alias dli 'sudo dnf list installed'
-alias dla 'sudo dnf list available'
-
-# }}}
 # save_history      {{{
 
 # history across fishes
@@ -167,13 +163,6 @@ bind \e\[A 'history --merge ; up-or-search'
 alias utube 'youtube-dl -c'
 #Baixar apenas o audio do video
 alias atube 'youtube-dl --extract-audio --audio-format mp3 -t'
-
-# }}}
-# Pings            {{{
-
-alias google 'ping -i 3 www.google.com'
-alias globo 'ping -i 3 www.globo.com'
-alias yahoo 'ping -i 3 www.yahoo.com'
 
 # }}}
 # xclip            {{{
@@ -196,12 +185,6 @@ alias t 'tmux'
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
-
-# }}}
-# docker           {{{
-
-alias dc 'docker-compose'
-alias dockerm 'docker rm -f (docker ps -a -q)'
 
 # }}}
 # azure            {{{
@@ -232,11 +215,6 @@ end
 # curl-trace       {{{
 
 alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
-
-# }}}
-# update-resolv     {{{
-
-alias update-resolv='bash /etc/openvpn/update-resolv-conf.sh'
 
 # }}}
 
