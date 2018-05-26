@@ -130,7 +130,6 @@ bindsym $mod+Shift+t exec telegram-desktop
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # most used
-bindsym $mod+F10  exec --no-startup-id xrandr --change && feh --bg-fill ~/.wallpaper.png
 bindsym $mod+m  exec --no-startup-id autorandr --change --default mobile && feh --bg-fill ~/.wallpaper.png
 
 set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
@@ -145,10 +144,10 @@ mode "$multi_monitor" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+F11 mode "default"
+    bindsym $mod+F10 mode "default"
 }
 
-bindsym $mod+F11 mode "$multi_monitor"
+bindsym $mod+F10 mode "$multi_monitor"
 
 bindsym $mod+F2     exec --no-startup-id autorandr --change && polybar-launch && feh --bg-fill ~/.wallpaper.png 
 #bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png 
@@ -357,9 +356,14 @@ for_window [class="Nm-connection-editor"] floating enable
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
 
-# htop
-exec --no-startup-id termite -t htop -e "htop"
-for_window [title="htop"] move scratchpad
-bindsym $mod+F12 [title="htop"] scratchpad show
+# monitoring
+exec --no-startup-id termite -t monitoring -e "htop"
+for_window [title="monitoring"] move scratchpad
+bindsym $mod+F12 [title="monitoring"] scratchpad show
+
+# monitoring
+exec --no-startup-id termite -t notestxt -e "nvim $HOME/Cloud/notes/notes.txt"
+for_window [title="notestxt"] move scratchpad
+bindsym $mod+F11 [title="notestxt"] scratchpad show
 
 #}}}
