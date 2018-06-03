@@ -6,12 +6,12 @@
 # disable fish greeting message
 set fish_greeting
 
-# venvs
+# env vars
 export TERM=xterm-256color
 export EDITOR="nvim"
 export VIRTUALENV_PYTHON=/usr/bin/python2.7
 export GOPATH="$HOME/go"
-export BROWSER waterfox
+export BROWSER firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 
 # aws-fuzzzy-finder
@@ -75,11 +75,9 @@ alias lash 'ls -lash'
 alias l 'ls -l'
 alias vim 'nvim'
 alias v 'nvim'
-alias nv 'nvim'
 alias k 'kill -9'
 alias r 'ranger'
 alias desk 'cd ~/Desktop'
-alias iup 'imgurbash'
 alias h 'history'
 alias chromium 'chromium --disk-cache-dir /tmp/cache'
 alias showbb 'cat /proc/acpi/bbswitch'
@@ -107,22 +105,20 @@ alias guake 'guake -e ~/.startupGuake.sh'
 alias youtube-viewer 'youtube-viewer -C'
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
-alias prismo "ssh root@prismo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
-alias beemo "ssh raphael@beemo -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
 alias b "bash"
 # git
 alias g "git"
 # diff dotfiles
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
-# gams
-alias gams "/media/hdd/Software/gams24.6/gams"
 # command line pastebin
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
 alias weather "curl wttr.in/florianopolis"
 # load ssh agent to use ssh -A
 alias sshagent "eval (ssh-agent -c); ssh-add ~/.ssh/id_rsa"
+#  ptpython
+alias ptpython "python -m ptpython"
 # '-' as shortcut to cd -
 abbr -a -- - 'cd -'
 

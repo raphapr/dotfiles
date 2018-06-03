@@ -357,9 +357,9 @@ for_window [class="Nm-connection-editor"] floating enable
 # scratchpads           ----------------------------------------------------- {{{
 
 # monitoring
-exec --no-startup-id termite -t monitoring -e "htop"
-for_window [title="monitoring"] move scratchpad
-bindsym $mod+F12 [title="monitoring"] scratchpad show
+exec --no-startup-id termite -t 90monitoring -e "htop"
+for_window [title="90monitoring"] move scratchpad
+bindsym $mod+F12 [title="90monitoring"] scratchpad show
 
 # monitoring
 exec --no-startup-id termite -t notestxt -e "nvim $HOME/Cloud/notes/notes.txt"
