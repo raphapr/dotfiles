@@ -17,7 +17,7 @@ function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
 
 # pacman update and requirements
 sudo pacman -Syu --needed
-sudo pacman -S --noconfirm --needed vim python python-pip fish pacaur make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs
+sudo pacman -S --noconfirm --needed vim python2 python2-pip python python-pip fish pacaur make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs
 
 # npm packages
 sudo npm install --global git-recent
