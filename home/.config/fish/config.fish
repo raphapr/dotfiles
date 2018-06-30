@@ -458,7 +458,7 @@ end
 # aws-profile       {{{
 
 function aws-profile
-    set -lx FZF_DEFAULT_OPTS "--height 20% $FZF_DEFAULT_OPTS +m"
+    set -lx FZF_DEFAULT_OPTS "--height 20% +m"
     rg '^\[.*]' ~/.aws/credentials | tr -d "[]" | cat | fzf > /tmp/awsp; and export AWS_PROFILE=(cat /tmp/awsp)
     commandline -f repaint
 end
@@ -467,7 +467,7 @@ end
 # vf-switch         {{{
 
 function vf-switch
-    set -lx FZF_DEFAULT_OPTS "--height 20% $FZF_DEFAULT_OPTS +m"
+    set -lx FZF_DEFAULT_OPTS "--height 20% +m"
     vf ls | fzf > /tmp/vfs; and vf activate (cat /tmp/vfs)
     commandline -f repaint
 end
@@ -476,7 +476,7 @@ end
 # fco               {{{
 
 function fco -d "Fuzzy-find and checkout a branch"
-    set -lx FZF_DEFAULT_OPTS "--height 40% $FZF_DEFAULT_OPTS +m"
+    set -lx FZF_DEFAULT_OPTS "--height 40% +m"
     git branch --all | grep -v HEAD | string trim | fzf |  xargs git checkout
     commandline -f repaint
 end
