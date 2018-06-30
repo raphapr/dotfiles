@@ -43,26 +43,33 @@ set PATH $PATH "(ruby -e 'print Gem.user_dir')/bin"
 # aws complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
+# virtualgo
+command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
+
+# }}}
+# Bindings        ---------------------------------------------- {{{
+
 # fish vi mode
 # ctrl+f only accept autosuggestion
-# ctrl+a awz-fuzzy
+# ctrl+a switch AWS profile
+# ctrl+q switch virtualenv
 function fish_user_key_bindings
     fish_vi_key_bindings
     fzf_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
-    bind -M insert \ca "aws-fuzzy"
-    bind \ca "aws-fuzzy"
+    bind -M insert \ca "aws-profile"
+    bind \ca "aws-profile"
+    bind -M insert \cq "vf-switch"
+    bind \cq "vf-switch"
 end
-
-# virtualgo
-command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
 
 # }}}
 # Plugins         ---------------------------------------------- {{{
 
 # virtualfish
 eval (python -m virtualfish auto_activation)
+
 # direnv
 eval (direnv hook fish)
 
@@ -89,19 +96,11 @@ alias ef 'v ~/.config/fish/config.fish'
 alias eb 'v ~/.bashrc'
 alias ev 'v ~/.config/nvim/init.vim'
 alias i3c 'v ~/.i3/config'
-alias transm 'transmission-remote-cli -c raphael:(cat ~/.passwdlist | head -n1)@localhost'
-alias transmr 'transmission-remote-cli -c raphael:(cat ~/.passwdlist | tail -n1)@lancassolar'
 alias xmerge 'xrdb -merge ~/.Xresources'
-alias miniman 'zathura ~/Cloud/cheats/miniman.pdf'
-alias cheatsh 'zathura ~/Cloud/cheats/canivete-shell.pdf'
-alias cheatsed 'cat ~/Cloud/cheats/sed | more'
 alias zz 'fasd'
 alias notes 'nvim ~/Cloud/notes/notes.txt'
-# urserver
-alias urserver '/opt/urserver/urserver --daemon'
 # Ver diretórios com mais espaço em disco 
 alias topdir 'du -sh * | sort -nr | head -n10'
-alias guake 'guake -e ~/.startupGuake.sh'
 alias youtube-viewer 'youtube-viewer -C'
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
@@ -121,6 +120,8 @@ alias sshagent "eval (ssh-agent -c); ssh-add ~/.ssh/id_rsa"
 alias ptpython "python -m ptpython"
 # '-' as shortcut to cd -
 abbr -a -- - 'cd -'
+# ripgrep
+alias rg 'rg --smart-case'
 
 # }}}
 # translate-shell  {{{
@@ -183,31 +184,6 @@ alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 
 # }}}
-# azure            {{{
-
-#alias az 'azure'
-
-function azset
-    switch $argv
-    case rac
-        azure account set 2e0a89dc-7233-44fa-a214-649a52b6bbfd
-    case ral
-        azure account set c71119be-a373-4b00-a319-0c22a5cb003c
-    case men
-        azure account set 8d9f4e6b-ba1c-4992-86d3-cd0b11c38f04
-    case rod
-        azure account set 16f898a3-c2eb-4a4e-87d0-05b8c11554b0
-    case ls
-        echo "\
-        rac:    2e0a89dc-7233-44fa-a214-649a52b6bbfd
-        ral:    c71119be-a373-4b00-a319-0c22a5cb003c
-        men:    8d9f4e6b-ba1c-4992-86d3-cd0b11c38f04
-        rod:    16f898a3-c2eb-4a4e-87d0-05b8c11554b0"
-    case '*'
-        echo "This command doesn't exists."
-    end
-end
-# }}}
 # curl-trace       {{{
 
 alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
@@ -217,9 +193,9 @@ alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 # }}}
 # Functions       ---------------------------------------------- {{{
 
-# create_csr        {{{
+# create-csr        {{{
 
-function create_csr
+function create-csr
     set -l DOMAIN $argv
     openssl req -newkey rsa:2048 -nodes -keyout $DOMAIN.key -out $DOMAIN.csr -subj "/C=BR/ST=SC/L=Florianopolis/O=Linx Sistemas e Consultoria/OU=ecommerce/CN=$DOMAIN"
 end
@@ -248,64 +224,11 @@ function tube
 end
 
 # }}}
-# browser           {{{
-
-# gist upload com xclip funcionando
-function browser
-    /usr/bin/xdg-open $argv
-end
-
-# }}}
-# tarc              {{{
-
-function tarc
-    tar zxvf $argv.tar.gz -C $argv
-end
-
-# }}}
-# ag                {{{
-
-function ag
-    command ag --smart-case $argv
-end
-
-# }}}
-# f                 {{{
-
-function f
-    find . | ag $argv
-end
-
-# }}}
-# wallchange        {{{
+# wallc             {{{
 
 # gist upload com xclip funcionando
 function wallc
     cp $argv ~/.wallpaper.png ; feh --bg-fill ~/.wallpaper.png
-end
-
-# }}}
-# gistt             {{{
-
-# gist upload com xclip funcionando
-function gistt
-    gist $argv | pbcopy ; pbpaste ; browser (pbpaste)
-end
-
-# }}}
-# ys                {{{
-
-# yaourt sem confirmação
-function ys
-    yaourt -S $argv --noconfirm
-end
-
-# }}}
-# aux               {{{
-
-# lista os detalhes de um determinado padrão de processos
-function aux
-    ps aux | grep  $argv
 end
 
 # }}}
@@ -315,17 +238,6 @@ end
 # copyright 2007 - 2010 Christopher Bratusek
 function wininfo
     xprop | grep -w "WM_NAME\|WM_CLASS\|WM_WINDOW_ROLE\|_NET_WM_STATE"
-end
-
-# }}}
-# gl                {{{
-
-# compilando com OpenGL
-function cgl
-    if test a.out
-        rm -rf a.out
-    end
-    g++ $argv -o a.out -lGLU -lGL -lglut ; ./a.out
 end
 
 # }}}
@@ -368,55 +280,6 @@ function cd
 end
 
 # }}}
-# fzf               {{{
-
-# == fzf-cd-fasd     {{{
-
-function fzf-cd-fasd
-    fasd -dl | fzf --no-sort --tac > /tmp/fzf; and cd (cat /tmp/fzf)
-end
-
-# }}}
-# == fzf-cd-home     {{{
-
-function fzf-cd-home
-    find ~/* -path '*/\.*' -prune -o -type d -print ^/dev/null | \
-        fzf --no-sort --tac > /tmp/fzf; and cd (cat /tmp/fzf)
-end
-
-# }}}
-# == fzf-cd-subtree  {{{
-
-function fzf-cd-subtree
-    find * -path '*/\.*' -prune -o -type d -print ^/dev/null | \
-        fzf --no-sort --tac > /tmp/fzf; and cd (cat /tmp/fzf)
-end
-
-# }}}
-# == fzf-history     {{{
-
-function fzf-history
-    history | fzf > /tmp/fzf; and commandline (cat /tmp/fzf)
-end
-
-# }}}
-# == fzf-vim-fasd    {{{
-
-function fzf-vim-fasd
-    fasd -fl | fzf --no-sort --tac > /tmp/fzf; and v (cat /tmp/fzf)
-end
-
-# }}}
-# == fzf-vim-subtree {{{
-
-function fzf-vim-subtree
-    find * -path '*/\.*' -prune -o -type f -print ^/dev/null | \
-        fzf --no-sort --tac > /tmp/fzf; and v (cat /tmp/fzf)
-end
-
-# }}}
-
-# }}}
 # fasd              {{{
 
 function z
@@ -437,14 +300,6 @@ end
 
 function vz
     fasd -fe vim $argv
-end
-
-# }}}
-# take              {{{
-
-function take
-    mkdir -p $argv
-    cd $argv
 end
 
 # }}}
@@ -564,50 +419,63 @@ end
 # fish vi mode      {{{
 
 function fish_mode_prompt --description 'Displays the current mode'
-                        # Do nothing if not in vi mode
-                        if test "$fish_key_bindings" = "fish_vi_key_bindings"
-                            switch $fish_bind_mode
-                                case default
-                                    set_color --bold --background red white
-                                    echo " N "
-                                case insert
-                                    set_color --bold --background green white
-                                    echo " I "
-                                case replace-one
-                                    set_color --bold --background cyan white
-                                    echo " R "
-                                case visual
-                                    set_color --bold --background magenta white
-                                    echo " V "
-                            end
-                            set_color normal
-                            printf " "
-                        end
+        # Do nothing if not in vi mode
+        if test "$fish_key_bindings" = "fish_vi_key_bindings"
+            switch $fish_bind_mode
+                case default
+                    set_color --bold --background red white
+                    echo " N "
+                case insert
+                    set_color --bold --background green white
+                    echo " I "
+                case replace-one
+                    set_color --bold --background cyan white
+                    echo " R "
+                case visual
+                    set_color --bold --background magenta white
+                    echo " V "
+            end
+            set_color normal
+            printf " "
+        end
 end
 
 # }}}
-# VPN               {{{
+# elb-log-parser    {{{
 
-function vpn
-    switch $argv
-    case fln
-        sudo openfortivpn
-    case route
-        sudo ~/Cloud/route.sh
-    case neemu
-        cd ~/.vpn/c.neemu ; sudo openvpn --config ~/.vpn/c.neemu/raphael.ribeiro.ovpn --script-security 2 --up /etc/openvpn/update-resolv-conf.sh --down /etc/openvpn/update-resolv-conf.sh
-    case sp
-        cd ~/.vpn/c.sp ; sudo openvpn --config ~/.vpn/c.sp/fwsp-udp-1194-raphael.ribeiro.ovpn --script-security 2 --up /etc/openvpn/update-resolv-conf.sh --down /etc/openvpn/update-resolv-conf.sh
-    case '*'
-        echo "This command doesn't exists."
-    end
-end
-
-# }}}
-# elb_log_parser    {{{
-
-function elb_log_parser
+function elb-log-parser
     goaccess $argv --log-format='%^ %dT%t.%^ %v %h:%^ %^ %T %^ %^ %s %^ %b %^ "%r" "%u" %^' --date-format='%Y-%m-%d' --time-format=%T
+end
+
+# }}}
+
+# }}}
+# FZF functions   ---------------------------------------------- {{{
+
+# aws-profile       {{{
+
+function aws-profile
+    set -lx FZF_DEFAULT_OPTS "--height 20% $FZF_DEFAULT_OPTS +m"
+    rg '^\[.*]' ~/.aws/credentials | tr -d "[]" | cat | fzf > /tmp/awsp; and export AWS_PROFILE=(cat /tmp/awsp)
+    commandline -f repaint
+end
+
+# }}}
+# vf-switch         {{{
+
+function vf-switch
+    set -lx FZF_DEFAULT_OPTS "--height 20% $FZF_DEFAULT_OPTS +m"
+    vf ls | fzf > /tmp/vfs; and vf activate (cat /tmp/vfs)
+    commandline -f repaint
+end
+
+# }}}
+# fco               {{{
+
+function fco -d "Fuzzy-find and checkout a branch"
+    set -lx FZF_DEFAULT_OPTS "--height 40% $FZF_DEFAULT_OPTS +m"
+    git branch --all | grep -v HEAD | string trim | fzf |  xargs git checkout
+    commandline -f repaint
 end
 
 # }}}
