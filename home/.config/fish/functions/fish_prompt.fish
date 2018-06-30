@@ -62,14 +62,16 @@ function fish_prompt --description 'Write out the prompt'
         set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" "$normal"
     end
 
-    echo -n -s (set_color $fish_color_user) "$USER" $normal @ (set_color $fish_color_host) (prompt_hostname) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (__fish_vcs_prompt) $normal $prompt_status "> "
+    echo -n -s (set_color $fish_color_user) "$USER" $normal ':' (set_color $color_cwd) (prompt_pwd) $normal (__fish_vcs_prompt) ' ' $normal $prompt_status
 
     if set -q VIRTUAL_ENV
-        echo -n -s (set_color brred) (basename "$VIRTUAL_ENV") (set_color normal) " "
+        echo -n -s (set_color brred) "v:"(basename "$VIRTUAL_ENV") (set_color normal) " "
     end
 
     if set -q AWS_PROFILE
-        echo -n -s (set_color cyan) (basename "aws:$AWS_PROFILE") (set_color normal) " "
+        echo -n -s (set_color cyan) "a:$AWS_PROFILE" (set_color normal) " "
     end
+
+    echo -n -s '> '
 
 end
