@@ -13,6 +13,7 @@ export VIRTUALENV_PYTHON=/usr/bin/python2.7
 export GOPATH="$HOME/go"
 export BROWSER firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+export FZF_DEFAULT_OPTS="--height 50%"
 
 # aws-fuzzzy-finder
 export AWS_FUZZ_USER="raphaelribeiro"
@@ -122,6 +123,8 @@ alias ptpython "python -m ptpython"
 abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
+# fuzzy-finder
+alias af 'aws-fuzzy'
 
 # }}}
 # translate-shell  {{{
