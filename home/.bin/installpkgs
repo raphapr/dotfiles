@@ -27,7 +27,7 @@ export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 gem install homesick
 
 # install pip / python packages
-sudo pip install tmuxp virtualenv neovim virtualfish flake8 aws-fuzzy-finder saws ptpython ipython boto3
+sudo pip install tmuxp virtualenv neovim virtualfish flake8 aws-fuzzy-finder saws ptpython ipython boto3 aws-fuzzy-finder
 
 # install hostess
 sudo wget https://github.com/cbednarski/hostess/releases/download/v0.3.0/hostess_linux_amd64 -O /usr/bin/local/hostess
