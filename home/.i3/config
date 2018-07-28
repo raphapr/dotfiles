@@ -68,6 +68,9 @@ floating_modifier $mod
 #}}}
 # Personal Shortcuts    ----------------------------------------------------- {{{
 
+# google chrome ingonito
+bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
+
 # xbacklight
 bindsym $mod+2 exec --no-startup-id xbacklight -inc 10
 bindsym $mod+1 exec --no-startup-id xbacklight -dec 10
