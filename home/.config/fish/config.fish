@@ -106,7 +106,7 @@ alias youtube-viewer 'youtube-viewer -C'
 # ssh
 alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
 # bash
-alias b "bash"
+alias ba "bash"
 # git
 alias g "git"
 # diff dotfiles
@@ -125,6 +125,8 @@ abbr -a -- - 'cd -'
 alias rg 'rg --smart-case'
 # fuzzy-finder
 alias af 'aws-fuzzy'
+# buku
+alias b 'buku --suggest'
 
 # }}}
 # translate-shell  {{{
