@@ -24,9 +24,6 @@ You can now link its contents into your home dir:
 
 `chmod +x ~/.bin/installpkgs && bash ~/.bin/installpkgs`
 
-
-
-
 ## Main programs
 
 * neovim
