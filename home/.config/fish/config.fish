@@ -47,6 +47,9 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 # virtualgo
 command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
 
+# load my environment variables
+source $HOME/.env
+
 # }}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -198,14 +201,6 @@ alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 # }}}
 # Functions       ---------------------------------------------- {{{
 
-# create-csr        {{{
-
-function create-csr
-    set -l DOMAIN $argv
-    openssl req -newkey rsa:2048 -nodes -keyout $DOMAIN.key -out $DOMAIN.csr -subj "/C=BR/ST=SC/L=Florianopolis/O=Linx Sistemas e Consultoria/OU=ecommerce/CN=$DOMAIN"
-end
-
-# }}}
 # dexec             {{{
 
 function dexec

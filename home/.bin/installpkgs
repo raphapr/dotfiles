@@ -16,10 +16,19 @@ function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
 # ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 # ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 # ln -sf ~/Cloud/sync/buku ~/.local/share/buku
+# ln -sf ~/Cloud/sync/env ~/.env
+
+# install aws-rotate-key binary
+wget https://github.com/Fullscreen/aws-rotate-key/releases/download/v1.0.3/aws-rotate-key-1.0.3-linux_amd64.zip -O /tmp/aws-rotate-key.zip
+unzip /tmp/aws-rotate-key.zip -d /tmp/
+sudo install -m 0755 /tmp/aws-rotate-key /usr/local/bin/aws-rotate-key
 
 # install cron jobs
 crontab <<EOF
+# Update duck dns
 */5 * * * * ~/Cloud/sync/scripts/duck.sh >/dev/null 2>&1
+# Rotates all aws access keys every week
+0 0 * * MON ~/bin/aws-rotate-all-keys > /dev/null 2>&1
 EOF
 
 # pacman update and requirements
