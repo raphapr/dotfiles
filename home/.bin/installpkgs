@@ -28,7 +28,7 @@ crontab <<EOF
 # Update duck dns
 */5 * * * * ~/Cloud/sync/scripts/duck.sh >/dev/null 2>&1
 # Rotates all aws access keys every week
-0 0 * * MON ~/bin/aws-rotate-all-keys > /dev/null 2>&1
+0 0 * * MON aws-rotate-all-keys > /dev/null 2>&1
 EOF
 
 # pacman update and requirements

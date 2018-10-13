@@ -23,11 +23,11 @@ printf "[$(date +"%d/%m/%Y:%H:%M:%S")] Finished! Syncing $aws_credentials_file f
 while true; do
     rsync -avz -e "ssh -p $SSH_HOME_PORT" $aws_credentials_file $SSH_HOME_HOST:$aws_credentials_file
     if [ "$?" = "0" ] ; then
-        echo "[$(date +"%d/%m/%Y:%H:%M:%S")] Rsync completed" |& tee -a $logfile
+        printf "[$(date +"%d/%m/%Y:%H:%M:%S")] Rsync completed\n" |& tee -a $logfile
         printf "\n##################################################################\n\n" |& tee -a $logfile
         exit
     else
-        echo "[$(date +"%d/%m/%Y:%H:%M:%S")] Rsync failure. Retrying..." |& tee -a $logfile
+        printf "[$(date +"%d/%m/%Y:%H:%M:%S")] Rsync failure. Retrying...\n" |& tee -a $logfile
         sleep 5
     fi
 done
