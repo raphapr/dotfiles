@@ -9,14 +9,14 @@ PKGLOG=~/.pacaur.log
 # eg.: do_slnk <original_path> <symlink_path>
 function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
 
-## sync sensitive config to/from cloud
+## sync sensitive data to/from cloud
 # ln -sf ~/Dropbox ~/Cloud
 # ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
 # ln -sf ~/Cloud/sync/copyq ~/.config/copyq
 # ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
-# ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 # ln -sf ~/Cloud/sync/buku ~/.local/share/buku
 # ln -sf ~/Cloud/sync/env ~/.env
+# ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 
 # install aws-rotate-key binary
 wget https://github.com/Fullscreen/aws-rotate-key/releases/download/v1.0.3/aws-rotate-key-1.0.3-linux_amd64.zip -O /tmp/aws-rotate-key.zip
