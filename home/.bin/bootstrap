@@ -9,14 +9,18 @@ PKGLOG=~/.pacaur.log
 # eg.: do_slnk <original_path> <symlink_path>
 function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
 
-## sync sensitive data to/from cloud
-# ln -sf ~/Dropbox ~/Cloud
-# ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
-# ln -sf ~/Cloud/sync/copyq ~/.config/copyq
-# ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
-# ln -sf ~/Cloud/sync/buku ~/.local/share/buku
-# ln -sf ~/Cloud/sync/env ~/.env
-# ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
+# pacman update and dependencies
+sudo pacman -Syu --needed
+sudo pacman -S --noconfirm --needed vim python2 python2-pip python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git pacaur
+
+# sync sensitive - not versioned - dotfiles
+ln -sf ~/Dropbox ~/Cloud
+ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
+ln -sf ~/Cloud/sync/copyq ~/.config/copyq
+ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
+ln -sf ~/Cloud/sync/buku ~/.local/share/buku
+ln -sf ~/Cloud/sync/env ~/.env
+ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 
 # install aws-rotate-key binary
 wget https://github.com/Fullscreen/aws-rotate-key/releases/download/v1.0.3/aws-rotate-key-1.0.3-linux_amd64.zip -O /tmp/aws-rotate-key.zip
@@ -31,58 +35,49 @@ crontab <<EOF
 0 0 * * MON aws-rotate-all-keys > /dev/null 2>&1
 EOF
 
-# pacman update and requirements
-sudo pacman -Syu --needed
-sudo pacman -S --noconfirm --needed vim python2 python2-pip python python-pip fish pacaur make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs
+# install pip / python packages
+sudo pip install tmuxp virtualenv neovim virtualfish flake8 aws-fuzzy-finder saws ptpython ipython boto3 aws-fuzzy-finder
 
 # npm packages
 sudo npm install --global git-recent
 
-export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-
 # homesick: dotfiles version control
+export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 gem install homesick
-
-# install pip / python packages
-sudo pip install tmuxp virtualenv neovim virtualfish flake8 aws-fuzzy-finder saws ptpython ipython boto3 aws-fuzzy-finder
-
-# install hostess
-sudo wget https://github.com/cbednarski/hostess/releases/download/v0.3.0/hostess_linux_amd64 -O /usr/bin/local/hostess
-sudo chmod +x /usr/bin/local/hostess
 
 # install plug vim
 if [ ! -d ~/.config/nvim/autoload/plug.vim ]; then
-  echo "[ installpkgs ] :: install plug.vim"
+  echo "[ bootstrap ] :: install plug.vim"
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
-  echo "[ installpkgs ] :: plug.vim already installed!"
+  echo "[ bootstrap ] :: plug.vim already installed!"
 fi
 
-# git completion for bash
+# install git completion for bash
 if [ ! -f ~/.git-completion.bash ]; then
-  echo "[ installpkgs ] :: install git-completion.bash"
+  echo "[ bootstrap ] :: install git-completion.bash"
   wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash
 else
-  echo "[ installpkgs ] :: git-completion.bash already installed!"
+  echo "[ bootstrap ] :: git-completion.bash already installed!"
 fi
 
 # install fzf
 if [ ! -d ~/.fzf ]; then
-  echo "[ installpkgs ] :: Install fzf"
+  echo "[ bootstrap ] :: Install fzf"
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
 else
-  echo "[ installpkgs ] :: fzf already installed!"
+  echo "[ bootstrap ] :: fzf already installed!"
 fi
 
 # install powerline-fonts
 if [ ! -d ~/.fonts ]; then
-  echo "[ installpkgs ] :: Install powerline-fonts"
+  echo "[ bootstrap ] :: Install powerline-fonts"
   git clone https://github.com/powerline/fonts.git /tmp/fonts
   sh /tmp/fonts/install.sh
   ln -s ~/.local/share/fonts ~/.fonts 
 else
-  echo "[ installpkgs ] :: powerline-fonts already installed!"
+  echo "[ bootstrap ] :: powerline-fonts already installed!"
 fi
 
 # symlink tmux conf
@@ -96,7 +91,7 @@ rm -rf ~/tmp/xpanes
 # install tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-echo "[ installpkgs ] :: Installing pacman/aur packages"
+echo "[ bootstrap ] :: Install pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
     pacaur -S --needed --noedit --noconfirm $PKG || echo "$PKG failed." >> $PKGLOG
 done

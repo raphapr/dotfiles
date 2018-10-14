@@ -2,9 +2,15 @@
 
 This repository contains configuration files I use on my Manjaro GNU/Linux which have been inspired by the rest of the dotfiles community. 
 
-## Install packages
+## Install
 
-`chmod +x ./home/.bin/installpkgs && ./home/.bin/installpkgs`
+Run this:
+
+```bash
+git clone https://github.com/raphapr/dotfiles ~/dotfiles
+cd ~/dotfiles && chmod +x home/.bin/bootstrap
+./bootstrap
+```
 
 ## Symlink dotfiles
 
@@ -19,10 +25,6 @@ Next, you need to clone this repository:
 You can now link its contents into your home dir:
 
 `homesick symlink dotfiles`
-
-### Pacman/pacaur install script
-
-`chmod +x ~/.bin/installpkgs && bash ~/.bin/installpkgs`
 
 ## Main programs
 
