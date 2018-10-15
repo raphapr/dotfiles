@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# discover chrome app id by name
+#
+# USAGE: chrome-app-by-name <name>
+
+CHROME_PROFILE=Default
+
+cd $HOME/.config/google-chrome/$CHROME_PROFILE/Extensions
+chrome_app_id=$(grep -rnli '"app_name": "'$1'"' | cut -d '/' -f 1)
+
+if [ -z "$chrome_app_id" ]; then
+    echo "Chrome app name not found. Please use exact, case-sensitive spelling."
+else
+    echo $chrome_app_id
+fi

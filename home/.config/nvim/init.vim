@@ -65,10 +65,10 @@ let g:jedi#smart_auto_mappings = 1
 " Unite/ref and pydoc are more useful.
 let g:jedi#documentation_command = '<Leader>k'
 let g:jedi#auto_close_doc = 1
-let g:jedi#force_py_version = 3.6
+let g:jedi#force_py_version = 3
 
-let g:python3_host_prog = '/usr/bin/python3.6'
-let g:python_host_prog = '/usr/bin/python3.6'
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python3'
 
 " }}}
 " ===== vim-airline             {{{

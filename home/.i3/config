@@ -90,6 +90,9 @@ bindsym $mod+y exec --no-startup-id rofi-pass
 # browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
+# telegram
+bindsym $mod+Shift+t exec telegram-desktop
+
 # printscreen
 bindsym --release Print exec --no-startup-id $PRINT
 bindsym --release $mod+Print exec --no-startup-id $SPRINT
@@ -123,11 +126,18 @@ bindsym $mod+x exec --no-startup-id i3lock -c 000000
 # kill current notification
 #bindsym ctrl+space exec --no-startup-id "killall notify-osd; pkill volnoti && volnoti"
 
-# move workspace to another output
-bindsym $mod+Shift+x move workspace to output left
+# move workspace to another output: left
+bindsym $mod+shift+x move workspace to output left
 
-# telegram
-bindsym $mod+Shift+t exec telegram-desktop
+# move workspace to another output: up
+bindsym $mod+bracketleft move workspace to output up
+
+# move workspace to another output: up
+bindsym $mod+bracketright exec --no-startup-id google-chrome-stable --app-id=$(chrome-app-by-name authy)
+
+# scratchpad
+bindsym $mod+minus move scratchpad
+bindsym $mod+equal scratchpad show
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
@@ -354,6 +364,7 @@ for_window [class="Skype"] floating enable
 for_window [title="Adicionar Transferências"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
+for_window [title="Authy"] floating enable
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
@@ -363,9 +374,9 @@ exec --no-startup-id termite -t 90monitoring -e "htop"
 for_window [title="90monitoring"] move scratchpad
 bindsym $mod+F12 [title="90monitoring"] scratchpad show
 
-# monitoring
-exec --no-startup-id termite -t notestxt -e "nvim $HOME/Cloud/notes/notes.txt"
-for_window [title="notestxt"] move scratchpad
-bindsym $mod+F11 [title="notestxt"] scratchpad show
+# notes txt
+exec --no-startup-id google-chrome-stable --app-id=$(chrome-app-by-name authy)
+for_window [title="Authy"] move scratchpad
+bindsym $mod+F11 [title="Authy"] scratchpad show
 
 #}}}
