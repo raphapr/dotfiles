@@ -132,9 +132,6 @@ bindsym $mod+shift+x move workspace to output left
 # move workspace to another output: up
 bindsym $mod+bracketleft move workspace to output up
 
-# move workspace to another output: up
-bindsym $mod+bracketright exec --no-startup-id google-chrome-stable --app-id=$(chrome-app-by-name authy)
-
 # scratchpad
 bindsym $mod+minus move scratchpad
 bindsym $mod+equal scratchpad show

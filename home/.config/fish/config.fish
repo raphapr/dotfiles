@@ -130,8 +130,6 @@ alias rg 'rg --smart-case'
 alias af 'aws-fuzzy'
 # buku
 alias b 'buku --suggest'
-# authy
-alias authy 'google-chrome-stable --app-id=(chrome-app-by-name authy)'
 
 # }}}
 # translate-shell  {{{
