@@ -372,7 +372,6 @@ for_window [title="90monitoring"] move scratchpad
 bindsym $mod+F12 [title="90monitoring"] scratchpad show
 
 # notes txt
-exec --no-startup-id google-chrome-stable --app-id=$(chrome-app-by-name authy)
 for_window [title="Authy"] move scratchpad
 bindsym $mod+F11 [title="Authy"] scratchpad show
 
