@@ -175,7 +175,7 @@ mouse_warping none
 bindsym $mod+BackSpace kill
 
 # start rofi (a program launcher)
-bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run "run " -theme ~/.config/rofi/bala.rasi
+bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run 'run ' -theme ~/.config/rofi/bala.rasi
 bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-window "window " -theme ~/.config/rofi/bala.rasi
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -370,8 +370,6 @@ exec --no-startup-id termite -t 90monitoring -e "htop"
 for_window [title="90monitoring"] move scratchpad
 bindsym $mod+F12 [title="90monitoring"] scratchpad show
 
-# notes txt
-for_window [title="Authy"] move scratchpad
 bindsym $mod+F11 [title="Authy"] scratchpad show
 
 #}}}

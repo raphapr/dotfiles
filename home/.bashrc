@@ -9,6 +9,7 @@ if [ "$DISPLAY" ]; then
 fi
 
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+export PATH="$PATH:$HOME/.bin"
 
 export EDITOR=nvim
 
@@ -429,5 +430,3 @@ function take()
 # }}}
 
 # }}}
-
-command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell bash)"
