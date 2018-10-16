@@ -30,7 +30,6 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id sudo modprobe r8169
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
-exec --no-startup-id "sleep 3 && psyncgui &"
 exec --no-startup-id dropbox
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
