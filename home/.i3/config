@@ -26,6 +26,7 @@ set $SPRINT     ~/.bin/take_screenshot -s
 #exec_always --no-startup-id polybar-launch
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
+exec --no-startup-id redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id sudo modprobe r8169
 exec --no-startup-id "udiskie -2 &"
@@ -34,7 +35,7 @@ exec --no-startup-id dropbox
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
-exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (need feh)
+exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (needs feh)
 exec --no-startup-id copyq
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery_warning &
@@ -361,6 +362,7 @@ for_window [title="Adicionar Transferências"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [title="Authy"] floating enable
+for_window [class="Anki"] floating enable
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
