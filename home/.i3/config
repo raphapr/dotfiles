@@ -132,10 +132,6 @@ bindsym $mod+shift+x move workspace to output left
 # move workspace to another output: up
 bindsym $mod+bracketleft move workspace to output up
 
-# scratchpad
-bindsym $mod+minus move scratchpad
-bindsym $mod+equal scratchpad show
-
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
@@ -371,7 +367,5 @@ for_window [class="Anki"] floating enable
 exec --no-startup-id termite -t 90monitoring -e "htop"
 for_window [title="90monitoring"] move scratchpad
 bindsym $mod+F12 [title="90monitoring"] scratchpad show
-
-bindsym $mod+F11 [title="Authy"] scratchpad show
 
 #}}}
