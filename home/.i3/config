@@ -28,7 +28,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
 exec --no-startup-id redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id sudo modprobe r8169
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id dropbox

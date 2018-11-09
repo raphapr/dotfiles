@@ -16,7 +16,6 @@ sudo pacman -S --noconfirm --needed vim python2 python2-pip python python-pip fi
 # sync sensitive - not versioned - dotfiles
 ln -sf ~/Dropbox ~/Cloud
 ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
-ln -sf ~/Cloud/sync/copyq ~/.config/copyq
 ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 ln -sf ~/Cloud/sync/buku ~/.local/share/buku
 ln -sf ~/Cloud/sync/env ~/.env
