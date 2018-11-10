@@ -26,7 +26,7 @@ set $SPRINT     ~/.bin/take_screenshot -s
 #exec_always --no-startup-id polybar-launch
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
-exec --no-startup-id redshift -l $LATITUDE:$LONGITUDE
+exec --no-startup-id source ~/.env && redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id ~/.bin/battery_warning
