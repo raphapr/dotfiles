@@ -356,8 +356,9 @@ for_window [class="Skype"] floating enable
 for_window [title="Adicionar Transferências"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
-for_window [title="Authy"] floating enable
+for_window [class="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
 for_window [class="Anki"] floating enable
+for_window [class="insync.py"] floating enable
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
