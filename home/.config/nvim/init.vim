@@ -213,8 +213,8 @@ autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
 autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
 
 let g:fzf_action = {
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit'
+      \ 'ctrl-i': 'split',
+      \ 'ctrl-s': 'vsplit'
       \ }
 
 " Default fzf layout
@@ -320,6 +320,10 @@ set autoindent
 set copyindent
 set smartindent
 set preserveindent
+
+" YAML
+"autocmd FileType yaml setlocal ai ts=2 sw=2 et
+"set backspace=indent,eol,start
 
 " Undo settings files
 set undofile
