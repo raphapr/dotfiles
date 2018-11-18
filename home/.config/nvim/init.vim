@@ -285,13 +285,6 @@ nmap <leader>i :IndentLinesToggle<cr>
 Plug 'fatih/vim-go'
 
 " }}}
-" ===== vim-surround            {{{
-
-Plug 'tpope/vim-surround'
-
-let b:surround_{char2nr('o')} = "\"{{ \r }}\""
-
-" }}}
 
 call plug#end()
 
