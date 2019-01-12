@@ -1,0 +1,20 @@
+" tridactyl config
+
+" Make Tridactyl work on more sites at the expense of some security.
+set csp clobber
+fixamo
+
+" Previous/next tab.
+bind J tabprev
+bind K tabnext
+
+" Allow Ctrl-a to select all in the commandline
+unbind --mode=ex <C-a>
+
+set hintfiltermode vimperator-reflow
+
+" GitHub pull request checkout command to clipboard (only works if you're a collaborator or above)
+bind yp composite js document.getElementById("clone-help-step-1").textContent.replace("git checkout -b", "git checkout -B").replace("git pull ", "git fetch ") + "git reset --hard " + document.getElementById("clone-help-step-1").textContent.split(" ")[3].replace("-","/") | yank
+
+" Git{Hub,Lab} git clone via SSH yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
