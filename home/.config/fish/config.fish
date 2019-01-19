@@ -139,7 +139,7 @@ alias b 'buku --suggest'
 alias gt 'trans :pt -b' # english to portuguese
 alias gt-d 'trans -pager more -d' # dictionary
 alias gt-en 'trans :en' # portuguese to english
-alias gt-au 'trans -p -b' # pronuncia
+alias gt-au 'trans :en -p -b' # pronuncia
 
 # }}}
 # pacman/pacaur    {{{

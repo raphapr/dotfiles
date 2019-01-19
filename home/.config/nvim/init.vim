@@ -386,14 +386,6 @@ nmap <Leader>ba :split<CR>:term . %<CR>
 " }}}
 " arrow keys        {{{
 
-nmap <up> <nop>
-nmap <down> <nop>
-nmap <left> <nop>
-nmap <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
 nmap j gj
 nmap k gk
 
