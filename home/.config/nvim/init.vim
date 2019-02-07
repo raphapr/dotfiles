@@ -24,9 +24,18 @@ set shell=/bin/bash
 
 call plug#begin('~/.nvim/plugged')
 
-" ===== Molokai Color Scheme    {{{
+" ===== Color Scheme            {{{
 
-Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+
+syntax enable
+set background=dark
+set nu
+
+" turn on syntax for config files
+autocmd BufRead,BufNewFile config setf dosini
 
 " }}}
 " ===== Syntax highlighting     {{{
@@ -39,11 +48,6 @@ Plug 'pearofducks/ansible-vim'
 au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */vars/*.yml set filetype=yaml.ansible
-
-" markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled=1
 
 " }}}
 " ===== jedi                    {{{
@@ -81,7 +85,7 @@ let g:python_host_prog = '/usr/bin/python3'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'gruvbox'
 "let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -290,14 +294,6 @@ call plug#end()
 
 " }}}
 " Settings    -------------------------------------------------------------- {{{
-
-syntax enable
-colorscheme molokai
-set background=dark
-set nu
-
-" turn on syntax for config files
-autocmd BufRead,BufNewFile config setf dosini
 
 " settings for split windows
 set splitbelow
