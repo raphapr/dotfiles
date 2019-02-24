@@ -35,7 +35,9 @@
   lll = log -u
   pl = pull --ff-only
 
-  pamadd= !FILES=`git status -s | awk '{ print $2 }' | fzf -x -m` && git add --all ${FILES}
+  pamadd = !FILES=`git status -s | awk '{ print $2 }' | fzf -x -m` && git add --all ${FILES}
+
+  pr = "!f() { hub pull-request; };f"
 
 [push]
 	default = tracking
