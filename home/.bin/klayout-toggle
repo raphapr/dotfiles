@@ -4,9 +4,11 @@ layout=$(setxkbmap -query | grep 'layout' | cut -d ":" -f 2 | tr -d ' ')
 variant=$(setxkbmap -query | grep 'variant' | cut -d ":" -f 2 | tr -d ' ')
 klayout="$layout-$variant"
 if [ "$klayout" == "br-abnt2" ]; then
-    notify-send "Keyboard Layourt" "US International"
+    notify-send "Keyboard Layout" "US International"
     setxkbmap us -variant alt-intl "default" && xmodmap ~/.Xmodmap
+    pkill -RTMIN+1 i3blocks
 else
-    notify-send "Keyboard Layourt" "BR ABNT2"
+    notify-send "Keyboard Layout" "BR ABNT2"
     setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
+    pkill -RTMIN+1 i3blocks
 fi
