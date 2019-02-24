@@ -4,8 +4,8 @@
 
 " Preambule   -------------------------------------------------------------- {{{
 
-set splitbelow                          " Nova janela aparece abaixo da atual
-set splitright                          " Nova janela aparece a direita da atual
+set splitbelow
+set splitright
 
 let mapleader=","
 let maplocalleader = ","
@@ -16,7 +16,7 @@ filetype plugin indent on
 " unified clipboard
 set clipboard+=unnamedplus
 
-" fix Syntastic + tmux bug
+" default shell
 set shell=/bin/bash
 
 " }}}
@@ -503,7 +503,7 @@ nmap <Right> :vertical resize +5<cr>
 nmap <Left> :vertical resize -5<cr>
 nmap = <c-w>=
 
-"Alt + Arrow is for minimizing/maximizing splits
+" Minimizing/maximizing splits
 nmap <M-Up>      <C-W>_
 nmap <M-Down>    <C-W>=
 nmap <M-Left>    <C-W>=
