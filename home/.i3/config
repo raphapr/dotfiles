@@ -23,13 +23,11 @@ set $SPRINT     ~/.bin/take_screenshot -s
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
 
-#exec_always --no-startup-id polybar-launch
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
 exec --no-startup-id source ~/.env && redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "udiskie -2 &"
-exec --no-startup-id ~/.bin/battery_warning
 exec --no-startup-id dropbox
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
@@ -40,6 +38,7 @@ exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery_warning &
 exec --no-startup-id pritunl-client-gtk
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec_always --no-startup-id xset r rate 215 35
 exec_always --no-startup-id input set-prop "DELL0781:00 06CB:7E7E Touchpad" "libinput Tapping Enabled" 1
 
@@ -97,10 +96,10 @@ bindsym --release Print exec --no-startup-id $PRINT
 bindsym --release $mod+Print exec --no-startup-id $SPRINT
 
 # power manager toggle
-bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle && pkill -RTMIN+1 i3blocks
+bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
 
 # keyboard layout toggle
-bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle && pkill -RTMIN+1 i3blocks
+bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
 
 # controller toggle
 bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle && pkill -RTMIN+1 i3blocks
@@ -112,12 +111,6 @@ bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
-
-# mopidy
-#bindsym $mod+p exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioNext exec --no-startup-id mpc next
-bindsym XF86AudioPrev exec --no-startup-id mpc prev
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle && pkill -RTMIN+1 i3blocks
 
 # meta+x lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
@@ -202,7 +195,6 @@ bindsym $mod+v split h
 
 # split in vertical orientation
 bindsym $mod+b split v
-
 
 # enter fullscreen mode for the focused container
 bindsym F12 fullscreen
@@ -297,7 +289,7 @@ bar {
   position top
   font pango:FontAwesome, Icons 8
   #status_command i3status
-  status_command i3blocks
+  status_command SCRIPT_DIR=~/.i3/scripts i3blocks
   colors {
             statusline #AAAAAA
             focused_workspace #0080ff #0080ff #000000
@@ -356,7 +348,6 @@ for_window [class="Skype"] floating enable
 for_window [title="Adicionar Transferências"] floating enable
 for_window [class="Pinentry"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
-for_window [class="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="insync.py"] floating enable
 
