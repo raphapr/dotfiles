@@ -307,6 +307,17 @@ nmap <leader>i :IndentLinesToggle<cr>
 Plug 'fatih/vim-go'
 
 " }}}
+" ===== ack.vim                 {{{
+
+Plug 'mileszs/ack.vim'
+
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
+endif
+
+nnoremap <Leader>a :Ack!<Space>
+
+" }}}
 
 call plug#end()
 
