@@ -1,0 +1,112 @@
+#!/bin/bash
+#===============================================================================
+#
+#          FILE: rofi-github-repos
+# 
+#         USAGE: ./rofi-github-repos
+# 
+#   DESCRIPTION: Display all repositories from specified resources in rofi and clone
+#               and clone the selected repository.
+# 
+#       OPTIONS: -r -rd
+#  REQUIREMENTS: GITHUB_TOKEN, GITHUB_RESOURCES environment variables
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: @raphapr
+#  ORGANIZATION: 
+#       CREATED: 08-03-2019
+#      REVISION:  ---
+#===============================================================================
+
+CACHE=true
+CACHE_MAX_AGE=1440 # 24h
+GITHUB_API_HEADER_ACCEPT="Accept: application/vnd.github.v3+json"
+GITHUB_URL="git@github.com:"
+ROFI=true
+ROFI_THEME="~/.config/rofi/bala.rasi"
+TMPFILE=/tmp/rofi-github-repos
+
+function api_call {
+    curl -s $1 -H "${GITHUB_API_HEADER_ACCEPT}" -H "Authorization: token $GITHUB_TOKEN" | grep -o 'git@[^"]*' | sed "s/git@github.com://g" >> $TMPFILE
+}
+
+rofi_dmenu(){
+  rofi -dmenu -matching fuzzy -p "Select a repository: " -location 0 -theme $ROFI_THEME
+}
+
+clone_repo(){
+  local repo=$1
+  if [ -z "$repo" ]; then
+    echo "ERROR! You need to enter the name of the repository you wish to clone."
+  else
+    git clone "$GITHUB_URL$repo"
+  fi
+}
+
+function cache_verify {
+    # not use cache
+    if test $(find $TMPFILE -mmin +$CACHE_MAX_AGE); then
+        rm $TMPFILE && touch $TMPFILE
+    # use cache
+    else
+        repo=$(cat $TMPFILE | rofi_dmenu)
+        clone_repo "$repo"
+        exit 0
+    fi
+}
+
+function retrieve_repos {
+    local github_api_url="https://api.github.com/$1/repos"
+
+    echo "Retrieving '$1' repositories..."
+
+    # single page result-s (no pagination), have no Link: section, the grep result is empty                                                                                                                                                                  
+    last_page=`curl -s -I "${github_api_url}" -H "${GITHUB_API_HEADER_ACCEPT}" -H "Authorization: token $GITHUB_TOKEN" | grep '^Link:' | sed -e 's/^Link:.*page=//g' -e 's/>.*$//g'`
+
+    # does this result use pagination?                                                                                                                                                                                                                       
+    if [ -z "$last_page" ]; then
+        # no - this result has only one page                                                                                                                                                                                                                 
+        api_call "${github_api_url}"
+    else
+        # yes - this result is on multiple pages                                                                                                                                                                                                             
+        for p in `seq 1 $last_page`; do
+            api_call "${github_api_url}?page=$p"
+        done
+    fi
+}
+
+
+main(){
+    if [ -z $GITHUB_TOKEN ]; then
+        echo "ERROR! The GITHUB_TOKEN variable environment is required."
+        exit 1
+    elif [ ${#GITHUB_RESOURCES} == 0 ]; then
+        echo "ERROR! The GITHUB_RESOURCES variable environment is required."
+        exit 1
+    fi
+
+    if [ -e $TMPFILE ] && [ "$CACHE" == true ]; then
+       cache_verify
+    else
+        [ -e $TMPFILE ] && rm $TMPFILE && touch $TMPFILE
+    fi
+
+    for resource in $GITHUB_RESOURCES; do
+        retrieve_repos $resource
+    done
+
+    if [[ "$ROFI" = true ]]; then
+        repo=$(cat $TMPFILE | rofi_dmenu)
+        clone_repo "$repo"
+    fi
+
+}
+
+# refresh cache
+[[ "$1" == "-r" ]] && CACHE=false 
+# refresh cache and rofi dmenu
+[[ "$1" == "-rd" ]] && CACHE=false && ROFI=false
+
+main
+
+exit 0
