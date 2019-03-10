@@ -20,6 +20,7 @@ ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 ln -sf ~/Cloud/sync/buku ~/.local/share/buku
 ln -sf ~/Cloud/sync/env ~/.env
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
+ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 
 # install aws-rotate-key binary
 wget https://github.com/Fullscreen/aws-rotate-key/releases/download/v1.0.3/aws-rotate-key-1.0.3-linux_amd64.zip -O /tmp/aws-rotate-key.zip
