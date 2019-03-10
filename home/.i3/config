@@ -71,8 +71,10 @@ bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run '
 bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-window "window " -theme ~/.config/rofi/bala.rasi
 # %%hotkey: start rofi githubs repos
 bindsym $mod+g exec --no-startup-id source ~/.env && ~/.bin/rofi-github-repos
-# %%hotkey: start rofi i3 shortcuts
-bindsym $mod+m exec --no-startup-id i3-hotkeys
+# %%hotkey: start rofi i3 hotkeys
+bindsym $mod+m exec --no-startup-id rofi-i3-hotkeys
+# %shortcut: rofi-pass
+bindsym $mod+y exec --no-startup-id rofi-pass
 
 # %%hotkey: change focus left
 bindsym $mod+h focus left
@@ -209,9 +211,6 @@ bindsym $mod+Return exec --no-startup-id $TERM
 
 # %shortcut: start a terminal with tmux
 bindsym $mod+shift+Return exec --no-startup-id $TMUX
-
-# %shortcut: rofi-pass
-bindsym $mod+y exec --no-startup-id rofi-pass
 
 # %shortcut: browser
 bindsym $mod+q exec --no-startup-id $BROWSER

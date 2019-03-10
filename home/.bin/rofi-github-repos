@@ -10,6 +10,7 @@
 # 
 #       OPTIONS: -r -rd
 #  REQUIREMENTS: GITHUB_TOKEN, GITHUB_RESOURCES environment variables
+#  DEPENDENCIES: xcwd (https://github.com/schischi/xcwd)
 #          BUGS: ---
 #         NOTES: ---
 #        AUTHOR: @raphapr
@@ -39,7 +40,7 @@ clone_repo(){
   if [ -z "$repo" ]; then
     echo "ERROR! You need to enter the name of the repository you wish to clone."
   else
-    git clone "$GITHUB_URL$repo"
+    cd $(xcwd) && git clone "$GITHUB_URL$repo" && notify-send "$(echo $repo | sed 's/\.git//g')" "Cloned!" || notify-send "$(echo $repo | sed 's/\.git//g')" "Failed!"
   fi
 }
 

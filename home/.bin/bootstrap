@@ -33,7 +33,7 @@ crontab <<EOF
 # Rotates all aws access keys every week
 0 0 * * MON aws-rotate-all-keys > /dev/null 2>&1
 # retrieve and cache all github repositories
-0 12 * * * * rofi-github-repos -rd
+0 */4 * * * * rofi-github-repos -rd
 EOF
 
 # install pip / python packages
