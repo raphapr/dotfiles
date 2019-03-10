@@ -3,7 +3,7 @@
 ########################################
 # Check if script already running
 
-lf=/tmp/battery_warning.pidlock
+lf=/tmp/battery-warning.pidlock
 # create empty lock file if none exists
 touch $lf
 read lastPID < $lf
