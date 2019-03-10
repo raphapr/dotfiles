@@ -4,7 +4,6 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -17,8 +16,8 @@ set $BROWSER    firefox
 set $TERM       termite -e fish
 set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
-set $PRINT      ~/.bin/take_screenshot
-set $SPRINT     ~/.bin/take_screenshot -s
+set $PRINT      ~/.bin/take-screenshot
+set $SPRINT     ~/.bin/take-screenshot -s
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
@@ -35,7 +34,7 @@ exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (needs feh)
 exec --no-startup-id copyq
 exec --no-startup-id telegram-desktop -startintray
-exec --no-startup-id battery_warning &
+exec --no-startup-id battery-warning &
 exec --no-startup-id pritunl-client-gtk
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
@@ -43,214 +42,106 @@ exec_always --no-startup-id xset r rate 215 35
 exec_always --no-startup-id input set-prop "DELL0781:00 06CB:7E7E Touchpad" "libinput Tapping Enabled" 1
 
 #}}}i
-# Font                  ----------------------------------------------------- {{{
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:tewi-medium 7
-#font pango:Lucida Grande 6
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-
-floating_modifier $mod
-
-#}}}
-# Personal Shortcuts    ----------------------------------------------------- {{{
-
-# google chrome ingonito
-bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
-
-# xbacklight
-bindsym $mod+2 exec --no-startup-id xbacklight -inc 10
-bindsym $mod+1 exec --no-startup-id xbacklight -dec 10
-
-# start a terminal
-bindsym $mod+Return exec --no-startup-id $TERM 
-
-# start a terminal with tmux
-bindsym $mod+shift+Return exec --no-startup-id $TMUX
-
-# start a terminal with ssh
-bindsym $mod+shift+s exec --no-startup-id $LANC
-
-# pass menu
-bindsym $mod+y exec --no-startup-id rofi-pass
-
-# browser
-bindsym $mod+q exec --no-startup-id $BROWSER
-
-# telegram
-bindsym $mod+Shift+t exec telegram-desktop
-
-# printscreen
-bindsym --release Print exec --no-startup-id $PRINT
-bindsym --release $mod+Print exec --no-startup-id $SPRINT
-
-# power manager toggle
-bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
-
-# keyboard layout toggle
-bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
-
-# controller toggle
-bindsym $mod+shift+c exec --no-startup-id ~/.bin/controller-toggle && pkill -RTMIN+1 i3blocks
-# Sreen brightness controls
-bindsym $mod+F4 exec xbacklight -dec 10 # increase screen brightness
-bindsym $mod+F5 exec xbacklight -inc 10 # decrease screen brightness
-
-# volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
-bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
-
-# meta+x lock screen
-bindsym $mod+x exec --no-startup-id i3lock -c 000000
-
-# kill current notification
-#bindsym ctrl+space exec --no-startup-id "killall notify-osd; pkill volnoti && volnoti"
-
-# move workspace to another output: left
-bindsym $mod+shift+x move workspace to output left
-
-# move workspace to another output: up
-bindsym $mod+bracketleft move workspace to output up
-
-#}}}
-# Multi-monitor         ----------------------------------------------------- {{{
-
-# most used
-bindsym $mod+m  exec --no-startup-id autorandr --change --default mobile && feh --bg-fill ~/.wallpaper.png
-
-set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
-mode "$multi_monitor" {
-    bindsym 1 exec --no-startup-id xrandr --output eDP1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default" 
-    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png mode "default"
-    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --same-as eDP1, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+F10 mode "default"
-}
-
-bindsym $mod+F10 mode "$multi_monitor"
-
-bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
-
-#}}}
-# i3 Shortcuts          ----------------------------------------------------- {{{
+# General options       ------------------------------------------------------ {{{
 
 workspace_layout tabbed
 
-# border toggle
-bindsym $mod+Shift+b border toggle
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:tewi-medium 7
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # disable mouse warp to the center of the window 
 mouse_warping none
 
-# kill focused window
+# }}}
+# i3 Shortcuts          ----------------------------------------------------- {{{
+
+# %%hotkey: border toggle
+bindsym $mod+Shift+b border toggle
+
+# %%hotkey: kill focused window
 bindsym $mod+BackSpace kill
 
-# start rofi (a program launcher)
+# %%hotkey: start rofi run mode
 bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run 'run ' -theme ~/.config/rofi/bala.rasi
+# %%hotkey: start rofi window mode
 bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-window "window " -theme ~/.config/rofi/bala.rasi
+# %%hotkey: start rofi githubs repos
+bindsym $mod+g exec --no-startup-id source ~/.env && ~/.bin/rofi-github-repos
+# %%hotkey: start rofi i3 shortcuts
+bindsym $mod+m exec --no-startup-id i3-hotkeys
 
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
+# %%hotkey: change focus left
 bindsym $mod+h focus left
+# %%hotkey: change focus down
 bindsym $mod+j focus down
+# %%hotkey: change focus up
 bindsym $mod+k focus up
+# %%hotkey: change focus rifht
 bindsym $mod+l focus right
 
-# move focused window
+# %%hotkey: move focused window left
 bindsym $mod+Shift+h move left
+# %%hotkey: move focused window down
 bindsym $mod+Shift+j move down
+# %%hotkey: move focused window up
 bindsym $mod+Shift+k move up
+# %%hotkey: move focused window right
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
+# %%hotkey: move focused window left (alternative)
 bindsym $mod+Shift+Left move left
+# %%hotkey: move focused window down (alternative)
 bindsym $mod+Shift+Down move down
+# %%hotkey: move focused window up (alternative)
 bindsym $mod+Shift+Up move up
+# %%hotkey: move focused window rifht (alternative)
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# %%hotkey: split in horizontal orientation
 bindsym $mod+v split h
 
-# split in vertical orientation
+# %%hotkey: split in vertical orientation
 bindsym $mod+b split v
 
-# enter fullscreen mode for the focused container
+# %%hotkey: enter fullscreen mode for the focused container
 bindsym F12 fullscreen
 
-# change container layout (stacked, tabbed, toggle split)
+# %%hotkey: container layout - stacking
 bindsym $mod+s layout stacking
+# %%hotkey: container layout - tabbed
 bindsym $mod+w layout tabbed
+# %%hotkey: container layout - toggle split
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# %%hotkey: floating toggle
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+# %%hotkey: change focus between tiling / floating windows 
 bindsym $mod+z focus mode_toggle
 
-# focus the parent container
+# %%hotkey: focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
+# %%hotkey: focus the child container
 bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+u workspace 1
-bindsym $mod+i workspace 2
-bindsym $mod+o workspace 3
-bindsym $mod+p workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-# jumping workspace right / left
+# %%hotkey: jump workspace prev
 bindsym $mod+Left workspace prev
+# %%hotkey: jump workspace next
 bindsym $mod+Right workspace next
 
-# move focused container to workspace
-bindsym $mod+Shift+u move container to workspace 1
-bindsym $mod+Shift+i move container to workspace 2
-bindsym $mod+Shift+o move container to workspace 3
-bindsym $mod+Shift+p move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# %%hotkey: restart i3 (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
+
+# %%hotkey: exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# set video window
-#bindsym $mod+y fullscreen disable; floating enable; resize set 400 230; sticky enable; move window to position 965 20
+# %%hotkey: resize window
+bindsym $mod+r mode "resize"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -277,7 +168,81 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# switch to workspace
+bindsym $mod+u workspace 1
+bindsym $mod+i workspace 2
+bindsym $mod+o workspace 3
+bindsym $mod+p workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+u move container to workspace 1
+bindsym $mod+Shift+i move container to workspace 2
+bindsym $mod+Shift+o move container to workspace 3
+bindsym $mod+Shift+p move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+#}}}
+# Personal Shortcuts    ----------------------------------------------------- {{{
+
+# %shortcut: google chrome ingonito
+bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
+
+# %shortcut: backlight increase
+bindsym $mod+2 exec --no-startup-id xbacklight -inc 10
+
+# %shortcut: backlight decrease
+bindsym $mod+1 exec --no-startup-id xbacklight -dec 10
+
+# %shortcut: start terminal
+bindsym $mod+Return exec --no-startup-id $TERM 
+
+# %shortcut: start a terminal with tmux
+bindsym $mod+shift+Return exec --no-startup-id $TMUX
+
+# %shortcut: rofi-pass
+bindsym $mod+y exec --no-startup-id rofi-pass
+
+# %shortcut: browser
+bindsym $mod+q exec --no-startup-id $BROWSER
+
+# %shortcut: telegram
+bindsym $mod+Shift+t exec telegram-desktop
+
+# %shortcut: printscreen full screen
+bindsym --release Print exec --no-startup-id $PRINT
+# %shortcut: printscreen selected screen
+bindsym --release $mod+Print exec --no-startup-id $SPRINT
+
+# %shortcut: screensaver
+bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
+
+# %shortcut: keyboard layout
+bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
+
+# %shortcut: lock screen
+bindsym $mod+x exec --no-startup-id i3lock -c 000000
+
+# %shortcut: move workspace to output left
+bindsym $mod+shift+x move workspace to output left
+
+# %shortcut: move workspace to output above
+bindsym $mod+bracketleft move workspace to output up
+
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
+bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
 #}}}
 # bar                   ----------------------------------------------------- {{{
@@ -314,7 +279,7 @@ new_window 1pixel
 
 set $mode_system System
 
-set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System: (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym e exec --no-startup-id ~/.bin/i3exit logout, mode "default"
     bindsym s exec --no-startup-id ~/.bin/i3exit suspend, mode "default"
@@ -328,6 +293,7 @@ mode "$mode_system" {
     bindsym $mod+F1 mode "default"
 }
 
+# %%hotkey: i3exit menu
 bindsym $mod+F1 mode "$mode_system"
 
 #}}}
@@ -358,5 +324,29 @@ for_window [class="insync.py"] floating enable
 exec --no-startup-id termite -t 90monitoring -e "htop"
 for_window [title="90monitoring"] move scratchpad
 bindsym $mod+F12 [title="90monitoring"] scratchpad show
+
+#}}}
+# Multi-monitor         ----------------------------------------------------- {{{
+
+# %%hotkey: autorandr
+bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
+
+# %%hotkey: multi monitor menu
+bindsym $mod+F10 mode "$multi_monitor"
+
+set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
+mode "$multi_monitor" {
+    bindsym 1 exec --no-startup-id xrandr --output eDP1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
+    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default" 
+    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png mode "default"
+    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --same-as eDP1, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+F10 mode "default"
+}
 
 #}}}
