@@ -128,10 +128,10 @@ alias ptpython "python -m ptpython"
 abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
-# fuzzy-finder
-alias af 'aws-fuzzy'
-# buku
-alias b 'buku --suggest'
+# ec2-fzf - ssh
+alias af 'ssh (ec2-fzf --private)'
+# ec2-fzf -
+alias aff 'ec2-fzf --private'
 
 # }}}
 # translate-shell  {{{
