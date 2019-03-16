@@ -216,6 +216,9 @@ bindsym $mod+shift+Return exec --no-startup-id $TMUX
 # %shortcut: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
+# %shortcut: override Ctrl+Q shortcut in Firefox
+bindsym Control+q exec --no-startup-id :
+
 # %shortcut: telegram
 bindsym $mod+Shift+t exec telegram-desktop
 
