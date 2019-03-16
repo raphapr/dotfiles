@@ -7,7 +7,7 @@
 set fish_greeting
 
 # env vars
-export TERM=xterm-256color
+export TERM=screen-256color
 export EDITOR="nvim"
 export VIRTUALENV_PYTHON=/usr/bin/python2.7
 export GOPATH="$HOME/go"
@@ -128,10 +128,6 @@ alias ptpython "python -m ptpython"
 abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
-# ec2-fzf - ssh
-alias af 'ssh (ec2-fzf --private)'
-# ec2-fzf -
-alias aff 'ec2-fzf --private'
 
 # }}}
 # translate-shell  {{{
@@ -479,6 +475,33 @@ function fco -d "Fuzzy-find and checkout a branch"
     git branch --all | grep -v HEAD | string trim | fzf |  xargs git checkout
     commandline -f repaint
 end
+
+# }}}
+# af                {{{
+
+function af
+    set -l result (ec2-fzf --private)
+    echo "ssh $result"
+    ssh $result
+end
+
+# }}}
+# ec2-find          {{{
+
+function ec2-find
+    aws ec2 describe-instances --query "Reservations[*].Instances[*].PrivateIpAddress" \
+    --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' \
+    --output text
+end
+
+# }}}
+# ec2-table         {{{
+
+function ec2-table
+    aws ec2 describe-instances --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' --output table
+end
+
+# }}}
 
 # }}}
 
