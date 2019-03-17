@@ -15,10 +15,6 @@ export BROWSER firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 
-# aws-fuzzzy-finder
-export AWS_FUZZ_USER="raphaelribeiro"
-export AWS_FUZZ_PRIVATE_IP='true'
-
 if test "$DISPLAY"
     xset r rate 200 30
 end
