@@ -502,6 +502,23 @@ function ec2-table
 end
 
 # }}}
+# ec2-ssh           {{{
+
+function ec2-ssh
+    set -l result (aws ec2 describe-instances --query "Reservations[*].Instances[*].PrivateIpAddress" \
+    --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' \
+    --output text)
+    if test (count $result) -eq 1
+        echo "ssh $result"
+        ssh $result
+    end
+    if test (count $result) -gt 1
+        echo "xpanes -c 'ssh {}' $result"
+        xpanes -c 'ssh {}' $result
+    end
+end
+
+# }}}
 
 # }}}
 # history subst   ---------------------------------------------- {{{
