@@ -6,10 +6,10 @@
 # Executed by startx (run your window manager from here)
 #
 
-setxkbmap -option keypad:pointerkeys
+sleep 1
 
-# remapping keys
-sleep 5 && xmodmap ~/.Xmodmap
+setxkbmap -option keypad:pointerkeys
+xmodmap ~/.Xmodmap
 
 xset r rate 215 35
 

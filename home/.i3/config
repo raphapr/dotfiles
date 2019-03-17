@@ -31,19 +31,18 @@ exec --no-startup-id dropbox
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon 
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
-exec --no-startup-id feh --bg-fill ~/.wallpaper.png # wallpaper (needs feh)
+exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id copyq
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery-warning &
 exec --no-startup-id pritunl-client-gtk
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
-exec --no-startup-id rofi-github-repos -rd
 exec_always --no-startup-id xset r rate 215 35
 exec_always --no-startup-id input set-prop "DELL0781:00 06CB:7E7E Touchpad" "libinput Tapping Enabled" 1
 
 #}}}i
-# General options       ------------------------------------------------------ {{{
+# General options       ----------------------------------------------------- {{{
 
 workspace_layout tabbed
 
@@ -216,8 +215,8 @@ bindsym $mod+shift+Return exec --no-startup-id $TMUX
 # %shortcut: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
-# %shortcut: override Ctrl+Q shortcut in Firefox
-bindsym Control+q exec --no-startup-id :
+# %shortcut: disable Ctrl+Q firefox shortcut
+bindsym Control+q nop
 
 # %shortcut: telegram
 bindsym $mod+Shift+t exec telegram-desktop
@@ -323,16 +322,23 @@ for_window [class="insync.py"] floating enable
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
 
-# monitoring
-exec --no-startup-id termite -t 90monitoring -e "htop"
-for_window [title="90monitoring"] move scratchpad
-bindsym $mod+F12 [title="90monitoring"] scratchpad show
+# htop
+exec --no-startup-id termite -t 90htop -e "htop"
+for_window [title="90htop"] move scratchpad
+# %%hotkey: htop scratchpad
+bindsym $mod+F12 [title="90htop"] scratchpad show
+
+# ranger
+exec --no-startup-id termite -t 90ranger -e "ranger"
+for_window [title="90ranger"] move scratchpad
+# %%hotkey: ranger scratchpad
+bindsym $mod+F11 [title="90ranger"] scratchpad show
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # %%hotkey: autorandr
-bindsym $mod+F2     exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
+bindsym $mod+F2 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 
 # %%hotkey: multi monitor menu
 bindsym $mod+F10 mode "$multi_monitor"
