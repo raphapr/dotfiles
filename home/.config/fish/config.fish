@@ -447,7 +447,7 @@ end
 function ec2-find
     aws ec2 describe-instances --query "Reservations[*].Instances[*].PrivateIpAddress" \
     --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' \
-    --output text
+    | jq .[][] | tr -d '"'
 end
 
 # }}}
@@ -463,7 +463,7 @@ end
 function ec2-ssh
     set -l result (aws ec2 describe-instances --query "Reservations[*].Instances[*].PrivateIpAddress" \
     --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' \
-    --output text)
+    | jq .[][] | tr -d '"')
     if test (count $result) -eq 1
         echo "ssh $result"
         ssh $result
