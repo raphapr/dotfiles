@@ -304,7 +304,11 @@ nmap <leader>i :IndentLinesToggle<cr>
 " }}}
 " ===== vim-go                  {{{
 
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+au FileType go nmap <Leader>s <Plug>(go-def-split)
+au FileType go nmap <leader>rr  <Plug>(go-run)
+au FileType go nmap <leader>b  <Plug>(go-build)
 
 " }}}
 " ===== ack.vim                 {{{
@@ -404,18 +408,6 @@ nmap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nmap <leader>i3 :vsplit ~/.i3/config<cr>
 
 " }}}
-" compiling         {{{
-
-" OpenGL
-nmap <Leader>op :!g++ % -o a.out -lGLU -lGL -lglut && ./a.out<CR>
-" Ruby
-nmap <Leader>ru :split<CR>:term ruby %<CR>
-" Julia
-nmap <Leader>ju :split<CR>:term julia %<CR>
-" Bash
-nmap <Leader>ba :split<CR>:term . %<CR>
-
-" }}}
 " arrow keys        {{{
 
 nmap j gj
@@ -428,12 +420,6 @@ nmap k gk
 "nmap <DOWN> <C-X>
 "nnoremap <UP> ddkP
 "nnoremap <DOWN> ddp
-
-" }}}
-" session           {{{
-
-map <leader>s :SaveSession<CR>
-map <leader>l :OpenSession<CR>
 
 " }}}
 " etc               {{{
