@@ -306,9 +306,19 @@ nmap <leader>i :IndentLinesToggle<cr>
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-au FileType go nmap <Leader>s <Plug>(go-def-split)
-au FileType go nmap <leader>rr  <Plug>(go-run)
-au FileType go nmap <leader>b  <Plug>(go-build)
+" gd     -  GoDef
+" ctrl-t -  GoDefPop
+" [[. ]] - Jump Functions
+
+" <leader>d for split, gd for normal navigation, ctrl+t to pop
+au FileType go nmap <Leader>s  <Plug>(go-def-split)
+au FileType go nmap <Leader>u  <Plug>(go-run)
+au FileType go nmap <Leader>b  <Plug>(go-build)
+au FileType go nmap <Leader>e  <Plug>(go-rename)
+au FileType go nmap <Leader>kk <Plug>(go-doc)
+au FileType go nmap <Leader>kb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>im <Plug>(go-implements)
+au FileType go nmap <Leader>in <Plug>(go-info)
 
 " }}}
 " ===== ack.vim                 {{{
@@ -320,6 +330,14 @@ if executable('rg')
 endif
 
 nnoremap <Leader>a :Ack!<Space>
+
+" }}}
+" ===== vim-buffkill            {{{
+
+Plug 'qpkorr/vim-bufkill'
+
+" closes buffer
+nmap <C-E> :BD<cr>
 
 " }}}
 
@@ -396,9 +414,6 @@ set foldtext=MyFoldText()
 " buffers navigation
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
-
-" closes buffer
-nmap <C-E> :bd<cr>:bd #<cr>
 
 "}}}
 " fast edition      {{{
