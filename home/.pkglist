@@ -25,9 +25,6 @@ compton
 clipit
 ttf-font-awesome
 google-chrome
-rxvt-unicode
-urxvt-perls
-urxvt-font-size-git
 htop
 ncdu
 i3lock
@@ -84,7 +81,6 @@ networkmanager
 network-manager-applet
 w3m
 direnv
-termite
 rofi-pass
 autorandr
 pritunl-client-gtk
@@ -104,3 +100,4 @@ hub
 saw
 xcwd-git
 ec2-fzf
+kitty
