@@ -13,8 +13,8 @@
 
 set $mod Mod4
 set $BROWSER    firefox
-set $TERM       kitty -1
-set $TMUX       kitty -1 -T main sh -c "$HOME/.bin/tmuxsession main"
+set $TERM       termite -e fish
+set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
 set $PRINT      ~/.bin/take-screenshot
 set $SPRINT     ~/.bin/take-screenshot -s
@@ -320,13 +320,13 @@ for_window [class="insync.py"] floating enable
 # scratchpads           ----------------------------------------------------- {{{
 
 # htop
-exec --no-startup-id kitty -1 -T 90htop sh -c "htop"
+exec --no-startup-id termite -t 90htop -e "htop"
 for_window [title="90htop"] move scratchpad
 # %%hotkey: htop scratchpad
 bindsym $mod+F12 [title="90htop"] scratchpad show
 
 # ranger
-exec --no-startup-id kitty -1 -T 90ranger sh -c "ranger"
+exec --no-startup-id termite -t 90ranger -e "ranger"
 for_window [title="90ranger"] move scratchpad
 # %%hotkey: ranger scratchpad
 bindsym $mod+F11 [title="90ranger"] scratchpad show
