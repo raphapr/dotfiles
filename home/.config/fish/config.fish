@@ -510,7 +510,13 @@ end
 # af                {{{
 
 function af
-    set -l result (ec2-fzf --private)
+    set -l result (ec2-fzf --private $argv)
+    echo "ssh $result"
+    ssh $result
+end
+
+function afp
+   set -l result (ec2-fzf $argv)
     echo "ssh $result"
     ssh $result
 end
