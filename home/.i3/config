@@ -243,6 +243,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
+# %shortcut: move workspace to output above
+bindsym F2 exec --no-startup-id ~/.bin/aws-credentials-paste
+
 #}}}
 # bar                   ----------------------------------------------------- {{{
 
