@@ -22,7 +22,6 @@ tumbler
 xautolock
 udiskie
 compton
-clipit
 ttf-font-awesome
 google-chrome
 htop
@@ -30,7 +29,6 @@ ncdu
 i3lock
 ntfs-3g
 rofi
-glances
 neovim
 git
 google-talkplugin
