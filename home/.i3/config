@@ -227,15 +227,15 @@ bindsym --release $mod+Print exec --no-startup-id $SPRINT
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
 
 # %shortcut: keyboard layout
-bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
+bindsym $mod+F11 exec --no-startup-id ~/.bin/klayout-toggle
 
 # %shortcut: lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
 
-# %shortcut: move workspace to output left
+# %shortcut: move workspace to output left/right
 bindsym $mod+shift+x move workspace to output left
 
-# %shortcut: move workspace to output above
+# %shortcut: move workspace to output above/below
 bindsym $mod+bracketleft move workspace to output up
 
 # volume
@@ -243,7 +243,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
-# %shortcut: move workspace to output above
+# %shortcut: run aws-credentials-paste
 bindsym F2 exec --no-startup-id ~/.bin/aws-credentials-paste
 
 #}}}
@@ -331,14 +331,9 @@ bindsym $mod+F12 [title="90htop"] scratchpad show
 # ranger
 exec --no-startup-id termite -t 90ranger -e "ranger"
 for_window [title="90ranger"] move scratchpad
-# %%hotkey: ranger scratchpad
-bindsym $mod+F11 [title="90ranger"] scratchpad show
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
-
-# %%hotkey: autorandr
-bindsym $mod+F2 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 
 # %%hotkey: multi monitor menu
 bindsym $mod+F10 mode "$multi_monitor"
