@@ -295,13 +295,6 @@ Plug 'w0rp/ale'
 let g:ale_completion_enabled = 1
 
 " }}}
-" ===== identLine               {{{
-
-Plug 'Yggdroot/indentLine'
-let g:indentLine_enabled = 1
-nmap <leader>i :IndentLinesToggle<cr>
-
-" }}}
 " ===== vim-go                  {{{
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
