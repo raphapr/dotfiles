@@ -13,11 +13,10 @@
 
 set $mod Mod4
 set $BROWSER    firefox
-set $TERM       termite -e fish
-set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
+set $TERM       kitty
+set $TMUX       kitty -T main sh -c "$HOME/.bin/tmuxsession main"
 set $FM         thunar
-set $PRINT      ~/.bin/take-screenshot
-set $SPRINT     ~/.bin/take-screenshot -s
+set $PRINT      flameshot gui -p ~/Imagens/Screenshots/
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
@@ -37,6 +36,7 @@ exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery-warning &
 exec --no-startup-id pritunl-client-gtk
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id sleep 2 && flameshot
 exec --no-startup-id setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec_always --no-startup-id xset r rate 215 35
 exec_always --no-startup-id input set-prop "DELL0781:00 06CB:7E7E Touchpad" "libinput Tapping Enabled" 1
@@ -218,10 +218,8 @@ bindsym $mod+q exec --no-startup-id $BROWSER
 # %shortcut: telegram
 bindsym $mod+Shift+t exec telegram-desktop
 
-# %shortcut: printscreen full screen
+# %shortcut: flameshot print screen
 bindsym --release Print exec --no-startup-id $PRINT
-# %shortcut: printscreen selected screen
-bindsym --release $mod+Print exec --no-startup-id $SPRINT
 
 # %shortcut: screensaver
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
