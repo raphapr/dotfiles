@@ -13,8 +13,8 @@
 
 set $mod Mod4
 set $BROWSER    firefox
-set $TERM       kitty
-set $TMUX       kitty -T main sh -c "$HOME/.bin/tmuxsession main"
+set $TERM       termite -e fish
+set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
 set $PRINT      flameshot gui -p ~/Imagens/Screenshots/
 
