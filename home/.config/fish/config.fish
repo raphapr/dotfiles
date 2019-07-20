@@ -110,6 +110,7 @@ alias ba "bash"
 alias g "git"
 alias gpull "git push origin (git rev-parse --abbrev-ref HEAD)"
 alias gpush "git pull origin (git rev-parse --abbrev-ref HEAD)"
+alias gclean "git clean -fdx && git stash"
 # diff dotfiles
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 # command line pastebin
