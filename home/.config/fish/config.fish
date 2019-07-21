@@ -108,8 +108,8 @@ alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-ses
 alias ba "bash"
 # git
 alias g "git"
-alias gpull "git push origin (git rev-parse --abbrev-ref HEAD)"
-alias gpush "git pull origin (git rev-parse --abbrev-ref HEAD)"
+alias gpull "git pull origin (git rev-parse --abbrev-ref HEAD)"
+alias gpush "git push origin (git rev-parse --abbrev-ref HEAD)"
 alias gclean "git clean -fdx && git stash"
 # diff dotfiles
 alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
