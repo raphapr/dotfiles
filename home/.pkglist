@@ -66,7 +66,6 @@ volnoti
 pass
 xf86-input-synaptics
 arandr
-polybar
 i3blocks
 xsel
 bdf-tewi-git
@@ -93,10 +92,7 @@ ngrep
 ripgrep
 lxappearance
 pkgfile
-anki
-hub
 saw
 xcwd-git
 ec2-fzf
-kitty
 flameshot
