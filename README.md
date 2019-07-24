@@ -1,6 +1,6 @@
 # dotfiles
 
-This repository contains configuration files I use on my Manjaro GNU/Linux which have been inspired by the rest of the dotfiles community. 
+This repository contains configuration files I use on my Manjaro GNU/Linux which has been inspired by the rest of the dotfiles community. 
 
 ## Install
 
@@ -34,20 +34,20 @@ You can now link its contents into your home dir:
 * fish shell
 * tmux
 * ranger
-* glances
 * firefox
 * thunar
 * imgurbash
 * termite
 * zathura
 * fasd
-* translate-shell
-* youtube-dl
 * feh
 * fzf
-* gist
+* translate-shell
 * rofi
-* scrot
 * htop
 * copyq
 * direnv
+* flameshot
+* ripgrep
+* autorandr
+* redshift
