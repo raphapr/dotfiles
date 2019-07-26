@@ -1,0 +1,6 @@
+#!/bin/bash
+
+HISTORY_FILE="$HOME/.local/share/fish/fish_history"
+SELECTED=$(cat $HISTORY_FILE | grep "cmd" | cut -d ":" -f 2 | sed 's/^ //g' | tac | nl | rofi -dmenu -p "history: " -theme ~/.config/rofi/bala.rasi)
+
+echo -n $SELECTED | sed 's/^[0-9]\+ //g' | xclip -sel clip
