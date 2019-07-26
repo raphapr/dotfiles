@@ -38,7 +38,14 @@ crontab <<EOF
 EOF
 
 # install pip / python packages
-sudo pip install tmuxp virtualenv neovim virtualfish flake8 aws-fuzzy-finder saws ptpython ipython boto3 aws-fuzzy-finder
+sudo pip install tmuxp virtualenv neovim virtualfish flake8 saws ptpython ipython boto3
+
+# aws-fuzzy
+cd ~/.virtualenvs
+vf new -p python3 aws-fuzzy
+vf activate aws-fuzzy
+pip install https://github.com/raphapr/aws-fuzzy-finder/archive/v0.3.6.zip
+vf deactivate
 
 # npm packages
 sudo npm install --global git-recent

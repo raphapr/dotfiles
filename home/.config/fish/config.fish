@@ -46,7 +46,13 @@ command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
 # load my environment variables
 source $HOME/.env
 
-# }}}
+# aws-fuzzy
+export AWS_FUZZ_PRIVATE_IP=true
+export AWS_FUZZ_USE_CACHE=yes
+export AWS_FUZZ_CACHE_EXPIRY=604800
+export AWS_FUZZ_USER=$SSH_WORK_USERNAME
+
+ #}}}
 # Bindings        ---------------------------------------------- {{{
 
 # fish vi mode
@@ -190,6 +196,12 @@ alias tk 'tmux kill-session -t'
 # curl-trace       {{{
 
 alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
+
+# }}}
+# aws-fuzzy        {{{
+
+alias af='aws-fuzzy'
+alias afnc='aws-fuzzy --no-cache'
 
 # }}}
 
@@ -505,21 +517,6 @@ function fco -d "Fuzzy-find and checkout a branch"
     set -lx FZF_DEFAULT_OPTS "--height 40% +m"
     git branch --all | grep -v HEAD | string trim | fzf |  xargs git checkout
     commandline -f repaint
-end
-
-# }}}
-# af                {{{
-
-function af
-    set -l result (ec2-fzf --private $argv)
-    echo "ssh $result"
-    ssh $result
-end
-
-function afp
-   set -l result (ec2-fzf $argv)
-    echo "ssh $result"
-    ssh $result
 end
 
 # }}}

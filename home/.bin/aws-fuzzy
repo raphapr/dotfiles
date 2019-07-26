@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$HOME/.virtualenvs/aws-fuzzy/bin/aws-fuzzy $@
