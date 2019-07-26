@@ -70,7 +70,7 @@ bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run '
 # %%hotkey: start rofi window mode
 bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-window "window " -theme ~/.config/rofi/bala.rasi
 # %%hotkey: start rofi-hotkeys
-bindsym $mod+m exec --no-startup-id ~/.bin/rofi-hotkeys
+bindsym $mod+m exec --no-startup-id ~/.bin/rofi-history
 # %%hotkey: rofi-copyq
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
 # %%hotkey: rofi-pass
