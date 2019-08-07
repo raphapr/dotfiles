@@ -333,12 +333,6 @@ Plug 'qpkorr/vim-bufkill'
 nmap <C-E> :BD<cr>
 
 " }}}
-" ===== clojure                 {{{
-
-Plug 'tpope/vim-fireplace'
-Plug 'guns/vim-sexp'
-
-" }}}
 
 call plug#end()
 
