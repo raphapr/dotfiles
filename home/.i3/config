@@ -180,7 +180,6 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+u move container to workspace 1
@@ -196,6 +195,9 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 #}}}
 # Personal Shortcuts    ----------------------------------------------------- {{{
+
+# %shortcut: fullscreen navigation
+bindsym $mod+0 exec --no-startup-id ~/.i3/scripts/fullscreen_nav focus left
 
 # %shortcut: google chrome ingonito
 bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
