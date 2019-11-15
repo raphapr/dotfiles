@@ -245,6 +245,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
+# %shortcut: authy
+bindsym $mod+shift+y exec --no-startup-id ~/.bin/authy
+
 # %shortcut: run aws-credentials-paste
 bindsym F2 exec --no-startup-id ~/.bin/aws-credentials-paste
 
@@ -313,13 +316,11 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 
 for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
-for_window [class="Main.py" instance="guake"] floating enable
 for_window [class="Skype"] floating enable
 for_window [title="Adicionar Transferências"] floating enable
-for_window [class="Pinentry"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Anki"] floating enable
-for_window [class="insync.py"] floating enable
+for_window [title="Authy"] floating enable
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
@@ -329,10 +330,6 @@ exec --no-startup-id termite -t 90htop -e "htop"
 for_window [title="90htop"] move scratchpad
 # %%hotkey: htop scratchpad
 bindsym $mod+F12 [title="90htop"] scratchpad show
-
-# ranger
-exec --no-startup-id termite -t 90ranger -e "ranger"
-for_window [title="90ranger"] move scratchpad
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
