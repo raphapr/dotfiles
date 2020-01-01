@@ -12,6 +12,7 @@
 # Variables             ----------------------------------------------------- {{{
 
 set $mod Mod4
+set $mod2 Mod4+Shift
 set $BROWSER    firefox
 set $TERM       termite -e fish
 set $TMUX       termite -t main -e "$HOME/.bin/tmuxsession main"
@@ -60,7 +61,7 @@ mouse_warping none
 # i3 Shortcuts          ----------------------------------------------------- {{{
 
 # %%hotkey: border toggle
-bindsym $mod+Shift+b border toggle
+bindsym $mod2+b border toggle
 
 # %%hotkey: kill focused window
 bindsym $mod+BackSpace kill
@@ -86,22 +87,22 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # %%hotkey: move focused window left
-bindsym $mod+Shift+h move left
+bindsym $mod2+h move left
 # %%hotkey: move focused window down
-bindsym $mod+Shift+j move down
+bindsym $mod2+j move down
 # %%hotkey: move focused window up
-bindsym $mod+Shift+k move up
+bindsym $mod2+k move up
 # %%hotkey: move focused window right
-bindsym $mod+Shift+l move right
+bindsym $mod2+l move right
 
 # %%hotkey: move focused window left (alternative)
-bindsym $mod+Shift+Left move left
+bindsym $mod2+Left move left
 # %%hotkey: move focused window down (alternative)
-bindsym $mod+Shift+Down move down
+bindsym $mod2+Down move down
 # %%hotkey: move focused window up (alternative)
-bindsym $mod+Shift+Up move up
+bindsym $mod2+Up move up
 # %%hotkey: move focused window rifht (alternative)
-bindsym $mod+Shift+Right move right
+bindsym $mod2+Right move right
 
 # %%hotkey: split in horizontal orientation
 bindsym $mod+v split h
@@ -120,7 +121,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # %%hotkey: floating toggle
-bindsym $mod+Shift+space floating toggle
+bindsym $mod2+space floating toggle
 
 # %%hotkey: change focus between tiling / floating windows 
 bindsym $mod+z focus mode_toggle
@@ -137,10 +138,10 @@ bindsym $mod+Left workspace prev
 bindsym $mod+Right workspace next
 
 # %%hotkey: restart i3 (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod2+r restart
 
 # %%hotkey: exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod2+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # %%hotkey: resize window
 bindsym $mod+r mode "resize"
@@ -183,16 +184,16 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+u move container to workspace 1
-bindsym $mod+Shift+i move container to workspace 2
-bindsym $mod+Shift+o move container to workspace 3
-bindsym $mod+Shift+p move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod2+u move container to workspace 1
+bindsym $mod2+i move container to workspace 2
+bindsym $mod2+o move container to workspace 3
+bindsym $mod2+p move container to workspace 4
+bindsym $mod2+5 move container to workspace 5
+bindsym $mod2+6 move container to workspace 6
+bindsym $mod2+7 move container to workspace 7
+bindsym $mod2+8 move container to workspace 8
+bindsym $mod2+9 move container to workspace 9
+bindsym $mod2+0 move container to workspace 10
 
 #}}}
 # Personal Shortcuts    ----------------------------------------------------- {{{
@@ -220,7 +221,7 @@ bindsym $mod+shift+Return exec --no-startup-id $TMUX
 bindsym $mod+q exec --no-startup-id $BROWSER
 
 # %shortcut: telegram
-bindsym $mod+Shift+t exec telegram-desktop
+bindsym $mod2+t exec telegram-desktop
 
 # %shortcut: flameshot print screen
 bindsym --release $mod+Print exec --no-startup-id $PRINT
