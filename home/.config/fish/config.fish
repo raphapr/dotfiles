@@ -489,15 +489,13 @@ end
 
 # }}}
 
-
 # }}}
 # FZF functions   ---------------------------------------------- {{{
 
 # aws-profile       {{{
 
 function aws-profile
-    set -lx FZF_DEFAULT_OPTS "--height 20% +m"
-    rg '^\[.*]' ~/.aws/credentials | tr -d "[]" | cat | fzf > /tmp/awsp; and export AWS_PROFILE=(cat /tmp/awsp)
+    export AWS_PROFILE=(grep "^\[.*]" ~/.aws/credentials | tr -d "[]" | fzf --height 20% +m)
     commandline -f repaint
 end
 
