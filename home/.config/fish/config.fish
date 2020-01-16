@@ -16,7 +16,7 @@ export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 
 if test "$DISPLAY"
-    xset r rate 240 50
+    xset r rate 240 40
 end
 
 if test -e $GOPATH/bin
