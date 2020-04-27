@@ -249,9 +249,6 @@ bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 # %shortcut: authy
 bindsym $mod+shift+y exec --no-startup-id ~/.bin/authy
 
-# %shortcut: run aws-credentials-paste
-bindsym F2 exec --no-startup-id ~/.bin/aws-credentials-paste
-
 #}}}
 # bar                   ----------------------------------------------------- {{{
 

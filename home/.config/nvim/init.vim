@@ -321,6 +321,11 @@ Plug 'qpkorr/vim-bufkill'
 nmap <C-E> :BD<cr>
 
 " }}}
+" ===== vim-terraform           {{{
+
+Plug 'hashivim/vim-terraform'
+
+" }}}
 
 call plug#end()
 
