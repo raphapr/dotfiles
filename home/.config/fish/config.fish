@@ -11,9 +11,10 @@ export TERM=screen-256color
 export EDITOR="nvim"
 export VIRTUALENV_PYTHON=/usr/bin/python2.7
 export GOPATH="$HOME/go"
-export BROWSER firefox
+export BROWSER=firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
+export GEMDIR=(ruby -e 'print Gem.user_dir')
 
 if test "$DISPLAY"
     xset r rate 240 30
@@ -27,15 +28,13 @@ if test -e /opt/julia/bin
     set PATH $PATH /opt/julia/bin
 end
 
-if test -e ~/.gem/ruby/2.5.0/bin
-    set PATH $PATH  ~/.gem/ruby/2.5.0/bin
+if test -e $GEMDIR/bin
+    set PATH $PATH  $GEMDIR/bin
 end
 
 if test -e ~/.bin
     set PATH $PATH ~/.bin
 end
-
-set PATH $PATH "(ruby -e 'print Gem.user_dir')/bin"
 
 # aws complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
@@ -72,9 +71,6 @@ end
 
 # }}}
 # Plugins         ---------------------------------------------- {{{
-
-# virtualfish
-eval (python -m virtualfish auto_activation)
 
 # direnv
 eval (direnv hook fish)

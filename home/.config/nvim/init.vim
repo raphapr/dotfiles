@@ -27,8 +27,6 @@ call plug#begin('~/.nvim/plugged')
 " ===== Color Scheme            {{{
 
 Plug 'morhetz/gruvbox'
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'hard'
 
 " }}}
 " ===== Syntax highlighting     {{{
@@ -328,6 +326,9 @@ call plug#end()
 
 " }}}
 " Settings    -------------------------------------------------------------- {{{
+
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
 
 syntax enable
 set background=dark

@@ -79,7 +79,6 @@ w3m
 direnv
 rofi-pass
 autorandr
-pritunl-client-gtk
 goaccess
 copyq
 pavucontrol
@@ -94,3 +93,4 @@ pkgfile
 saw
 xcwd-git
 flameshot
+termite
