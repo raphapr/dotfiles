@@ -17,7 +17,6 @@ sudo pacman -S --noconfirm --needed vim python2 python2-pip python python-pip fi
 ln -sf ~/Dropbox ~/Cloud
 ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
 ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
-ln -sf ~/Cloud/sync/buku ~/.local/share/buku
 ln -sf ~/Cloud/sync/env ~/.env
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
@@ -61,6 +60,13 @@ if [ ! -f ~/.git-completion.bash ]; then
 else
   echo "[ bootstrap ] :: git-completion.bash already installed!"
 fi
+
+# install kubectl completion for fish shell
+mkdir -p ~/.config/fish/completions
+pushd ~/.config/fish
+git clone https://github.com/evanlucas/fish-kubectl-completions
+ln -s ../fish-kubectl-completions/completions/kubectl.fish completions/
+popd
 
 # install fzf
 if [ ! -d ~/.fzf ]; then
