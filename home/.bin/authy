@@ -1,3 +1,0 @@
-#!/bin/bash
-
-google-chrome-stable --app-id=$(chrome-app-by-name authy)
