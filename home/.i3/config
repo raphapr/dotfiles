@@ -246,6 +246,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
+# %shortcut: authy
+bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy/app.asar
+
 #}}}
 # bar                   ----------------------------------------------------- {{{
 
