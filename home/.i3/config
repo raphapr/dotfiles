@@ -111,7 +111,8 @@ bindsym $mod+v split h
 bindsym $mod+b split v
 
 # %%hotkey: enter fullscreen mode for the focused container
-bindsym F12 fullscreen
+bindsym F2 fullscreen
+bindsym $mod+F12 fullscreen
 
 # %%hotkey: container layout - stacking
 bindsym $mod+s layout stacking
@@ -230,7 +231,7 @@ bindsym --release $mod+Print exec --no-startup-id $PRINT
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
 
 # %shortcut: keyboard layout
-bindsym $mod+F11 exec --no-startup-id ~/.bin/klayout-toggle
+bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
 
 # %shortcut: lock screen
 bindsym $mod+x exec --no-startup-id i3lock -c 000000
@@ -299,7 +300,7 @@ mode "$mode_system" {
 }
 
 # %%hotkey: i3exit menu
-bindsym $mod+F1 mode "$mode_system"
+bindsym $mod+F3 mode "$mode_system"
 
 #}}}
 # Theme colors          ----------------------------------------------------- {{{
@@ -327,13 +328,13 @@ for_window [title="Authy"] floating enable
 exec --no-startup-id termite -t 90htop -e "htop"
 for_window [title="90htop"] move scratchpad
 # %%hotkey: htop scratchpad
-bindsym $mod+F12 [title="90htop"] scratchpad show
+bindsym $mod+F2 [title="90htop"] scratchpad show
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # %%hotkey: multi monitor menu
-bindsym $mod+F10 mode "$multi_monitor"
+bindsym $mod+F11bind [ copy-modeg mode "$multi_monitor"
 
 set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
 mode "$multi_monitor" {
@@ -347,7 +348,7 @@ mode "$multi_monitor" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+F10 mode "default"
+    bindsym $mod+F11 mode "default"
 }
 
 #}}}
