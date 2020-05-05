@@ -326,6 +326,15 @@ nmap <C-E> :BD<cr>
 Plug 'hashivim/vim-terraform'
 
 " }}}
+" ===== vim-base64              {{{
+
+Plug 'christianrondeau/vim-base64'
+
+" Visual Mode mappings
+vnoremap <silent> <leader>de :<c-u>call base64#v_atob()<cr>
+vnoremap <silent> <leader>en :<c-u>call base64#v_btoa()<cr>
+
+" }}}
 
 call plug#end()
 
