@@ -8,7 +8,6 @@
 .config/dunst
 .homesick/repos/dotfiles/home/.bin
 .config/fontconfig
-.config/fish/functions
 .config/nvim
 .config/fish
 .icons/default
