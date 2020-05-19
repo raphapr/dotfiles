@@ -39,9 +39,6 @@ end
 # aws complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
-# virtualgo
-command -v vg >/dev/null 2>&1; and vg eval --shell fish | source
-
 # load my environment variables
 source $HOME/.env
 
@@ -51,6 +48,9 @@ export AWS_FUZZ_USE_CACHE=yes
 export AWS_FUZZ_CACHE_EXPIRY=604800
 export AWS_FUZZ_USER=$SSH_WORK_USERNAME
 
+# kubectl krew
+set -gx PATH $PATH $HOME/.krew/bin
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -58,6 +58,7 @@ export AWS_FUZZ_USER=$SSH_WORK_USERNAME
 # ctrl+f only accept autosuggestion
 # ctrl+a switch AWS profile
 # ctrl+q switch virtualenv
+# ctrl+k switch k8s context
 function fish_user_key_bindings
     fish_vi_key_bindings
     fzf_key_bindings
@@ -67,6 +68,10 @@ function fish_user_key_bindings
     bind \ca "aws-profile"
     bind -M insert \cq "vf-switch"
     bind \cq "vf-switch"
+    bind -M insert \ck "kubectl ctx"
+    bind \ck "kubectl ctx"
+    bind -M insert \cn "kubectl ns"
+    bind \cn "kubectl ns"
 end
 
 # }}}
@@ -147,7 +152,7 @@ alias prup 'pacaur -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update 'sudo pacman-mirrors -g'
 
 # }}}
-# save_history      {{{
+# save_history     {{{
 
 # history across fishes
 function save_history --on-event fish_preexec
@@ -203,6 +208,9 @@ alias afnc='aws-fuzzy --no-cache'
 # kubectl          {{{
 
 alias k kubectl
+alias kk 'kubectl krew'
+alias kc 'kubectl ctx'
+alias kn 'kubectl ns'
 alias kd 'k describe'
 alias kg 'k get'
 alias kaf 'k apply -f'
@@ -525,6 +533,23 @@ function ec2-ssh
 end
 
 # }}}
+# kps               {{{
+
+function kps
+    if [ $__kube_ps_enabled -eq 1 ]
+      kube_ps off
+      return
+    end
+    if [ $__kube_ps_enabled -eq 0 ]
+      kube_ps on
+      return
+    end
+    if [ -z "$__kube_ps_enabled" ]
+      kube_ps on
+    end
+end
+
+# }}}
 
 # }}}
 # FZF functions   ---------------------------------------------- {{{
@@ -541,7 +566,7 @@ end
 
 function vf-switch
     set -lx FZF_DEFAULT_OPTS "--height 20% +m"
-    vf ls | fzf > /tmp/vfs; and vf activate (cat /tmp/vfs)
+    vf activate (vf ls | fzf)
     commandline -f repaint
 end
 
