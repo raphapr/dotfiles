@@ -20,6 +20,7 @@ ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 ln -sf ~/Cloud/sync/env ~/.env
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
+ln -sf ~/Cloud/sync/krew ~/.krew
 
 # install cron jobs
 crontab <<EOF
@@ -94,9 +95,6 @@ do_slnk ~/.tmux.conf ~/.tmux/tmux.conf
 wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /tmp/xpanes
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
 rm -rf ~/tmp/xpanes
-
-# install tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 echo "[ bootstrap ] :: Install pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
