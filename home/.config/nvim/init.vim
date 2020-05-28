@@ -263,6 +263,8 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+nnoremap <C-a> :Ag<Space>
+
 " }}}
 " ===== vim-fugitive            {{{
 
@@ -300,17 +302,6 @@ au FileType go nmap <Leader>kk <Plug>(go-doc)
 au FileType go nmap <Leader>kb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>im <Plug>(go-implements)
 au FileType go nmap <Leader>in <Plug>(go-info)
-
-" }}}
-" ===== ack.vim                 {{{
-
-Plug 'mileszs/ack.vim'
-
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-
-nnoremap <Leader>a :Ack!<Space>
 
 " }}}
 " ===== vim-buffkill            {{{

@@ -96,6 +96,8 @@ wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
 rm -rf ~/tmp/xpanes
 
+# install pkg list
+
 echo "[ bootstrap ] :: Install pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
     pacaur -S --needed --noedit --noconfirm $PKG || echo "$PKG failed." >> $PKGLOG
