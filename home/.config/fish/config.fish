@@ -206,6 +206,12 @@ alias af='aws-fuzzy'
 alias afnc='aws-fuzzy --no-cache'
 
 # }}}
+# gce-fuzzy        {{{
+
+alias gf='gce-fuzzy -c 432000'
+alias gfnc='gce-fuzzy -c 432000 -r'
+
+# }}}
 # kubectl          {{{
 
 alias k kubectl
