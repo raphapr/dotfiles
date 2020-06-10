@@ -1,7 +1,25 @@
 #!/bin/bash
+#===============================================================================
+#
+#          FILE: gce-fuzzy
+#
+#         USAGE: ./gce-fuzzy -p staging
+#
+#   DESCRIPTION: SSH into GCE instances using fuzzy search
+#
+#       OPTIONS: use -h to display options
+#  DEPENDENCIES: Google Cloud SDK (https://cloud.google.com/sdk/docs/), fzf (https://github.com/junegunn/fzf)
+#
+#===============================================================================
 
 usage() {
-  echo "Usage: $0 [ -p PROJECT ] [ -s SSH OPTS ] [ -c CACHE TTL ] [ -r REFRESH CACHE ]" 1>&2
+  echo "usage: $0 [options]"
+  echo ""
+  echo "  -p PROJECT            Google Cloud project (required)."
+  echo "  -s SSH_OPTS           SSH client options; same as SSH(1)."
+  echo "  -c CACHE_TTL          Cache Expiry Time."
+  echo "  -r                    Refresh cache."
+  echo ""
   exit 2
 }
 
@@ -30,7 +48,7 @@ cache_file="${HOME}/.gce_fuzzy_cache/$project"
 mkdir -p $cache_dir
 
 if [ -z ${project} ]; then
-  echo "gce-fuzzy requires project argument!"
+  printf "project argument expected.\n\n"
   exit_abnormal
 fi
 
@@ -40,7 +58,7 @@ if [ ! -f $(which fzf) ]; then
 fi
 
 if [ ! -f $(which gcloud) ]; then
-  echo "gcloud sdk  not installed!"
+  echo "gcloud sdk not installed!"
   exit 1
 fi
 
@@ -53,7 +71,6 @@ refresh_cache() {
 get_cache() {
   result=$(cat ${cache_file} | fzf | awk '{ print $4 }')
 }
-
 
 echo "Listing GCE instances..."
 if [ -f ${cache_file} ] && [ $(expr $(date +%s) - $(date -r "$cache_file" +%s)) -lt $cache_ttl ] && [ "$refresh" != true ]; then
