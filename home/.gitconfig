@@ -49,3 +49,5 @@
 	renames = copies
 [merge]
 	stat = true
+[pull]
+	rebase = false
