@@ -277,9 +277,9 @@ Plug 'airblade/vim-gitgutter'
 " }}}
 " ===== async lint engine       {{{
 
-" Used linters: flake8 (python)
-
 Plug 'w0rp/ale'
+
+let b:ale_linters = ['flake8', 'pylint', 'vint', 'jsonlint', 'tflint', 'yamllint']
 let g:ale_completion_enabled = 1
 
 " }}}

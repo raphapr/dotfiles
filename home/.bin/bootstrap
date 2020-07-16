@@ -29,7 +29,7 @@ crontab <<EOF
 EOF
 
 # install pip / python packages
-sudo pip install tmuxp virtualenv neovim virtualfish flake8 saws ptpython ipython boto3
+sudo pip install tmuxp virtualenv neovim virtualfish flake8 saws ptpython ipython boto3 yamllint
 
 # aws-fuzzy
 [[ ! -d ~/.virtualenvs ]]  && mkdir ~/.virtualenvs
@@ -40,7 +40,7 @@ pip install https://github.com/raphapr/aws-fuzzy-finder/archive/v0.3.6.zip
 deactivate
 
 # npm packages
-sudo npm install --global git-recent
+sudo npm install --global git-recent jsonlint
 
 # homesick: dotfiles version control
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
