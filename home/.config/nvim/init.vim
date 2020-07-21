@@ -279,7 +279,7 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'w0rp/ale'
 
-let b:ale_linters = ['flake8', 'pylint', 'vint', 'jsonlint', 'tflint', 'yamllint']
+let b:ale_linters = ['flake8', 'pylint', 'vint', 'jsonlint', 'tflint']
 let g:ale_completion_enabled = 1
 
 " }}}
