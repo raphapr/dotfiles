@@ -189,6 +189,9 @@ nmap f <Plug>(easymotion-overwin-f)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+nmap / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
 " }}}
 " ===== vim-peekaboo            {{{
 
@@ -217,7 +220,7 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
 nnoremap <silent> <C-m> :Buffers<CR>
 nnoremap <silent> <C-p> :FZF -m<CR>
- 
+
 "" C-k C-j mapping up-down
 autocmd FileType fzf tnoremap <buffer> <C-k> <Up>
 autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
@@ -354,10 +357,6 @@ set autoindent
 set copyindent
 set smartindent
 set preserveindent
-
-" YAML
-"autocmd FileType yaml setlocal ai ts=2 sw=2 et
-"set backspace=indent,eol,start
 
 " Undo settings files
 set undofile

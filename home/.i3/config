@@ -258,7 +258,7 @@ bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy
 
 bar {
   position top
-  font pango:FontAwesome, Icons 8
+  font pango:tewi-medium 8
   #status_command i3status
   status_command SCRIPT_DIR=~/.i3/scripts i3blocks
   colors {
