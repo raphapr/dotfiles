@@ -111,7 +111,7 @@ bindsym $mod+v split h
 bindsym $mod+b split v
 
 # %%hotkey: enter fullscreen mode for the focused container
-bindsym F2 fullscreen
+bindsym F12 fullscreen
 bindsym $mod+F12 fullscreen
 
 # %%hotkey: container layout - stacking

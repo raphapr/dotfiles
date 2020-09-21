@@ -367,6 +367,10 @@ set backupskip=/tmp/*,/private/tmp/*"   " No backup file is created for these
 set cursorcolumn
 set mmp=5000
 
+" improve perfomance
+set lazyredraw
+set ttyfast
+
 " }}}
 " Folding     -------------------------------------------------------------- {{{
 
