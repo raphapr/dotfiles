@@ -46,7 +46,6 @@ source $HOME/.env
 export AWS_FUZZ_PRIVATE_IP=true
 export AWS_FUZZ_USE_CACHE=yes
 export AWS_FUZZ_CACHE_EXPIRY=604800
-export AWS_FUZZ_USER=$SSH_WORK_USERNAME
 
 # kubectl krew
 set -gx PATH $PATH $HOME/.krew/bin

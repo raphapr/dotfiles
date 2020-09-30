@@ -75,7 +75,7 @@ bindsym $mod+m exec --no-startup-id ~/.bin/rofi-history
 # %%hotkey: rofi-copyq
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
 # %%hotkey: rofi-pass
-bindsym $mod+y exec --no-startup-id rofi-pass
+bindsym $mod+y exec --no-startup-id rofi -modi 1pass:rofi-1pass -show 1pass -width 1000 -theme ~/.config/rofi/bala.rasi
 
 # %%hotkey: change focus left
 bindsym $mod+h focus left

@@ -61,7 +61,6 @@ adwaita-icon-theme
 w3m
 notifyconf
 volnoti
-pass
 xf86-input-synaptics
 arandr
 i3blocks
@@ -76,7 +75,6 @@ networkmanager
 network-manager-applet
 w3m
 direnv
-rofi-pass
 autorandr
 goaccess
 copyq
@@ -102,3 +100,5 @@ git-crypt
 tflint
 jid
 ttf-dejavu
+1password
+rofi-1pass
