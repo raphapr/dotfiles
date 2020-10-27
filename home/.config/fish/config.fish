@@ -50,6 +50,14 @@ export AWS_FUZZ_CACHE_EXPIRY=604800
 # kubectl krew
 set -gx PATH $PATH $HOME/.krew/bin
 
+# yarn path setup
+set -U fish_user_paths (yarn global bin) $fish_user_paths
+
+# npm path setup
+set NPM_PACKAGES "$HOME/.npm-packages"
+set PATH $PATH $NPM_PACKAGES/bin
+set MANPATH $NPM_PACKAGES/share/man $MANPATH
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
