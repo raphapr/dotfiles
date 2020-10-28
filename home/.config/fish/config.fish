@@ -531,8 +531,8 @@ function ec2-ssh
         ssh $result
     end
     if test (count $result) -gt 1
-        echo "xpanes -c 'ssh {}' $result"
-        xpanes -c 'ssh {}' $result
+        echo "xpanes -c 'ssh $SSH_OPTS '{}' $result"
+        xpanes -c "ssh $SSH_OPTS {}" $result
     end
 end
 
