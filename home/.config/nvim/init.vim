@@ -40,6 +40,11 @@ au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
 au BufRead,BufNewFile */vars/*.yml set filetype=yaml.ansible
 
+" jenkinsfile
+Plug 'martinda/Jenkinsfile-vim-syntax'
+autocmd BufRead,BufNewFile *.jdp setf Jenkinsfile
+autocmd BufRead,BufNewFile *.jdp setf Jenkinsfile
+
 " }}}
 " ===== jedi                    {{{
 
