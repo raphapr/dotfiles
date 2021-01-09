@@ -14,4 +14,4 @@ crtc 1
 mode 1920x1080
 pos 2560x0
 rate 60.00
-rotate left
+rotate right

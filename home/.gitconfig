@@ -1,14 +1,15 @@
 [user]
-	name = Raphael P. Ribeiro
-	email = raphaelpr01@gmail.com
+  name = Raphael P. Ribeiro
+  email = raphaelpr01@gmail.com
+  signingkey = DBC876419930B2EB8447BFEFFA70B2729F47724C
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 
 [remote "origin"]
-	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [core]
   editor = nvim
-	excludesfile = /home/raphael/.gitignore_global
+  excludesfile = /home/raphael/.gitignore_global
 [alias]
   aa = add -A
   ap = add --patch
@@ -40,14 +41,16 @@
   pr = "!f() { hub pull-request; };f"
 
 [push]
-	default = tracking
+  default = tracking
 [gitreview]
-	raphapr = raphapr
+  raphapr = raphapr
 [github]
-	user = raphapr
+  user = raphapr
 [diff]
-	renames = copies
+  renames = copies
 [merge]
-	stat = true
+  stat = true
 [pull]
-	rebase = false
+  rebase = false
+[commit]
+	gpgsign = true
