@@ -197,6 +197,8 @@ map <Leader>k <Plug>(easymotion-k)
 nmap / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
+map <Leader>s <Plug>(easymotion-sn)<C-R>*
+
 " }}}
 " ===== vim-peekaboo            {{{
 
