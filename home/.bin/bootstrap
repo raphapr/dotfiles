@@ -95,6 +95,10 @@ fi
 # symlink tmux conf
 do_slnk ~/.tmux.conf ~/.tmux/tmux.conf
 
+# tmux plugins
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/laktak/extrakto ~/.tmux/plugins/extrakto
+
 # install tmux-xpanes
 wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /tmp/xpanes
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
