@@ -6,9 +6,6 @@ export EDITOR=vim
 PKGLIST=../.pkglist
 PKGLOG=~/.pacaur.log
 
-# eg.: do_slnk <original_path> <symlink_path>
-function do_slnk() { [[ ! -f $1 ]] && ln -s $1 $2 ; }
-
 # pacman update and dependencies
 sudo pacman -Syu --needed
 sudo pacman -S --noconfirm --needed vim python2 python2-pip python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git pacaur
@@ -21,6 +18,7 @@ ln -sf ~/Cloud/sync/env ~/.env
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/krew ~/.krew
+ln -sf ~/Cloud/sync/espanso ~/.config/espanso
 
 # install cron jobs
 crontab <<EOF
@@ -93,7 +91,7 @@ else
 fi
 
 # symlink tmux conf
-do_slnk ~/.tmux.conf ~/.tmux/tmux.conf
+ln -sf ~/.tmux.conf ~/.tmux/tmux.conf
 
 # tmux plugins
 mkdir -p ~/.tmux/plugins
