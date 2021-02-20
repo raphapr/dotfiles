@@ -2,6 +2,8 @@
 
 This repository contains configuration files I use on my Manjaro GNU/Linux which has been inspired by the rest of the dotfiles community. 
 
+
+
 ## Install
 
 Run this:
