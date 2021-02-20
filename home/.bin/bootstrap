@@ -18,7 +18,6 @@ ln -sf ~/Cloud/sync/env ~/.env
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/krew ~/.krew
-ln -sf ~/Cloud/sync/espanso ~/.config/espanso
 
 # install cron jobs
 crontab <<EOF
