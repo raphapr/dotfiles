@@ -4,6 +4,7 @@ This repository contains configuration files I use on my Manjaro GNU/Linux which
 
 
 
+
 ## Install
 
 Run this:
