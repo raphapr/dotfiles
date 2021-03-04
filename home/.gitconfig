@@ -54,3 +54,6 @@
   rebase = false
 [commit]
 	gpgsign = true
+
+[includeIf "gitdir:~/repos/vouch/"]
+  path = ~/repos/vouch/.gitconfig

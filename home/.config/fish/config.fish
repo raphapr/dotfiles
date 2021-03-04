@@ -43,15 +43,16 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 source $HOME/.env
 
 # aws-fuzzy
-export AWS_FUZZ_PRIVATE_IP=true
+export AWS_FUZZ_PRIVATE_IP=false
 export AWS_FUZZ_USE_CACHE=yes
 export AWS_FUZZ_CACHE_EXPIRY=604800
+export AWS_FUZZ_DNS_OVER_IP=true
 
 # kubectl krew
 set -gx PATH $PATH $HOME/.krew/bin
 
 # yarn path setup
-set -U fish_user_paths (yarn global bin) $fish_user_paths
+#set -U fish_user_paths (yarn global bin) $fish_user_paths
 
 # npm path setup
 set NPM_PACKAGES "$HOME/.npm-packages"
@@ -132,8 +133,6 @@ alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
 alias weather "curl wttr.in/florianopolis"
-# load ssh agent to use ssh -A
-alias sshagent "eval (ssh-agent -c); ssh-add ~/.ssh/id_rsa"
 #  ptpython
 alias ptpython "python -m ptpython"
 # '-' as shortcut to cd -
@@ -551,6 +550,41 @@ function kps
     if [ -z "$__kube_ps_enabled" ]
       kube_ps on
     end
+end
+
+# }}}
+# sshagent           {{{
+
+function __ssh_agent_is_started -d "check if ssh agent is already started"
+   if begin; test -f $SSH_ENV; and test -z "$SSH_AGENT_PID"; end
+      source $SSH_ENV > /dev/null
+   end
+
+   if test -z "$SSH_AGENT_PID"
+      return 1
+   end
+
+   ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep -q ssh-agent
+   #pgrep ssh-agent
+   return $status
+end
+
+
+function __ssh_agent_start -d "start a new ssh agent"
+   ssh-agent -c | sed 's/^echo/#echo/' > $SSH_ENV
+   chmod 600 $SSH_ENV
+   source $SSH_ENV > /dev/null
+   true  # suppress errors from setenv, i.e. set -gx
+end
+
+function sshagent --description "Start ssh-agent if not started yet, or uses already started ssh-agent."
+   if test -z "$SSH_ENV"
+      set -xg SSH_ENV $HOME/.ssh/environment
+   end
+
+   if not __ssh_agent_is_started
+      __ssh_agent_start
+   end
 end
 
 # }}}
