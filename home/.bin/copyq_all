@@ -1,4 +1,4 @@
-var MAX_SIZE=200
+var MAX_SIZE=10000
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
