@@ -466,6 +466,9 @@ vmap > >gv
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
 
+" Copy entire line without the newline at the end
+nmap Y y$
+
 " regex
 " These mappings save you some keystrokes and put you where you start typing your search pattern. After typing it you move to the replacement part , type it and hit return. The second version adds confirmation flag.
 noremap ;; :%s:::g<Left><Left><Left>
