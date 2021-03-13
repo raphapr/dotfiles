@@ -316,6 +316,7 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 #}}}
 # Window rules          ----------------------------------------------------- {{{
 
+# floating windows
 for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [class="Skype"] floating enable
@@ -323,6 +324,13 @@ for_window [title="Adicionar Transferências"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Anki"] floating enable
 for_window [title="Authy"] floating enable
+
+# firefox window groups
+for_window [title="^\[Work\].*"] move to workspace 1
+for_window [title="^\[Work Support\].*"] move to workspace 1
+for_window [title="^\[Personal\].*"] move to workspace 2
+for_window [title="^\[Study\].*"] move to workspace 3
+for_window [title="^\[Second Screen\].*"] move to workspace 4
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
