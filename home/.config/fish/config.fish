@@ -36,6 +36,10 @@ if test -e ~/.bin
     set PATH $PATH ~/.bin
 end
 
+if test -e ~/.local/bin
+    set PATH $PATH ~/.local/bin
+end
+
 # aws complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
