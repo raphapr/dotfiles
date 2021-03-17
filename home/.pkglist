@@ -38,11 +38,8 @@ tar
 unzip
 unrar
 wget
-the_silver_searcher
 xclip
 xfce4-power-manager
-imgurbash2
-notify-osd-customizable
 profile-sync-daemon
 smplayer
 mpc
@@ -75,7 +72,6 @@ network-manager-applet
 w3m
 direnv
 autorandr
-goaccess
 copyq
 pavucontrol
 pygmentize
@@ -103,3 +99,7 @@ ttf-dejavu
 rofi-1pass
 xdotool
 ttf-iosevka
+tree-sitter
+slack-desktop
+discord
+net-tools
