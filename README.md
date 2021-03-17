@@ -8,8 +8,8 @@ Run this:
 
 ```bash
 git clone https://github.com/raphapr/dotfiles ~/dotfiles
-cd ~/dotfiles && chmod +x home/.bin/bootstrap
-./bootstrap
+cd ~/dotfiles && chmod +x ./home/.bin/bootstrap
+./home/.bin/bootstrap
 ```
 
 ## Symlink dotfiles
@@ -36,8 +36,7 @@ You can now link its contents into your home dir:
 * ranger
 * firefox
 * thunar
-* imgurbash
-* termite
+* kitty
 * zathura
 * fasd
 * feh
