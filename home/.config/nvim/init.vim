@@ -29,23 +29,6 @@ call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
 
 " }}}
-" ===== Syntax highlighting     {{{
-
-" fish
-Plug 'dag/vim-fish'
-
-" ansible
-Plug 'pearofducks/ansible-vim'
-au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
-au BufRead,BufNewFile */ansible/*.yml set filetype=yaml.ansible
-au BufRead,BufNewFile */vars/*.yml set filetype=yaml.ansible
-
-" jenkinsfile
-Plug 'martinda/Jenkinsfile-vim-syntax'
-autocmd BufRead,BufNewFile *.jdp setf Jenkinsfile
-autocmd BufRead,BufNewFile *.jdp setf Jenkinsfile
-
-" }}}
 " ===== jedi                    {{{
 
 " Dependency: sudo pip install neovim jedi
@@ -334,6 +317,16 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " }}}
+" ===== nvim-treesitter         {{{
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" }}}
+" ===== vim-fish                {{{
+
+Plug 'dag/vim-fish'
+
+" }}}
 
 call plug#end()
 
@@ -542,6 +535,18 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 
 nnoremap <silent> - :ZoomToggle<CR>
+
+" }}}
+" Lua         -------------------------------------------------------------- {{{
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true
+  },
+}
+EOF
 
 " }}}
 " Adjusts     -------------------------------------------------------------- {{{
