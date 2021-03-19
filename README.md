@@ -38,7 +38,7 @@ You can now link its contents into your home dir:
 * thunar
 * kitty
 * zathura
-* fasd
+* autojump
 * feh
 * fzf
 * translate-shell

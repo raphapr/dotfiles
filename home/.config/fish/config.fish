@@ -15,6 +15,14 @@ export BROWSER=firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GEMDIR=(ruby -e 'print Gem.user_dir')
+# aws-fuzzy
+export AWS_FUZZ_PRIVATE_IP=false
+export AWS_FUZZ_USE_CACHE=yes
+export AWS_FUZZ_CACHE_EXPIRY=604800
+export AWS_FUZZ_DNS_OVER_IP=true
+
+# load sensible environment variables
+source $HOME/.env
 
 if test "$DISPLAY"
     xset r rate 240 30
@@ -40,23 +48,11 @@ if test -e ~/.local/bin
     set PATH $PATH ~/.local/bin
 end
 
-# aws complete
+# awscli complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
-
-# load my environment variables
-source $HOME/.env
-
-# aws-fuzzy
-export AWS_FUZZ_PRIVATE_IP=false
-export AWS_FUZZ_USE_CACHE=yes
-export AWS_FUZZ_CACHE_EXPIRY=604800
-export AWS_FUZZ_DNS_OVER_IP=true
 
 # kubectl krew
 set -gx PATH $PATH $HOME/.krew/bin
-
-# yarn path setup
-#set -U fish_user_paths (yarn global bin) $fish_user_paths
 
 # npm path setup
 set NPM_PACKAGES "$HOME/.npm-packages"
@@ -65,6 +61,11 @@ set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
 # kitty autocomplete
 kitty + complete setup fish | source
+
+# autojump
+if test -e /usr/share/autojump/autojump.fish
+  source /usr/share/autojump/autojump.fish
+end
 
  #}}}
 # Bindings        ---------------------------------------------- {{{
@@ -120,7 +121,6 @@ alias eb 'v ~/.bashrc'
 alias ev 'v ~/.config/nvim/init.vim'
 alias i3c 'v ~/.i3/config'
 alias xmerge 'xrdb -merge ~/.Xresources'
-alias zz 'fasd'
 alias notes 'nvim ~/Cloud/notes/notes.txt'
 # Ver diretórios com mais espaço em disco 
 alias topdir 'du -sh * | sort -nr | head -n10'
@@ -303,68 +303,6 @@ function wininfo
 end
 
 # }}}
-# cd                {{{
-
-function cd
-    # Added a record to fasd
-    if [ -d $argv ]
-        fasd -A $argv
-    end
-
-    # Skip history in subshells
-    if status --is-command-substitution
-        builtin cd $argv
-        return $status
-    end
-
-    # Avoid set completions
-    set -l previous $PWD
-
-    if test $argv[1] = - ^/dev/null
-        if test "$__fish_cd_direction" = next ^/dev/null
-            nextd
-        else
-            prevd
-        end
-        return $status
-    end
-
-    builtin cd $argv[1]
-    set -l cd_status $status
-
-    if test $cd_status = 0 -a "$PWD" != "$previous"
-        set -g dirprev $dirprev $previous
-        set -e dirnext
-        set -g __fish_cd_direction prev
-    end
-
-    return $cd_status
-end
-
-# }}}
-# fasd              {{{
-
-function z
-    set -l dir (fasd -de "printf %s" "$argv")
-    if test "$dir" = ""
-        echo "no matching directory"
-        return 1
-    end
-    cd $dir
-end
-
-function e
-    fasd -fe vim "$argv"
-end
-
-# }}}
-# vz                {{{
-
-function vz
-    fasd -fe vim $argv
-end
-
-# }}}
 # Systemd Shortcuts {{{
 
 function 0.start
@@ -503,13 +441,6 @@ function fish_mode_prompt --description 'Displays the current mode'
 end
 
 # }}}
-# elb-log-parser    {{{
-
-function elb-log-parser
-    goaccess $argv --log-format='%^ %dT%t.%^ %v %h:%^ %^ %T %^ %^ %s %^ %b %^ "%r" "%u" %^' --date-format='%Y-%m-%d' --time-format=%T
-end
-
-# }}}
 # ec2-find          {{{
 
 function ec2-find
@@ -560,7 +491,7 @@ function kps
 end
 
 # }}}
-# sshagent           {{{
+# sshagent          {{{
 
 function __ssh_agent_is_started -d "check if ssh agent is already started"
    if begin; test -f $SSH_ENV; and test -z "$SSH_AGENT_PID"; end
