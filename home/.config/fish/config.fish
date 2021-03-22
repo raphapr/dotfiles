@@ -453,7 +453,9 @@ end
 # ec2-table         {{{
 
 function ec2-table
-    aws ec2 describe-instances --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' --output table
+   aws ec2 describe-instances \
+       --query "Reservations[*].Instances[*].{PublicIP:PublicIpAddress,PrivateIP:PrivateIpAddress,InstanceId:InstanceId,InstanceType:InstanceType,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  \
+       --filters 'Name=instance-state-name,Values=running' 'Name=tag:Name,Values=*'$argv'*' --output table
 end
 
 # }}}
@@ -470,6 +472,24 @@ function ec2-ssh
     if test (count $result) -gt 1
         echo "xpanes -c 'ssh $SSH_OPTS '{}' $result"
         xpanes -c "ssh $SSH_OPTS {}" $result
+    end
+end
+
+# }}}
+# ec2-ssm           {{{
+
+function ec2-ssm
+    set -l result (aws ec2 describe-instances --region us-east-1 --query "Reservations[*].Instances[*].InstanceId" \
+    --filters 'Name=tag:Name,Values='"*$argv*"'' 'Name=instance-state-name,Values=running' \
+    | jq .[][] | tr -d '"')
+    if test (count $result) -eq 1
+        echo "aws ssm start-session --profile $AWS_PROFILE --target $result"
+        aws ssm start-session --profile $AWS_PROFILE --target $result
+    end
+    if test (count $result) -gt 1
+        echo "xpanes -c 'aws ssm start-session --profile $AWS_PROFILE --target '{}' $result"
+        #xpanes -c "ssh $SSH_OPTS {}" $result
+        xpanes -c "aws ssm start-session --profile $AWS_PROFILE --target {}" $result
     end
 end
 
