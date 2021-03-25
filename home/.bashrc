@@ -100,6 +100,10 @@ fi
 # bash prompt
 PS1="\w » "
 
+if [ -f /usr/share/autojump/autojump.bash ]; then
+  source /usr/share/autojump/autojump.bash
+fi
+
 #}}}
 # History Control     ---------------------------------------------- {{{
 
