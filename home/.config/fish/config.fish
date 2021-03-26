@@ -462,7 +462,8 @@ end
 # ec2-ssh           {{{
 
 function ec2-ssh
-    set -l result (aws ec2 describe-instances --region us-east-1 --query "Reservations[*].Instances[*].PrivateIpAddress" \
+    set -l region (aws configure get region --profile $AWS_PROFILE)
+    set -l result (aws ec2 describe-instances --region $region --query "Reservations[*].Instances[*].PrivateIpAddress" \
     --filters 'Name=tag:Name,Values='"*$argv*"'' 'Name=instance-state-name,Values=running' \
     | jq .[][] | tr -d '"')
     if test (count $result) -eq 1
@@ -479,17 +480,17 @@ end
 # ec2-ssm           {{{
 
 function ec2-ssm
-    set -l result (aws ec2 describe-instances --region us-east-1 --query "Reservations[*].Instances[*].InstanceId" \
+    set -l region (aws configure get region --profile $AWS_PROFILE)
+    set -l result (aws ec2 describe-instances --region $region --query "Reservations[*].Instances[*].InstanceId" \
     --filters 'Name=tag:Name,Values='"*$argv*"'' 'Name=instance-state-name,Values=running' \
     | jq .[][] | tr -d '"')
     if test (count $result) -eq 1
-        echo "aws ssm start-session --profile $AWS_PROFILE --target $result"
-        aws ssm start-session --profile $AWS_PROFILE --target $result
+        echo "aws ssm start-session --region $region --profile $AWS_PROFILE --target $result"
+        aws ssm start-session --region $region --profile $AWS_PROFILE --target $result
     end
     if test (count $result) -gt 1
-        echo "xpanes -c 'aws ssm start-session --profile $AWS_PROFILE --target '{}' $result"
-        #xpanes -c "ssh $SSH_OPTS {}" $result
-        xpanes -c "aws ssm start-session --profile $AWS_PROFILE --target {}" $result
+        echo "xpanes -c 'aws ssm start-session --region $region --profile $AWS_PROFILE --target '{}' $result"
+        xpanes -c "aws ssm start-session --region $region --profile $AWS_PROFILE --target {}" $result
     end
 end
 
