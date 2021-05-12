@@ -327,6 +327,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'dag/vim-fish'
 
 " }}}
+" ===== vim-fish                {{{
+
+Plug 'tpope/vim-fireplace'
+
+" }}}
 
 call plug#end()
 

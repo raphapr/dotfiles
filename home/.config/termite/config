@@ -1,7 +1,7 @@
 [options]
 browser = firefox
 clickable_url = true
-font = DejaVu Sans Mono 9
+font = Iosevka Regular 11
 
 [colors]
 
