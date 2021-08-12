@@ -35,7 +35,6 @@ exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id copyq
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id battery-warning &
-exec --no-startup-id pritunl-client-gtk
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id sleep 2 && flameshot
 exec --no-startup-id setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
@@ -43,7 +42,7 @@ exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorand
 exec_always --no-startup-id xset r rate 215 35
 exec_always --no-startup-id input set-prop "DELL0781:00 06CB:7E7E Touchpad" "libinput Tapping Enabled" 1
 
-#}}}i
+#}}}
 # General options       ----------------------------------------------------- {{{
 
 workspace_layout tabbed

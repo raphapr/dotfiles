@@ -29,31 +29,6 @@ call plug#begin('~/.nvim/plugged')
 Plug 'morhetz/gruvbox'
 
 " }}}
-"" ===== jedi                    {{{
-
-"" Dependency: sudo pip install neovim jedi
-""(https://github.com/neovim/neovim/issues/2906)
-
-"Plug 'davidhalter/jedi-vim'
-
-"let g:jedi#auto_vim_configuration = 0
-"let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
-"let g:jedi#goto_definitions_command = '<Leader>gg'  " dynamically done for ft=python.
-"let g:jedi#use_tabs_not_buffers = 0  " current default is 1.
-"let g:jedi#rename_command = '<Leader>gR'
-"let g:jedi#usages_command = '<Leader>gu'
-"let g:jedi#completions_enabled = 0
-"let g:jedi#smart_auto_mappings = 1
-
-"" Unite/ref and pydoc are more useful.
-"let g:jedi#documentation_command = '<Leader>k'
-"let g:jedi#auto_close_doc = 1
-"let g:jedi#force_py_version = 3
-
-"let g:python3_host_prog = '/usr/bin/python3'
-"let g:python_host_prog = '/usr/bin/python3'
-
-"" }}}
 " ===== vim-airline             {{{
 
 " install powerline-fonts
@@ -317,19 +292,19 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " }}}
-" ===== nvim-treesitter         {{{
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" }}}
 " ===== vim-fish                {{{
 
 Plug 'dag/vim-fish'
 
 " }}}
-" ===== vim-fish                {{{
+" ===== vim-fireplace           {{{
 
 Plug 'tpope/vim-fireplace'
+
+" }}}
+" ===== glow.nvim               {{{
+
+Plug 'npxbr/glow.nvim'
 
 " }}}
 
@@ -540,18 +515,6 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 
 nnoremap <silent> - :ZoomToggle<CR>
-
-" }}}
-" Lua         -------------------------------------------------------------- {{{
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true
-  },
-}
-EOF
 
 " }}}
 " Adjusts     -------------------------------------------------------------- {{{
