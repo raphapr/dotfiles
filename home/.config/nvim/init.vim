@@ -447,6 +447,13 @@ nmap Y y$
 noremap ;; :%s:::g<Left><Left><Left>
 noremap ;' :%s:::cg<Left><Left><Left><Left>
 
+"Get the 2-space YAML as the default when hit carriage return after the colon
+autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Highlight tabs as errors.
+" https://vi.stackexchange.com/a/9353/3168
+autocmd FileType yaml,yml match Error /\t/
+
 " }}}
 
 " }}}
