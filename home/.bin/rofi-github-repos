@@ -24,7 +24,7 @@ CACHE_MAX_AGE=1440 # 24h
 GITHUB_API_HEADER_ACCEPT="Accept: application/vnd.github.v3+json"
 GITHUB_URL="git@github.com:"
 ROFI=true
-ROFI_THEME="~/.config/rofi/bala.rasi"
+ROFI_THEME="~/.config/rofi/nord.rasi"
 TMPFILE=/tmp/rofi-github-repos
 
 function api_call {

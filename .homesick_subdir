@@ -18,3 +18,4 @@
 .bin
 .ptpython
 .config/kitty
+.config/rofi
