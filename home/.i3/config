@@ -13,7 +13,7 @@
 
 set $mod Mod4
 set $mod2 Mod4+Shift
-set $BROWSER    firefox
+set $BROWSER    google-chrome-stable
 set $TERM       kitty
 set $TMUX       kitty -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
@@ -330,6 +330,13 @@ for_window [title="^\[Work Support\].*"] move to workspace 1
 for_window [title="^\[Personal\].*"] move to workspace 2
 for_window [title="^\[Study\].*"] move to workspace 3
 for_window [title="^\[Second Screen\].*"] move to workspace 4
+
+# chrome window groups
+for_window [title="^Work.*"] move to workspace 1
+for_window [title="^Support.*"] move to workspace 1
+for_window [title="^Personal.*"] move to workspace 2
+for_window [title="^Study.*"] move to workspace 3
+for_window [title="^Second Screen.*"] move to workspace 4
 
 #}}}
 # scratchpads           ----------------------------------------------------- {{{
