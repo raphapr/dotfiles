@@ -339,15 +339,6 @@ for_window [title="^Study.*"] move to workspace 3
 for_window [title="^Second Screen.*"] move to workspace 4
 
 #}}}
-# scratchpads           ----------------------------------------------------- {{{
-
-# htop
-exec --no-startup-id termite -t 90htop -e "htop"
-for_window [title="90htop"] move scratchpad
-# %%hotkey: htop scratchpad
-bindsym $mod+F11 [title="90htop"] scratchpad show
-
-#}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # %%hotkey: multi monitor menu
