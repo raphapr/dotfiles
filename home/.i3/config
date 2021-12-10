@@ -252,6 +252,9 @@ bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 # %shortcut: authy
 bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy/app.asar
 
+# %shortcut: dunst close-all
+bindsym Ctrl+space exec --no-startup-id dunstctl close-all
+
 #}}}
 # bar                   ----------------------------------------------------- {{{
 
