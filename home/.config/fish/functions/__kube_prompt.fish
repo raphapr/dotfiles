@@ -4,7 +4,7 @@
 
 function __kube_ps_update_cache
   function __kube_ps_cache_context
-    set -l ctx (kubectl config current-context 2>/dev/null)
+    set -l ctx (kubectl config current-context | cut -d '/' -f 2 2>/dev/null)
     if /bin/test $status -eq 0
       set -g __kube_ps_context "$ctx"
     else
