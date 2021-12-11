@@ -104,3 +104,5 @@ slack-desktop
 discord
 net-tools
 autojump
+sof-firmware
+alsa-ucm-conf
