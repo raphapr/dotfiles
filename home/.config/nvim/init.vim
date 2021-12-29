@@ -538,3 +538,26 @@ if has("autocmd")
 endif
 
 " }}}
+" Lua         -------------------------------------------------------------- {{{
+
+lua <<EOF
+local actions = require('telescope.actions')
+local action_layout = require('telescope.actions.layout')
+
+require('telescope').setup {
+    defaults = {
+        mappings = {
+            n = {
+                ['<C-h>'] = action_layout.toggle_preview
+            },
+            i = {
+                ['<C-j>'] = actions.cycle_history_next,
+                ['<C-k>'] = actions.cycle_history_prev,
+                ['<C-h>'] = action_layout.toggle_preview
+            }
+        }
+    }
+}
+EOF
+
+" }}}
