@@ -297,16 +297,17 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 Plug 'dag/vim-fish'
 
 " }}}
-" ===== vim-fireplace           {{{
-
-Plug 'tpope/vim-fireplace'
-
-" }}}
 " ===== glow.nvim               {{{
 
 Plug 'npxbr/glow.nvim'
 
 " }}}
+" ===== editorconfig-vim        {{{
+
+Plug 'editorconfig/editorconfig-vim'
+
+" }}}
+"
 
 call plug#end()
 
