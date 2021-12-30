@@ -49,7 +49,7 @@ telegram-desktop-bin
 redshift
 i3-wm
 numix-themes-archblue
-ttf-mac-fonts 
+ttf-mac-fonts
 ttf-dejavu-sans-mono-powerline
 numix-icon-theme-git
 oxygen-gtk2
@@ -106,3 +106,4 @@ net-tools
 autojump
 sof-firmware
 alsa-ucm-conf
+fd

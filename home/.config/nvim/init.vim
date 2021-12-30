@@ -70,10 +70,10 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " }}}
-" ===== vim-autoclose           {{{
+" ===== auto-pairs              {{{
 
 " It automatically closes quotes, keys, parentesis...
-Plug 'Townk/vim-autoclose'
+Plug 'jiangmiao/auto-pairs'
 
 " }}}
 " ===== NERDTree                {{{
@@ -285,11 +285,11 @@ vnoremap <silent> <leader>en :<c-u>call base64#v_btoa()<cr>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>t <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " }}}
 " ===== vim-fish                {{{
@@ -307,7 +307,11 @@ Plug 'npxbr/glow.nvim'
 Plug 'editorconfig/editorconfig-vim'
 
 " }}}
-"
+" ===== nvim-treesitter         {{{
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" }}}
 
 call plug#end()
 
@@ -545,6 +549,8 @@ lua <<EOF
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
 
+require('telescope').load_extension('fzf')
+
 require('telescope').setup {
     defaults = {
         mappings = {
@@ -552,12 +558,29 @@ require('telescope').setup {
                 ['<C-h>'] = action_layout.toggle_preview
             },
             i = {
-                ['<C-j>'] = actions.cycle_history_next,
-                ['<C-k>'] = actions.cycle_history_prev,
+                ['<Up>'] = actions.cycle_history_prev,
+                ['<Down>'] = actions.cycle_history_next,
+                ['<C-j>'] = actions.move_selection_next,
+                ['<C-k>'] = actions.move_selection_previous,
                 ['<C-h>'] = action_layout.toggle_preview
             }
         }
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true,  -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case"         -- or "ignore_case" or "respect_case"
+      }
     }
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true
+  },
 }
 EOF
 
