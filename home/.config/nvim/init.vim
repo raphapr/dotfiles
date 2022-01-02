@@ -1,5 +1,5 @@
-" .nvimrc
-" Author: Raphael P. Ribeiro
+" .vimrc
+" Author: @raphapr
 "
 
 " Preambule   -------------------------------------------------------------- {{{
@@ -136,22 +136,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/matchit'
 
 " }}}
-" ===== EasyMotion              {{{
+" ===== hop.nvim                {{{
 
-" Text navigation like vimperator
-Plug 'Lokaltog/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_smartcase = 1 " Turn on case sensitive feature
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-nmap / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-
-map <Leader>s <Plug>(easymotion-sn)<C-R>*
+nnoremap <silent> ff :HopWord<CR>
+nnoremap <silent> fs :HopWordCurrentLine<CR>
+nnoremap <silent> fl :HopLine<CR>
 
 " }}}
 " ===== vim-peekaboo            {{{
@@ -226,9 +217,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " }}}
-" ===== vim-gitgutter           {{{
+" ===== gitsigns.nvim           {{{
 
-Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+
+nmap <Leader>d :Gitsigns toggle_word_diff<CR>
+nmap <Leader>b :Gitsigns toggle_current_line_blame<CR>
 
 " }}}
 " ===== async lint engine       {{{
@@ -406,14 +401,6 @@ nmap <leader>i3 :vsplit ~/.i3/config<cr>
 nmap j gj
 nmap k gk
 
-" arrow keys for something more useful
-"
-"
-"nmap <UP> <C-A>
-"nmap <DOWN> <C-X>
-"nnoremap <UP> ddkP
-"nnoremap <DOWN> ddp
-
 " }}}
 " etc               {{{
 "
@@ -529,7 +516,7 @@ command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> - :ZoomToggle<CR>
 
 " }}}
-" Adjusts     -------------------------------------------------------------- {{{
+" Tweaks      -------------------------------------------------------------- {{{
 
 " Hack to get C-h working in neovim
 if has('nvim')
@@ -542,10 +529,18 @@ if has("autocmd")
           \| exe "normal! g'\"" | endif
 endif
 
+" highlight yank region
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup END
+
 " }}}
 " Lua         -------------------------------------------------------------- {{{
 
 lua <<EOF
+-- ===== telescope         {{{
+
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
 
@@ -576,12 +571,33 @@ require('telescope').setup {
     }
 }
 
+
+-- }}}
+-- ===== gitsigns          {{{
+
+require('gitsigns').setup {
+  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+}
+
+-- }}}
+-- ===== nvim-treesitter   {{{
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true
   },
 }
+
+-- }}}
+-- ===== hop.nvim          {{{
+
+require('hop').setup()
+
+-- }}}
 EOF
 
 " }}}
