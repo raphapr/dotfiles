@@ -20,6 +20,7 @@ export AWS_FUZZ_PRIVATE_IP=false
 export AWS_FUZZ_USE_CACHE=yes
 export AWS_FUZZ_CACHE_EXPIRY=604800
 export AWS_FUZZ_DNS_OVER_IP=true
+export GPG_TTY=(tty)
 
 # load sensible environment variables
 source $HOME/.env
@@ -122,7 +123,7 @@ alias ev 'v ~/.config/nvim/init.vim'
 alias i3c 'v ~/.i3/config'
 alias xmerge 'xrdb -merge ~/.Xresources'
 alias notes 'nvim ~/Cloud/notes/notes.txt'
-# Ver diretórios com mais espaço em disco 
+# Ver diretórios com mais espaço em disco
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias youtube-viewer 'youtube-viewer -C'
 # ssh
@@ -337,7 +338,7 @@ function 0.list
     systemctl
 end
 # list all failed service
-function 0.failed 
+function 0.failed
     systemctl --failed
 end
 # list all systemd available unit files
@@ -392,7 +393,7 @@ function 1.list
     systemctl --user
 end
 # list all failed service
-function 1.failed 
+function 1.failed
     systemctl --user --failed
 end
 # list all systemd available unit files
