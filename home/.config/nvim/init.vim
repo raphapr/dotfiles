@@ -280,7 +280,6 @@ vnoremap <silent> <leader>en :<c-u>call base64#v_btoa()<cr>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -543,8 +542,6 @@ lua <<EOF
 
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
-
-require('telescope').load_extension('fzf')
 
 require('telescope').setup {
     defaults = {
