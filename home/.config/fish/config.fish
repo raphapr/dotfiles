@@ -23,7 +23,7 @@ export AWS_FUZZ_DNS_OVER_IP=true
 export GPG_TTY=(tty)
 
 # load sensible environment variables
-source $HOME/.env
+source $HOME/.envsen
 
 if test "$DISPLAY"
     xset r rate 240 30

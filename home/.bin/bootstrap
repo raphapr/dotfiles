@@ -19,7 +19,7 @@ sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fa
 ln -sf ~/Dropbox ~/Cloud
 ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
 ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
-ln -sf ~/Cloud/sync/env ~/.env
+ln -sf ~/Cloud/sync/envsen ~/.envsen
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/krew ~/.krew
@@ -89,7 +89,7 @@ if [ ! -d ~/.fonts ]; then
   echo "[ bootstrap ] :: Install powerline-fonts"
   git clone https://github.com/powerline/fonts.git /tmp/fonts
   sh /tmp/fonts/install.sh
-  ln -s ~/.local/share/fonts ~/.fonts 
+  ln -s ~/.local/share/fonts ~/.fonts
 else
   echo "[ bootstrap ] :: powerline-fonts already installed!"
 fi

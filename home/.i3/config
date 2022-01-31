@@ -24,12 +24,12 @@ set $PRINT      flameshot gui -p ~/Imagens/Screenshots/
 
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
-exec --no-startup-id source ~/.env && redshift -l $LATITUDE:$LONGITUDE
+exec --no-startup-id source ~/.envsec && redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id dropbox
 exec --no-startup-id compton -b
-exec --no-startup-id thunar --daemon 
+exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id copyq
@@ -54,7 +54,7 @@ font pango:tewi-medium 7
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# disable mouse warp to the center of the window 
+# disable mouse warp to the center of the window
 mouse_warping none
 
 workspace 4 output DVI-D-0
@@ -126,7 +126,7 @@ bindsym $mod+e layout toggle split
 # %%hotkey: floating toggle
 bindsym $mod2+space floating toggle
 
-# %%hotkey: change focus between tiling / floating windows 
+# %%hotkey: change focus between tiling / floating windows
 bindsym $mod+z focus mode_toggle
 
 # %%hotkey: focus the parent container
@@ -215,7 +215,7 @@ bindsym $mod+2 exec --no-startup-id xbacklight -inc 10
 bindsym $mod+1 exec --no-startup-id xbacklight -dec 10
 
 # %shortcut: start terminal
-bindsym $mod+Return exec --no-startup-id $TERM 
+bindsym $mod+Return exec --no-startup-id $TERM
 
 # %shortcut: start a terminal with tmux
 bindsym $mod+shift+Return exec --no-startup-id $TMUX
@@ -352,7 +352,7 @@ mode "$multi_monitor" {
     bindsym 1 exec --no-startup-id xrandr --output eDP1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default" 
+    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png mode "default"
     bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --same-as eDP1, mode "default"
 

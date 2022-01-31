@@ -130,10 +130,10 @@ let g:NumberToggleTrigger="<Leader>n"
 Plug 'scrooloose/nerdcommenter'
 
 " }}}
-" ===== matchit.vim             {{{
+" ===== vim-matchup             {{{
 
 " It extends % usage
-Plug 'tmhedberg/matchit'
+Plug 'andymass/vim-matchup'
 
 " }}}
 " ===== hop.nvim                {{{
