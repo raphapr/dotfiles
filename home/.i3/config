@@ -17,7 +17,7 @@ set $BROWSER    google-chrome-stable
 set $TERM       kitty
 set $TMUX       kitty -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
-set $PRINT      flameshot gui -p ~/Imagens/Screenshots/
+set $PRINT      flameshot gui
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
