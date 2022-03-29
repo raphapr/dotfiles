@@ -555,7 +555,7 @@ end
 # aws-profile       {{{
 
 function aws-profile
-    export AWS_PROFILE=(grep "^\[.*]" ~/.aws/credentials | tr -d "[]" | fzf --height 20% +m)
+    export AWS_PROFILE=(grep "^\[.*]" ~/.aws/config | tr -d "[]" | sed 's/profile.//g' | fzf --height 20% +m)
     commandline -f repaint
 end
 
