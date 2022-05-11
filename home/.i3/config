@@ -13,7 +13,7 @@
 
 set $mod Mod4
 set $mod2 Mod4+Shift
-set $BROWSER    google-chrome-stable
+set $BROWSER    firefox
 set $TERM       kitty
 set $TMUX       kitty -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar

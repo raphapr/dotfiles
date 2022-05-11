@@ -56,8 +56,5 @@
 [commit]
 	gpgsign = true
 
-[includeIf "gitdir:~/repos/vouch/"]
-  path = ~/repos/vouch/.gitconfig
-
 [includeIf "gitdir:~/repos/loadsmart/"]
   path = ~/repos/loadsmart/.gitconfig
