@@ -583,7 +583,29 @@ require('gitsigns').setup {
 -- ===== nvim-treesitter   {{{
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = {
+  "c",
+  "lua",
+  "rust",
+  "dockerfile",
+  "python",
+  "bash",
+  "json",
+  "markdown",
+  "cmake",
+  "fish",
+  "comment",
+  "go",
+  "gomod",
+  "gowork",
+  "help",
+  "html",
+  "http",
+  "json",
+  "yaml",
+  "regex",
+  "vim"
+  },
   highlight = {
     enable = true
   },
