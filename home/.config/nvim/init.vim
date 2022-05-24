@@ -226,14 +226,6 @@ nmap <Leader>d :Gitsigns toggle_word_diff<CR>
 nmap <Leader>b :Gitsigns toggle_current_line_blame<CR>
 
 " }}}
-" ===== async lint engine       {{{
-
-Plug 'w0rp/ale'
-
-let b:ale_linters = ['flake8', 'pylint', 'vint', 'jsonlint', 'tflint']
-let g:ale_completion_enabled = 1
-
-" }}}
 " ===== vim-go                  {{{
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -281,11 +273,6 @@ Plug 'qpkorr/vim-bufkill'
 nmap <C-E> :BD<cr>
 
 " }}}
-" ===== vim-terraform           {{{
-
-Plug 'hashivim/vim-terraform'
-
-" }}}
 " ===== vim-base64              {{{
 
 Plug 'christianrondeau/vim-base64'
@@ -329,6 +316,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " ===== coc.nvim                {{{
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" reminder - :CocInstall coc-pyls coc-json coc-html coc-css
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

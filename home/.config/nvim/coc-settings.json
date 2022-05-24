@@ -7,18 +7,45 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "html",
+    "yml",
+    "yaml",
     "json",
     "css",
     "scss",
     "python",
+    "tf",
     "go"
   ],
   "coc.preferences.hoverTarget": "float",
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": [
+        "serve"
+      ],
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {}
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ]
     }
   },
   "go.goplsOptions": {
