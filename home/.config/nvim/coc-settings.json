@@ -16,7 +16,6 @@
     "tf",
     "go"
   ],
-  "coc.preferences.hoverTarget": "float",
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -37,18 +36,6 @@
         "tf"
       ],
       "initializationOptions": {}
-    },
-    "bash": {
-      "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh"
-      ]
     }
-  },
-  "go.goplsOptions": {
-    "staticcheck": true
   }
 }

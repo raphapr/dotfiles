@@ -230,20 +230,10 @@ nmap <Leader>b :Gitsigns toggle_current_line_blame<CR>
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" gd     -  GoDef
-" ctrl-t -  GoDefPop
 " [[. ]] - Jump Functions
 
-" <leader>d for split, gd for normal navigation, ctrl+t to pop
-au FileType go nmap <Leader>s  <Plug>(go-def-split)
-au FileType go nmap <Leader>u  <Plug>(go-run)
-au FileType go nmap <Leader>b  <Plug>(go-build)
-au FileType go nmap <Leader>e  <Plug>(go-rename)
-au FileType go nmap <Leader>kk <Plug>(go-doc)
-au FileType go nmap <Leader>kb <Plug>(go-doc-browser)
-au FileType go nmap <Leader>im <Plug>(go-implements)
-au FileType go nmap <Leader>in <Plug>(go-info)
-
+" use coc.nvim go-to-definition
+let g:go_def_mapping_enabled = 0
 " disable all linters as that is taken care of by coc.nvim
 let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
@@ -253,6 +243,8 @@ let g:go_jump_to_error = 0
 let g:go_fmt_command = "goimports"
 " automatically highlight variable your cursor is on
 let g:go_auto_sameids = 0
+" disable vim-go autosave in priority of coc features
+let g:go_fmt_autosave = 0
 
 " highlights
 let g:go_highlight_types = 1
@@ -291,11 +283,6 @@ Plug 'nvim-telescope/telescope.nvim'
 nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>t <cmd>lua require('telescope.builtin').help_tags()<cr>
-
-" }}}
-" ===== vim-fish                {{{
-
-Plug 'dag/vim-fish'
 
 " }}}
 " ===== glow.nvim               {{{
@@ -359,14 +346,16 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gs :call CocAction('jumpDefinition', 'split')<CR>
+
+" Show all diagnostics.
+nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 
 " }}}
 
