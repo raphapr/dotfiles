@@ -38,9 +38,11 @@ Plug 'morhetz/gruvbox'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -90,37 +92,15 @@ let NERDTreeDirArrows = 1
 " ===== vim-tagbar              {{{
 
 " Tags browser (It needs ctags package)
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 nmap <F9> :TagbarToggle<CR>
-
-let g:tagbar_type_julia = {
-    \ 'ctagstype' : 'julia',
-    \ 'kinds'     : [
-        \ 'f:functions',
-        \ 'm:macro',
-        \ 'c:constant',
-        \ 't:type'
-    \ ]
-    \ }
-
-let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds'     : [
-        \ 'h:Heaging_L1',
-        \ 'i:Heaging_L2',
-        \ 'k:Heaging_L3',
-        \ 'k:Heaging_L4',
-        \ 'k:Heaging_L5',
-        \ 'k:Heaging_L6'
-    \ ]
-    \ }
 
 " }}}
 " ===== vim-numbertoggle        {{{
 
 " It quickly toggles between relative and absolute line numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-let g:NumberToggleTrigger="<Leader>n"
+nnoremap <silent> <C-n> :set relativenumber!<cr>
 
 " }}}
 " ===== Nerd Commenter          {{{
@@ -243,8 +223,10 @@ let g:go_jump_to_error = 0
 let g:go_fmt_command = "goimports"
 " automatically highlight variable your cursor is on
 let g:go_auto_sameids = 0
-" disable vim-go autosave in priority of coc features
+" disable vim-go fmt autosave
 let g:go_fmt_autosave = 0
+" unmap K key for doc lookup
+let g:go_doc_keywordprg_enabled = 0
 
 " highlights
 let g:go_highlight_types = 1
@@ -306,6 +288,25 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " reminder - :CocInstall coc-pyls coc-json coc-html coc-css
 
+" TextEdit might fail if hidden is not set.
+set hidden
+" Give more space for displaying messages.
+set cmdheight=2
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -336,6 +337,19 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 " Applying codeAction to the selected region.
@@ -355,7 +369,11 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gs :call CocAction('jumpDefinition', 'split')<CR>
 
 " Show all diagnostics.
-nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
+
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
 
 " }}}
 
@@ -401,19 +419,6 @@ set mmp=5000
 " improve perfomance
 set lazyredraw
 set ttyfast
-
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 " }}}
 " Folding     -------------------------------------------------------------- {{{
