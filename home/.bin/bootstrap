@@ -8,7 +8,7 @@ PKGLIST=../.pkglist
 # pacman update and dependencies
 sudo pacman -Syu --needed
 
-if ! sudo pacman -Q pcaur > /dev/null; then
+if ! sudo pacman -Q pacaur > /dev/null; then
   echo "pacaur not installed! Install it manually."
   exit 1
 fi
@@ -23,12 +23,6 @@ ln -sf ~/Cloud/sync/envsen ~/.envsen
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/krew ~/.krew
-
-# install cron jobs
-crontab <<EOF
-# Update duck dns
-*/5 * * * * ~/Cloud/sync/scripts/duck.sh >/dev/null 2>&1
-EOF
 
 # install pip / python packages
 sudo pip install tmuxp virtualenv neovim virtualfish flake8 saws ptpython ipython boto3 yamllint
