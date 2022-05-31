@@ -13,7 +13,7 @@ if ! sudo pacman -Q pacaur > /dev/null; then
   exit 1
 fi
 
-sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git
+sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs-lts-erbium npm ruby ruby-rdoc ruby-docs wget unzip cronie git
 
 # sync sensitive - not versioned - dotfiles
 ln -sf ~/Dropbox ~/Cloud
@@ -66,7 +66,7 @@ fi
 mkdir -p ~/.config/fish/completions
 pushd ~/.config/fish
 git clone https://github.com/evanlucas/fish-kubectl-completions
-ln -s ../fish-kubectl-completions/completions/kubectl.fish completions/
+ln -sf ../fish-kubectl-completions/completions/kubectl.fish completions/
 popd
 
 # install fzf

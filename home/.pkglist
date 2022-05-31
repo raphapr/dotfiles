@@ -30,7 +30,6 @@ ntfs-3g
 rofi
 neovim
 git
-google-talkplugin
 nmap
 openssh
 rsync
@@ -40,7 +39,6 @@ unrar
 wget
 xclip
 xfce4-power-manager
-profile-sync-daemon
 smplayer
 mpc
 wine
@@ -90,7 +88,6 @@ sipcalc
 diff-so-fancy
 julia
 zsa-wally
-nspot
 git-crypt
 tflint
 jid
