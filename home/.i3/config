@@ -37,7 +37,7 @@ exec --no-startup-id telegram-desktop -startintray
 #exec --no-startup-id battery-warning &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id sleep 2 && flameshot
-exec --no-startup-id [[ $HOSTNAME == "darkstar" ]] && setxkbmap br -variant thinkpad "default" && xmodmap ~/.Xmodmap
+exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap br -variant thinkpad "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
 exec_always --no-startup-id xset r rate 215 35
