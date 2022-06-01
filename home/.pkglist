@@ -105,3 +105,8 @@ sof-firmware
 alsa-ucm-conf
 fd
 terraform-ls
+gopls
+xorg-xev
+playerctl
+profile-sync-daemon
+anything-sync-daemon
