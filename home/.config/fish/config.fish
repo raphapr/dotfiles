@@ -72,6 +72,9 @@ if test -e /usr/share/autojump/autojump.fish
   source /usr/share/autojump/autojump.fish
 end
 
+#asdf
+source /opt/asdf-vm/asdf.fish
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
