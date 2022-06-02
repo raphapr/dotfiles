@@ -49,10 +49,6 @@ if test -e ~/.local/bin
     set PATH $PATH ~/.local/bin
 end
 
-if test -e ~/.tfenv/bin
-    set PATH $PATH ~/.tfenv/bin
-end
-
 # awscli complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
