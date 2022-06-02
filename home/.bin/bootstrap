@@ -88,6 +88,9 @@ else
   echo "[ bootstrap ] :: powerline-fonts already installed!"
 fi
 
+# install tfenv
+git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+
 # symlink tmux conf
 ln -sf ~/.tmux.conf ~/.tmux/tmux.conf
 
