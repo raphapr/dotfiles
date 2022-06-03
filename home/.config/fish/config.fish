@@ -15,11 +15,6 @@ export BROWSER=firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GEMDIR=(ruby -e 'print Gem.user_dir')
-# aws-fuzzy
-export AWS_FUZZ_PRIVATE_IP=false
-export AWS_FUZZ_USE_CACHE=yes
-export AWS_FUZZ_CACHE_EXPIRY=604800
-export AWS_FUZZ_DNS_OVER_IP=true
 export GPG_TTY=(tty)
 
 # load sensible environment variables
@@ -77,7 +72,6 @@ source /opt/asdf-vm/asdf.fish
 # fish vi mode
 # ctrl+f only accept autosuggestion
 # ctrl+a switch AWS profile
-# ctrl+q switch virtualenv
 # ctrl+k switch k8s context
 function fish_user_key_bindings
     fish_vi_key_bindings
@@ -86,8 +80,6 @@ function fish_user_key_bindings
     bind \cf accept-autosuggestion
     bind -M insert \ca "aws-profile"
     bind \ca "aws-profile"
-    bind -M insert \cq "vf-switch"
-    bind \cq "vf-switch"
     bind -M insert \ck "kubectl ctx"
     bind \ck "kubectl ctx"
     bind -M insert \cn "kubectl ns"
@@ -215,18 +207,6 @@ alias tk 'tmux kill-session -t'
 # curl-trace       {{{
 
 alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
-
-# }}}
-# aws-fuzzy        {{{
-
-alias af='aws-fuzzy'
-alias afnc='aws-fuzzy --no-cache'
-
-# }}}
-# gce-fuzzy        {{{
-
-alias gf='gce-fuzzy -c 432000'
-alias gfnc='gce-fuzzy -c 432000 -r'
 
 # }}}
 # kubectl          {{{
@@ -559,15 +539,6 @@ end
 
 function aws-profile
     export AWS_PROFILE=(grep "^\[.*]" ~/.aws/config | tr -d "[]" | sed 's/profile.//g' | fzf --height 20% +m)
-    commandline -f repaint
-end
-
-# }}}
-# vf-switch         {{{
-
-function vf-switch
-    set -lx FZF_DEFAULT_OPTS "--height 20% +m"
-    vf activate (vf ls | fzf)
     commandline -f repaint
 end
 

@@ -15,26 +15,23 @@ fi
 
 sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git
 
+# ensure dirs are created before symlinks
+mkdir ~/.config/copyq
+mkdir ~/.asdf
+mkdir ~/.ptpython
+
 # sync sensitive - not versioned - dotfiles
 ln -sf ~/Dropbox ~/Cloud
 ln -sf ~/Cloud/sync/local_share_fish ~/.local/share/fish
 ln -sf ~/Cloud/sync/ptpython_history ~/.ptpython/history
 ln -sf ~/Cloud/sync/envsen ~/.envsen
 ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
-ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/krew ~/.krew
+ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/asdf-plugins ~/.asdf/plugins
 
 # install pip / python packages
-sudo pip install tmuxp virtualenv neovim virtualfish flake8 saws ptpython ipython boto3 yamllint
-
-# aws-fuzzy
-[[ ! -d ~/.virtualenvs ]]  && mkdir ~/.virtualenvs
-cd ~/.virtualenvs
-virtualenv -p python3 ~/.virtualenvs/aws-fuzzy
-source ~/.virtualenvs/aws-fuzzy/bin/activate || source ~/.virtualenvs/aws-fuzzy/bin/activate.fish
-pip install https://github.com/raphapr/aws-fuzzy-finder/archive/v0.3.6.zip
-deactivate
+sudo pip install neovim virtualfish flake8 saws ptpython ipython boto3 yamllint
 
 # npm prefix configuration
 mkdir "${HOME}/.npm-packages"
@@ -107,3 +104,7 @@ echo "[ bootstrap ] :: Install pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
     pacaur -S --needed --noedit --noconfirm $PKG || echo "$PKG failed." >> $PKGLOG
 done
+
+pushd $HOME
+asdf install
+popd
