@@ -227,7 +227,7 @@ bindsym $mod+q exec --no-startup-id $BROWSER
 bindsym $mod2+t exec telegram-desktop
 
 # %shortcut: flameshot print screen
-bindsym --release $mod+Print exec --no-startup-id $PRINT
+bindsym --release $mod+Print exec --no-startup-id unset SESSION_MANAGER && $PRINT
 
 # %shortcut: screensaver
 bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
