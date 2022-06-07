@@ -3,7 +3,6 @@ dbus-x11
 ranger
 zathura
 zathura-pdf-mupdf
-fasd
 translate-shell-git
 youtube-dl
 xclip
@@ -37,7 +36,6 @@ tar
 unzip
 unrar
 wget
-xclip
 xfce4-power-manager
 smplayer
 mpc

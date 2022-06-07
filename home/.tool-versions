@@ -4,3 +4,4 @@ kubectl 1.21.12
 shellcheck 0.8.0
 helm 3.8.2
 awscli 2.7.5
+terraform-ls 0.28.0

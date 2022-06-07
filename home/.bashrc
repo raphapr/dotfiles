@@ -137,10 +137,6 @@ if [ -f ~/.git-completion.bash ]; then
     source ~/.git-completion.bash
 fi
 
-# fasd initalization
-# quick access to files and directories for POSIX shells
-eval "$(fasd --init auto)"
-
 # fzf initialization
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -174,7 +170,7 @@ alias cheatsed='cat ~/Copy/cheats/sed | more'
 alias x='dtrx'
 alias f='fish'
 
-# fasd 
+# fasd
 alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
