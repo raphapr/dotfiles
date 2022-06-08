@@ -23,8 +23,8 @@ set $PRINT      flameshot gui
 # Startup apps          ----------------------------------------------------- {{{
 
 exec --no-startup-id nm-applet
+exec --no-startup-id copyq
 exec --no-startup-id volnoti
-exec --no-startup-id source ~/.envsen && redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id dropbox start
@@ -32,11 +32,11 @@ exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon
 exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
-exec --no-startup-id copyq
-exec --no-startup-id telegram-desktop -startintray
-#exec --no-startup-id battery-warning &
+exec --no-startup-id source ~/.envsen && redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id sleep 2 && flameshot
+exec --no-startup-id gopls -listen="unix;/tmp/gopls-daemon-socket" -logfile=auto
 exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap br -variant thinkpad "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c

@@ -16,6 +16,10 @@
     "tf",
     "go"
   ],
+  "go.goplsArgs": [
+    "-remote",
+    "unix;/tmp/gopls-daemon-socket"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",

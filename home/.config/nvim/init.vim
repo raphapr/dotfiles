@@ -238,6 +238,9 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
+" share gopls instance with coc.nvim
+let g:go_gopls_options = ['-remote=unix;/tmp/gopls-daemon-socket']
+
 " }}}
 " ===== vim-buffkill            {{{
 
@@ -286,7 +289,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" reminder - :CocInstall coc-pyls coc-json coc-html coc-css
+" reminder - :CocInstall coc-pyls coc-json coc-html coc-css coc-go
 
 " TextEdit might fail if hidden is not set.
 set hidden
