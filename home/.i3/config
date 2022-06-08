@@ -24,7 +24,7 @@ set $PRINT      flameshot gui
 
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
-exec --no-startup-id source ~/.envsec && redshift -l $LATITUDE:$LONGITUDE
+exec --no-startup-id source ~/.envsen && redshift -l $LATITUDE:$LONGITUDE
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id dropbox start
