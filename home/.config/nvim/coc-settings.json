@@ -16,13 +16,13 @@
     "tf",
     "go"
   ],
-  "go.goplsArgs": [
-    "-remote",
-    "unix;/tmp/gopls-daemon-socket"
-  ],
   "languageserver": {
     "golang": {
       "command": "gopls",
+      "args": [
+        "-remote",
+        "unix;/tmp/gopls-daemon-socket"
+      ],
       "rootPatterns": [
         "go.mod"
       ],
