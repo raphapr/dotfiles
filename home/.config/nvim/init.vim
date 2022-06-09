@@ -289,7 +289,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" reminder - :CocInstall coc-pyls coc-json coc-html coc-css coc-go
+" reminder - :CocInstall coc-pyls coc-json coc-html coc-css
 
 " TextEdit might fail if hidden is not set.
 set hidden
