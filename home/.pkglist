@@ -109,3 +109,4 @@ playerctl
 profile-sync-daemon
 anything-sync-daemon
 asdf-vm-git
+zk

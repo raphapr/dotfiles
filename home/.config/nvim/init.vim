@@ -134,12 +134,9 @@ Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_window = 'vertical botright 30new'
 
 " }}}
-" ===== vim-notes               {{{
+" ===== zk-nvim                 {{{
 
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-misc'
-
-autocmd BufNewFile,BufRead todo.txt,notes.txt setlocal filetype=notes
+Plug 'mickael-menu/zk-nvim'
 
 " }}}
 " ===== fzf                     {{{
@@ -159,7 +156,7 @@ autocmd FileType fzf tnoremap <buffer> <C-j> <Down>
 
 let g:fzf_action = {
       \ 'ctrl-i': 'split',
-      \ 'ctrl-s': 'vsplit'
+      \ 'ctrl-v': 'vsplit'
       \ }
 
 " Default fzf layout
@@ -290,6 +287,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " reminder - :CocInstall coc-pyls coc-json coc-html coc-css
+" ctrl+f ctrl+b to scroll the hover pop-up menu
 
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -641,7 +639,6 @@ require('telescope').setup {
     }
 }
 
-
 -- }}}
 -- ===== gitsigns          {{{
 
@@ -688,6 +685,31 @@ require'nvim-treesitter.configs'.setup {
 -- ===== hop.nvim          {{{
 
 require('hop').setup()
+
+-- }}}
+-- ===== zk-nvim           {{{
+
+require("zk").setup({
+  -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
+  -- it's recommended to use "telescope" or "fzf"
+  picker = "fzf",
+
+  lsp = {
+    -- `config` is passed to `vim.lsp.start_client(config)`
+    config = {
+      cmd = { "zk", "lsp" },
+      name = "zk",
+      -- on_attach = ...
+      -- etc, see `:h vim.lsp.start_client()`
+    },
+
+    -- automatically attach buffers in a zk notebook that match the given filetypes
+    auto_attach = {
+      enabled = true,
+      filetypes = { "markdown" },
+    },
+  },
+})
 
 -- }}}
 EOF

@@ -16,6 +16,7 @@ export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GEMDIR=(ruby -e 'print Gem.user_dir')
 export GPG_TTY=(tty)
+export ZK_NOTEBOOK_DIR="$HOME/Cloud/sync/notes"
 
 # load sensible environment variables
 source $HOME/.envsen
