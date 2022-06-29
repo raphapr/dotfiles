@@ -677,7 +677,9 @@ require'nvim-treesitter.configs'.setup {
   "vim"
   },
   highlight = {
-    enable = true
+    enable = true,
+    disable = {"vim"},
+    additional_vim_regex_highlighting = { "markdown" }
   },
 }
 

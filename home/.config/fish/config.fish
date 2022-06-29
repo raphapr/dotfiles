@@ -9,7 +9,6 @@ set fish_greeting
 # env vars
 export TERM=screen-256color
 export EDITOR="nvim"
-export VIRTUALENV_PYTHON=/usr/bin/python2.7
 export GOPATH="$HOME/go"
 export BROWSER=firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
@@ -18,7 +17,7 @@ export GEMDIR=(ruby -e 'print Gem.user_dir')
 export GPG_TTY=(tty)
 export ZK_NOTEBOOK_DIR="$HOME/Cloud/sync/notes"
 
-# load sensible environment variables
+# load sensistive environment variables
 source $HOME/.envsen
 
 if test "$DISPLAY"
@@ -34,15 +33,19 @@ if test -e /opt/julia/bin
 end
 
 if test -e $GEMDIR/bin
-    set PATH $PATH  $GEMDIR/bin
+    set PATH $PATH $GEMDIR/bin
+end
+
+if test -e ~/.local/bin
+    set PATH $PATH ~/.local/bin
 end
 
 if test -e ~/.bin
     set PATH $PATH ~/.bin
 end
 
-if test -e ~/.local/bin
-    set PATH $PATH ~/.local/bin
+if test -e ~/bin
+    set PATH $PATH ~/bin
 end
 
 # awscli complete
@@ -106,8 +109,6 @@ alias k 'kill -9'
 alias r 'ranger'
 alias desk 'cd ~/Desktop'
 alias h 'history'
-alias chromium 'chromium --disk-cache-dir /tmp/cache'
-alias showbb 'cat /proc/acpi/bbswitch'
 alias grubconf 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias automhwd 'sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee ; sudo mhwd -a pci nonfree 0300'
 alias sof  'source ~/.config/fish/config.fish'
@@ -122,10 +123,6 @@ alias notes 'nvim ~/Cloud/notes/notes.txt'
 # Ver diretórios com mais espaço em disco
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias youtube-viewer 'youtube-viewer -C'
-# ssh
-alias lanc "ssh root@lancassolar -t 'tmux -q has-session -t 0 && tmux attach-session -d -t 0 || tmux -f ~/.tmux.conf new-session -s 0'"
-# bash
-alias ba "bash"
 # git
 alias g "git"
 alias gpull "git pull origin (git rev-parse --abbrev-ref HEAD)"
@@ -248,26 +245,11 @@ alias kexec 'k exec -it'
 # }}}
 # Functions       ---------------------------------------------- {{{
 
-# dexec             {{{
-
-function dexec
-   docker exec -it $argv bash
-end
-
-# }}}
 # copy              {{{
 
 # copy file content
 function copy
    xclip -sel clip < $argv
-end
-
-# }}}
-# tube              {{{
-
-# assistir algum video do youtube pelo smplayer
-function tube
-     command smplayer "$argv" &
 end
 
 # }}}
