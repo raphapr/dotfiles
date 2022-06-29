@@ -31,7 +31,7 @@ ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/asdf-plugins ~/.asdf/plugins
 
 # install pip / python packages
-sudo pip install neovim virtualfish flake8 saws ptpython ipython boto3 yamllint
+sudo pip install neovim virtualfish flake8 saws ptpython ipython boto3 yamllint pillow-simd
 
 # npm prefix configuration
 mkdir "${HOME}/.npm-packages"
