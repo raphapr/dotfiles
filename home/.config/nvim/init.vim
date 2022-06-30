@@ -134,11 +134,6 @@ Plug 'junegunn/vim-peekaboo'
 let g:peekaboo_window = 'vertical botright 30new'
 
 " }}}
-" ===== zk-nvim                 {{{
-
-Plug 'mickael-menu/zk-nvim'
-
-" }}}
 " ===== fzf                     {{{
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -261,6 +256,7 @@ vnoremap <silent> <leader>en :<c-u>call base64#v_btoa()<cr>
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 
 nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -375,6 +371,30 @@ nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
+
+" }}}
+" ===== wiki.vim                {{{
+
+Plug 'lervag/wiki.vim'
+Plug 'lervag/wiki-ft.vim'
+
+let g:wiki_root = '~/Cloud/sync/wiki'
+autocmd BufNewFile,BufRead *.wiki set tw=80
+
+map <leader>wf :WikiFzfPages<cr>
+map <leader>wt :WikiFzfTags<cr>
+map <leader>wj :WikiJournal<cr>
+
+let g:wiki_journal = {
+      \ 'name': 'journal',
+      \ 'frequency': 'daily',
+      \ 'date_format': {
+      \   'daily' : '%d-%m-%Y',
+      \   'weekly' : '%V_w%Y',
+      \   'monthly' : '%m_m%Y',
+      \ },
+      \ 'index_use_journal_scheme': v:true,
+      \}
 
 " }}}
 
@@ -614,6 +634,7 @@ lua <<EOF
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
 
+require('telescope').load_extension('media_files')
 require('telescope').setup {
     defaults = {
         mappings = {
@@ -635,7 +656,12 @@ require('telescope').setup {
         override_generic_sorter = true,  -- override the generic sorter
         override_file_sorter = true,     -- override the file sorter
         case_mode = "smart_case"         -- or "ignore_case" or "respect_case"
-      }
+      },
+       media_files = {
+         -- filetypes whitelist
+         filetypes = {"png", "webp", "jpg", "jpeg"},
+         find_cmd = "rg" -- find command (defaults to `fd`)
+       }
     }
 }
 
@@ -688,31 +714,6 @@ require'nvim-treesitter.configs'.setup {
 -- ===== hop.nvim          {{{
 
 require('hop').setup()
-
--- }}}
--- ===== zk-nvim           {{{
-
-require("zk").setup({
-  -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
-  -- it's recommended to use "telescope" or "fzf"
-  picker = "fzf",
-
-  lsp = {
-    -- `config` is passed to `vim.lsp.start_client(config)`
-    config = {
-      cmd = { "zk", "lsp" },
-      name = "zk",
-      -- on_attach = ...
-      -- etc, see `:h vim.lsp.start_client()`
-    },
-
-    -- automatically attach buffers in a zk notebook that match the given filetypes
-    auto_attach = {
-      enabled = true,
-      filetypes = { "markdown" },
-    },
-  },
-})
 
 -- }}}
 EOF

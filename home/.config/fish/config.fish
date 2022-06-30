@@ -15,7 +15,6 @@ export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GEMDIR=(ruby -e 'print Gem.user_dir')
 export GPG_TTY=(tty)
-export ZK_NOTEBOOK_DIR="$HOME/Cloud/sync/notes"
 
 # load sensistive environment variables
 source $HOME/.envsen
@@ -119,7 +118,6 @@ alias eb 'v ~/.bashrc'
 alias ev 'v ~/.config/nvim/init.vim'
 alias i3c 'v ~/.i3/config'
 alias xmerge 'xrdb -merge ~/.Xresources'
-alias notes 'nvim ~/Cloud/notes/notes.txt'
 # Ver diretórios com mais espaço em disco
 alias topdir 'du -sh * | sort -nr | head -n10'
 alias youtube-viewer 'youtube-viewer -C'
@@ -140,6 +138,9 @@ alias ptpython "python -m ptpython"
 abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
+# notes
+alias notes 'nvim +WikiIndex'
+alias nn 'nvim +WikiJournal'
 
 # }}}
 # translate-shell  {{{
