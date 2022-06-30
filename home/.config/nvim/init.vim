@@ -377,7 +377,7 @@ nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
 
 Plug 'vimwiki/vimwiki'
 
-let g:vimwiki_list = [{'path': '~/Cloud/sync/wiki'}]
+let g:vimwiki_list = [{'path': '~/Cloud/sync/wiki', 'auto_diary_index': 1}]
 let g:vimwiki_folding='syntax:quick'
 
 nnoremap <leader>ws :VimwikiSplitLink<cr>
