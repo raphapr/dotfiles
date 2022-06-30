@@ -139,8 +139,8 @@ abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
 # notes
-alias notes 'nvim +WikiIndex'
-alias nn 'nvim +WikiJournal'
+alias n 'nvim +VimwikiIndex'
+alias nn 'nvim +VimwikiMakeDiaryNote'
 
 # }}}
 # translate-shell  {{{

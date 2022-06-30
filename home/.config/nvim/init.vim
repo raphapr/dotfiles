@@ -373,28 +373,15 @@ nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
 
 " }}}
-" ===== wiki.vim                {{{
+" ===== vimwiki                 {{{
 
-Plug 'lervag/wiki.vim'
-Plug 'lervag/wiki-ft.vim'
+Plug 'vimwiki/vimwiki'
 
-let g:wiki_root = '~/Cloud/sync/wiki'
-autocmd BufNewFile,BufRead *.wiki set tw=80
+let g:vimwiki_list = [{'path': '~/Cloud/sync/wiki'}]
+let g:vimwiki_folding='syntax:quick'
 
-map <leader>wf :WikiFzfPages<cr>
-map <leader>wt :WikiFzfTags<cr>
-map <leader>wj :WikiJournal<cr>
-
-let g:wiki_journal = {
-      \ 'name': 'journal',
-      \ 'frequency': 'daily',
-      \ 'date_format': {
-      \   'daily' : '%d-%m-%Y',
-      \   'weekly' : '%V_w%Y',
-      \   'monthly' : '%m_m%Y',
-      \ },
-      \ 'index_use_journal_scheme': v:true,
-      \}
+nnoremap <leader>ws :VimwikiSplitLink<cr>
+nnoremap <leader>wv :VimwikiVSplitLink<cr>
 
 " }}}
 
@@ -412,6 +399,9 @@ set nu
 
 " turn on syntax for config files
 autocmd BufRead,BufNewFile config setf dosini
+
+" wiki
+autocmd BufNewFile,BufRead *.wiki set tw=100
 
 " settings for split windows
 set splitbelow
@@ -497,19 +487,14 @@ nmap k gk
 " set paste/nopaste
 set pastetoggle=<F2>
 
-map <F4> :cd %:p:h<CR>
-
 " remove all trailing space
 map <leader>w :%s/\s\+$//e<CR>
 
 " Set working directory to the current file just for current window
 map <leader>cd :lcd %:h<CR>
 
-" Open files located in the same dir in with the current file is edited
-map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-
 " Reload init.vim
-map <Leader>re :so ~/.config/nvim/init.vim<CR>
+map <leader>re :so ~/.config/nvim/init.vim<CR>
 
 " Cancel current highlight search
 nmap <silent> <F3> :noh<cr>:call clearmatches()<CR>
@@ -535,6 +520,9 @@ autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 " Highlight tabs as errors.
 " https://vi.stackexchange.com/a/9353/3168
 autocmd FileType yaml,yml match Error /\t/
+
+" break lines according to text width
+nmap <silent> <leader>bk :%norm! gww<CR>
 
 " }}}
 
