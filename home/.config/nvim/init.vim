@@ -377,11 +377,18 @@ nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
 
 Plug 'vimwiki/vimwiki'
 
-let g:vimwiki_list = [{'path': '~/Cloud/sync/wiki', 'auto_diary_index': 1}]
 let g:vimwiki_folding='syntax:quick'
+let g:vimwiki_list = [{'path': '~/Cloud/sync/wiki', 'auto_diary_index': 1}]
 
 nnoremap <leader>ws :VimwikiSplitLink<cr>
 nnoremap <leader>wv :VimwikiVSplitLink<cr>
+nnoremap <leader>wi :call VimwikiDiaryIndex()<cr>
+
+function! VimwikiDiaryIndex()
+  set foldlevelstart=99
+  :VimwikiDiaryIndex
+  set foldlevelstart=0
+endfunction
 
 " }}}
 
