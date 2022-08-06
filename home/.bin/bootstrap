@@ -3,6 +3,8 @@
 # This file contains install/configure instructions that I use on Arch/Manjaro Linux
 
 export EDITOR=vim
+USER=raphael
+HOME=/home/$USER
 PKGLIST=../.pkglist
 
 # pacman update and dependencies
@@ -13,7 +15,7 @@ if ! sudo pacman -Q pacaur > /dev/null; then
   exit 1
 fi
 
-sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git
+sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git gopls
 
 # ensure dirs are created before symlinks
 mkdir ~/.config/copyq
@@ -30,7 +32,17 @@ ln -sf ~/Cloud/sync/krew ~/.krew
 ln -sf ~/Cloud/sync/copyq.conf ~/.config/copyq/copyq.conf
 ln -sf ~/Cloud/sync/asdf-plugins ~/.asdf/plugins
 
-# install pip / python packages
+# aftersleep script
+sudo cp ${HOME}/Cloud/sync/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
+sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
+
+# gopls systemd service
+cp ~/Cloud/sync/systemd-user/gopls.service ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl enable --user gopls.service
+systemctl start --user gopls.service
+
+# pip / python packages
 sudo pip install neovim virtualfish flake8 saws ptpython ipython boto3 yamllint pillow-simd
 
 # npm prefix configuration
@@ -40,11 +52,11 @@ npm config set prefix "${HOME}/.npm-packages"
 # npm packages
 npm install -g git-recent jsonlint
 
-# homesick: dotfiles version control
+# homesick
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 gem install homesick
 
-# install plug vim
+# plug.vim
 if [ ! -d ~/.config/nvim/autoload/plug.vim ]; then
   echo "[ bootstrap ] :: install plug.vim"
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -52,7 +64,7 @@ else
   echo "[ bootstrap ] :: plug.vim already installed!"
 fi
 
-# install git completion for bash
+# git completion for bash
 if [ ! -f ~/.git-completion.bash ]; then
   echo "[ bootstrap ] :: install git-completion.bash"
   wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash
@@ -60,14 +72,14 @@ else
   echo "[ bootstrap ] :: git-completion.bash already installed!"
 fi
 
-# install kubectl completion for fish shell
+# kubectl completion for fish shell
 mkdir -p ~/.config/fish/completions
-pushd ~/.config/fish
+pushd ~/.config/fish || exit
 git clone https://github.com/evanlucas/fish-kubectl-completions
 ln -sf ../fish-kubectl-completions/completions/kubectl.fish completions/
-popd
+popd || exit
 
-# install fzf
+# fzf
 if [ ! -d ~/.fzf ]; then
   echo "[ bootstrap ] :: Install fzf"
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -76,7 +88,7 @@ else
   echo "[ bootstrap ] :: fzf already installed!"
 fi
 
-# install powerline-fonts
+# powerline-fonts
 if [ ! -d ~/.fonts ]; then
   echo "[ bootstrap ] :: Install powerline-fonts"
   git clone https://github.com/powerline/fonts.git /tmp/fonts
@@ -93,18 +105,18 @@ ln -sf ~/.tmux.conf ~/.tmux/tmux.conf
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/laktak/extrakto ~/.tmux/plugins/extrakto
 
-# install tmux-xpanes
+# tmux-xpanes
 wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /tmp/xpanes
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
 rm -rf ~/tmp/xpanes
 
-# install pkg list
+# pkg list
 
 echo "[ bootstrap ] :: Install pacman/aur packages"
 for PKG in $(cat $PKGLIST); do
-    pacaur -S --needed --noedit --noconfirm $PKG || echo "$PKG failed." >> $PKGLOG
+    pacaur -S --needed --noedit --noconfirm "${PKG}" || echo "${PKG} failed." >> "${PKGLOG}"
 done
 
-pushd $HOME
+pushd ${HOME} || exit
 asdf install
-popd
+popd || exit
