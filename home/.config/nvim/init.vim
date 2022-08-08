@@ -414,7 +414,6 @@ set smarttab
 set expandtab
 set autoindent
 set copyindent
-set smartindent
 set preserveindent
 
 " Undo settings files
