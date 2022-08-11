@@ -383,6 +383,11 @@ function! VimwikiDiaryIndex()
 endfunction
 
 " }}}
+" ===== filetype.nvim           {{{
+
+Plug 'nathom/filetype.nvim'
+
+" }}}
 
 call plug#end()
 
@@ -700,6 +705,19 @@ require'nvim-treesitter.configs'.setup {
 -- ===== hop.nvim          {{{
 
 require('hop').setup()
+
+-- }}}
+-- ===== filetype.nvim     {{{
+
+require("filetype").setup {
+    overrides = {
+        extensions = {
+            tf = "terraform",
+            tfvars = "terraform",
+            tfstate = "json",
+        },
+    },
+}
 
 -- }}}
 EOF
