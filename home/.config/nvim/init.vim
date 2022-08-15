@@ -31,7 +31,8 @@ Plug 'morhetz/gruvbox'
 " }}}
 " ===== vim-airline             {{{
 
-" install powerline-fonts
+" Reminder:
+" Install powerline-fonts
 " git clone https://github.com/powerline/fonts.git /tmp/fonts
 " sh /tmp/fonts/install.sh
 " ln -s ~/.local/share/fonts ~/.fonts
@@ -136,13 +137,16 @@ let g:peekaboo_window = 'vertical botright 30new'
 " }}}
 " ===== fzf                     {{{
 
+" Reminder: for syntax-highlighted preview, install bat
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 
-nnoremap <silent> <C-m> :Buffers<CR>
+nnoremap <silent> <C-y> :Buffers<CR>
 nnoremap <silent> <C-p> :FZF -m<CR>
 
 "" C-k C-j mapping up-down
@@ -277,7 +281,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" reminders
+" Reminder:
 " :CocInstall coc-pyright coc-json coc-html coc-css coc-toml coc-tabnine
 " ctrl+f ctrl+b to scroll the hover pop-up menu
 
