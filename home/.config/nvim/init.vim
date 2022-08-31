@@ -283,6 +283,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Reminder:
 " :CocInstall coc-pyright coc-json coc-html coc-css coc-toml coc-tabnine
+" coc-tsserver
 " ctrl+f ctrl+b to scroll the hover pop-up menu
 
 " TextEdit might fail if hidden is not set.
