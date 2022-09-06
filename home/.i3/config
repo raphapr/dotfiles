@@ -13,7 +13,7 @@
 
 set $mod Mod4
 set $mod2 Mod4+Shift
-set $BROWSER    firefox
+set $BROWSER    google-chrome-stable
 set $TERM       kitty
 set $TMUX       kitty -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
@@ -334,16 +334,16 @@ for_window [class="Anki"] floating enable
 for_window [title="Authy"] floating enable
 
 # firefox window groups
-for_window [title="^\[Work\].*"] move to workspace 1
-for_window [title="^\[Work Support\].*"] move to workspace 1
-for_window [title="^\[Personal\].*"] move to workspace 3
-for_window [title="^\[Screen2\].*"] move to workspace 4
+for_window [title="^\[\.Main\].*"] move to workspace 1
+for_window [title="^\[\.Support\].*"] move to workspace 1
+for_window [title="^\[\.Personal\].*"] move to workspace 3
+for_window [title="^\[\.Screen2\].*"] move to workspace 4
 
 # chrome window groups
-for_window [title="^Work.*"] move to workspace 1
-for_window [title="^Support.*"] move to workspace 1
-for_window [title="^Personal.*"] move to workspace 3
-for_window [title="^Screen2.*"] move to workspace 4
+for_window [title="^\.Main.*"] move to workspace 1
+for_window [title="^\.Support.*"] move to workspace 1
+for_window [title="^\.Personal.*"] move to workspace 3
+for_window [title="^\.Screen2.*"] move to workspace 4
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
