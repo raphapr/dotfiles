@@ -1,6 +1,3 @@
-.ncmpcpp
-.mpd
-.mpdscribble
 .homesick/repos/dotfiles/home/bin
 .config
 .homesick/repos/dotfiles/home/.i3
@@ -11,7 +8,6 @@
 .config/nvim
 .config/fish
 .icons/default
-.vimperator
 .config/i3
 .config/termite
 .config/rofi-pass
