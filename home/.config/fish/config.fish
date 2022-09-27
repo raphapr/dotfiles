@@ -10,7 +10,7 @@ set fish_greeting
 export TERM=screen-256color
 export EDITOR="nvim"
 export GOPATH="$HOME/go"
-export BROWSER=firefox
+export BROWSER=google-chrome
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GEMDIR=(ruby -e 'print Gem.user_dir')
