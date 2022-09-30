@@ -75,8 +75,8 @@ bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-wind
 bindsym $mod+m exec --no-startup-id ~/.bin/rofi-history
 # %%hotkey: rofi-copyq
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
-# %%hotkey: rofi-pass
-bindsym $mod+y exec --no-startup-id rofi -modi 1pass:rofi-1pass -show 1pass -width 1000 -theme ~/.config/rofi/nord.rasi
+# %%hotkey: 1password
+bindsym $mod+y exec --no-startup-id 1password --quick-access
 
 # %%hotkey: change focus left
 bindsym $mod+h focus left
@@ -327,11 +327,7 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 # floating windows
 for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
-for_window [class="Skype"] floating enable
-for_window [title="Adicionar Transferências"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
-for_window [class="Anki"] floating enable
-for_window [title="Authy"] floating enable
+for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
 
 # firefox window groups
 for_window [title="^\[\.Main\].*"] move to workspace 1
