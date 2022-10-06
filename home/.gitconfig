@@ -4,9 +4,6 @@
 	signingkey = FA70B2729F47724C
 [credential]
   helper = cache --timeout=3600
-
-[remote "origin"]
-  fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 [core]
   editor = nvim
   excludesfile = /home/raphael/.gitignore_global

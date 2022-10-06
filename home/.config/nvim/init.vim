@@ -394,6 +394,11 @@ endfunction
 Plug 'nathom/filetype.nvim'
 
 " }}}
+" ===== vim-python-pep8-indent  {{{
+
+Plug 'Vimjas/vim-python-pep8-indent'
+
+" }}}
 
 call plug#end()
 
