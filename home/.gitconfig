@@ -60,3 +60,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+# get go private packages (https://go.dev/doc/faq#git_https)
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
