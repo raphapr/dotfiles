@@ -1,11 +1,9 @@
 [user]
   name = Raphael Ribeiro
   email = raphaelpr01@gmail.com
-  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDG01jYZ94FrELRA8wyysbF2Y7CPjPQfS7HbgLNyZ5kP02uEmQ0EKMAWKFwWpmydOP8dXJUegGRfO+gq6WjwJcWK4RQgx3muJOhCcqgIa8AW0GwwAseJw0XqZRobRvZ8wQ+D25BaHYV0rnDR3zVRD+kNee+Xt0wYwGJk8TLODKHrigO1pELzAiE3DaivgJRTCYaNapQBLTtXm+SYXVfMLpqpiIC93vZGlesH7ZAieHfr92/6Yb+vpQ9cQk9NUdrkX/wJFnxVhgvt3DsSoRIARFS09lI95VSwGO6QH+pHLUveUSj8glPvWX56VyPlTcnbwQ66O2YiWqsqIHGlCQsL+J7
-[gpg]
-  format = ssh
-[gpg "ssh"]
-  program = "/opt/1Password/op-ssh-sign"
+	signingkey = FA70B2729F47724C
+[credential]
+  helper = cache --timeout=3600
 [core]
   editor = nvim
   excludesfile = /home/raphael/.gitignore_global
@@ -54,6 +52,7 @@
   rebase = false
 [commit]
 	gpgsign = true
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

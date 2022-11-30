@@ -15,7 +15,6 @@ export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GEMDIR=(ruby -e 'print Gem.user_dir')
 export GPG_TTY=(tty)
-export SSH_AUTH_SOCK=~/.1password/agent.sock
 
 # load sensistive environment variables
 source $HOME/.envsen
