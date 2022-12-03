@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This file contains install/configure instructions that I use on Arch/Manjaro Linux
+# This file contains step-by-step installation and configuration instructions for setting up Arch/Manjaro Linux on a new machine.
 
 export EDITOR=vim
 USER=raphael
@@ -35,6 +35,9 @@ ln -sf ~/Cloud/sync/asdf-plugins ~/.asdf/plugins
 # aftersleep script
 sudo cp ${HOME}/Cloud/sync/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
 sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
+
+# geoclue
+cp ~/Cloud/sync/geoclue.conf /etc/geoclue/geoclue.conf
 
 # gopls systemd service
 cp ~/Cloud/sync/systemd-user/gopls.service ~/.config/systemd/user/
@@ -71,6 +74,18 @@ if [ ! -f ~/.git-completion.bash ]; then
 else
   echo "[ bootstrap ] :: git-completion.bash already installed!"
 fi
+
+if ! grep -q "[pritunl]" /etc/pacman.conf; then
+  sudo tee -a /etc/pacman.conf << EOF
+[pritunl]
+Server = https://repo.pritunl.com/stable/pacman
+EOF
+  sudo pacman-key --keyserver hkp://keyserver.ubuntu.com -r 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+  sudo pacman-key --lsign-key 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+  sudo pacman -Sy
+  sudo pacman -S pritunl-client-electron
+fi
+
 
 # kubectl completion for fish shell
 mkdir -p ~/.config/fish/completions

@@ -34,7 +34,6 @@ You can now link its contents into your home dir:
 * fish shell
 * tmux
 * ranger
-* firefox
 * thunar
 * kitty
 * zathura
