@@ -2,7 +2,7 @@
 
 pid=$(pidof xautolock)
 if [ -z $pid ]; then # Se não estiver rodando
-    xautolock -time 4 -locker "i3lock -c 000000" &
+    xautolock -time 4 -locker "i3lock -c 000000" -corners --00 -cornersize 30 &
     xset +dpms; xset s on
     notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
     pkill -RTMIN+1 i3blocks

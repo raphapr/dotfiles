@@ -30,7 +30,7 @@ exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id dropbox start
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon
-exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" &
+exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" -corners --00 -cornersize 30
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id telegram-desktop -startintray
@@ -229,7 +229,7 @@ bindsym $mod2+t exec telegram-desktop
 bindsym --release $mod+Print exec --no-startup-id unset SESSION_MANAGER && $PRINT
 
 # %shortcut: screensaver
-bindsym $mod+t exec --no-startup-id ~/.bin/scrs-toggle
+bindsym $mod+t exec --no-startup-id ~/.bin/suspend-screensaver
 
 # %shortcut: keyboard layout
 bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
