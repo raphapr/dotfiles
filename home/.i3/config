@@ -48,7 +48,7 @@ workspace_layout tabbed
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:tewi-medium 7
+font pango:NotoSansRegular 7
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -269,7 +269,7 @@ bindsym Ctrl+space exec --no-startup-id dunstctl close-all
 
 bar {
   position top
-  font pango:tewi-medium 8
+  font pango:NotoSansRegular 8
   #status_command i3status
   status_command SCRIPT_DIR=~/.i3/scripts i3blocks
   colors {

@@ -114,6 +114,7 @@ dbeaver
 dbus-glib
 dbus-python
 dconf
+ddcutil
 default-cursors
 desktop-file-utils
 device-mapper
@@ -314,6 +315,7 @@ hwdata
 hwinfo
 hwloc
 hyphen
+i2c-tools
 i3-wm
 i3blocks
 i3lock
@@ -606,7 +608,6 @@ libisl
 libjpeg-turbo
 libjxl
 libkate
-libkeybinder3
 libksba
 libldac
 libldap
@@ -1361,7 +1362,6 @@ tcpdump
 tdb
 telegram-desktop
 tepl
-terminus-font
 tevent
 texinfo
 thin-provisioning-tools
@@ -1485,20 +1485,11 @@ xf86-video-amdgpu
 xf86-video-ati
 xf86-video-intel
 xf86-video-nouveau
-xfce4-appfinder
-xfce4-battery-plugin
-xfce4-clipman-plugin
 xfce4-dev-tools
 xfce4-notifyd
-xfce4-panel
 xfce4-power-manager
-xfce4-pulseaudio-plugin
-xfce4-screenshooter
 xfce4-session
 xfce4-settings
-xfce4-taskmanager
-xfce4-terminal
-xfce4-xkb-plugin
 xfconf
 xfdesktop
 xfsprogs

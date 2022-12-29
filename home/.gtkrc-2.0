@@ -3,10 +3,10 @@ include "/usr/share/themes/Numix-ArchBlue/gtk-2.0/gtkrc"
 
 # Font
 style "myfont" {
-    font_name = "Lucida Grande 9"
+    font_name = "Lucida Grande 8"
 }
 widget_class "*" style "myfont"
-gtk-font-name = "Lucida Grande 9"
+gtk-font-name = "Lucida Grande 8"
 
 # Icon theme
 gtk-icon-theme-name = "Numix"
