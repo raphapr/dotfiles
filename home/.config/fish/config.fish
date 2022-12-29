@@ -199,6 +199,7 @@ alias umount-ntfs 'sudo umount /mnt'
 
 alias t 'tmux'
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
+alias ts 'tmux source ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 
