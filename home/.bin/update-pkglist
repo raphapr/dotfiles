@@ -1,0 +1,26 @@
+#!/bin/bash
+
+PKGLIST=$HOME/.pkglist
+PKGLIST_OFFICIAL=$PKGLIST/official
+PKGLIST_AUR=$PKGLIST/aur
+
+# Create the output directories if they don't exist
+mkdir -p "$PKGLIST"
+
+# Backup the packages installed from official repositories
+pacman -Qn | cut -d' ' -f1 > "$PKGLIST_OFFICIAL"
+
+if [[ $? -ne 0 ]]; then
+  printf "Error: Failed to list official packages.\n" >&2
+  exit 1
+fi
+
+printf "Successfully backed up package lists to $PKGLIST\n"
+
+# Backup list of packages installed from the AUR
+pacman -Qqm | cut -d' ' -f1 > "$PKGLIST_AUR"
+
+if [[ $? -ne 0 ]]; then
+  printf "Error: Failed to list AUR packages.\n" >&2
+  exit 1
+fi

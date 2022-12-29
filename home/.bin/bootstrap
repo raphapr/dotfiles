@@ -2,20 +2,24 @@
 
 # This file contains step-by-step installation and configuration instructions for setting up Arch/Manjaro Linux on a new machine.
 
-export EDITOR=vim
-USER=raphael
-HOME=/home/$USER
-PKGLIST=../.pkglist
+declare -x EDITOR=vim
+declare -r USER=raphael
+declare -r HOME=/home/$USER
+declare -r PKGLIST=$HOME/.pkglist
+declare -r PKG_OFFICIAL=$PKGLIST/official
+declare -r PKG_AUR=$PKGLIST/aur
 
 # pacman update and dependencies
 sudo pacman -Syu --needed
 
 if ! sudo pacman -Q pacaur > /dev/null; then
-  echo "pacaur not installed! Install it manually."
+  echo "[ERROR] pacaur not installed! Install it manually."
   exit 1
 fi
 
-sudo pacman -S --noconfirm --needed vim python python-pip fish make cmake gcc fakeroot patch dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git gopls
+sudo pacman -S --noconfirm --needed \
+  vim python python-pip fish make cmake gcc fakeroot patch \
+  dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git gopls
 
 # ensure dirs are created before symlinks
 mkdir ~/.config/copyq
@@ -61,18 +65,18 @@ gem install homesick
 
 # plug.vim
 if [ ! -d ~/.config/nvim/autoload/plug.vim ]; then
-  echo "[ bootstrap ] :: install plug.vim"
+  echo "install plug.vim"
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
-  echo "[ bootstrap ] :: plug.vim already installed!"
+  echo "plug.vim already installed!"
 fi
 
 # git completion for bash
 if [ ! -f ~/.git-completion.bash ]; then
-  echo "[ bootstrap ] :: install git-completion.bash"
+  echo "install git-completion.bash"
   wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash
 else
-  echo "[ bootstrap ] :: git-completion.bash already installed!"
+  echo "git-completion.bash already installed!"
 fi
 
 if ! grep -q "[pritunl]" /etc/pacman.conf; then
@@ -96,40 +100,42 @@ popd || exit
 
 # fzf
 if [ ! -d ~/.fzf ]; then
-  echo "[ bootstrap ] :: Install fzf"
+  echo "Install fzf"
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
 else
-  echo "[ bootstrap ] :: fzf already installed!"
+  echo "fzf already installed!"
 fi
 
 # powerline-fonts
 if [ ! -d ~/.fonts ]; then
-  echo "[ bootstrap ] :: Install powerline-fonts"
+  echo "Install powerline-fonts"
   git clone https://github.com/powerline/fonts.git /tmp/fonts
   sh /tmp/fonts/install.sh
   ln -s ~/.local/share/fonts ~/.fonts
 else
-  echo "[ bootstrap ] :: powerline-fonts already installed!"
+  echo "powerline-fonts already installed!"
 fi
 
 # symlink tmux conf
 ln -sf ~/.tmux.conf ~/.tmux/tmux.conf
 
-# tmux plugins
-mkdir -p ~/.tmux/plugins
-git clone https://github.com/laktak/extrakto ~/.tmux/plugins/extrakto
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # tmux-xpanes
 wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /tmp/xpanes
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
 rm -rf ~/tmp/xpanes
 
-# pkg list
+echo "Install official packages"
+for pkg in $(cat $OFFICIAL_FILE); do
+  sudo pacman -S --needed --noconfirm "${pkg}" || echo "${pkg} failed." >> "${PKGLOG}"
+done
 
-echo "[ bootstrap ] :: Install pacman/aur packages"
-for PKG in $(cat $PKGLIST); do
-    pacaur -S --needed --noedit --noconfirm "${PKG}" || echo "${PKG} failed." >> "${PKGLOG}"
+echo "Install AUR packages"
+for pkg in $(cat $AUR_FILE); do
+  pacaur -S --needed --noedit --noconfirm "${pkg}" || echo "${pkg} failed." >> "${PKGLOG}"
 done
 
 pushd ${HOME} || exit
