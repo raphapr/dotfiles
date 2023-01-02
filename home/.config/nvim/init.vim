@@ -117,15 +117,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'andymass/vim-matchup'
 
 " }}}
-" ===== hop.nvim                {{{
-
-Plug 'phaazon/hop.nvim'
-
-nnoremap <silent> ff :HopWord<CR>
-nnoremap <silent> fs :HopWordCurrentLine<CR>
-nnoremap <silent> fl :HopLine<CR>
-
-" }}}
 " ===== vim-peekaboo            {{{
 
 " extends Ctrl + R
@@ -497,9 +488,13 @@ nmap k gk
 
 " }}}
 " etc               {{{
-"
+
 " set paste/nopaste
 set pastetoggle=<F2>
+
+" move selected area up or down
+vnoremap K :<C-u>silent! '<,'>move-2<CR>gv=gv
+vnoremap J :<C-u>silent! '<,'>move'>+<CR>gv=gv
 
 " remove all trailing space
 map <leader>w :%s/\s\+$//e<CR>
@@ -713,12 +708,9 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- }}}
--- ===== hop.nvim          {{{
-
-require('hop').setup()
-
--- }}}
 -- ===== filetype.nvim     {{{
+
+vim.g.did_load_filetypes = 1
 
 require("filetype").setup {
     overrides = {
