@@ -443,6 +443,9 @@ set mmp=5000
 set lazyredraw
 set ttyfast
 
+" set paste/nopaste
+set pastetoggle=<F2>
+
 " }}}
 " Folding     -------------------------------------------------------------- {{{
 
@@ -472,32 +475,20 @@ endfunction "
 set foldtext=MyFoldText()
 
 " }}}
-" Maps        -------------------------------------------------------------- {{{
-
-" buffers           {{{
+" Remaps      -------------------------------------------------------------- {{{
 
 " buffers navigation
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 
-"}}}
-" fast edition      {{{
-
+" fast edition
 nmap <leader>vi :vsplit ~/.config/nvim/init.vim<cr>
 nmap <leader>ef :vsplit ~/.config/fish/config.fish<cr>
 nmap <leader>i3 :vsplit ~/.i3/config<cr>
 
-" }}}
-" arrow keys        {{{
-
+" arrow keys
 nmap j gj
 nmap k gk
-
-" }}}
-" etc               {{{
-
-" set paste/nopaste
-set pastetoggle=<F2>
 
 " move selected area up or down
 vnoremap K :<C-u>silent! '<,'>move-2<CR>gv=gv
@@ -526,7 +517,8 @@ vnoremap // y/<C-R>"<CR>
 nmap Y y$
 
 " regex
-" These mappings save you some keystrokes and put you where you start typing your search pattern. After typing it you move to the replacement part , type it and hit return. The second version adds confirmation flag.
+" These mappings save you some keystrokes and put you where you start typing your search pattern.
+" After typing it you move to the replacement part , type it and hit return. The second version adds confirmation flag.
 noremap ;; :%s:::g<Left><Left><Left>
 noremap ;' :%s:::cg<Left><Left><Left><Left>
 
@@ -537,10 +529,9 @@ autocmd FileType yaml,yml setlocal ts=2 sts=2 sw=2 expandtab
 " https://vi.stackexchange.com/a/9353/3168
 autocmd FileType yaml,yml match Error /\t/
 
-" break lines according to text width
-nmap <silent> <leader>bk :%norm! gww<CR>
-
-" }}}
+" page up/down half a page
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
 
 " }}}
 " Backups     -------------------------------------------------------------- {{{
