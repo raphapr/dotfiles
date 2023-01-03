@@ -256,6 +256,8 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>g <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>t <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>wt <cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+nnoremap <leader>wc <cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>
 
 " }}}
 " ===== editorconfig-vim        {{{
@@ -388,6 +390,11 @@ Plug 'nathom/filetype.nvim'
 " ===== vim-python-pep8-indent  {{{
 
 Plug 'Vimjas/vim-python-pep8-indent'
+
+" }}}
+" ===== git-worktree.nvim       {{{
+
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 " }}}
 
@@ -631,6 +638,7 @@ lua <<EOF
 local actions = require('telescope.actions')
 local action_layout = require('telescope.actions.layout')
 
+require("telescope").load_extension("git_worktree")
 require('telescope').load_extension('media_files')
 require('telescope').setup {
     defaults = {
