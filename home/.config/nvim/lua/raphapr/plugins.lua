@@ -1,4 +1,19 @@
+----------------
+-- colorscheme
+----------------
+require('gruvbox').setup({
+  contrast = 'hard',
+})
+vim.cmd('colorscheme gruvbox')
+
+----------------
+-- vim-bufkill
+----------------
+vim.cmd('nmap <C-E> :BD!<cr>')
+
+--------------------------
 -- lualine
+--------------------------
 require('lualine').setup {
   options = { theme  = 'gruvbox-material' },
   extensions = {'nerdtree','fzf','fugitive'},
@@ -7,73 +22,55 @@ require('lualine').setup {
   }
 }
 
+--------------------------
 -- zoom-toggle
-vim.keymap.set("n", "-", ":call zoom#toggle()<CR>", {silent = true, noremap = true})
+--------------------------
+vim.keymap.set('n', '-', ':call zoom#toggle()<CR>', {silent = true, noremap = true})
 
+----------------
 -- nerdtree
+----------------
 vim.g.NERDTreeMinimalUI = true
 vim.g.NERDTreeDirArrows = true
-vim.keymap.set("n", "<F10>", ":NERDTreeToggle<CR>")
+vim.keymap.set('n', '<F10>', ':NERDTreeToggle<CR>')
 
+--------------------------
 -- vim-tagbar
-vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>")
+--------------------------
+vim.keymap.set('n', '<F9>', ':TagbarToggle<CR>')
 
+--------------------------
 -- vim-numbertoggle
-vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", {noremap = true})
+--------------------------
+vim.keymap.set('n', '<C-n>', ':set relativenumber!<CR>', {noremap = true})
 
--- telescope
-local actions = require('telescope.actions')
-local action_layout = require('telescope.actions.layout')
-require("telescope").load_extension("git_worktree")
-require('telescope').load_extension('media_files')
-require('telescope').setup {
-    defaults = {
-        mappings = {
-            n = {
-                ['<C-h>'] = action_layout.toggle_preview,
-            },
-            i = {
-                ['<Up>'] = actions.cycle_history_prev,
-                ['<Down>'] = actions.cycle_history_next,
-                ['<C-j>'] = actions.move_selection_next,
-                ['<C-k>'] = actions.move_selection_previous,
-                ['<C-h>'] = action_layout.toggle_preview,
-                ["<C-p>"] = actions.cycle_history_prev
-            }
-        }
-    },
-    extensions = {
-      fzf = {
-        fuzzy = true,                    -- false will only do exact matching
-        override_generic_sorter = true,  -- override the generic sorter
-        override_file_sorter = true,     -- override the file sorter
-        case_mode = "smart_case"         -- or "ignore_case" or "respect_case"
-      },
-       media_files = {
-         -- filetypes whitelist
-         filetypes = {"png", "webp", "jpg", "jpeg"},
-         find_cmd = "rg" -- find command (defaults to `fd`)
-       }
-    }
-}
-local telescope_builtin = require('telescope.builtin')
-local telescope_worktree = require('telescope').extensions.git_worktree
-vim.keymap.set('n', '<C-p>', telescope_builtin.find_files, {})
-vim.keymap.set('n', '<C-y>', telescope_builtin.buffers, {})
-vim.keymap.set('n', '<leader>g', telescope_builtin.live_grep, {})
-vim.keymap.set('n', '<leader>t', telescope_builtin.help_tags, {})
-vim.keymap.set('n', '<leader>wt', telescope_worktree.git_worktrees, {})
-vim.keymap.set('n', '<leader>wc', telescope_worktree.create_git_worktree, {})
-
+--------------------------
 -- gitsigns
+--------------------------
 require('gitsigns').setup {
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
 }
+--------------------------
+--  filetype.nvim
+--------------------------
+vim.g.did_load_filetypes = 1
+require("filetype").setup {
+  overrides = {
+    extensions = {
+      tf = "terraform",
+      tfvars = "terraform",
+      tfstate = "json",
+      fish = "fish",
+    },
+  },
+}
 
+--------------------------
 -- nvim-treesitter
+--------------------------
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
   "c",
@@ -107,24 +104,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
---  filetype.nvim
-vim.g.did_load_filetypes = 1
-require("filetype").setup {
-    overrides = {
-        extensions = {
-            tf = "terraform",
-            tfvars = "terraform",
-            tfstate = "json",
-            fish = "fish",
-        },
-    },
-}
-
---  remember.nvim
-require("remember").setup { open_folds = true }
-
+--------------------------
 -- vim-go
-
+--------------------------
 -- use coc.nvim go-to-definition
 vim.g.go_def_mapping_enabled = 0
 
@@ -160,13 +142,62 @@ vim.g.go_highlight_generate_tags = 1
 -- share gopls instance with coc.nvim
 vim.g.go_gopls_options = {'-remote=unix;/tmp/gopls-daemon-socket'}
 
+--------------------------
+-- telescope
+--------------------------
+local actions = require('telescope.actions')
+local action_layout = require('telescope.actions.layout')
+require("telescope").load_extension("git_worktree")
+require('telescope').load_extension('media_files')
+require('telescope').setup {
+    defaults = {
+        mappings = {
+            n = {
+                ['<C-h>'] = action_layout.toggle_preview,
+                ['<C-q>']  = actions.close,
+            },
+            i = {
+                ['<Up>'] = actions.cycle_history_prev,
+                ['<Down>'] = actions.cycle_history_next,
+                ['<C-j>'] = actions.move_selection_next,
+                ['<C-k>'] = actions.move_selection_previous,
+                ['<C-h>'] = action_layout.toggle_preview,
+                ['<C-p>'] = actions.cycle_history_prev,
+                ['<C-q>']  = actions.close,
+                ['<C-i>']  = actions.file_split,
+                ['<C-s>']  = actions.file_vsplit,
+            }
+        }
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true,  -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case"         -- or "ignore_case" or "respect_case"
+      },
+       media_files = {
+         -- filetypes whitelist
+         filetypes = {"png", "webp", "jpg", "jpeg"},
+         find_cmd = "rg" -- find command (defaults to `fd`)
+       }
+    }
+}
+local telescope_builtin = require('telescope.builtin')
+local telescope_worktree = require('telescope').extensions.git_worktree
+vim.keymap.set('n', '<C-p>', telescope_builtin.find_files, {})
+vim.keymap.set('n', '<C-y>', telescope_builtin.buffers, {})
+vim.keymap.set('n', '<leader>g', telescope_builtin.live_grep, {})
+vim.keymap.set('n', '<leader>t', telescope_builtin.help_tags, {})
+vim.keymap.set('n', '<leader>wt', telescope_worktree.git_worktrees, {})
+vim.keymap.set('n', '<leader>wc', telescope_worktree.create_git_worktree, {})
+
+--------------------------
 -- coc.nvim
-
+--------------------------
 vim.cmd([[
-
 " Reminder:
-" :CocInstall coc-pyright coc-json coc-html coc-css coc-toml coc-tabnine
-" coc-tsserver
+" :CocInstall coc-pyright coc-json coc-html coc-css coc-toml coc-tabnine coc-tsserver
 " ctrl+f ctrl+b to scroll the hover pop-up menu
 
 " TextEdit might fail if hidden is not set.
@@ -251,5 +282,4 @@ nnoremap <silent><nowait> <leader>d  :<C-u>CocList diagnostics<cr>
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
-
 ]])

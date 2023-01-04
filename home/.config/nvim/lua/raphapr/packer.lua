@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use { "ellisonleao/gruvbox.nvim" }
+  use{'ellisonleao/gruvbox.nvim'}
   use('jiangmiao/auto-pairs')
   use('preservim/tagbar')
   use('jeffkreeftmeijer/vim-numbertoggle')
@@ -29,7 +29,6 @@ return require('packer').startup(function(use)
 
   use{'fatih/vim-go', run = ':GoUpdateBinaries' }
   use{'neoclide/coc.nvim', branch = 'release'}
-  use({ 'vladdoster/remember.nvim', config = [[ require('remember') ]] })
 
   use {
 	  'nvim-telescope/telescope.nvim',
