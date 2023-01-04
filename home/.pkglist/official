@@ -1383,13 +1383,13 @@ transmission-gtk
 tree
 tree-sitter
 tslib
-ttc-iosevka
 ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
 ttf-font-awesome
 ttf-inconsolata
 ttf-indic-otf
+ttf-iosevka-nerd
 ttf-liberation
 ttf-opensans
 ttf-polybar-icons
