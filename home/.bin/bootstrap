@@ -63,13 +63,15 @@ npm install -g git-recent jsonlint
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 gem install homesick
 
-# plug.vim
-if [ ! -d ~/.config/nvim/autoload/plug.vim ]; then
-  echo "install plug.vim"
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# packer.nvim
+if [ ! -d  ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
+  echo "install packer.nvim"
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 else
-  echo "plug.vim already installed!"
+  echo "packer.nvim already installed!"
 fi
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 # git completion for bash
 if [ ! -f ~/.git-completion.bash ]; then

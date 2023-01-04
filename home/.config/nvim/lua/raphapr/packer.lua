@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
   use{'scrooloose/nerdtree', requires = {'Xuyuanp/nerdtree-git-plugin'}}
   use{'tpope/vim-fugitive', requires = {'tpope/vim-rhubarb'}}
   use{'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}}
+
   use{'fatih/vim-go', run = ':GoUpdateBinaries' }
   use{'neoclide/coc.nvim', branch = 'release'}
   use({ 'vladdoster/remember.nvim', config = [[ require('remember') ]] })
