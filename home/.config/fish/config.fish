@@ -115,7 +115,7 @@ alias sb 'source ~/.bashrc'
 alias et 'v ~/.tmux/tmux.conf'
 alias ef 'v ~/.config/fish/config.fish'
 alias eb 'v ~/.bashrc'
-alias ev 'v ~/.config/nvim/init.vim'
+alias ev 'v +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
 alias i3c 'v ~/.i3/config'
 alias xmerge 'xrdb -merge ~/.Xresources'
 # Ver diretórios com mais espaço em disco
