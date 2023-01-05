@@ -22,6 +22,13 @@ require('lualine').setup {
   }
 }
 
+----------------
+-- vim-base64
+----------------
+
+vim.keymap.set('v', '<leader>de', ':<c-u>call base64#v_atob()<cr>', { silent = true, noremap = true })
+vim.keymap.set('v', '<leader>en', ':<c-u>call base64#v_btoa()<cr>', { silent = true, noremap = true })
+
 --------------------------
 -- zoom-toggle
 --------------------------
