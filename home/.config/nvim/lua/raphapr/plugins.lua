@@ -15,17 +15,17 @@ vim.cmd('nmap <C-E> :BD!<cr>')
 -- lualine
 --------------------------
 require('lualine').setup {
-  options = { theme  = 'gruvbox-material' },
-  extensions = {'nerdtree','fzf','fugitive'},
+  options = { theme = 'gruvbox-material' },
+  extensions = { 'nerdtree', 'fzf', 'fugitive' },
   tabline = {
-    lualine_a = {'buffers'},
+    lualine_a = { 'buffers' },
   }
 }
 
 --------------------------
 -- zoom-toggle
 --------------------------
-vim.keymap.set('n', '-', ':call zoom#toggle()<CR>', {silent = true, noremap = true})
+vim.keymap.set('n', '-', ':call zoom#toggle()<CR>', { silent = true, noremap = true })
 
 ----------------
 -- nerdtree
@@ -42,13 +42,13 @@ vim.keymap.set('n', '<F9>', ':TagbarToggle<CR>')
 --------------------------
 -- vim-numbertoggle
 --------------------------
-vim.keymap.set('n', '<C-n>', ':set relativenumber!<CR>', {noremap = true})
+vim.keymap.set('n', '<C-n>', ':set relativenumber!<CR>', { noremap = true })
 
 --------------------------
 -- gitsigns
 --------------------------
 require('gitsigns').setup {
-  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
@@ -71,35 +71,35 @@ require("filetype").setup {
 --------------------------
 -- nvim-treesitter
 --------------------------
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   ensure_installed = {
-  "c",
-  "lua",
-  "rust",
-  "dockerfile",
-  "python",
-  "bash",
-  "json",
-  "markdown",
-  "cmake",
-  "fish",
-  "comment",
-  "go",
-  "gomod",
-  "gowork",
-  "help",
-  "html",
-  "http",
-  "json",
-  "yaml",
-  "regex",
-  "hcl",
-  "vim",
-  "terraform"
+    "c",
+    "lua",
+    "rust",
+    "dockerfile",
+    "python",
+    "bash",
+    "json",
+    "markdown",
+    "cmake",
+    "fish",
+    "comment",
+    "go",
+    "gomod",
+    "gowork",
+    "help",
+    "html",
+    "http",
+    "json",
+    "yaml",
+    "regex",
+    "hcl",
+    "vim",
+    "terraform"
   },
   highlight = {
     enable = true,
-    disable = {"vim"},
+    disable = { "vim" },
     additional_vim_regex_highlighting = { "markdown" }
   },
 }
@@ -140,7 +140,7 @@ vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_generate_tags = 1
 
 -- share gopls instance with coc.nvim
-vim.g.go_gopls_options = {'-remote=unix;/tmp/gopls-daemon-socket'}
+vim.g.go_gopls_options = { '-remote=unix;/tmp/gopls-daemon-socket' }
 
 --------------------------
 -- telescope
@@ -150,38 +150,38 @@ local action_layout = require('telescope.actions.layout')
 require("telescope").load_extension("git_worktree")
 require('telescope').load_extension('media_files')
 require('telescope').setup {
-    defaults = {
-        mappings = {
-            n = {
-                ['<C-h>'] = action_layout.toggle_preview,
-                ['<C-q>']  = actions.close,
-            },
-            i = {
-                ['<Up>'] = actions.cycle_history_prev,
-                ['<Down>'] = actions.cycle_history_next,
-                ['<C-j>'] = actions.move_selection_next,
-                ['<C-k>'] = actions.move_selection_previous,
-                ['<C-h>'] = action_layout.toggle_preview,
-                ['<C-p>'] = actions.cycle_history_prev,
-                ['<C-q>']  = actions.close,
-                ['<C-i>']  = actions.file_split,
-                ['<C-s>']  = actions.file_vsplit,
-            }
-        }
-    },
-    extensions = {
-      fzf = {
-        fuzzy = true,                    -- false will only do exact matching
-        override_generic_sorter = true,  -- override the generic sorter
-        override_file_sorter = true,     -- override the file sorter
-        case_mode = "smart_case"         -- or "ignore_case" or "respect_case"
+  defaults = {
+    mappings = {
+      n = {
+        ['<C-h>'] = action_layout.toggle_preview,
+        ['<C-q>'] = actions.close,
       },
-       media_files = {
-         -- filetypes whitelist
-         filetypes = {"png", "webp", "jpg", "jpeg"},
-         find_cmd = "rg" -- find command (defaults to `fd`)
-       }
+      i = {
+        ['<Up>']   = actions.cycle_history_prev,
+        ['<Down>'] = actions.cycle_history_next,
+        ['<C-j>']  = actions.move_selection_next,
+        ['<C-k>']  = actions.move_selection_previous,
+        ['<C-h>']  = action_layout.toggle_preview,
+        ['<C-p>']  = actions.cycle_history_prev,
+        ['<C-q>']  = actions.close,
+        ['<C-i>']  = actions.file_split,
+        ['<C-s>']  = actions.file_vsplit,
+      }
     }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+    },
+    media_files = {
+      -- filetypes whitelist
+      filetypes = { "png", "webp", "jpg", "jpeg" },
+      find_cmd = "rg" -- find command (defaults to `fd`)
+    }
+  }
 }
 local telescope_builtin = require('telescope.builtin')
 local telescope_worktree = require('telescope').extensions.git_worktree
