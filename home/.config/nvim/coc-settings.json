@@ -3,7 +3,6 @@
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
-  "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "html",
@@ -14,8 +13,12 @@
     "scss",
     "python",
     "tf",
-    "go"
+    "go",
+    "lua"
   ],
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.hint.enable": false,
+  "Lua.telemetry.enable": false,
   "languageserver": {
     "golang": {
       "command": "gopls",

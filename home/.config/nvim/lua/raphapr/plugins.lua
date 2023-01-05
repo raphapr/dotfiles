@@ -197,7 +197,7 @@ vim.keymap.set('n', '<leader>wc', telescope_worktree.create_git_worktree, {})
 --------------------------
 vim.cmd([[
 " Reminder:
-" :CocInstall coc-pyright coc-json coc-html coc-css coc-toml coc-tabnine coc-tsserver
+" :CocInstall coc-pyright coc-json coc-html coc-css coc-toml coc-tabnine coc-tsserver coc-sumneko-lua
 " ctrl+f ctrl+b to scroll the hover pop-up menu
 
 " TextEdit might fail if hidden is not set.
