@@ -40,6 +40,7 @@ exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl 
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
 exec_always --no-startup-id xset r rate 240 30
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #}}}
 # General options       ----------------------------------------------------- {{{
@@ -260,29 +261,6 @@ bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy
 
 # %shortcut: dunst close-all
 bindsym Ctrl+space exec --no-startup-id dunstctl close-all
-
-#}}}
-# bar                   ----------------------------------------------------- {{{
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-
-bar {
-  position top
-  font pango:NotoSansRegular 8
-  #status_command i3status
-  status_command SCRIPT_DIR=~/.i3/scripts i3blocks
-  colors {
-            statusline #AAAAAA
-            focused_workspace #0080ff #0080ff #000000
-            inactive_workspace #00000 #000000 #AAAAAA
-            urgent_workspace #d33682 #d33682 #fdf6e3
-            #focused_workspace #0088CC #0088CC #FFFFFF
-            #active_workspace #333333 #333333 #FFFFFF
-            #inactive_workspace #333333 #333333 #888888
-            #urgent_workspace #2F343A #900000 #FFFFFF
-  }
-}
 
 #}}}
 # borders               ----------------------------------------------------- {{{

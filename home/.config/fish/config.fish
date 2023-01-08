@@ -151,13 +151,11 @@ alias gt-en 'trans :en' # portuguese to english
 alias gt-au 'trans :en -p -b' # pronuncia
 
 # }}}
-# pacman/pacaur    {{{
+# pacman           {{{
 
 alias p 'sudo pacman'
 alias pacup 'sudo pacman -Syuu'
 alias pblock "sudo rm -rf /var/lib/pacman/db.lck"
-alias pr 'pacaur'
-alias prup 'pacaur -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update 'sudo pacman-mirrors -g'
 
 # }}}
