@@ -263,7 +263,7 @@ bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy
 bindsym Ctrl+space exec --no-startup-id dunstctl close-all
 
 #}}}
-# borders               ----------------------------------------------------- {{{
+# Borders               ----------------------------------------------------- {{{
 
 new_float normal 1
 new_window 1pixel
