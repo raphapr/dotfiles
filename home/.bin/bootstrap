@@ -12,13 +12,8 @@ declare -r PKG_AUR=$PKGLIST/aur
 # pacman update and dependencies
 sudo pacman -Syu --needed
 
-if ! sudo pacman -Q pacaur > /dev/null; then
-  echo "[ERROR] pacaur not installed! Install it manually."
-  exit 1
-fi
-
 sudo pacman -S --noconfirm --needed \
-  vim python python-pip fish make cmake gcc fakeroot patch \
+  yay vim python python-pip fish make cmake gcc fakeroot patch \
   dnsutils nodejs npm ruby ruby-rdoc ruby-docs wget unzip cronie git gopls
 
 # ensure dirs are created before symlinks
@@ -137,7 +132,7 @@ done
 
 echo "Install AUR packages"
 for pkg in $(cat $AUR_FILE); do
-  pacaur -S --needed --noedit --noconfirm "${pkg}" || echo "${pkg} failed." >> "${PKGLOG}"
+  yay -S --needed --noconfirm "${pkg}" || echo "${pkg} failed." >> "${PKGLOG}"
 done
 
 pushd ${HOME} || exit
