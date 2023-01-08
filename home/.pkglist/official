@@ -317,7 +317,6 @@ hwloc
 hyphen
 i2c-tools
 i3-wm
-i3blocks
 i3lock
 iana-etc
 ibus
@@ -1529,6 +1528,7 @@ xz
 yajl
 yarn
 yasm
+yay
 youtube-dl
 zathura
 zathura-pdf-mupdf
