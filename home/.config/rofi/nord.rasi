@@ -21,6 +21,14 @@ configuration {
     display-combi:  "";
     show-icons:     false;
 }
+* {
+    background:     #222D32FF;
+    background-alt: #29353BFF;
+    foreground:     #B8C2C6FF;
+    selected:       #00BCD4FF;
+    active:         #21FF90FF;
+    urgent:         #FF4B60FF;
+}
 
 * {
 	nord0: #2e3440;
@@ -46,7 +54,7 @@ configuration {
     foreground:  @nord9;
     backlight:   #ccffeedd;
     background-color:  transparent;
-    
+
     highlight:     underline bold #eceff4;
 
     transparent: rgba(46,52,64,0);
@@ -117,7 +125,7 @@ element {
 }
 
 element selected.normal {
-	background-color: @nord7;
+	background-color: #00BCD4FF;
 	text-color: #2e3440;
 }
 

@@ -68,14 +68,15 @@ bindsym $mod2+b border toggle
 # %%hotkey: kill focused window
 bindsym $mod+BackSpace kill
 
-# %%hotkey: start rofi run mode
-bindsym $mod+space exec --no-startup-id rofi -width 600 -show run -display-run 'run ' -theme ~/.config/rofi/nord.rasi
-# %%hotkey: start rofi window mode
-bindsym $mod+Tab exec --no-startup-id rofi -width 600 -show window -display-window "window " -theme ~/.config/rofi/nord.rasi
-# %%hotkey: start rofi-hotkeys
+# %%hotkey: rofi run mode
+bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
+# %%hotkey: rofi window mode
+bindsym $mod+Tab exec rofi -show window -config ~/.config/rofi/launchers/type-2/style-5.rasi
+# %%hotkey: rofi-history
 bindsym $mod+m exec --no-startup-id ~/.bin/rofi-history
 # %%hotkey: rofi-copyq
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
+
 # %%hotkey: 1password
 bindsym $mod+y exec --no-startup-id 1password --quick-access
 
