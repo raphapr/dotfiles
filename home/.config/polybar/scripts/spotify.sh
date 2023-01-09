@@ -2,9 +2,9 @@
 
 PLAYER="spotify"
 STATUS=$(playerctl -p "$PLAYER" status)
-VOLUME=$(playerctl metadata --format "{{ volume }}")
+VOLUME=$(playerctl -p "$PLAYER" metadata --format "{{ volume }}")
 CURRENT_TRACK=$(playerctl metadata -p "$PLAYER" --format "{{ artist }}: {{ title }}")
-MAX_LENGTH=40
+MAX_LENGTH=60
 
 print_status() {
   if [ "$STATUS" = "Playing" ]; then
@@ -17,7 +17,8 @@ print_status() {
   else
     VOLUME=""
   fi
-  if [ ${#my_string} > $MAX_LENGTH ]; then
+
+  if [ ${#CURRENT_TRACK} -gt $MAX_LENGTH ]; then
     CURRENT_TRACK="${CURRENT_TRACK:0:$MAX_LENGTH}..."
   fi
   echo "${CURRENT_TRACK} $STATUS $VOLUME"
