@@ -38,11 +38,8 @@ sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
 # geoclue
 cp ~/Cloud/sync/geoclue.conf /etc/geoclue/geoclue.conf
 
-# gopls systemd service
+# systemd user services
 cp ~/Cloud/sync/systemd-user/gopls.service ~/.config/systemd/user/
-systemctl --user daemon-reload
-systemctl enable --user gopls.service
-systemctl start --user gopls.service
 
 # pip / python packages
 sudo pip install neovim virtualfish flake8 saws ptpython ipython boto3 yamllint pillow-simd
@@ -138,3 +135,8 @@ done
 pushd ${HOME} || exit
 asdf install
 popd || exit
+
+# enable systemd user services
+systemctl --user daemon-reload
+systemctl --user --now enable psd
+systemctl --user --now enable gopls

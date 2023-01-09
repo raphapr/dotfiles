@@ -256,6 +256,9 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# mute spotify player
+bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
+
 # %shortcut: authy
 bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy/app.asar
 

@@ -1,14 +1,15 @@
 #!/bin/bash
 
+statefile=~/.screensaver-state
 pid=$(pidof xautolock)
 if [ -z $pid ]; then # Se não estiver rodando
     xautolock -time 4 -locker "i3lock -c 000000" -corners --00 -cornersize 30 &
     xset +dpms; xset s on
     notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
-    echo "%{F#4DB6AC} ON"  > ~/.screensaver-state
+    echo "%{F#4DB6AC} ON"  > "$statefile"
 else
     pkill xautolock
     xset -dpms; xset s off
     notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
-    echo "%{F#FF5252} OFF"  > ~/.screensaver-state
+    echo "%{F#FF5252} OFF"  > "$statefile"
 fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+PLAYER=spotify
+VOLUME_FILE=$HOME/.cache/playerctl-volume
+CURRENT_VOLUME=$(playerctl -p $PLAYER volume)
+
+if [ -e "$VOLUME_FILE" -a "$CURRENT_VOLUME" = '0.000000' ]; then
+  notify-send "Spotify Volume" "ON" -i /opt/spotify/icons/spotify-linux-32.png
+  playerctl -p "$PLAYER " volume $(cat "$VOLUME_FILE")
+  rm "$VOLUME_FILE"
+  exit
+fi
+
+notify-send "Spotify Volume" "OFF" -i /opt/spotify/icons/spotify-linux-32.png
+playerctl -p "$PLAYER" volume > "$VOLUME_FILE"
+playerctl -p "$PLAYER" volume 0.0
