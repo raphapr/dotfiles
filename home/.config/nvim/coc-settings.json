@@ -19,6 +19,8 @@
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.hint.enable": false,
   "Lua.telemetry.enable": false,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
   "languageserver": {
     "golang": {
       "command": "gopls",
