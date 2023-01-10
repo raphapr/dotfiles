@@ -148,8 +148,6 @@ edk2-ovmf
 efibootmgr
 efivar
 electron17
-electron18
-elementary-icon-theme
 elfutils
 enchant
 engrampa
@@ -204,6 +202,8 @@ gcc-libs
 gcr
 gcr-4
 gd
+gdb
+gdb-common
 gdbm
 gdk-pixbuf2
 gedit
@@ -223,7 +223,6 @@ github-cli
 glew
 glib-networking
 glib2
-glib2-docs
 glibc
 glibmm
 glibmm-2.68
@@ -250,7 +249,6 @@ gpgme
 gpm
 gptfdisk
 graphene
-graphicsmagick
 graphite
 grep
 groff
@@ -258,7 +256,6 @@ grub
 grub-theme-manjaro
 gsettings-desktop-schemas
 gsfonts
-gsl
 gsm
 gspell
 gssdp
@@ -272,7 +269,6 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer
 gtest
-gtk-doc
 gtk-engine-murrine
 gtk-engines
 gtk-update-icon-cache
@@ -285,7 +281,6 @@ gtkmm3
 gtksourceview3
 gtksourceview4
 gtkspell
-gufw
 guile
 gumbo-parser
 gupnp
@@ -330,7 +325,6 @@ imath
 imlib2
 inetutils
 iniparser
-inkscape
 intltool
 inxi
 iproute2
@@ -384,7 +378,6 @@ ldb
 ldns
 lensfun
 less
-lib2geom
 lib32-alsa-lib
 lib32-alsa-oss
 lib32-at-spi2-core
@@ -537,7 +530,6 @@ libcap-ng
 libcddb
 libcdio
 libcdio-paranoia
-libcdr
 libcheese
 libcloudproviders
 libcolord
@@ -678,7 +670,6 @@ libraqm
 libraw
 libraw1394
 libressl
-librevenge
 librsvg
 librsync
 libsamplerate
@@ -731,7 +722,6 @@ libva-mesa-driver
 libva-vdpau-driver
 libvdpau
 libverto
-libvisio
 libvisual
 libvoikko
 libvorbis
@@ -742,9 +732,7 @@ libwbclient
 libwebp
 libwmf
 libwnck3
-libwpd
 libwpe
-libwpg
 libx11
 libx86emu
 libxau
@@ -813,6 +801,7 @@ lua51-mpack
 lua52
 lua53
 luajit
+luit
 lv2
 lvm2
 lxappearance
@@ -918,7 +907,6 @@ ntfs-3g
 numactl
 numlockx
 oath-toolkit
-obsidian
 ocl-icd
 oniguruma
 openal
@@ -954,7 +942,6 @@ pango
 pangomm
 papirus-icon-theme
 papirus-maia-icon-theme
-parole
 parted
 patch
 patchutils
@@ -1024,7 +1011,6 @@ pkgconf
 pkgfile
 playerctl
 polkit
-polkit-gnome
 polkit-qt5
 polybar
 poppler
@@ -1034,7 +1020,6 @@ poppler-qt5
 popt
 portaudio
 postgresql-libs
-potrace
 powertop
 ppp
 pptpclient
@@ -1055,7 +1040,6 @@ pulseaudio-rtp
 pulseaudio-zeroconf
 pv
 python
-python-anytree
 python-appdirs
 python-asn1crypto
 python-attrs
@@ -1074,7 +1058,6 @@ python-commonmark
 python-configobj
 python-contextlib2
 python-cryptography
-python-cssselect
 python-defusedxml
 python-distlib
 python-distro
@@ -1101,7 +1084,6 @@ python-jaraco.text
 python-jsonpointer
 python-jsonschema
 python-keyutils
-python-lxml
 python-markdown
 python-merge3
 python-more-itertools
@@ -1109,7 +1091,6 @@ python-msgpack
 python-multidict
 python-npyscreen
 python-nspektr
-python-numpy
 python-ordered-set
 python-packaging
 python-paramiko
@@ -1222,7 +1203,6 @@ qt6-imageformats
 qt6-svg
 qt6-translations
 qt6-wayland
-ragel
 ranger
 raptor
 rav1e
@@ -1326,6 +1306,7 @@ sof-firmware
 sord
 sound-theme-freedesktop
 soundtouch
+source-highlight
 spandsp
 spectre-meltdown-checker
 speex
@@ -1401,7 +1382,6 @@ uchardet
 udiskie
 udisks2
 ueberzug
-ufw
 unace
 unibilium
 unrar
@@ -1456,6 +1436,7 @@ x264
 x265
 xapp
 xautolock
+xbitmaps
 xcape
 xcb-proto
 xcb-util
@@ -1485,11 +1466,8 @@ xf86-video-amdgpu
 xf86-video-ati
 xf86-video-intel
 xf86-video-nouveau
-xfce4-dev-tools
 xfce4-notifyd
 xfce4-power-manager
-xfce4-session
-xfce4-settings
 xfconf
 xfdesktop
 xfsprogs
@@ -1501,10 +1479,10 @@ xmlto
 xorg-bdftopcf
 xorg-font-util
 xorg-fonts-encodings
-xorg-iceauth
 xorg-mkfontscale
 xorg-server
 xorg-server-common
+xorg-server-xvfb
 xorg-setxkbmap
 xorg-twm
 xorg-xauth
@@ -1523,6 +1501,7 @@ xorg-xset
 xorg-xwininfo
 xorgproto
 xsel
+xterm
 xvidcore
 xxhash
 xz

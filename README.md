@@ -30,7 +30,7 @@ You can now link its contents into your home dir:
 
 * neovim
 * i3wm
-* i3blocks
+* polybar
 * fish shell
 * tmux
 * ranger
@@ -40,7 +40,6 @@ You can now link its contents into your home dir:
 * autojump
 * feh
 * fzf
-* translate-shell
 * rofi
 * htop
 * copyq
@@ -49,3 +48,5 @@ You can now link its contents into your home dir:
 * ripgrep
 * autorandr
 * redshift
+* asdf
+* yay
