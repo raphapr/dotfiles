@@ -6,6 +6,6 @@ echo
 yay -Syu
 
 echo
-bash ~/.config/polybar/checkupdates.sh
+bash ~/.config/polybar/scripts/checkupdates.sh
 
 read -p "Press enter to close this window..."
