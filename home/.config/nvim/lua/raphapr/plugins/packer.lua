@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use { 'ellisonleao/gruvbox.nvim' }
+  use('ellisonleao/gruvbox.nvim')
   use('jiangmiao/auto-pairs')
   use('preservim/tagbar')
   use('jeffkreeftmeijer/vim-numbertoggle')
@@ -19,9 +19,9 @@ return require('packer').startup(function(use)
   use('christianrondeau/vim-base64')
   use('editorconfig/editorconfig-vim')
   use('dhruvasagar/vim-zoom')
-  use { 'glepnir/dashboard-nvim' }
+  use('glepnir/dashboard-nvim')
 
-  use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'scrooloose/nerdtree', requires = { 'Xuyuanp/nerdtree-git-plugin' } }
   use { 'tpope/vim-fugitive', requires = { 'tpope/vim-rhubarb' } }
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
