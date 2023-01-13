@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
   use('jiangmiao/auto-pairs')
   use('preservim/tagbar')
   use('jeffkreeftmeijer/vim-numbertoggle')
-  use('scrooloose/nerdcommenter')
+  use('numToStr/Comment.nvim')
   use('andymass/vim-matchup')
   use('junegunn/vim-peekaboo')
   use('nathom/filetype.nvim')
@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
   use('editorconfig/editorconfig-vim')
   use('dhruvasagar/vim-zoom')
   use('glepnir/dashboard-nvim')
+  use('lukas-reineke/indent-blankline.nvim')
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'scrooloose/nerdtree', requires = { 'Xuyuanp/nerdtree-git-plugin' } }

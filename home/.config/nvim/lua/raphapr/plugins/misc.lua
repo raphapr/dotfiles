@@ -25,7 +25,6 @@ require('lualine').setup {
 ----------------
 -- vim-base64
 ----------------
-
 vim.keymap.set('v', '<leader>de', ':<c-u>call base64#v_atob()<cr>', { silent = true, noremap = true })
 vim.keymap.set('v', '<leader>en', ':<c-u>call base64#v_btoa()<cr>', { silent = true, noremap = true })
 
@@ -148,3 +147,33 @@ vim.g.go_highlight_generate_tags = 1
 
 -- share gopls instance with coc.nvim
 vim.g.go_gopls_options = { '-remote=unix;/tmp/gopls-daemon-socket' }
+
+--------------------------
+-- comment.nvim
+--------------------------
+require('Comment').setup {
+  ---Add a space b/w comment and the line
+  padding = true,
+  ---Whether the cursor should stay at its position
+  sticky = true,
+  ---Lines to be ignored while (un)comment
+  ignore = nil,
+  ---LHS of toggle mappings in NORMAL mode
+  toggler = {
+    ---Line-comment toggle keymap
+    line = '<leader>cc',
+    ---Block-comment toggle keymap
+    block = '<leader>cb',
+  },
+  ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+  opleader = {
+    ---Line-comment keymap
+    line = '<leader>cc',
+    ---Block-comment keymap
+    block = '<leader>cb',
+  },
+  mappings = {
+    ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+    basic = true,
+  }
+}
