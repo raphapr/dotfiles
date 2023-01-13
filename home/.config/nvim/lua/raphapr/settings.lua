@@ -1,8 +1,3 @@
--- filetype
-vim.cmd("filetype off")
-vim.cmd("filetype plugin on")
-vim.cmd("filetype plugin indent on")
-
 vim.opt.background = "dark"
 
 -- true colors
@@ -15,7 +10,6 @@ vim.opt.splitright = true
 vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
 
 -- enable syntax highlighting
-vim.cmd("syntax enable")
 vim.opt.background = "dark"
 vim.opt.nu = true
 

@@ -64,3 +64,7 @@ vim.keymap.set("n", ";'", ":%s:::cg<Left><Left><Left><Left>", { noremap = true }
 -- page up/down half a page
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
+
+-- quickfix
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>")

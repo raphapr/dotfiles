@@ -74,6 +74,12 @@ require("filetype").setup {
   },
 }
 
+
+--------------------------
+-- mbbill/undotree
+--------------------------
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
 --------------------------
 -- nvim-treesitter
 --------------------------
@@ -145,7 +151,7 @@ vim.g.go_highlight_extra_types = 1
 vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_generate_tags = 1
 
--- share gopls instance with coc.nvim
+-- gopls instance
 vim.g.go_gopls_options = { '-remote=unix;/tmp/gopls-daemon-socket' }
 
 --------------------------
