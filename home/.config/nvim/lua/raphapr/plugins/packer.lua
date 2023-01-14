@@ -19,12 +19,13 @@ return require('packer').startup(function(use)
   use('editorconfig/editorconfig-vim')
   use('dhruvasagar/vim-zoom')
   use('mbbill/undotree')
+  use('ray-x/go.nvim')
+  use('ray-x/guihua.lua')
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'scrooloose/nerdtree', requires = { 'Xuyuanp/nerdtree-git-plugin' } }
   use { 'tpope/vim-fugitive', requires = { 'tpope/vim-rhubarb' } }
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true} }
 
   use {
@@ -36,6 +37,13 @@ return require('packer').startup(function(use)
       { 'kyazdani42/nvim-web-devicons' }
     }
   }
+
+  use({
+    "dnlhc/glance.nvim",
+    config = function()
+      require('glance').setup({})
+    end,
+  })
 
   use {
     'VonHeikemen/lsp-zero.nvim',
