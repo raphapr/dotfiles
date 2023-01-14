@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('ray-x/go.nvim')
   use('ray-x/guihua.lua')
+  use('folke/neodev.nvim')
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'scrooloose/nerdtree', requires = { 'Xuyuanp/nerdtree-git-plugin' } }
@@ -37,13 +38,6 @@ return require('packer').startup(function(use)
       { 'kyazdani42/nvim-web-devicons' }
     }
   }
-
-  use({
-    "dnlhc/glance.nvim",
-    config = function()
-      require('glance').setup({})
-    end,
-  })
 
   use {
     'VonHeikemen/lsp-zero.nvim',
