@@ -21,7 +21,15 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('ray-x/go.nvim')
   use('ray-x/guihua.lua')
-  use('folke/neodev.nvim')
+
+  use('jose-elias-alvarez/null-ls.nvim')
+
+  use {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup {}
+    end
+  }
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'scrooloose/nerdtree', requires = { 'Xuyuanp/nerdtree-git-plugin' } }

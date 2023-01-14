@@ -11,11 +11,6 @@ vim.cmd('colorscheme gruvbox')
 ----------------
 vim.cmd('nmap <C-E> :BD!<cr>')
 
---------------------------
--- neodev
---------------------------
-require('neodev').setup()
-
 ----------------
 -- vim-base64
 ----------------
