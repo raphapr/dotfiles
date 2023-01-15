@@ -105,13 +105,10 @@ local nls = require("null-ls")
 local U = require("raphapr.plugins.utils")
 
 local fmt = nls.builtins.formatting
-local dgn = nls.builtins.diagnostics
 
 -- Configuring null-ls
 nls.setup({
 	sources = {
-		dgn.yamllint,
-		dgn.hadolint,
 		fmt.black.with({ extra_args = { "--fast" } }),
 		fmt.stylua,
 		fmt.shfmt,
