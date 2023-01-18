@@ -8,6 +8,7 @@ declare -r HOME=/home/$USER
 declare -r PKGLIST=$HOME/.pkglist
 declare -r PKG_OFFICIAL=$PKGLIST/official
 declare -r PKG_AUR=$PKGLIST/aur
+declare -r FONT_DIR=$HOME/.local/share/fonts
 
 # pacman update and dependencies
 sudo pacman -Syu --needed
@@ -56,7 +57,7 @@ export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 gem install homesick
 
 # packer.nvim
-if [ ! -d  ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
+if [ ! -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
   echo "install packer.nvim"
   git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 else
@@ -74,7 +75,7 @@ else
 fi
 
 if ! grep -q "[pritunl]" /etc/pacman.conf; then
-  sudo tee -a /etc/pacman.conf << EOF
+  sudo tee -a /etc/pacman.conf <<EOF
 [pritunl]
 Server = https://repo.pritunl.com/stable/pacman
 EOF
@@ -83,7 +84,6 @@ EOF
   sudo pacman -Sy
   sudo pacman -S pritunl-client-electron
 fi
-
 
 # kubectl completion for fish shell
 mkdir -p ~/.config/fish/completions
@@ -122,14 +122,25 @@ wget https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes -O /
 sudo install -m 0755 /tmp/xpanes /usr/local/bin/xpanes
 rm -rf ~/tmp/xpanes
 
+# fonts
+echo " Installing fonts"
+if [[ -d "$FONT_DIR" ]]; then
+  cp -rf $HOME/.config/rofi/fonts/* "$FONT_DIR"
+else
+  mkdir -p "$FONT_DIR"
+  cp -rf $HOME/.config/rofi/fonts/* "$FONT_DIR"
+fi
+fc-cache
+
+# packages
 echo "Install official packages"
-for pkg in $(cat $OFFICIAL_FILE); do
-  sudo pacman -S --needed --noconfirm "${pkg}" || echo "${pkg} failed." >> "${PKGLOG}"
+for pkg in $(cat $PKG_OFFICIAL); do
+  sudo pacman -S --needed --noconfirm "${pkg}" || echo "${pkg} failed." >>"${PKGLOG}"
 done
 
 echo "Install AUR packages"
-for pkg in $(cat $AUR_FILE); do
-  yay -S --needed --noconfirm "${pkg}" || echo "${pkg} failed." >> "${PKGLOG}"
+for pkg in $(cat $PKG_AUR); do
+  yay -S --needed --noconfirm "${pkg}" || echo "${pkg} failed." >>"${PKGLOG}"
 done
 
 pushd ${HOME} || exit
