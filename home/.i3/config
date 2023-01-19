@@ -77,7 +77,7 @@ bindsym $mod+m exec --no-startup-id ~/.bin/rofi-history
 # %%hotkey: rofi-copyq
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
 # %%hotkey: rofi-powermenu
-bindsym $mod2+m exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
+bindsym $mod+0 exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
 
 # %%hotkey: 1password
 bindsym $mod+y exec --no-startup-id 1password --quick-access
@@ -187,7 +187,6 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
 
 # move focused container to workspace
 bindsym $mod2+u move container to workspace 1
