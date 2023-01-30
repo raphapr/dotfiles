@@ -60,6 +60,11 @@ lsp.setup_nvim_cmp({
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false, silent = true }
+	local map = function(mode, lhs, rhs)
+		vim.keymap.set(mode, lhs, rhs, opts)
+	end
+
+	map("n", "<C-k>", "<C-w>k", noremap)
 
 	vim.keymap.set("n", "gd", function()
 		vim.lsp.buf.definition()
@@ -87,9 +92,6 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 	vim.keymap.set("n", "]d", function()
 		vim.diagnostic.goto_prev()
-	end, opts)
-	vim.keymap.set("i", "<C-h>", function()
-		vim.lsp.buf.signature_help()
 	end, opts)
 end)
 
