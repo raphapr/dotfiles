@@ -59,9 +59,6 @@ set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
-# kitty autocomplete
-kitty + complete setup fish | source
-
 # autojump
 if test -e /usr/share/autojump/autojump.fish
   source /usr/share/autojump/autojump.fish
