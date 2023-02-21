@@ -13,7 +13,7 @@ lsp.ensure_installed({
 	-- Replace these with whatever servers you want to install
 	"tsserver",
 	"eslint",
-	"sumneko_lua",
+	"lua_ls",
 	"gopls",
 	"terraformls",
 	"jsonls",
@@ -24,7 +24,7 @@ lsp.ensure_installed({
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure("sumneko_lua", {
+lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
 			diagnostics = {
