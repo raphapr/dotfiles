@@ -1,6 +1,9 @@
 -- go.nvim
 require("go").setup()
 
+-- go.nvim mapping
+vim.keymap.set("n", "gfs", ":GoFillStruct<CR>", { noremap = true })
+
 -- Learn the keybindings, see :help lsp-zero-keybindings
 -- Reserve space for diagnostic icons
 vim.opt.signcolumn = "yes"
