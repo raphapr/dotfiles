@@ -1,8 +1,16 @@
 -- go.nvim
 require("go").setup()
 
+require("lsp_signature").setup({
+	bind = true, -- This is mandatory, otherwise border config won't get registered.
+	handler_opts = {
+		border = "rounded",
+	},
+	hint_prefix = "󰏚  ",
+})
+
 -- go.nvim mapping
-vim.keymap.set("n", "gfs", ":GoFillStruct<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>fs", ":GoFillStruct<CR>", { noremap = true })
 
 -- Learn the keybindings, see :help lsp-zero-keybindings
 -- Reserve space for diagnostic icons
