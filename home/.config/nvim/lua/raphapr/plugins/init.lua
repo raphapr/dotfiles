@@ -1,5 +1,6 @@
 require("raphapr.plugins.packer")
 require("raphapr.plugins.misc")
+require("raphapr.plugins.nvim-tree")
 require("raphapr.plugins.comment")
 require("raphapr.plugins.telescope")
 require("raphapr.plugins.filetype")
