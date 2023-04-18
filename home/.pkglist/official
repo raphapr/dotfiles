@@ -71,9 +71,11 @@ ca-certificates-mozilla
 ca-certificates-utils
 cairo
 cairomm
+cairomm-1.16
 cantarell-fonts
 capstone
 cblas
+cblas64
 cdparanoia
 cheese
 chromaprint
@@ -95,6 +97,7 @@ compiler-rt
 confuse
 container-diff
 containerd
+cool-retro-term
 copyq
 coreutils
 cpupower
@@ -110,6 +113,7 @@ dav1d
 db
 db5.3
 dbeaver
+dbus
 dbus-glib
 dbus-python
 dconf
@@ -192,6 +196,7 @@ fuse-common
 fuse2
 fuse3
 fzf
+game-devices-udev
 garcon
 gavl
 gawk
@@ -238,6 +243,7 @@ gnupg
 gnutls
 go
 gobject-introspection-runtime
+gofumpt
 gopls
 gparted
 gperf
@@ -274,10 +280,12 @@ gtk3
 gtk4
 gtkhash
 gtkhash-thunar
+gtkmm-4.0
 gtkmm3
 gtksourceview3
 gtksourceview4
 gtkspell
+gtop
 guile
 gumbo-parser
 gupnp
@@ -340,6 +348,8 @@ jdk8-openjdk
 jemalloc
 jfsutils
 jq
+jre11-openjdk
+jre11-openjdk-headless
 jre8-openjdk
 jre8-openjdk-headless
 js78
@@ -370,6 +380,7 @@ l-smash
 ladspa
 lame
 lapack
+lapack64
 lcms2
 ldb
 ldns
@@ -377,6 +388,7 @@ lensfun
 less
 lib32-alsa-lib
 lib32-alsa-oss
+lib32-alsa-plugins
 lib32-at-spi2-core
 lib32-attr
 lib32-brotli
@@ -429,6 +441,7 @@ lib32-libldap
 lib32-libnsl
 lib32-libogg
 lib32-libpciaccess
+lib32-libpipewire
 lib32-libpng
 lib32-libpsl
 lib32-libpulse
@@ -453,6 +466,7 @@ lib32-libxau
 lib32-libxcb
 lib32-libxcomposite
 lib32-libxcrypt
+lib32-libxcrypt-compat
 lib32-libxcursor
 lib32-libxdamage
 lib32-libxdmcp
@@ -466,6 +480,7 @@ lib32-libxmu
 lib32-libxrandr
 lib32-libxrender
 lib32-libxshmfence
+lib32-libxss
 lib32-libxt
 lib32-libxtst
 lib32-libxxf86vm
@@ -477,6 +492,8 @@ lib32-mesa-demos
 lib32-mesa-vdpau
 lib32-ncurses
 lib32-nettle
+lib32-nspr
+lib32-nss
 lib32-openal
 lib32-openssl
 lib32-opus
@@ -485,10 +502,12 @@ lib32-pam
 lib32-pango
 lib32-pcre
 lib32-pcre2
+lib32-pipewire
 lib32-pixman
 lib32-portaudio
 lib32-readline
 lib32-sdl2
+lib32-sqlite
 lib32-systemd
 lib32-util-linux
 lib32-vulkan-icd-loader
@@ -521,6 +540,7 @@ libbytesize
 libcaca
 libcacard
 libcamera
+libcamera-ipa
 libcanberra
 libcap
 libcap-ng
@@ -544,6 +564,8 @@ libdbusmenu-qt5
 libdc1394
 libdca
 libde265
+libdecor
+libdeflate
 libdispatch
 libdrm
 libdv
@@ -566,6 +588,7 @@ libgadu
 libgcrypt
 libgee
 libgexiv2
+libgirepository
 libgit2
 libglvnd
 libgme
@@ -653,6 +676,7 @@ libpciaccess
 libpeas
 libpgm
 libpipeline
+libpipewire
 libplacebo
 libplist
 libpng
@@ -703,6 +727,8 @@ libtiff
 libtiger
 libtirpc
 libtool
+libtraceevent
+libtracefs
 libunistring
 libunwind
 liburcu
@@ -737,6 +763,7 @@ libxaw
 libxcb
 libxcomposite
 libxcrypt
+libxcrypt-compat
 libxcursor
 libxcvt
 libxdamage
@@ -786,11 +813,13 @@ linux54-headers
 lirc
 llvm
 llvm-libs
+llvm14-libs
 lm_sensors
 lmdb
 logrotate
 lsb-release
 lshw
+lsof
 lua
 lua51
 lua51-lpeg
@@ -890,7 +919,7 @@ ninja
 nm-connection-editor
 nmap
 node-gyp
-nodejs-lts-gallium
+nodejs
 nodejs-nopt
 noto-fonts
 noto-fonts-cjk
@@ -904,9 +933,11 @@ numactl
 numlockx
 oath-toolkit
 ocl-icd
+onetbb
 oniguruma
 openal
 openblas
+openblas64
 opencl-headers
 openconnect
 opencore-amr
@@ -936,6 +967,7 @@ pam
 pambase
 pango
 pangomm
+pangomm-2.48
 papirus-icon-theme
 papirus-maia-icon-theme
 parted
@@ -1042,6 +1074,7 @@ python-asn1crypto
 python-attrs
 python-autocommand
 python-bcrypt
+python-beautifulsoup4
 python-cachecontrol
 python-cached-property
 python-cairo
@@ -1066,7 +1099,9 @@ python-dockerpty
 python-docopt
 python-docutils
 python-dotenv
+python-dulwich
 python-fastbencode
+python-fastjsonschema
 python-future
 python-gobject
 python-hkdf
@@ -1082,6 +1117,8 @@ python-jsonpointer
 python-jsonschema
 python-keyutils
 python-markdown
+python-markdown-it-py
+python-mdurl
 python-merge3
 python-more-itertools
 python-msgpack
@@ -1092,13 +1129,11 @@ python-ordered-set
 python-packaging
 python-paramiko
 python-patiencediff
-python-pep517
 python-pexpect
 python-pillow
 python-pip
 python-platformdirs
 python-ply
-python-progress
 python-psutil
 python-ptyprocess
 python-pycparser
@@ -1124,6 +1159,7 @@ python-rfc3987
 python-rich
 python-setuptools
 python-six
+python-soupsieve
 python-spake2
 python-tenacity
 python-texttable
@@ -1131,6 +1167,7 @@ python-toml
 python-tomli
 python-trove-classifiers
 python-typing_extensions
+python-uc-micro-py
 python-urllib3
 python-validate-pyproject
 python-webcolors
@@ -1180,12 +1217,16 @@ qemu-ui-spice-app
 qemu-ui-spice-core
 qemu-vhost-user-gpu
 qemu-virtiofsd
+qmltermwidget
 qpdf
 qrencode
 qt5-base
 qt5-declarative
+qt5-graphicaleffects
 qt5-imageformats
 qt5-multimedia
+qt5-quickcontrols
+qt5-quickcontrols2
 qt5-script
 qt5-speech
 qt5-svg
@@ -1309,6 +1350,7 @@ spectre-meltdown-checker
 speex
 speexdsp
 spice
+spice-protocol
 spirv-tools
 splix
 sqlite
@@ -1316,12 +1358,13 @@ squashfs-tools
 sratom
 srt
 startup-notification
+steam
 stoken
 strace
 stylua
 subversion
 sudo
-suitesparse
+suitesparse64
 svt-av1
 svt-hevc
 sysfsutils
@@ -1334,7 +1377,6 @@ t1lib
 taglib
 talloc
 tar
-tbb
 tcl
 tcpdump
 tdb
@@ -1375,6 +1417,7 @@ ttf-polybar-icons
 tumbler
 twolame
 txt2man
+typescript
 tzdata
 uchardet
 udiskie
@@ -1473,8 +1516,6 @@ xiccd
 xkeyboard-config
 xmlsec
 xmlto
-xorg-bdftopcf
-xorg-font-util
 xorg-fonts-encodings
 xorg-mkfontscale
 xorg-server
