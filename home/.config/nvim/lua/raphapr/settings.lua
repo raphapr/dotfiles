@@ -7,7 +7,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- unified clipboard
-vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
+vim.opt.clipboard = { "unnamed", "unnamedplus" }
 
 -- enable syntax highlighting
 vim.opt.background = "dark"
@@ -31,7 +31,7 @@ vim.opt.preserveindent = true
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
-vim.opt.backupskip = '/tmp/*,/private/tmp/*'
+vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 
 -- show cursor column
 vim.opt.cursorcolumn = true
@@ -41,7 +41,7 @@ vim.opt.lazyredraw = true
 vim.opt.ttyfast = true
 
 -- set paste/nopaste
-vim.opt.pastetoggle = '<F2>'
+vim.opt.pastetoggle = "<F2>"
 
 -- undo / backup
 vim.opt.backup = true
@@ -58,9 +58,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-
 -- jump to the last place you’ve visited in a file
-vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
@@ -72,15 +71,15 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
 -- highlight yank region
 local autocmd = vim.api.nvim_create_autocmd
-autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 200,
-        })
-    end,
+autocmd("TextYankPost", {
+  group = yank_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch",
+      timeout = 200,
+    })
+  end,
 })
 
 -- folding

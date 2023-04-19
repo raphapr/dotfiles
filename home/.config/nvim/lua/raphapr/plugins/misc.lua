@@ -36,3 +36,8 @@ vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true })
 -- mbbill/undotree
 --------------------------
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+--------------------------
+-- tpope/vim-fugitive
+--------------------------
+vim.keymap.set("n", "<C-b>", ":GBrowse<CR>")

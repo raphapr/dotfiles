@@ -2,9 +2,6 @@
 -- nvim-tree.lua
 --------------------------
 vim.keymap.set("n", "<F10>", ":NvimTreeToggle<CR>")
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 local function nvim_tree_on_attach(bufnr)
   local api = require("nvim-tree.api")
@@ -47,7 +44,7 @@ require("nvim-tree").setup({
   on_attach = nvim_tree_on_attach,
   diagnostics = {
     enable = true,
-    show_on_dirs = true,
+    show_on_dirs = false,
     show_on_open_dirs = true,
   },
 })

@@ -1,5 +1,5 @@
 terraform 1.2.2
-golang 1.18.3
+golang 1.19
 kubectl 1.21.12
 shellcheck 0.8.0
 helm 3.8.2
