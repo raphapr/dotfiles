@@ -48,6 +48,19 @@ vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggl
 vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
 
 --------------------------
--- tpope/vim-fugitive
+-- vim-fugitive
 --------------------------
 vim.keymap.set("n", "<C-b>", ":GBrowse<CR>", { noremap = true, desc = "open fugitive's git object browser" })
+
+--------------------------
+-- which-key
+--------------------------
+local wk = require("which-key")
+
+wk.register({
+  ["<leader>"] = {
+    g = {
+      name = "+get telescope",
+    },
+  },
+})
