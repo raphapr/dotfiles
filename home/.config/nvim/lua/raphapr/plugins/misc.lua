@@ -63,7 +63,10 @@ wk.register({
       name = "+get telescope",
     },
     t = {
-      name = "+git",
+      name = "+gitlinker",
+    },
+    b = {
+      name = "+harpoon",
     },
   },
 })
@@ -87,58 +90,34 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap(
   "n",
   "<leader>ty",
-  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+  ,
   { silent = true, desc = "git: open permalink in browser" }
 )
 
 vim.api.nvim_set_keymap(
   "v",
   "<leader>ty",
-  '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
+  ,
   { desc = "git: open permalink in browser" }
 )
 
 --------------------------
 -- harpoon
 --------------------------
-vim.keymap.set(
-  "n",
-  "<leader>bb",
-  ':lua require("harpoon.mark").add_file()<CR>',
-  { noremap = true, silent = true, desc = "harpoon: add file" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>br",
-  ':lua require("harpoon.mark").rm_file()<CR>',
-  { noremap = true, silent = true, desc = "harpoon: rm file" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>bc",
-  ':lua require("harpoon.mark").clear_all()<CR>',
-  { noremap = true, silent = true, desc = "harpoon: clear all" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>bn",
-  ':lua require("harpoon.mark").nav_next()<CR>',
-  { noremap = true, silent = true, desc = "harpoon: navigate next" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>bp",
-  ':lua require("harpoon.mark").nav_prev()<CR>',
-  { noremap = true, silent = true, desc = "harpoon: navigate previous" }
-)
---
--- vim.api.keymap("n", "<leader>bb", ':lua require("harpoon.mark").add_file()<CR>', opts)
--- vim.api.keymap("n", "<leader>br", ':lua require("harpoon.mark").rm_file()<CR>', opts)
--- vim.api.keymap("n", "<leader>bc", ':lua require("harpoon.mark").clear_all()<CR>', opts)
--- vim.api.keymap("n", "<leader>bl", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
--- vim.api.keymap("n", "<leader>bn", ':lua require("harpoon.ui").nav_next()<CR>', opts)
--- vim.api.keymap("n", "<leader>bp", ':lua require("harpoon.ui").nav_prev()<CR>', opts)
--- vim.api.keymap("n", "<leader>b1", ':lua require("harpoon.ui").nav_file(1)<CR>', opts)
--- vim.api.keymap("n", "<leader>b2", ':lua require("harpoon.ui").nav_file(2)<CR>', opts)
--- vim.api.keymap("n", "<leader>b3", ':lua require("harpoon.ui").nav_file(3)<CR>', opts)
--- vim.api.keymap("n", "<leader>b4", ':lua require("harpoon.ui").nav_file(4)<CR>', opts)
+local function h_opts(desc)
+  return { desc = "harpoon: " .. desc, noremap = true, silent = true }
+end
+
+vim.keymap.set("n", "<leader>bb", ":Telescope harpoon marks<CR>", h_opts("harpoon: teleport quick menu"))
+vim.keymap.set("n", "<leader>ba", ':lua require("harpoon.mark").add_file()<CR>', h_opts("harpoon: add file"))
+vim.keymap.set("n", "<leader>br", ':lua require("harpoon.mark").rm_file()<CR>', h_opts("harpoon: rm file"))
+vim.keymap.set("n", "<leader>bc", ':lua require("harpoon.mark").clear_all()<CR>', h_opts("harpoon: clear all"))
+vim.keymap.set("n", "<leader>bn", ':lua require("harpoon.ui").nav_next()<CR>', h_opts("harpoon: go to next mark"))
+vim.keymap.set("n", "<leader>bp", ':lua require("harpoon.ui").nav_prev()<CR>', h_opts("harpoon: go to prev mark"))
+vim.keymap.set("n", "<leader>1", ':lua require("harpoon.ui").nav_file(1)<CR>', h_opts("harpoon: go to mark 1"))
+vim.keymap.set("n", "<leader>2", ':lua require("harpoon.ui").nav_file(2)<CR>', h_opts("harpoon: go to mark 2"))
+vim.keymap.set("n", "<leader>3", ':lua require("harpoon.ui").nav_file(3)<CR>', h_opts("harpoon: go to mark 3"))
+vim.keymap.set("n", "<leader>4", ':lua require("harpoon.ui").nav_file(4)<CR>', h_opts("harpoon: go to mark 4"))
+vim.keymap.set("n", "<leader>5", ':lua require("harpoon.ui").nav_file(5)<CR>', h_opts("harpoon: go to mark 5"))
