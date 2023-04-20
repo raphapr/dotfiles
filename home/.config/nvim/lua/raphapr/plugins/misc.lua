@@ -14,30 +14,40 @@ vim.cmd("nmap <C-E> :BD!<cr>")
 ----------------
 -- vim-base64
 ----------------
-vim.keymap.set("v", "<leader>de", ":<c-u>call base64#v_atob()<cr>", { silent = true, noremap = true })
-vim.keymap.set("v", "<leader>en", ":<c-u>call base64#v_btoa()<cr>", { silent = true, noremap = true })
+vim.keymap.set(
+  "v",
+  "<leader>de",
+  ":<c-u>call base64#v_atob()<cr>",
+  { noremap = true, silent = true, desc = "decode selected base64-encoded text." }
+)
+vim.keymap.set(
+  "v",
+  "<leader>en",
+  ":<c-u>call base64#v_btoa()<cr>",
+  { noremap = true, silent = true, desc = "encode selected text as base64." }
+)
 
 --------------------------
 -- zoom-toggle
 --------------------------
-vim.keymap.set("n", "-", ":call zoom#toggle()<CR>", { silent = true, noremap = true })
+vim.keymap.set(
+  "n",
+  "-",
+  ":call zoom#toggle()<CR>",
+  { noremap = true, silent = true, desc = "toggle zoom of the current window." }
+)
 
 --------------------------
 -- vim-tagbar
 --------------------------
-vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>")
+vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggle Tagbar" })
 
 --------------------------
 -- vim-numbertoggle
 --------------------------
-vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true })
-
---------------------------
--- mbbill/undotree
---------------------------
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
 
 --------------------------
 -- tpope/vim-fugitive
 --------------------------
-vim.keymap.set("n", "<C-b>", ":GBrowse<CR>")
+vim.keymap.set("n", "<C-b>", ":GBrowse<CR>", { noremap = true, desc = "open fugitive's git object browser" })

@@ -11,19 +11,23 @@ return require("packer").startup(function(use)
   use("jeffkreeftmeijer/vim-numbertoggle")
   use("numToStr/Comment.nvim")
   use("andymass/vim-matchup")
-  use("junegunn/vim-peekaboo")
   use("nathom/filetype.nvim")
   use("ThePrimeagen/git-worktree.nvim")
   use("qpkorr/vim-bufkill")
   use("christianrondeau/vim-base64")
   use("editorconfig/editorconfig-vim")
   use("dhruvasagar/vim-zoom")
-  use("mbbill/undotree")
   use("ray-x/go.nvim")
   use("ray-x/guihua.lua")
   use("ray-x/lsp_signature.nvim")
-
   use("jose-elias-alvarez/null-ls.nvim")
+
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({})
+    end,
+  })
 
   use({
     "folke/neodev.nvim",
