@@ -1,6 +1,5 @@
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
-require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("media_files")
 require("telescope").setup({
   defaults = {
@@ -37,7 +36,6 @@ require("telescope").setup({
   },
 })
 local telescope_builtin = require("telescope.builtin")
-local telescope_worktree = require("telescope").extensions.git_worktree
 vim.keymap.set("n", "<C-p>", telescope_builtin.find_files, { desc = "telescope: find files" })
 vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
 vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "telescope: live grep" })
@@ -48,5 +46,3 @@ vim.keymap.set("n", "<leader>gd", telescope_builtin.diagnostics, { desc = "teles
 vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "telescope: command history" })
 vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "telescope: search history" })
 vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "telescope: old files" })
-vim.keymap.set("n", "<leader>gw", telescope_worktree.git_worktrees, { desc = "telescope: git worktrees" })
-vim.keymap.set("n", "<leader>gr", telescope_worktree.create_git_worktree, { desc = "telescope: create git worktree" })

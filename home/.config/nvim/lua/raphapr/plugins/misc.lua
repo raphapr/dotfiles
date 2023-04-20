@@ -48,11 +48,6 @@ vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggl
 vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
 
 --------------------------
--- vim-fugitive
---------------------------
-vim.keymap.set("n", "<C-b>", ":GBrowse<CR>", { noremap = true, desc = "open fugitive's git object browser" })
-
---------------------------
 -- which-key
 --------------------------
 local wk = require("which-key")
@@ -62,5 +57,39 @@ wk.register({
     g = {
       name = "+get telescope",
     },
+    t = {
+      name = "+git",
+    },
   },
 })
+
+--------------------------
+-- gitlinker
+--------------------------
+--
+require("gitlinker").setup({
+  opts = {
+    mappings = nil,
+  },
+})
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>tb",
+  '<cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  { silent = true, desc = "git: open repo url" }
+)
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>ty",
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  { silent = true, desc = "git: open permalink in browser" }
+)
+
+vim.api.nvim_set_keymap(
+  "v",
+  "<leader>ty",
+  '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  { desc = "git: open permalink in browser" }
+)

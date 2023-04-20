@@ -12,7 +12,6 @@ return require("packer").startup(function(use)
   use("numToStr/Comment.nvim")
   use("andymass/vim-matchup")
   use("nathom/filetype.nvim")
-  use("ThePrimeagen/git-worktree.nvim")
   use("qpkorr/vim-bufkill")
   use("christianrondeau/vim-base64")
   use("editorconfig/editorconfig-vim")
@@ -21,6 +20,7 @@ return require("packer").startup(function(use)
   use("ray-x/guihua.lua")
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
+  use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
 
   use({
     "folke/which-key.nvim",
@@ -38,7 +38,6 @@ return require("packer").startup(function(use)
 
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
-  use({ "tpope/vim-fugitive", requires = { "tpope/vim-rhubarb" } })
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
