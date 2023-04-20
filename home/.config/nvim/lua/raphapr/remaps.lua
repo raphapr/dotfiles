@@ -78,3 +78,6 @@ vim.keymap.set(
 -- page up/down half a page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "scroll down half a page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "scroll up half a page" })
+
+-- Windows
+vim.keymap.set("n", "zz", ":q<CR>", { noremap = true, desc = "save file and close the current window" })

@@ -1,6 +1,7 @@
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
 require("telescope").load_extension("media_files")
+require("telescope").load_extension("harpoon")
 require("telescope").setup({
   defaults = {
     mappings = {

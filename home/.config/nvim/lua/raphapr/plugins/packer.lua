@@ -12,7 +12,7 @@ return require("packer").startup(function(use)
   use("numToStr/Comment.nvim")
   use("andymass/vim-matchup")
   use("nathom/filetype.nvim")
-  use("qpkorr/vim-bufkill")
+  use("famiu/bufdelete.nvim")
   use("christianrondeau/vim-base64")
   use("editorconfig/editorconfig-vim")
   use("dhruvasagar/vim-zoom")
@@ -21,6 +21,7 @@ return require("packer").startup(function(use)
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
+  use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
 
   use({
     "folke/which-key.nvim",

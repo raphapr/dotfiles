@@ -7,9 +7,14 @@ require("gruvbox").setup({
 vim.cmd("colorscheme gruvbox")
 
 ----------------
--- vim-bufkill
+-- bufdelete.nvim
 ----------------
-vim.cmd("nmap <C-E> :BD!<cr>")
+vim.keymap.set(
+  "n",
+  "<C-E>",
+  ":Bdelete!<CR>",
+  { noremap = true, silent = true, desc = "forcibly delete current buffer" }
+)
 
 ----------------
 -- vim-base64
@@ -66,7 +71,6 @@ wk.register({
 --------------------------
 -- gitlinker
 --------------------------
---
 require("gitlinker").setup({
   opts = {
     mappings = nil,
@@ -93,3 +97,48 @@ vim.api.nvim_set_keymap(
   '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
   { desc = "git: open permalink in browser" }
 )
+
+--------------------------
+-- harpoon
+--------------------------
+vim.keymap.set(
+  "n",
+  "<leader>bb",
+  ':lua require("harpoon.mark").add_file()<CR>',
+  { noremap = true, silent = true, desc = "harpoon: add file" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>br",
+  ':lua require("harpoon.mark").rm_file()<CR>',
+  { noremap = true, silent = true, desc = "harpoon: rm file" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>bc",
+  ':lua require("harpoon.mark").clear_all()<CR>',
+  { noremap = true, silent = true, desc = "harpoon: clear all" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>bn",
+  ':lua require("harpoon.mark").nav_next()<CR>',
+  { noremap = true, silent = true, desc = "harpoon: navigate next" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>bp",
+  ':lua require("harpoon.mark").nav_prev()<CR>',
+  { noremap = true, silent = true, desc = "harpoon: navigate previous" }
+)
+--
+-- vim.api.keymap("n", "<leader>bb", ':lua require("harpoon.mark").add_file()<CR>', opts)
+-- vim.api.keymap("n", "<leader>br", ':lua require("harpoon.mark").rm_file()<CR>', opts)
+-- vim.api.keymap("n", "<leader>bc", ':lua require("harpoon.mark").clear_all()<CR>', opts)
+-- vim.api.keymap("n", "<leader>bl", ':lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+-- vim.api.keymap("n", "<leader>bn", ':lua require("harpoon.ui").nav_next()<CR>', opts)
+-- vim.api.keymap("n", "<leader>bp", ':lua require("harpoon.ui").nav_prev()<CR>', opts)
+-- vim.api.keymap("n", "<leader>b1", ':lua require("harpoon.ui").nav_file(1)<CR>', opts)
+-- vim.api.keymap("n", "<leader>b2", ':lua require("harpoon.ui").nav_file(2)<CR>', opts)
+-- vim.api.keymap("n", "<leader>b3", ':lua require("harpoon.ui").nav_file(3)<CR>', opts)
+-- vim.api.keymap("n", "<leader>b4", ':lua require("harpoon.ui").nav_file(4)<CR>', opts)
