@@ -20,6 +20,7 @@ return require("packer").startup(function(use)
   use("ray-x/guihua.lua")
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
+  use("tpope/vim-fugitive")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
 

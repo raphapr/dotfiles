@@ -53,6 +53,11 @@ vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggl
 vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
 
 --------------------------
+-- vim-fugitive
+--------------------------
+vim.keymap.set("n", "<leader>tt", vim.cmd.Git, { desc = "git: summary window" })
+
+--------------------------
 -- which-key
 --------------------------
 local wk = require("which-key")
@@ -70,54 +75,3 @@ wk.register({
     },
   },
 })
-
---------------------------
--- gitlinker
---------------------------
-require("gitlinker").setup({
-  opts = {
-    mappings = nil,
-  },
-})
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>tb",
-  '<cmd>lua require"gitlinker".get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-  { silent = true, desc = "git: open repo url" }
-)
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>ty",
-  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
-  ,
-  { silent = true, desc = "git: open permalink in browser" }
-)
-
-vim.api.nvim_set_keymap(
-  "v",
-  "<leader>ty",
-  '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>'
-  ,
-  { desc = "git: open permalink in browser" }
-)
-
---------------------------
--- harpoon
---------------------------
-local function h_opts(desc)
-  return { desc = "harpoon: " .. desc, noremap = true, silent = true }
-end
-
-vim.keymap.set("n", "<leader>bb", ":Telescope harpoon marks<CR>", h_opts("harpoon: teleport quick menu"))
-vim.keymap.set("n", "<leader>ba", ':lua require("harpoon.mark").add_file()<CR>', h_opts("harpoon: add file"))
-vim.keymap.set("n", "<leader>br", ':lua require("harpoon.mark").rm_file()<CR>', h_opts("harpoon: rm file"))
-vim.keymap.set("n", "<leader>bc", ':lua require("harpoon.mark").clear_all()<CR>', h_opts("harpoon: clear all"))
-vim.keymap.set("n", "<leader>bn", ':lua require("harpoon.ui").nav_next()<CR>', h_opts("harpoon: go to next mark"))
-vim.keymap.set("n", "<leader>bp", ':lua require("harpoon.ui").nav_prev()<CR>', h_opts("harpoon: go to prev mark"))
-vim.keymap.set("n", "<leader>1", ':lua require("harpoon.ui").nav_file(1)<CR>', h_opts("harpoon: go to mark 1"))
-vim.keymap.set("n", "<leader>2", ':lua require("harpoon.ui").nav_file(2)<CR>', h_opts("harpoon: go to mark 2"))
-vim.keymap.set("n", "<leader>3", ':lua require("harpoon.ui").nav_file(3)<CR>', h_opts("harpoon: go to mark 3"))
-vim.keymap.set("n", "<leader>4", ':lua require("harpoon.ui").nav_file(4)<CR>', h_opts("harpoon: go to mark 4"))
-vim.keymap.set("n", "<leader>5", ':lua require("harpoon.ui").nav_file(5)<CR>', h_opts("harpoon: go to mark 5"))
