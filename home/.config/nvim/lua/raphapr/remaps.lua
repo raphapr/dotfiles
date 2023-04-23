@@ -16,8 +16,8 @@ vim.keymap.set("n", "<Left>", ":vertical resize -5<cr>", { desc = "resize vsplit
 vim.keymap.set("n", "<F3>", ":noh<cr>:call clearmatches()<cr>", { desc = "cancel current search highlight" })
 
 -- buffers navigation
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "switch to next buffer" })
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "switch to previous buffer" })
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true, desc = "switch to next buffer" })
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true, desc = "switch to previous buffer" })
 
 -- open common configuration files
 vim.keymap.set(

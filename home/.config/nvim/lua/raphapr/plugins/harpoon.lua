@@ -5,7 +5,9 @@ local function opts(desc)
   return { desc = "harpoon: " .. desc, noremap = true, silent = true }
 end
 
-vim.keymap.set("n", "<leader>bb", ":Telescope harpoon marks<CR>", opts("harpoon: teleport quick menu"))
+vim.keymap.set("n", "<leader>bb", function()
+  ui.toggle_quick_menu()
+end, opts("toggle quick menu"))
 vim.keymap.set("n", "<leader>ba", function()
   mark.add_file()
 end, opts("add file"))
