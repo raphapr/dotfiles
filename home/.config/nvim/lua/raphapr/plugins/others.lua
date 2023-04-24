@@ -1,14 +1,12 @@
-----------------
--- colorscheme
-----------------
+-------------------------------------- colorscheme -------------------------------------
+
 require("gruvbox").setup({
   contrast = "hard",
 })
 vim.cmd("colorscheme gruvbox")
 
-----------------
--- bufdelete.nvim
-----------------
+-------------------------------------- bufdelete.nvim ----------------------------------
+
 vim.keymap.set(
   "n",
   "<C-E>",
@@ -16,9 +14,8 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "forcibly delete current buffer" }
 )
 
-----------------
--- vim-base64
-----------------
+-------------------------------------- vim-base64 -------------------------------------
+
 vim.keymap.set(
   "v",
   "<leader>de",
@@ -32,9 +29,8 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "encode selected text as base64." }
 )
 
---------------------------
--- zoom-toggle
---------------------------
+-------------------------------------- zoom-toggle -------------------------------------
+
 vim.keymap.set(
   "n",
   "-",
@@ -42,24 +38,20 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "toggle zoom of the current window." }
 )
 
---------------------------
--- vim-tagbar
---------------------------
+-------------------------------------- vim-tagbar --------------------------------------
+
 vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggle Tagbar" })
 
---------------------------
--- vim-numbertoggle
---------------------------
+-------------------------------------- vim-numbertoggle --------------------------------
+
 vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
 
---------------------------
--- vim-fugitive
---------------------------
+-------------------------------------- vim-fugitive ------------------------------------
+
 vim.keymap.set("n", "<leader>tt", vim.cmd.Git, { desc = "git: summary window" })
 
---------------------------
--- which-key
---------------------------
+-------------------------------------- which-key ---------------------------------------
+
 local wk = require("which-key")
 
 wk.register({

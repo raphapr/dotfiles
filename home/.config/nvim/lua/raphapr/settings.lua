@@ -1,57 +1,71 @@
-vim.opt.background = "dark"
+local opt = vim.opt
+local g = vim.g
+
+-------------------------------------- globals -----------------------------------------
+
+g.mapleader = ","
 
 -- disable netrw in favor of nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+
+-- do not source the default filetype in favor of filetype.nvim
+g.did_load_filetypes = 1
+
+-------------------------------------- options -----------------------------------------
+
+opt.background = "dark"
 
 -- true colors
-vim.opt.termguicolors = true
+opt.termguicolors = true
 
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+opt.splitbelow = true
+opt.splitright = true
 
 -- unified clipboard
-vim.opt.clipboard = { "unnamed", "unnamedplus" }
+opt.clipboard = { "unnamed", "unnamedplus" }
 
 -- enable syntax highlighting
-vim.opt.background = "dark"
-vim.opt.nu = true
+opt.background = "dark"
+opt.nu = true
 
 -- settings for split windows
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+opt.splitbelow = true
+opt.splitright = true
 
 -- Settings indentation style default
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.smarttab = true
-vim.opt.expandtab = true
-vim.opt.autoindent = true
-vim.opt.copyindent = true
-vim.opt.preserveindent = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.smarttab = true
+opt.expandtab = true
+opt.autoindent = true
+opt.copyindent = true
+opt.preserveindent = true
 
 -- Undo settings files
-vim.opt.undofile = true
-vim.opt.undolevels = 1000
-vim.opt.undoreload = 10000
-vim.opt.backupskip = "/tmp/*,/private/tmp/*"
+opt.undofile = true
+opt.undolevels = 1000
+opt.undoreload = 10000
+opt.backupskip = "/tmp/*,/private/tmp/*"
 
 -- show cursor column
-vim.opt.cursorcolumn = true
+opt.cursorcolumn = true
 
 -- improve perfomance
-vim.opt.lazyredraw = true
-vim.opt.ttyfast = true
+opt.lazyredraw = true
+opt.ttyfast = true
 
 -- set paste/nopaste
-vim.opt.pastetoggle = "<F2>"
+opt.pastetoggle = "<F2>"
 
 -- undo / backup
-vim.opt.backup = true
-vim.opt.swapfile = false
-vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
-vim.opt.backupdir = os.getenv("HOME") .. "/.config/nvim//tmo/backup"
+opt.backup = true
+opt.swapfile = false
+opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
+opt.backupdir = os.getenv("HOME") .. "/.config/nvim//tmo/backup"
+
+-------------------------------------- autocmds ----------------------------------------
 
 -- YAML
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -85,7 +99,8 @@ autocmd("TextYankPost", {
   end,
 })
 
--- folding
+-------------------------------------- folding -----------------------------------------
+
 vim.cmd([[
 set foldmethod=marker
 set foldmarker={{{,}}}

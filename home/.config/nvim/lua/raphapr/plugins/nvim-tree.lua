@@ -1,6 +1,3 @@
---------------------------
--- nvim-tree.lua
---------------------------
 vim.keymap.set("n", "<F10>", ":NvimTreeToggle<CR>")
 
 local function nvim_tree_on_attach(bufnr)
