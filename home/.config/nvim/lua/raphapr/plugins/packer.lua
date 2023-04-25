@@ -16,7 +16,6 @@ return require("packer").startup(function(use)
   use("christianrondeau/vim-base64")
   use("editorconfig/editorconfig-vim")
   use("dhruvasagar/vim-zoom")
-  use("ray-x/go.nvim")
   use("ray-x/guihua.lua")
   use("ray-x/lsp_signature.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
@@ -24,7 +23,15 @@ return require("packer").startup(function(use)
   use("chentoast/marks.nvim")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
-  use({ "mfussenegger/nvim-dap", requires = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text" } })
+
+  use({
+    "ray-x/go.nvim",
+    requires = {
+      { "mfussenegger/nvim-dap" },
+      { "rcarriga/nvim-dap-ui" },
+      { "theHamsta/nvim-dap-virtual-text" },
+    },
+  })
 
   use({
     "folke/which-key.nvim",
