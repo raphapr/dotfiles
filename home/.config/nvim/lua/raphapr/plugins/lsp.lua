@@ -10,6 +10,21 @@ require("lsp_signature").setup({
 })
 
 -- go.nvim mapping
+
+-- DAP UI keymaps
+-- c	continue
+-- n	next
+-- s	step
+-- o	stepout
+-- S	cap S: stop debug
+-- u	up
+-- D	cap D: down
+-- C	cap C: run to cursor
+-- b	toggle breakpoint
+-- P	cap P: pause
+-- p	print, hover value (also in visual mode)
+
+vim.keymap.set("n", "<leader>db", ":GoDebug<CR>", { noremap = true, desc = "Start delve for debugging" })
 vim.keymap.set("n", "<leader>fs", ":GoFillStruct<CR>", { noremap = true, desc = "Fill struct in Go" })
 
 -- Learn the keybindings, see :help lsp-zero-keybindings

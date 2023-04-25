@@ -24,6 +24,7 @@ return require("packer").startup(function(use)
   use("chentoast/marks.nvim")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
+  use({ "mfussenegger/nvim-dap", requires = { "rcarriga/nvim-dap-ui", "theHamsta/nvim-dap-virtual-text" } })
 
   use({
     "folke/which-key.nvim",
