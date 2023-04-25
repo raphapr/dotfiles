@@ -13,7 +13,12 @@ vim.keymap.set("n", "<Right>", ":vertical resize +5<cr>", { desc = "resize vspli
 vim.keymap.set("n", "<Left>", ":vertical resize -5<cr>", { desc = "resize vsplit to the left by 5 columns" })
 
 -- Cancel current highlight search and clear matches
-vim.keymap.set("n", "<F3>", ":noh<cr>:call clearmatches()<cr>", { desc = "cancel current search highlight" })
+vim.keymap.set(
+  "n",
+  "<F3>",
+  ":noh<cr>:call clearmatches()<cr>",
+  { silent = true, desc = "cancel current search highlight" }
+)
 
 -- buffers navigation
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true, desc = "switch to next buffer" })
