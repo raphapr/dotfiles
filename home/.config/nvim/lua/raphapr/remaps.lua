@@ -86,3 +86,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "scroll up half
 
 -- Windows
 vim.keymap.set("n", "zz", ":q<CR>", { noremap = true, desc = "save file and close the current window" })
+
+-- Quickfix navigation
+vim.keymap.set("n", "[q", ":cprev<CR>", { silent = true, desc = "jump to previous quickfix item" })
+vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true, desc = "jump to next quickfix item" })
+vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first quickfix item" })
+vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })

@@ -40,6 +40,7 @@
 
 [push]
   default = tracking
+  autoSetupRemote = true
 [gitreview]
   raphapr = raphapr
 [github]

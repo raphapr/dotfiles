@@ -45,25 +45,3 @@ vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggl
 -------------------------------------- vim-numbertoggle --------------------------------
 
 vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
-
--------------------------------------- vim-fugitive ------------------------------------
-
-vim.keymap.set("n", "<leader>tt", vim.cmd.Git, { desc = "git: summary window" })
-
--------------------------------------- which-key ---------------------------------------
-
-local wk = require("which-key")
-
-wk.register({
-  ["<leader>"] = {
-    g = {
-      name = "+get telescope",
-    },
-    t = {
-      name = "+gitlinker",
-    },
-    b = {
-      name = "+harpoon",
-    },
-  },
-})
