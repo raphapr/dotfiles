@@ -57,9 +57,6 @@ vim.keymap.set("v", ">", ">gv", { noremap = true, desc = "select block and inden
 -- copy entire line without the newline at the end
 vim.keymap.set("n", "Y", "y$", { noremap = true, desc = "copy entire line without the newline at the end" })
 
--- search and replace
-vim.keymap.set("n", ";;", ":%s:::g<Left><Left><Left>", { noremap = true, desc = "search and replace" })
-
 -- page up/down half a page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "scroll down half a page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "scroll up half a page" })
@@ -72,3 +69,8 @@ vim.keymap.set("n", "[q", ":cprev<CR>", { silent = true, desc = "jump to previou
 vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true, desc = "jump to next quickfix item" })
 vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first quickfix item" })
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
+
+-- Tabs navigation
+vim.keymap.set("n", ";;", ":tabnext<CR>", { silent = true, desc = "tab: next" })
+vim.keymap.set("n", "<leader>tn", ":tabnew<CR>", { silent = true, desc = "tab: create" })
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "tab: close" })

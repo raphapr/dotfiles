@@ -6,7 +6,7 @@ wk.register({
       name = "+get telescope",
     },
     t = {
-      name = "+git",
+      name = "+git/tab",
     },
     b = {
       name = "+harpoon",

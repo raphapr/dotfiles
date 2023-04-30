@@ -1,4 +1,10 @@
-vim.keymap.set("n", "<F10>", ":NvimTreeToggle<CR>")
+vim.api.nvim_set_keymap("n", "<F10>", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+
+local function open_tab_silent(node)
+  local api = require("nvim-tree.api")
+  api.node.open.tab(node)
+  vim.cmd.tabprev()
+end
 
 local function nvim_tree_on_attach(bufnr)
   local api = require("nvim-tree.api")
@@ -34,6 +40,7 @@ local function nvim_tree_on_attach(bufnr)
   vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: Vertical Split"))
   vim.keymap.set("n", "i", api.node.open.horizontal, opts("Open: Horizontal Split"))
   vim.keymap.set("n", "ga", git_add, opts("Git Add"))
+  vim.keymap.set("n", "T", open_tab_silent, opts("Open Tab Silent"))
 end
 
 -- setup with some options

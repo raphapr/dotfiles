@@ -4,6 +4,7 @@ require("lualine").setup({
   path = 2,
   tabline = {
     lualine_a = { "buffers" },
+    lualine_z = { "tabs" },
   },
   sections = {
     lualine_a = { "mode" },

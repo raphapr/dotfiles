@@ -21,6 +21,7 @@ return require("packer").startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
   use("tpope/vim-fugitive")
   use("chentoast/marks.nvim")
+  use("tiagovla/scope.nvim")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
 
