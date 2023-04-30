@@ -42,17 +42,6 @@ vim.keymap.set("n", "k", "gk", { noremap = true, desc = "move cursor up" })
 vim.keymap.set("v", "K", [[:'<,'>move-2<cr>gv=gv]], { noremap = true, desc = "move selected area up" })
 vim.keymap.set("v", "J", [[:'<,'>move'>+<cr>gv=gv]], { noremap = true, desc = "move selected area down" })
 
--- remove all trailing space
-vim.keymap.set("n", "<leader>w", ":%s/\\s\\+$//e<CR>", { noremap = true, desc = "remove all trailing space" })
-
--- set working directory to the current file just for current window
-vim.keymap.set(
-  "n",
-  "<leader>cd",
-  ":lcd %:h<CR>",
-  { noremap = true, desc = "set working directory to the current file just for current window" }
-)
-
 -- cancel current highlight search
 vim.keymap.set(
   "n",
@@ -65,20 +54,11 @@ vim.keymap.set(
 vim.keymap.set("v", "<", "<gv", { noremap = true, desc = "select block and indent left" })
 vim.keymap.set("v", ">", ">gv", { noremap = true, desc = "select block and indent right" })
 
--- search for visually selected text
-vim.keymap.set("v", "//", "y/<C-R>'<CR>", { noremap = true, desc = "search for visually selected text" })
-
 -- copy entire line without the newline at the end
 vim.keymap.set("n", "Y", "y$", { noremap = true, desc = "copy entire line without the newline at the end" })
 
 -- search and replace
 vim.keymap.set("n", ";;", ":%s:::g<Left><Left><Left>", { noremap = true, desc = "search and replace" })
-vim.keymap.set(
-  "n",
-  ";'",
-  ":%s:::cg<Left><Left><Left><Left>",
-  { noremap = true, desc = "search and replace current line" }
-)
 
 -- page up/down half a page
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "scroll down half a page" })

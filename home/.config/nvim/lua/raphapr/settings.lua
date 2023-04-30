@@ -16,6 +16,9 @@ g.did_load_filetypes = 1
 
 opt.background = "dark"
 
+-- Reserve space for diagnostic icons
+vim.opt.signcolumn = "yes"
+
 -- true colors
 opt.termguicolors = true
 
