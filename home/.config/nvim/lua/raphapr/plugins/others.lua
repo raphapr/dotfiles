@@ -33,7 +33,7 @@ vim.keymap.set(
 
 vim.keymap.set(
   "n",
-  "-",
+  "=",
   ":call zoom#toggle()<CR>",
   { noremap = true, silent = true, desc = "toggle zoom of the current window." }
 )
