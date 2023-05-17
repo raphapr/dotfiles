@@ -1,4 +1,4 @@
-require 'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "c",
     "lua",
@@ -22,11 +22,11 @@ require 'nvim-treesitter.configs'.setup {
     "regex",
     "hcl",
     "vim",
-    "terraform"
+    "terraform",
   },
   highlight = {
     enable = true,
     disable = { "vim" },
-    additional_vim_regex_highlighting = { "markdown" }
+    additional_vim_regex_highlighting = { "markdown" },
   },
-}
+})

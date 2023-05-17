@@ -45,7 +45,3 @@ vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggl
 -------------------------------------- vim-numbertoggle --------------------------------
 
 vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
-
--------------------------------------- scope -------------------------------------------
-
-require("scope").setup()

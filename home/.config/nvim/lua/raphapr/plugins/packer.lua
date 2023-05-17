@@ -6,7 +6,7 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   use("ellisonleao/gruvbox.nvim")
-  use("preservim/utagbar")
+  use("preservim/tagbar")
   use("jeffkreeftmeijer/vim-numbertoggle")
   use("numToStr/Comment.nvim")
   use("andymass/vim-matchup")
@@ -27,13 +27,6 @@ return require("packer").startup(function(use)
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
-    end,
-  })
-
-  use({
-    "tiagovla/scope.nvim",
-    config = function()
-      require("tiagovla/scope.nvim").setup()
     end,
   })
 
