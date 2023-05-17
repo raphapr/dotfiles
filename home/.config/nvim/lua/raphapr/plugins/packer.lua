@@ -6,8 +6,7 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   use("ellisonleao/gruvbox.nvim")
-  use("jiangmiao/auto-pairs")
-  use("preservim/tagbar")
+  use("preservim/utagbar")
   use("jeffkreeftmeijer/vim-numbertoggle")
   use("numToStr/Comment.nvim")
   use("andymass/vim-matchup")
@@ -21,9 +20,22 @@ return require("packer").startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
   use("tpope/vim-fugitive")
   use("chentoast/marks.nvim")
-  use("tiagovla/scope.nvim")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
+
+  use({
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+    end,
+  })
+
+  use({
+    "tiagovla/scope.nvim",
+    config = function()
+      require("tiagovla/scope.nvim").setup()
+    end,
+  })
 
   use({
     "ray-x/go.nvim",

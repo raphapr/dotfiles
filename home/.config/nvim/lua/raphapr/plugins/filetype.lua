@@ -5,6 +5,7 @@ require("filetype").setup({
       tfvars = "terraform",
       tfstate = "json",
       fish = "fish",
+      sh = "bash",
     },
   },
 })
