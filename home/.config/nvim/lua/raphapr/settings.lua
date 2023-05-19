@@ -90,12 +90,25 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- highlight yank region
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("TextYankPost", {
-  pattern = "*",
   callback = function()
     vim.highlight.on_yank({
       higroup = "IncSearch",
       timeout = 200,
     })
+  end,
+})
+
+-- disable diagnostic virtual/underline text when in insert mode
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    vim.diagnostic.config({ virtual_text = false, underline = false })
+  end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.diagnostic.config({ virtual_text = true, underline = true })
   end,
 })
 
