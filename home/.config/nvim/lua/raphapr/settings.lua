@@ -9,9 +9,6 @@ g.mapleader = ","
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 
--- do not source the default filetype in favor of filetype.nvim
-g.did_load_filetypes = 1
-
 -------------------------------------- options -----------------------------------------
 
 opt.background = "dark"
