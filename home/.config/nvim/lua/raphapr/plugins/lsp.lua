@@ -59,6 +59,14 @@ lsp.configure("lua_ls", {
   },
 })
 
+lsp.configure("yamlls", {
+  settings = {
+    yaml = {
+      keyOrdering = false,
+    },
+  },
+})
+
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

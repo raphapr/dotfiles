@@ -10,7 +10,6 @@ return require("packer").startup(function(use)
   use("jeffkreeftmeijer/vim-numbertoggle")
   use("numToStr/Comment.nvim")
   use("andymass/vim-matchup")
-  -- use("nathom/filetype.nvim")
   use("famiu/bufdelete.nvim")
   use("christianrondeau/vim-base64")
   use("editorconfig/editorconfig-vim")
@@ -20,8 +19,17 @@ return require("packer").startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
   use("tpope/vim-fugitive")
   use("chentoast/marks.nvim")
+  use("hashivim/vim-terraform")
+  use("unblevable/quick-scope")
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
+
+  use({
+    "ur4ltz/surround.nvim",
+    config = function()
+      require("surround").setup({ mappings_style = "sandwich" })
+    end,
+  })
 
   use({
     "windwp/nvim-autopairs",
@@ -79,8 +87,6 @@ return require("packer").startup(function(use)
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
 
-      -- Snippets
-      { "L3MON4D3/LuaSnip" },
       -- Snippet Collection (Optional)
       { "rafamadriz/friendly-snippets" },
     },

@@ -1,8 +1,22 @@
+-------------------------------------- quick-scope -------------------------------------
+
+vim.g["qs_highlight_on_keys"] = { "f", "F", "t", "T" }
+
+-- custom colors
+vim.cmd([[
+  augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#ff007c' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#00dfff' gui=underline ctermfg=81 cterm=underline
+  augroup END
+]])
+
 -------------------------------------- colorscheme -------------------------------------
 
 require("gruvbox").setup({
   contrast = "hard",
 })
+
 vim.cmd("colorscheme gruvbox")
 
 -------------------------------------- bufdelete.nvim ----------------------------------
