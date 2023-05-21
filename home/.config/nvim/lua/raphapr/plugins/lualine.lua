@@ -2,10 +2,6 @@ require("lualine").setup({
   options = { theme = "gruvbox-material" },
   extensions = { "nvim-tree", "fzf", "fugitive" },
   path = 2,
-  tabline = {
-    lualine_a = { "buffers" },
-    lualine_z = { "tabs" },
-  },
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch", "diff", "diagnostics" },

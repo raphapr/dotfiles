@@ -21,8 +21,8 @@ vim.keymap.set(
 )
 
 -- buffers navigation
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true, desc = "switch to next buffer" })
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true, desc = "switch to previous buffer" })
+vim.keymap.set("n", "<Tab>", ":BufferNext<CR>", { silent = true, desc = "switch to next buffer" })
+vim.keymap.set("n", "<S-Tab>", ":BufferPrevious<CR>", { silent = true, desc = "switch to previous buffer" })
 
 -- open common configuration files
 vim.keymap.set(
@@ -74,3 +74,6 @@ vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last qu
 vim.keymap.set("n", ";;", ":tabnext<CR>", { silent = true, desc = "tab: next" })
 vim.keymap.set("n", "<leader>tn", ":tabnew<CR>", { silent = true, desc = "tab: create" })
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "tab: close" })
+
+-- load current lua file
+vim.keymap.set("n", "<leader>l", ":luafile %<CR>", { silent = false, desc = "load current lua file" })

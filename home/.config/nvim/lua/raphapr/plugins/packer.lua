@@ -72,6 +72,14 @@ return require("packer").startup(function(use)
   })
 
   use({
+    "romgrk/barbar.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      { "lewis6991/gitsigns.nvim" },
+    },
+  })
+
+  use({
     "VonHeikemen/lsp-zero.nvim",
     requires = {
       -- LSP Support
@@ -87,6 +95,7 @@ return require("packer").startup(function(use)
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
 
+      { "L3MON4D3/LuaSnip" },
       -- Snippet Collection (Optional)
       { "rafamadriz/friendly-snippets" },
     },
