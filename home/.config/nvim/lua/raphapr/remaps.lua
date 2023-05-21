@@ -12,14 +12,6 @@ vim.keymap.set("n", "<Down>", ":resize -5<cr>", { desc = "resize split downwards
 vim.keymap.set("n", "<Right>", ":vertical resize +5<cr>", { desc = "resize vsplit to the right by 5 columns" })
 vim.keymap.set("n", "<Left>", ":vertical resize -5<cr>", { desc = "resize vsplit to the left by 5 columns" })
 
--- Cancel current highlight search and clear matches
-vim.keymap.set(
-  "n",
-  "<F3>",
-  ":noh<cr>:call clearmatches()<cr>",
-  { silent = true, desc = "cancel current search highlight" }
-)
-
 -- buffers navigation
 vim.keymap.set("n", "<Tab>", ":BufferNext<CR>", { silent = true, desc = "switch to next buffer" })
 vim.keymap.set("n", "<S-Tab>", ":BufferPrevious<CR>", { silent = true, desc = "switch to previous buffer" })
@@ -41,14 +33,6 @@ vim.keymap.set("n", "k", "gk", { noremap = true, desc = "move cursor up" })
 -- move selected area up or down
 vim.keymap.set("v", "K", [[:'<,'>move-2<cr>gv=gv]], { noremap = true, desc = "move selected area up" })
 vim.keymap.set("v", "J", [[:'<,'>move'>+<cr>gv=gv]], { noremap = true, desc = "move selected area down" })
-
--- cancel current highlight search
-vim.keymap.set(
-  "n",
-  "<silent> <F3>",
-  ":noh<cr>:call clearmatches()<CR>",
-  { noremap = true, desc = "cancel current highlight search" }
-)
 
 -- selected blocks are selected again before identations
 vim.keymap.set("v", "<", "<gv", { noremap = true, desc = "select block and indent left" })
@@ -76,4 +60,24 @@ vim.keymap.set("n", "<leader>tn", ":tabnew<CR>", { silent = true, desc = "tab: c
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "tab: close" })
 
 -- load current lua file
-vim.keymap.set("n", "<leader>l", ":luafile %<CR>", { silent = false, desc = "load current lua file" })
+vim.keymap.set(
+  "n",
+  "<leader>l",
+  ":luafile %<CR>:lua vim.notify('lua file loaded')<CR>",
+  { silent = true, desc = "load current lua file" }
+)
+
+-- save file
+vim.keymap.set(
+  "n",
+  "<C-s>",
+  ':w<CR>:lua vim.notify(string.format("Saved %s", vim.fn.expand("%:t")), "info")<CR>',
+  { silent = true, desc = "save file and notify" }
+)
+
+vim.keymap.set(
+  "i",
+  "<C-s>",
+  '<esc>:w<CR>:lua vim.notify(string.format("Saved %s", vim.fn.expand("%:t")), "info")<CR>',
+  { silent = true, desc = "save file and notify" }
+)

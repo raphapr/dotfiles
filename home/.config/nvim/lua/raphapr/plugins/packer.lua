@@ -21,8 +21,8 @@ return require("packer").startup(function(use)
   use("unblevable/quick-scope")
   use("folke/which-key.nvim")
   use("ur4ltz/surround.nvim")
-
   use({ "catppuccin/nvim", as = "catppuccin" })
+  use("rcarriga/nvim-notify")
 
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
