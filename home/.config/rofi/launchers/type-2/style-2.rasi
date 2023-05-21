@@ -2,7 +2,7 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Rofi Theme File
  * Rofi Version: 1.7.3
  **/
@@ -13,6 +13,15 @@ configuration {
     show-icons:                 true;
     display-drun:               " ";
 	drun-display-format:        "{name}";
+
+  kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
+  kb-row-down: "Down,Control+j";
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  terminal: "mate-terminal";
+  kb-remove-to-eol: "Control+Shift+e";
+  /*kb-mode-next: "Shift+Right,Control+Tab,Control+l";*/
+  kb-mode-previous: "Shift+Left,Control+Shift+Tab,Control+h";
+  kb-remove-char-back: "BackSpace";
 }
 
 /*****----- Global Properties -----*****/
@@ -99,7 +108,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
