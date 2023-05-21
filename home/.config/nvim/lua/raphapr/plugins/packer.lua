@@ -24,12 +24,7 @@ return require("packer").startup(function(use)
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
 
-  use({
-    "ur4ltz/surround.nvim",
-    config = function()
-      require("surround").setup({ mappings_style = "sandwich" })
-    end,
-  })
+  use("ur4ltz/surround.nvim")
 
   use({
     "windwp/nvim-autopairs",
