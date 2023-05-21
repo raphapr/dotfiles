@@ -1,5 +1,5 @@
 require("lualine").setup({
-  options = { theme = "gruvbox-material" },
+  options = { theme = "catppuccin" },
   extensions = { "nvim-tree", "fzf", "fugitive" },
   path = 2,
   sections = {

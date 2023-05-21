@@ -13,11 +13,7 @@ vim.cmd([[
 
 -------------------------------------- colorscheme -------------------------------------
 
-require("gruvbox").setup({
-  contrast = "hard",
-})
-
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme catppuccin-mocha")
 
 -------------------------------------- bufdelete.nvim ----------------------------------
 

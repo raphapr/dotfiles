@@ -11,8 +11,6 @@ g.loaded_netrwPlugin = 1
 
 -------------------------------------- options -----------------------------------------
 
-opt.background = "dark"
-
 -- Reserve space for diagnostic icons
 vim.opt.signcolumn = "yes"
 

@@ -4,8 +4,6 @@ vim.cmd.packadd("packer.nvim")
 return require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
-
-  use("ellisonleao/gruvbox.nvim")
   use("preservim/tagbar")
   use("jeffkreeftmeijer/vim-numbertoggle")
   use("numToStr/Comment.nvim")
@@ -21,10 +19,17 @@ return require("packer").startup(function(use)
   use("chentoast/marks.nvim")
   use("hashivim/vim-terraform")
   use("unblevable/quick-scope")
+  use("folke/which-key.nvim")
+  use("ur4ltz/surround.nvim")
+
+  use({ "catppuccin/nvim", as = "catppuccin" })
+
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
-
-  use("ur4ltz/surround.nvim")
+  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
+  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+  use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
   use({
     "windwp/nvim-autopairs",
@@ -42,8 +47,6 @@ return require("packer").startup(function(use)
     },
   })
 
-  use("folke/which-key.nvim")
-
   use({
     "folke/neodev.nvim",
     config = function()
@@ -51,10 +54,13 @@ return require("packer").startup(function(use)
     end,
   })
 
-  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-  use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
-  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
-  use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
+  use({
+    "romgrk/barbar.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons" },
+      { "lewis6991/gitsigns.nvim" },
+    },
+  })
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -63,14 +69,6 @@ return require("packer").startup(function(use)
       { "nvim-telescope/telescope-media-files.nvim" },
       { "nvim-lua/popup.nvim" },
       { "kyazdani42/nvim-web-devicons" },
-    },
-  })
-
-  use({
-    "romgrk/barbar.nvim",
-    requires = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "lewis6991/gitsigns.nvim" },
     },
   })
 

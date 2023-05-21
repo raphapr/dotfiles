@@ -8,11 +8,6 @@ require("barbar").setup({
     diagnostics = {
       [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
     },
-    gitsigns = {
-      added = { enabled = true, icon = "+" },
-      changed = { enabled = true, icon = "~" },
-      deleted = { enabled = true, icon = "-" },
-    },
   },
 })
 
