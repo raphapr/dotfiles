@@ -430,23 +430,6 @@ function ec2-ssm
 end
 
 # }}}
-# kps               {{{
-
-function kps
-    if [ $__kube_ps_enabled -eq 1 ]
-      kube_ps off
-      return
-    end
-    if [ $__kube_ps_enabled -eq 0 ]
-      kube_ps on
-      return
-    end
-    if [ -z "$__kube_ps_enabled" ]
-      kube_ps on
-    end
-end
-
-# }}}
 # sshagent          {{{
 
 function __ssh_agent_is_started -d "check if ssh agent is already started"
