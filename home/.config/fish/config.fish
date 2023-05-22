@@ -7,7 +7,7 @@
 set fish_greeting
 
 # env vars
-export TERM=screen-256color
+# export TERM=screen-256color
 export EDITOR="nvim"
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
@@ -58,11 +58,6 @@ set -gx PATH $PATH $HOME/.krew/bin
 set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
-
-# autojump
-if test -e /usr/share/autojump/autojump.fish
-  source /usr/share/autojump/autojump.fish
-end
 
 #asdf
 source /opt/asdf-vm/asdf.fish
@@ -381,31 +376,6 @@ function su
 end
 
 # }}}
-# fish vi mode      {{{
-
-function fish_mode_prompt --description 'Displays the current mode'
-        # Do nothing if not in vi mode
-        if test "$fish_key_bindings" = "fish_vi_key_bindings"
-            switch $fish_bind_mode
-                case default
-                    set_color --bold --background red white
-                    echo " N "
-                case insert
-                    set_color --bold --background green white
-                    echo " I "
-                case replace-one
-                    set_color --bold --background cyan white
-                    echo " R "
-                case visual
-                    set_color --bold --background magenta white
-                    echo " V "
-            end
-            set_color normal
-            printf " "
-        end
-end
-
-# }}}
 # ec2-find          {{{
 
 function ec2-find
@@ -554,5 +524,10 @@ function !!;
         eval $var
   end
 end
+
+# }}}
+# zoxide          ---------------------------------------------- {{{
+
+zoxide init fish | source
 
 # }}}

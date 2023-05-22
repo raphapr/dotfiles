@@ -150,6 +150,7 @@ ecryptfs-utils
 edk2-ovmf
 efibootmgr
 efivar
+electron
 electron17
 elfutils
 enchant
@@ -820,7 +821,6 @@ logrotate
 lsb-release
 lshw
 lsof
-lua
 lua51
 lua51-lpeg
 lua51-mpack
@@ -932,6 +932,7 @@ ntfs-3g
 numactl
 numlockx
 oath-toolkit
+obsidian
 ocl-icd
 onetbb
 oniguruma
@@ -1216,7 +1217,6 @@ qemu-ui-sdl
 qemu-ui-spice-app
 qemu-ui-spice-core
 qemu-vhost-user-gpu
-qemu-virtiofsd
 qmltermwidget
 qpdf
 qrencode
@@ -1370,7 +1370,6 @@ svt-hevc
 sysfsutils
 sysstat
 systemd
-systemd-fsck-silent
 systemd-libs
 systemd-sysvcompat
 t1lib
@@ -1413,7 +1412,6 @@ ttf-indic-otf
 ttf-iosevka-nerd
 ttf-liberation
 ttf-opensans
-ttf-polybar-icons
 tumbler
 twolame
 txt2man
@@ -1444,8 +1442,8 @@ viewnior
 vim
 vim-runtime
 virglrenderer
+virtiofsd
 vmaf
-volnoti
 volume_key
 vpnc
 vte-common
@@ -1558,6 +1556,7 @@ zita-alsa-pcmi
 zita-resampler
 zk
 zlib
+zoxide
 zsa-udev
 zsa-wally
 zsh

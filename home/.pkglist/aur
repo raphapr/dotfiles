@@ -1,7 +1,6 @@
 1password
 asdf-vm-git
 auracle-git
-autojump
 celt
 circleci-cli-bin
 dep
@@ -17,7 +16,6 @@ google-cloud-cli
 green-recorder
 ipw2100-fw
 ipw2200-fw
-irpf
 jid
 jre
 kvantum-theme-matchama
@@ -51,10 +49,13 @@ rofi-power-menu
 saw
 slack-desktop
 spotify
+systemd-fsck-silent
 terminus-font-ttf
 tflint
 ttf-mac-fonts
+ttf-polybar-icons
 usbreset
+volnoti
 whatsdesk-bin
 xcwd-git
 xdg-su

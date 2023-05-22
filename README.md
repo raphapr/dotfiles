@@ -28,25 +28,25 @@ You can now link its contents into your home dir:
 
 ## Main programs
 
-* neovim
-* i3wm
-* polybar
-* fish shell
-* tmux
-* ranger
-* thunar
-* kitty
-* zathura
-* autojump
-* feh
-* fzf
-* rofi
-* htop
-* copyq
-* direnv
-* flameshot
-* ripgrep
-* autorandr
-* redshift
-* asdf
-* yay
+- neovim
+- i3wm
+- polybar
+- fish shell
+- tmux
+- ranger
+- thunar
+- kitty
+- zathura
+- zoxide
+- feh
+- fzf
+- rofi
+- htop
+- copyq
+- direnv
+- flameshot
+- ripgrep
+- autorandr
+- redshift
+- asdf
+- yay
