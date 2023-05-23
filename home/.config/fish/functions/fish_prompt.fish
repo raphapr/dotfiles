@@ -1,8 +1,9 @@
 function fish_prompt --description Hydro
+    set -g hydro_color_git 99ff99
     set -l _aws_profile ""
 
     if set -q AWS_PROFILE
-        set _aws_profile (set_color cyan)""(set_color normal)"($AWS_PROFILE) "
+        set _aws_profile (set_color f9e2af)"  $AWS_PROFILE "(set_color normal)
     end
 
     set -l _extra_status "$_aws_profile"

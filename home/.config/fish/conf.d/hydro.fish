@@ -60,6 +60,7 @@ end
 function _hydro_prompt --on-event fish_prompt
     set --query _hydro_status || set --global _hydro_status "$_hydro_newline$_hydro_color_prompt$hydro_symbol_prompt"
     set --query _hydro_pwd || _hydro_pwd
+    set --local _hydro_git_symbol ""
 
     command kill $_hydro_last_pid 2>/dev/null
 
@@ -92,7 +93,7 @@ function _hydro_prompt --on-event fish_prompt
                     set upstream \" $hydro_symbol_git_ahead\$ahead $hydro_symbol_git_behind\$behind\"
             end
 
-            set --universal $_hydro_git \"\$branch\$info\$upstream \"
+            set --universal $_hydro_git $_hydro_git_symbol \"\$branch\$info\$upstream \"
 
             test \$fetch = true && command git fetch --no-tags 2>/dev/null
         end
