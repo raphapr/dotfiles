@@ -91,12 +91,13 @@ eval (direnv hook fish)
 # }}}
 # Aliases         ---------------------------------------------- {{{
 
-# Shell aliases    {{{
+# shell aliases    {{{
 
 alias lash 'ls -lash'
 alias l 'ls -l'
 alias vim 'nvim'
 alias v 'nvim'
+alias vp 'nvim -c "lua require\'telescope\'.extensions.projects.projects{}"'
 alias k 'kill -9'
 alias r 'ranger'
 alias desk 'cd ~/Desktop'
