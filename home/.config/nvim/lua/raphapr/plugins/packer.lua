@@ -31,6 +31,11 @@ return require("packer").startup(function(use)
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
+  use("ahmedkhalf/project.nvim")
+
+  -- Telescope integration
+  require("telescope").load_extension("projects")
+
   use({
     "tiagovla/scope.nvim",
     config = function()

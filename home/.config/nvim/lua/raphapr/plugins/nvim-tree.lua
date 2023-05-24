@@ -51,4 +51,11 @@ require("nvim-tree").setup({
     show_on_dirs = false,
     show_on_open_dirs = true,
   },
+  -- project.nvim integration
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+  },
 })
