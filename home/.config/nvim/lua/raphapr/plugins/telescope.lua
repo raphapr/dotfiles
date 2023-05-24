@@ -24,10 +24,10 @@ require("telescope").setup({
   },
   extensions = {
     fzf = {
-      fuzzy = true, -- false will only do exact matching
+      fuzzy = true,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
     },
     media_files = {
       -- filetypes whitelist
@@ -36,8 +36,14 @@ require("telescope").setup({
     },
   },
 })
+
 local telescope_builtin = require("telescope.builtin")
+local find_files_cwd_file = function()
+  telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
+end
+
 vim.keymap.set("n", "<C-p>", telescope_builtin.find_files, { desc = "telescope: find files" })
+vim.keymap.set("n", "<C-m>", find_files_cwd_file, { desc = "telescope: find files from current file's directory" })
 vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
 vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "telescope: live grep" })
 vim.keymap.set("n", "<leader>gs", telescope_builtin.grep_string, { desc = "telescope: grep string" })
