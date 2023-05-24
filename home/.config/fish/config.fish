@@ -121,7 +121,7 @@ alias gpull "git pull origin (git rev-parse --abbrev-ref HEAD)"
 alias gpush "git push origin (git rev-parse --abbrev-ref HEAD)"
 alias gclean "git clean -fdx && git stash"
 # diff dotfiles
-alias ddiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
+alias hdiff "cd ~/.homesick/repos/dotfiles/home/ ; git diff . ; cd -"
 # command line pastebin
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
