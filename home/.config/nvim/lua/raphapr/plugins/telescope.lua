@@ -1,14 +1,28 @@
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
+
+local moveUp = actions.move_selection_previous
+  + actions.move_selection_previous
+  + actions.move_selection_previous
+  + actions.move_selection_previous
+  + actions.move_selection_previous
+local moveDown = actions.move_selection_next
+  + actions.move_selection_next
+  + actions.move_selection_next
+  + actions.move_selection_next
+  + actions.move_selection_next
+
 require("telescope").load_extension("media_files")
 require("telescope").load_extension("harpoon")
-require("telescope").load_extension("projects")
+require("telescope").load_extension("zoxide")
 require("telescope").setup({
   defaults = {
     mappings = {
       n = {
         ["<C-h>"] = action_layout.toggle_preview,
         ["<C-q>"] = actions.close,
+        ["<C-u>"] = moveUp,
+        ["<C-d>"] = moveDown,
       },
       i = {
         ["<Up>"] = actions.cycle_history_prev,
@@ -20,6 +34,8 @@ require("telescope").setup({
         ["<C-q>"] = actions.close,
         ["<C-i>"] = actions.file_split,
         ["<C-s>"] = actions.file_vsplit,
+        ["<C-u>"] = moveUp,
+        ["<C-d>"] = moveDown,
       },
     },
   },
@@ -39,7 +55,7 @@ require("telescope").setup({
 })
 
 local telescope_builtin = require("telescope.builtin")
-local project_nvim = require("telescope").extensions.projects
+local telescope_extensions = require("telescope").extensions
 local find_files_cwd_file = function()
   telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
 end
@@ -47,8 +63,8 @@ end
 vim.keymap.set("n", "<C-p>", telescope_builtin.find_files, { desc = "telescope: find files" })
 vim.keymap.set("n", "<C-m>", find_files_cwd_file, { desc = "telescope: find files from current file's directory" })
 vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
+vim.keymap.set("n", "<leader>cd", telescope_extensions.zoxide.list, { desc = "telescope: cd directory" })
 vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "telescope: live grep" })
-vim.keymap.set("n", "<leader>gp", project_nvim.projects, { desc = "telescope: find projects" })
 vim.keymap.set("n", "<leader>gs", telescope_builtin.grep_string, { desc = "telescope: grep string" })
 vim.keymap.set("n", "<leader>gt", telescope_builtin.help_tags, { desc = "telescope: help tags" })
 vim.keymap.set("n", "<leader>gk", telescope_builtin.keymaps, { desc = "telescope: keymaps" })

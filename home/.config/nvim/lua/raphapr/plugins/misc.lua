@@ -62,7 +62,3 @@ require("surround").setup({
   mappings_style = "sandwich",
   map_insert_mode = false,
 })
-
--------------------------------------- project.nvim ------------------------------------
-
-require("project_nvim").setup()

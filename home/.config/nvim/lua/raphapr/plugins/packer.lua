@@ -21,20 +21,15 @@ return require("packer").startup(function(use)
   use("unblevable/quick-scope")
   use("folke/which-key.nvim")
   use("ur4ltz/surround.nvim")
-  use({ "catppuccin/nvim", as = "catppuccin" })
   use("rcarriga/nvim-notify")
 
+  use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
   use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
-
-  use("ahmedkhalf/project.nvim")
-
-  -- Telescope integration
-  require("telescope").load_extension("projects")
 
   use({
     "tiagovla/scope.nvim",
@@ -79,6 +74,7 @@ return require("packer").startup(function(use)
     requires = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-media-files.nvim" },
+      { "jvgrootveld/telescope-zoxide" },
       { "nvim-lua/popup.nvim" },
       { "kyazdani42/nvim-web-devicons" },
     },
