@@ -69,6 +69,8 @@ source /opt/asdf-vm/asdf.fish
 # ctrl+f only accept autosuggestion
 # ctrl+a switch AWS profile
 # ctrl+k switch k8s context
+# ctrl+o change working dir to last dir in lf on exit
+
 function fish_user_key_bindings
     fish_vi_key_bindings
     fzf_key_bindings
@@ -80,6 +82,8 @@ function fish_user_key_bindings
     bind \ck "kubectl ctx"
     bind -M insert \cn "kubectl ns"
     bind \cn "kubectl ns"
+    bind -M insert \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
+    bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
 end
 
 # }}}
@@ -99,7 +103,6 @@ alias vim 'nvim'
 alias v 'nvim'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias k 'kill -9'
-alias r 'ranger'
 alias desk 'cd ~/Desktop'
 alias h 'history'
 alias grubconf 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
@@ -463,6 +466,24 @@ function sshagent --description "Start ssh-agent if not started yet, or uses alr
    if not __ssh_agent_is_started
       __ssh_agent_start
    end
+end
+
+# }}}
+# lfcd              {{{
+
+function lfcd
+    set tmp (mktemp)
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    command lf -last-dir-path=$tmp $argv
+    if test -f "$tmp"
+        set dir (cat $tmp)
+        rm -f $tmp
+        if test -d "$dir"
+            if test "$dir" != (pwd)
+                cd $dir
+            end
+        end
+    end
 end
 
 # }}}

@@ -33,7 +33,7 @@ You can now link its contents into your home dir:
 - polybar
 - fish shell
 - tmux
-- ranger
+- lf
 - thunar
 - kitty
 - zathura
