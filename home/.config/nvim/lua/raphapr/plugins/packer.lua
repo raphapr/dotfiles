@@ -25,7 +25,6 @@ return require("packer").startup(function(use)
 
   use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
-  use({ "ThePrimeagen/harpoon", requires = "nvim-lua/plenary.nvim" })
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
   use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })

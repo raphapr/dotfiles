@@ -8,8 +8,5 @@ wk.register({
     t = {
       name = "+git/tab",
     },
-    b = {
-      name = "+harpoon",
-    },
   },
 })

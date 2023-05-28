@@ -13,7 +13,6 @@ local moveDown = actions.move_selection_next
   + actions.move_selection_next
 
 require("telescope").load_extension("media_files")
-require("telescope").load_extension("harpoon")
 require("telescope").load_extension("zoxide")
 require("telescope").setup({
   defaults = {
@@ -73,4 +72,3 @@ vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "t
 vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "telescope: search history" })
 vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "telescope: old files" })
 vim.keymap.set("n", "<leader>gl", telescope_builtin.lsp_document_symbols, { desc = "telescope: lsp document symbols" })
-vim.keymap.set("n", "<leader>gh", ":Telescope harpoon marks<CR>", { desc = "telescope: harpoon marks" })
