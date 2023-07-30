@@ -16,6 +16,7 @@ require("telescope").load_extension("media_files")
 require("telescope").load_extension("zoxide")
 require("telescope").setup({
   defaults = {
+    file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
     mappings = {
       n = {
         ["<C-h>"] = action_layout.toggle_preview,
@@ -59,7 +60,12 @@ local find_files_cwd_file = function()
   telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
 end
 
-vim.keymap.set("n", "<C-p>", telescope_builtin.find_files, { desc = "telescope: find files" })
+vim.keymap.set(
+  "n",
+  "<C-p>",
+  ":Telescope find_files hidden=true<CR>",
+  { noremap = true, desc = "telescope: find files" }
+)
 vim.keymap.set("n", "<C-m>", find_files_cwd_file, { desc = "telescope: find files from current file's directory" })
 vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
 vim.keymap.set("n", "<leader>cd", telescope_extensions.zoxide.list, { desc = "telescope: cd directory" })
