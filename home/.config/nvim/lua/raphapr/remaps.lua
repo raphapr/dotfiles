@@ -80,3 +80,11 @@ vim.keymap.set(
   '<esc>:w<CR>:lua vim.notify(string.format("Saved %s", vim.fn.expand("%:t")), "info")<CR>',
   { silent = true, desc = "save file and notify" }
 )
+
+local function open_tmux_pane()
+  local current_dir = vim.fn.getcwd()
+  local tmux_cmd = string.format("tmux split-window -h -c %q", current_dir)
+  vim.fn.system(tmux_cmd)
+end
+
+vim.keymap.set("n", '<leader>"', open_tmux_pane, { silent = true, noremap = true })
