@@ -39,7 +39,7 @@ exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abn
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
 exec_always --no-startup-id xset r rate 240 30
 exec_always --no-startup-id xset +dpms dpms 0 300 300
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --show-failed-attempts --ignore-empty-password -c 000000
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #}}}
