@@ -4,10 +4,6 @@
 
 # Preambulo           ---------------------------------------------- {{{
 
-if [ "$DISPLAY" ]; then
-    xset r rate 210 30
-fi
-
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export PATH="$PATH:$HOME/.bin"
 

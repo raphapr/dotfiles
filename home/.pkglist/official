@@ -1474,7 +1474,6 @@ wpebackend-fdo
 x264
 x265
 xapp
-xautolock
 xcape
 xcb-proto
 xcb-util
@@ -1505,7 +1504,6 @@ xf86-video-ati
 xf86-video-intel
 xf86-video-nouveau
 xfce4-notifyd
-xfce4-power-manager
 xfconf
 xfdesktop
 xfsprogs
@@ -1565,3 +1563,4 @@ zvbi
 zxing-cpp
 atool
 ueberzug
+xss-lock

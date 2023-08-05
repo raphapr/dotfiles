@@ -25,12 +25,10 @@ set $PRINT      flameshot gui
 exec --no-startup-id nm-applet
 exec --no-startup-id copyq
 exec --no-startup-id volnoti
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id "udiskie -2 &"
 exec --no-startup-id dropbox start
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon
-exec --no-startup-id xautolock -time 4 -locker "i3lock -c 000000" -corners --00 -cornersize 30
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id telegram-desktop -startintray
@@ -40,6 +38,8 @@ exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl 
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
 exec_always --no-startup-id xset r rate 240 30
+exec_always --no-startup-id xset +dpms dpms 0 300 300
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #}}}
@@ -238,7 +238,7 @@ bindsym $mod+t exec --no-startup-id ~/.bin/suspend-screensaver
 bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
 
 # %shortcut: lock screen
-bindsym $mod+x exec --no-startup-id i3lock -c 000000
+bindsym $mod+x exec --no-startup-id loginctl lock-session
 
 # %shortcut: move workspace to output left/right
 bindsym $mod+shift+x move workspace to output left
