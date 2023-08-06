@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Run xidlehook
+xidlehook \
+  --socket "/tmp/xidlehook.sock" \
+  `# Don't lock when there's a fullscreen application` \
+  --not-when-fullscreen \
+  `# Don't lock when there's audio playing` \
+  --not-when-audio \
+  `# Dim the screen after 5 minutes, undim if user becomes active` \
+  --timer 300 \
+    'brightnessctl set 125-; notify-send "Screen will be locked in 30s"' \
+    'britghtness set 125+' \
+  `# Undim & lock after 30 more seconds` \
+  --timer 30 \
+    'loginctl lock-session; brightnessctl set 125+' \
+    '' \
+  `# Finally, suspend an hour after it locks` \
+  --timer 3600 \
+    'systemctl suspend' \
+    ''

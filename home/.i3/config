@@ -37,8 +37,9 @@ exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
+exec --no-startup-id ~/.bin/xidlehook-lock
 exec_always --no-startup-id xset r rate 240 30
-exec_always --no-startup-id xset +dpms dpms 0 300 300
+exec_always --no-startup-id xset -dpms
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --show-failed-attempts --ignore-empty-password -c 000000
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -210,12 +211,6 @@ bindsym $mod+plus exec --no-startup-id ~/.i3/scripts/fullscreen_nav focus up
 # %shortcut: google chrome ingonito
 bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
 
-# %shortcut: backlight increase
-bindsym $mod+2 exec --no-startup-id xbacklight -inc 10
-
-# %shortcut: backlight decrease
-bindsym $mod+1 exec --no-startup-id xbacklight -dec 10
-
 # %shortcut: start terminal
 bindsym $mod+Return exec --no-startup-id $TERM
 
@@ -257,6 +252,10 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id  "brightnessctl set 25+"
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 25-"
 
 # mute spotify player
 bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle

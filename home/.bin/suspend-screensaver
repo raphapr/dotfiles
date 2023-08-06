@@ -1,13 +1,13 @@
 #!/bin/bash
 
 statefile=~/.screensaver-state
-
-if grep -q "ON" "$statefile"; then
-    xset -dpms; xset s off
-    notify-send "Screensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
-    echo "%{F#FF5252} OFF" > "$statefile"
+pid=$(pidof xidlehook)
+if [ -z "$pid" ]; then
+    ~/.bin/xidlehook-lock &
+    notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
+    echo "%{F#4DB6AC} ON"  > "$statefile"
 else
-    xset +dpms dpms 0 300 300; xset s on
-    notify-send "Screensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
-    echo "%{F#4DB6AC} ON" > "$statefile"
+    kill "$pid"
+    notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
+    echo "%{F#FF5252} OFF"  > "$statefile"
 fi
