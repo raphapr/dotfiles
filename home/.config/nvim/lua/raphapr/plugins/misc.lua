@@ -1,16 +1,3 @@
--------------------------------------- quick-scope -------------------------------------
-
-vim.g["qs_highlight_on_keys"] = { "f", "F", "t", "T" }
-
--- custom colors
-vim.cmd([[
-  augroup qs_colors
-  autocmd!
-  autocmd ColorScheme * highlight QuickScopePrimary guifg='#ff007c' gui=underline ctermfg=155 cterm=underline
-  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#00dfff' gui=underline ctermfg=81 cterm=underline
-  augroup END
-]])
-
 -------------------------------------- colorscheme -------------------------------------
 
 vim.cmd("colorscheme catppuccin-mocha")
@@ -62,3 +49,7 @@ require("surround").setup({
   mappings_style = "sandwich",
   map_insert_mode = false,
 })
+
+-------------------------------------- flash -------------------------------------------
+
+require("flash").setup()
