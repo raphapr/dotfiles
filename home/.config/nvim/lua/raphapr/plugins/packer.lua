@@ -31,6 +31,15 @@ return require("packer").startup(function(use)
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
   use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  })
+
+  use({
     "tiagovla/scope.nvim",
     config = function()
       require("scope").setup()

@@ -52,4 +52,14 @@ require("surround").setup({
 
 -------------------------------------- flash -------------------------------------------
 
-require("flash").setup()
+require("flash").setup({
+  modes = {
+    search = {
+      enabled = false,
+    },
+    char = {
+      enabled = true,
+      jump_labels = true,
+    },
+  },
+})
