@@ -1,0 +1,37 @@
+[".tmux/plugins/tpm"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tpm"
+    clone.args = ["--depth", "1"]
+    refreshPeriod = "168h"
+[".local/share/nvim/site/pack/packer/start/packer.nvim"]
+    type = "git-repo"
+    url = "https://github.com/wbthomason/packer.nvim"
+    clone.args = ["--depth", "1"]
+    refreshPeriod = "168h"
+[".git-completion.bash"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
+    refreshPeriod = "168h"
+[".local/bin/xpanes"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/greymd/tmux-xpanes/master/bin/xpanes"
+    executable = true
+    refreshPeriod = "168h"
+[".fzf"]
+    type = "git-repo"
+    url = "https://github.com/junegunn/fzf.git"
+    clone.args = ["--depth", "1"]
+    refreshPeriod = "168h"
+[".config/fish/completions/kubectl.fish"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/main/completions/kubectl.fish"
+    clone.args = ["--depth", "1"]
+    refreshPeriod = "168h"
+[".config/fish/functions/fzf-key-bindings.fish"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.fish"
+    refreshPeriod = "168h"
+[".config/fish/completions/docker.fish"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish"
+    refreshPeriod = "168h"

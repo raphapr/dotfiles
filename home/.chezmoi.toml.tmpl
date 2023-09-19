@@ -1,0 +1,19 @@
+[data]
+# Default username.
+user = "raphapr"
+
+# Email (used for git)
+email = "raphaelpr01@gmail.com"
+
+# Full Name (used for git)
+full_name = "Raphael P. R."
+
+[data.git]
+signing_key = "FA70B2729F47724C"
+
+[merge]
+command = "nvim"
+args = ["-d", {{ `"{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"` }}]
+
+[diff]
+pager = "diff-so-fancy"

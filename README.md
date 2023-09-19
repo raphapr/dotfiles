@@ -2,29 +2,25 @@
 
 This repository contains configuration files I use on my Manjaro GNU/Linux which has been inspired by the rest of the dotfiles community.
 
-## Install
+## Installation
 
-Run this:
+1. Install chezmoi
 
 ```bash
-git clone https://github.com/raphapr/dotfiles ~/dotfiles
-cd ~/dotfiles && chmod +x ./home/.bin/bootstrap
-./home/.bin/bootstrap
+pacman -S chezmoi
 ```
 
-## Symlink dotfiles
+2. Setup the dotfiles to match the target state
 
-Install homesick:
+```bash
+chezmoi init raphapr
+```
 
-`gem install homesick`
+3. Run bootstrap script
 
-Next, you need to clone this repository:
-
-`homesick clone raphapr/dotfiles`
-
-You can now link its contents into your home dir:
-
-`homesick symlink dotfiles`
+```bash
+bash ~/.bin/bootstrap
+```
 
 ## Main programs
 
@@ -50,3 +46,5 @@ You can now link its contents into your home dir:
 - redshift
 - asdf
 - yay
+- chezmoi
+- atuin
