@@ -7,19 +7,19 @@ This repository contains configuration files I use on my Manjaro GNU/Linux which
 1. Install chezmoi
 
 ```bash
-pacman -S chezmoi
+$ sudo pacman -S chezmoi
 ```
 
 2. Setup the dotfiles to match the target state
 
 ```bash
-chezmoi init raphapr
+$ chezmoi init raphapr
 ```
 
 3. Run bootstrap script
 
 ```bash
-bash ~/.bin/bootstrap
+$ bash ~/.bin/bootstrap
 ```
 
 ## Main programs
