@@ -13,7 +13,7 @@ $ sudo pacman -S chezmoi
 2. Setup the dotfiles to match the target state
 
 ```bash
-$ chezmoi init raphapr
+$ chezmoi init raphapr --apply
 ```
 
 3. Run bootstrap script

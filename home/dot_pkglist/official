@@ -35,12 +35,14 @@ aspell
 at-spi2-core
 atkmm
 attr
+atuin
 audacious-plugins
 audit
 autoconf
 automake
 autorandr
 avahi
+ayatana-ido
 b43-fwcutter
 babl
 base
@@ -53,6 +55,8 @@ bcprov
 bind
 binutils
 bison
+blas
+blas64-openblas
 blueman
 bluez
 bluez-libs
@@ -60,6 +64,7 @@ bonnie++
 bpf
 breezy
 bridge-utils
+brightnessctl
 brltty
 brotli
 btrfs-progs
@@ -74,10 +79,9 @@ cairomm
 cairomm-1.16
 cantarell-fonts
 capstone
-cblas
-cblas64
 cdparanoia
 cheese
+chezmoi
 chromaprint
 chrony
 chrpath
@@ -100,6 +104,7 @@ containerd
 cool-retro-term
 copyq
 coreutils
+cppdap
 cpupower
 cracklib
 cronie
@@ -138,6 +143,7 @@ dnssec-anchors
 docbook-xml
 docbook-xsl
 docker
+docker-buildx
 docker-compose
 dosfstools
 double-conversion
@@ -151,7 +157,7 @@ edk2-ovmf
 efibootmgr
 efivar
 electron
-electron17
+electron25
 elfutils
 enchant
 engrampa
@@ -190,6 +196,7 @@ foomatic-db
 foomatic-db-engine
 foomatic-db-gutenprint-ppds
 freeglut
+freerdp
 freetype2
 frei0r-plugins
 fribidi
@@ -273,7 +280,6 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer
 gtest
-gtk-engine-murrine
 gtk-engines
 gtk-update-icon-cache
 gtk2
@@ -311,6 +317,7 @@ htop
 http-parser
 httpie
 hub
+hugo
 hunspell
 hwdata
 hwinfo
@@ -345,6 +352,7 @@ java-commons-lang
 java-environment-common
 java-runtime-common
 jbig2dec
+jbigkit
 jdk8-openjdk
 jemalloc
 jfsutils
@@ -353,7 +361,6 @@ jre11-openjdk
 jre11-openjdk-headless
 jre8-openjdk
 jre8-openjdk-headless
-js78
 json-c
 json-glib
 jsoncpp
@@ -381,12 +388,12 @@ l-smash
 ladspa
 lame
 lapack
-lapack64
 lcms2
 ldb
 ldns
 lensfun
 less
+lf
 lib32-alsa-lib
 lib32-alsa-oss
 lib32-alsa-plugins
@@ -426,6 +433,7 @@ lib32-libcups
 lib32-libdatrie
 lib32-libdbusmenu-glib
 lib32-libdbusmenu-gtk2
+lib32-libdecor
 lib32-libdrm
 lib32-libelf
 lib32-libffi
@@ -476,6 +484,8 @@ lib32-libxfixes
 lib32-libxft
 lib32-libxi
 lib32-libxinerama
+lib32-libxkbcommon
+lib32-libxkbcommon-x11
 lib32-libxml2
 lib32-libxmu
 lib32-libxrandr
@@ -529,6 +539,8 @@ libatasmart
 libavc1394
 libavif
 libavtp
+libayatana-appindicator
+libayatana-indicator
 libb2
 libb64
 libblastrampoline
@@ -692,6 +704,7 @@ libraqm
 libraw
 libraw1394
 libressl
+libretls
 librsvg
 librsync
 libsamplerate
@@ -699,7 +712,6 @@ libsasl
 libseccomp
 libsecret
 libshout
-libsidplay
 libsidplayfp
 libsigc++
 libsigc++-3.0
@@ -812,15 +824,18 @@ linux-firmware-whence
 linux54
 linux54-headers
 lirc
+lld
 llvm
 llvm-libs
 llvm14-libs
+llvm15-libs
 lm_sensors
 lmdb
 logrotate
 lsb-release
 lshw
 lsof
+lua
 lua51
 lua51-lpeg
 lua51-mpack
@@ -853,6 +868,7 @@ manjaro-xfce-minimal-settings
 matcha-gtk-theme
 maven
 mbedtls
+mbedtls2
 md4c
 mdadm
 memcached
@@ -906,10 +922,8 @@ net-tools
 nettle
 network-manager-applet
 networkmanager
-networkmanager-fortisslvpn
 networkmanager-openconnect
 networkmanager-openvpn
-networkmanager-pptp
 networkmanager-vpnc
 nfs-utils
 nfsidmap
@@ -937,7 +951,6 @@ ocl-icd
 onetbb
 oniguruma
 openal
-openblas
 openblas64
 opencl-headers
 openconnect
@@ -956,6 +969,7 @@ openssl-1.1
 openvpn
 opera-ffmpeg-codecs
 opus
+opusfile
 orc
 os-prober
 ostree
@@ -1051,7 +1065,6 @@ portaudio
 postgresql-libs
 powertop
 ppp
-pptpclient
 prettier
 pritunl-client-electron
 procps-ng
@@ -1103,6 +1116,7 @@ python-dotenv
 python-dulwich
 python-fastbencode
 python-fastjsonschema
+python-filelock
 python-future
 python-gobject
 python-hkdf
@@ -1116,6 +1130,7 @@ python-jaraco.functools
 python-jaraco.text
 python-jsonpointer
 python-jsonschema
+python-jsonschema-specifications
 python-keyutils
 python-markdown
 python-markdown-it-py
@@ -1143,7 +1158,6 @@ python-pydbus
 python-pygments
 python-pynacl
 python-pyopenssl
-python-pyparsing
 python-pyqt5
 python-pyqt5-sip
 python-pyrsistent
@@ -1151,6 +1165,7 @@ python-pysmbc
 python-pysocks
 python-pytoml
 python-pyxdg
+python-referencing
 python-reportlab
 python-requests
 python-requests-toolbelt
@@ -1158,6 +1173,7 @@ python-resolvelib
 python-retrying
 python-rfc3987
 python-rich
+python-rpds-py
 python-setuptools
 python-six
 python-soupsieve
@@ -1166,6 +1182,7 @@ python-tenacity
 python-texttable
 python-toml
 python-tomli
+python-tqdm
 python-trove-classifiers
 python-typing_extensions
 python-uc-micro-py
@@ -1183,8 +1200,10 @@ qemu-audio-dbus
 qemu-audio-jack
 qemu-audio-oss
 qemu-audio-pa
+qemu-audio-pipewire
 qemu-audio-sdl
 qemu-audio-spice
+qemu-base
 qemu-block-curl
 qemu-block-dmg
 qemu-block-nfs
@@ -1241,7 +1260,7 @@ qt6-imageformats
 qt6-svg
 qt6-translations
 qt6-wayland
-lf
+ranger
 raptor
 rav1e
 re2
@@ -1250,6 +1269,7 @@ redis
 redshift
 refind
 reiserfsprogs
+remmina
 rest
 rhash
 ripgrep
@@ -1364,7 +1384,7 @@ strace
 stylua
 subversion
 sudo
-suitesparse64
+suitesparse
 svt-av1
 svt-hevc
 sysfsutils
@@ -1425,7 +1445,6 @@ unace
 unibilium
 unrar
 unzip
-upower
 usb_modeswitch
 usbmuxd
 usbredir
@@ -1436,6 +1455,7 @@ v4l-utils
 v86d
 vamp-plugin-sdk
 vde2
+ventoy
 vi
 vid.stab
 viewnior
@@ -1444,6 +1464,7 @@ vim-runtime
 virglrenderer
 virtiofsd
 vmaf
+vnstat
 volume_key
 vpnc
 vte-common
@@ -1474,6 +1495,7 @@ wpebackend-fdo
 x264
 x265
 xapp
+xautolock
 xcape
 xcb-proto
 xcb-util
@@ -1534,6 +1556,7 @@ xorg-xset
 xorg-xwininfo
 xorgproto
 xsel
+xss-lock
 xvidcore
 xxhash
 xz
@@ -1541,7 +1564,6 @@ yajl
 yarn
 yasm
 yay
-youtube-dl
 zathura
 zathura-pdf-mupdf
 zbar
@@ -1556,13 +1578,7 @@ zk
 zlib
 zoxide
 zsa-udev
-zsa-wally
 zsh
 zstd
 zvbi
 zxing-cpp
-atool
-ueberzug
-xss-lock
-brightnessctl
-atuin
