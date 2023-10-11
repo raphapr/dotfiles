@@ -1,16 +1,4 @@
 -- go.nvim
-require("go").setup()
-
-require("lsp_signature").setup({
-  bind = true, -- This is mandatory, otherwise border config won't get registered.
-  handler_opts = {
-    border = "rounded",
-  },
-  hint_prefix = "󰏚  ",
-})
-
--- go.nvim mapping
-
 -- DAP UI keymaps
 -- c	continue
 -- n	next
@@ -24,8 +12,26 @@ require("lsp_signature").setup({
 -- P	cap P: pause
 -- p	print, hover value (also in visual mode)
 
+require("go").setup()
+
+vim.api.nvim_create_user_command("GoModTidy", function()
+  vim.cmd.write()
+  vim.cmd("!go mod tidy -v")
+  vim.cmd.LspRestart()
+  vim.notify("go mod tidy finished")
+end, {})
+
 vim.keymap.set("n", "<leader>db", ":GoDebug<CR>", { noremap = true, desc = "Start delve for debugging" })
 vim.keymap.set("n", "<leader>fs", ":GoFillStruct<CR>", { noremap = true, desc = "Fill struct in Go" })
+vim.keymap.set("n", "<leader>gm", ":GoModTidy<CR>", { noremap = true, desc = "Run go mod tidy and restart lsp" })
+
+require("lsp_signature").setup({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = "rounded",
+  },
+  hint_prefix = "󰏚  ",
+})
 
 -- Learn the keybindings, see :help lsp-zero-keybindings
 -- Reserve space for diagnostic icons
@@ -87,6 +93,22 @@ lsp.on_attach(function(_, bufnr)
   local function opts(desc)
     return { desc = "lsp: " .. desc, buffer = bufnr, remap = false, silent = true }
   end
+
+  vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("lsp: info"))
+
+  vim.keymap.set(
+    "n",
+    "<leader>ls",
+    ":LspStop<CR>:lua vim.notify('lsp stopped')<CR>",
+    { silent = true, desc = "lsp: stop" }
+  )
+
+  vim.keymap.set(
+    "n",
+    "<leader>lr",
+    ":LspRestart<CR>:lua vim.notify('lsp restart')<CR>",
+    { silent = true, desc = "lsp: restart" }
+  )
 
   vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
 

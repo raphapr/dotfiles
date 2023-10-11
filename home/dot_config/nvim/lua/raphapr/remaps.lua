@@ -61,7 +61,7 @@ vim.keymap.set("n", "<leader>ac", ":tabclose<CR>", { silent = true, desc = "tab:
 -- load current lua file
 vim.keymap.set(
   "n",
-  "<leader>l",
+  "<leader>lf",
   ":luafile %<CR>:lua vim.notify('lua file loaded')<CR>",
   { silent = true, desc = "load current lua file" }
 )
