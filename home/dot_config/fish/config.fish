@@ -66,6 +66,7 @@ source /opt/asdf-vm/asdf.fish
 # ctrl+o change working dir to last dir in lf on exit
 
 function fish_user_key_bindings
+    fzf_key_bindings
     fish_vi_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
@@ -75,8 +76,10 @@ function fish_user_key_bindings
     bind \ck "kubectl ctx"
     bind -M insert \cn "kubectl ns"
     bind \cn "kubectl ns"
-    bind -M insert \co 'set old_tty (stty -g); stty sane; zi; stty $old_tty; commandline -f repaint'
-    bind \co 'set old_tty (stty -g); stty sane; zi; stty $old_tty; commandline -f repaint'
+    bind -M insert \cu 'set old_tty (stty -g); stty sane; zi; stty $old_tty; commandline -f repaint'
+    bind \cu 'set old_tty (stty -g); stty sane; zi; stty $old_tty; commandline -f repaint'
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
 end
 
 # }}}
@@ -533,11 +536,10 @@ zoxide init fish | source
 # }}}
 # atuin           ---------------------------------------------- {{{
 
-
 set -gx ATUIN_NOBIND "true"
-bind \cr _atuin_search
-bind -M insert \cr _atuin_search
 
-atuin init fish | source
+if status is-interactive
+    atuin init fish | source
+end
 
 # }}}
