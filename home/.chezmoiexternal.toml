@@ -27,10 +27,6 @@
     url = "https://raw.githubusercontent.com/evanlucas/fish-kubectl-completions/main/completions/kubectl.fish"
     clone.args = ["--depth", "1"]
     refreshPeriod = "168h"
-[".config/fish/functions/fzf-key-bindings.fish"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.fish"
-    refreshPeriod = "168h"
 [".config/fish/completions/docker.fish"]
     type = "file"
     url = "https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/contrib/completion/fish/docker.fish"

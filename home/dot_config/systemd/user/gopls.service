@@ -1,0 +1,10 @@
+[Unit]
+Description=Go language server
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/gopls -listen="unix;/tmp/gopls-daemon-socket" -logfile=auto
+ExecStartPre=/usr/bin/rm -f /tmp/gopls-daemon-socket
+
+[Install]
+WantedBy=default.target
