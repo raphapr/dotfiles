@@ -16,12 +16,6 @@ $ sudo pacman -S chezmoi
 $ chezmoi init raphapr --apply
 ```
 
-3. Run bootstrap script
-
-```bash
-$ bash ~/.bin/bootstrap
-```
-
 ## Main programs
 
 - neovim
