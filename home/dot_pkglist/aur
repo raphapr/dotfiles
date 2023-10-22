@@ -4,6 +4,7 @@ auracle-git
 celt
 circleci-cli-bin
 dropbox
+duckdb-bin
 dunstify
 galculator-gtk2
 gcolor2
@@ -19,13 +20,13 @@ ipw2200-fw
 jid
 jre
 js78
-kvantum-theme-matchama
 libglade
 libsidplay
 libunique
 llvm10-libs
 metis
 mhwd-nvidia-340xx
+mimeo
 mozilla-common
 ngrok
 nodejs-nativefier

@@ -17,7 +17,6 @@ alsa-topology-conf
 alsa-ucm-conf
 alsa-utils
 amd-ucode
-amtk
 android-tools
 android-udev
 anything-sync-daemon
@@ -216,7 +215,6 @@ gcr-4
 gd
 gdbm
 gdk-pixbuf2
-gedit
 gegl
 gendesk
 geoclue
@@ -229,6 +227,7 @@ giflib
 girara
 git
 git-crypt
+git-lfs
 github-cli
 glew
 glib-networking
@@ -265,10 +264,10 @@ grep
 groff
 grub
 grub-theme-manjaro
+grub-update
 gsettings-desktop-schemas
 gsfonts
 gsm
-gspell
 gssdp
 gssproxy
 gst-libav
@@ -366,24 +365,25 @@ json-glib
 jsoncpp
 julia
 k9s
-kauth
+kauth5
 kbd
-kconfig
-kcoreaddons
+kconfig5
+kcoreaddons5
 kernel-alive
 keyutils
-kguiaddons
-kitemmodels
+kguiaddons5
+kitemmodels5
 kitty
 kitty-shell-integration
 kitty-terminfo
 kmod
-knotifications
+knotifications5
 krb5
 kvantum
+kvantum-manjaro
 kvantum-theme-matcha
-kwayland
-kwindowsystem
+kwayland5
+kwindowsystem5
 l-smash
 ladspa
 lame
@@ -402,6 +402,7 @@ lib32-attr
 lib32-brotli
 lib32-bzip2
 lib32-cairo
+lib32-colord
 lib32-curl
 lib32-dbus
 lib32-e2fsprogs
@@ -422,12 +423,15 @@ lib32-glu
 lib32-gmp
 lib32-gnutls
 lib32-gtk2
+lib32-gtk3
 lib32-harfbuzz
 lib32-icu
 lib32-jack2
 lib32-keyutils
 lib32-krb5
+lib32-lcms2
 lib32-libasyncns
+lib32-libcanberra
 lib32-libcap
 lib32-libcups
 lib32-libdatrie
@@ -436,6 +440,7 @@ lib32-libdbusmenu-gtk2
 lib32-libdecor
 lib32-libdrm
 lib32-libelf
+lib32-libepoxy
 lib32-libffi
 lib32-libgcrypt
 lib32-libglvnd
@@ -447,6 +452,7 @@ lib32-libindicator-gtk2
 lib32-libinstpatch
 lib32-libjpeg-turbo
 lib32-libldap
+lib32-libltdl
 lib32-libnsl
 lib32-libogg
 lib32-libpciaccess
@@ -454,6 +460,7 @@ lib32-libpipewire
 lib32-libpng
 lib32-libpsl
 lib32-libpulse
+lib32-librsvg
 lib32-libsamplerate
 lib32-libsm
 lib32-libsndfile
@@ -520,6 +527,7 @@ lib32-readline
 lib32-sdl2
 lib32-sqlite
 lib32-systemd
+lib32-tdb
 lib32-util-linux
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
@@ -567,6 +575,7 @@ libconfig
 libcroco
 libcue
 libcups
+libcupsfilters
 libcurl-gnutls
 libdaemon
 libdatrie
@@ -580,6 +589,7 @@ libde265
 libdecor
 libdeflate
 libdispatch
+libdovi
 libdrm
 libdv
 libdvdcss
@@ -660,6 +670,7 @@ libmpcdec
 libmpdclient
 libmpeg2
 libmtp
+libmupdf
 libmypaint
 libnatpmp
 libndp
@@ -677,6 +688,7 @@ libnma
 libnma-common
 libnotify
 libnsl
+libnvme
 libofa
 libogg
 libomxil-bellagio
@@ -686,13 +698,13 @@ libp11-kit
 libpaper
 libpcap
 libpciaccess
-libpeas
 libpgm
 libpipeline
 libpipewire
 libplacebo
 libplist
 libpng
+libppd
 libproxy
 libpsl
 libptytty
@@ -949,6 +961,7 @@ oath-toolkit
 obsidian
 ocl-icd
 onetbb
+onevpl
 oniguruma
 openal
 openblas64
@@ -1015,6 +1028,7 @@ perl-file-mimeinfo
 perl-file-which
 perl-html-parser
 perl-html-tagset
+perl-http-cookiejar
 perl-http-cookies
 perl-http-daemon
 perl-http-date
@@ -1083,6 +1097,7 @@ pulseaudio-rtp
 pulseaudio-zeroconf
 pv
 python
+python-annotated-types
 python-appdirs
 python-asn1crypto
 python-attrs
@@ -1154,6 +1169,7 @@ python-psutil
 python-ptyprocess
 python-pycparser
 python-pydantic
+python-pydantic-core
 python-pydbus
 python-pygments
 python-pynacl
@@ -1263,7 +1279,6 @@ qt6-wayland
 ranger
 raptor
 rav1e
-re2
 readline
 redis
 redshift
@@ -1400,7 +1415,6 @@ tcl
 tcpdump
 tdb
 telegram-desktop
-tepl
 tevent
 texinfo
 thin-provisioning-tools
@@ -1455,7 +1469,6 @@ v4l-utils
 v86d
 vamp-plugin-sdk
 vde2
-ventoy
 vi
 vid.stab
 viewnior
@@ -1464,7 +1477,6 @@ vim-runtime
 virglrenderer
 virtiofsd
 vmaf
-vnstat
 volume_key
 vpnc
 vte-common
@@ -1525,7 +1537,6 @@ xf86-video-amdgpu
 xf86-video-ati
 xf86-video-intel
 xf86-video-nouveau
-xfce4-notifyd
 xfconf
 xfdesktop
 xfsprogs
