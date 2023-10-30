@@ -68,7 +68,7 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<C-m>", find_files_cwd_file, { desc = "telescope: find files from current file's directory" })
 vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
-vim.keymap.set("n", "<leader>cd", telescope_extensions.zoxide.list, { desc = "telescope: cd directory" })
+vim.keymap.set("n", "<leader>cd", telescope_extensions.zoxide.list, { desc = "telescope: cd directory" }) -- ctrl+f for builtin.find_files
 vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "telescope: live grep" })
 vim.keymap.set("n", "<leader>gs", telescope_builtin.grep_string, { desc = "telescope: grep string" })
 vim.keymap.set("n", "<leader>gt", telescope_builtin.help_tags, { desc = "telescope: help tags" })
