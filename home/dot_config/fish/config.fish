@@ -10,7 +10,7 @@ export SHELL="fish"
 export EDITOR="nvim"
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
-export BROWSER=google-chrome-stable
+export BROWSER=firefox
 export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 export FZF_DEFAULT_OPTS="--height 50%"
 export GPG_TTY=(tty)

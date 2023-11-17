@@ -13,7 +13,7 @@
 
 set $mod Mod4
 set $mod2 Mod4+Shift
-set $BROWSER    google-chrome-stable
+set $BROWSER    firefox
 set $TERM       kitty
 set $TMUX       kitty -e "$HOME/.bin/tmuxsession main"
 set $FM         thunar
@@ -295,7 +295,7 @@ for_window [title="^\[\.Support\].*"] move to workspace 1
 for_window [title="^\[\.Personal\].*"] move to workspace 3
 for_window [title="^\[\.Screen2\].*"] move to workspace 4
 
-# chrome window groups
+# Browser window groups
 for_window [title="^\.Main.*"] move to workspace 1
 for_window [title="^\.Support.*"] move to workspace 1
 for_window [title="^\.Personal.*"] move to workspace 3
