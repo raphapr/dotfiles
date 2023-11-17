@@ -1,0 +1,3 @@
+set theme dark
+set keyboardlayoutforce true
+set editorcmd kitty -u -e "nvim %f"
