@@ -22,6 +22,7 @@ return require("packer").startup(function(use)
   use("folke/which-key.nvim")
   use("ur4ltz/surround.nvim")
   use("rcarriga/nvim-notify")
+  use("tridactyl/vim-tridactyl")
 
   use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
