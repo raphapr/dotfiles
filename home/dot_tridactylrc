@@ -36,6 +36,7 @@ set searchurls.gh     https://github.com/search?utf8=✓&q=
 set searchurls.reddit https://www.reddit.com/search/?q=
 set searchurls.amazon https://www.amazon.com.br/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=
 set searchurls.ml     https://lista.mercadolivre.com.br/
+set searchurls.camb   https://dictionary.cambridge.org/dictionary/english-portuguese/
 
 " syntax highlighting
 vim: set filetype=tridactyl
