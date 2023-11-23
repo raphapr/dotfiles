@@ -14,6 +14,7 @@ local moveDown = actions.move_selection_next
 
 require("telescope").load_extension("media_files")
 require("telescope").load_extension("zoxide")
+require("telescope").load_extension("git_worktree")
 require("telescope").setup({
   defaults = {
     file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
@@ -78,3 +79,5 @@ vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "t
 vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "telescope: search history" })
 vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "telescope: old files" })
 vim.keymap.set("n", "<leader>gl", telescope_builtin.lsp_document_symbols, { desc = "telescope: lsp document symbols" })
+vim.keymap.set("n", "<leader>ww", function() require('telescope').extensions.git_worktree.git_worktrees() end, { desc = "telescope: navigate across git worktrees"})
+vim.keymap.set("n", "<leader>wc", function() require('telescope').extensions.git_worktree.create_git_worktree() end, { desc = "telescope: create git worktree"})

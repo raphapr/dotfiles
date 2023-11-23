@@ -23,6 +23,7 @@ return require("packer").startup(function(use)
   use("ur4ltz/surround.nvim")
   use("rcarriga/nvim-notify")
   use("tridactyl/vim-tridactyl")
+  use("ThePrimeagen/git-worktree.nvim")
 
   use({ "catppuccin/nvim", as = "catppuccin" })
   use({ "ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim" })
