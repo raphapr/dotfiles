@@ -31,6 +31,7 @@ return require("packer").startup(function(use)
   use({ "nvim-tree/nvim-tree.lua", requires = { "nvim-tree/nvim-web-devicons" } })
   use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
+  use({ "epwalsh/obsidian.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
   use({
     "iamcco/markdown-preview.nvim",
