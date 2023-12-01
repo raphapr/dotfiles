@@ -50,16 +50,9 @@ require("surround").setup({
   map_insert_mode = false,
 })
 
--------------------------------------- flash -------------------------------------------
+-------------------------------------- eyeliner ----------------------------------------
 
-require("flash").setup({
-  modes = {
-    search = {
-      enabled = false,
-    },
-    char = {
-      enabled = true,
-      jump_labels = true,
-    },
-  },
+require("eyeliner").setup({
+  highlight_on_key = true,
+  dim = true,
 })

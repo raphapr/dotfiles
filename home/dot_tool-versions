@@ -6,3 +6,4 @@ helm 3.8.2
 awscli 2.7.5
 terraform-ls 0.28.0
 nodejs 19.9.0
+python 3.11.6

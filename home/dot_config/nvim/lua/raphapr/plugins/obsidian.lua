@@ -26,7 +26,7 @@ require("obsidian").setup({
   end,
 })
 
-vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Obsidian New Note" })
+vim.keymap.set("n", "<leader>on", ":ObsidianNew ", { desc = "Obsidian New Note" })
 vim.keymap.set("n", "<leader>ot", ":ObsidianTemplate<CR>", { desc = "Obsidian Template" })
 vim.keymap.set("n", "<leader>oq", ":ObsidianQuickSwitch<CR>", { desc = "Obsidian Quick Switcher" })
 vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Obsidian Search" })
