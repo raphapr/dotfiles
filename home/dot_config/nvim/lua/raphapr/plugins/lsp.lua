@@ -1,3 +1,21 @@
+-- # Go to definition (in a split)
+local function go_to_definition_split()
+  vim.lsp.buf.definition({
+    on_list = function(options)
+      -- if there are multiple items, warn the user
+      if #options.items > 1 then
+        vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
+      end
+
+      -- Open the first item in a vertical split
+      local item = options.items[1]
+      local cmd = "vsplit +" .. item.lnum .. " " .. item.filename .. "|" .. "normal " .. item.col .. "|"
+
+      vim.cmd(cmd)
+    end,
+  })
+end
+
 -- go.nvim
 -- DAP UI keymaps
 -- c	continue
@@ -115,6 +133,7 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set("n", "gd", function()
     vim.lsp.buf.definition()
   end, opts("go to definition"))
+  vim.keymap.set("n", "gs", go_to_definition_split, opts("go to definition (split)"))
   vim.keymap.set("n", "gr", function()
     require("telescope.builtin").lsp_references()
   end, opts("references"))

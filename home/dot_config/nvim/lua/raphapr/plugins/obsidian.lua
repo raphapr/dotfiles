@@ -1,6 +1,7 @@
 require("obsidian").setup({
   dir = "~/Cloud/Vaults/Raphakasten",
   notes_subdir = "Zettels",
+
   daily_notes = {
     folder = "Daily",
     date_format = "%d-%m-%Y",
