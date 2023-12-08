@@ -63,7 +63,8 @@ source /opt/asdf-vm/asdf.fish
 # ctrl+f only accept autosuggestion
 # ctrl+a switch AWS profile
 # ctrl+k switch k8s context
-# ctrl+o change working dir to last dir in lf on exit
+# ctrl+n switch k8s namespace
+# ctrl+u open tmux sessionizer
 
 function fish_user_key_bindings
     fzf_key_bindings
@@ -99,10 +100,9 @@ alias vim 'nvim'
 alias v 'nvim'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias k 'kill -9'
-alias desk 'cd ~/Desktop'
 alias h 'history'
 alias grubconf 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias automhwd 'sudo mhwd -r pci video-hybrid-intel-nvidia-bumblebee ; sudo mhwd -a pci nonfree 0300'
+# edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
 alias et 'v ~/.tmux/tmux.conf'
@@ -111,29 +111,24 @@ alias eb 'v ~/.bashrc'
 alias ev 'v +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
 alias i3c 'v ~/.i3/config'
 alias xmerge 'xrdb -merge ~/.Xresources'
-# Ver diretórios com mais espaço em disco
-alias topdir 'du -sh * | sort -nr | head -n10'
-alias youtube-viewer 'youtube-viewer -C'
 # git
 alias g "git"
 alias gpull "git pull origin (git rev-parse --abbrev-ref HEAD)"
 alias gpush "git push origin (git rev-parse --abbrev-ref HEAD)"
 alias gclean "git clean -fdx && git stash"
+alias gco "git checkout (git branch | fzf | tr -d [:space:])"
 # diff dotfiles
 alias cdiff "chezmoi diff"
 # command line pastebin
 alias pasteb "curl -F 'f:1=<-' ix.io"
 # weather in terminal
-alias weather "curl wttr.in/florianopolis"
+alias weather "curl wttr.in/saopaulo"
 #  ptpython
 alias ptpython "python -m ptpython"
 # '-' as shortcut to cd -
 abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
-# notes
-alias n 'nvim +VimwikiIndex'
-alias nn 'nvim +VimwikiMakeDiaryNote'
 # chezmoi
 alias cz 'chezmoi'
 
@@ -467,41 +462,10 @@ function sshagent --description "Start ssh-agent if not started yet, or uses alr
 end
 
 # }}}
-# lfcd              {{{
-
-function lfcd
-    set tmp (mktemp)
-    # `command` is needed in case `lfcd` is aliased to `lf`
-    command lf -last-dir-path=$tmp $argv
-    if test -f "$tmp"
-        set dir (cat $tmp)
-        rm -f $tmp
-        if test -d "$dir"
-            if test "$dir" != (pwd)
-                cd $dir
-            end
-        end
-    end
-end
-
-# }}}
-
-# }}}
-# FZF functions   ---------------------------------------------- {{{
-
 # aws-profile       {{{
 
 function aws-profile
     export AWS_PROFILE=(grep "^\[.*]" ~/.aws/config | tr -d "[]" | sed 's/profile.//g' | fzf --height 20% +m)
-    commandline -f repaint
-end
-
-# }}}
-# fco               {{{
-
-function fco -d "Fuzzy-find and checkout a branch"
-    set -lx FZF_DEFAULT_OPTS "--height 40% +m"
-    git branch --all | grep -v HEAD | string trim | fzf |  xargs git checkout
     commandline -f repaint
 end
 
