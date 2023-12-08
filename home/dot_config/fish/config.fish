@@ -64,7 +64,8 @@ source /opt/asdf-vm/asdf.fish
 # ctrl+a switch AWS profile
 # ctrl+k switch k8s context
 # ctrl+n switch k8s namespace
-# ctrl+u open tmux sessionizer
+# ctrl+u open session via tmux sessionizer
+# ctrl+o switch sessions via tmux sessionizer
 
 function fish_user_key_bindings
     fzf_key_bindings
@@ -77,8 +78,10 @@ function fish_user_key_bindings
     bind \ck "kubectl ctx"
     bind -M insert \cn "kubectl ns"
     bind \cn "kubectl ns"
-    bind -M insert \cu 'tmux-sessionizer; commandline -f repaint'
-    bind \cu 'tmux-sessionizer; commandline -f repaint'
+    bind -M insert \cu 'tms; commandline -f repaint'
+    bind \cu 'tms; commandline -f repaint'
+    bind -M insert \cj 'tms switch; commandline -f repaint'
+    bind \cj 'tms switch; commandline -f repaint'
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
 end
