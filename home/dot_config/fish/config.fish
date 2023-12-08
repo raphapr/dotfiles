@@ -76,8 +76,8 @@ function fish_user_key_bindings
     bind \ck "kubectl ctx"
     bind -M insert \cn "kubectl ns"
     bind \cn "kubectl ns"
-    bind -M insert \cu 'set old_tty (stty -g); stty sane; zi; stty $old_tty; commandline -f repaint'
-    bind \cu 'set old_tty (stty -g); stty sane; zi; stty $old_tty; commandline -f repaint'
+    bind -M insert \cu 'tmux-sessionizer; commandline -f repaint'
+    bind \cu 'tmux-sessionizer; commandline -f repaint'
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
 end
