@@ -78,10 +78,6 @@ function fish_user_key_bindings
     bind \ck "kubectl ctx"
     bind -M insert \cn "kubectl ns"
     bind \cn "kubectl ns"
-    bind -M insert \cu 'tms; commandline -f repaint'
-    bind \cu 'tms; commandline -f repaint'
-    bind -M insert \cj 'tms switch; commandline -f repaint'
-    bind \cj 'tms switch; commandline -f repaint'
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
 end
