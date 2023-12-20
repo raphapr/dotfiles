@@ -1,1 +1,5 @@
-search_paths = ['/home/raphael/repos']
+search_paths = []
+
+[[search_dirs]]
+path = '/home/raphael/repos'
+depth = 10

@@ -42,6 +42,10 @@ if test -e ~/bin
     set PATH $PATH ~/bin
 end
 
+if test -e ~/.cargo/bin
+    set PATH $PATH ~/.cargo/bin
+end
+
 # awscli complete
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
