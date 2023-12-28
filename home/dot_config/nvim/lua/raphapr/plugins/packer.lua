@@ -69,6 +69,11 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -- use({
+  --   "tris203/hawtkeys.nvim",
+  --   config = true,
+  -- })
+
   use({
     "romgrk/barbar.nvim",
     requires = {

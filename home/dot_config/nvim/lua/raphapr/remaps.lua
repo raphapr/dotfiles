@@ -54,10 +54,6 @@ vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true, desc = "jump to next qu
 vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first quickfix item" })
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
 
--- Tabs navigation
-vim.keymap.set("n", "<leader>an", ":tabnew<CR>", { silent = true, desc = "tab: create" })
-vim.keymap.set("n", "<leader>ac", ":tabclose<CR>", { silent = true, desc = "tab: close" })
-
 -- load current lua file
 vim.keymap.set(
   "n",
