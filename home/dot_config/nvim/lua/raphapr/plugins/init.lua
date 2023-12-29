@@ -1,4 +1,3 @@
-require("raphapr.plugins.packer")
 require("raphapr.plugins.misc")
 require("raphapr.plugins.vim-notify")
 require("raphapr.plugins.nvim-tree")
