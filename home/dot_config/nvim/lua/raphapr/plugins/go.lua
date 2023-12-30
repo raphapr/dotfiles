@@ -21,6 +21,10 @@ return {
       { "rcarriga/nvim-dap-ui" },
       { "theHamsta/nvim-dap-virtual-text" },
     },
+    lazy = true,
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    build = ':lua require("go.install").update_all_sync()',
     config = function()
       require("go").setup()
 

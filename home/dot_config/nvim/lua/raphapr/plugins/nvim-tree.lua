@@ -2,9 +2,12 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = true,
+    cmd = { "NvimTreeToggle" },
+    keys = {
+      { "<F10>", ":NvimTreeToggle<cr>" },
+    },
     config = function()
-      vim.api.nvim_set_keymap("n", "<F10>", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
-
       local function open_tab_silent(node)
         local api = require("nvim-tree.api")
         api.node.open.tab(node)

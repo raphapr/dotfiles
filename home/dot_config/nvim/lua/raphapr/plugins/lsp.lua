@@ -1,6 +1,7 @@
 return {
   {
     "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
     config = function()
       require("lsp_signature").setup({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -15,6 +16,7 @@ return {
   {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v3.x",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" },
@@ -182,7 +184,7 @@ return {
           { name = "path" },
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
-          { name = "buffer",  keyword_length = 3 },
+          { name = "buffer", keyword_length = 3 },
           { name = "luasnip", keyword_length = 2 },
         },
         mapping = cmp.mapping.preset.insert({

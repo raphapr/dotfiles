@@ -1,7 +1,6 @@
 return {
 
   -------------------------------------- misc --------------------------------------------
-  "andymass/vim-matchup",
   "editorconfig/editorconfig-vim",
   "ray-x/guihua.lua",
   "hashivim/vim-terraform",
@@ -14,12 +13,20 @@ return {
     opts = {}, -- this is equalent to setup({}) function
   },
 
+  {
+    "andymass/vim-matchup",
+    event = { "CursorHold", "CursorHoldI", "VeryLazy" },
+    keys = { "%", "[" },
+    cmd = { "MatchupWhereAmI" },
+  },
+
   -------------------------------------- colorscheme -------------------------------------
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    priority = 1000,
     config = function()
-      vim.cmd("colorscheme catppuccin-mocha")
+      vim.cmd.colorscheme("catppuccin-mocha")
     end,
   },
   -------------------------------------- bufdelete.nvim ----------------------------------
