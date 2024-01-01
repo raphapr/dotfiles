@@ -3,8 +3,7 @@ return {
   {
     "romgrk/barbar.nvim",
     priority = 100,
-    event = "VeryLazy",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile", "VeryLazy" },
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       { "lewis6991/gitsigns.nvim" },
@@ -22,13 +21,11 @@ return {
         },
       },
     },
-    config = function()
-      local map = vim.api.nvim_set_keymap
-      local opts = { noremap = true, silent = true }
-      map("n", "<A-Right>", "<Cmd>BufferMoveNext<CR>", opts)
-      map("n", "<A-Left>", "<Cmd>BufferMovePrevious<CR>", opts)
-      map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
-      map("n", "<A-i>", "<Cmd>BufferPick<CR>", opts)
-    end,
+    keys = {
+      { "<A-Right>", "<cmd>BufferMoveNext<CR>" },
+      { "<A-Left>",  "<Cmd>BufferMovePrevious<CR>" },
+      { "<A-m>",     "<Cmd>BufferPin<CR>" },
+      { "<A-i>",     "<Cmd>BufferPick<CR>" },
+    },
   },
 }

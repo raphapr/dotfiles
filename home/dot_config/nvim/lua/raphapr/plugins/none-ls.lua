@@ -1,6 +1,8 @@
 return {
   {
     "nvimtools/none-ls.nvim",
+    lazy = true,
+    event = { "CursorHold", "CursorHoldI" },
     config = function()
       local nls = require("null-ls")
       local U = require("raphapr.utils")

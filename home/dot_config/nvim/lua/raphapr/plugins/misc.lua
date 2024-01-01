@@ -1,18 +1,18 @@
 return {
-
-  -------------------------------------- misc --------------------------------------------
+  -------------------------------------- misc -------------------------------------------
   "editorconfig/editorconfig-vim",
-  "ray-x/guihua.lua",
-  "hashivim/vim-terraform",
   "tridactyl/vim-tridactyl",
   { "folke/neodev.nvim", opts = {} },
+  { "ray-x/guihua.lua",  build = "cd lua/fzy && make" },
 
+  -------------------------------------- nvim-autopairs----------------------------------
   {
     "windwp/nvim-autopairs",
-    event = "InsertEnter",
+    event = { "InsertEnter" },
     opts = {}, -- this is equalent to setup({}) function
   },
 
+  -------------------------------------- vim-matchup-------------------------------------
   {
     "andymass/vim-matchup",
     event = { "CursorHold", "CursorHoldI", "VeryLazy" },
@@ -20,7 +20,13 @@ return {
     cmd = { "MatchupWhereAmI" },
   },
 
-  -------------------------------------- colorscheme -------------------------------------
+  -------------------------------------- vim-terraform-----------------------------------
+  {
+    "hashivim/vim-terraform",
+    ft = { "terraform" },
+  },
+
+  -------------------------------------- colorscheme ------------------------------------
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -29,17 +35,12 @@ return {
       vim.cmd.colorscheme("catppuccin-mocha")
     end,
   },
-  -------------------------------------- bufdelete.nvim ----------------------------------
+  -------------------------------------- bufdelete.nvim ---------------------------------
   {
     "famiu/bufdelete.nvim",
-    config = function()
-      vim.keymap.set(
-        "n",
-        "<C-E>",
-        ":Bdelete!<CR>",
-        { noremap = true, silent = true, desc = "forcibly delete current buffer" }
-      )
-    end,
+    keys = {
+      { "<C-E>", ":Bdelete!<CR>", silent = true, { noremap = true, desc = "forcibly delete current buffer" } },
+    },
   },
   -------------------------------------- vim-base64 -------------------------------------
   {
@@ -59,37 +60,34 @@ return {
       )
     end,
   },
+  -------------------------------------- vim-zoom ---------------------------------------
   {
     "dhruvasagar/vim-zoom",
-    config = function()
-      vim.keymap.set(
-        "n",
+    keys = {
+      {
         "=",
         ":call zoom#toggle()<CR>",
-        { noremap = true, silent = true, desc = "toggle zoom of the current window." }
-      )
-    end,
+        silent = true,
+        { noremap = true, desc = "toggle zoom of the current window." },
+      },
+    },
   },
-  -------------------------------------- vim-tagbar --------------------------------------
+  -------------------------------------- vim-tagbar -------------------------------------
   {
     "preservim/tagbar",
-    config = function()
-      vim.keymap.set("n", "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggle Tagbar" })
-    end,
+    cmd = "TagBarToggle",
+    keys = {
+      { "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggle Tagbar" } },
+    },
   },
-  -------------------------------------- vim-numbertoggle --------------------------------
+  -------------------------------------- vim-numbertoggle -------------------------------
   {
     "jeffkreeftmeijer/vim-numbertoggle",
-    config = function()
-      vim.keymap.set(
-        "n",
-        "<C-n>",
-        ":set relativenumber!<CR>",
-        { noremap = true, desc = "toggle relative line numbers" }
-      )
-    end,
+    keys = {
+      { "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" } },
+    },
   },
-  -------------------------------------- eyeliner ----------------------------------------
+  -------------------------------------- eyeliner ---------------------------------------
   {
     "jinh0/eyeliner.nvim",
     opts = {

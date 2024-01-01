@@ -1,8 +1,8 @@
 return {
-
   {
     "epwalsh/obsidian.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "VeryLazy" },
     version = "*", -- recommended, use latest release instead of latest commit
     opts = {
       dir = "~/Cloud/Vaults/Raphakasten",
@@ -30,12 +30,12 @@ return {
         return filename
       end,
     },
-    config = function()
-      vim.keymap.set("n", "<leader>on", ":ObsidianNew ", { desc = "Obsidian New Note" })
-      vim.keymap.set("n", "<leader>ot", ":ObsidianTemplate<CR>", { desc = "Obsidian Template" })
-      vim.keymap.set("n", "<leader>oq", ":ObsidianQuickSwitch<CR>", { desc = "Obsidian Quick Switcher" })
-      vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Obsidian Search" })
-      vim.keymap.set("n", "<leader>od", ":ObsidianToday<CR>", { desc = "Obsidian Daily" })
-    end,
+    keys = {
+      { "<leader>on", ":ObsidianNew ",            { desc = "Obsidian New Note" } },
+      { "<leader>ot", ":ObsidianTemplate<CR>",    { desc = "Obsidian Template" } },
+      { "<leader>oq", ":ObsidianQuickSwitch<CR>", { desc = "Obsidian Quick Switcher" } },
+      { "<leader>os", ":ObsidianSearch<CR>",      { desc = "Obsidian Search" } },
+      { "<leader>od", ":ObsidianToday<CR>",       { desc = "Obsidian Daily" } },
+    },
   },
 }

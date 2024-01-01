@@ -2,11 +2,11 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      vim.keymap.set("n", "<leader>tt", vim.cmd.Git, { desc = "git: summary window" })
-      vim.keymap.set("n", "<leader>tl", ":Gclog<CR>", { silent = true, desc = "git: log" })
-      vim.keymap.set("n", "<leader>tp", ":Git push ", { desc = "git: push" })
-      vim.keymap.set("n", "<leader>td", vim.cmd.Gvdiffsplit, { desc = "git: diff split vertically " })
-    end,
+    opts = {
+      signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+      numhl = false,     -- Toggle with `:Gitsigns toggle_numhl`
+      linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
+      word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    },
   },
 }

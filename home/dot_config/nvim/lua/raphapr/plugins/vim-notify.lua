@@ -1,6 +1,7 @@
 return {
   {
     "rcarriga/nvim-notify",
+    event = "VeryLazy",
     config = function()
       local notify = require("notify")
       vim.notify = notify
@@ -13,7 +14,9 @@ return {
         notify(table.concat(print_safe_args, " "), "info")
       end
       notify.setup()
-      vim.keymap.set("", "<Esc>", "<ESC>:noh<CR>:lua require('notify').dismiss()<CR>", { silent = true })
     end,
+    keys = {
+      { "<Esc>", "<ESC>:noh<CR>:lua require('notify').dismiss()<CR>", silent = true },
+    },
   },
 }
