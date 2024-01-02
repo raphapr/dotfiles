@@ -10,6 +10,7 @@ return {
         },
         hint_prefix = "󰏚  ",
       })
+      -- Reserve space for diagnostic icons
       vim.opt.signcolumn = "yes"
     end,
   },

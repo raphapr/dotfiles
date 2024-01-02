@@ -9,9 +9,6 @@ g.loaded_netrwPlugin = 1
 
 -------------------------------------- options -----------------------------------------
 
--- Reserve space for diagnostic icons
-vim.opt.signcolumn = "yes"
-
 -- true colors
 opt.termguicolors = true
 
@@ -59,7 +56,7 @@ opt.pastetoggle = "<F2>"
 opt.backup = true
 opt.swapfile = false
 opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
-opt.backupdir = os.getenv("HOME") .. "/.config/nvim//tmo/backup"
+opt.backupdir = os.getenv("HOME") .. "/.config/nvim/tmo/backup"
 
 -------------------------------------- autocmds ----------------------------------------
 
