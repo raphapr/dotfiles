@@ -3,7 +3,7 @@ return {
   "editorconfig/editorconfig-vim",
   "tridactyl/vim-tridactyl",
   { "folke/neodev.nvim", opts = {} },
-  { "ray-x/guihua.lua",  build = "cd lua/fzy && make" },
+  { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
 
   -------------------------------------- nvim-autopairs----------------------------------
   {
@@ -81,12 +81,7 @@ return {
     },
   },
   -------------------------------------- vim-numbertoggle -------------------------------
-  {
-    "jeffkreeftmeijer/vim-numbertoggle",
-    keys = {
-      { "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" } },
-    },
-  },
+  { "sitiom/nvim-numbertoggle" },
   -------------------------------------- eyeliner ---------------------------------------
   {
     "jinh0/eyeliner.nvim",

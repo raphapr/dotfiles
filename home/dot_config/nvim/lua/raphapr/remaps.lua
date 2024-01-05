@@ -54,6 +54,9 @@ vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true, desc = "jump to next qu
 vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first quickfix item" })
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
 
+-- toggle relative number
+vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
+
 -- load current lua file
 vim.keymap.set(
   "n",
