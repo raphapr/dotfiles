@@ -202,7 +202,7 @@ bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
 bindsym $mod+Return exec --no-startup-id $TERM
 
 # %shortcut: start a terminal with tmux
-bindsym $mod+shift+Return exec --no-startup-id $TMUX
+bindsym $mod+shift+Return exec $TMUX
 
 # %shortcut: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
