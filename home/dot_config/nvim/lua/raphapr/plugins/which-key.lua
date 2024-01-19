@@ -9,7 +9,10 @@ return {
             name = "+get telescope",
           },
           t = {
-            name = "+git/tab",
+            name = "+git",
+          },
+          x = {
+            name = "+trouble",
           },
         },
       })

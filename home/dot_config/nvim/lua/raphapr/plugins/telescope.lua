@@ -9,6 +9,7 @@ return {
       { "nvim-tree/nvim-web-devicons" },
     },
     config = function()
+      local telescope = require("telescope")
       local actions = require("telescope.actions")
       local action_layout = require("telescope.actions.layout")
 
@@ -23,9 +24,9 @@ return {
         + actions.move_selection_next
         + actions.move_selection_next
 
-      require("telescope").load_extension("media_files")
-      require("telescope").load_extension("zoxide")
-      require("telescope").setup({
+      telescope.load_extension("media_files")
+      telescope.load_extension("zoxide")
+      telescope.setup({
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
           mappings = {
@@ -66,7 +67,7 @@ return {
       })
 
       local telescope_builtin = require("telescope.builtin")
-      local telescope_extensions = require("telescope").extensions
+      local telescope_extensions = telescope.extensions
       local find_files_cwd_file = function()
         telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
       end
