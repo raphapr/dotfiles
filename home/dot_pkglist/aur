@@ -13,13 +13,9 @@ gklib
 gnome-icon-theme
 gnome-icon-theme-symbolic
 google-chrome
-google-cloud-cli
 green-recorder
-ipw2100-fw
-ipw2200-fw
 jid
 jre
-js78
 libglade
 libsidplay
 libunique
@@ -33,8 +29,11 @@ nodejs-nativefier
 numix-icon-theme-git
 oxygen-gtk2
 perl-pgtop
+perl-text-csv-xs
+pgbadger
 preload
 pygtk
+python-docker-pycreds
 python-sip4
 python2
 python2-cairo
@@ -49,7 +48,6 @@ r8168-dkms
 rofi-power-menu
 slack-desktop
 spotify
-systemd-fsck-silent
 terminus-font-ttf
 tflint
 ttf-mac-fonts
