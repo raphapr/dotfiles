@@ -3,6 +3,11 @@
     url = "https://github.com/tmux-plugins/tpm"
     clone.args = ["--depth", "1"]
     refreshPeriod = "168h"
+[".config/kitty/kitty-themes"]
+    type = "git-repo"
+    url = "https://github.com/dexpota/kitty-themes.git "
+    clone.args = ["--depth", "1"]
+    refreshPeriod = "168h"
 [".git-completion.bash"]
     type = "file"
     url = "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
