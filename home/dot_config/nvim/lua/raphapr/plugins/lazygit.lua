@@ -4,6 +4,6 @@ return {
   event = { "VeryLazy" },
   cmd = { "LazyGit" },
   keys = {
-    { "<leader>tt", ":LazyGit<CR>", silent = true, { desc = "git: call lazygit" } },
+    { "<leader>tt", ":LazyGit<CR>", silent = true, desc = "git: call lazygit" },
   },
 }

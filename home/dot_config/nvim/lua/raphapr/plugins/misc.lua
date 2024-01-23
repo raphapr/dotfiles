@@ -42,7 +42,7 @@ return {
   {
     "famiu/bufdelete.nvim",
     keys = {
-      { "<C-E>", ":Bdelete!<CR>", silent = true, { noremap = true, desc = "forcibly delete current buffer" } },
+      { "<C-E>", ":Bdelete!<CR>", silent = true, noremap = true, desc = "forcibly delete current buffer" },
     },
   },
   -------------------------------------- vim-base64 -------------------------------------
@@ -80,7 +80,7 @@ return {
     "preservim/tagbar",
     cmd = "TagBarToggle",
     keys = {
-      { "<F9>", ":TagbarToggle<CR>", { noremap = true, desc = "toggle Tagbar" } },
+      { "<F9>", ":TagbarToggle<CR>", noremap = true, desc = "toggle Tagbar" },
     },
   },
   -------------------------------------- vim-numbertoggle -------------------------------

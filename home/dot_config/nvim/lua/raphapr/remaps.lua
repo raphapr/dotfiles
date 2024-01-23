@@ -80,3 +80,16 @@ local function open_tmux_pane()
 end
 
 vim.keymap.set("n", '<leader>"', open_tmux_pane, { silent = true, noremap = true })
+
+vim.keymap.set(
+  "n",
+  "<leader>to",
+  ":!gh browse<CR><CR>",
+  { silent = true, noremap = true, desc = "git: open the github project in the browser" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>ci",
+  ":!circleci open<CR><CR>",
+  { silent = true, noremap = true, desc = "ci: open the circleci project in the browser" }
+)

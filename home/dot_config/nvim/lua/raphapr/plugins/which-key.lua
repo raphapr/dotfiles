@@ -14,6 +14,9 @@ return {
           x = {
             name = "+trouble",
           },
+          o = {
+            name = "+obsidian",
+          },
         },
       })
     end,
