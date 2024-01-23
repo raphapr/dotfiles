@@ -4,7 +4,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
     opts = {
       options = { theme = "catppuccin" },
-      extensions = { "nvim-tree", "fzf", "fugitive" },
+      extensions = { "nvim-tree", "fzf", "trouble", "lazy" },
       path = 2,
       sections = {
         lualine_a = { "mode" },
