@@ -288,6 +288,7 @@ for_window [title="^\.Support.*"] move to workspace 1
 for_window [title="^\.Personal.*"] move to workspace 3
 for_window [title="^\.Screen2.*"] move to workspace 4
 for_window [title="^\.Study.*"] move to workspace 5
+for_window [title="^\.Writing.*"] move to workspace 6
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
