@@ -15,9 +15,6 @@ return {
   -------------------------------------- vim-matchup-------------------------------------
   {
     "andymass/vim-matchup",
-    event = { "CursorHold", "CursorHoldI", "VeryLazy" },
-    keys = { "%", "[" },
-    cmd = { "MatchupWhereAmI" },
   },
 
   -------------------------------------- vim-terraform-----------------------------------
