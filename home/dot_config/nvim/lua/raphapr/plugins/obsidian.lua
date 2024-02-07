@@ -7,6 +7,9 @@ return {
     opts = {
       dir = "~/Cloud/Vaults/Raphakasten",
       notes_subdir = "Zettels",
+      ui = {
+        enable = false,
+      },
       daily_notes = {
         folder = "Daily",
         date_format = "%d-%m-%Y",
