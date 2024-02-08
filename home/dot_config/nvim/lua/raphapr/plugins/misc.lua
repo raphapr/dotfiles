@@ -4,14 +4,12 @@ return {
   "tridactyl/vim-tridactyl",
   { "folke/neodev.nvim", opts = {} },
   { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
-
   -------------------------------------- nvim-autopairs----------------------------------
   {
     "windwp/nvim-autopairs",
     event = { "InsertEnter" },
     opts = {}, -- this is equalent to setup({}) function
   },
-
   -------------------------------------- vim-matchup-------------------------------------
   {
     "andymass/vim-matchup",

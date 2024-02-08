@@ -49,7 +49,7 @@ return {
 
         local U = require("raphapr.utils")
 
-        vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("lsp: info"))
+        vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("info"))
 
         vim.keymap.set(
           "n",

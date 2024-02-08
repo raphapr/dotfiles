@@ -19,12 +19,12 @@ vim.keymap.set("n", "<S-Tab>", ":BufferPrevious<CR>", { silent = true, desc = "s
 -- open common configuration files
 vim.keymap.set(
   "n",
-  "<leader>vi",
+  "<leader>en",
   ":vsplit ~/.config/nvim/lua/raphapr/init.lua<cr>",
-  { desc = "open neovim configuration file" }
+  { desc = "edit: neovim configuration file" }
 )
-vim.keymap.set("n", "<leader>ef", ":vsplit ~/.config/fish/config.fish<cr>", { desc = "open fish configuration file" })
-vim.keymap.set("n", "<leader>i3", ":vsplit ~/.i3/config<cr>", { desc = "open i3wm configuration file" })
+vim.keymap.set("n", "<leader>ef", ":vsplit ~/.config/fish/config.fish<cr>", { desc = "edit: fish configuration file" })
+vim.keymap.set("n", "<leader>ei", ":vsplit ~/.i3/config<cr>", { desc = "edit: i3wm configuration file" })
 
 -- arrow keys
 vim.keymap.set("n", "j", "gj", { noremap = true, desc = "move cursor down" })
