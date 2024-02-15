@@ -1,8 +1,6 @@
 return {
   {
     "nvimtools/none-ls.nvim",
-    lazy = true,
-    event = { "CursorHold", "CursorHoldI" },
     config = function()
       local nls = require("null-ls")
       local U = require("raphapr.utils")
@@ -16,6 +14,7 @@ return {
           fmt.stylua,
           fmt.beautysh,
           fmt.gofumpt,
+          fmt.terraform_fmt,
           fmt.prettier.with({
             filetypes = { "html", "css", "yaml", "markdown", "json" },
           }),

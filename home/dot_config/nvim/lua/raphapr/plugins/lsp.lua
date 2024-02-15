@@ -131,11 +131,11 @@ return {
           "tsserver",
           "eslint",
           "gopls",
-          "terraformls",
           "jsonls",
           "tflint",
           "pyright",
           "bashls",
+          "terraformls",
           "yamlls",
         },
         handlers = {
@@ -153,6 +153,17 @@ return {
                 yaml = {
                   keyOrdering = false,
                 },
+              },
+            })
+          end,
+          tflint = function()
+            require("lspconfig").tflint.setup({
+              cmd = {
+                "tflint",
+                "--disable-rule=terraform_required_providers",
+                "--disable-rule=terraform_module_pinned_source",
+                "--module",
+                "--langserver",
               },
             })
           end,
@@ -185,7 +196,7 @@ return {
           { name = "path" },
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
-          { name = "buffer", keyword_length = 3 },
+          { name = "buffer",  keyword_length = 3 },
           { name = "luasnip", keyword_length = 2 },
         },
         mapping = cmp.mapping.preset.insert({
