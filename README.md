@@ -23,7 +23,7 @@ $ chezmoi init raphapr --apply
 - polybar
 - fish shell
 - tmux
-- lf
+- yazi
 - thunar
 - kitty
 - zathura

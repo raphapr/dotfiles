@@ -405,7 +405,6 @@ ldns
 lensfun
 leptonica
 less
-lf
 lib32-alsa-lib
 lib32-alsa-oss
 lib32-alsa-plugins
@@ -1474,6 +1473,8 @@ ttf-inconsolata
 ttf-indic-otf
 ttf-iosevka-nerd
 ttf-liberation
+ttf-nerd-fonts-symbols
+ttf-nerd-fonts-symbols-common
 ttf-opensans
 tumbler
 twolame
@@ -1609,6 +1610,7 @@ yajl
 yarn
 yasm
 yay
+yazi
 zathura
 zathura-pdf-mupdf
 zbar

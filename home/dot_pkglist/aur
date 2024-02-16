@@ -39,8 +39,6 @@ python2
 python2-cairo
 python2-gobject2
 python2-pytoml
-python2-setuptools
-python2-setuptools-scm
 python36
 python38
 qpdfview
