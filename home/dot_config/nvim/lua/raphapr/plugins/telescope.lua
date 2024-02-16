@@ -14,15 +14,15 @@ return {
       local action_layout = require("telescope.actions.layout")
 
       local moveUp = actions.move_selection_previous
-        + actions.move_selection_previous
-        + actions.move_selection_previous
-        + actions.move_selection_previous
-        + actions.move_selection_previous
+          + actions.move_selection_previous
+          + actions.move_selection_previous
+          + actions.move_selection_previous
+          + actions.move_selection_previous
       local moveDown = actions.move_selection_next
-        + actions.move_selection_next
-        + actions.move_selection_next
-        + actions.move_selection_next
-        + actions.move_selection_next
+          + actions.move_selection_next
+          + actions.move_selection_next
+          + actions.move_selection_next
+          + actions.move_selection_next
 
       telescope.load_extension("media_files")
       telescope.load_extension("zoxide")
@@ -53,10 +53,10 @@ return {
         },
         extensions = {
           fzf = {
-            fuzzy = true, -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
           },
           media_files = {
             -- filetypes whitelist
@@ -87,7 +87,7 @@ return {
       vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
       vim.keymap.set("n", "<leader>cd", telescope_extensions.zoxide.list, { desc = "telescope: cd directory" }) -- ctrl+f for builtin.find_files
       vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "telescope: live grep" })
-      vim.keymap.set("n", "<leader>gs", telescope_builtin.grep_string, { desc = "telescope: grep string" })
+      vim.keymap.set({ "n", "v" }, "<leader>gs", telescope_builtin.grep_string, { desc = "telescope: grep string" })
       vim.keymap.set("n", "<leader>gt", telescope_builtin.help_tags, { desc = "telescope: help tags" })
       vim.keymap.set("n", "<leader>gk", telescope_builtin.keymaps, { desc = "telescope: keymaps" })
       vim.keymap.set("n", "<leader>gd", telescope_builtin.diagnostics, { desc = "telescope: diagnostics" })
