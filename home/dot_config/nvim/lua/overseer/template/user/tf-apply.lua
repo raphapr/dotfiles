@@ -4,7 +4,7 @@ return {
     return {
       cmd = { "terraform" },
       args = { "apply" },
-      components = { { "on_output_quickfix", open = true }, "default" },
+      components = { { "on_output_quickfix", open = true, tail = true }, "default" },
     }
   end,
   condition = {

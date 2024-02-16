@@ -4,7 +4,7 @@ return {
     return {
       cmd = { "terraform" },
       args = { "init", "-upgrade" },
-      components = { { "on_complete_notify" }, "default" },
+      components = { { "on_output_quickfix", open_on_exit = "failure", tail = true }, "default" },
     }
   end,
   condition = {
