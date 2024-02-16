@@ -38,17 +38,22 @@
 
   pr = "!f() { hub pull-request; };f"
 
+[branch]
+  sort = committerdate
+[init]
+  defaultBranch = main
 [push]
-  default = tracking
-  autoSetupRemote = true
+  default = current
 [gitreview]
   raphapr = raphapr
 [github]
   user = raphapr
 [diff]
+  algorithm = histogram
   renames = copies
 [merge]
   stat = true
+  conflictStyle = zdiff3
 [pull]
   ff = only
 [commit]
