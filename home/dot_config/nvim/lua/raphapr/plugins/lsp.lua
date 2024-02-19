@@ -137,13 +137,16 @@ return {
           "bashls",
           "terraformls",
           "yamlls",
+          "helm_ls",
         },
         handlers = {
           lsp.default_setup,
 
-          -------------
-          -- lsp config
-          lua_ls = function()
+          ------------------------
+          -- lsp servers settings
+          ------------------------
+
+          function()
             local lua_opts = lsp.nvim_lua_ls()
             require("lspconfig").lua_ls.setup(lua_opts)
           end,
@@ -156,7 +159,8 @@ return {
               },
             })
           end,
-          tflint = function()
+
+          function()
             require("lspconfig").tflint.setup({
               cmd = {
                 "tflint",
@@ -167,7 +171,6 @@ return {
               },
             })
           end,
-          -------------
         },
       })
 

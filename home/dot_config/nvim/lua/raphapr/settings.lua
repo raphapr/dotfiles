@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "yaml", "yml" },
   callback = function()
     vim.api.nvim_command("setlocal ts=2 sts=2 sw=2 expandtab") -- get the 2-space YAML as the default when hit carriage return after the colon
-    vim.api.nvim_command("match Error /\\t/") -- Highlight tabs as errors: https://vi.stackexchange.com/a/9353/3168
+    vim.api.nvim_command("match Error /\\t/")                  -- Highlight tabs as errors: https://vi.stackexchange.com/a/9353/3168
   end,
 })
 
