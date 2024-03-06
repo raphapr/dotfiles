@@ -12,13 +12,14 @@ return {
         sources = {
           fmt.black.with({ extra_args = { "--fast" } }),
           fmt.stylua,
-          fmt.beautysh,
+          fmt.shfmt,
           fmt.gofumpt,
           fmt.terraform_fmt,
           fmt.prettier.with({
             filetypes = { "html", "css", "yaml", "markdown", "json" },
           }),
           diag.hadolint,
+          diag.terraform_validate,
         },
         on_attach = function(client, bufnr)
           U.fmt_on_save(client, bufnr)

@@ -135,7 +135,6 @@ return {
           "tflint",
           "pyright",
           "bashls",
-          "terraformls",
           "yamlls",
           "helm_ls",
         },
