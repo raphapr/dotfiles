@@ -38,10 +38,6 @@ if test -e ~/.bin
     set PATH $PATH ~/.bin
 end
 
-if test -e ~/bin
-    set PATH $PATH ~/bin
-end
-
 if test -e ~/.cargo/bin
     set PATH $PATH ~/.cargo/bin
 end
@@ -78,9 +74,9 @@ function fish_user_key_bindings
     bind \cf accept-autosuggestion
     bind -M insert \ca "aws-profile"
     bind \ca "aws-profile"
-    bind -M insert \ck "kubectl ctx"
+    bind -M insert \ck "kubectl ctx; commandline -f repaint"
     bind \ck "kubectl ctx"
-    bind -M insert \cn "kubectl ns"
+    bind -M insert \cn "kubectl ns; commandline -f repaint"
     bind \cn "kubectl ns"
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
