@@ -19,7 +19,6 @@ return {
             filetypes = { "html", "css", "yaml", "markdown", "json" },
           }),
           diag.hadolint,
-          diag.terraform_validate,
         },
         on_attach = function(client, bufnr)
           U.fmt_on_save(client, bufnr)

@@ -101,6 +101,8 @@ return {
         info = "",
       })
 
+      vim.lsp.set_log_level("off")
+
       ------------------------------------------------------
       -- diagnotics
       ------------------------------------------------------
@@ -135,6 +137,7 @@ return {
           "tflint",
           "pyright",
           "bashls",
+          "terraformls",
           "yamlls",
           "helm_ls",
         },
