@@ -36,7 +36,12 @@ return {
           show_on_dirs = false,
           show_on_open_dirs = true,
         },
-        sync_root_with_cwd = true,
+        actions = {
+          change_dir = {
+            enable = true,
+            global = true,
+          },
+        },
       })
     end,
   },
