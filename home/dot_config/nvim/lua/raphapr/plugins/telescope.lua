@@ -94,6 +94,7 @@ return {
       vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "telescope: command history" })
       vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "telescope: search history" })
       vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "telescope: old files" })
+      vim.keymap.set("n", "<leader>gy", ":Telescope yaml_schema<CR>", { desc = "telescope: list YAML schemas" })
       vim.keymap.set(
         "n",
         "<leader>gl",
