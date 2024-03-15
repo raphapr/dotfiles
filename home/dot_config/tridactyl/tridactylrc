@@ -1,13 +1,9 @@
 set theme dark
-set keyboardlayoutforce true
+set keyboardlayoutforce false
 set editorcmd kitty -e "nvim"
 
-set newtab https://www.duckduckgo.com
+set newtab about:blank
 
-bind / fillcmdline find
-bind ? fillcmdline find --reverse
-bind n findnext
-bind N findnext --reverse
 bind <Esc> nohlsearch
 
 bind <C-o> mode ignore
