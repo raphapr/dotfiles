@@ -44,11 +44,8 @@ return {
     "ruifm/gitlinker.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     event = "VeryLazy",
-    opts = {
-      mapping = nil,
-    },
     config = function()
-      require("gitlinker").setup()
+      require("gitlinker").setup({ mappings = "<leader>ty" })
       vim.api.nvim_set_keymap(
         "n",
         "<leader>ty",
