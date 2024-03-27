@@ -193,7 +193,7 @@ bindsym $mod2+9 move container to workspace 9
 bindsym $mod2+0 move container to workspace 10
 
 #}}}
-# Personal Shortcuts    ----------------------------------------------------- {{{
+# Custom Shortcuts      ----------------------------------------------------- {{{
 
 # %shortcut: google chrome ingonito
 bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
@@ -206,9 +206,6 @@ bindsym $mod+shift+Return exec $TMUX
 
 # %shortcut: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
-
-# %shortcut: telegram
-bindsym $mod2+t exec telegram-desktop
 
 # %shortcut: flameshot print screen
 bindsym --release $mod+Print exec --no-startup-id unset SESSION_MANAGER && $PRINT
@@ -228,9 +225,11 @@ bindsym $mod+shift+x move workspace to output left
 # %shortcut: move workspace to output above/below
 bindsym $mod+bracketleft move workspace to output up
 
-# volume
+# %shortcut: volume up
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
+# %shortcut: volume down
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
+# %shortcut: volume mute
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
 # media player controller
@@ -244,11 +243,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec --no-startup-id  "brightnessctl set 25+"
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 25-"
 
-# mute spotify player
+# %shortcut: mute spotify player
 bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
-
-# %shortcut: authy
-bindsym $mod+shift+y exec --no-startup-id /usr/bin/electron --app /usr/lib/authy/app.asar
 
 # %shortcut: dunst close-all
 bindsym Ctrl+space exec --no-startup-id dunstctl close-all

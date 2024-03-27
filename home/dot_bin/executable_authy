@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/electron --app /usr/lib/authy/app.asar
