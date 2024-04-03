@@ -3,10 +3,10 @@ return {
   "editorconfig/editorconfig-vim",
   "tridactyl/vim-tridactyl",
   "andymass/vim-matchup",
-  { "sitiom/nvim-numbertoggle" },
-  { "folke/neodev.nvim",       opts = {} },
-  { "ray-x/guihua.lua",        build = "cd lua/fzy && make" },
-  { "hashivim/vim-terraform",  ft = { "terraform" } },
+  "sitiom/nvim-numbertoggle",
+  { "folke/neodev.nvim",      opts = {} },
+  { "ray-x/guihua.lua",       build = "cd lua/fzy && make" },
+  { "hashivim/vim-terraform", ft = { "terraform" } },
   -------------------------------------- nvim-autopairs----------------------------------
   {
     "windwp/nvim-autopairs",
@@ -36,6 +36,14 @@ return {
     config = function()
       require("scope").setup({})
       require("telescope").load_extension("scope")
+    end,
+  },
+  -------------------------------------- copilot.vim ------------------------------------
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.keymap.set("i", "<C-l>", 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
+      vim.g.copilot_no_tab_map = true
     end,
   },
 }
