@@ -1,6 +1,7 @@
 return {
   {
-    "someone-stole-my-name/yaml-companion.nvim",
+    "msvechla/yaml-companion.nvim",
+    branch = "kubernetes_crd_detection",
     ft = { "yaml" },
     dependencies = {
       { "neovim/nvim-lspconfig" },
@@ -10,29 +11,7 @@ return {
     config = function()
       require("telescope").load_extension("yaml_schema")
       local cfg = require("yaml-companion").setup({
-        builtin_matchers = {
-          kubernetes = { enabled = true },
-        },
-        schemas = {
-          {
-            name = "KEDA ScaledObject",
-            uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/keda.sh/scaledobject_v1alpha1.json",
-          },
-          {
-            name = "KEDA ScaledJob",
-            uri = "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/keda.sh/scaledjob_v1alpha1.json",
-          },
-          {
-            name = "KEDA ClusterTriggerAuthentication",
-            uri =
-            "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/keda.sh/clustertriggerauthentication_v1alpha1.json",
-          },
-          {
-            name = "KEDA TriggerAuthentication",
-            uri =
-            "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/keda.sh/triggerauthentication_v1alpha1.json",
-          },
-        },
+        builtin_matchers = { kubernetes = { enabled = true } },
       })
       require("lspconfig")["yamlls"].setup(cfg)
     end,
