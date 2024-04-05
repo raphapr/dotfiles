@@ -13,6 +13,7 @@ return {
       local cfg = require("yaml-companion").setup({
         builtin_matchers = { kubernetes = { enabled = true } },
       })
+      require("lsp-zero").extend_lspconfig()
       require("lspconfig")["yamlls"].setup(cfg)
     end,
   },
