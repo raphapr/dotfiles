@@ -1,8 +1,3 @@
-"""
-Configuration example for ``ptpython``.
-
-Copy this file to ~/.ptpython/config.py
-"""
 from __future__ import unicode_literals
 from prompt_toolkit.filters import ViInsertMode
 from prompt_toolkit.key_binding.key_processor import KeyPress
@@ -11,9 +6,7 @@ from pygments.token import Token
 
 from ptpython.layout import CompletionVisualisation
 
-__all__ = (
-    'configure',
-)
+__all__ = ("configure",)
 
 
 def configure(repl):
@@ -68,7 +61,7 @@ def configure(repl):
     repl.paste_mode = False
 
     # Use the classic prompt. (Display '>>>' instead of 'In [1]'.)
-    repl.prompt_style = 'ipython'  # 'classic' or 'ipython'
+    repl.prompt_style = "ipython"  # 'classic' or 'ipython'
 
     # Don't insert a blank line after the output.
     repl.insert_blank_line_after_output = False
@@ -83,7 +76,7 @@ def configure(repl):
 
     # Enable auto suggestions. (Pressing right arrow will complete the input,
     # based on the history.)
-    repl.enable_auto_suggest = False
+    repl.enable_auto_suggest = True
 
     # Enable open-in-editor. Pressing C-X C-E in emacs mode or 'v' in
     # Vi navigation mode will open the input in the current editor.
@@ -101,7 +94,7 @@ def configure(repl):
     repl.enable_input_validation = True
 
     # Use this colorscheme for the code.
-    repl.use_code_colorscheme('monokai')
+    repl.use_code_colorscheme("monokai")
 
     # Enable 24bit True color. (Not all terminals support this. -- maybe check
     # $TERM before changing.)
@@ -116,8 +109,8 @@ def configure(repl):
     # Add custom key binding for PDB.
     @repl.add_key_binding(Keys.ControlB)
     def _(event):
-        ' Pressing Control-B will insert "pdb.set_trace()" '
-        event.cli.current_buffer.insert_text('\nimport pdb; pdb.set_trace()\n')
+        'Pressing Control-B will insert "pdb.set_trace()"'
+        event.cli.current_buffer.insert_text("\nimport pdb; pdb.set_trace()\n")
 
     # Typing ControlE twice should also execute the current command.
     # (Alternative for Meta-Enter.)
@@ -127,12 +120,11 @@ def configure(repl):
         if b.accept_action.is_returnable:
             b.accept_action.validate_and_handle(event.cli, b)
 
-
     # Typing 'jj' in Vi Insert mode, should send escape. (Go back to navigation
     # mode.)
-    @repl.add_key_binding('j', 'j', filter=ViInsertMode())
+    @repl.add_key_binding("j", "j", filter=ViInsertMode())
     def _(event):
-        " Map 'jj' to Escape. "
+        "Map 'jj' to Escape."
         event.cli.input_processor.feed(KeyPress(Keys.Escape))
 
     """
@@ -161,8 +153,7 @@ def configure(repl):
 # `ptpython/style.py` for all possible tokens.
 _custom_ui_colorscheme = {
     # Blue prompt.
-    Token.Layout.Prompt:                          'bg:#eeeeff #000000 bold',
-
+    Token.Layout.Prompt: "bg:#eeeeff #000000 bold",
     # Make the status toolbar red.
-    Token.Toolbar.Status:                         'bg:#ff0000 #000000',
+    Token.Toolbar.Status: "bg:#ff0000 #000000",
 }
