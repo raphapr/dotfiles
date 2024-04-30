@@ -63,4 +63,4 @@ asdf install
 # cargo
 ########################################################
 
-cargo install tmux-sessionizer
+cargo install tmux-sessionizer atuin yazi-fm yazi-cli

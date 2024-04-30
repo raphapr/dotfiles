@@ -36,7 +36,6 @@ at-spi2-core
 atkmm
 atool
 attr
-atuin
 audacious-plugins
 audit
 autoconf
@@ -1603,7 +1602,6 @@ yajl
 yarn
 yasm
 yay
-yazi
 yq
 zathura
 zathura-pdf-mupdf
