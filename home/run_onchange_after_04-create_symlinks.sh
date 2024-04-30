@@ -4,17 +4,17 @@ echo ">> Creating symlinks..."
 
 # sync sensitive dotfiles
 ln -sf ~/Dropbox ~/Cloud
-ln -sf ~/Cloud/sync/envsen ~/.envsen
-ln -sf ~/Cloud/sync/ssh_config ~/.ssh/config
-ln -sf ~/Cloud/sync/krew ~/.krew
-ln -sf ~/Cloud/sync/ptpython_history ~/.local/share/ptpython/history
+ln -sf ~/Cloud/Sync/envsen ~/.envsen
+ln -sf ~/Cloud/Sync/ssh_config ~/.ssh/config
+ln -sf ~/Cloud/Sync/krew ~/.krew
+ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
 
 if [ ! -d "${HOME}/.asdf" ]; then
   mkdir ~/.asdf
 fi
 
 if [ ! -d "${HOME}/.asdf/plugins" ]; then
-  ln -sf ~/Cloud/sync/asdf-plugins ~/.asdf/plugins
+  ln -sf ~/Cloud/Sync/asdf-plugins ~/.asdf/plugins
 fi
 
 # aftersleep script
@@ -31,5 +31,5 @@ if grep -q '\[Profile[^0]\]' "$firefox_profiles_ini_path"; then
   if [ ! -d "$userchrome_path" ]; then
     mkdir "$userchrome_path"
   fi
-  ln -sf ~/Cloud/sync/userChrome.css "$userchrome_path/userChrome.css"
+  ln -sf ~/Cloud/Sync/userChrome.css "$userchrome_path/userChrome.css"
 fi
