@@ -38,12 +38,37 @@ return {
       require("telescope").load_extension("scope")
     end,
   },
-  -------------------------------------- copilot.vim ------------------------------------
-  -- {
-  --   "github/copilot.vim",
-  --   config = function()
-  --     vim.keymap.set("i", "<C-l>", 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
-  --     vim.g.copilot_no_tab_map = true
-  --   end,
-  -- },
+  -------------------------------------- copilot.lua ------------------------------------
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        panel = {
+          keymap = {
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<CR>",
+            refresh = "gr",
+            open = "<M-CR>",
+          },
+        },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<C-l>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        filetypes = {
+          yaml = true,
+          markdown = true,
+        },
+      })
+    end,
+  },
 }
