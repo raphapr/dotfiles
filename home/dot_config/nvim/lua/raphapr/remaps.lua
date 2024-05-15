@@ -69,7 +69,7 @@ vim.keymap.set(
 vim.keymap.set(
   "n",
   "<C-s>",
-  ':w<CR>:lua vim.notify(string.format("Saved %s", vim.fn.expand("%:t")), "info")<CR>',
+  ':w<CR>:lua vim.notify(string.format("Saved %s", vim.fn.expand("%:t")))<CR>',
   { silent = true, desc = "save file and notify" }
 )
 
