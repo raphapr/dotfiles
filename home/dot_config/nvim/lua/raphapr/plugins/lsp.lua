@@ -186,7 +186,6 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
-        formatting = cmp_format,
         preselect = "item",
         completion = {
           completeopt = "menu,menuone,noinsert",

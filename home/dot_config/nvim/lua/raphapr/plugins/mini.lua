@@ -20,37 +20,14 @@ return {
       miniclue.setup({
         window = {
           delay = 500,
+          config = {
+            width = "60",
+          },
         },
         triggers = {
           -- Leader triggers
           { mode = "n", keys = "<Leader>" },
           { mode = "x", keys = "<Leader>" },
-
-          -- get telescope
-          { mode = "n", keys = "g" },
-          { mode = "x", keys = "g" },
-
-          -- git
-          { mode = "n", keys = "t" },
-          { mode = "x", keys = "t" },
-
-          -- trouble
-          { mode = "n", keys = "x" },
-          { mode = "x", keys = "x" },
-
-          -- obsidian
-          { mode = "n", keys = "o" },
-          { mode = "x", keys = "o" },
-
-          -- overseer
-          { mode = "n", keys = "v" },
-          { mode = "x", keys = "v" },
-
-          -- lsp
-          { mode = "n", keys = "l" },
-          { mode = "x", keys = "l" },
-          { mode = "n", keys = "r" },
-          { mode = "x", keys = "r" },
 
           -- Marks
           { mode = "n", keys = "'" },
@@ -69,6 +46,16 @@ return {
           miniclue.gen_clues.marks(),
           miniclue.gen_clues.registers(),
           miniclue.gen_clues.windows(),
+          { mode = "n", keys = "<leader>v",  desc = "Overseer" },
+          { mode = "n", keys = "<leader>cc", desc = "CoPilot" },
+          { mode = "x", keys = "<leader>cc", desc = "CoPilot" },
+          { mode = "n", keys = "<leader>o",  desc = "Obsidian" },
+          { mode = "n", keys = "<leader>g",  desc = "Telescope" },
+          { mode = "n", keys = "<leader>t",  desc = "Git" },
+          { mode = "n", keys = "<leader>x",  desc = "Trouble" },
+          { mode = "n", keys = "<leader>l",  desc = "LSP: start/stop" },
+          { mode = "n", keys = "<leader>r",  desc = "LSP: rename" },
+          { mode = "n", keys = "<leader>e",  desc = "Edit" },
         },
       })
     end,

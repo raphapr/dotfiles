@@ -24,7 +24,7 @@ return {
     keys = {
       { "<A-Right>", "<cmd>BufferMoveNext<CR>" },
       { "<A-Left>",  "<Cmd>BufferMovePrevious<CR>" },
-      { "<A-m>",     "<Cmd>BufferPin<CR>" },
+      { "<A-p>",     "<Cmd>BufferPin<CR>" },
       { "<A-i>",     "<Cmd>BufferPick<CR>" },
     },
   },
