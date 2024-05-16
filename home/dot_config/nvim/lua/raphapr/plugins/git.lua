@@ -5,7 +5,7 @@ return {
     event = { "VeryLazy" },
     cmd = { "G", "Git", "Gclog", "Gvdiffsplit" },
     keys = {
-      { "<leader>tb", ":Git blame<CR>", silent = true, desc = "git: blame" },
+      { "<leader>tb", ":Git blame<CR>", silent = true, desc = "Git: Blame" },
     },
   },
   -------------------------------------- gitsigns ---------------------------------------
@@ -20,12 +20,14 @@ return {
     },
     config = function()
       require("gitsigns").setup()
-      vim.keymap.set("n", "<leader>tp", ":Gitsigns preview_hunk<CR>", { desc = "git: diff preview" })
+      vim.keymap.set("n", "<leader>tp", ":Gitsigns preview_hunk<CR>", { desc = "Git: Diff preview" })
+      vim.keymap.set("n", "<leader>to", ":!gh browse<CR><CR>",
+        { silent = true, noremap = true, desc = "Git: Open the github project in the browser" })
       vim.keymap.set(
         "n",
         "<leader>tl",
         ":Gitsigns toggle_current_line_blame<CR>",
-        { desc = "git: toggle current line blame" }
+        { desc = "Git: Toggle current line blame" }
       )
     end,
   },
@@ -36,7 +38,7 @@ return {
     event = { "VeryLazy" },
     cmd = { "LazyGit" },
     keys = {
-      { "<leader>tt", ":LazyGit<CR>", silent = true, desc = "git: call lazygit" },
+      { "<leader>tt", ":LazyGit<CR>", silent = true, desc = "Git: Call lazygit" },
     },
   },
   -------------------------------------- gitlinker --------------------------------------
@@ -50,14 +52,14 @@ return {
         "n",
         "<leader>ty",
         '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-        { silent = true, desc = "git: open permalink in browser" }
+        { silent = true, desc = "Git: Open permalink in browser" }
       )
 
       vim.api.nvim_set_keymap(
         "v",
         "<leader>ty",
         '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-        { desc = "git: open permalink in browser" }
+        { desc = "Git: Open permalink in browser" }
       )
     end,
   },

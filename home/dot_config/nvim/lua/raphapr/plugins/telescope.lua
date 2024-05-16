@@ -76,31 +76,30 @@ return {
         "n",
         "<C-p>",
         ":Telescope find_files hidden=true<CR>",
-        { noremap = true, desc = "telescope: find files" }
+        { noremap = true, desc = "Telescope: Find files" }
       )
       vim.keymap.set(
         "n",
         "<C-m>",
         find_files_cwd_file,
-        { desc = "telescope: find files from current file's directory" }
+        { desc = "Telescope: Find files from current file's directory" }
       )
-      vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "telescope: buffers" })
-      vim.keymap.set("n", "<leader>cd", telescope_extensions.zoxide.list, { desc = "telescope: cd directory" }) -- ctrl+f for builtin.find_files
-      vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "telescope: live grep" })
-      vim.keymap.set({ "n", "v" }, "<leader>gs", telescope_builtin.grep_string, { desc = "telescope: grep string" })
-      vim.keymap.set("n", "<leader>gt", telescope_builtin.help_tags, { desc = "telescope: help tags" })
-      vim.keymap.set("n", "<leader>gk", telescope_builtin.keymaps, { desc = "telescope: keymaps" })
-      vim.keymap.set("n", "<leader>gd", telescope_builtin.diagnostics, { desc = "telescope: diagnostics" })
-      vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "telescope: command history" })
-      vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "telescope: search history" })
-      vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "telescope: old files" })
-      vim.keymap.set("n", "<leader>gy", ":Telescope yaml_schema<CR>", { desc = "telescope: list YAML schemas" })
-      vim.keymap.set("n", "<leader>gp", ":Telescope scope buffers<CR>", { desc = "telescope: list YAML schemas" })
+      vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "Telescope: Buffers" })
+      vim.keymap.set("n", "<leader>gz", telescope_extensions.zoxide.list, { desc = "Telescope: (zoxide) cd directory" }) -- ctrl+f for builtin.find_files
+      vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "Telescope: Live grep" })
+      vim.keymap.set({ "n", "v" }, "<leader>gs", telescope_builtin.grep_string, { desc = "Telescope: grep string" })
+      vim.keymap.set("n", "<leader>gt", telescope_builtin.help_tags, { desc = "Telescope: Help tags" })
+      vim.keymap.set("n", "<leader>gk", telescope_builtin.keymaps, { desc = "Telescope: Keymaps" })
+      vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "Telescope: Command history" })
+      vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "Telescope: Search history" })
+      vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "Telescope: Old files" })
+      vim.keymap.set("n", "<leader>gy", ":Telescope yaml_schema<CR>", { desc = "Telescope: List YAML schemas" })
+      vim.keymap.set("n", "<leader>gp", ":Telescope scope buffers<CR>", { desc = "Telescope: List YAML schemas" })
       vim.keymap.set(
         "n",
         "<leader>gl",
         telescope_builtin.lsp_document_symbols,
-        { desc = "telescope: lsp document symbols" }
+        { desc = "Telescope: LSP document symbols" }
       )
     end,
   },

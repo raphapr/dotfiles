@@ -44,25 +44,25 @@ return {
 
       lsp.on_attach(function(_, bufnr)
         local function opts(desc)
-          return { desc = "lsp: " .. desc, buffer = bufnr, remap = false, silent = true }
+          return { desc = "LSP: " .. desc, buffer = bufnr, remap = false, silent = true }
         end
 
         local U = require("raphapr.utils")
 
-        vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("info"))
+        vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("Info"))
 
         vim.keymap.set(
           "n",
           "<leader>ls",
           ":LspStop<CR>:lua vim.notify('lsp stopped')<CR>",
-          { silent = true, desc = "lsp: stop" }
+          { silent = true, desc = "LSP: Stop" }
         )
 
         vim.keymap.set(
           "n",
-          "<leader>lr",
+          "<leader>lt",
           ":LspRestart<CR>:lua vim.notify('lsp restart')<CR>",
-          { silent = true, desc = "lsp: restart" }
+          { silent = true, desc = "LSP: Restart" }
         )
 
         vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
@@ -70,28 +70,28 @@ return {
         vim.keymap.set("n", "gd", function()
           vim.lsp.buf.definition()
         end, opts("go to definition"))
-        vim.keymap.set("n", "gs", U.go_to_definition_split, opts("go to definition (split)"))
+        vim.keymap.set("n", "gs", U.go_to_definition_split, opts("Go to definition (split)"))
         vim.keymap.set("n", "gr", function()
           require("telescope.builtin").lsp_references()
         end, opts("references"))
-        vim.keymap.set("n", "gl", function()
+        vim.keymap.set("n", "<leader>lf", function()
           vim.diagnostic.open_float()
-        end, opts("open float window"))
+        end, opts("Open float window"))
         vim.keymap.set("n", "K", function()
           vim.lsp.buf.hover()
-        end, opts("hover function"))
-        vim.keymap.set("n", "<leader>ca", function()
+        end, opts("Hover function"))
+        vim.keymap.set("n", "<leader>lc", function()
           vim.lsp.buf.code_action()
-        end, opts("code action"))
-        vim.keymap.set("n", "<leader>rn", function()
+        end, opts("Code action"))
+        vim.keymap.set("n", "<leader>lr", function()
           vim.lsp.buf.rename()
-        end, opts("rename"))
+        end, opts("Rename"))
         vim.keymap.set("n", "[[", function()
           vim.diagnostic.goto_next()
-        end, opts("go to next issue"))
+        end, opts("Go to next issue"))
         vim.keymap.set("n", "]]", function()
           vim.diagnostic.goto_prev()
-        end, opts("go to previous issue"))
+        end, opts("Go to previous issue"))
       end)
 
       lsp.set_sign_icons({

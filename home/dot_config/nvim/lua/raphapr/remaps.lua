@@ -21,10 +21,10 @@ vim.keymap.set(
   "n",
   "<leader>en",
   ":vsplit ~/.config/nvim/lua/raphapr/init.lua<cr>",
-  { desc = "edit: neovim configuration file" }
+  { desc = "Edit: neovim config file" }
 )
-vim.keymap.set("n", "<leader>ef", ":vsplit ~/.config/fish/config.fish<cr>", { desc = "edit: fish configuration file" })
-vim.keymap.set("n", "<leader>ei", ":vsplit ~/.i3/config<cr>", { desc = "edit: i3wm configuration file" })
+vim.keymap.set("n", "<leader>ef", ":vsplit ~/.config/fish/config.fish<cr>", { desc = "Edit: fish config file" })
+vim.keymap.set("n", "<leader>ei", ":vsplit ~/.i3/config<cr>", { desc = "Edit: i3wm config file" })
 
 -- arrow keys
 vim.keymap.set("n", "j", "gj", { noremap = true, desc = "move cursor down" })
@@ -55,22 +55,15 @@ vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first 
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
 
 -- toggle relative number
-vim.keymap.set("n", "<C-n>", ":set relativenumber!<CR>", { noremap = true, desc = "toggle relative line numbers" })
+vim.keymap.set("n", "<leader>mt", ":set relativenumber!<CR>",
+  { noremap = true, desc = "Misc: Toggle relative line numbers" })
 
 -- load current lua file
 vim.keymap.set(
   "n",
-  "<leader>lf",
+  "<leader>mr",
   ":luafile %<CR>:lua vim.notify('lua file loaded')<CR>",
-  { silent = true, desc = "load current lua file" }
-)
-
--- save file
-vim.keymap.set(
-  "n",
-  "<C-s>",
-  ':w<CR>:lua vim.notify(string.format("Saved %s", vim.fn.expand("%:t")))<CR>',
-  { silent = true, desc = "save file and notify" }
+  { silent = true, desc = "Misc: Load current lua file" }
 )
 
 local function open_tmux_pane()
@@ -81,15 +74,5 @@ end
 
 vim.keymap.set("n", '<leader>"', open_tmux_pane, { silent = true, noremap = true })
 
-vim.keymap.set(
-  "n",
-  "<leader>to",
-  ":!gh browse<CR><CR>",
-  { silent = true, noremap = true, desc = "git: open the github project in the browser" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>ci",
-  ":!circleci open<CR><CR>",
-  { silent = true, noremap = true, desc = "ci: open the circleci project in the browser" }
-)
+vim.keymap.set("n", "<leader>cio", ":!circleci open<CR><CR>",
+  { silent = true, noremap = true, desc = "CI: Open the circleci project in the browser" })

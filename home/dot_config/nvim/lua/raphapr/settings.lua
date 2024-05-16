@@ -55,8 +55,8 @@ opt.pastetoggle = "<F2>"
 -- undo / backup
 opt.backup = true
 opt.swapfile = false
-opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
-opt.backupdir = os.getenv("HOME") .. "/.config/nvim/tmo/backup"
+opt.undodir = vim.env.HOME .. "/.config/nvim/undodir"
+opt.backupdir = vim.env.HOME .. "/.config/nvim/tmo/backup"
 
 -------------------------------------- autocmds ----------------------------------------
 

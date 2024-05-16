@@ -14,6 +14,6 @@ for pkg in $(cat "$PKG_AUR"); do
   fi
 done
 
-# pushd "$HOME" || exit
-# asdf install
-# popd || exit
+pushd "$HOME" || exit
+asdf install
+popd || exit

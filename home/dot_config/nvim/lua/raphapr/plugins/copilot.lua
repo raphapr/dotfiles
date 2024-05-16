@@ -43,37 +43,14 @@ return {
       debug = false,
     },
     keys = {
-      { "<leader>ccc", ":CopilotChat<cr>",            desc = "CopilotChat: Open Chat" },
-      { "<leader>ccb", ":CopilotChatBuffer ",         desc = "CopilotChat: Chat with current buffer" },
-      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat: Explain code" },
-      { "<leader>cct", "<cmd>CopilotChatTests<cr>",   desc = "CopilotChat: Generate tests" },
-      {
-        "<leader>ccT",
-        "<cmd>CopilotChatVsplitToggle<cr>",
-        desc = "CopilotChat: Toggle Vsplit", -- Toggle vertical split
-      },
-      {
-        "<leader>ccv",
-        ":CopilotChatVisual ",
-        mode = "x",
-        desc = "CopilotChat: Open in vertical split",
-      },
-      {
-        "<leader>ccx",
-        ":CopilotChatInPlace<cr>",
-        mode = "x",
-        desc = "CopilotChat: Run in-place code",
-      },
-      {
-        "<leader>ccf",
-        "<cmd>CopilotChatFixDiagnostic<cr>", -- Get a fix for the diagnostic message under the cursor.
-        desc = "CopilotChat: Fix diagnostic",
-      },
-      {
-        "<leader>ccr",
-        "<cmd>CopilotChatReset<cr>", -- Reset chat history and clear buffer.
-        desc = "CopilotChat: Reset chat history and clear buffer",
-      },
+      { "<leader>cce", ":CopilotChatExplain<cr>",       mode = { "n", "x" },                                      desc = "CopilotChat: Explain selected code", },
+      { "<leader>cct", ":CopilotChatTests<cr>",         mode = { "n", "x" },                                      desc = "CopilotChat: Generate tests", },
+      { "<leader>cci", ":CopilotChatFix<cr>",           mode = { "n", "x" },                                      desc = "CopilotChat: Fix the selected code", },
+      { "<leader>ccf", ":CopilotChatFixDiagnostic<cr>", mode = { "n", "x" },                                      desc = "CopilotChat: Fix Diagnostics", },
+      { "<leader>ccr", ":CopilotChatReview<cr>",        mode = { "n", "x" },                                      desc = "CopilotChat: Review the selected code", },
+      { "<leader>cco", ":CopilotChatOptimize<cr>",      mode = { "n", "x" },                                      desc = "CopilotChat: Optimize the selected code", },
+      { "<leader>ccc", ":CopilotChatToggle<cr>",        desc = "CopilotChat: Open Chat" },
+      { "<leader>ccs", ":CopilotChatReset<cr>",         desc = "CopilotChat: Reset chat history and clear buffer" },
     },
   },
 }

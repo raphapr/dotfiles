@@ -11,10 +11,10 @@ return {
       nls.setup({
         sources = {
           fmt.black.with({ extra_args = { "--fast" } }),
-          fmt.stylua,
           fmt.shfmt,
           fmt.gofumpt,
           fmt.terraform_fmt,
+          fmt.stylua.with({ extra_args = { "--column_width 150" } }),
           fmt.prettier.with({
             filetypes = { "html", "css", "yaml", "markdown", "json" },
           }),
