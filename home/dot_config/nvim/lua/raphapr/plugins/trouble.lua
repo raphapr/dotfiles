@@ -11,8 +11,6 @@ return {
     vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("Quickfix") end,
       { desc = "Trouble: quickfix" })
     vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end, { desc = "Trouble: loclist" })
-    vim.keymap.set("n", "<leader>xc", function() vim.diagnostic.reset() end,
-      { desc = "Trouble: Clear diagnostics" })
   end,
   opts = {
     action_keys = {                                -- key mappings for actions in the trouble list

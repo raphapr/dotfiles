@@ -40,6 +40,7 @@ return {
           { mode = "x", keys = '"' },
           { mode = "i", keys = "<C-r>" },
           { mode = "c", keys = "<C-r>" },
+          { mode = "n", keys = "g" },
         },
         clues = {
           miniclue.gen_clues.builtin_completion(),
@@ -58,6 +59,7 @@ return {
           { mode = "n", keys = "<leader>l",  desc = "LSP" },
           { mode = "n", keys = "<leader>e",  desc = "Edit" },
           { mode = "n", keys = "<leader>m",  desc = "Miscellaneous" },
+          { mode = "n", keys = "go",         desc = "Go" },
 
           -- Visual mode
           { mode = "x", keys = "<leader>cc", desc = "CoPilot" },

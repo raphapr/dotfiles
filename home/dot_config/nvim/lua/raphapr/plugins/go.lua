@@ -25,9 +25,9 @@ return {
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()',
     keys = {
-      { "godb", ":GoDebug<CR>",      noremap = true, desc = "Go: Start delve for debugging" },
-      { "gof",  ":GoFillStruct<CR>", noremap = true, desc = "Go: Fill struct in Go" },
-      { "gom",  ":GoModTidy<CR>",    noremap = true, desc = "Go: Run go mod tidy and restart lsp" },
+      { "god", ":GoDebug<CR>",      noremap = true, desc = "Go: Start delve for debugging" },
+      { "gof", ":GoFillStruct<CR>", noremap = true, desc = "Go: Fill struct in Go" },
+      { "gom", ":GoModTidy<CR>",    noremap = true, desc = "Go: Run go mod tidy and restart lsp" },
     },
     config = function()
       require("go").setup()

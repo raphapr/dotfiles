@@ -26,7 +26,6 @@ return {
 
       -- Autocompletion
       { "hrsh7th/nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },
@@ -40,58 +39,32 @@ return {
       -- lsp-zero
       ------------------------------------------------------
       local lsp = require("lsp-zero")
-      lsp.preset("recommended")
 
       lsp.on_attach(function(_, bufnr)
-        local function opts(desc)
-          return { desc = "LSP: " .. desc, buffer = bufnr, remap = false, silent = true }
-        end
-
+        local function opts(desc) return { desc = "LSP: " .. desc, buffer = bufnr, remap = false, silent = true } end
         local U = require("raphapr.utils")
-
-        vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("Info"))
-
-        vim.keymap.set(
-          "n",
-          "<leader>ls",
-          ":LspStop<CR>:lua vim.notify('lsp stopped')<CR>",
-          { silent = true, desc = "LSP: Stop" }
-        )
-
-        vim.keymap.set(
-          "n",
-          "<leader>lt",
-          ":LspRestart<CR>:lua vim.notify('lsp restart')<CR>",
-          { silent = true, desc = "LSP: Restart" }
-        )
 
         vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
 
-        vim.keymap.set("n", "gd", function()
-          vim.lsp.buf.definition()
-        end, opts("go to definition"))
+        vim.keymap.set("n", "<leader>li", vim.cmd.LspInfo, opts("Info"))
+
+        vim.keymap.set("n", "<leader>ls", ":LspStop<CR>:lua vim.notify('lsp stopped')<CR>",
+          { silent = true, desc = "LSP: Stop" })
+
+        vim.keymap.set("n", "<leader>lt", ":LspRestart<CR>:lua vim.notify('lsp restart')<CR>",
+          { silent = true, desc = "LSP: Restart" })
+
+        vim.keymap.set("n", "<leader>lf", function() vim.diagnostic.open_float() end, opts("Open float window"))
+        vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts("Code action"))
+        vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts("Rename"))
+        vim.keymap.set("n", "<leader>lc", function() vim.diagnostic.reset() end, opts("Clear diagnotics"))
+
+        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts("Hover function"))
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts("go to definition"))
         vim.keymap.set("n", "gs", U.go_to_definition_split, opts("Go to definition (split)"))
-        vim.keymap.set("n", "gr", function()
-          require("telescope.builtin").lsp_references()
-        end, opts("references"))
-        vim.keymap.set("n", "<leader>lf", function()
-          vim.diagnostic.open_float()
-        end, opts("Open float window"))
-        vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover()
-        end, opts("Hover function"))
-        vim.keymap.set("n", "<leader>lc", function()
-          vim.lsp.buf.code_action()
-        end, opts("Code action"))
-        vim.keymap.set("n", "<leader>lr", function()
-          vim.lsp.buf.rename()
-        end, opts("Rename"))
-        vim.keymap.set("n", "[[", function()
-          vim.diagnostic.goto_next()
-        end, opts("Go to next issue"))
-        vim.keymap.set("n", "]]", function()
-          vim.diagnostic.goto_prev()
-        end, opts("Go to previous issue"))
+        vim.keymap.set("n", "gr", function() require("telescope.builtin").lsp_references() end, opts("references"))
+        vim.keymap.set("n", "[[", function() vim.diagnostic.goto_next() end, opts("Go to next issue"))
+        vim.keymap.set("n", "]]", function() vim.diagnostic.goto_prev() end, opts("Go to previous issue"))
       end)
 
       lsp.set_sign_icons({
@@ -152,7 +125,8 @@ return {
             local lua_opts = lsp.nvim_lua_ls()
             require("lspconfig").lua_ls.setup(lua_opts)
           end,
-          yamlls = function()
+
+          function()
             require("lspconfig").yamlls.setup({
               settings = {
                 yaml = {
