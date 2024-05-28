@@ -3,7 +3,7 @@ function fish_prompt --description Hydro
     set -l _aws_profile ""
 
     if set -q AWS_PROFILE
-        set _aws_profile (set_color f9e2af)"  $AWS_PROFILE "(set_color normal)
+        set _aws_profile (set_color f9e2af)" $AWS_PROFILE "(set_color normal)
     end
 
     if set -q VIRTUAL_ENV
