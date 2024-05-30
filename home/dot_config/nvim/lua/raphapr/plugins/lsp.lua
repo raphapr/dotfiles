@@ -157,6 +157,7 @@ return {
       local cmp = require("cmp")
       local cmp_action = lsp.cmp_action()
 
+      -- load friendly-snippets
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
@@ -176,7 +177,7 @@ return {
         },
         mapping = cmp.mapping.preset.insert({
           -- toggle completion menu
-          ["<C-e>"] = cmp_action.toggle_completion(),
+          ["<C-e>"] = cmp_action.toggle_completion({}),
 
           -- tab complete
           ["<Tab>"] = cmp_action.tab_complete(),

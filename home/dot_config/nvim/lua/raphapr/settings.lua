@@ -49,9 +49,6 @@ opt.cursorcolumn = true
 opt.lazyredraw = true
 opt.ttyfast = true
 
--- set paste/nopaste
-opt.pastetoggle = "<F2>"
-
 -- undo / backup
 opt.backup = true
 opt.swapfile = false
