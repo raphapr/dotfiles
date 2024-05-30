@@ -20,6 +20,9 @@ fc-cache
 
 if ! pip show virtualfish &>/dev/null; then
   pip install --upgrade --no-deps virtualfish
+  vf install
+  vf addplugins global_requirements
+  exec fish
 else
   echo "virtualfish is already installed."
 fi
