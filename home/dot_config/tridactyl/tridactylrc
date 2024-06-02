@@ -4,10 +4,12 @@ set editorcmd kitty -e "nvim"
 
 set newtab about:blank
 
+" Binds
 bind <Esc> nohlsearch
-
 bind <C-o> mode ignore
 bind --mode=ignore <C-o> mode normal
+bind yd tabduplicate
+bind f composite hint -y | open
 
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 autocmd DocStart mail.google.com mode ignore
