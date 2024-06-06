@@ -9,7 +9,13 @@ bind <Esc> nohlsearch
 bind <C-o> mode ignore
 bind --mode=ignore <C-o> mode normal
 bind yd tabduplicate
-bind f composite hint -y | open
+
+" Hints
+bind f hint
+bind F hint -b
+bind gF hint -qb
+" Hint bind to use on slack app
+bind ;f composite hint -y | open
 
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 autocmd DocStart mail.google.com mode ignore
@@ -23,10 +29,10 @@ bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//
 bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
 
 " Quickmarks
-" Use go/gn/gw to open in current tab / new tab / new win
+" Use go/gn/gw to open in current tab/ new tab / new win
 quickmark p https://github.com/pulls
-quickmark r https://news.ycombinator.com
-quickmark l https://reddit.com/r/linux/
+quickmark r https://reddit.com
+quickmark g https://github.com/notifications?query=is%3Aunread
 
 # searchurls
 set searchurls.ddg    https://duckduckgo.com/?q=
