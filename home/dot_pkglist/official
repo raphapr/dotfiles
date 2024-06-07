@@ -53,6 +53,7 @@ blas64-openblas
 blueman
 bluez
 bluez-libs
+bluez-utils
 bonnie++
 boost-libs
 bpf
@@ -89,6 +90,7 @@ clutter
 clutter-gst
 clutter-gtk
 cmake
+code
 cogl
 colord
 colord-sane
@@ -1297,6 +1299,7 @@ sqlite
 squashfs-tools
 sratom
 srt
+starship
 startup-notification
 steam
 stoken

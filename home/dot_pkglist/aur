@@ -6,7 +6,6 @@ bdf-tewi-git
 bluetooth-autoconnect
 circleci-cli-bin
 dropbox
-duckdb-bin
 firefox-pwa-bin
 gcolor2
 giblib
@@ -23,16 +22,12 @@ jid
 jira-cli
 jre
 libglade
-libunique
 metis
 mimeo
 mozilla-common
 ngrok
 nodejs-nativefier
 numix-icon-theme-git
-opera-ffmpeg-codecs
-oxygen-gtk2
-package-query
 perl-pgtop
 perl-text-csv-xs
 pgbadger
@@ -42,9 +37,9 @@ python38
 qpdfview
 r8168-dkms
 rofi-power-menu
+slack-desktop
 spotify
 terminus-font-ttf
-tflint
 ttf-polybar-icons
 xcwd-git
 xdg-su
