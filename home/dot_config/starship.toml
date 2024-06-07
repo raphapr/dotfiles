@@ -1,0 +1,33 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+[line_break]
+disabled = true
+
+[golang]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+symbol = ' '
+style = 'bright-green'
+
+[aws]
+symbol = " "
+format = '[$symbol($profile )(\[$duration\] )]($style)'
+style = "yellow"
+
+[python]
+symbol = " "
+format = '[( $virtualenv) ]($style)'
+style = "blue"
+
+[directory]
+style = "bold white"
+format = ' [♥](red) [$path]($style)[$read_only]($read_only_style) '
+read_only = ' 🔒'
+truncation_length = 4

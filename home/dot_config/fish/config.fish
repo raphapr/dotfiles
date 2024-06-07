@@ -53,8 +53,11 @@ set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
-#asdf
+# asdf
 source /opt/asdf-vm/asdf.fish
+
+# startship prompt
+starship init fish | source
 
  #}}}
 # Bindings        ---------------------------------------------- {{{
