@@ -51,7 +51,10 @@ return {
         vim.keymap.set("n", "<leader>ls", ":LspStop<CR>:lua vim.notify('lsp stopped')<CR>",
           { silent = true, desc = "LSP: Stop" })
 
-        vim.keymap.set("n", "<leader>lt", ":LspRestart<CR>:lua vim.notify('lsp restart')<CR>",
+        vim.keymap.set("n", "<leader>lS", ":LspStart<CR>:lua vim.notify('lsp started')<CR>",
+          { silent = true, desc = "LSP: Start" })
+
+        vim.keymap.set("n", "<leader>lR", ":LspRestart<CR>:lua vim.notify('lsp restart')<CR>",
           { silent = true, desc = "LSP: Restart" })
 
         vim.keymap.set("n", "<leader>lf", function() vim.diagnostic.open_float() end, opts("Open float window"))
