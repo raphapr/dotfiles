@@ -67,3 +67,9 @@ asdf install
 ########################################################
 
 cargo install tmux-sessionizer atuin yazi-fm yazi-cli
+
+########################################################
+# github cli extensions
+########################################################
+
+gh extension install dlvhdr/gh-dash
