@@ -21,4 +21,15 @@ return {
       require("telescope").load_extension("scope")
     end,
   },
+  -------------------------------------- grug-far --------------------------------------
+  {
+    'MagicDuck/grug-far.nvim',
+    cmd = "GrugFar",
+    config = function()
+      require('grug-far').setup()
+    end,
+    keys = {
+      { "<leader>f", "<cmd>GrugFar<CR>", desc = "Find and Replace" },
+    },
+  },
 }
