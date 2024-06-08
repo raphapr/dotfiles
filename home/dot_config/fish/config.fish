@@ -98,12 +98,11 @@ eval (direnv hook fish)
 
 alias lash 'ls -lash'
 alias l 'ls -l'
-alias vim 'nvim'
-alias v 'nvim'
-alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias k 'kill -9'
-alias h 'history'
-alias grubconf 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias y 'yazi'
+alias v 'nvim'
+alias vim 'nvim'
+alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
@@ -138,14 +137,6 @@ alias rg 'rg --smart-case'
 alias cz 'chezmoi'
 
 # }}}
-# translate-shell  {{{
-
-alias gt 'trans :pt -b' # english to portuguese
-alias gt-d 'trans -pager more -d' # dictionary
-alias gt-en 'trans :en' # portuguese to english
-alias gt-au 'trans :en -p -b' # pronuncia
-
-# }}}
 # pacman           {{{
 
 alias p 'sudo pacman'
@@ -166,26 +157,10 @@ alias hm 'history --merge'  # read and merge history from disk
 bind \e\[A 'history --merge ; up-or-search'
 
 # }}}
-# youtube-dl       {{{
-
-#Baixar videos do Youtube (requer youtube-dl)
-alias utube 'youtube-dl -c'
-#Baixar apenas o audio do video
-alias atube 'youtube-dl --extract-audio --audio-format mp3 -t'
-
-# }}}
 # xclip            {{{
 
-#comando para copiar/colar via terminal para a área de transferência
 alias pbcopy 'xclip -sel clip'
 alias pbpaste 'xclip -sel clip -o'
-
-# }}}
-# ntfs             {{{
-
-# Monta e desmonta a partição NTFS /dev/sda3
-alias mount-ntfs 'sudo ntfs-3g /dev/sda3 /mnt'
-alias umount-ntfs 'sudo umount /mnt'
 
 # }}}
 # tmux             {{{
