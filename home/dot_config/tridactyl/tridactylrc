@@ -23,7 +23,7 @@ autocmd DocStart meet.google.com mode ignore
 autocmd DocStart kodekloud.com mode ignore
 
 " Git{Hub,Lab} git clone via SSH yank
-bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+bind gy composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
 
 " Make `gi` on GitHub take you to the search box
 bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
