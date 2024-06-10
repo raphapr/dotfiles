@@ -23,18 +23,53 @@ format = ' [♥](red) [$path]($style)[$read_only]($read_only_style) '
 read_only = ' 🔒'
 truncation_length = 4
 
-
 [line_break]
 disabled = true
-
-[golang]
-disabled = true
-
 [gcloud]
 disabled = true
-
+[terraform]
+disabled = true
+[deno]
+disabled = true
+[lua]
+disabled = true
 [nodejs]
 disabled = true
-
-[lua]
+[ruby]
+disabled = true
+[rust]
+disabled = true
+[package]
+disabled = true
+[swift]
+disabled = true
+[buf]
+disabled = true
+[c]
+disabled = true
+[conda]
+disabled = true
+[dart]
+disabled = true
+[docker_context]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[golang]
+disabled = true
+[haskell]
+disabled = true
+[java]
+disabled = true
+[julia]
+disabled = true
+[memory_usage]
+disabled = true
+[nim]
+disabled = true
+[nix_shell]
+disabled = true
+[spack]
 disabled = true
