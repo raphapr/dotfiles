@@ -18,6 +18,7 @@
   ci = commit -m
   cia = commit --amend
   co = checkout
+  commit = commit -S
 
   ff = merge --ff-only origin/master
   pom = push origin master
