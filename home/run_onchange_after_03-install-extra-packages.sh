@@ -5,6 +5,17 @@ declare -r FONT_DIR=$HOME/.local/share/fonts
 echo ">> Installing extra packages..."
 
 ########################################################
+# mise
+########################################################
+
+cargo install cargo-binstall
+cargo binstall mise
+
+pushd "$HOME" || exit
+mise install
+popd || exit
+
+########################################################
 # fonts
 ########################################################
 
@@ -19,7 +30,7 @@ fc-cache
 ########################################################
 
 if ! pip show virtualfish &>/dev/null; then
-  pip install --upgrade --no-deps virtualfish
+  pip install --upgrade --no-deps --break-system-packages virtualfish
   vf install
   vf addplugins global_requirements
   exec fish
@@ -38,16 +49,6 @@ else
   echo "npm packages directory already exists."
 fi
 
-npm_packages=("git-recent" "jsonlint")
-
-for pkg in "${npm_packages[@]}"; do
-  if ! npm list -g "$pkg" &>/dev/null; then
-    npm install -g "$pkg"
-  else
-    echo "$pkg is already installed globally."
-  fi
-done
-
 ########################################################
 # fzf
 ########################################################
@@ -55,18 +56,6 @@ done
 if [[ ! -f "$HOME"/.fzf/bin/fzf ]]; then
   echo -e "y" | ~/.fzf/install --no-bash --no-zsh
 fi
-
-########################################################
-# asdf
-########################################################
-
-asdf install
-
-########################################################
-# cargo
-########################################################
-
-cargo install tmux-sessionizer atuin yazi-fm yazi-cli
 
 ########################################################
 # github cli extensions

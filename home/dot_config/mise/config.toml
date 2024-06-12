@@ -1,0 +1,20 @@
+[tools]
+node='19.9.0'
+terraform='1.5.7'
+opentofu='1.7.2'
+golang='1.22.2'
+kubectl='1.29.0'
+shellcheck='0.8.0'
+helm='3.8.2'
+awscli='2.7.5'
+terraform-ls='0.28.0'
+'cargo:eza'='latest'
+'cargo:tmux-sessionizer'='latest'
+'cargo:atuin'='latest'
+'cargo:yazi-fm'='latest'
+'cargo:yazi-cli'='latest'
+'npm:git-recent'='latest'
+'npm:jsonlint'='latest'
+
+[settings]
+experimental = true

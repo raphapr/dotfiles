@@ -38,9 +38,9 @@ $ chezmoi init raphapr --apply
 - ripgrep
 - autorandr
 - redshift
-- asdf
 - yay
 - chezmoi
 - atuin
 - syncthing
 - dropbox
+- mise

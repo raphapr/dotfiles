@@ -13,7 +13,3 @@ for pkg in $(cat "$PKG_AUR"); do
     echo "$pkg is already installed."
   fi
 done
-
-pushd "$HOME" || exit
-asdf install
-popd || exit

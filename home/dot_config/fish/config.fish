@@ -53,8 +53,8 @@ set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
-# asdf
-source /opt/asdf-vm/asdf.fish
+# mise
+mise activate fish | source
 
 # startship prompt
 starship init fish | source
@@ -96,8 +96,9 @@ eval (direnv hook fish)
 
 # shell aliases    {{{
 
-alias lash 'ls -lash'
-alias l 'ls -l'
+alias lash 'eza -l'
+alias l 'eza'
+alias lt 'eza -T --icons'
 alias k 'kill -9'
 alias y 'yazi'
 alias v 'nvim'

@@ -13,18 +13,6 @@ ln -sf ~/Cloud/Sync/krew ~/.krew
 ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
 
 ########################################################
-# asdf
-########################################################
-
-if [ ! -d "${HOME}/.asdf" ]; then
-  mkdir ~/.asdf
-fi
-
-if [ ! -d "${HOME}/.asdf/plugins" ]; then
-  ln -sf ~/Cloud/Sync/asdf-plugins ~/.asdf/plugins
-fi
-
-########################################################
 # aftersleep script
 ########################################################
 
