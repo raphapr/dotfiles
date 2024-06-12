@@ -29,6 +29,8 @@ fc-cache
 # virtualfish
 ########################################################
 
+pip install --upgrade --no-deps --break-system-packages virtualenv filelock distlib
+
 if ! pip show virtualfish &>/dev/null; then
   pip install --upgrade --no-deps --break-system-packages virtualfish
   vf install
