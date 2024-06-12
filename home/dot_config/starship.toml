@@ -25,6 +25,10 @@ truncation_length = 4
 
 [line_break]
 disabled = true
+[hostname]
+disabled = true
+[username]
+disabled = true
 [gcloud]
 disabled = true
 [terraform]
