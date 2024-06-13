@@ -88,13 +88,14 @@ return {
       vim.keymap.set("n", "<leader>gz", telescope_extensions.zoxide.list, { desc = "Telescope: (zoxide) cd directory" }) -- ctrl+f for builtin.find_files
       vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "Telescope: Live grep" })
       vim.keymap.set({ "n", "v" }, "<leader>gs", telescope_builtin.grep_string, { desc = "Telescope: grep string" })
-      vim.keymap.set("n", "<leader>gt", telescope_builtin.help_tags, { desc = "Telescope: Help tags" })
+      vim.keymap.set("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Telescope: Help tags" })
       vim.keymap.set("n", "<leader>gk", telescope_builtin.keymaps, { desc = "Telescope: Keymaps" })
       vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "Telescope: Command history" })
       vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "Telescope: Search history" })
       vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "Telescope: Old files" })
       vim.keymap.set("n", "<leader>gy", ":Telescope yaml_schema<CR>", { desc = "Telescope: List YAML schemas" })
       vim.keymap.set("n", "<leader>gp", ":Telescope scope buffers<CR>", { desc = "Telescope: List YAML schemas" })
+      vim.keymap.set("n", "<leader>gt", ":TodoTelescope<CR>", { desc = "Telescope: Search through all project todos" })
       vim.keymap.set(
         "n",
         "<leader>gl",
