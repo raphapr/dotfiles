@@ -42,6 +42,9 @@ return {
             global = true,
           },
         },
+        view = {
+          adaptive_size = true,
+        },
       })
     end,
   },
