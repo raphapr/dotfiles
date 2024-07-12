@@ -30,7 +30,9 @@ return {
       { "gom", ":GoModTidy<CR>",    noremap = true, desc = "Go: Run go mod tidy and restart lsp" },
     },
     config = function()
-      require("go").setup()
+      require("go").setup({
+        diagnostic = false
+      })
       vim.api.nvim_create_user_command("GoModTidy", function()
         vim.cmd.write()
         vim.cmd("!go mod tidy -v")

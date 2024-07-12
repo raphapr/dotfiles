@@ -17,9 +17,19 @@ return {
   -------------------------------------- scope.nvim -------------------------------------
   {
     "tiagovla/scope.nvim",
+    event = "VeryLazy",
     config = function()
       require("scope").setup({})
       require("telescope").load_extension("scope")
     end,
   },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    config = function()
+      require('tiny-inline-diagnostic').setup({
+        multiple_diag_under_cursor = true,
+      })
+    end
+  }
 }

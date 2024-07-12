@@ -95,13 +95,13 @@ autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()
-    vim.diagnostic.config({ virtual_text = false, underline = false })
+    require("tiny-inline-diagnostic").disable()
   end,
 })
 
 vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function()
-    vim.diagnostic.config({ virtual_text = true, underline = true })
+    require("tiny-inline-diagnostic").enable()
   end,
 })
 

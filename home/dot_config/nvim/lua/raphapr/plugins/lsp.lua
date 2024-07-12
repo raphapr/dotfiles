@@ -66,8 +66,8 @@ return {
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts("go to definition"))
         vim.keymap.set("n", "gs", U.go_to_definition_split, opts("Go to definition (split)"))
         vim.keymap.set("n", "gr", function() require("telescope.builtin").lsp_references() end, opts("references"))
-        vim.keymap.set("n", "[[", function() vim.diagnostic.goto_next() end, opts("Go to next issue"))
-        vim.keymap.set("n", "]]", function() vim.diagnostic.goto_prev() end, opts("Go to previous issue"))
+        vim.keymap.set("n", "[[", function() vim.diagnostic.goto_prev() end, opts("Go to previous issue"))
+        vim.keymap.set("n", "]]", function() vim.diagnostic.goto_next() end, opts("Go to next issue"))
       end)
 
       lsp.set_sign_icons({
@@ -89,14 +89,14 @@ return {
         float = {
           style = "minimal",
           border = "rounded",
-          source = "always",
+          source = false,
           header = "",
           prefix = "",
         },
       })
 
       vim.diagnostic.config({
-        virtual_text = true,
+        virtual_text = false,
       })
 
       ------------------------------------------------------
