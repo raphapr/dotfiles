@@ -15,9 +15,6 @@ opt.termguicolors = true
 opt.splitbelow = true
 opt.splitright = true
 
--- unified clipboard
-opt.clipboard = { "unnamed", "unnamedplus" }
-
 -- enable syntax highlighting
 opt.background = "dark"
 opt.nu = true

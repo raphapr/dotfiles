@@ -66,6 +66,12 @@ vim.keymap.set(
   { silent = true, desc = "Misc: Load current lua file" }
 )
 
+-- Copy/paste with system clipboard
+vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Clipboard: Copy to system clipboard' })
+vim.keymap.set('n', 'gp', '"+p', { desc = 'Clipboard: Paste from system clipboard' })
+-- Paste in Visual with `P` to not copy selected text (`:h v_P`)
+vim.keymap.set('x', 'gp', '"+P', { desc = 'Clipboard: Paste from system clipboard' })
+
 local function open_tmux_pane()
   local current_dir = vim.fn.getcwd()
   local tmux_cmd = string.format("tmux split-window -h -c %q", current_dir)

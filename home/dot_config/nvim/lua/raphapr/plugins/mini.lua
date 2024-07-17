@@ -33,13 +33,6 @@ return {
           { mode = "n", keys = "`" },
           { mode = "x", keys = "'" },
           { mode = "x", keys = "`" },
-
-          -- Registers
-          { mode = "n", keys = '"' },
-          { mode = "x", keys = '"' },
-          { mode = "i", keys = "<C-r>" },
-          { mode = "c", keys = "<C-r>" },
-          { mode = "n", keys = "g" },
         },
         clues = {
           miniclue.gen_clues.builtin_completion(),
