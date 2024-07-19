@@ -68,6 +68,8 @@ vim.keymap.set(
 
 -- Copy/paste with system clipboard
 vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Clipboard: Copy to system clipboard' })
+vim.keymap.set({ 'n', 'x' }, 'gY', '"+y$',
+  { desc = 'Clipboard: Copy to system clipboard without the new line at the end' })
 vim.keymap.set('n', 'gp', '"+p', { desc = 'Clipboard: Paste from system clipboard' })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
 vim.keymap.set('x', 'gp', '"+P', { desc = 'Clipboard: Paste from system clipboard' })
