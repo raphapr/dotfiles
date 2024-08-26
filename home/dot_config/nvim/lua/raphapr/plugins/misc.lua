@@ -24,6 +24,7 @@ return {
       vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = '#AB47BC' })
     end,
   },
+  -------------------------------------- tiny-inline-diagnostic.nvim --------------------
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
@@ -33,15 +34,15 @@ return {
       })
     end
   },
-  -------------------------------------- registers.nvim ---------------------------------
+  -------------------------------------- yankbanl-nvim ---------------------------------
   {
-    "tversteeg/registers.nvim",
-    cmd = "Registers",
-    config = true,
-    keys = {
-      { "\"",    mode = { "n", "v" } },
-      { "<C-R>", mode = "i" }
-    },
-    name = "registers",
-  },
+    "ptdewey/yankbank-nvim",
+    dependencies = "kkharji/sqlite.lua",
+    config = function()
+      require('yankbank').setup({
+        persist_type = "sqlite",
+        vim.keymap.set("n", "<C-n>", "<cmd>YankBank<CR>", { noremap = true })
+      })
+    end,
+  }
 }
