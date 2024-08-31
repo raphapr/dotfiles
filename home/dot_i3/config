@@ -1,4 +1,4 @@
-# See http://i3wm.org/docs/userguide.html for a complete reference
+#See http://i3wm.org/docs/userguide.html for a complete reference
 
 # Variables             ----------------------------------------------------- {{{
 
@@ -268,15 +268,19 @@ client.urgent #2F343A #900000 #FFFFFF #900000
 # Window rules          ----------------------------------------------------- {{{
 
 # floating windows
-for_window [window_role="pop-up"] floating enable border normal
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
-
-# firefox window groups
-for_window [title="^\[\.Main\].*"] move to workspace 1
-for_window [title="^\[\.Support\].*"] move to workspace 1
-for_window [title="^\[\.Personal\].*"] move to workspace 3
-for_window [title="^\[\.Screen2\].*"] move to workspace 4
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="page-info"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 # Browser window groups
 for_window [title="^\.Main.*"] move to workspace 1
@@ -285,6 +289,18 @@ for_window [title="^\.Personal.*"] move to workspace 3
 for_window [title="^\.Screen2.*"] move to workspace 4
 for_window [title="^\.Study.*"] move to workspace 5
 for_window [title="^\.Writing.*"] move to workspace 6
+
+# Apps
+for_window [class="Spotify"] move container to workspace 2
+for_window [class="TelegramDesktop"] move container to workspace 2
+for_window [title="WhatsApp Web"] move to workspace 2
+
+# copyq
+bindsym $mod+c exec --no-startup-id copyq show
+for_window [instance="copyq"] floating enable
+for_window [instance="copyq"] resize set 1000 600
+for_window [instance="copyq"] border pixel 5
+exec copyq
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
