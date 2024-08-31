@@ -1,6 +1,5 @@
 #!/bin/bash
 
-SOURCE_DIR="$(dirname ${BASH_SOURCE[0]})"
 SELECTED_INDEX="$(copyq eval "$(cat ~/.bin/copyq_all)" | rofi -dmenu -format i -p "copyq: " -theme ~/.config/rofi/nord.rasi)"
 
 if [ "$SELECTED_INDEX" -eq "$SELECTED_INDEX" ] 2>/dev/null; then

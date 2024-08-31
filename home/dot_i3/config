@@ -303,6 +303,14 @@ for_window [instance="copyq"] border pixel 5
 exec copyq
 
 #}}}
+# Scratchpads         ------------------------------------------------------- {{{
+
+exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
+for_window [class="scratchpad-terminal"] move to scratchpad
+bindsym $mod+F11 [class="scratchpad-terminal"] scratchpad show
+bindsym F11 [class="scratchpad-terminal"] scratchpad show
+
+#}}}
 # Multi-monitor         ----------------------------------------------------- {{{
 
 # %%hotkey: multi monitor menu
