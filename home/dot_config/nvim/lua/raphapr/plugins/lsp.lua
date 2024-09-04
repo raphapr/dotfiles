@@ -115,7 +115,6 @@ return {
           "bashls",
           "terraformls",
           "yamlls",
-          "helm_ls",
         },
         handlers = {
           lsp.default_setup,
