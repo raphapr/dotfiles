@@ -249,6 +249,9 @@ bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
 # %shortcut: dunst close-all
 bindsym Ctrl+space exec --no-startup-id dunstctl close-all
 
+# %shortcut: copyq toggle
+bindsym $mod+c exec --no-startup-id copyq toggle
+
 #}}}
 # Borders               ----------------------------------------------------- {{{
 
@@ -294,13 +297,6 @@ for_window [title="^\.Writing.*"] move to workspace 6
 for_window [class="Spotify"] move container to workspace 2
 for_window [class="TelegramDesktop"] move container to workspace 2
 for_window [title="WhatsApp Web"] move to workspace 2
-
-# copyq
-bindsym $mod+c exec --no-startup-id copyq show
-for_window [instance="copyq"] floating enable
-for_window [instance="copyq"] resize set 1000 600
-for_window [instance="copyq"] border pixel 5
-exec copyq
 
 #}}}
 # Scratchpads         ------------------------------------------------------- {{{
