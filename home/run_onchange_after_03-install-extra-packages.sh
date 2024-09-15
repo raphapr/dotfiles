@@ -40,6 +40,12 @@ else
   echo "virtualfish is already installed."
 fi
 
+# neovim virtualenv
+vf new neovim
+vf activate neovim
+pip install neovim
+vf deactivate
+
 ########################################################
 # npm
 ########################################################

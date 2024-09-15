@@ -1,3 +1,12 @@
+local function get_venv()
+  local venv = vim.env.VIRTUAL_ENV
+  if venv then
+    return 'venv:' .. venv:match(".*/(.*)$") .. ''
+  else
+    return ''
+  end
+end
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -10,7 +19,7 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = { { "filename", path = 1 } },
-        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_x = { { get_venv }, "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },
         lualine_z = {
           "location",

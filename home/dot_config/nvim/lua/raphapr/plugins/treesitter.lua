@@ -45,6 +45,7 @@ return {
           "ruby",
           "gosum",
           "gotmpl",
+          "diff",
         },
         highlight = {
           enable = true,

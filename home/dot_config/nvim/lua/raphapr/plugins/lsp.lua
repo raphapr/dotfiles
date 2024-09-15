@@ -31,7 +31,7 @@ return {
       { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
-      { "L3MON4D3/LuaSnip" },
+      { "L3MON4D3/LuaSnip",                 run = "make install_jsregexp" },
       { "rafamadriz/friendly-snippets" },
     },
     config = function()
@@ -106,7 +106,7 @@ return {
       require("mason").setup({})
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "tsserver",
+          "ts_ls",
           "eslint",
           "gopls",
           "jsonls",
