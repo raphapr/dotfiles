@@ -41,10 +41,12 @@ else
 fi
 
 # neovim virtualenv
+fish -c "
 vf new neovim
 vf activate neovim
 pip install neovim
 vf deactivate
+"
 
 ########################################################
 # npm
