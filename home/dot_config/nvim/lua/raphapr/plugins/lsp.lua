@@ -139,6 +139,23 @@ return {
           end,
 
           function()
+            require("lspconfig").pyright.setup({
+              settings = {
+                pyright = {
+                  analysis = {
+                    disableOrganizeImports = true, -- using Ruff
+                  },
+                },
+                python = {
+                  analysis = {
+                    ignore = { '*' }, -- Using Ruff
+                  },
+                },
+              },
+            })
+          end,
+
+          function()
             require("lspconfig").tflint.setup({
               cmd = {
                 "tflint",
