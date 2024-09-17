@@ -20,8 +20,8 @@
   co = checkout
   commit = commit -s
 
-  ff = merge --ff-only origin/master
-  pom = push origin master
+  ff = merge --ff-only origin/HEAD
+  poh = push origin HEAD
 
   s = stash
   sa = stash apply
