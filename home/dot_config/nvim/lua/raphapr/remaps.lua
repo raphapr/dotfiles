@@ -17,12 +17,7 @@ vim.keymap.set("n", "<Tab>", ":BufferNext<CR>", { silent = true, desc = "switch 
 vim.keymap.set("n", "<S-Tab>", ":BufferPrevious<CR>", { silent = true, desc = "switch to previous buffer" })
 
 -- open common configuration files
-vim.keymap.set(
-  "n",
-  "<leader>en",
-  ":vsplit ~/.config/nvim/lua/raphapr/init.lua<cr>",
-  { desc = "Edit: neovim config file" }
-)
+vim.keymap.set("n", "<leader>en", ":vsplit ~/.config/nvim/lua/raphapr/init.lua<cr>", { desc = "Edit: neovim config file" })
 vim.keymap.set("n", "<leader>ef", ":vsplit ~/.config/fish/config.fish<cr>", { desc = "Edit: fish config file" })
 vim.keymap.set("n", "<leader>ei", ":vsplit ~/.i3/config<cr>", { desc = "Edit: i3wm config file" })
 
@@ -55,24 +50,17 @@ vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first 
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
 
 -- toggle relative number
-vim.keymap.set("n", "<leader>mt", ":set relativenumber!<CR>",
-  { noremap = true, desc = "Misc: Toggle relative line numbers" })
+vim.keymap.set("n", "<leader>mt", ":set relativenumber!<CR>", { noremap = true, desc = "Misc: Toggle relative line numbers" })
 
 -- load current lua file
-vim.keymap.set(
-  "n",
-  "<leader>mr",
-  ":luafile %<CR>:lua vim.notify('lua file loaded')<CR>",
-  { silent = true, desc = "Misc: Load current lua file" }
-)
+vim.keymap.set("n", "<leader>mr", ":luafile %<CR>:lua vim.notify('lua file loaded')<CR>", { silent = true, desc = "Misc: Load current lua file" })
 
 -- Copy/paste with system clipboard
-vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Clipboard: Copy to system clipboard' })
-vim.keymap.set({ 'n', 'x' }, 'gY', '"+y$',
-  { desc = 'Clipboard: Copy to system clipboard without the new line at the end' })
-vim.keymap.set('n', 'gp', '"+p', { desc = 'Clipboard: Paste from system clipboard' })
+vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Clipboard: Copy to system clipboard" })
+vim.keymap.set({ "n", "x" }, "gY", '"+y$', { desc = "Clipboard: Copy to system clipboard without the new line at the end" })
+vim.keymap.set("n", "gp", '"+p', { desc = "Clipboard: Paste from system clipboard" })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
-vim.keymap.set('x', 'gp', '"+P', { desc = 'Clipboard: Paste from system clipboard' })
+vim.keymap.set("x", "gp", '"+P', { desc = "Clipboard: Paste from system clipboard" })
 
 local function open_tmux_pane()
   local current_dir = vim.fn.getcwd()
@@ -82,5 +70,9 @@ end
 
 vim.keymap.set("n", '<leader>"', open_tmux_pane, { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>cio", ":!circleci open<CR><CR>",
-  { silent = true, noremap = true, desc = "CI: Open the circleci project in the browser" })
+vim.keymap.set(
+  "n",
+  "<leader>cio",
+  ":!circleci open<CR><CR>",
+  { silent = true, noremap = true, desc = "CI: Open the circleci project in the browser" }
+)

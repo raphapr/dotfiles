@@ -4,10 +4,10 @@ return {
   "tridactyl/vim-tridactyl",
   "andymass/vim-matchup",
   "sitiom/nvim-numbertoggle",
-  { "towolf/vim-helm",          ft = { "helm" } },
-  { "folke/neodev.nvim",        opts = {} },
-  { "ray-x/guihua.lua",         build = "cd lua/fzy && make" },
-  { "hashivim/vim-terraform",   ft = { "terraform" } },
+  { "towolf/vim-helm", ft = { "helm" } },
+  { "folke/neodev.nvim", opts = {} },
+  { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
+  { "hashivim/vim-terraform", ft = { "terraform" } },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
   -------------------------------------- eyeliner ---------------------------------------
   {
@@ -21,7 +21,7 @@ return {
     config = function()
       require("scope").setup({})
       require("telescope").load_extension("scope")
-      vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = '#AB47BC' })
+      vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#AB47BC" })
     end,
   },
   -------------------------------------- tiny-inline-diagnostic.nvim --------------------
@@ -29,20 +29,20 @@ return {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
     config = function()
-      require('tiny-inline-diagnostic').setup({
+      require("tiny-inline-diagnostic").setup({
         multiple_diag_under_cursor = true,
       })
-    end
+    end,
   },
-  -------------------------------------- yankbanl-nvim ---------------------------------
+  -------------------------------------- yankbank-nvim ---------------------------------
   {
     "ptdewey/yankbank-nvim",
     dependencies = "kkharji/sqlite.lua",
     config = function()
-      require('yankbank').setup({
+      require("yankbank").setup({
         persist_type = "sqlite",
-        vim.keymap.set("n", "<C-n>", "<cmd>YankBank<CR>", { noremap = true })
+        vim.keymap.set("n", "<C-n>", "<cmd>YankBank<CR>", { noremap = true }),
       })
     end,
-  }
+  },
 }
