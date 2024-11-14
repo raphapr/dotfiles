@@ -33,7 +33,6 @@ return {
         config_dir .. "plugins/venv-selector.lua",
         config_dir .. "plugins/vim-base64.lua",
         config_dir .. "plugins/vim-zoom.lua",
-        config_dir .. "plugins/multicursors.lua",
       },
       -- Things to do after hot-reload trigger.
       reload_callback = function()

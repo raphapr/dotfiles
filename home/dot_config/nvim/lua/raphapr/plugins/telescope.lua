@@ -14,15 +14,15 @@ return {
       local action_layout = require("telescope.actions.layout")
 
       local moveUp = actions.move_selection_previous
-          + actions.move_selection_previous
-          + actions.move_selection_previous
-          + actions.move_selection_previous
-          + actions.move_selection_previous
+        + actions.move_selection_previous
+        + actions.move_selection_previous
+        + actions.move_selection_previous
+        + actions.move_selection_previous
       local moveDown = actions.move_selection_next
-          + actions.move_selection_next
-          + actions.move_selection_next
-          + actions.move_selection_next
-          + actions.move_selection_next
+        + actions.move_selection_next
+        + actions.move_selection_next
+        + actions.move_selection_next
+        + actions.move_selection_next
 
       telescope.load_extension("media_files")
       telescope.load_extension("zoxide")
@@ -53,10 +53,10 @@ return {
         },
         extensions = {
           fzf = {
-            fuzzy = true,                   -- false will only do exact matching
+            fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
           },
           media_files = {
             -- filetypes whitelist
@@ -72,18 +72,7 @@ return {
         telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
       end
 
-      vim.keymap.set(
-        "n",
-        "<C-p>",
-        ":Telescope find_files hidden=true<CR>",
-        { noremap = true, desc = "Telescope: Find files" }
-      )
-      vim.keymap.set(
-        "n",
-        "<C-m>",
-        find_files_cwd_file,
-        { desc = "Telescope: Find files from current file's directory" }
-      )
+      vim.keymap.set("n", "<C-p>", ":Telescope find_files hidden=true<CR>", { noremap = true, desc = "Telescope: Find files" })
       vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "Telescope: Buffers" })
       vim.keymap.set("n", "<leader>gz", telescope_extensions.zoxide.list, { desc = "Telescope: (zoxide) cd directory" }) -- ctrl+f for builtin.find_files
       vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "Telescope: Live grep" })
@@ -96,12 +85,7 @@ return {
       vim.keymap.set("n", "<leader>gy", ":Telescope yaml_schema<CR>", { desc = "Telescope: List YAML schemas" })
       vim.keymap.set("n", "<leader>gp", ":Telescope scope buffers<CR>", { desc = "Telescope: List YAML schemas" })
       vim.keymap.set("n", "<leader>gt", ":TodoTelescope<CR>", { desc = "Telescope: Search through all project todos" })
-      vim.keymap.set(
-        "n",
-        "<leader>gl",
-        telescope_builtin.lsp_document_symbols,
-        { desc = "Telescope: LSP document symbols" }
-      )
+      vim.keymap.set("n", "<leader>gl", telescope_builtin.lsp_document_symbols, { desc = "Telescope: LSP document symbols" })
     end,
   },
 }

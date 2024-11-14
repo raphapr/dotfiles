@@ -4,6 +4,7 @@ return {
   "tridactyl/vim-tridactyl",
   "andymass/vim-matchup",
   "sitiom/nvim-numbertoggle",
+  { "mg979/vim-visual-multi", event = "BufRead" },
   { "towolf/vim-helm", ft = { "helm" } },
   { "folke/neodev.nvim", opts = {} },
   { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
@@ -41,7 +42,7 @@ return {
     config = function()
       require("yankbank").setup({
         persist_type = "sqlite",
-        vim.keymap.set("n", "<C-n>", "<cmd>YankBank<CR>", { noremap = true }),
+        vim.keymap.set("n", "<leader>y", "<cmd>YankBank<cr>", { noremap = true, desc = "Open YankBank" }),
       })
     end,
   },
