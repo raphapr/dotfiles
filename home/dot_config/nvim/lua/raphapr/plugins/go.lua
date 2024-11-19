@@ -22,16 +22,16 @@ return {
       { "theHamsta/nvim-dap-virtual-text" },
     },
     lazy = true,
-    ft = { "go", "gomod" },
+    ft = { "go", "gomod", "gosum", "gotmpl", "gohtmltmpl", "gotexttmpl" },
     build = ':lua require("go.install").update_all_sync()',
     keys = {
-      { "god", ":GoDebug<CR>",      noremap = true, desc = "Go: Start delve for debugging" },
+      { "god", ":GoDebug<CR>", noremap = true, desc = "Go: Start delve for debugging" },
       { "gof", ":GoFillStruct<CR>", noremap = true, desc = "Go: Fill struct in Go" },
-      { "gom", ":GoModTidy<CR>",    noremap = true, desc = "Go: Run go mod tidy and restart lsp" },
+      { "gom", ":GoModTidy<CR>", noremap = true, desc = "Go: Run go mod tidy and restart lsp" },
     },
     config = function()
       require("go").setup({
-        diagnostic = false
+        diagnostic = false,
       })
       vim.api.nvim_create_user_command("GoModTidy", function()
         vim.cmd.write()

@@ -4,6 +4,18 @@ return {
     build = ":TSUpdate",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     config = function()
+      vim.filetype.add({
+        extension = {
+          gotmpl = "gotmpl",
+          gohtml = "gotmpl",
+          gohtmltmpl = "gotmpl",
+          gotexttmpl = "gotmpl",
+          tmpl = "gotmpl",
+        },
+        pattern = {
+          [".*/templates/.*%.yml.tmpl"] = "gotmpl",
+        },
+      })
       require("nvim-treesitter.configs").setup({
         sync_install = false,
         auto_install = true,
@@ -54,14 +66,13 @@ return {
         },
         incremental_selection = {
           enable = true,
-
           keymaps = {
             init_selection = "<CR>",
             node_incremental = "<CR>",
             scope_incremental = "<TAB>",
             node_decremental = "<S-TAB>",
-          }
-        }
+          },
+        },
       })
     end,
   },
