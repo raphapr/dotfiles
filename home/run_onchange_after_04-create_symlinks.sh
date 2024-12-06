@@ -21,6 +21,13 @@ sudo cp "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-
 sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
 
 ########################################################
+# copy home udev rules to /etc/udev/rules.d
+########################################################
+
+sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
+sudo mkinitcpio -P
+
+########################################################
 # userChrome.css
 ########################################################
 
