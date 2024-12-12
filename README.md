@@ -41,6 +41,5 @@ $ chezmoi init raphapr --apply
 - yay
 - chezmoi
 - atuin
-- syncthing
 - dropbox
 - mise
