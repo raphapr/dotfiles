@@ -33,7 +33,7 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     event = { "InsertEnter", "LspAttach", "VeryLazy" },
     dependencies = {
       { "zbirenbaum/copilot.lua" },
@@ -43,15 +43,45 @@ return {
       debug = false,
     },
     keys = {
-      { "<leader>cce", ":CopilotChatExplain<cr>",       mode = { "n", "x" },                                      desc = "CopilotChat: Explain selected code", },
-      { "<leader>cct", ":CopilotChatTests<cr>",         mode = { "n", "x" },                                      desc = "CopilotChat: Generate tests", },
-      { "<leader>cci", ":CopilotChatFix<cr>",           mode = { "n", "x" },                                      desc = "CopilotChat: Fix the selected code", },
-      { "<leader>ccf", ":CopilotChatFixDiagnostic<cr>", mode = { "n", "x" },                                      desc = "CopilotChat: Fix Diagnostics", },
-      { "<leader>ccr", ":CopilotChatReview<cr>",        mode = { "n", "x" },                                      desc = "CopilotChat: Review the selected code", },
-      { "<leader>cco", ":CopilotChatOptimize<cr>",      mode = { "n", "x" },                                      desc = "CopilotChat: Optimize the selected code", },
-      { "<leader>cca", ":CopilotChat<cr>",              mode = { "n", "x" },                                      desc = "CopilotChat: Open Chat" },
-      { "<leader>ccc", ":CopilotChatToggle<cr>",        desc = "CopilotChat: Toggle Chat" },
-      { "<leader>ccs", ":CopilotChatReset<cr>",         desc = "CopilotChat: Reset chat history and clear buffer" },
+      {
+        "<leader>cce",
+        ":CopilotChatExplain<cr>",
+        mode = { "n", "x" },
+        desc = "CopilotChat: Explain selected code",
+      },
+      {
+        "<leader>cct",
+        ":CopilotChatTests<cr>",
+        mode = { "n", "x" },
+        desc = "CopilotChat: Generate tests",
+      },
+      {
+        "<leader>cci",
+        ":CopilotChatFix<cr>",
+        mode = { "n", "x" },
+        desc = "CopilotChat: Fix the selected code",
+      },
+      {
+        "<leader>ccf",
+        ":CopilotChatFixDiagnostic<cr>",
+        mode = { "n", "x" },
+        desc = "CopilotChat: Fix Diagnostics",
+      },
+      {
+        "<leader>ccr",
+        ":CopilotChatReview<cr>",
+        mode = { "n", "x" },
+        desc = "CopilotChat: Review the selected code",
+      },
+      {
+        "<leader>cco",
+        ":CopilotChatOptimize<cr>",
+        mode = { "n", "x" },
+        desc = "CopilotChat: Optimize the selected code",
+      },
+      { "<leader>cca", ":CopilotChat<cr>", mode = { "n", "x" }, desc = "CopilotChat: Open Chat" },
+      { "<leader>ccc", ":CopilotChatToggle<cr>", desc = "CopilotChat: Toggle Chat" },
+      { "<leader>ccs", ":CopilotChatReset<cr>", desc = "CopilotChat: Reset chat history and clear buffer" },
     },
   },
 }
