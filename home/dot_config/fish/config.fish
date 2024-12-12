@@ -451,6 +451,13 @@ function aws-profile
 end
 
 # }}}
+# repo-clone       {{{
+
+function repo-clone
+    gh repo clone $argv ~/repos/(ls ~/repos | fzf)/(echo $argv | cut -d '/' -f 2)
+end
+
+# }}}
 
 # }}}
 # history subst   ---------------------------------------------- {{{
