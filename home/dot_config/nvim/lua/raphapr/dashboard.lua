@@ -10,6 +10,7 @@ require("mini.starter").setup({
   }, "\n"),
   items = {
     { action = "enew", name = "New Buffer", section = " Files" },
+    { action = "Telescope find_files hidden=true", name = "Find Files", section = " Files" },
     { action = "Telescope zoxide list", name = "Zoxide List", section = " Files" },
     { action = "Telescope oldfiles", name = "Recent Files", section = " Files" },
     { action = "Telescope live_grep", name = "Live Grep", section = " Search" },
