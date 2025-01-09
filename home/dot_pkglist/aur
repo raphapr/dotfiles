@@ -7,7 +7,6 @@ bluetooth-autoconnect
 circleci-cli-bin
 doggo-bin
 dropbox
-firefox-pwa-bin
 gcolor2
 giblib
 gklib
@@ -46,3 +45,4 @@ xdg-su
 xidlehook
 zoom
 zsa-keymapp-bin
+zapzap

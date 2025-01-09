@@ -43,3 +43,4 @@ $ chezmoi init raphapr --apply
 - atuin
 - dropbox
 - mise
+- syncthing
