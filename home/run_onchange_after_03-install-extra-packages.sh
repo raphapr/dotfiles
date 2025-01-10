@@ -82,3 +82,8 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 ./aws/install --update -i ~/.local/aws-cli -b ~/.local/bin
 popd || exit
+
+########################################################
+# flatpak
+########################################################
+flatpak install flathub com.rtosta.zapzap --system

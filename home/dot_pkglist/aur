@@ -20,7 +20,9 @@ jid
 jira-cli
 jre
 kernel-alive
+lib32-libva-vdpau-driver
 libglade
+libva-vdpau-driver
 metis
 mimeo
 mozilla-common
@@ -31,6 +33,7 @@ perl-pgtop
 perl-text-csv-xs
 pgbadger
 preload
+pulseaudio-ctl
 python36
 python38
 qpdfview
@@ -43,6 +46,4 @@ ttf-polybar-icons
 xcwd-git
 xdg-su
 xidlehook
-zoom
 zsa-keymapp-bin
-zapzap

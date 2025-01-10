@@ -1,0 +1,16 @@
+#!/bin/bash
+
+repos_dir=~/repos
+repo_name=$(echo "$1" | cut -d '/' -f 2)
+repo_slug="$1"
+current_dir=$(pwd)
+
+current_dir=$(realpath "$current_dir")
+repos_dir=$(realpath "$repos_dir")
+
+if [[ $current_dir == $repos_dir/* ]]; then
+  subdirectory=${current_dir#"$repos_dir"/}
+  gh repo clone "$repo_slug" "$repos_dir/$subdirectory/$repo_name"
+else
+  echo "You are not inside any subdirectory of ~/repos"
+fi

@@ -142,7 +142,7 @@ alias cz 'chezmoi'
 
 alias p 'sudo pacman'
 alias pacup 'sudo pacman -Syuu'
-alias pblock "sudo rm -rf /var/lib/pacman/db.lck"
+alias punlock "sudo rm -rf /var/lib/pacman/db.lck"
 alias mirror-update 'sudo pacman-mirrors -g'
 
 # }}}
@@ -448,13 +448,6 @@ end
 function aws-profile
     export AWS_PROFILE=(grep "^\[.*]" ~/.aws/config | tr -d "[]" | sed 's/profile.//g' | fzf --height 20% +m)
     commandline -f repaint
-end
-
-# }}}
-# repo-clone       {{{
-
-function repo-clone
-    gh repo clone $argv ~/repos/(ls ~/repos | fzf)/(echo $argv | cut -d '/' -f 2)
 end
 
 # }}}
