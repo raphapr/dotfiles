@@ -113,6 +113,7 @@ alias eb 'v ~/.bashrc'
 alias ev 'v +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
 alias eo 'v +"cd ~/Cloud/Vaults/Raphakasten" +":NvimTreeToggle"'
 alias i3c 'v ~/.i3/config'
+alias notes 'v ~/Cloud/Sync/notes.md'
 alias xmerge 'xrdb -merge ~/.Xresources'
 # git
 alias g "git"
