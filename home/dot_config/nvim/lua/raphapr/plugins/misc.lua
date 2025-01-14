@@ -35,7 +35,7 @@ return {
       })
     end,
   },
-  -------------------------------------- yankbank-nvim ---------------------------------
+  -------------------------------------- yankbank-nvim ----------------------------------
   {
     "ptdewey/yankbank-nvim",
     dependencies = "kkharji/sqlite.lua",
@@ -43,6 +43,18 @@ return {
       require("yankbank").setup({
         persist_type = "sqlite",
         vim.keymap.set("n", "<leader>y", "<cmd>YankBank<cr>", { noremap = true, desc = "Open YankBank" }),
+      })
+    end,
+  },
+  -------------------------------------- dooing -----------------------------------------
+  {
+    "atiladefreitas/dooing",
+    config = function()
+      require("dooing").setup({
+        save_path = vim.env.HOME .. "/Cloud/Sync/dooing_todos.json",
+        keymaps = {
+          toggle_window = "<leader>d",
+        },
       })
     end,
   },
