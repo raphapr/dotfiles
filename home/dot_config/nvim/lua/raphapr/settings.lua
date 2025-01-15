@@ -91,7 +91,6 @@ autocmd("TextYankPost", {
 })
 
 -- disable diagnostic virtual/underline text when in insert mode
-
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()
     require("tiny-inline-diagnostic").disable()
@@ -101,6 +100,14 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 vim.api.nvim_create_autocmd("InsertLeave", {
   callback = function()
     require("tiny-inline-diagnostic").enable()
+  end,
+})
+
+-- set formatprg to jq for json files (rest.nvim)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "json" },
+  callback = function()
+    vim.api.nvim_set_option_value("formatprg", "jq", { scope = "local" })
   end,
 })
 

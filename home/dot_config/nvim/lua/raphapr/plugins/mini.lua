@@ -44,7 +44,6 @@ return {
           { mode = "n", keys = "<leader>c", desc = "CoPilot/CI" },
           { mode = "n", keys = "<leader>cc", desc = "CoPilot" },
           { mode = "n", keys = "<leader>ci", desc = "CI" },
-          { mode = "n", keys = "<leader>o", desc = "Obsidian" },
           { mode = "n", keys = "<leader>g", desc = "Telescope" },
           { mode = "n", keys = "<leader>t", desc = "Git" },
           { mode = "n", keys = "<leader>x", desc = "Trouble" },
