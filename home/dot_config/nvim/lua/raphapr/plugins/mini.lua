@@ -51,6 +51,7 @@ return {
           { mode = "n", keys = "<leader>e", desc = "Edit" },
           { mode = "n", keys = "<leader>m", desc = "Miscellaneous" },
           { mode = "n", keys = "<leader>r", desc = "Rest" },
+          { mode = "n", keys = "<leader>n", desc = "Neorg" },
           { mode = "n", keys = "go", desc = "Go" },
 
           -- Visual mode

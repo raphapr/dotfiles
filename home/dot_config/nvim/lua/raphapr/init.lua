@@ -1,4 +1,5 @@
 require("raphapr.settings")
+require("raphapr.autocmds")
 require("raphapr.utils")
 require("raphapr.lazy")
 require("raphapr.remaps")
