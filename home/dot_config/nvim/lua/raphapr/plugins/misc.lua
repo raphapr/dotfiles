@@ -46,16 +46,4 @@ return {
       })
     end,
   },
-  -------------------------------------- dooing -----------------------------------------
-  {
-    "atiladefreitas/dooing",
-    config = function()
-      require("dooing").setup({
-        save_path = vim.env.HOME .. "/Cloud/Sync/dooing_todos.json",
-        keymaps = {
-          toggle_window = "<leader>d",
-        },
-      })
-    end,
-  },
 }
