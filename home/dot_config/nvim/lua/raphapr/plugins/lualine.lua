@@ -1,9 +1,9 @@
 local function get_venv()
   local venv = vim.env.VIRTUAL_ENV
   if venv then
-    return 'venv:' .. venv:match(".*/(.*)$") .. ''
+    return "venv:" .. venv:match(".*/(.*)$") .. ""
   else
-    return ''
+    return ""
   end
 end
 

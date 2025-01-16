@@ -8,6 +8,8 @@ return {
       { "nvim-lua/popup.nvim" },
       { "nvim-tree/nvim-web-devicons" },
     },
+    lazy = true,
+    cmd = "Telescope",
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")

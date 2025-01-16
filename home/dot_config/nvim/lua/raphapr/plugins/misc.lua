@@ -2,14 +2,13 @@ return {
   -------------------------------------- misc -------------------------------------------
   "editorconfig/editorconfig-vim",
   "tridactyl/vim-tridactyl",
-  "andymass/vim-matchup",
   "sitiom/nvim-numbertoggle",
   { "mg979/vim-visual-multi", event = "BufRead" },
   { "towolf/vim-helm", ft = { "helm" } },
-  { "folke/neodev.nvim", opts = {} },
   { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
   { "hashivim/vim-terraform", ft = { "terraform" } },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+  { "andymass/vim-matchup", event = "CursorMoved" },
   -------------------------------------- eyeliner ---------------------------------------
   {
     "jinh0/eyeliner.nvim",
@@ -39,11 +38,15 @@ return {
   {
     "ptdewey/yankbank-nvim",
     dependencies = "kkharji/sqlite.lua",
+    lazy = true,
+    cmd = "YankBank",
     config = function()
       require("yankbank").setup({
         persist_type = "sqlite",
-        vim.keymap.set("n", "<leader>y", "<cmd>YankBank<cr>", { noremap = true, desc = "Open YankBank" }),
       })
     end,
+    keys = {
+      { "<leader>y", "<cmd>YankBank<CR>", desc = "Open YankBank" },
+    },
   },
 }
