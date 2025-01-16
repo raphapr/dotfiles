@@ -1,0 +1,8 @@
+@document.meta
+title: {TITLE}
+categories: note
+created: {TODAY_OF_FILETREE}
+updated: {TODAY}
+@end
+
+{CURSOR}

@@ -1,9 +1,13 @@
-* {TODAY} - Report
-** Notes
-   - {CURSOR}
-** Did
-   -
-** Doing
-   -
-** Blockers
-   -
+@document.meta
+title: {TODAY_OF_FILETREE}
+categories: journal
+created: {TODAY_OF_FILETREE}
+updated: {TODAY}
+@end
+
+* To-do
+  - ( ) {CURSOR}
+* Meetings
+  -
+* Notes
+  -

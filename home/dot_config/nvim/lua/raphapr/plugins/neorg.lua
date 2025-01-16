@@ -26,7 +26,10 @@ return {
       })
       vim.keymap.set("n", "<leader>nn", ":Neorg workspace notes<CR>", { desc = "Neorg: Open workspace notes" })
       vim.keymap.set("n", "<leader>nj", ":Neorg journal today<CR>", { desc = "Neorg: Open journal today" })
+      vim.keymap.set("n", "<leader>nu", ":Neorg journal toc update<CR>", { desc = "Neorg: Update journal TOC" })
       vim.keymap.set("n", "<leader>nt", ":Neorg templates load journal<CR>", { desc = "Neorg: Load journal template" })
+      vim.keymap.set("n", "<leader>no", ":Neorg templates load note<CR>", { desc = "Neorg: Load note template" })
+      vim.keymap.set("n", "<leader>ns", ":Neorg generate-workspace-summary<CR>", { desc = "Neorg: Generate workspace summary" })
       vim.api.nvim_create_autocmd("Filetype", {
         pattern = "norg",
         callback = function()
