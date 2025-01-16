@@ -93,7 +93,6 @@ colord
 colord-sane
 colordiff
 compiler-rt
-composefs
 confuse
 container-diff
 containerd
@@ -175,7 +174,6 @@ firefox-tridactyl
 fish
 flac
 flameshot
-flatpak
 flex
 fluidsynth
 fmt
@@ -594,7 +592,6 @@ liblrdf
 libltc
 libluv
 libmad
-libmalcontent
 libmanette
 libmaxminddb
 libmbim
@@ -905,7 +902,6 @@ opus
 orc
 os-prober
 osinfo-db
-ostree
 p11-kit
 p7zip
 pacman
@@ -1187,6 +1183,7 @@ ruby-typeprof
 rubygems
 run-parts
 runc
+rust
 rxvt-unicode
 rxvt-unicode-terminfo
 s-nail
