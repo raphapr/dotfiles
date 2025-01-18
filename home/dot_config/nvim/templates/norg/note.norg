@@ -1,8 +1,8 @@
 @document.meta
 title: {TITLE}
-categories: note
-created: {TODAY_OF_FILETREE}
-updated: {TODAY}
+created: {TODAY_CUSTOM}
+updated: {NOW_IN_DATETIME}
 @end
+
 
 {CURSOR}

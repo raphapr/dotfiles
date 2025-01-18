@@ -85,3 +85,15 @@ function! MyFoldText() "
 endfunction "
 set foldtext=MyFoldText()
 ]])
+
+-- Toggle all folds
+vim.keymap.set("n", "zt", function()
+  local get_opt = vim.api.nvim_win_get_option
+  local set_opt = vim.api.nvim_win_set_option
+
+  if get_opt(0, "foldlevel") >= 20 then
+    set_opt(0, "foldlevel", 0)
+  else
+    set_opt(0, "foldlevel", 20)
+  end
+end, { noremap = true, silent = true, desc = "Fold: Toggle all folds" })

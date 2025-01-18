@@ -1,8 +1,7 @@
 @document.meta
-title: {TODAY_OF_FILETREE}
-categories: journal
-created: {TODAY_OF_FILETREE}
-updated: {TODAY}
+title: {TODAY_CUSTOM}
+created: {TODAY_CUSTOM}
+updated: {NOW_IN_DATETIME}
 @end
 
 * To-do
