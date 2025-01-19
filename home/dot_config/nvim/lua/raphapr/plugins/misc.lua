@@ -34,21 +34,6 @@ return {
       })
     end,
   },
-  -------------------------------------- yankbank-nvim ----------------------------------
-  {
-    "ptdewey/yankbank-nvim",
-    dependencies = "kkharji/sqlite.lua",
-    lazy = true,
-    cmd = "YankBank",
-    config = function()
-      require("yankbank").setup({
-        persist_type = "sqlite",
-      })
-    end,
-    keys = {
-      { "<leader>y", "<cmd>YankBank<CR>", desc = "YankBank" },
-    },
-  },
   -------------------------------------- zen-mode --------------------------------------
   {
     "folke/zen-mode.nvim",

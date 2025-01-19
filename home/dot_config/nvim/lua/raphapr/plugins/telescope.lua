@@ -28,6 +28,7 @@ return {
 
       telescope.load_extension("media_files")
       telescope.load_extension("zoxide")
+      telescope.load_extension("yank_history")
       telescope.setup({
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
@@ -70,9 +71,6 @@ return {
 
       local telescope_builtin = require("telescope.builtin")
       local telescope_extensions = telescope.extensions
-      local find_files_cwd_file = function()
-        telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
-      end
 
       vim.keymap.set("n", "<C-p>", ":Telescope find_files hidden=true<CR>", { noremap = true, desc = "Telescope: Find files" })
       vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "Telescope: Buffers" })
