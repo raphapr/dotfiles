@@ -10,9 +10,10 @@ export SHELL="fish"
 export EDITOR="nvim"
 export GOPATH="$HOME/go"
 export GOBIN="$HOME/go/bin"
-export BROWSER=firefox
-export GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+export BROWSER="firefox"
+export GPGKEY="DBC876419930B2EB8447BFEFFA70B2729F47724C"
 export FZF_DEFAULT_OPTS="--height 50%"
+export ZK_NOTEBOOK_DIR="/home/raphael/Cloud/Sync/notebook"
 export GPG_TTY=(tty)
 
 # load sensistive environment variables
@@ -113,7 +114,8 @@ alias eb 'v ~/.bashrc'
 alias ev 'v +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
 alias eo 'v +"cd ~/Cloud/Vaults/Raphakasten" +":NvimTreeToggle"'
 alias i3c 'v ~/.i3/config'
-alias notes 'v +"cd ~/Cloud/Sync/notes" +":Telescope find_files"'
+alias notes 'zk l'
+alias daily 'zk daily'
 alias httpf 'v +"cd ~/Cloud/Sync/code/http-files" +":Telescope find_files"'
 alias xmerge 'xrdb -merge ~/.Xresources'
 # git

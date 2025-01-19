@@ -46,7 +46,7 @@ return {
       })
     end,
     keys = {
-      { "<leader>y", "<cmd>YankBank<CR>", desc = "Open YankBank" },
+      { "<leader>y", "<cmd>YankBank<CR>", desc = "YankBank" },
     },
   },
 }
