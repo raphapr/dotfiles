@@ -14,21 +14,20 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-      numhl = false,     -- Toggle with `:Gitsigns toggle_numhl`
-      linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
+      numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+      linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
     },
     config = function()
       require("gitsigns").setup()
       vim.keymap.set("n", "<leader>tp", ":Gitsigns preview_hunk<CR>", { desc = "Git: Diff preview" })
-      vim.keymap.set("n", "<leader>to", ":!gh browse<CR><CR>",
-        { silent = true, noremap = true, desc = "Git: Open the github project in the browser" })
       vim.keymap.set(
         "n",
-        "<leader>tl",
-        ":Gitsigns toggle_current_line_blame<CR>",
-        { desc = "Git: Toggle current line blame" }
+        "<leader>to",
+        ":!gh browse<CR><CR>",
+        { silent = true, noremap = true, desc = "Git: Open the github project in the browser" }
       )
+      vim.keymap.set("n", "<leader>tl", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Git: Toggle current line blame" })
     end,
   },
   -------------------------------------- lazygit ----------------------------------------

@@ -50,7 +50,7 @@ vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first 
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
 
 -- toggle relative number
-vim.keymap.set("n", "<leader>mt", ":set relativenumber!<CR>", { noremap = true, desc = "Misc: Toggle relative line numbers" })
+vim.keymap.set("n", "<leader>mn", ":set relativenumber!<CR>", { noremap = true, desc = "Misc: Toggle relative line numbers" })
 
 -- load current lua file
 vim.keymap.set("n", "<leader>mr", ":luafile %<CR>:lua vim.notify('lua file loaded')<CR>", { silent = true, desc = "Misc: Load current lua file" })

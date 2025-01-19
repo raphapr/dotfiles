@@ -33,23 +33,27 @@ id-length = 6
 # Letter case for the random IDs.
 id-case = "lower"
 
-
-# EXTRA VARIABLES
-[extra]
-author = "Raphael"
-
-# GROUP OVERRIDES
+# DAILY
 [group.daily]
 paths = ["journal/daily"]
 
 [group.daily.note]
-filename = "{{format-date now '%d-%m-%Y'}}"
+filename = "{{format-date now '%Y-%m-%d'}}"
 template = "daily.md"
+
+# WEEKLY
+[group.weekly]
+paths = ["journal/weekly"]
+
+[group.weekly.note]
+filename = "{{format-date now '%Y'}}-W{{format-date now '%W'}}"
+template = "weekly.md"
 
 # MARKDOWN SETTINGS
 [format.markdown]
 # Enable support for #hashtags
 hashtags = true
+link-format = "[[{{metadata.id}}|{{title}}]]"
 
 # EXTERNAL TOOLS
 [tool]
@@ -83,6 +87,7 @@ edlast = "zk edit --limit 1 --sort modified- $@"
 recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
 
 daily = 'zk new --no-input journal/daily'
+weekly = 'zk new --no-input journal/weekly'
 
 # LSP (EDITOR INTEGRATION)
 [lsp]

@@ -60,6 +60,7 @@ return {
           { mode = "x", keys = "<leader>t", desc = "Git" },
           { mode = "x", keys = "<leader>c", desc = "CoPilot/CI" },
           { mode = "x", keys = "<leader>b", desc = "Base64" },
+          { mode = "x", keys = "<leader>z", desc = "zk" },
         },
       })
     end,
