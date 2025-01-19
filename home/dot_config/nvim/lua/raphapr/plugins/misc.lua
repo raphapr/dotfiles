@@ -49,17 +49,15 @@ return {
       { "<leader>y", "<cmd>YankBank<CR>", desc = "YankBank" },
     },
   },
-  -------------------------------------- render-markdown ----------------------------------
+  -------------------------------------- zen-mode --------------------------------------
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-    opts = {},
-    config = function()
-      require("yankbank").setup({
-        file_types = { "markdown", "gitcommit" },
-        html = { enabled = false },
-      })
-      vim.keymap.set("n", "<leader>mt", ":lua require('render-markdown').toggle()<CR>", { noremap = true, desc = "Misc: Toggle render-markdown" })
-    end,
+    "folke/zen-mode.nvim",
+    lazy = true,
+    cmd = "ZenMode",
+    opts = {
+      plugins = {
+        tmux = { enabled = true },
+      },
+    },
   },
 }

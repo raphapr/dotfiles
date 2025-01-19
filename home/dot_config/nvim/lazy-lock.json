@@ -61,5 +61,6 @@
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
   "vim-zoom": { "branch": "master", "commit": "01c737005312c09e0449d6518decf8cedfee32c7" },
   "yankbank-nvim": { "branch": "main", "commit": "ded8f01bd6a7887310e14d463c8aa55eb79ec281" },
+  "zen-mode.nvim": { "branch": "main", "commit": "863f150ca321b3dd8aa1a2b69b5f411a220e144f" },
   "zk-nvim": { "branch": "main", "commit": "10089c398df925b8db51fd659501d2cb044003b9" }
 }
