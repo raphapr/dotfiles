@@ -301,6 +301,9 @@ for_window [title="WhatsApp Web"] move to workspace 2
 #}}}
 # Scratchpads         ------------------------------------------------------- {{{
 
+# Launch scratchpad-terminal in case accidentally closed or whatever
+bindsym $mod+Shift+s exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
+
 exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
 for_window [class="scratchpad-terminal"] move to scratchpad
 bindsym $mod+F11 [class="scratchpad-terminal"] scratchpad show
