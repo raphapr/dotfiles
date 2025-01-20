@@ -30,16 +30,6 @@ return {
       },
     },
   },
-  {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, {
-        name = "lazydev",
-        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-      })
-    end,
-  },
   ------------------------------------------------------
   -- lsp-zero
   ------------------------------------------------------
@@ -57,9 +47,13 @@ return {
       { "hrsh7th/nvim-cmp" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
-      { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
+      { "chrisgrieser/cmp_yanky" },
+      { "mtoohey31/cmp-fish" },
+      { "petertriho/cmp-git" },
+      { "onsails/lspkind-nvim" },
+      { "saadparwaiz1/cmp_luasnip" },
       { "L3MON4D3/LuaSnip", run = "make install_jsregexp" },
       { "rafamadriz/friendly-snippets" },
     },
@@ -126,7 +120,7 @@ return {
       vim.lsp.set_log_level("off")
 
       ------------------------------------------------------
-      -- diagnotics
+      -- diagnostics
       ------------------------------------------------------
 
       vim.diagnostic.config({
@@ -219,6 +213,7 @@ return {
       -- cmp
       ------------------------------------------------------
 
+      local lspkind = require("lspkind")
       local cmp = require("cmp")
       local cmp_action = lsp.cmp_action()
 
@@ -237,8 +232,13 @@ return {
           { name = "path" },
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
+          { name = "fish" },
+          { name = "git" },
+          { name = "render-markdown" },
           { name = "buffer", keyword_length = 3 },
           { name = "luasnip", keyword_length = 2 },
+          { name = "cmp_yanky" },
+          { name = "lazydev", group_index = 0 },
         },
         mapping = cmp.mapping.preset.insert({
           -- toggle completion menu
@@ -260,7 +260,26 @@ return {
           ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            menu = {
+              nvim_lsp = "[lsp]",
+              nvim_lua = "[lua-api]",
+              path = "[path]",
+              luasnip = "[snip]",
+              buffer = "[buf]",
+              gh_issues = "[issue]",
+              cmp_yanky = "[yanky]",
+              render_markdown = "[markdown]",
+              fish = "[fish]",
+            },
+          }),
+        },
       })
+
+      require("cmp_git").setup()
 
       lsp.setup()
     end,

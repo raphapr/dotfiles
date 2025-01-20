@@ -33,7 +33,8 @@ return {
               i = {
                 ["<c-j>"] = actions.move_selection_next,
                 ["<c-k>"] = actions.move_selection_previous,
-                ["<c-p>"] = mapping.put("P"),
+                ["<c-p>"] = mapping.put("p"),
+                ["<c-g>"] = mapping.put("P"),
                 ["<c-x>"] = mapping.delete(),
                 ["<c-r>"] = mapping.set_register(utils.get_default_register()),
               },

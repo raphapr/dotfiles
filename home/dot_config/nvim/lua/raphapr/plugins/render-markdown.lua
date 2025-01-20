@@ -5,7 +5,7 @@ return {
     lazy = true,
     ft = { "markdown" },
     config = function()
-      require("yankbank").setup({
+      require("render-markdown").setup({
         file_types = { "markdown", "gitcommit" },
         html = { enabled = false },
       })
