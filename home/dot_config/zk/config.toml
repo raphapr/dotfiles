@@ -87,6 +87,7 @@ edlast = "zk edit --limit 1 --sort modified- $@"
 recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
 
 daily = 'zk new --no-input journal/daily'
+tomorrow = 'zk new --no-input journal/daily'
 weekly = 'zk new --no-input journal/weekly'
 
 # LSP (EDITOR INTEGRATION)

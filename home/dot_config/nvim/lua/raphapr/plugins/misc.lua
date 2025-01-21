@@ -44,5 +44,13 @@ return {
         tmux = { enabled = true },
       },
     },
+    keys = {
+      {
+        "<leader>mz",
+        ":Zen<cr>",
+        mode = { "n", "x" },
+        desc = "Misc: Toggle Zen Mode",
+      },
+    },
   },
 }

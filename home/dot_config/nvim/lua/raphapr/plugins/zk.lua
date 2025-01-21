@@ -20,7 +20,8 @@ return {
         return { noremap = true, silent = true, desc = "zk: " .. desc }
       end
       map("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts("Create new note"))
-      map("n", "<leader>zd", "<Cmd>ZkNew { dir = 'journal/daily', date = 'today' }<CR>", opts("Daily note"))
+      map("n", "<leader>zd", "<Cmd>ZkNew { dir = 'journal/daily', date = 'today' }<CR>", opts("Daily note (today)"))
+      map("n", "<leader>zr", "<Cmd>ZkNew { dir = 'journal/daily', date = 'tomorrow' }<CR>", opts("Daily note (tomorrow)"))
       map("n", "<leader>zw", "<Cmd>ZkNew { dir = 'journal/weekly', date = 'today' }<CR>", opts("Weekly note"))
       map("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts("Open notes"))
       map("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts("Open notes by tags"))
