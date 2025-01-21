@@ -15,9 +15,7 @@ return {
           end,
         },
       })
-      local function map(...)
-        vim.api.nvim_set_keymap(...)
-      end
+      local map = vim.api.nvim_set_keymap
       local function opts(desc)
         return { noremap = true, silent = true, desc = "zk: " .. desc }
       end
