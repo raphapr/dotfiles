@@ -255,8 +255,8 @@ bindsym $mod+c exec --no-startup-id copyq toggle
 #}}}
 # Borders               ----------------------------------------------------- {{{
 
-new_float normal 1
-new_window 1pixel
+new_float normal 2
+new_window pixel 2
 hide_edge_borders none
 
 #}}}
