@@ -196,9 +196,11 @@ return {
       -- mason
       ------------------------------------------------------
 
-      require("mason").setup({})
+      require("mason").setup()
       require("mason-lspconfig").setup({
+        automatic_installation = true,
         ensure_installed = {
+          "lua_ls",
           "ts_ls",
           "eslint",
           "gopls",
