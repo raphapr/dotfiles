@@ -9,7 +9,7 @@ return {
   lazy = true,
   cmd = "VenvSelect",
   keys = {
-    { "<leader>ve", "<cmd>VenvSelect<cr>" },
+    { "<leader>ve", "<cmd>VenvSelect<cr>", desc = "Venv Select" },
   },
   branch = "regexp", -- This is the regexp branch, use this for the new version
   config = function()

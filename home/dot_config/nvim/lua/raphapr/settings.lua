@@ -43,7 +43,6 @@ opt.backupskip = "/tmp/*,/private/tmp/*"
 opt.cursorcolumn = true
 
 -- improve perfomance
-opt.lazyredraw = true
 opt.ttyfast = true
 
 -- undo / backup

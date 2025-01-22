@@ -72,7 +72,7 @@ return {
       local telescope_builtin = require("telescope.builtin")
       local telescope_extensions = telescope.extensions
 
-      vim.keymap.set("n", "<C-p>", ":Telescope find_files hidden=true<CR>", { noremap = true, desc = "Telescope: Find files" })
+      vim.keymap.set("n", "<C-p>", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true, desc = "Telescope: Find files" })
       vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "Telescope: Buffers" })
       vim.keymap.set("n", "<leader>gz", telescope_extensions.zoxide.list, { desc = "Telescope: (zoxide) cd directory" }) -- ctrl+f for builtin.find_files
       vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "Telescope: Live grep" })

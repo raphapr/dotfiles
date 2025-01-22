@@ -124,7 +124,7 @@ return {
       { "hrsh7th/cmp-nvim-lsp" },
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
-      { "L3MON4D3/LuaSnip", run = "make install_jsregexp" },
+      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
       { "rafamadriz/friendly-snippets" },
     },
     init = function()

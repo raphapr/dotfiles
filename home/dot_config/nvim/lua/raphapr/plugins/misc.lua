@@ -8,7 +8,7 @@ return {
   { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
   { "hashivim/vim-terraform", ft = { "terraform" } },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
-  { "andymass/vim-matchup", event = "CursorMoved" },
+  { "andymass/vim-matchup", event = "BufReadPost" },
   -------------------------------------- eyeliner ---------------------------------------
   {
     "jinh0/eyeliner.nvim",
@@ -50,6 +50,7 @@ return {
         ":Zen<cr>",
         mode = { "n", "x" },
         desc = "Misc: Toggle Zen Mode",
+        silent = true,
       },
     },
   },
