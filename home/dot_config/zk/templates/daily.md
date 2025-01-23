@@ -10,10 +10,6 @@ tags: [journal, daily]
 - [x] Checked
 - [-] Todo
 
-# Meetings
-
--
-
 # Notes
 
 -
