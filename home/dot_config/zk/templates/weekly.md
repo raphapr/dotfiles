@@ -12,6 +12,4 @@ tags: [journal, weekly]
 
 ## Support
 
-# Challenges
-
-# Lessons
+# Challenges / Lessons
