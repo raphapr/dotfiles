@@ -42,9 +42,7 @@ return {
           -- Normal mode
           { mode = "n", keys = "<leader>v", desc = "Overseer / venv-selector" },
           { mode = "n", keys = "<leader>vv", desc = "Overseer" },
-          { mode = "n", keys = "<leader>c", desc = "CoPilot / CI" },
-          { mode = "n", keys = "<leader>cc", desc = "CoPilot" },
-          { mode = "n", keys = "<leader>ci", desc = "CI" },
+          { mode = "n", keys = "<leader>c", desc = "CodeCompanion" },
           { mode = "n", keys = "<leader>g", desc = "Telescope" },
           { mode = "n", keys = "<leader>t", desc = "Git" },
           { mode = "n", keys = "<leader>x", desc = "Trouble" },
@@ -56,10 +54,9 @@ return {
           { mode = "n", keys = "go", desc = "Go" },
 
           -- Visual mode
-          { mode = "x", keys = "<leader>cc", desc = "CoPilot" },
           { mode = "x", keys = "<leader>g", desc = "Telescope" },
           { mode = "x", keys = "<leader>t", desc = "Git" },
-          { mode = "x", keys = "<leader>c", desc = "CoPilot / CI" },
+          { mode = "x", keys = "<leader>c", desc = "CodeCompanion" },
           { mode = "x", keys = "<leader>b", desc = "Base64" },
           { mode = "x", keys = "<leader>z", desc = "zk" },
         },

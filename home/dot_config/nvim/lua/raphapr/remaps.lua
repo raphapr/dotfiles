@@ -72,7 +72,7 @@ vim.keymap.set("n", '<leader>"', open_tmux_pane, { silent = true, noremap = true
 
 vim.keymap.set(
   "n",
-  "<leader>cio",
+  "<leader>mi",
   ":!circleci open<CR><CR>",
-  { silent = true, noremap = true, desc = "CI: Open the circleci project in the browser" }
+  { silent = true, noremap = true, desc = "Misc: Open the CircleCI project in the browser" }
 )
