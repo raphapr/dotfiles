@@ -23,6 +23,7 @@ return {
     { "<leader>cc", ":CodeCompanionChat<cr>", desc = "CodeCompanion: Toggle Chat" },
     { "<leader>ca", ":CodeCompanionActions<cr>", desc = "CodeCompanion: Actions" },
     { "<leader>ci", ":CodeCompanion ", desc = "CodeCompanion: Inline Assistant" },
+    { "<leader>cc", mode = { "v" }, ":'<,'>CodeCompanionChat<cr>", desc = "CodeCompanion: Toggle Chat for selected code" },
     { "<leader>cf", mode = { "v" }, ":'<,'>CodeCompanion /fix<cr>", desc = "CodeCompanion: Fix selected code" },
   },
 }

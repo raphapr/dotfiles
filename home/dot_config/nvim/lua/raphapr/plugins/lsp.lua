@@ -72,7 +72,7 @@ return {
           { name = "lazydev", group_index = 0 },
         },
         mapping = cmp.mapping.preset.insert({
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
           ["<C-f>"] = cmp.mapping.scroll_docs(5),
           ["<C-u>"] = cmp.mapping.scroll_docs(-5),
           ["<C-k>"] = cmp.mapping.select_prev_item(),
