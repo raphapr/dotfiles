@@ -25,19 +25,3 @@ sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
 
 sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
 sudo mkinitcpio -P
-
-########################################################
-# userChrome.css
-########################################################
-
-firefox_dir_path=$HOME/.mozilla/firefox
-firefox_profiles_ini_path=$HOME/.mozilla/firefox/profiles.ini
-
-if grep -q '\[Profile[^0]\]' "$firefox_profiles_ini_path"; then
-  profile_path=$(grep -E '^\[Profile|^Path|^Default' "$firefox_profiles_ini_path" | grep -1 '^Default=1' | grep '^Path' | cut -c6-)
-  userchrome_path="$firefox_dir_path/$profile_path/chrome"
-  if [ ! -d "$userchrome_path" ]; then
-    mkdir "$userchrome_path"
-  fi
-  ln -sf ~/Cloud/Sync/userChrome.css "$userchrome_path/userChrome.css"
-fi

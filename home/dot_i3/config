@@ -297,6 +297,7 @@ for_window [title="^\.Writing.*"] move to workspace 6
 for_window [class="Spotify"] move container to workspace 2
 for_window [class="TelegramDesktop"] move container to workspace 2
 for_window [title="WhatsApp Web"] move to workspace 2
+for_window [title="WhatsDesk"] move to workspace 2
 
 #}}}
 # Scratchpads         ------------------------------------------------------- {{{
