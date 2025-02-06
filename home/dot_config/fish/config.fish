@@ -63,14 +63,6 @@ starship init fish | source
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
-# fish vi mode
-# ctrl+f only accept autosuggestion
-# ctrl+a switch AWS profile
-# ctrl+k switch k8s context
-# ctrl+n switch k8s namespace
-# ctrl+u open session via tmux sessionizer
-# ctrl+o switch sessions via tmux sessionizer
-
 function fish_user_key_bindings
     fzf_key_bindings
     fish_vi_key_bindings
@@ -78,12 +70,16 @@ function fish_user_key_bindings
     bind \cf accept-autosuggestion
     bind -M insert \ca "aws-profile"
     bind \ca "aws-profile"
-    bind -M insert \ck "kubectl ctx; commandline -f repaint"
-    bind \ck "kubectl ctx"
+    bind -M insert \cx "kubectl ctx; commandline -f repaint"
+    bind \cx "kubectl ctx"
     bind -M insert \cn "kubectl ns; commandline -f repaint"
     bind \cn "kubectl ns"
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
+    bind -M insert \cj history-search-forward
+    bind \cj history-search-forward
+    bind -M insert \ck history-search-backward
+    bind \ck history-search-backward
 end
 
 # }}}
