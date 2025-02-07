@@ -66,18 +66,25 @@ starship init fish | source
 function fish_user_key_bindings
     fzf_key_bindings
     fish_vi_key_bindings
+
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
+
     bind -M insert \ca "aws-profile"
     bind \ca "aws-profile"
+
     bind -M insert \cx "kubectl ctx; commandline -f repaint"
     bind \cx "kubectl ctx"
+
     bind -M insert \cn "kubectl ns; commandline -f repaint"
     bind \cn "kubectl ns"
+
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
+
     bind -M insert \cj history-search-forward
     bind \cj history-search-forward
+
     bind -M insert \ck history-search-backward
     bind \ck history-search-backward
 end
@@ -454,7 +461,6 @@ end
 
 # }}}
 # loadenv           {{{
-
 # copied from https://github.com/berk-karaal/loadenv.fish
 
 function loadenv
@@ -550,7 +556,17 @@ function loadenv
 end
 
 # }}}
+# kube_prompt       {{{
 
+function kube_prompt
+    if ! set -q KUBE_PROMPT_ENABLED
+        export KUBE_PROMPT_ENABLED
+    else
+        set -e KUBE_PROMPT_ENABLED
+    end
+end
+
+# }}}
 # }}}
 # history subst   ---------------------------------------------- {{{
 #

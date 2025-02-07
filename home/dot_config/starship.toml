@@ -19,14 +19,23 @@ style = "blue"
 
 [directory]
 style = "bold white"
-format = ' [♥](red) [$path]($style)[$read_only]($read_only_style) '
+format = '[♥](red) [$path]($style)[$read_only]($read_only_style) '
 read_only = ' 🔒'
-truncation_length = 4
+truncation_length = 5
+
+[kubernetes]
+disabled = false
+symbol = " "
+contexts = [
+  { context_pattern = "arn:aws:eks:[\\w-]+:[\\d]+:cluster/(?P<cluster>[\\w-]+)", context_alias = "$cluster" },
+]
+
+[hostname]
+disabled = false
+ssh_only = true
 
 [line_break]
-disabled = true
-[hostname]
-disabled = true
+disabled = false
 [username]
 disabled = true
 [gcloud]
