@@ -21,7 +21,7 @@ style = "blue"
 style = "bold white"
 format = '[♥](red) [$path]($style)[$read_only]($read_only_style) '
 read_only = ' 🔒'
-truncation_length = 5
+truncation_length = 10
 
 [kubernetes]
 disabled = false
