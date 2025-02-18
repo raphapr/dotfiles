@@ -9,11 +9,6 @@ return {
   { "hashivim/vim-terraform", ft = { "terraform" } },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
   { "andymass/vim-matchup", event = "BufReadPost" },
-  -------------------------------------- eyeliner ---------------------------------------
-  {
-    "jinh0/eyeliner.nvim",
-    opts = { highlight_on_key = true, dim = true },
-  },
   -------------------------------------- scope.nvim -------------------------------------
   {
     "tiagovla/scope.nvim",
