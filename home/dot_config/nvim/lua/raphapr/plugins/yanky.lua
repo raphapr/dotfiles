@@ -5,7 +5,7 @@ return {
     lazy = true,
     cmd = "Telescope yank_history",
     keys = {
-      { "<leader>y", ":Telescope yank_history<CR>", noremap = true, silent = true, desc = "Yanky History" },
+      { "<C-y>", ":Telescope yank_history<CR>", noremap = true, silent = true, desc = "Yanky History" },
     },
     config = function()
       local utils = require("yanky.utils")

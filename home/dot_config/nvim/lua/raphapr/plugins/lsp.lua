@@ -39,7 +39,6 @@ return {
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
-      { "chrisgrieser/cmp_yanky" },
       { "mtoohey31/cmp-fish" },
       { "petertriho/cmp-git" },
       { "onsails/lspkind-nvim" },
