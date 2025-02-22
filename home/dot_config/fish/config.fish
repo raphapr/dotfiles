@@ -1,6 +1,3 @@
-# fish shell config
-# Raphael P. Ribeiro
-
 # Preamble        ---------------------------------------------- {{{
 
 # disable fish greeting message
@@ -15,6 +12,7 @@ export GPGKEY="DBC876419930B2EB8447BFEFFA70B2729F47724C"
 export FZF_DEFAULT_OPTS="--height 50%"
 export ZK_NOTEBOOK_DIR="/home/raphael/Cloud/Sync/notebook"
 export GPG_TTY=(tty)
+export KUBE_PROMPT_ENABLED
 
 # load sensistive environment variables
 source $HOME/.envsen
@@ -54,12 +52,6 @@ set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
-# mise
-mise activate fish | source
-
-# startship prompt
-starship init fish | source
-
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -92,8 +84,17 @@ end
 # }}}
 # Plugins         ---------------------------------------------- {{{
 
-# direnv
 eval (direnv hook fish)
+mise activate fish | source
+starship init fish | source
+zoxide init fish | source
+
+set -gx ATUIN_NOBIND "true"
+
+if status is-interactive
+    atuin init fish | source
+end
+
 
 # }}}
 # Aliases         ---------------------------------------------- {{{
@@ -363,60 +364,6 @@ function su
 end
 
 # }}}
-# ec2-find          {{{
-
-function ec2-find
-    aws ec2 describe-instances --query "Reservations[*].Instances[*].PrivateIpAddress" \
-    --filters 'Name=tag:Name,Values=*'$argv'*' 'Name=instance-state-name,Values=running' \
-    | jq .[][] | tr -d '"'
-end
-
-# }}}
-# ec2-table         {{{
-
-function ec2-table
-   aws ec2 describe-instances \
-       --query "Reservations[*].Instances[*].{PublicIP:PublicIpAddress,PrivateIP:PrivateIpAddress,InstanceId:InstanceId,InstanceType:InstanceType,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  \
-       --filters 'Name=instance-state-name,Values=running' 'Name=tag:Name,Values=*'$argv'*' --output table
-end
-
-# }}}
-# ec2-ssh           {{{
-
-function ec2-ssh
-    set -l region (aws configure get region --profile $AWS_PROFILE)
-    set -l result (aws ec2 describe-instances --region $region --query "Reservations[*].Instances[*].PrivateIpAddress" \
-    --filters 'Name=tag:Name,Values='"*$argv*"'' 'Name=instance-state-name,Values=running' \
-    | jq .[][] | tr -d '"')
-    if test (count $result) -eq 1
-        echo "ssh $result"
-        ssh $result
-    end
-    if test (count $result) -gt 1
-        echo "xpanes -c 'ssh $SSH_OPTS '{}' $result"
-        xpanes -c "ssh $SSH_OPTS {}" $result
-    end
-end
-
-# }}}
-# ec2-ssm           {{{
-
-function ec2-ssm
-    set -l region (aws configure get region --profile $AWS_PROFILE)
-    set -l result (aws ec2 describe-instances --region $region --query "Reservations[*].Instances[*].InstanceId" \
-    --filters 'Name=tag:Name,Values='"*$argv*"'' 'Name=instance-state-name,Values=running' \
-    | jq .[][] | tr -d '"')
-    if test (count $result) -eq 1
-        echo "aws ssm start-session --region $region --profile $AWS_PROFILE --target $result"
-        aws ssm start-session --region $region --profile $AWS_PROFILE --target $result
-    end
-    if test (count $result) -gt 1
-        echo "xpanes -c 'aws ssm start-session --region $region --profile $AWS_PROFILE --target '{}' $result"
-        xpanes -c "aws ssm start-session --region $region --profile $AWS_PROFILE --target {}" $result
-    end
-end
-
-# }}}
 # sshagent          {{{
 
 function __ssh_agent_is_started -d "check if ssh agent is already started"
@@ -567,6 +514,7 @@ function kube_prompt
 end
 
 # }}}
+
 # }}}
 # history subst   ---------------------------------------------- {{{
 #
@@ -586,20 +534,6 @@ function !!;
     else
         eval $var
   end
-end
-
-# }}}
-# zoxide          ---------------------------------------------- {{{
-
-zoxide init fish | source
-
-# }}}
-# atuin           ---------------------------------------------- {{{
-
-set -gx ATUIN_NOBIND "true"
-
-if status is-interactive
-    atuin init fish | source
 end
 
 # }}}

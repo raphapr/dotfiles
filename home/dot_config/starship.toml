@@ -26,6 +26,7 @@ truncation_length = 10
 [kubernetes]
 disabled = false
 symbol = " "
+detect_env_vars = ["KUBE_PROMPT_ENABLED"]
 contexts = [
   { context_pattern = "arn:aws:eks:[\\w-]+:[\\d]+:cluster/(?P<cluster>[\\w-]+)", context_alias = "$cluster" },
 ]

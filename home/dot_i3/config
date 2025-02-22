@@ -1,5 +1,3 @@
-#See http://i3wm.org/docs/userguide.html for a complete reference
-
 # Variables             ----------------------------------------------------- {{{
 
 set $mod Mod4
@@ -16,7 +14,7 @@ set $PRINT      flameshot gui
 exec --no-startup-id nm-applet
 exec --no-startup-id copyq
 exec --no-startup-id volnoti
-exec --no-startup-id "udiskie -2 &"
+exec --no-startup-id "udiskie &"
 exec --no-startup-id dropbox start
 exec --no-startup-id compton -b
 exec --no-startup-id thunar --daemon
