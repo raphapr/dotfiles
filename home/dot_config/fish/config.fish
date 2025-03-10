@@ -12,7 +12,6 @@ export GPGKEY="DBC876419930B2EB8447BFEFFA70B2729F47724C"
 export FZF_DEFAULT_OPTS="--height 50%"
 export ZK_NOTEBOOK_DIR="/home/raphael/Cloud/Sync/notebook"
 export GPG_TTY=(tty)
-export KUBE_PROMPT_ENABLED
 
 # load sensistive environment variables
 source $HOME/.envsen
