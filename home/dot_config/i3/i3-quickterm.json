@@ -1,8 +1,0 @@
-{
-    "term": "urxvt -name '{title}'",
-    "ratio": 0.65,
-    "pos": "top",
-    "shells": {
-        "shell": "bash -c 'tmux -q has-session -t quickterm && tmux attach-session -d -t quickterm || tmux new-session -s quickterm'"
-    }
-}
