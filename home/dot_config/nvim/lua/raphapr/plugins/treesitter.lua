@@ -58,7 +58,6 @@ return {
           "gosum",
           "gotmpl",
           "diff",
-          "norg",
         },
         highlight = {
           enable = true,
