@@ -39,6 +39,7 @@ return {
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/cmp-cmdline" },
       { "mtoohey31/cmp-fish" },
       { "petertriho/cmp-git" },
       { "onsails/lspkind-nvim" },
@@ -110,6 +111,22 @@ return {
         },
       })
       require("cmp_git").setup({})
+
+      cmp.setup.cmdline({ "/", "?" }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "buffer" },
+        }),
+      })
+
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline", keyword_length = 3 },
+        }),
+      })
     end,
   },
   ------------------------------------------------------

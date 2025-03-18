@@ -1,6 +1,6 @@
 ---
-title: {{ format-date now "%d/%m/%Y" }}
-date: {{ format-date now "%d/%m/%Y %X" }}
+title: { { format-date now "%Y/%m/%d" } }
+date: { { format-date now "%Y/%m/%d %X" } }
 tags: [journal, daily]
 ---
 

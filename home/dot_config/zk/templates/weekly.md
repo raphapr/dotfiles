@@ -4,12 +4,8 @@ date: {{ format-date now "%d/%m/%Y %X" }}
 tags: [journal, weekly]
 ---
 
-# Wins sessions
+# Weekly Review
 
-## Project
-
-## Governance
-
-## Support
+{{sh "generate-weekly-notes"}}
 
 # Challenges / Lessons
