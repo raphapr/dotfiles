@@ -9,3 +9,5 @@ tags: [journal, weekly]
 {{sh "generate-weekly-notes"}}
 
 # Challenges / Lessons
+
+-
