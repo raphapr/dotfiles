@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Directory containing the markdown files
-DIR="$ZK_NOTEBOOK_DIR/journal/daily"
+SUB_DIR="journal/daily"
+DIR="$ZK_NOTEBOOK_DIR/$SUB_DIR"
 
 # Get the current week number and year
 CURRENT_WEEK=$(date +%V)
@@ -19,7 +20,7 @@ for FILE in "$DIR"/*.md; do
   if [ "$FILE_WEEK" -eq "$CURRENT_WEEK" ] && [ "$FILE_YEAR" -eq "$CURRENT_YEAR" ]; then
     TASKS=$(sed -n '/# Tasks/,/# Notes/p' "$FILE" | sed '/# Tasks/d' | sed '/# Notes/d')
     if [ -n "$TASKS" ]; then
-      echo "## $FILE_DATE"
+      echo "[[$SUB_DIR/$FILE_DATE|$FILE_DATE]]"
       echo "$TASKS"
       echo
     fi
