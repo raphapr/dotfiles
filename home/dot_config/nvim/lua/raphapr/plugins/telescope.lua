@@ -7,6 +7,7 @@ return {
       { "jvgrootveld/telescope-zoxide" },
       { "nvim-lua/popup.nvim" },
       { "nvim-tree/nvim-web-devicons" },
+      { "debugloop/telescope-undo.nvim" },
     },
     lazy = true,
     cmd = "Telescope",
@@ -29,6 +30,7 @@ return {
       telescope.load_extension("media_files")
       telescope.load_extension("zoxide")
       telescope.load_extension("yank_history")
+      telescope.load_extension("undo")
       telescope.setup({
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
@@ -86,6 +88,7 @@ return {
       vim.keymap.set("n", "<leader>gp", ":Telescope scope buffers<CR>", { desc = "Telescope: List YAML schemas" })
       vim.keymap.set("n", "<leader>gt", ":TodoTelescope<CR>", { desc = "Telescope: Search through all project todos" })
       vim.keymap.set("n", "<leader>gl", telescope_builtin.lsp_document_symbols, { desc = "Telescope: LSP document symbols" })
+      vim.keymap.set("n", "<leader>gu", ":Telescope undo<CR>", { desc = "Telescope: Undo tree" })
     end,
   },
 }
