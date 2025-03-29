@@ -24,10 +24,6 @@ if test -e $GOPATH/bin
     set PATH $PATH  $GOPATH/bin
 end
 
-if test -e /opt/julia/bin
-    set PATH $PATH /opt/julia/bin
-end
-
 if test -e ~/.local/bin
     set PATH $PATH ~/.local/bin
 end
@@ -50,8 +46,6 @@ set -gx PATH $PATH $HOME/.krew/bin
 set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
-
-fzf --fish | source
 
  #}}}
 # Bindings        ---------------------------------------------- {{{
@@ -85,22 +79,22 @@ end
 # }}}
 # Plugins         ---------------------------------------------- {{{
 
+
+set -gx ATUIN_NOBIND "true"
 eval (direnv hook fish)
 mise activate fish | source
 starship init fish | source
 zoxide init fish | source
-
-set -gx ATUIN_NOBIND "true"
+fzf --fish | source
 
 if status is-interactive
     atuin init fish | source
 end
 
-
 # }}}
 # Aliases         ---------------------------------------------- {{{
 
-# shell aliases    {{{
+# misc             {{{
 
 alias lash 'eza -l'
 alias l 'eza'
@@ -132,12 +126,6 @@ alias gclean "git clean -fdx && git stash"
 alias gco "git checkout (git branch | fzf | tr -d [:space:])"
 alias gwip 'git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip-- [skip ci]"'
 alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
-# diff dotfiles
-alias cdiff "chezmoi diff"
-# command line pastebin
-alias pasteb "curl -F 'f:1=<-' ix.io"
-# weather in terminal
-alias weather "curl wttr.in/saopaulo"
 #  ptpython
 alias ptpython "python -m ptpython"
 # '-' as shortcut to cd -
@@ -146,6 +134,7 @@ abbr -a -- - 'cd -'
 alias rg 'rg --smart-case'
 # chezmoi
 alias cz 'chezmoi'
+alias cdiff "chezmoi diff"
 
 # }}}
 # pacman           {{{
@@ -153,25 +142,17 @@ alias cz 'chezmoi'
 alias p 'sudo pacman'
 alias pacup 'sudo pacman -Syuu'
 alias punlock "sudo rm -rf /var/lib/pacman/db.lck"
-alias mirror-update 'sudo pacman-mirrors -g'
+alias mirrors-update 'sudo pacman-mirrors -g'
 
 # }}}
 # save_history     {{{
 
-# history across fishes
+# sync history across fish sessions
 function save_history --on-event fish_preexec
     history --save
 end
 
 alias hm 'history --merge'  # read and merge history from disk
-
-bind \e\[A 'history --merge ; up-or-search'
-
-# }}}
-# xclip            {{{
-
-alias pbcopy 'xclip -sel clip'
-alias pbpaste 'xclip -sel clip -o'
 
 # }}}
 # tmux             {{{
@@ -192,34 +173,12 @@ alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'
 
 alias k kubectl
 alias kk 'kubectl krew'
-alias kaf 'k apply -f'
-alias kdebug 'kubectl-debug'
-# get
 alias kg 'k get'
-alias kgd 'k get deployment'
-alias kgi 'k get ingress'
-alias kgp 'k get po'
-alias kgs 'k get svc'
-alias kgc 'k get configmap'
-alias kgsec 'k get secret'
-# edit
 alias ke 'k edit'
-alias ked 'k edit deployment'
-alias kei 'k edit ingress'
-alias kep 'k edit po'
-alias kes 'k edit svc'
-alias kec 'k edit configmap'
-alias kesec 'k edit secret'
-# describe
 alias kd 'k describe'
-alias kdg 'k describe deployment'
-alias kdi 'k describe ingress'
-alias kdp 'k describe po'
-alias kds 'k describe svc'
-alias kdc 'k describe configmap'
-alias kdsec 'k describe secret'
-# exec
+alias kaf 'k apply -f'
 alias kexec 'k exec -it'
+alias kdebug 'kubectl-debug'
 
 # }}}
 
@@ -243,7 +202,7 @@ end
 
 # }}}
 # wininfo           {{{
-# info about open windows
+# get info about open windows
 
 # copyright 2007 - 2010 Christopher Bratusek
 function wininfo
@@ -503,9 +462,9 @@ function loadenv
 end
 
 # }}}
-# kube_prompt       {{{
+# kprompt           {{{
 
-function kube_prompt
+function kprompt
     if ! set -q KUBE_PROMPT_ENABLED
         export KUBE_PROMPT_ENABLED
     else
@@ -514,26 +473,5 @@ function kube_prompt
 end
 
 # }}}
-
-# }}}
-# history subst   ---------------------------------------------- {{{
-#
-# Syntax:
-# To just rerun your last command, simply type '!!'
-# '!! sudo' will prepend sudo to your most recent command
-# Running !! with anything other than sudo will append the argument to your most recent command
-# To add another command to prepend list remove the # on line 10 and put the command in the quotes. Repeat as needed
-function !!;
-  set var (history | head -n 1)
-  if test $argv
-    if test $argv = "sudo"        #; or "any other command you want to prepend"
-        eval $argv $var
-    else
-        eval $var $argv
-    end
-    else
-        eval $var
-  end
-end
 
 # }}}
