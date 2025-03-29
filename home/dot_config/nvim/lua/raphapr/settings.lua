@@ -54,8 +54,6 @@ opt.backupdir = vim.env.HOME .. "/.config/nvim/tmo/backup"
 -- prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
 
-vim.g.python3_host_prog = vim.env.HOME .. "/.virtualenvs/neovim/bin/python"
-
 -------------------------------------- folding -----------------------------------------
 
 vim.cmd([[
