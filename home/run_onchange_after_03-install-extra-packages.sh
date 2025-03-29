@@ -13,7 +13,15 @@ cargo binstall mise
 
 pushd "$HOME" || exit
 mise install
+mise upgrade
 popd || exit
+
+########################################################
+# yazi
+########################################################
+
+ya pack -a yazi-rs/flavors:catppuccin-mocha
+ya pack -a dedukun/bookmarks
 
 ########################################################
 # fonts
@@ -29,24 +37,10 @@ fc-cache
 # virtualfish
 ########################################################
 
-pip install --upgrade --no-deps --break-system-packages virtualenv filelock distlib
-
-if ! pip show virtualfish &>/dev/null; then
-  pip install --upgrade --no-deps --break-system-packages virtualfish
-  vf install
-  vf addplugins global_requirements
-  exec fish
-else
-  echo "virtualfish is already installed."
-fi
-
-# neovim virtualenv
-fish -c "
-vf new neovim
-vf activate neovim
-pip install neovim
-vf deactivate
-"
+pip install --upgrade --break-system-packages pip
+pip install --upgrade --no-deps --break-system-packages virtualenv filelock distlib virtualfish
+vf install
+vf addplugins global_requirements
 
 ########################################################
 # npm
