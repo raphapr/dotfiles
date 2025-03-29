@@ -1,3 +1,4 @@
+7zip
 a52dec
 aalib
 abseil-cpp
@@ -50,6 +51,7 @@ bcprov
 bind
 binutils
 bison
+blas
 blueman
 bluez
 bluez-libs
@@ -74,6 +76,7 @@ cairomm
 cairomm-1.16
 cantarell-fonts
 capstone
+cblas
 cdparanoia
 cheese
 chezmoi
@@ -146,6 +149,7 @@ edk2-ovmf
 efibootmgr
 efivar
 electron32
+electron34
 enchant
 engrampa
 ethtool
@@ -171,6 +175,7 @@ filesystem
 findutils
 firefox
 firefox-tridactyl
+firefoxpwa
 fish
 flac
 flameshot
@@ -206,6 +211,7 @@ gdu
 gendesk
 geoclue
 gettext
+ghostscript
 giflib
 girara
 git
@@ -231,6 +237,7 @@ gnome-menus
 gnome-themes-extra
 gnome-video-effects
 gnu-netcat
+gnulib-l10n
 gnupg
 gnutls
 gobject-introspection-runtime
@@ -243,12 +250,14 @@ gpm
 gptfdisk
 graphene
 graphite
+graphviz
 grep
 groff
 grub
 grub-theme-manjaro
 gsettings-desktop-schemas
 gsettings-system-schemas
+gsfonts
 gsm
 gssdp
 gssproxy
@@ -262,6 +271,7 @@ gst-plugins-ugly
 gstreamer
 gtest
 gtk-engines
+gtk-layer-shell
 gtk-update-icon-cache
 gtk2
 gtk3
@@ -271,6 +281,7 @@ gtkmm3
 gtksourceview3
 gtksourceview4
 gtop
+gts
 guile
 gumbo-parser
 gupnp
@@ -306,6 +317,7 @@ i3lock
 iana-etc
 icedtea-web
 icu
+ijs
 illyria-wallpaper
 imagemagick
 imath
@@ -336,6 +348,7 @@ jre8-openjdk-headless
 json-c
 json-glib
 jsoncpp
+k9s
 kauth5
 kbd
 kconfig5
@@ -358,14 +371,17 @@ kwindowsystem5
 l-smash
 ladspa
 lame
+lapack
 lazygit
 lcms2
 ldb
+leancrypto
 leptonica
 less
 lib32-alsa-lib
 lib32-alsa-plugins
 lib32-at-spi2-core
+lib32-audit
 lib32-brotli
 lib32-bzip2
 lib32-cairo
@@ -467,6 +483,7 @@ lib32-pango
 lib32-pcre2
 lib32-pipewire
 lib32-pixman
+lib32-spirv-tools
 lib32-sqlite
 lib32-systemd
 lib32-util-linux
@@ -513,6 +530,7 @@ libcamera-ipa
 libcanberra
 libcap
 libcap-ng
+libcbor
 libcdio
 libcdio-paranoia
 libcheese
@@ -533,6 +551,7 @@ libde265
 libdecor
 libdeflate
 libdispatch
+libdisplay-info
 libdovi
 libdrm
 libdv
@@ -570,6 +589,7 @@ libgxps
 libheif
 libice
 libid3tag
+libidn
 libidn2
 libiec61883
 libieee1284
@@ -635,6 +655,7 @@ libopenmpt
 libopenraw
 libosinfo
 libp11-kit
+libpaper
 libpcap
 libpciaccess
 libpgm
@@ -647,7 +668,6 @@ libportal
 libportal-gtk4
 libproxy
 libpsl
-libptytty
 libpulse
 libqmi
 libqrtr-glib
@@ -728,6 +748,7 @@ libxdp
 libxext
 libxfce4ui
 libxfce4util
+libxfce4windowing
 libxfixes
 libxfont2
 libxft
@@ -769,6 +790,7 @@ linux61-headers
 linux66
 linux66-headers
 lirc
+llhttp
 llvm
 llvm-libs
 lm_sensors
@@ -853,6 +875,7 @@ neon
 neovim
 net-snmp
 net-tools
+netpbm
 nettle
 network-manager-applet
 networkmanager
@@ -866,7 +889,7 @@ ngrep
 nm-connection-editor
 nmap
 node-gyp
-nodejs
+nodejs-lts-jod
 nodejs-nopt
 noto-fonts
 noto-fonts-cjk
@@ -878,6 +901,7 @@ nss-mdns
 ntfs-3g
 numactl
 numlockx
+nvidia-driver-assistant
 oath-toolkit
 ocl-icd
 onetbb
@@ -902,7 +926,6 @@ orc
 os-prober
 osinfo-db
 p11-kit
-p7zip
 pacman
 pacman-contrib
 pacman-mirrors
@@ -1032,6 +1055,7 @@ python-jaraco.functools
 python-jaraco.text
 python-jmespath
 python-keyutils
+python-legacy-cgi
 python-markdown
 python-markdown-it-py
 python-mdurl
@@ -1039,6 +1063,7 @@ python-merge3
 python-more-itertools
 python-multidict
 python-npyscreen
+python-numpy
 python-orjson
 python-packaging
 python-paramiko
@@ -1141,7 +1166,6 @@ readline
 redis
 redshift
 refind
-reiserfsprogs
 remmina
 rhash
 ripgrep
@@ -1189,9 +1213,10 @@ sane
 sbc
 screenfetch
 scrot
-sdl2
+sdl2-compat
 sdl2_image
 sdl2_ttf
+sdl3
 seabios
 sed
 semver
@@ -1351,6 +1376,7 @@ xapp
 xautolock
 xbitmaps
 xcape
+xcb-imdkit
 xcb-proto
 xcb-util
 xcb-util-cursor
@@ -1370,6 +1396,7 @@ xdg-desktop-portal-gtk
 xdg-user-dirs
 xdg-user-dirs-gtk
 xdg-utils
+xdot
 xdotool
 xf86-input-elographics
 xf86-input-evdev
@@ -1417,6 +1444,7 @@ xz
 yajl
 yarn
 yay
+yazi
 zathura
 zathura-pdf-mupdf
 zbar
@@ -1426,6 +1454,7 @@ zeromq
 zimg
 zip
 zix
+zk
 zlib
 zoxide
 zsa-udev
@@ -1433,6 +1462,3 @@ zsh
 zstd
 zvbi
 zxing-cpp
-zk
-ttf-joypixels
-firefoxpwa
