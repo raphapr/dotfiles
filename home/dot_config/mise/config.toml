@@ -2,7 +2,7 @@
 node='20.5.0'
 terraform='1.5.7'
 opentofu='1.7.2'
-golang='1.22.2'
+golang='1.23'
 kubectl='1.29.0'
 shellcheck='0.8.0'
 helm='3.8.2'
@@ -16,6 +16,7 @@ yazi = "latest"
 'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
+go = "1.23"
 
 [settings]
 experimental = true

@@ -100,7 +100,6 @@ alias lash 'eza -l'
 alias l 'eza'
 alias lt 'eza -T --icons'
 alias k 'kill -9'
-alias y 'yazi'
 alias v 'nvim'
 alias vim 'nvim'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
@@ -470,6 +469,18 @@ function kprompt
     else
         set -e KUBE_PROMPT_ENABLED
     end
+end
+
+# }}}
+# yazi              {{{
+
+function y
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		builtin cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
 end
 
 # }}}

@@ -22,6 +22,7 @@ popd || exit
 
 ya pack -a yazi-rs/flavors:catppuccin-mocha
 ya pack -a dedukun/bookmarks
+ya pack --upgrade
 
 ########################################################
 # fonts
