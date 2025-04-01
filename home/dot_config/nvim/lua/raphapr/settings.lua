@@ -17,7 +17,8 @@ opt.splitright = true
 
 -- enable syntax highlighting
 opt.background = "dark"
-opt.nu = true
+opt.number = true
+opt.relativenumber = true
 
 -- settings for split windows
 opt.splitbelow = true

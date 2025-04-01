@@ -2,7 +2,6 @@ return {
   -------------------------------------- misc -------------------------------------------
   "editorconfig/editorconfig-vim",
   "tridactyl/vim-tridactyl",
-  "sitiom/nvim-numbertoggle",
   "norcalli/nvim-colorizer.lua",
   { "mg979/vim-visual-multi", event = "BufRead" },
   { "towolf/vim-helm", ft = { "helm" } },
