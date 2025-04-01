@@ -9,6 +9,9 @@ g.loaded_netrwPlugin = 1
 
 -------------------------------------- options -----------------------------------------
 
+-- disable mouse
+vim.cmd([[set mouse=]])
+
 -- true colors
 opt.termguicolors = true
 
