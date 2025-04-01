@@ -28,6 +28,9 @@ return {
           { mode = "n", keys = "<Leader>" },
           { mode = "x", keys = "<Leader>" },
 
+          -- lsp
+          { mode = "n", keys = "g" },
+
           -- Marks
           { mode = "n", keys = "'" },
           { mode = "n", keys = "`" },
@@ -46,12 +49,13 @@ return {
           { mode = "n", keys = "<leader>g", desc = "Telescope" },
           { mode = "n", keys = "<leader>t", desc = "Git" },
           { mode = "n", keys = "<leader>x", desc = "Trouble" },
-          { mode = "n", keys = "<leader>l", desc = "LSP" },
           { mode = "n", keys = "<leader>e", desc = "Edit" },
           { mode = "n", keys = "<leader>m", desc = "Miscellaneous" },
           { mode = "n", keys = "<leader>r", desc = "Rest" },
           { mode = "n", keys = "<leader>z", desc = "zk" },
+          { mode = "n", keys = "<leader>l", desc = "LSP Server" },
           { mode = "n", keys = "go", desc = "Go" },
+          { mode = "n", keys = "gr", desc = "LSP" },
 
           -- Visual mode
           { mode = "x", keys = "<leader>g", desc = "Telescope" },

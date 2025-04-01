@@ -10,6 +10,7 @@ return {
   { "hashivim/vim-terraform", ft = { "terraform" } },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
   { "andymass/vim-matchup", event = "BufReadPost" },
+  { "mcauley-penney/visual-whitespace.nvim", config = true, keys = { "v", "V", "<C-v>" } },
   -------------------------------------- scope.nvim -------------------------------------
   {
     "tiagovla/scope.nvim",
