@@ -226,6 +226,7 @@ return {
           "bashls",
           "terraformls",
           "yamlls",
+          "harper_ls",
         },
         handlers = {
           -- default handler
@@ -238,7 +239,24 @@ return {
           -- lsp servers settings
           ------------------------
 
-          function()
+          ["harper_ls"] = function()
+            require("lspconfig").harper_ls.setup({
+              filetypes = { "markdown" },
+              settings = {
+                ["harper-ls"] = {
+                  isolateEnglish = true,
+                  codeActions = {
+                    forceStable = true,
+                  },
+                  markdown = {
+                    IgnoreLinkTitle = true,
+                  },
+                },
+              },
+            })
+          end,
+
+          ["yamlls"] = function()
             require("lspconfig").yamlls.setup({
               settings = {
                 yaml = {
@@ -248,7 +266,7 @@ return {
             })
           end,
 
-          function()
+          ["pyright"] = function()
             require("lspconfig").pyright.setup({
               settings = {
                 pyright = {
@@ -265,7 +283,7 @@ return {
             })
           end,
 
-          function()
+          ["tflint"] = function()
             require("lspconfig").tflint.setup({
               cmd = {
                 "tflint",

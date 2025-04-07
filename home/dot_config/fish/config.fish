@@ -463,9 +463,9 @@ function loadenv
 end
 
 # }}}
-# kprompt           {{{
+# kubernetes prompt {{{
 
-function kprompt
+function kp
     if ! set -q KUBE_PROMPT_ENABLED
         export KUBE_PROMPT_ENABLED
     else
