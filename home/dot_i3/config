@@ -4,7 +4,6 @@ set $mod Mod4
 set $mod2 Mod4+Shift
 set $BROWSER    firefox
 set $TERM       kitty
-set $TMUX       kitty -e $HOME/.bin/tmux-session main
 set $FM         thunar
 set $PRINT      flameshot gui
 
@@ -62,8 +61,8 @@ bindsym $mod+BackSpace kill
 bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
 # %%hotkey: rofi window mode
 bindsym $mod+Tab exec rofi -show window -config ~/.config/rofi/launchers/type-2/style-5.rasi
-# %%hotkey: rofi-history
-bindsym $mod+m exec --no-startup-id ~/.bin/rofi-history
+# %%hotkey: rofi-i3-hotkeys
+bindsym $mod+m exec --no-startup-id ~/.bin/rofi-i3-hotkeys
 # %%hotkey: rofi-copyq
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
 # %%hotkey: rofi-powermenu
@@ -78,7 +77,7 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 # %%hotkey: change focus up
 bindsym $mod+k focus up
-# %%hotkey: change focus rifht
+# %%hotkey: change focus right
 bindsym $mod+l focus right
 
 # %%hotkey: move focused window left
@@ -193,41 +192,44 @@ bindsym $mod2+0 move container to workspace 10
 #}}}
 # Custom Shortcuts      ----------------------------------------------------- {{{
 
-# %shortcut: google chrome ingonito
+# %%hotkey: google chrome ingonito
 bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
 
-# %shortcut: start terminal
+# %%hotkey: start terminal
 bindsym $mod+Return exec --no-startup-id $TERM
 
-# %shortcut: start a terminal with tmux
-bindsym $mod+shift+Return exec $TMUX
+# %%hotkey: open tmux session main
+bindsym $mod2+Return exec kitty -e $HOME/.bin/tmux-session main
 
-# %shortcut: browser
+# %%hotkey: open tmux session screen2
+bindsym $mod2+n exec kitty -e $HOME/.bin/tmux-session screen2
+
+# %%hotkey: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
-# %shortcut: flameshot print screen
+# %%hotkey: flameshot print screen
 bindsym --release $mod+Print exec --no-startup-id unset SESSION_MANAGER && $PRINT
 
-# %shortcut: screensaver
+# %%hotkey: screensaver
 bindsym $mod+t exec --no-startup-id ~/.bin/suspend-screensaver
 
-# %shortcut: keyboard layout
+# %%hotkey: keyboard layout
 bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
 
-# %shortcut: lock screen
+# %%hotkey: lock screen
 bindsym $mod+x exec --no-startup-id loginctl lock-session
 
-# %shortcut: move workspace to output left/right
+# %%hotkey: move workspace to output left/right
 bindsym $mod+shift+x move workspace to output left
 
-# %shortcut: move workspace to output above/below
+# %%hotkey: move workspace to output above/below
 bindsym $mod+bracketleft move workspace to output up
 
-# %shortcut: volume up
+# %%hotkey: volume up
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.bin/volume up
-# %shortcut: volume down
+# %%hotkey: volume down
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
-# %shortcut: volume mute
+# %%hotkey: volume mute
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
 # media player controller
@@ -241,13 +243,13 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec --no-startup-id  "brightnessctl set 25+"
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 25-"
 
-# %shortcut: mute spotify player
+# %%hotkey: mute spotify player
 bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
 
-# %shortcut: dunst close-all
+# %%hotkey: dunst close-all
 bindsym Ctrl+space exec --no-startup-id dunstctl close-all
 
-# %shortcut: copyq toggle
+# %%hotkey: copyq toggle
 bindsym $mod+c exec --no-startup-id copyq toggle
 
 #}}}
@@ -301,7 +303,7 @@ for_window [title="WhatsDesk"] move to workspace 2
 # Scratchpads         ------------------------------------------------------- {{{
 
 # Launch scratchpad-terminal in case accidentally closed or whatever
-bindsym $mod+Shift+s exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
+bindsym $mod2 exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
 
 exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
 for_window [class="scratchpad-terminal"] move to scratchpad
