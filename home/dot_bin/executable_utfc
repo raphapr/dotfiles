@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# convert recusiverly all files from ISO-8859 to UTF-8
-
-find . -name \*.srt -type f | \
-    (while read file; do
-        iconv -f ISO-8859-14 "$file" -t UTF-8 -o "$file"utf
-        mv "$file"utf "$file"
-    done);

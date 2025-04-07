@@ -111,12 +111,14 @@ alias ef 'v ~/.config/fish/config.fish'
 alias eb 'v ~/.bashrc'
 alias ev 'v +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
 alias i3c 'v ~/.i3/config'
+alias httpf 'v +"cd ~/Cloud/Sync/code/http-files" +":Telescope find_files"'
+alias xmerge 'xrdb -merge ~/.Xresources'
+# notes
 alias notes 'v +"cd ~/Cloud/Sync/notebook" +":ZkTags"'
 alias daily 'zk daily'
 alias tomorrow 'zk tomorrow'
 alias weekly 'zk weekly'
-alias httpf 'v +"cd ~/Cloud/Sync/code/http-files" +":Telescope find_files"'
-alias xmerge 'xrdb -merge ~/.Xresources'
+alias backlog 'v ~/Cloud/Sync/notebook/backlog.md'
 # git
 alias g "git"
 alias gpull "git pull origin (git rev-parse --abbrev-ref HEAD)"

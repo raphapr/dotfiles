@@ -20,6 +20,7 @@ vim.keymap.set("n", "<S-Tab>", ":BufferPrevious<CR>", { silent = true, desc = "s
 vim.keymap.set("n", "<leader>en", ":vsplit ~/.config/nvim/lua/raphapr/init.lua<cr>", { desc = "Edit: neovim config file" })
 vim.keymap.set("n", "<leader>ef", ":vsplit ~/.config/fish/config.fish<cr>", { desc = "Edit: fish config file" })
 vim.keymap.set("n", "<leader>ei", ":vsplit ~/.i3/config<cr>", { desc = "Edit: i3wm config file" })
+vim.keymap.set("n", "<leader>eb", ":e ~/Cloud/Sync/notebook/backlog.md<cr>", { desc = "Edit: backlog file" })
 
 -- arrow keys
 vim.keymap.set("n", "j", "gj", { noremap = true, desc = "move cursor down" })

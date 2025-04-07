@@ -9,7 +9,3 @@ tags: [journal, daily]
 - [ ] Unchecked
 - [x] Checked
 - [-] Todo
-
-# Notes
-
--
