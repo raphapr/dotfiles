@@ -21,7 +21,7 @@ $ chezmoi init raphapr --apply
 - neovim
 - i3wm
 - polybar
-- fish shell
+- fish
 - tmux
 - yazi
 - thunar
@@ -31,7 +31,7 @@ $ chezmoi init raphapr --apply
 - feh
 - fzf
 - rofi
-- htop
+- btop
 - copyq
 - direnv
 - flameshot
@@ -43,4 +43,4 @@ $ chezmoi init raphapr --apply
 - atuin
 - dropbox
 - mise
-- syncthing
+- starship

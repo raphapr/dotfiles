@@ -245,6 +245,9 @@ return {
               settings = {
                 ["harper-ls"] = {
                   isolateEnglish = true,
+                  linters = {
+                    SentenceCapitalization = false,
+                  },
                   codeActions = {
                     forceStable = true,
                   },
