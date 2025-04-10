@@ -36,6 +36,12 @@ return {
           { mode = "n", keys = "`" },
           { mode = "x", keys = "'" },
           { mode = "x", keys = "`" },
+
+          -- Registers
+          { mode = "n", keys = '"' },
+          { mode = "x", keys = '"' },
+          { mode = "i", keys = "<C-r>" },
+          { mode = "c", keys = "<C-r>" },
         },
         clues = {
           miniclue.gen_clues.builtin_completion(),
@@ -56,6 +62,7 @@ return {
           { mode = "n", keys = "<leader>l", desc = "LSP Server" },
           { mode = "n", keys = "go", desc = "Go" },
           { mode = "n", keys = "gr", desc = "LSP" },
+          { mode = "n", keys = "gh", desc = "Yank History" },
 
           -- Visual mode
           { mode = "x", keys = "<leader>g", desc = "Telescope" },
