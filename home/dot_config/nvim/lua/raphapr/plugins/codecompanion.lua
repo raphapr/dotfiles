@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "ravitemer/mcphub.nvim",
   },
   cmd = { "CodeCompanionChat", "CodeCompanion", "CodeCompanionActions" },
   lazy = true,
@@ -10,13 +11,18 @@ return {
     strategies = {
       chat = {
         adapter = "copilot",
+        tools = {
+          ["mcp"] = {
+            callback = function()
+              return require("mcphub.extensions.codecompanion")
+            end,
+            description = "Call tools and resources from the MCP Servers",
+          },
+        },
       },
       inline = {
         adapter = "copilot",
       },
-    },
-    opts = {
-      log_level = "DEBUG",
     },
   },
   keys = {
