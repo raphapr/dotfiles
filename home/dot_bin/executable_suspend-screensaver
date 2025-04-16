@@ -2,14 +2,17 @@
 
 statefile=~/.screensaver-state
 pid=$(pidof xidlehook)
+
 if [ -z "$pid" ]; then
-    ~/.bin/xidlehook-lock &
-    sudo systemctl unmask suspend.target
-    notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
-    echo "%{F#4DB6AC} ON"  > "$statefile"
+  ~/.bin/xidlehook-lock &
+  xset s on
+  sudo systemctl unmask suspend.target
+  notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
+  echo "%{F#4DB6AC} ON" >"$statefile"
 else
-    kill "$pid"
-    sudo systemctl mask suspend.target
-    notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
-    echo "%{F#FF5252} OFF"  > "$statefile"
+  kill "$pid"
+  xset s off
+  sudo systemctl mask suspend.target
+  notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
+  echo "%{F#FF5252} OFF" >"$statefile"
 fi
