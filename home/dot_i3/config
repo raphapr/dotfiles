@@ -303,7 +303,7 @@ for_window [title="WhatsDesk"] move to workspace 2
 # Scratchpads         ------------------------------------------------------- {{{
 
 # Launch scratchpad-terminal in case accidentally closed or whatever
-bindsym $mod2 exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
+bindsym $mod2+s exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
 
 exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad
 for_window [class="scratchpad-terminal"] move to scratchpad
