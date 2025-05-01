@@ -227,6 +227,7 @@ return {
           "terraformls",
           "yamlls",
           "harper_ls",
+          "dockerls",
         },
         handlers = {
           -- default handler
