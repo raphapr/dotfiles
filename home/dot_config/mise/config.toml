@@ -20,4 +20,3 @@ go = "1.23"
 
 [settings]
 experimental = true
-idiomatic_version_file_enable_tools = ["python"]
