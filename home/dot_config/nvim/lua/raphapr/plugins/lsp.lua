@@ -226,7 +226,6 @@ return {
           "bashls",
           "terraformls",
           "yamlls",
-          "harper_ls",
           "dockerls",
         },
         handlers = {
@@ -239,36 +238,6 @@ return {
           ------------------------
           -- lsp servers settings
           ------------------------
-
-          ["harper_ls"] = function()
-            require("lspconfig").harper_ls.setup({
-              filetypes = { "markdown" },
-              settings = {
-                ["harper-ls"] = {
-                  isolateEnglish = true,
-                  linters = {
-                    SentenceCapitalization = false,
-                  },
-                  codeActions = {
-                    forceStable = true,
-                  },
-                  markdown = {
-                    IgnoreLinkTitle = true,
-                  },
-                },
-              },
-            })
-          end,
-
-          ["yamlls"] = function()
-            require("lspconfig").yamlls.setup({
-              settings = {
-                yaml = {
-                  keyOrdering = false,
-                },
-              },
-            })
-          end,
 
           ["pyright"] = function()
             require("lspconfig").pyright.setup({

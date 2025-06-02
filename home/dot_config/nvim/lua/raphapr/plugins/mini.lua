@@ -1,7 +1,7 @@
 return {
   {
     "echasnovski/mini.nvim",
-    version = false,
+    version = "*",
     event = { "User LazyUIEnter", "LspAttach" },
     keys = {
       { "<C-e>", ":lua require('mini.bufremove').delete()<CR>", silent = true },
