@@ -198,7 +198,20 @@ end
 
 # gist upload com xclip funcionando
 function wallc
-    cp $argv ~/.wallpaper.png ; feh --bg-fill ~/.wallpaper.png
+    set -l wallpaper ~/.wallpaper.png
+    if test (count $argv) -eq 0
+        feh --bg-fill $wallpaper
+    else
+        set -l img $argv[1]
+        if not test -f $img
+            echo "File not found: $img"
+            return 1
+        end
+        if not test $img = $wallpaper
+            cp $img $wallpaper
+        end
+        feh --bg-fill $wallpaper
+    end
 end
 
 # }}}
