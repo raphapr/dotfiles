@@ -10,9 +10,9 @@ return {
     config = function()
       require("mini.indentscope").setup()
       require("mini.bufremove").setup()
-      require("mini.pairs").setup()
       require("mini.surround").setup()
       require("mini.notify").setup({ lsp_progress = { enable = false } })
+      require("mini.pairs").setup({ mappings = { ["`"] = false } })
       vim.notify = require("mini.notify").make_notify()
 
       local miniclue = require("mini.clue")
