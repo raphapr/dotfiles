@@ -52,6 +52,7 @@ return {
       "nvim-lua/plenary.nvim",
     },
     cmd = "MCPHub",
+    tag = "v5.13.0",
     build = "npm install -g mcp-hub@latest",
     config = function()
       require("mcphub").setup({
