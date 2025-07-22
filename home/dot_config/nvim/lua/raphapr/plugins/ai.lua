@@ -25,7 +25,7 @@ return {
           opts = {
             keymap = "gh",
             auto_generate_title = true,
-            continue_last_chat = true,
+            continue_last_chat = false,
           },
         },
         mcphub = {
