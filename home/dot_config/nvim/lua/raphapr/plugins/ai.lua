@@ -13,10 +13,10 @@ return {
     opts = {
       strategies = {
         chat = {
-          adapter = "copilot",
+          adapter = "anthropic",
         },
         inline = {
-          adapter = "copilot",
+          adapter = "anthropic",
         },
       },
       extensions = {
@@ -65,6 +65,38 @@ return {
             make_vars = true, -- make chat #variables from MCP server resources
             make_slash_commands = true, -- make /slash commands from MCP server prompts
           },
+        },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = { "InsertEnter", "LspAttach", "VeryLazy" },
+    config = function()
+      require("copilot").setup({
+        panel = {
+          keymap = {
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<CR>",
+            refresh = "gr",
+            open = "<M-CR>",
+          },
+        },
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<C-l>",
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+        filetypes = {
+          yaml = true,
+          markdown = true,
         },
       })
     end,
