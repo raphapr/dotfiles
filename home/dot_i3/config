@@ -240,8 +240,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id  "brightnessctl set 25+"
-bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 25-"
+bindsym XF86MonBrightnessUp exec --no-startup-id  "brightnessctl set 25%+"
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 25%-"
 
 # %%hotkey: mute spotify player
 bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
