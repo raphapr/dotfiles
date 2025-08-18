@@ -16,6 +16,7 @@ yazi = "latest"
 'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
+'npm:opencode-ai'='latest'
 go = "1.23"
 
 [settings]
