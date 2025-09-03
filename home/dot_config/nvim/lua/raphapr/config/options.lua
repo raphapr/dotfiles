@@ -15,6 +15,7 @@ vim.cmd([[set mouse=]])
 -- true colors
 opt.termguicolors = true
 
+-- window splitting
 opt.splitbelow = true
 opt.splitright = true
 
@@ -23,11 +24,7 @@ opt.background = "dark"
 opt.number = true
 opt.relativenumber = true
 
--- settings for split windows
-opt.splitbelow = true
-opt.splitright = true
-
--- Settings indentation style default
+-- settings indentation style default
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
@@ -37,7 +34,7 @@ opt.autoindent = true
 opt.copyindent = true
 opt.preserveindent = true
 
--- Undo settings files
+-- undo settings files
 opt.undofile = true
 opt.undolevels = 1000
 opt.undoreload = 10000
@@ -46,14 +43,15 @@ opt.backupskip = "/tmp/*,/private/tmp/*"
 -- show cursor column
 opt.cursorcolumn = true
 
--- improve perfomance
+-- improve performance
 opt.ttyfast = true
 
 -- undo / backup
+local constants = require("raphapr.config.constants")
 opt.backup = true
 opt.swapfile = false
-opt.undodir = vim.env.HOME .. "/.config/nvim/undodir"
-opt.backupdir = vim.env.HOME .. "/.config/nvim/tmo/backup"
+opt.undodir = constants.paths.undodir
+opt.backupdir = constants.paths.backupdir
 
 -- prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
