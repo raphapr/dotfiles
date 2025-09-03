@@ -95,7 +95,7 @@ bindsym $mod2+Left move left
 bindsym $mod2+Down move down
 # %%hotkey: move focused window up (alternative)
 bindsym $mod2+Up move up
-# %%hotkey: move focused window rifht (alternative)
+# %%hotkey: move focused window right (alternative)
 bindsym $mod2+Right move right
 
 # %%hotkey: split in horizontal orientation
@@ -192,7 +192,7 @@ bindsym $mod2+0 move container to workspace 10
 #}}}
 # Custom Shortcuts      ----------------------------------------------------- {{{
 
-# %%hotkey: google chrome ingonito
+# %%hotkey: google chrome incognito
 bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
 
 # %%hotkey: start terminal
@@ -322,13 +322,13 @@ mode "$multi_monitor" {
     bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png mode "default"
+    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
     bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --same-as eDP1, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+F11 mode "default"
+    bindsym $mod+F10 mode "default"
 }
 
 #}}}
