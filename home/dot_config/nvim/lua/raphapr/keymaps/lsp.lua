@@ -3,7 +3,7 @@
 local M = {}
 
 function M.setup_keymaps(event)
-  local U = require("raphapr.utils")
+  local U = require("raphapr.config.utils")
   local function opts(desc)
     return { desc = "LSP: " .. desc, buffer = event.buf, remap = false, silent = true }
   end
@@ -31,3 +31,4 @@ function M.setup_keymaps(event)
 end
 
 return M
+
