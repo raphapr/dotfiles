@@ -47,6 +47,8 @@ set NPM_PACKAGES "$HOME/.npm-packages"
 set PATH $PATH $NPM_PACKAGES/bin
 set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
+fish_add_path /home/raphael/.opencode/bin
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -501,6 +503,3 @@ end
 # }}}
 
 # }}}
-
-# opencode
-fish_add_path /home/raphael/.opencode/bin
