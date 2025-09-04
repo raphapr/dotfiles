@@ -8,6 +8,7 @@ return {
       { "nvim-lua/popup.nvim" },
       { "nvim-tree/nvim-web-devicons" },
       { "debugloop/telescope-undo.nvim" },
+      { "nvim-telescope/telescope-ui-select.nvim" },
     },
     lazy = true,
     cmd = "Telescope",
@@ -31,6 +32,7 @@ return {
       telescope.load_extension("zoxide")
       telescope.load_extension("yank_history")
       telescope.load_extension("undo")
+      telescope.load_extension("ui-select")
       telescope.setup({
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
