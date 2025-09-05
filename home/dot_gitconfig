@@ -1,12 +1,12 @@
 [user]
   name = Raphael Ribeiro
   email = raphaelpr01@gmail.com
-	signingkey = FA70B2729F47724C
+  signingkey = FA70B2729F47724C
 [credential]
   helper = cache --timeout=3600
 [core]
   editor = nvim
-  excludesfile = /home/raphael/.gitignore_global
+  excludesfile = ~/.gitignore_global
   pager = diff-so-fancy | less --tabs=4 -RFX
 [alias]
   aa = add -A
@@ -58,14 +58,24 @@
 [pull]
   ff = only
 [commit]
-	gpgsign = true
+  gpgsign = true
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+# Modern Git improvements
+[rerere]
+  enabled = true
+[fetch]
+  prune = true
+[rebase]
+  autoStash = true
+[status]
+  showUntrackedFiles = all
 
 # get go private packages (https://go.dev/doc/faq#git_https)
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/

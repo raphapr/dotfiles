@@ -4,7 +4,11 @@
 
 # Preambulo           ---------------------------------------------- {{{
 
-export PATH="$PATH:$HOME/.bin"
+# Add ~/.bin to PATH if not already present
+case ":$PATH:" in
+*":$HOME/.bin:"*) ;;
+*) export PATH="$PATH:$HOME/.bin" ;;
+esac
 
 export EDITOR=nvim
 
@@ -170,12 +174,12 @@ alias gte='trans -b :en'    # portuguese to english
 alias gtb='trans -b'        # english to portuguese
 alias gtp='trans :en -p -b' # pronuncia
 
-# Pacman/Yaourt aliases
+# pacman/yay aliases
 alias p='sudo pacman'
 alias pacup='sudo pacman -Syuu'
 alias pblock="sudo rm -rf /var/lib/pacman/db.lck"
-alias y='yaourt'
-alias yup='yaourt -Syua' # Atualiza os repositorios do Arch + AUR
+alias y='yay'
+alias yup='yay -Syua' # Atualiza os repositorios do Arch + AUR
 alias mirror-update='sudo pacman-mirrors -g'
 
 #Baixar videos do Youtube (requer youtube-dl)
@@ -249,9 +253,9 @@ function gistt() {
 # }}}
 # ys                {{{
 
-# yaourt sem confirmação
+# yay sem confirmação
 function ys() {
-  yaourt -S $1 --noconfirm
+  yay -S $1 --noconfirm
 }
 
 # }}}
