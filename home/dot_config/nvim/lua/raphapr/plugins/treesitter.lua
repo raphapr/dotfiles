@@ -62,7 +62,7 @@ return {
         highlight = {
           enable = true,
           disable = { "vim" },
-          additional_vim_regex_highlighting = { "markdown" },
+          additional_vim_regex_highlighting = false,
         },
         incremental_selection = {
           enable = true,
