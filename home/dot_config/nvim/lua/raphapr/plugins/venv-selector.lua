@@ -11,7 +11,6 @@ return {
   keys = {
     { "<leader>ve", "<cmd>VenvSelect<cr>", desc = "Venv Select" },
   },
-  branch = "regexp", -- This is the regexp branch, use this for the new version
   config = function()
     local function shorter_name(filename)
       return filename:gsub(os.getenv("HOME"), "~"):gsub("/bin/python", "")

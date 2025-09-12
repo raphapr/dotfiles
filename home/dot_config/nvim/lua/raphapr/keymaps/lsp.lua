@@ -31,4 +31,3 @@ function M.setup_keymaps(event)
 end
 
 return M
-
