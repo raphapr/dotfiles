@@ -8,6 +8,7 @@ shellcheck='0.8.0'
 helm='3.8.2'
 terraform-ls='0.28.0'
 yazi = "latest"
+stern = "1.33.0"
 'cargo:eza'='latest'
 'cargo:tmux-sessionizer'='latest'
 'cargo:atuin'='latest'
