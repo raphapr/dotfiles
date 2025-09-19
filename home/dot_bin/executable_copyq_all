@@ -1,11 +1,17 @@
-var MAX_SIZE=100
+var MAX_SIZE = 100;
 
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.split(search).join(replacement);
-};
+// Use native regex replacement instead of split/join
+var newlineRegex = /\\n/g;
 
-for (var i=0; i<MAX_SIZE; i++) {
+// Pre-build format for faster concatenation
+var results = [];
+
+for (var i = 0; i < MAX_SIZE; i++) {
     var item = str(read(i));
-    print("(" + i + ")" + " " + item.replaceAll("\\n", "(newline)") + "\\n");
+    // Use regex replace (faster than split/join)
+    var processedItem = item.replace(newlineRegex, "(newline)");
+    results.push("(" + i + ") " + processedItem + "\\n");
 }
+
+// Single print call instead of multiple
+print(results.join(""));
