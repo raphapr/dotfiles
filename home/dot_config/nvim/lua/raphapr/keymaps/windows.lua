@@ -25,3 +25,4 @@ local function open_tmux_pane()
 end
 
 vim.keymap.set("n", '<leader>"', open_tmux_pane, { silent = true, noremap = true, desc = "open tmux pane in current directory" })
+

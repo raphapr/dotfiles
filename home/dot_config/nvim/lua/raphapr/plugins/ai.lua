@@ -95,6 +95,7 @@ return {
           },
         },
         filetypes = {
+          [""] = false, -- fix keymaps conflict with telescope
           yaml = true,
           markdown = true,
         },
