@@ -72,8 +72,28 @@ gh extension install seachicken/gh-poi
 ########################################################
 # awscli
 ########################################################
+
 pushd /tmp || exit
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install --update -i ~/.local/aws-cli -b ~/.local/bin
 popd || exit
+
+########################################################
+# kanata
+########################################################
+
+if [ "$(hostname)" = "bmo" ]; then
+  if ! getent group uinput >/dev/null; then
+    sudo groupadd --system uinput
+  fi
+  sudo usermod -aG input "$USER"
+  sudo usermod -aG uinput "$USER"
+  echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' |
+    sudo tee /etc/udev/rules.d/99-input.rules >/dev/null
+
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger
+
+  sudo modprobe uinput
+fi

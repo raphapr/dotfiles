@@ -14,6 +14,7 @@ stern = "1.33.0"
 'cargo:atuin'='latest'
 'cargo:yazi-fm'='latest'
 "cargo:yazi-cli"= 'latest'
+"cargo:kanata"= 'latest'
 'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
