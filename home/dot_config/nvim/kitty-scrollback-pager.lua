@@ -33,6 +33,11 @@ require("lazy").setup({
         vim.cmd.colorscheme("catppuccin")
       end,
     },
+    {
+      "folke/flash.nvim",
+      lazy = false,
+      keys = { { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash", } },
+    },
   },
   checker = { enabled = true },
 })
