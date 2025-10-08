@@ -96,4 +96,6 @@ if [ "$(hostname)" = "bmo" ]; then
   sudo udevadm trigger
 
   sudo modprobe uinput
+
+  systemctl --user --now enable kanata
 fi
