@@ -105,6 +105,7 @@ alias k 'kill -9'
 alias v 'nvim'
 alias vim 'nvim'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
+alias ot 'otter-launcher'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
