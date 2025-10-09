@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Centralized keyboard repeat rate configuration
+# Usage: set-keyboard-repeat [delay] [rate]
+# Default: delay=240ms, rate=30 repeats/second
+
+DELAY=${1:-240}
+RATE=${2:-30}
+
+# Set keyboard repeat rate
+xset r rate "$DELAY" "$RATE"

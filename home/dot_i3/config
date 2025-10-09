@@ -26,7 +26,7 @@ exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl 
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
 exec --no-startup-id ~/.bin/xidlehook-lock
-exec_always --no-startup-id xset r rate 240 30
+exec_always --no-startup-id ~/.bin/set-keyboard-repeat
 exec_always --no-startup-id xset -dpms
 exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --show-failed-attempts --ignore-empty-password -c 000000
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -300,7 +300,7 @@ for_window [title="WhatsApp Web"] move to workspace 2
 for_window [title="WhatsDesk"] move to workspace 2
 
 #}}}
-# Scratchpads         ------------------------------------------------------- {{{
+# Scratchpads           ----------------------------------------------------- {{{
 
 # Launch scratchpad-terminal in case accidentally closed or whatever
 bindsym $mod2+s exec kitty --class=scratchpad-terminal -e $HOME/.bin/tmux-session scratchpad

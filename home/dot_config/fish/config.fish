@@ -17,7 +17,7 @@ export GPG_TTY=(tty)
 source $HOME/.envsen
 
 if test "$DISPLAY"
-    xset r rate 240 30
+    ~/.bin/set-keyboard-repeat
 end
 
 if test -e $GOPATH/bin

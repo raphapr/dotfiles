@@ -11,7 +11,7 @@ sleep 1
 setxkbmap -option keypad:pointerkeys
 xmodmap ~/.Xmodmap
 
-xset r rate 240 30
+~/.bin/set-keyboard-repeat
 
 [[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
 
