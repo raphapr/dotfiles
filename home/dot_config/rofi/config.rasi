@@ -180,3 +180,5 @@ configuration {
 	me-accept-custom: "Control+MouseDPrimary";
 */
 }
+
+@theme "~/.config/rofi/launchers/type-1/style-11.rasi"

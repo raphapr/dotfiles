@@ -58,9 +58,9 @@ bindsym $mod2+b border toggle
 bindsym $mod+BackSpace kill
 
 # %%hotkey: rofi run mode
-bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
+bindsym $mod+space exec rofi -show drun
 # %%hotkey: rofi window mode
-bindsym $mod+Tab exec rofi -show window -config ~/.config/rofi/launchers/type-1/style-11.rasi
+bindsym $mod+Tab exec rofi -show window
 # %%hotkey: rofi-i3-hotkeys
 bindsym $mod+m exec --no-startup-id ~/.bin/rofi-i3-hotkeys
 # %%hotkey: rofi-copyq
