@@ -16,17 +16,16 @@
 # Source Code: https://github.com/kuokuo123/otter-launcher
 
 [general]
-default_module = "dd" # module to run when no prefix is matched
+default_module = "pp" # module to run when no prefix is matched
 exec_cmd = "sh -c" # exec command of your shell
 vi_mode = true # set true to use vi keybinds, false emacs keybinds
-esc_to_abort = true # useful for vi users
+esc_to_abort = false # useful for vi users
 cheatsheet_entry = "?" # when prompted, will show a list of configured modules
 cheatsheet_viewer = "less -R; clear" # command to show cheatsheet; through piping stdout
 clear_screen_after_execution = true
 loop_mode = true # don't quit after executing a module, useful with scratchpads
 external_editor = "nvim" # if set, press ctrl+e (or v in vi normal mode) to edit prompt in specified program
-#callback = "" # if set, will run after module execution; for example, calling swaymsg to adjust window size
-
+callback = "i3-msg '[class=\"scratchpad-launcher\"] scratchpad show' >> /dev/null" # if set, will run after module execution; for example, calling swaymsg to adjust window size
 
 # ANSI color codes are allowed. However, \x1b should be replaced with \u001B, because the rust toml crate cannot read \x as an escaped character
 [interface]
@@ -41,7 +40,7 @@ header_concatenate = false # print header and header_cmd output to the same line
 list_prefix = "  "
 selection_prefix = "\u001B[31;1m> "
 place_holder = "type and search"
-default_module_message = "  \u001B[33msearch\u001B[0m the internet" # shown when the default module is in use
+default_module_message = "  \u001B[33mlaunch\u001B[0m the app instantly" # shown when the default module is in use
 empty_module_message = "" # shown when the empty module is in use
 suggestion_mode = "list" # available options: list, hint
 suggestion_lines = 4 # 0 to disable suggestions and tab completion
@@ -163,3 +162,15 @@ prefix = "\u001B[32mgh\u001B[0m"
 cmd = "xdg-open 'https://github.com/search?type=code&q={}'"
 with_argument = true
 url_encode = true
+
+[[modules]]
+description = "search apps with fsel"
+prefix = "ss"
+cmd = "fsel -vv -r -ss {}"
+with_argument = true
+
+[[modules]]
+description = "launch apps instantly"
+prefix = "pp"
+cmd = "fsel -vv -r -p {}"
+with_argument = true

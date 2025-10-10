@@ -310,11 +310,11 @@ for_window [class="scratchpad-daily"] move to scratchpad, resize set width 1000 
 # %%hotkey: launch scratchpad-daily
 bindsym F11 [class="scratchpad-daily"] scratchpad show
 
-set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e otter-launcher
+set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -c 'otter-launcher'
 # %%hotkey: launch otter-launcher scratchpad in case accidentally closed or whatever
 bindsym $mod2+f exec $launcher
 exec $launcher
-for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 500 height 230, border none
+for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 500 height 300, border none
 # %%hotkey: launch otter-launcher
 bindsym $mod+f [class="scratchpad-launcher"] scratchpad show
 
