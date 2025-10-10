@@ -18,8 +18,8 @@
 [general]
 default_module = "pp" # module to run when no prefix is matched
 exec_cmd = "sh -c" # exec command of your shell
-vi_mode = true # set true to use vi keybinds, false emacs keybinds
-esc_to_abort = false # useful for vi users
+vi_mode = false # set true to use vi keybinds, false emacs keybinds
+esc_to_abort = true # useful for vi users
 cheatsheet_entry = "?" # when prompted, will show a list of configured modules
 cheatsheet_viewer = "less -R; clear" # command to show cheatsheet; through piping stdout
 clear_screen_after_execution = true
@@ -29,14 +29,14 @@ callback = "i3-msg '[class=\"scratchpad-launcher\"] scratchpad show' >> /dev/nul
 
 # ANSI color codes are allowed. However, \x1b should be replaced with \u001B, because the rust toml crate cannot read \x as an escaped character
 [interface]
-header_cmd = "fastfetch --structure break:colors:break:os:wm:shell:kernel:term:uptime:datetime:battery:break --key-type icon --logo-type data --logo \"$(krabby name bulbasaur --no-title)\""
+header_cmd = "fastfetch --structure break:colors:break:os:wm:shell:kernel:term:uptime:battery:break --key-type icon --logo-type data --logo \"$(krabby name bulbasaur --no-title)\""
 header = "  \u001B[7;1m launcher \u001B[0m "
 header_cmd_trimmed_lines = 1
 list_prefix = "    \u001B[36m-\u001B[0m "
 selection_prefix = "    \u001B[31;1m> "
 place_holder = ""
 suggestion_mode = "list"
-suggestion_lines = 5
+suggestion_lines = 6
 indicator_with_arg_module = "\u001B[31m^\u001B[0m "
 indicator_no_arg_module = "\u001B[31m$\u001B[0m "
 prefix_padding = 3
@@ -54,22 +54,6 @@ cmd = "xdg-open https://www.duckduckgo.com/?q='{}'" # try wm's exec command for 
 with_argument = true # if true, {} in cmd will be replaced with user input. if not explicitly set, taken as false.
 url_encode = true # should be true when calling webpages; this ensures special characters in url being readable to browsers; taken as false if not explicitly set
 unbind_proc = true # run cmd in a forked shell as opposed to as a child process; useful for launching gui programs; taken as false if not explicitly set
-
-[[modules]]
-description = "power menu (fzf)"
-prefix = "po"
-cmd = """
-function power {
-if [[ -n $1 ]]; then
-case $1 in
-"logout") session=`loginctl session-status | head -n 1 | awk '{print $1}'`; loginctl terminate-session $session ;;
-"suspend") systemctl suspend ;;
-"hibernate") systemctl hibernate ;;
-"reboot") systemctl reboot ;;
-"shutdown") systemctl poweroff ;;
-esac fi }
-power $(echo -e 'reboot\nshutdown\nlogout\nsuspend\nhibernate' | fzf --reverse --no-scrollbar --padding 1,3 --prompt 'Power Menu: ' | tail -1)
-"""
 
 [[modules]]
 description = "run commands"
@@ -129,6 +113,7 @@ prefix = "\u001B[32myt\u001B[0m"
 cmd = "xdg-open https://www.youtube.com/results?search_query='{}'"
 with_argument = true
 url_encode = true
+unbind_proc = true
 
 [[modules]]
 description = "search github code"
@@ -136,6 +121,7 @@ prefix = "\u001B[32mgh\u001B[0m"
 cmd = "xdg-open 'https://github.com/search?type=code&q={}'"
 with_argument = true
 url_encode = true
+unbind_proc = true
 
 [[modules]]
 description = "search google map"
@@ -143,6 +129,7 @@ prefix = "gm"
 cmd = "setsid -f xdg-open 'https://www.google.com/maps/search/{}'"
 with_argument = true
 url_encode = true
+unbind_proc = true
 
 [[modules]]
 description = "search apps with fsel"
@@ -155,3 +142,20 @@ description = "launch apps instantly"
 prefix = "pp"
 cmd = "fsel -vv -r -p {}"
 with_argument = true
+
+[[modules]]
+description = "i3 keys"
+prefix = "ik"
+cmd = "~/.bin/dmenu-i3-keys"
+
+[[modules]]
+description = "clipboard history"
+prefix = "cc"
+cmd = "~/.bin/dmenu-copyq"
+unbind_proc = true
+
+[[modules]]
+description = "power menu"
+prefix = "po"
+cmd = "~/.config/rofi/powermenu/powermenu.sh"
+unbind_proc = true

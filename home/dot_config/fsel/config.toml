@@ -1,0 +1,6 @@
+[keybinds]
+up = ["up", { key = "k", modifiers = "ctrl" }]
+down = ["down", { key = "j", modifiers = "ctrl" }]
+select = ["enter"]
+exit = ["esc", { key = "q", modifiers = "ctrl" }]
+pin = [{ key = "space", modifiers = "ctrl" }]

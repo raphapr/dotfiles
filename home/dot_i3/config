@@ -57,14 +57,10 @@ bindsym $mod2+b border toggle
 # %%hotkey: kill focused window
 bindsym $mod+BackSpace kill
 
-# %%hotkey: rofi run mode
-bindsym $mod+space exec rofi -show drun
 # %%hotkey: rofi window mode
 bindsym $mod+Tab exec rofi -show window
-# %%hotkey: rofi-i3-hotkeys
-bindsym $mod+m exec --no-startup-id ~/.bin/rofi-i3-hotkeys
-# %%hotkey: rofi-copyq
-bindsym $mod+n exec --no-startup-id ~/.bin/rofi-copyq
+# %%hotkey: show clipboard history (copyq)
+bindsym $mod+n exec --no-startup-id ~/.bin/dmenu-copyq
 # %%hotkey: rofi-powermenu
 bindsym $mod+0 exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
 
@@ -201,9 +197,6 @@ bindsym $mod+Return exec --no-startup-id $TERM
 # %%hotkey: open tmux session main
 bindsym $mod2+Return exec $TERM -e $HOME/.bin/tmux-session main
 
-# %%hotkey: open tmux session screen2
-bindsym $mod2+n exec $TERM -e $HOME/.bin/tmux-session screen2
-
 # %%hotkey: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
 
@@ -303,6 +296,8 @@ for_window [title="WhatsDesk"] move to workspace 2
 # Scratchpads           ----------------------------------------------------- {{{
 
 set $daily kitty --instance-group scratchpad-daily --class=scratchpad-daily -e $HOME/.bin/tmux-session scratchpad-daily
+set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -c 'otter-launcher'
+
 # %%hotkey: launch daily scratchpad in case accidentally closed or whatever
 bindsym $mod+F11 exec $daily
 exec $daily
@@ -310,13 +305,13 @@ for_window [class="scratchpad-daily"] move to scratchpad, resize set width 1000 
 # %%hotkey: launch scratchpad-daily
 bindsym F11 [class="scratchpad-daily"] scratchpad show
 
-set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -c 'otter-launcher'
 # %%hotkey: launch otter-launcher scratchpad in case accidentally closed or whatever
 bindsym $mod2+f exec $launcher
 exec $launcher
 for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 500 height 350, border none
 # %%hotkey: launch otter-launcher
 bindsym $mod+f [class="scratchpad-launcher"] scratchpad show
+bindsym $mod+space [class="scratchpad-launcher"] scratchpad show
 
 #}}}
 # Multi-monitor         ----------------------------------------------------- {{{
