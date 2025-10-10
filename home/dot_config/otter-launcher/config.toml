@@ -29,47 +29,21 @@ callback = "i3-msg '[class=\"scratchpad-launcher\"] scratchpad show' >> /dev/nul
 
 # ANSI color codes are allowed. However, \x1b should be replaced with \u001B, because the rust toml crate cannot read \x as an escaped character
 [interface]
-# use three quotes to write longer commands
-header = """
-                   \u001B[31m\u001B[0m $(cat /proc/loadavg | cut -d ' ' -f 1) \u001B[33m󰍛\u001B[0m $(free -h | awk 'FNR == 2 {print $3}' | sed 's/i//')
-  \u001B[34;1m$USER@$(printf $HOSTNAME)
- \u001B[0;1m """
-header_cmd = "" # run a command and print stdout above the header
-header_cmd_trimmed_lines = 0 # remove trailing lines from header_cmd output, in case of some programs appending excessive empty lines
-header_concatenate = false # print header and header_cmd output to the same line, default to false
-list_prefix = "  "
-selection_prefix = "\u001B[31;1m> "
-place_holder = "type and search"
-default_module_message = "  \u001B[33mlaunch\u001B[0m the app instantly" # shown when the default module is in use
-empty_module_message = "" # shown when the empty module is in use
-suggestion_mode = "list" # available options: list, hint
-suggestion_lines = 4 # 0 to disable suggestions and tab completion
-customized_list_order = false # false to list modules alphabetically; true to list as per the configured order in the below [[modules]] section
-indicator_with_arg_module = "\u001B[31m^\u001B[0m " # the sign showing whether a module should run with an argument
+header_cmd = "fastfetch --structure break:colors:break:os:wm:shell:kernel:term:uptime:datetime:battery:break --key-type icon --logo-type data --logo \"$(krabby name bulbasaur --no-title)\""
+header = "  \u001B[7;1m launcher \u001B[0m "
+header_cmd_trimmed_lines = 1
+list_prefix = "    \u001B[36m-\u001B[0m "
+selection_prefix = "    \u001B[31;1m> "
+place_holder = ""
+suggestion_mode = "list"
+suggestion_lines = 5
+indicator_with_arg_module = "\u001B[31m^\u001B[0m "
 indicator_no_arg_module = "\u001B[31m$\u001B[0m "
-prefix_padding = 3 # format prefixes to have a uniformed width
-# below color options affect all modules; per-module coloring can be configured using ansi codes individually
+prefix_padding = 3
 prefix_color = "\u001B[33m"
 description_color = "\u001B[39m"
-place_holder_color = "\u001B[30m"
-hint_color = "\u001B[30m" # suggestion color in hint mode
-# move the interface rightward or downward
-move_interface_right = 23
-move_interface_down = 1
-
-
-# overlay is a floating layer that can be printed with stdout and moved around; useful for integrating chafa images
-[overlay]
-# run a command and print stdout on the overlay layer
-overlay_cmd = """
-cat /etc/otter-launcher/pikachu.example \
-|| echo -e "The file pickachu.example is not found. Pikachu can be at the below blank area. Fix this by modifying the overlay_cmd option in your config file.\n\n"
-"""
-overlay_trimmed_lines = 1 # remove trailing lines from overlay_cmd output
-overlay_height = 0 # set overlay size; 0 to be auto; 1 is one line, 2 two lines, etc; kitty & sixel image size can be determined automatically; others should be set mannually
-move_overlay_right = 2 # move the overlay layer around for theming
-move_overlay_down = 0
-
+place_holder_color = "\u001B[90m"
+hint_color = "\u001B[90m"
 
 # modules are defined as followed
 # otter-launcher runs cmd as a child process. Use "setsid -f" to unbind or fork the launched command, like normal shell scripting. While unbinding is useful for running gui programs, otter-launcher should retain the ability to run text-based programs.
@@ -160,6 +134,13 @@ url_encode = true
 description = "search github code"
 prefix = "\u001B[32mgh\u001B[0m"
 cmd = "xdg-open 'https://github.com/search?type=code&q={}'"
+with_argument = true
+url_encode = true
+
+[[modules]]
+description = "search google map"
+prefix = "gm"
+cmd = "setsid -f xdg-open 'https://www.google.com/maps/search/{}'"
 with_argument = true
 url_encode = true
 
