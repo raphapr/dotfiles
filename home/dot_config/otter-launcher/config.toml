@@ -19,7 +19,7 @@
 default_module = "pp" # module to run when no prefix is matched
 exec_cmd = "sh -c" # exec command of your shell
 vi_mode = false # set true to use vi keybinds, false emacs keybinds
-esc_to_abort = true # useful for vi users
+esc_to_abort = false # useful for vi users
 cheatsheet_entry = "?" # when prompted, will show a list of configured modules
 cheatsheet_viewer = "less -R; clear" # command to show cheatsheet; through piping stdout
 clear_screen_after_execution = true
@@ -36,7 +36,7 @@ list_prefix = "    \u001B[36m-\u001B[0m "
 selection_prefix = "    \u001B[31;1m> "
 place_holder = ""
 suggestion_mode = "list"
-suggestion_lines = 6
+suggestion_lines = 5
 indicator_with_arg_module = "\u001B[31m^\u001B[0m "
 indicator_no_arg_module = "\u001B[31m$\u001B[0m "
 prefix_padding = 3
