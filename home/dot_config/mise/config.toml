@@ -2,7 +2,7 @@
 node= "latest"
 terraform='1.5.7'
 opentofu='1.7.2'
-golang='1.23'
+go= "1.24"
 kubectl='1.29.0'
 shellcheck='0.8.0'
 helm='3.8.2'
@@ -20,7 +20,6 @@ stern = "1.33.0"
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
 'npm:opencode-ai'='latest'
-go = "1.23"
 
 [settings]
 experimental = true

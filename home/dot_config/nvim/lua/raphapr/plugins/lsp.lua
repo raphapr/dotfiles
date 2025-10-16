@@ -53,13 +53,13 @@ return {
   -- LSP
   ------------------------------------------------------
   {
-    "neovim/nvim-lspconfig",
-    cmd = "LspInfo",
+    dir = vim.fn.stdpath("config"),
+    name = "native-lsp-config",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "williamboman/mason.nvim" },
-      { "williamboman/mason-lspconfig.nvim" },
+      { "mason-org/mason-lspconfig.nvim" },
       { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
       { "rafamadriz/friendly-snippets" },
     },
