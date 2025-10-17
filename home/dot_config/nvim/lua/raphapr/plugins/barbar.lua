@@ -17,15 +17,20 @@ return {
       icons = {
         button = false,
         diagnostics = {
-          [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
+          [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "✘" },
+        },
+        gitsigns = {
+          added = { enabled = true, icon = "+" },
+          changed = { enabled = true, icon = "~" },
+          deleted = { enabled = true, icon = "-" },
         },
       },
     },
     keys = {
       { "<A-Right>", "<cmd>BufferMoveNext<CR>" },
-      { "<A-Left>",  "<Cmd>BufferMovePrevious<CR>" },
-      { "<A-p>",     "<Cmd>BufferPin<CR>" },
-      { "<A-i>",     "<Cmd>BufferPick<CR>" },
+      { "<A-Left>", "<Cmd>BufferMovePrevious<CR>" },
+      { "<A-p>", "<Cmd>BufferPin<CR>" },
+      { "<A-i>", "<Cmd>BufferPick<CR>" },
     },
   },
 }

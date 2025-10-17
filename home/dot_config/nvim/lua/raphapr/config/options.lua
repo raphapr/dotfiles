@@ -96,3 +96,4 @@ vim.keymap.set("n", "zt", function()
     set_opt(0, "foldlevel", 20)
   end
 end, { noremap = true, silent = true, desc = "Fold: Toggle all folds" })
+
