@@ -8,6 +8,15 @@ email = "raphaelpr01@gmail.com"
 # Full Name (used for git)
 full_name = "Raphael P. R."
 
+# Machine-specific configuration
+{{- if eq .chezmoi.hostname "moochacho" }}
+machine = "desktop"
+{{- else if eq .chezmoi.hostname "bmo" }}
+machine = "laptop"
+{{- else }}
+machine = "unknown"
+{{- end }}
+
 [data.git]
 signing_key = "FA70B2729F47724C"
 
