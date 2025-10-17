@@ -3,7 +3,7 @@
 set -euo pipefail
 
 declare -r PKGLIST=$HOME/.pkglist
-declare -r PKG_AUR=$PKGLIST/aur
+declare -r HOSTNAME=$(hostname)
 declare -r PKGLOG="/tmp/install-aur-packages_$(date +%Y%m%d_%H%M%S).log"
 
 log() {
@@ -14,16 +14,43 @@ error() {
   log "ERROR: $*" >&2
 }
 
-echo ">> Installing AUR packages..."
+install_aur_packages_from_file() {
+  local pkg_file="$1"
+  local description="$2"
+
+  if [[ ! -f "$pkg_file" ]]; then
+    log "Package list not found at $pkg_file, skipping $description"
+    return 0
+  fi
+
+  log "Installing $description from $pkg_file..."
+
+  while IFS= read -r pkg || [[ -n "$pkg" ]]; do
+    [[ -z "$pkg" || "$pkg" =~ ^#.*$ ]] && continue
+
+    log "Processing AUR package: $pkg"
+
+    if yay -Qs "^$pkg$" &>/dev/null; then
+      log "$pkg is already installed."
+      continue
+    fi
+
+    log "Installing $pkg..."
+    if yay -S --needed --noconfirm "$pkg"; then
+      log "$pkg installed successfully"
+      successful_packages+=("$pkg")
+    else
+      error "$pkg installation failed"
+      failed_packages+=("$pkg")
+    fi
+  done <"$pkg_file"
+}
+
+echo ">> Installing AUR packages for hostname: $HOSTNAME"
 
 ########################################################
 # Validation
 ########################################################
-
-if [[ ! -f "$PKG_AUR" ]]; then
-  error "AUR package list not found at $PKG_AUR"
-  exit 1
-fi
 
 if ! command -v yay &>/dev/null; then
   error "yay not found - installing yay first..."
@@ -31,32 +58,14 @@ if ! command -v yay &>/dev/null; then
 fi
 
 ########################################################
-# AUR packages
+# AUR package installation
 ########################################################
 
-log "Starting AUR package installation..."
 failed_packages=()
 successful_packages=()
 
-while IFS= read -r pkg || [[ -n "$pkg" ]]; do
-  [[ -z "$pkg" || "$pkg" =~ ^#.*$ ]] && continue
-
-  log "Processing AUR package: $pkg"
-
-  if yay -Qs "^$pkg$" &>/dev/null; then
-    log "$pkg is already installed."
-    continue
-  fi
-
-  log "Installing $pkg..."
-  if yay -S --needed --noconfirm "$pkg"; then
-    log "$pkg installed successfully"
-    successful_packages+=("$pkg")
-  else
-    error "$pkg installation failed"
-    failed_packages+=("$pkg")
-  fi
-done <"$PKG_AUR"
+# Install AUR packages for all hosts
+install_aur_packages_from_file "$PKGLIST/aur/packages" "AUR packages"
 
 ########################################################
 # Summary

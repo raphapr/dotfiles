@@ -1,53 +1,75 @@
 #!/bin/bash
 
-# Update the system
+set -euo pipefail
+
+declare -r PKGLIST=$HOME/.pkglist
+declare -r PKG_BASE=$PKGLIST/base/packages
+declare -r PKGLOG="/tmp/install-base-packages_$(date +%Y%m%d_%H%M%S).log"
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
+}
+
+error() {
+  log "ERROR: $*" >&2
+}
+
 echo ">> Installing base packages..."
+
+########################################################
+# Update system first
+########################################################
+log "Updating system packages..."
 sudo pacman -Syu --needed
 
-# Define log file for failed installations
-PKGLOG="/tmp/package_install_$(date +%Y%m%d_%H%M%S).log"
-mkdir -p "$(dirname "$PKGLOG")"
+########################################################
+# Validation
+########################################################
 
-# List of packages to install, one per line
-packages=(
-  "yay"
-  "vim"
-  "python"
-  "python-pip"
-  "fish"
-  "make"
-  "cmake"
-  "gcc"
-  "fakeroot"
-  "patch"
-  "dnsutils"
-  "nodejs"
-  "npm"
-  "wget"
-  "unzip"
-  "cronie"
-  "git"
-  "gopls"
-)
+if [[ ! -f "$PKG_BASE" ]]; then
+  error "Base package list not found at $PKG_BASE"
+  exit 1
+fi
 
-for pkg in "${packages[@]}"; do
-  if ! pacman -Qs "$pkg" &>/dev/null; then
-    echo "Installing $pkg..."
-    if sudo pacman -S --noconfirm --needed "$pkg"; then
-      echo "$pkg installed successfully"
-    else
-      echo "$pkg installation failed" | tee -a "$PKGLOG"
-    fi
-  else
-    echo "$pkg is already installed."
+########################################################
+# pacman
+########################################################
+
+log "Starting base package installation..."
+failed_packages=()
+successful_packages=()
+
+# Read packages, skip empty lines and comments
+while IFS= read -r pkg || [[ -n "$pkg" ]]; do
+  [[ -z "$pkg" || "$pkg" =~ ^#.*$ ]] && continue
+
+  log "Processing package: $pkg"
+
+  if pacman -Qs "^$pkg$" &>/dev/null; then
+    log "$pkg is already installed."
+    continue
   fi
-done
 
-# Report any failures
-if [ -f "$PKGLOG" ] && [ -s "$PKGLOG" ]; then
-  echo ""
-  echo "Some packages failed to install. Check log: $PKGLOG"
-else
-  echo ""
-  echo "All packages installed successfully!"
+  log "Installing $pkg..."
+  if sudo pacman -S --needed --noconfirm "$pkg"; then
+    log "$pkg installed successfully"
+    successful_packages+=("$pkg")
+  else
+    error "$pkg installation failed"
+    failed_packages+=("$pkg")
+  fi
+done <"$PKG_BASE"
+
+########################################################
+# Summary
+########################################################
+
+log "Base installation complete!"
+log "Successfully installed: ${#successful_packages[@]} packages"
+log "Failed installations: ${#failed_packages[@]} packages"
+
+if [[ ${#failed_packages[@]} -gt 0 ]]; then
+  error "Failed packages: ${failed_packages[*]}"
+  log "Check log file: $PKGLOG"
+  exit 1
 fi

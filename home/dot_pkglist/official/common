@@ -427,7 +427,6 @@ lib32-libtiff
 lib32-libtirpc
 lib32-libunistring
 lib32-libva
-lib32-libva-intel-driver
 lib32-libx11
 lib32-libxau
 lib32-libxcb
@@ -475,7 +474,6 @@ lib32-util-linux
 lib32-vulkan-icd-loader
 lib32-vulkan-intel
 lib32-vulkan-mesa-device-select
-lib32-vulkan-radeon
 lib32-wayland
 lib32-xcb-util-keysyms
 lib32-xz
@@ -696,7 +694,6 @@ libutempter
 libutf8proc
 libuv
 libva
-libva-intel-driver
 libvdpau
 libverto
 libvoikko
@@ -760,16 +757,13 @@ lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
 lilv
 linux-api-headers
-linux-firmware-amdgpu
 linux-firmware-atheros
 linux-firmware-broadcom
 linux-firmware-cirrus
 linux-firmware-intel
 linux-firmware-mediatek
 linux-firmware-meta
-linux-firmware-nvidia
 linux-firmware-other
-linux-firmware-radeon
 linux-firmware-realtek
 linux-firmware-whence
 linux612
@@ -822,14 +816,8 @@ menulibre
 mesa
 mesa-demos
 mhwd
-mhwd-amdgpu
 mhwd-ati
 mhwd-db
-mhwd-nvidia
-mhwd-nvidia-390xx
-mhwd-nvidia-470xx
-mhwd-nvidia-570xx
-mhwd-nvidia-575xx
 miniupnpc
 minizip
 mjpegtools
@@ -1348,7 +1336,6 @@ vte3
 vulkan-icd-loader
 vulkan-intel
 vulkan-mesa-device-select
-vulkan-radeon
 w3m
 wavpack
 wayland
@@ -1393,10 +1380,7 @@ xf86-input-evdev
 xf86-input-libinput
 xf86-input-synaptics
 xf86-input-void
-xf86-video-amdgpu
-xf86-video-ati
 xf86-video-intel
-xf86-video-nouveau
 xfconf
 xfdesktop
 xfsprogs
@@ -1454,3 +1438,11 @@ zsh
 zstd
 zvbi
 zxing-cpp
+linux-firmware-nvidia
+mhwd-nvidia
+mhwd-nvidia-390xx
+mhwd-nvidia-470xx
+mhwd-nvidia-570xx
+mhwd-nvidia-575xx
+linux-firmware-amdgpu
+linux-firmware-radeon
