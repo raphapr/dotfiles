@@ -1,0 +1,58 @@
+# Temporary files and directories
+**/*.tmp
+**/*.temp
+**/*.swp
+**/*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# Log files
+*.log
+**/*.log
+
+# Package manager files
+node_modules/
+vendor/
+.npm/
+.yarn/
+
+# Cache directories
+.cache/
+__pycache__/
+*.pyc
+
+# Build outputs
+dist/
+build/
+target/
+
+# Git directories (we don't want nested git repos)
+**/.git/
+
+# Development databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Machine-specific files that shouldn't be shared
+{{- if ne .chezmoi.hostname "moochacho" }}
+# Desktop-specific configs
+.config/autorandr/moochacho/
+{{- end }}
+
+{{- if ne .chezmoi.hostname "bmo" }}
+# Laptop-specific configs
+.config/autorandr/bmo/
+{{- end }}
