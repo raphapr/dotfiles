@@ -5,9 +5,9 @@ aws-session-manager-plugin
 bluetooth-autoconnect
 circleci-cli-bin
 dropbox
-gcolor2
 giblib
 gklib
+gnu-netcat
 gomplate-bin
 green-recorder
 gtkhash
@@ -15,6 +15,8 @@ gtkhash-thunar
 jid
 jira-cli
 jre
+krabby-bin
+launcher-kolide-k2
 libglade
 libva-vdpau-driver
 metis
@@ -23,10 +25,10 @@ neofetch
 ngrok
 nodejs-nativefier
 numix-icon-theme-git
+otter-launcher
 perl-pgtop
 pulseaudio-ctl
 qpdfview
-r8152-dkms
 redis
 reiserfsprogs
 rofi-power-menu
@@ -38,6 +40,3 @@ xcwd-git
 xdg-su
 xidlehook
 zsa-keymapp-bin
-otter-launcher
-krabby-bin
-fastfetch
