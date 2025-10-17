@@ -7,8 +7,6 @@ echo ">> Creating symlinks..."
 ########################################################
 
 ln -sf ~/Dropbox ~/Cloud
-ln -sf ~/Cloud/Sync/envsen ~/.envsen
-ln -sf ~/Cloud/Sync/ssh_config ~/.ssh/config
 ln -sf ~/Cloud/Sync/krew ~/.krew
 ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
 

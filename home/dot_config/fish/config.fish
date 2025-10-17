@@ -14,7 +14,7 @@ export ZK_NOTEBOOK_DIR="/home/raphael/Cloud/Sync/notebook"
 export GPG_TTY=(tty)
 
 # load sensistive environment variables
-source $HOME/.envsen
+source $HOME/.env_files/personal
 
 if test "$DISPLAY"
     ~/.bin/set-keyboard-repeat
@@ -36,8 +36,11 @@ if test -e ~/.cargo/bin
     set PATH $PATH ~/.cargo/bin
 end
 
-# awscli complete
+# awscli shell completion
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
+
+# 1password shell completion
+op completion fish | source
 
 # kubectl krew
 set -gx PATH $PATH $HOME/.krew/bin
@@ -499,6 +502,13 @@ function y
 		builtin cd -- "$cwd"
 	end
 	rm -f -- "$tmp"
+end
+
+# }}}
+# opsignin          {{{
+
+function opsignin
+  eval "$(op signin)"
 end
 
 # }}}
