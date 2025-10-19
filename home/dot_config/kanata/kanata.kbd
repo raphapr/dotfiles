@@ -1,9 +1,8 @@
-;; based on https://github.com/jtroo/kanata/discussions/1656#discussioncomment-14382030
-
 (defcfg
-process-unmapped-keys yes
+  process-unmapped-keys yes
+  log-layer-changes no
 )
-;; timeings should work fine for 40 to 80 words per minute; if you are slower or new to home row mods increasing them might help in getting started
+;; timings should work fine for 40 to 80 words per minute; if you are slower or new to home row mods increasing them might help in getting started
 
 (defvirtualkeys
   to-base (layer-switch base)
@@ -11,11 +10,13 @@ process-unmapped-keys yes
 
 (defvar
   tot 220  ;; tot=time out tap
+  tap-time 220
+  hold-time 160
 )
 
 (deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
 	(tap-hold $timeouttap $timeouthold
-		(multi $keytap  @.tp)
+		(multi $keytap @.tp)
 		$keyhold
 	)
 )
@@ -23,7 +24,7 @@ process-unmapped-keys yes
 ;; homerowmodfiltered is a way to force problematic bigrams to become letters not mods
 (deftemplate homerowmodfiltered (timeouttap timeouthold keytap keyhold typinglist)
   (tap-hold-release-keys $timeouttap $timeouthold
-    (multi $keytap  @.tp)
+    (multi $keytap @.tp)
     $keyhold
     $typinglist ;; Activates $keytap early if a key within $typinglist is pressed before hold activates.
   )
@@ -38,21 +39,28 @@ process-unmapped-keys yes
               (on-idle 55 tap-vkey to-base) ;; timeouts from 30 to 100 are wide spread
             ) break
       )
-  .spc-typing   (multi (layer-switch base) spc) ;; expilcitly leave typing-layer when hitting `space` - this allows experimenting with higher idle timeouts
+  .spc-typing   (multi (layer-switch base) spc) ;; explicitly leave typing-layer when hitting `space` - this allows experimenting with higher idle timeouts
 )
 
-(defsrc caps)
+(defsrc
+  caps
+)
 
 (deflayermap (base)
- ;; define home row mods (they act as typing-layer triggers, too )
- q (t! homerowmod $tot 160 q lsft)
- a (t! homerowmod $tot 160 a lctl)
- p (t! homerowmod $tot 160 p rsft)
- ; (t! homerowmod $tot 160 ; rctl)
- ;; other keys
+ ;; define home row mods adapted to your layout
+ q (t! homerowmod $tot 160 q lctl)
+ a (t! homerowmod $tot 160 a lsft)
+ p (t! homerowmod $tot 160 p rctl)
+ ; (t! homerowmod $tot 160 ; rsft)
+
+ ;; map caps to control
  caps lctl
- ;; define each letter as typing-layer trigger
- q (multi q @.tp) w (multi w @.tp) e (multi e @.tp) r (multi r @.tp) t (multi t @.tp) y (multi y @.tp) u (multi u @.tp) i (multi i @.tp) o (multi o @.tp) p (multi p @.tp) g (multi g @.tp) h (multi h @.tp) z (multi z @.tp) x (multi x @.tp) c (multi c @.tp) v (multi v @.tp) b (multi b @.tp) n (multi n @.tp) m (multi m @.tp)
+
+ ;; define each other letter as typing-layer trigger
+ w (multi w @.tp) e (multi e @.tp) r (multi r @.tp) t (multi t @.tp) y (multi y @.tp) u (multi u @.tp) i (multi i @.tp) o (multi o @.tp)
+ s (multi s @.tp) d (multi d @.tp) f (multi f @.tp) g (multi g @.tp) h (multi h @.tp) j (multi j @.tp) k (multi k @.tp) l (multi l @.tp)
+ z (multi z @.tp) x (multi x @.tp) c (multi c @.tp) v (multi v @.tp) b (multi b @.tp) n (multi n @.tp) m (multi m @.tp)
+
 )
 
 (deflayermap (typing)

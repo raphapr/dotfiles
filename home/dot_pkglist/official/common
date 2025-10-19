@@ -315,7 +315,6 @@ inetutils
 iniparser
 inxi
 iproute2
-iptables-nft
 iputils
 iso-codes
 iw
@@ -766,10 +765,6 @@ linux-firmware-meta
 linux-firmware-other
 linux-firmware-realtek
 linux-firmware-whence
-linux612
-linux612-headers
-linux66
-linux66-headers
 lirc
 llhttp
 llvm
@@ -801,7 +796,7 @@ manjaro-alsa
 manjaro-base-skel
 manjaro-icons
 manjaro-keyring
-manjaro-pulse
+manjaro-pipewire
 manjaro-release
 manjaro-settings-manager
 manjaro-settings-manager-notifier
@@ -890,7 +885,6 @@ openexr
 openh264
 openjpeg2
 openmpi
-openntpd
 openpmix
 openssh
 openssl
@@ -988,14 +982,8 @@ profile-sync-daemon
 protobuf
 prrte
 psmisc
-pulseaudio
+pipewire-pulse
 pulseaudio-alsa
-pulseaudio-bluetooth
-pulseaudio-equalizer
-pulseaudio-jack
-pulseaudio-lirc
-pulseaudio-rtp
-pulseaudio-zeroconf
 pv
 pyenv
 python
