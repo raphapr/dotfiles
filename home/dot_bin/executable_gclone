@@ -1,0 +1,85 @@
+#!/bin/bash
+
+set -e
+
+REPOS_DIR="${GCLONE_REPOS_DIR:-$HOME/repos}"
+CACHE_TTL_MINUTES=1440
+HISTORY_CMD="${GCLONE_HISTORY_CMD:-atuin history list --format '{command}'}"
+
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  echo "Usage: gclone [org/repo_name] [options]"
+  echo ""
+  echo "Clone a GitHub repository to \$REPOS_DIR/{org}/{repo_name}"
+  echo ""
+  echo "Options:"
+  echo "  -h, --help     Show this help message"
+  echo "  -r, --refresh  Refresh the repository cache"
+  echo ""
+  echo "Environment variables:"
+  echo "  GCLONE_REPOS_DIR       Target directory (default: ~/repos)"
+  echo "  GCLONE_HISTORY_CMD     History command (default: atuin history list --format '{command}')"
+  echo ""
+  echo "If no argument is provided, an interactive fzf menu will be shown"
+  echo "with repositories from your history."
+  exit 0
+fi
+
+if [ ! -d "$REPOS_DIR" ]; then
+  echo "Error: $REPOS_DIR directory does not exist"
+  exit 1
+fi
+
+if [ "$1" = "--refresh" ] || [ "$1" = "-r" ]; then
+  CACHE_FILE="$HOME/.cache/gclone-repos-list"
+  if [ -f "$CACHE_FILE" ]; then
+    rm "$CACHE_FILE"
+    echo "Cache refreshed"
+  else
+    echo "No cache to refresh"
+  fi
+  exit 0
+fi
+
+if [ -z "$1" ]; then
+  CACHE_FILE="$HOME/.cache/gclone-repos-list"
+  CACHE_DIR=$(dirname "$CACHE_FILE")
+
+  if [ ! -d "$CACHE_DIR" ]; then
+    mkdir -p "$CACHE_DIR"
+  fi
+
+  if [ ! -f "$CACHE_FILE" ] || [ $(find "$CACHE_FILE" -mmin +$CACHE_TTL_MINUTES 2>/dev/null | wc -l) -gt 0 ]; then
+    eval "$HISTORY_CMD" | grep -oP '(?<=git clone git@github\.com:)[^[:space:]]+' | sed 's/\.git$//' | sort -u >"$CACHE_FILE"
+  fi
+
+  REPO_INPUT=$(cat "$CACHE_FILE" | fzf --prompt="Select repo: ")
+  if [ -z "$REPO_INPUT" ]; then
+    echo "No repository selected"
+    exit 1
+  fi
+else
+  REPO_INPUT="$1"
+fi
+
+REPO_INPUT="${REPO_INPUT%.git}"
+REPO_URL="git@github.com:$REPO_INPUT"
+REPO_NAME=$(basename "$REPO_INPUT")
+ORG_NAME=$(dirname "$REPO_INPUT")
+
+INFERRED_DIR="$REPOS_DIR/$ORG_NAME"
+if [ -d "$INFERRED_DIR" ]; then
+  SELECTED_DIR="$ORG_NAME"
+else
+  SELECTED_DIR=$(find "$REPOS_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf --prompt="Select directory: ")
+  if [ -z "$SELECTED_DIR" ]; then
+    echo "No directory selected"
+    exit 1
+  fi
+fi
+
+TARGET_PATH="$REPOS_DIR/$SELECTED_DIR/$REPO_NAME"
+
+echo "Cloning $REPO_URL into $TARGET_PATH..."
+git clone "$REPO_URL" "$TARGET_PATH"
+
+echo "Repository cloned successfully to $TARGET_PATH"
