@@ -29,7 +29,7 @@ callback = "i3-msg '[class=\"scratchpad-launcher\"] scratchpad show' >> /dev/nul
 
 # ANSI color codes are allowed. However, \x1b should be replaced with \u001B, because the rust toml crate cannot read \x as an escaped character
 [interface]
-header_cmd = "fastfetch --structure break:colors:break:os:wm:shell:kernel:term:uptime:battery:break --key-type icon --logo-type data --logo \"$(krabby name bulbasaur --no-title)\""
+header_cmd = "fastfetch --structure break:colors:break:os:shell:kernel:term:uptime:battery:break --key-type icon --logo-type data --logo \"$(krabby name bulbasaur --no-title)\""
 header = "  \u001B[7;1m launcher \u001B[0m "
 header_cmd_trimmed_lines = 1
 list_prefix = "    \u001B[36m-\u001B[0m "
