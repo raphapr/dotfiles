@@ -104,4 +104,4 @@ fi
 # set fish shell theme
 ########################################################
 
-fish_config theme save "catppuccin-mocha"
+fish -c 'fish_config theme save "catppuccin-mocha"'
