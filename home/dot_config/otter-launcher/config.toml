@@ -134,14 +134,15 @@ unbind_proc = true
 [[modules]]
 description = "search apps with fsel"
 prefix = "ss"
-cmd = "fsel -vv -r -ss {}"
+cmd = "fsel -r -d -ss '{}'"
 with_argument = true
 
 [[modules]]
 description = "launch apps instantly"
 prefix = "pp"
-cmd = "fsel -vv -r -p {}"
+cmd = "fsel -r -p '{}'"
 with_argument = true
+unbind_proc = true
 
 [[modules]]
 description = "i3 keys"

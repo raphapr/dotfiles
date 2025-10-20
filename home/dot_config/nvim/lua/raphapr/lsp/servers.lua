@@ -13,6 +13,7 @@ function M.setup()
       "pyright",
       "bashls",
       "terraformls",
+      "ruff",
       "yamlls",
       "dockerls",
     },
@@ -72,11 +73,14 @@ function M.setup()
       },
       python = {
         analysis = {
-          ignore = { "*" }, -- Using Ruff
+          ignore = { "*" }, -- using Ruff
         },
       },
     },
   })
+
+  -- Ruff
+  vim.lsp.config("ruff", {})
 
   -- Bash
   vim.lsp.config("bashls", {
