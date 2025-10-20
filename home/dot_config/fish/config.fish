@@ -13,6 +13,10 @@ export FZF_DEFAULT_OPTS="--height 50%"
 export ZK_NOTEBOOK_DIR="/home/raphael/Cloud/Sync/notebook"
 export GPG_TTY=(tty)
 
+# Locale settings
+set -gx LANG en_US.UTF-8
+set -gx LC_ALL en_US.UTF-8
+
 # load sensistive environment variables
 source $HOME/.env_files/personal
 

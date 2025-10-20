@@ -94,8 +94,6 @@ fi
 # bash prompt
 PS1="\w » "
 
-eval "$(mise activate bash)"
-
 #}}}
 # History Control     ---------------------------------------------- {{{
 

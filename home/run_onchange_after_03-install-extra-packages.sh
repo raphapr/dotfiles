@@ -99,3 +99,9 @@ if [ "$(hostname)" = "bmo" ]; then
 
   systemctl --user --now enable kanata
 fi
+
+########################################################
+# set fish shell theme
+########################################################
+
+fish_config theme save "catppuccin-mocha"

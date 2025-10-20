@@ -308,7 +308,7 @@ bindsym F11 [class="scratchpad-daily"] scratchpad show
 # %%hotkey: launch otter-launcher scratchpad in case accidentally closed or whatever
 bindsym $mod2+f exec $launcher
 exec $launcher
-for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 420 height 325, border none
+for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 420 height 330, border none
 # %%hotkey: launch otter-launcher
 bindsym $mod+f [class="scratchpad-launcher"] scratchpad show
 bindsym $mod+space [class="scratchpad-launcher"] scratchpad show

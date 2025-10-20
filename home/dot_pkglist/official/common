@@ -860,7 +860,6 @@ ngrep
 nm-connection-editor
 nmap
 node-gyp
-nodejs-lts-jod
 nodejs-nopt
 noto-fonts
 noto-fonts-cjk
@@ -976,7 +975,6 @@ postgresql-libs
 ppp
 pre-commit
 prettier
-pritunl-client-electron
 procps-ng
 profile-sync-daemon
 protobuf
