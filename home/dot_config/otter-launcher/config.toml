@@ -140,9 +140,8 @@ with_argument = true
 [[modules]]
 description = "launch apps instantly"
 prefix = "pp"
-cmd = "fsel -r -p '{}'"
+cmd = "fsel -r -d -p '{}'"
 with_argument = true
-unbind_proc = true
 
 [[modules]]
 description = "i3 keys"
