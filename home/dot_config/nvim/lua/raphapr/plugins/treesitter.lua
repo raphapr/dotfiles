@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     config = function()
       vim.filetype.add({
@@ -31,6 +32,7 @@ return {
           "bash",
           "json",
           "markdown",
+          "markdown_inline",
           "cmake",
           "fish",
           "comment",

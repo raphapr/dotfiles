@@ -295,15 +295,15 @@ for_window [title="WhatsDesk"] move to workspace 2
 #}}}
 # Scratchpads           ----------------------------------------------------- {{{
 
-set $daily kitty --instance-group scratchpad-daily --class=scratchpad-daily -e $HOME/.bin/tmux-session scratchpad-daily
+set $journal kitty --instance-group scratchpad-journal --class=scratchpad-journal -e $HOME/.bin/tmux-session scratchpad-journal
 set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -c 'otter-launcher'
 
-# %%hotkey: launch daily scratchpad in case accidentally closed or whatever
-bindsym $mod+F11 exec $daily
-exec $daily
-for_window [class="scratchpad-daily"] move to scratchpad, resize set width 1000 height 600
-# %%hotkey: launch scratchpad-daily
-bindsym F11 [class="scratchpad-daily"] scratchpad show
+# %%hotkey: launch journal scratchpad in case accidentally closed or whatever
+bindsym $mod+F11 exec $journal
+exec $journal
+for_window [class="scratchpad-journal"] move to scratchpad, resize set width 1000 height 600
+# %%hotkey: launch scratchpad-journal
+bindsym F11 [class="scratchpad-journal"] scratchpad show
 
 # %%hotkey: launch otter-launcher scratchpad in case accidentally closed or whatever
 bindsym $mod2+f exec $launcher

@@ -1,19 +1,16 @@
 #!/bin/bash
 
-# Directory containing the markdown files
 SUB_DIR="journal/daily"
 DIR="$ZK_NOTEBOOK_DIR/$SUB_DIR"
 
-# Get the current week number and year
-CURRENT_WEEK=$(date +%V)
-CURRENT_YEAR=$(date +%Y)
+DATE_ARG="${1:-$(date +%Y-%m-%d)}"
 
-# Loop through all markdown files in the directory
+CURRENT_WEEK=$(date -d "$DATE_ARG" +%V)
+CURRENT_YEAR=$(date -d "$DATE_ARG" +%Y)
+
 for FILE in "$DIR"/*.md; do
-  # Extract the date from the filename
   FILE_DATE=$(basename "$FILE" .md)
 
-  # Check if the file date is within the current week
   FILE_WEEK=$(date -d "$FILE_DATE" +%V)
   FILE_YEAR=$(date -d "$FILE_DATE" +%Y)
 
