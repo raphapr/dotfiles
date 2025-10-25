@@ -114,6 +114,14 @@ function M.setup()
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose" },
     root_markers = { ".git" },
+    settings = {
+      yaml = {
+        schemas = {
+          -- temporary workaround until official schema endpoint is back
+          ["https://gist.githubusercontent.com/raphapr/904d39df56b0360b535bb940d94d83f3/raw/b600fec01cb77a3431a1f251330ff1d1fed6304e/circleci-config-schema.json"] = ".circleci/config.yml",
+        },
+      },
+    },
   })
 
   -- Docker
