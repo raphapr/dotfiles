@@ -5,7 +5,7 @@ Documentation=https://github.com/jtroo/kanata
 [Service]
 Type=simple
 ExecStart=%h/.cargo/bin/mise exec -- kanata
-ExecStartPost=/bin/sh -c 'sleep 5; %h/.bin/set-keyboard-repeat'
+ExecStartPost=/bin/sh -c 'sleep 5; DISPLAY=:0 %h/.bin/set-keyboard-repeat'
 Restart=no
 
 [Install]
