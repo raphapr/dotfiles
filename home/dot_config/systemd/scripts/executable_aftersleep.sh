@@ -17,8 +17,8 @@ if [ "$1" = "pre" ]; then
   # Check if ZSA Technology exists in lsusb
   if lsusb | grep -q "ZSA Technology"; then
     # Find ErgoDox EZ keyboard's USB path
-    ergoez_path=$(lsusb | awk '/ZSA Technology/{print $2"/"$4}')
-    usbreset "/dev/bus/usb/$ergoez_path"
+    ergoez_path=$(lsusb | awk '/ZSA Technology/{print $2"/"$4}' | tr -d ':')
+    usbreset $ergoez_path
   else
     echo "ZSA Technology not found in lsusb, skipping USB reset."
   fi
