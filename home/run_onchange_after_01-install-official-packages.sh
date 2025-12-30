@@ -82,5 +82,4 @@ log "Failed installations: ${#failed_packages[@]} packages"
 if [[ ${#failed_packages[@]} -gt 0 ]]; then
   error "Failed packages: ${failed_packages[*]}"
   log "Check log file: $PKGLOG"
-  exit 1
 fi
