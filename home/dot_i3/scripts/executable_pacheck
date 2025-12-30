@@ -1,9 +1,0 @@
-#!/bin/bash
-
-size=$(checkupdates | wc -l)
-
-echo $size #full_text
-echo $size #short_text
-if [ "$size" != "0" ]; then
-    echo "#52FF46"
-fi
