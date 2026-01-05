@@ -1,22 +1,25 @@
 local M = {}
 
 function M.setup()
+  local servers = {
+    "lua_ls",
+    "ts_ls",
+    "eslint",
+    "jsonls",
+    "pyright",
+    "bashls",
+    "terraformls",
+    "tflint",
+    "yamlls",
+    "dockerls",
+    "gopls",
+    "harper_ls",
+  }
+
   require("mason").setup()
   require("mason-lspconfig").setup({
     automatic_installation = false,
-    ensure_installed = {
-      "lua_ls",
-      "ts_ls",
-      "eslint",
-      "jsonls",
-      "tflint",
-      "pyright",
-      "bashls",
-      "terraformls",
-      "ruff",
-      "yamlls",
-      "dockerls",
-    },
+    ensure_installed = servers,
   })
 
   -- Configure LSP servers
@@ -114,14 +117,6 @@ function M.setup()
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose" },
     root_markers = { ".git" },
-    settings = {
-      yaml = {
-        schemas = {
-          -- temporary workaround until official schema endpoint is back
-          ["https://gist.githubusercontent.com/raphapr/904d39df56b0360b535bb940d94d83f3/raw/b600fec01cb77a3431a1f251330ff1d1fed6304e/circleci-config-schema.json"] = ".circleci/config.yml",
-        },
-      },
-    },
   })
 
   -- Docker
@@ -138,21 +133,27 @@ function M.setup()
     root_markers = { "go.work", "go.mod", ".git" },
   })
 
-  -- Enable all configured language servers
-  local servers = {
-    "lua_ls",
-    "ts_ls",
-    "eslint",
-    "jsonls",
-    "pyright",
-    "bashls",
-    "terraformls",
-    "tflint",
-    "yamlls",
-    "dockerls",
-    "gopls",
-  }
+  -- Harper
+  vim.lsp.config("harper_ls", {
+    filetypes = { "markdown" },
+    settings = {
+      ["harper-ls"] = {
+        userDictPath = "~/Cloud/Sync/harper_dictionary",
+        isolateEnglish = true,
+        linters = {
+          SentenceCapitalization = false,
+        },
+        codeActions = {
+          forceStable = true,
+        },
+        markdown = {
+          IgnoreLinkTitle = true,
+        },
+      },
+    },
+  })
 
+  -- Enable all configured language servers
   for _, server in ipairs(servers) do
     vim.lsp.enable(server)
   end
