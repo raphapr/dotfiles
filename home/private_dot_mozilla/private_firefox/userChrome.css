@@ -1,0 +1,5 @@
+#PersonalToolbar {
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
