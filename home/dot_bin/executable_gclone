@@ -2,35 +2,31 @@
 
 set -e
 
-REPOS_DIR="${GCLONE_REPOS_DIR:-$HOME/repos}"
-CACHE_TTL_MINUTES=1440
+CACHE_FILE="$HOME/.cache/gclone-repos"
+CACHE_TTL_MINUTES=1440 # 24 hours
 HISTORY_CMD="${GCLONE_HISTORY_CMD:-atuin history list --format '{command}'}"
 
 if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
   echo "Usage: gclone [org/repo_name] [options]"
   echo ""
-  echo "Clone a GitHub repository to \$REPOS_DIR/{org}/{repo_name}"
+  echo "Clone a GitHub repository using ghq"
   echo ""
   echo "Options:"
   echo "  -h, --help     Show this help message"
   echo "  -r, --refresh  Refresh the repository cache"
   echo ""
   echo "Environment variables:"
-  echo "  GCLONE_REPOS_DIR       Target directory (default: ~/repos)"
   echo "  GCLONE_HISTORY_CMD     History command (default: atuin history list --format '{command}')"
   echo ""
   echo "If no argument is provided, an interactive fzf menu will be shown"
   echo "with repositories from your history."
+  echo ""
+  echo "Note: This script uses ghq for cloning. Configure ghq root directory"
+  echo "with 'git config --global ghq.root <path>'"
   exit 0
 fi
 
-if [ ! -d "$REPOS_DIR" ]; then
-  echo "Error: $REPOS_DIR directory does not exist"
-  exit 1
-fi
-
 if [ "$1" = "--refresh" ] || [ "$1" = "-r" ]; then
-  CACHE_FILE="$HOME/.cache/gclone-repos-list"
   if [ -f "$CACHE_FILE" ]; then
     rm "$CACHE_FILE"
     echo "Cache refreshed"
@@ -41,7 +37,6 @@ if [ "$1" = "--refresh" ] || [ "$1" = "-r" ]; then
 fi
 
 if [ -z "$1" ]; then
-  CACHE_FILE="$HOME/.cache/gclone-repos-list"
   CACHE_DIR=$(dirname "$CACHE_FILE")
 
   if [ ! -d "$CACHE_DIR" ]; then
@@ -63,23 +58,14 @@ fi
 
 REPO_INPUT="${REPO_INPUT%.git}"
 REPO_URL="git@github.com:$REPO_INPUT"
-REPO_NAME=$(basename "$REPO_INPUT")
-ORG_NAME=$(dirname "$REPO_INPUT")
 
-INFERRED_DIR="$REPOS_DIR/$ORG_NAME"
-if [ -d "$INFERRED_DIR" ]; then
-  SELECTED_DIR="$ORG_NAME"
-else
-  SELECTED_DIR=$(find "$REPOS_DIR" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf --prompt="Select directory: ")
-  if [ -z "$SELECTED_DIR" ]; then
-    echo "No directory selected"
-    exit 1
-  fi
+if ! command -v ghq >/dev/null 2>&1; then
+  echo "Error: ghq is not installed. Please install ghq to use this script."
+  exit 1
 fi
 
-TARGET_PATH="$REPOS_DIR/$SELECTED_DIR/$REPO_NAME"
+echo "Cloning $REPO_URL..."
+ghq clone "$REPO_URL"
 
-echo "Cloning $REPO_URL into $TARGET_PATH..."
-git clone "$REPO_URL" "$TARGET_PATH"
-
+TARGET_PATH=$(ghq list --full-path --exact "github.com/$REPO_INPUT")
 echo "Repository cloned successfully to $TARGET_PATH"
