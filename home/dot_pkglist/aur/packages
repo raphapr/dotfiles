@@ -9,8 +9,9 @@ giblib
 gnu-netcat
 gomplate-bin
 green-recorder
+gtk-engines
+gtk2
 gtkhash
-gtkhash-thunar
 jira-cli
 jre
 krabby-bin
@@ -22,7 +23,6 @@ numix-icon-theme-git
 otter-launcher
 perl-pgtop
 qpdfview
-redis
 rofi-power-menu
 slack-desktop
 spotify
@@ -31,4 +31,5 @@ xautolock
 xcwd-git
 xdg-su
 xidlehook
+zoom
 zsa-keymapp-bin
