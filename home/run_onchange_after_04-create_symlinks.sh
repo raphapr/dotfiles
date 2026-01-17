@@ -22,6 +22,10 @@ if [ -f ~/.local/share/ptpython/history ]; then
   ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
 fi
 
+if [ ! -d ~/.config/opencode/command ]; then
+  ln -sf ~/Cloud/Sync/opencode/command ~/.config/opencode/command
+fi
+
 ########################################################
 # aftersleep script
 ########################################################

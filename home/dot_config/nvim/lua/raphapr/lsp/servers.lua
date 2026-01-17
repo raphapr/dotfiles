@@ -138,7 +138,7 @@ function M.setup()
     filetypes = { "markdown" },
     settings = {
       ["harper-ls"] = {
-        userDictPath = "~/Cloud/Sync/harper_dictionary",
+        userDictPath = "~/Cloud/Sync/harper/user_dictionary",
         isolateEnglish = true,
         linters = {
           SentenceCapitalization = false,

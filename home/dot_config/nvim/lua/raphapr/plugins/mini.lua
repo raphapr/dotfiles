@@ -60,6 +60,7 @@ return {
           { mode = "n", keys = "<leader>r", desc = "Rest" },
           { mode = "n", keys = "<leader>z", desc = "zk" },
           { mode = "n", keys = "<leader>l", desc = "LSP Server" },
+          { mode = "n", keys = "<leader>d", desc = "Diffview" },
           { mode = "n", keys = "go", desc = "Go" },
           { mode = "n", keys = "gr", desc = "LSP" },
           { mode = "n", keys = "gh", desc = "Yank History" },

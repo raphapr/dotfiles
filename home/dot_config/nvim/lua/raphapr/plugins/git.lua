@@ -8,6 +8,25 @@ return {
       { "<leader>tb", ":Git blame<CR>", silent = true, desc = "Git: Blame" },
     },
   },
+  {
+    "sindrets/diffview.nvim",
+    lazy = true,
+    cmd = { "DiffviewFileHistory", "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles" },
+    keys = {
+      {
+        "<leader>dd",
+        function()
+          require("raphapr.config.utils").open_diffview_default_branch()
+        end,
+        silent = true,
+        desc = "Diffview: Compare against default branch",
+      },
+      { "<leader>dh", ":DiffviewOpen HEAD~1<CR>", silent = true, desc = "Diffview: Compares diff against last commit" },
+      { "<leader>dc", ":DiffviewClose<CR>", silent = true, desc = "DiffView: Close" },
+      { "<leader>dt", ":DiffviewToggleFiles<CR>", silent = true, desc = "DiffView: Toggle files" },
+      { "<leader>dt", ":DiffviewFileHistory<CR>", silent = true, desc = "DiffView: File history" },
+    },
+  },
   -------------------------------------- gitsigns ---------------------------------------
   {
     "lewis6991/gitsigns.nvim",
@@ -20,7 +39,6 @@ return {
     },
     config = function()
       require("gitsigns").setup()
-      vim.keymap.set("n", "<leader>tp", ":Gitsigns preview_hunk<CR>", { desc = "Git: Diff preview" })
       vim.keymap.set(
         "n",
         "<leader>to",

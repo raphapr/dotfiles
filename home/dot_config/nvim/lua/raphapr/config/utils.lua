@@ -17,4 +17,28 @@ function U.go_to_definition_split()
   })
 end
 
+function U.get_default_branch()
+  local handle = io.popen("git symbolic-ref --quiet refs/remotes/origin/HEAD 2>/dev/null")
+  local result = handle and handle:read("*l") or nil
+  if handle then
+    handle:close()
+  end
+
+  if not result then
+    return nil
+  end
+
+  return result:gsub("^refs/remotes/", "")
+end
+
+function U.open_diffview_default_branch()
+  local default_branch = U.get_default_branch()
+  if not default_branch then
+    vim.notify("Could not determine default branch", vim.log.levels.WARN)
+    return
+  end
+
+  vim.cmd("DiffviewOpen " .. default_branch .. "...HEAD")
+end
+
 return U
