@@ -1,6 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin",
+  "model": "github-copilot/claude-sonnet-4.5",
   "keybinds": {
     "leader": "ctrl+x",
     "app_exit": "ctrl+c,<leader>q",
@@ -35,5 +36,6 @@
     "input_paste": "ctrl+v",
     "input_submit": "enter",
     "input_newline": "shift+enter,ctrl+j"
-  }
+  },
+  "plugin": []
 }

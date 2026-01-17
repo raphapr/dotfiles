@@ -56,6 +56,10 @@ set MANPATH $NPM_PACKAGES/share/man $MANPATH
 
 fish_add_path /home/raphael/.opencode/bin
 
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -113,6 +117,7 @@ alias v 'nvim'
 alias vim 'nvim'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias ot 'otter-launcher'
+alias oc 'opencode'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
