@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+# Greenclip image browser with fzf preview
+# Lists and previews only images from clipboard history
+# Usage: greenclip-fzf-preview
+
+set -euo pipefail
+
+GREENCLIP_CACHE="${GREENCLIP_CACHE_DIR:-/tmp/greenclip}"
+PREVIEW_SCRIPT="/tmp/greenclip-preview-helper.sh"
+IMAGE_LIST_FILE="/tmp/greenclip-image-list.txt"
+
+cat >"$PREVIEW_SCRIPT" <<'PREVIEW_EOF'
+#!/usr/bin/env bash
+# Extract the file path from the line (format: filepath:::[size] filename - date)
+line="$1"
+img_file="${line%%:::*}"
+
+if [[ -f "$img_file" ]]; then
+    # Preview image using chafa
+    if command -v chafa &>/dev/null; then
+        chafa --fill=block --symbols=block -c 256 -s "${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES}" "$img_file"
+    elif command -v catimg &>/dev/null; then
+        catimg -w 80 "$img_file"
+    elif command -v viu &>/dev/null; then
+        viu -w 80 "$img_file"
+    else
+        # Fallback: show file info
+        echo "=== IMAGE FILE ==="
+        file "$img_file"
+        echo ""
+        ls -lh "$img_file"
+        echo ""
+        identify "$img_file" 2>/dev/null || echo "Install ImageMagick for more info"
+        echo ""
+        echo "Install 'chafa', 'catimg', or 'viu' for image preview."
+    fi
+else
+    echo "Error: File not found: $img_file"
+fi
+PREVIEW_EOF
+
+chmod +x "$PREVIEW_SCRIPT"
+
+# Find all images in greenclip cache
+if [[ ! -d "$GREENCLIP_CACHE" ]]; then
+  echo "Error: Greenclip cache directory not found: $GREENCLIP_CACHE"
+  echo "Make sure greenclip daemon is running and image support is enabled."
+  exit 1
+fi
+
+>"$IMAGE_LIST_FILE"
+
+while IFS= read -r file; do
+  if [[ -f "$file" ]]; then
+    mime=$(file --mime-type -b "$file" 2>/dev/null)
+    if [[ "$mime" =~ ^image/ ]]; then
+      # Get file info
+      size=$(du -h "$file" | cut -f1)
+      modified=$(stat -c %y "$file" | cut -d'.' -f1)
+      basename=$(basename "$file")
+
+      # Format: filepath:::[size] filename - date
+      echo "$file:::[$size] $basename - $modified" >>"$IMAGE_LIST_FILE"
+    fi
+  fi
+done < <(find "$GREENCLIP_CACHE" -type f 2>/dev/null | sort -r)
+
+if [[ ! -s "$IMAGE_LIST_FILE" ]]; then
+  echo "No images found in greenclip cache."
+  echo "Cache directory: $GREENCLIP_CACHE"
+  echo ""
+  echo "Tips:"
+  echo "1. Make sure greenclip daemon is running: greenclip daemon &"
+  echo "2. Check that image support is enabled in ~/.config/greenclip.toml"
+  echo "3. Copy a small image (<500KB) to clipboard"
+  rm -f "$IMAGE_LIST_FILE" "$PREVIEW_SCRIPT"
+  exit 0
+fi
+
+selection=$(cat "$IMAGE_LIST_FILE" |
+  awk -F':::' '{print $0}' |
+  fzf --ansi \
+    --with-nth=2 \
+    --delimiter=':::' \
+    --preview="$PREVIEW_SCRIPT {}" \
+    --preview-window=right:60%:wrap \
+    --bind='ctrl-/:toggle-preview' \
+    --header='Image Clipboard History | Ctrl-/ toggle preview | Enter to copy' \
+    --height=80% \
+    --border \
+    --prompt='Images > ' \
+    --no-multi)
+
+if [[ -n "$selection" ]]; then
+  selected_file="${selection%%:::*}"
+
+  if [[ -f "$selected_file" ]]; then
+    mime_type=$(file --mime-type -b "$selected_file")
+    xclip -selection clipboard -t "$mime_type" -i "$selected_file" 2>/dev/null
+    echo "✓ Image copied to clipboard: $(basename "$selected_file")"
+  else
+    echo "✗ Error: File not found: $selected_file"
+  fi
+fi
+
+rm -f "$PREVIEW_SCRIPT" "$IMAGE_LIST_FILE"
