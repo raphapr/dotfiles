@@ -1,7 +1,0 @@
-#!/bin/bash
-
-SELECTED_INDEX="$(copyq eval "$(cat ~/.bin/copyq_all)" | rofi -dmenu -format i -p "copyq: ")"
-
-if [ "$SELECTED_INDEX" -eq "$SELECTED_INDEX" ] 2>/dev/null; then
-  copyq select "$SELECTED_INDEX"
-fi

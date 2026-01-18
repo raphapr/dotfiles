@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rofi -modi "clipboard:greenclip print" \
+  -show clipboard \
+  -run-command '{cmd}' \
+  -theme-str 'window {width: 50%;} listview {lines: 20;}'

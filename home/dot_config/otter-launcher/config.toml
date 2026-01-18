@@ -151,7 +151,7 @@ cmd = "~/.bin/dmenu-i3-keys"
 [[modules]]
 description = "clipboard history"
 prefix = "cc"
-cmd = "~/.bin/dmenu-copyq"
+cmd = "~/.bin/rofi-clipboard"
 unbind_proc = true
 
 [[modules]]

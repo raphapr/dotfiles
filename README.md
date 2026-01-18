@@ -62,7 +62,7 @@ chezmoi init raphapr --apply
 - **fzf** - Fuzzy finder
 - **ripgrep** - Fast text search
 - **btop** - System monitor
-- **copyq** - Clipboard manager
+- **greenclip** - Clipboard manager
 - **flameshot** - Screenshot tool
 - **atuin** - Shell history with sync
 - **zathura** - Document viewer

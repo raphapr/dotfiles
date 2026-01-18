@@ -11,7 +11,6 @@ set $PRINT      flameshot gui
 # Startup apps          ----------------------------------------------------- {{{
 
 exec --no-startup-id nm-applet
-exec --no-startup-id copyq
 exec --no-startup-id volnoti
 exec --no-startup-id "udiskie &"
 exec --no-startup-id dropbox start
@@ -22,6 +21,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id sleep 2 && flameshot
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id greenclip daemon
 exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
 exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
@@ -59,8 +59,8 @@ bindsym $mod+BackSpace kill
 
 # %%hotkey: rofi window mode
 bindsym $mod+Tab exec rofi -show window
-# %%hotkey: show clipboard history (copyq)
-bindsym $mod+n exec --no-startup-id ~/.bin/dmenu-copyq
+# %%hotkey: show clipboard history
+bindsym $mod+n exec --no-startup-id ~/.bin/rofi-clipboard
 # %%hotkey: rofi-powermenu
 bindsym $mod+0 exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
 
@@ -241,9 +241,6 @@ bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
 
 # %%hotkey: dunst close-all
 bindsym Ctrl+space exec --no-startup-id dunstctl close-all
-
-# %%hotkey: copyq toggle
-bindsym $mod+c exec --no-startup-id copyq toggle
 
 #}}}
 # Borders               ----------------------------------------------------- {{{
