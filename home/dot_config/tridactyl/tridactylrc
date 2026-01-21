@@ -44,7 +44,7 @@ set searchurls.amazon https://www.amazon.com.br/s/ref=nb_sb_noss?url=search-alia
 set searchurls.ml     https://lista.mercadolivre.com.br/
 set searchurls.camb   https://dictionary.cambridge.org/dictionary/english-portuguese/
 
-bind ,, composite js tri.native.run("tmux new-window -n \"review:" + window.location.pathname.split('/')[2] + "#" + window.location.pathname.split('/')[4] + "\" \"cd ~/repos && opencode --prompt '/pr-review " + window.location.href + "'\"")
+bind ,, composite js tri.native.run("tmux new-window -n \"review:" + window.location.pathname.split('/')[2] + "#" + window.location.pathname.split('/')[4] + "\" \"cd ~/repos && opencode --prompt '/code-review " + window.location.href + "'\"")
 bind ,c composite js tri.native.run("tmux new-window -n \"comment:" + window.location.pathname.split('/')[2] + "#" + window.location.pathname.split('/')[4] + "\" \"cd ~/repos && opencode --prompt '/pr-reply " + window.location.href + "'\"")
 
 " syntax highlighting
