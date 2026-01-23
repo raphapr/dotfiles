@@ -29,3 +29,8 @@ refreshPeriod = "168h"
 type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Mocha.theme"
 refreshPeriod = "168h"
+[".local/bin"]
+type = "archive"
+url = "https://github.com/OpsLevel/opslevel-mcp/releases/download/v2025.8.5/opslevel-mcp-linux-amd64.tar.gz"
+executable = true
+refreshPeriod = "168h"

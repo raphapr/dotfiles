@@ -60,6 +60,9 @@ fish_add_path /home/raphael/.opencode/bin
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+# pnpm
+set -gx PATH ~/.local/share/pnpm/bin $PATH
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
