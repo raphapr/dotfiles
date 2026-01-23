@@ -2,6 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin",
   "model": "github-copilot/claude-sonnet-4.5",
+  "permission": {
+    "edit": {
+      "/tmp/*": "allow"
+    }
+  },
   "keybinds": {
     "leader": "ctrl+x",
     "app_exit": "ctrl+c,<leader>q",
@@ -37,5 +42,17 @@
     "input_submit": "enter",
     "input_newline": "shift+enter,ctrl+j"
   },
-  "plugin": []
+  "mcp": {
+    "atlassian": {
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp"
+    },
+    "opslevel": {
+      "type": "local",
+      "command": ["opslevel-mcp"],
+      "environment": {
+        "OPSLEVEL_API_TOKEN": "{env:OPSLEVEL_MCP_API_TOKEN}"
+      }
+    }
+  }
 }

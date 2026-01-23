@@ -26,6 +26,10 @@ if [ ! -d ~/.config/opencode/command ]; then
   ln -sf ~/Cloud/Sync/opencode/command ~/.config/opencode/command
 fi
 
+if [ ! -d ~/.config/opencode/skill ]; then
+  ln -sf ~/Cloud/Sync/opencode/skills ~/.config/opencode/skills
+fi
+
 ########################################################
 # aftersleep script
 ########################################################
