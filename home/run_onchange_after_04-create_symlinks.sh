@@ -22,12 +22,8 @@ if [ -f ~/.local/share/ptpython/history ]; then
   ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
 fi
 
-if [ ! -d ~/.config/opencode/command ]; then
-  ln -sf ~/Cloud/Sync/opencode/command ~/.config/opencode/command
-fi
-
-if [ ! -d ~/.config/opencode/skill ]; then
-  ln -sf ~/Cloud/Sync/opencode/skills ~/.config/opencode/skills
+if [ ! -d ~/.config/opencode ]; then
+  ln -sf ~/Cloud/Sync/opencode ~/.config/opencode
 fi
 
 ########################################################
