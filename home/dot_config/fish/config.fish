@@ -3,15 +3,15 @@
 # disable fish greeting message
 set fish_greeting
 
-export SHELL="fish"
-export EDITOR="nvim"
-export GOPATH="$HOME/go"
-export GOBIN="$HOME/go/bin"
-export BROWSER="firefox"
-export GPGKEY="DBC876419930B2EB8447BFEFFA70B2729F47724C"
-export FZF_DEFAULT_OPTS="--height 50%"
-export ZK_NOTEBOOK_DIR="/home/raphael/Cloud/Sync/notebook"
-export GPG_TTY=(tty)
+set -gx SHELL fish
+set -gx EDITOR nvim
+set -gx GOPATH $HOME/go
+set -gx GOBIN $HOME/go/bin
+set -gx BROWSER firefox
+set -gx GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
+set -gx FZF_DEFAULT_OPTS "--height 50%"
+set -gx ZK_NOTEBOOK_DIR $HOME/Cloud/Sync/notebook
+set -gx GPG_TTY (tty)
 
 # Locale settings
 set -gx LANG en_US.UTF-8
@@ -20,48 +20,35 @@ set -gx LC_ALL en_US.UTF-8
 # load sensistive environment variables
 source $HOME/.env_files/personal
 
-if test "$DISPLAY"
+if status is-interactive; and test -n "$DISPLAY"
     ~/.bin/set-keyboard-repeat
 end
 
-if test -e $GOPATH/bin
-    set PATH $PATH  $GOPATH/bin
-end
+# PATH setup (using fish_add_path for idempotent, deduplicated paths)
+fish_add_path $GOPATH/bin
+fish_add_path ~/.local/bin
+fish_add_path ~/.bin
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.krew/bin
+fish_add_path ~/.opencode/bin
 
-if test -e ~/.local/bin
-    set PATH $PATH ~/.local/bin
-end
+# npm
+set -gx NPM_PACKAGES $HOME/.npm-packages
+fish_add_path $NPM_PACKAGES/bin
+set -gx MANPATH $NPM_PACKAGES/share/man $MANPATH
 
-if test -e ~/.bin
-    set PATH $PATH ~/.bin
-end
+# bun
+set -gx BUN_INSTALL $HOME/.bun
+fish_add_path $BUN_INSTALL/bin
 
-if test -e ~/.cargo/bin
-    set PATH $PATH ~/.cargo/bin
-end
+# pnpm
+fish_add_path ~/.local/share/pnpm/bin
 
 # awscli shell completion
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
 # 1password shell completion
 op completion fish | source
-
-# kubectl krew
-set -gx PATH $PATH $HOME/.krew/bin
-
-# npm path setup
-set NPM_PACKAGES "$HOME/.npm-packages"
-set PATH $PATH $NPM_PACKAGES/bin
-set MANPATH $NPM_PACKAGES/share/man $MANPATH
-
-fish_add_path /home/raphael/.opencode/bin
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
-# pnpm
-set -gx PATH ~/.local/share/pnpm/bin $PATH
 
  #}}}
 # Bindings        ---------------------------------------------- {{{
@@ -96,8 +83,8 @@ end
 # Plugins         ---------------------------------------------- {{{
 
 
-set -gx ATUIN_NOBIND "true"
-eval (direnv hook fish)
+set -gx ATUIN_NOBIND true
+direnv hook fish | source
 mise activate fish | source
 starship init fish | source
 zoxide init fish | source
@@ -115,9 +102,9 @@ end
 alias lash 'eza -l'
 alias l 'eza'
 alias lt 'eza -T --icons'
-alias k 'kill -9'
-alias v 'nvim'
-alias vim 'nvim'
+alias K 'kill -9'
+abbr -a v nvim
+abbr -a vim nvim
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias ot 'otter-launcher'
 alias oc 'opencode'
@@ -138,9 +125,9 @@ alias tomorrow 'zk tomorrow'
 alias weekly 'zk weekly'
 alias backlog 'v ~/Cloud/Sync/notebook/backlog.md'
 # git
-alias g "git"
-alias gpull "git pull origin (git rev-parse --abbrev-ref HEAD)"
-alias gpush "git push origin (git rev-parse --abbrev-ref HEAD)"
+abbr -a g git
+abbr -a gpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
+abbr -a gpush 'git push origin (git rev-parse --abbrev-ref HEAD)'
 alias gclean "git clean -fdx && git stash"
 alias gco "git checkout (git branch | fzf | tr -d [:space:])"
 alias gwip 'git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip-- [skip ci]"'
@@ -152,8 +139,8 @@ abbr -a -- - 'cd -'
 # ripgrep
 alias rg 'rg --smart-case'
 # chezmoi
-alias cz 'chezmoi'
-alias cdiff "chezmoi diff"
+abbr -a cz chezmoi
+abbr -a cdiff 'chezmoi diff'
 
 # }}}
 # pacman           {{{
@@ -176,7 +163,7 @@ alias hm 'history --merge'  # read and merge history from disk
 # }}}
 # tmux             {{{
 
-alias t 'tmux'
+abbr -a t tmux
 alias tmux 'tmux -f ~/.tmux/tmux.conf'
 alias ts 'tmux source ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
@@ -244,108 +231,78 @@ end
 # }}}
 # Systemd Shortcuts {{{
 
-function 0.start
-    sudo systemctl start $argv.service
-end
-# restart systemd service
-function 0.restart
-    sudo systemctl restart $argv.service
-end
-# stop systemd service
-function 0.stop
-    sudo systemctl stop $argv.service
-end
-# enable systemd service
-function 0.enable
-    sudo systemctl enable $argv.service
-end
-# disable a systemd service
-function 0.disable
-    sudo systemctl disable $argv.service
-end
-# show the status of a service
-function 0.status
-    systemctl status $argv.service
-end
-# reload a service configuration
-function 0.reload
-    sudo systemctl reload $argv.service
-end
-# list all running service
-function 0.list
-    systemctl
-end
-# list all failed service
-function 0.failed
-    systemctl --failed
-end
-# list all systemd available unit files
-function 0.list-files
-    systemctl list-unit-files
-end
-# check the log
-function 0.log
-    sudo journalctl
-end
-# show wants
-function 0.wants
-    systemctl show -p "Wants" $argv.target
-end
-# analyze the system
-function 0.analyze
-    systemd-analyze $argv
+# Helper function for systemd commands
+# Usage: __systemctl <system|user> <action> [service_name]
+function __systemctl
+    set -l scope $argv[1]
+    set -l action $argv[2]
+    set -l target $argv[3]
+
+    set -l cmd
+    set -l sudo_cmd
+
+    if test "$scope" = "user"
+        set cmd systemctl --user
+    else
+        set cmd systemctl
+        # Actions that need sudo for system services
+        if contains $action start stop restart enable disable reload
+            set sudo_cmd sudo
+        end
+    end
+
+    switch $action
+        case start stop restart enable disable reload
+            $sudo_cmd $cmd $action $target.service
+        case status
+            $cmd status $target.service
+        case list
+            $cmd
+        case failed
+            $cmd --failed
+        case list-files
+            $cmd list-unit-files
+        case log
+            if test "$scope" = "user"
+                journalctl --user
+            else
+                sudo journalctl
+            end
+        case wants
+            $cmd show -p "Wants" $target.target
+        case analyze
+            systemd-analyze $target
+    end
 end
 
-# }}}
-# Systemd --user    {{{
+# System service shortcuts (0.*)
+function 0.start;      __systemctl system start $argv; end
+function 0.restart;    __systemctl system restart $argv; end
+function 0.stop;       __systemctl system stop $argv; end
+function 0.enable;     __systemctl system enable $argv; end
+function 0.disable;    __systemctl system disable $argv; end
+function 0.status;     __systemctl system status $argv; end
+function 0.reload;     __systemctl system reload $argv; end
+function 0.list;       __systemctl system list; end
+function 0.failed;     __systemctl system failed; end
+function 0.list-files; __systemctl system list-files; end
+function 0.log;        __systemctl system log; end
+function 0.wants;      __systemctl system wants $argv; end
+function 0.analyze;    __systemctl system analyze $argv; end
 
-function 1.start
-    systemctl --user start $argv.service
-end
-# restart systemd service
-function 1.restart
-    systemctl --user restart $argv.service
-end
-# stop systemd service
-function 1.stop
-    systemctl --user stop $argv.service
-end
-# enable systemd service
-function 1.enable
-    systemctl --user enable $argv.service
-end
-# disable a systemd service
-function 1.disable
-    systemctl --user disable $argv.service
-end
-# show the status of a service
-function 1.status
-    systemctl --user status $argv.service
-end
-# reload a service configuration
-function 1.reload
-    systemctl --user reload $argv.service
-end
-# list all running service
-function 1.list
-    systemctl --user
-end
-# list all failed service
-function 1.failed
-    systemctl --user --failed
-end
-# list all systemd available unit files
-function 1.list-files
-    systemctl --user list-unit-files
-end
-# check the log
-function 1.log
-    journalctl --user
-end
-# show wants
-function 1.wants
-    systemctl --user show -p "Wants" $argv.target
-end
+# User service shortcuts (1.*)
+function 1.start;      __systemctl user start $argv; end
+function 1.restart;    __systemctl user restart $argv; end
+function 1.stop;       __systemctl user stop $argv; end
+function 1.enable;     __systemctl user enable $argv; end
+function 1.disable;    __systemctl user disable $argv; end
+function 1.status;     __systemctl user status $argv; end
+function 1.reload;     __systemctl user reload $argv; end
+function 1.list;       __systemctl user list; end
+function 1.failed;     __systemctl user failed; end
+function 1.list-files; __systemctl user list-files; end
+function 1.log;        __systemctl user log; end
+function 1.wants;      __systemctl user wants $argv; end
 
 # }}}
 # su                {{{
