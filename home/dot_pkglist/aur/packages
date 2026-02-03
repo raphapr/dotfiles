@@ -4,6 +4,8 @@ auracle-git
 aws-session-manager-plugin
 bluetooth-autoconnect
 circleci-cli-bin
+cursor-bin
+cursor-cli
 dropbox
 giblib
 gnu-netcat
@@ -12,6 +14,8 @@ green-recorder
 gtk-engines
 gtk2
 gtkhash
+haskell-semigroups
+haskell-wordexp
 jira-cli
 jre
 krabby-bin
@@ -23,8 +27,10 @@ numix-icon-theme-git
 otter-launcher
 perl-pgtop
 qpdfview
+rofi-greenclip
 rofi-power-menu
 slack-desktop
+snitch-bin
 spotify
 terminus-font-ttf
 xautolock
