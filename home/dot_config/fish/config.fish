@@ -50,6 +50,9 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 # 1password shell completion
 op completion fish | source
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/raphael/google-cloud-sdk/path.fish.inc' ]; . '/home/raphael/google-cloud-sdk/path.fish.inc'; end
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -111,19 +114,19 @@ alias oc 'opencode'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
-alias et 'v ~/.tmux/tmux.conf'
-alias ef 'v ~/.config/fish/config.fish'
-alias eb 'v ~/.bashrc'
-alias ev 'v +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
-alias i3c 'v ~/.i3/config'
-alias httpf 'v +"cd ~/Cloud/Sync/code/http-files" +":Telescope find_files"'
+alias et 'nvim ~/.tmux/tmux.conf'
+alias ef 'nvim ~/.config/fish/config.fish'
+alias eb 'nvim ~/.bashrc'
+alias ev 'nvim +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
+alias i3c 'nvim ~/.i3/config'
+alias httpf 'nvim +"cd ~/Cloud/Sync/code/http-files" +":Telescope find_files"'
 alias xmerge 'xrdb -merge ~/.Xresources'
 # notes
-alias notes 'v +"cd ~/Cloud/Sync/notebook" +":ZkTags"'
+alias notes 'nvim +"cd ~/Cloud/Sync/notebook" +":ZkTags"'
 alias daily 'zk daily'
 alias tomorrow 'zk tomorrow'
 alias weekly 'zk weekly'
-alias backlog 'v ~/Cloud/Sync/notebook/backlog.md'
+alias backlog 'nvim ~/Cloud/Sync/notebook/backlog.md'
 # git
 abbr -a g git
 abbr -a gpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
