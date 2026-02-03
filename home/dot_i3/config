@@ -12,9 +12,9 @@ set $PRINT      flameshot gui
 
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
-exec --no-startup-id "udiskie &"
+exec --no-startup-id udiskie
 exec --no-startup-id dropbox start
-exec --no-startup-id compton -b
+exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -22,9 +22,9 @@ exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id sleep 2 && flameshot
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id greenclip daemon
-exec --no-startup-id [[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl "default" && xmodmap ~/.Xmodmap
-exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 "default" && xmodmap ~/.Xmodmap
-exec --no-startup-id [[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c
+exec --no-startup-id bash -c '[[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl && xmodmap ~/.Xmodmap'
+exec --no-startup-id bash -c '[[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 && xmodmap ~/.Xmodmap'
+exec --no-startup-id bash -c '[[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c'
 exec --no-startup-id ~/.bin/xidlehook-lock
 exec_always --no-startup-id ~/.bin/set-keyboard-repeat
 exec_always --no-startup-id xset -dpms
@@ -114,6 +114,9 @@ bindsym $mod+e layout toggle split
 # %%hotkey: floating toggle
 bindsym $mod2+space floating toggle
 
+# %%hotkey: center floating window
+bindsym $mod+c move position center
+
 # %%hotkey: change focus between tiling / floating windows
 bindsym $mod+z focus mode_toggle
 
@@ -189,7 +192,7 @@ bindsym $mod2+0 move container to workspace 10
 # Custom Shortcuts      ----------------------------------------------------- {{{
 
 # %%hotkey: google chrome incognito
-bindsym $mod+slash exec --no-startup-id google-chrome-stable --incognito
+bindsym $mod+slash exec --no-startup-id $BROWSER --private-window
 
 # %%hotkey: start terminal
 bindsym $mod+Return exec --no-startup-id $TERM
@@ -212,10 +215,10 @@ bindsym $mod+F9 exec --no-startup-id ~/.bin/klayout-toggle
 # %%hotkey: lock screen
 bindsym $mod+x exec --no-startup-id loginctl lock-session
 
-# %%hotkey: move workspace to output left/right
+# %%hotkey: move workspace to output left
 bindsym $mod+shift+x move workspace to output left
 
-# %%hotkey: move workspace to output above/below
+# %%hotkey: move workspace to output up
 bindsym $mod+bracketleft move workspace to output up
 
 # %%hotkey: volume up
@@ -245,8 +248,8 @@ bindsym Ctrl+space exec --no-startup-id dunstctl close-all
 #}}}
 # Borders               ----------------------------------------------------- {{{
 
-new_float normal 2
-new_window pixel 2
+default_floating_border normal 2
+default_border pixel 2
 hide_edge_borders none
 
 #}}}
