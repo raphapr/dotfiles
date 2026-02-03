@@ -50,9 +50,6 @@ complete --command aws --no-files --arguments '(begin; set --local --export COMP
 # 1password shell completion
 op completion fish | source
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/raphael/google-cloud-sdk/path.fish.inc' ]; . '/home/raphael/google-cloud-sdk/path.fish.inc'; end
-
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
