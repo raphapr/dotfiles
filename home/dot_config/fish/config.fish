@@ -253,7 +253,11 @@ function __systemctl
 
     switch $action
         case start stop restart enable disable reload
-            $sudo_cmd $cmd $action $target.service
+            if test -n "$sudo_cmd"
+                $sudo_cmd $cmd $action $target.service
+            else
+                $cmd $action $target.service
+            end
         case status
             $cmd status $target.service
         case list
