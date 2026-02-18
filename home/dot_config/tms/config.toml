@@ -1,9 +1,5 @@
 default_session = "main"
 
 [[search_dirs]]
-path = "/home/raphael/Cloud/Sync/code"
-depth = 10
-
-[[search_dirs]]
 path = "/home/raphael/repos"
 depth = 10

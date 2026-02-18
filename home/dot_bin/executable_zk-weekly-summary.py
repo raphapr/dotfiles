@@ -5,10 +5,7 @@ Uses LiteLLM + Gemini 2.5 Flash-Lite to generate AI-powered weekly summaries
 Categorizes tasks into: governance, project, support
 """
 
-import os
 import sys
-import subprocess
-import json
 import re
 import argparse
 from datetime import datetime, timedelta
