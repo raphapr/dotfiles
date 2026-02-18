@@ -90,8 +90,10 @@ def get_week_info(reference_date=None):
     if reference_date is None:
         reference_date = datetime.now()
 
-    week_num = reference_date.strftime("%W")
-    year = reference_date.strftime("%Y")
+    # Use ISO calendar for consistent week numbering
+    iso_year, iso_week, iso_weekday = reference_date.isocalendar()
+    week_num = f"{iso_week:02d}"
+    year = str(iso_year)
 
     # Get Monday of the week
     monday = reference_date - timedelta(days=reference_date.weekday())
@@ -111,7 +113,8 @@ def get_week_info(reference_date=None):
 def extract_hashtags(text):
     """Extract hashtags from text"""
     # Match #word but not #word# (to avoid multi-word tags)
-    return set(re.findall(r"#(\w+)(?!\w)", text))
+    # Require hashtags to start with a letter (not numbers or underscores)
+    return set(re.findall(r"#([a-zA-Z]\w*)(?!\w)", text))
 
 
 def categorize_task(task_text, hashtags):
@@ -224,7 +227,13 @@ def parse_daily_note(content):
 
 def get_daily_notes(week_info):
     """Get all daily notes for current week by checking filenames in date range"""
-    notebook_dir = Path.home() / "Cloud" / "Sync" / "notebook"
+    import os
+
+    # Allow notebook directory to be configured via environment variable
+    notebook_path = os.getenv(
+        "ZK_NOTEBOOK_DIR", str(Path.home() / "Cloud" / "Sync" / "notebook")
+    )
+    notebook_dir = Path(notebook_path)
     daily_dir = notebook_dir / "journal" / "daily"
 
     # Generate list of expected daily note filenames for the week
@@ -276,6 +285,17 @@ def aggregate_tasks(daily_notes):
 
 def generate_summary(daily_notes, aggregated_tasks):
     """Generate AI summary using LiteLLM + Gemini 2.5 Flash-Lite"""
+    import os
+
+    # Validate API key is set
+    if not os.getenv("GEMINI_API_KEY"):
+        print("Error: GEMINI_API_KEY environment variable not set", file=sys.stderr)
+        print(
+            "Please set your API key: export GEMINI_API_KEY='your-key-here'",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     if not daily_notes:
         return {
             "overview": "No daily notes found for this week.",
@@ -369,9 +389,9 @@ def parse_ai_response(text):
     if overview_match:
         result["overview"] = overview_match.group(1).strip()
 
-    # Extract governance
+    # Extract governance (more forgiving regex for end-of-string)
     governance_match = re.search(
-        r"GOVERNANCE:\s*\n(.*?)(?=\n\n[A-Z]+:|$)", text, re.DOTALL
+        r"GOVERNANCE:\s*\n(.*?)(?:\n\n(?=[A-Z]+:)|$)", text, re.DOTALL
     )
     if governance_match:
         result["governance"] = [
@@ -380,8 +400,10 @@ def parse_ai_response(text):
             if line.strip() and line.strip() != "None"
         ]
 
-    # Extract project
-    project_match = re.search(r"PROJECT:\s*\n(.*?)(?=\n\n[A-Z]+:|$)", text, re.DOTALL)
+    # Extract project (more forgiving regex for end-of-string)
+    project_match = re.search(
+        r"PROJECT:\s*\n(.*?)(?:\n\n(?=[A-Z]+:)|$)", text, re.DOTALL
+    )
     if project_match:
         result["project"] = [
             line.strip("- ").strip()
@@ -389,8 +411,10 @@ def parse_ai_response(text):
             if line.strip() and line.strip() != "None"
         ]
 
-    # Extract support
-    support_match = re.search(r"SUPPORT:\s*\n(.*?)(?=\n\n[A-Z]+:|$)", text, re.DOTALL)
+    # Extract support (more forgiving regex for end-of-string)
+    support_match = re.search(
+        r"SUPPORT:\s*\n(.*?)(?:\n\n(?=[A-Z]+:)|$)", text, re.DOTALL
+    )
     if support_match:
         result["support"] = [
             line.strip("- ").strip()
@@ -403,7 +427,13 @@ def parse_ai_response(text):
 
 def create_weekly_note(week_info, daily_notes, summary, dry_run=False):
     """Create or update weekly note with AI summary and daily links"""
-    notebook_dir = Path.home() / "Cloud" / "Sync" / "notebook"
+    import os
+
+    # Allow notebook directory to be configured via environment variable
+    notebook_path = os.getenv(
+        "ZK_NOTEBOOK_DIR", str(Path.home() / "Cloud" / "Sync" / "notebook")
+    )
+    notebook_dir = Path(notebook_path)
     weekly_path = notebook_dir / "journal" / "weekly" / f"{week_info['filename']}.md"
 
     # Build daily links section
