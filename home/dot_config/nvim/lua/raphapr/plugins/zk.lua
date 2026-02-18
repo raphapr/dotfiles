@@ -23,7 +23,6 @@ return {
       map("n", "<leader>zd", "<Cmd>ZkNew { dir = 'journal/daily', date = 'today' }<CR>", opts("Daily note (today)"))
       map("n", "<leader>zr", "<Cmd>ZkNew { dir = 'journal/daily', date = 'tomorrow' }<CR>", opts("Daily note (tomorrow)"))
       map("n", "<leader>zw", "<Cmd>ZkNew { dir = 'journal/weekly', date = 'today' }<CR>", opts("Weekly note"))
-      map("n", "<leader>zy", "<Cmd>!zk weekly-sync<CR> <Cmd>ZkNew { dir = 'journal/weekly', date = 'today' }<CR>", opts("Sync weekly note"))
       map("n", "<leader>zo", "<Cmd>ZkNotes { sort = {'modified'} }<CR>", opts("Open notes"))
       map("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts("Open notes by tags"))
       map("v", "<leader>zm", ":'<,'>ZkMatch<CR>", opts("Search notes by selection"))

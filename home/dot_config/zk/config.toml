@@ -88,8 +88,7 @@ recent = "zk edit --sort created- --created-after 'last two weeks' --interactive
 
 daily = 'zk new --no-input journal/daily'
 tomorrow = 'zk new --no-input --date=tomorrow journal/daily'
-weekly = 'zk new --no-input journal/weekly'
-weekly-sync = 'zk list journal/weekly --format path --quiet --limit 1 --match "$(date +%Y)-W$(date +%W)" | xargs -I {} rm $ZK_NOTEBOOK_DIR/{} && zk new -p --no-input journal/weekly'
+weekly = 'zk-weekly-summary'
 
 # LSP (EDITOR INTEGRATION)
 [lsp]
