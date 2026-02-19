@@ -214,9 +214,22 @@ def parse_daily_note(content):
             line_hashtags = extract_hashtags(line)
             all_hashtags = note_hashtags | line_hashtags
 
+            # Extract Jira issue key(s) from markdown links before cleaning
+            # Matches [PROJ-123](url) or bare PROJ-123 patterns
+            jira_keys = re.findall(r"\[([A-Z][A-Z0-9]*-\d+)\]\(https?://[^\)]+\)", line)
+            if not jira_keys:
+                jira_keys = re.findall(r"\b([A-Z][A-Z0-9]*-\d+)\b", line)
+
             # Clean the task text (remove checkbox and hashtags for display)
             task_text = re.sub(r"^\s*-\s*\[[x\-\s]\]\s*", "", line)
+            # Remove markdown links but keep their label text
+            task_text = re.sub(r"\[([^\]]+)\]\([^\)]+\)", r"\1", task_text)
             task_text = re.sub(r"\s*#\w+", "", task_text).strip()
+
+            # Ensure the Jira key is present in the task text (in case label was already the key)
+            for key in jira_keys:
+                if key not in task_text:
+                    task_text = f"{key}: {task_text}"
 
             if task_text:
                 category = categorize_task(line, all_hashtags)
@@ -339,6 +352,7 @@ Generate a professional weekly summary in English with:
 4. **Support Highlights**: 3-5 bullet points summarizing support work (or "None" if empty)
 
 Keep it concise, technical, and professional. Focus on outcomes and impact.
+IMPORTANT: Whenever a task includes a Jira issue key (e.g. PLATFORM-1234), always include that key in the corresponding bullet point.
 
 Format your response EXACTLY as:
 OVERVIEW:
