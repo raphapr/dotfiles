@@ -14,6 +14,7 @@ function M.setup()
     "dockerls",
     "gopls",
     "harper_ls",
+    "ruff",
   }
 
   require("mason").setup()
