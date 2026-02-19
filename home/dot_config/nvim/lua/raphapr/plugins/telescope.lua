@@ -37,6 +37,9 @@ return {
       telescope.setup({
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
+          preview = {
+            treesitter = false,
+          },
           history = {
             path = vim.fn.stdpath("data") .. "/telescope_history",
             limit = 1000,
