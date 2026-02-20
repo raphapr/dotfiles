@@ -46,6 +46,9 @@ opt.cursorcolumn = true
 -- improve performance
 opt.ttyfast = true
 
+-- Auto-reload files when changed outside of Neovim
+vim.o.autoread = true
+
 -- undo / backup
 local constants = require("raphapr.config.constants")
 opt.backup = true
@@ -96,4 +99,3 @@ vim.keymap.set("n", "zt", function()
     set_opt(0, "foldlevel", 20)
   end
 end, { noremap = true, silent = true, desc = "Fold: Toggle all folds" })
-

@@ -107,7 +107,7 @@ abbr -a v nvim
 abbr -a vim nvim
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias ot 'otter-launcher'
-alias oc 'opencode'
+alias oc 'opencode --agent OpenCoder --port'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
