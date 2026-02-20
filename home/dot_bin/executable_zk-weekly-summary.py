@@ -76,13 +76,27 @@ def parse_week_argument(week_arg):
         )
         sys.exit(1)
 
-    # Calculate Monday of that week using ISO week date
-    # ISO week 1 is the first week with Thursday in the new year
-    jan_4 = datetime(year, 1, 4)  # Jan 4 is always in week 1
-    week_1_monday = jan_4 - timedelta(days=jan_4.weekday())
-    target_monday = week_1_monday + timedelta(weeks=week - 1)
+    # Calculate Monday of that week using %W convention
+    # %W week 1 starts on the first Monday of the year
+    return _monday_of_week_W(year, week)
 
-    return target_monday
+
+def _monday_of_week_W(year, week):
+    """Return the Monday of a given strftime %W week number.
+
+    %W week 1 starts on the first Monday of the year; week 0 is the
+    (possibly partial) week before that first Monday.
+    """
+    from datetime import date as _date
+
+    jan1 = _date(year, 1, 1)
+    days_to_first_monday = (7 - jan1.weekday()) % 7
+    first_monday = jan1 + timedelta(days=days_to_first_monday)
+    if week == 0:
+        return datetime.combine(first_monday - timedelta(weeks=1), datetime.min.time())
+    return datetime.combine(
+        first_monday + timedelta(weeks=week - 1), datetime.min.time()
+    )
 
 
 def get_week_info(reference_date=None):
@@ -90,13 +104,12 @@ def get_week_info(reference_date=None):
     if reference_date is None:
         reference_date = datetime.now()
 
-    # Use ISO calendar for consistent week numbering
-    iso_year, iso_week, iso_weekday = reference_date.isocalendar()
-    week_num = f"{iso_week:02d}"
-    year = str(iso_year)
+    # Use strftime %W to match zk's week numbering (%W: week 1 = week of first Monday)
+    week_num = reference_date.strftime("%W")
+    year = reference_date.strftime("%Y")
 
-    # Get Monday of the week
-    monday = reference_date - timedelta(days=reference_date.weekday())
+    # Get Monday of the %W week
+    monday = _monday_of_week_W(int(year), int(week_num))
     # Get Sunday of the week
     sunday = monday + timedelta(days=6)
 
