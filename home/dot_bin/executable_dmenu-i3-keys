@@ -25,7 +25,7 @@ CONFIG = {
     },
 }
 
-DMENU_COMMAND = ["fsel", "--dmenu"]
+DMENU_COMMAND = ["rofi", "-dmenu", "-i", "-p", "keybindings"]
 START_LINE_SEARCHING_PATTERN = "%%hotkey:"
 END_LINE_SEARCHING_PATTERN = ""
 ADDITIONAL_DOTS = 10

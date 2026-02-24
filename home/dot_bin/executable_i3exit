@@ -1,7 +1,7 @@
 #!/bin/sh
 # add in /usr/bin/
 lock() {
-    i3lock -c 000000
+    i3lock --nofork --show-failed-attempts --ignore-empty-password -c 000000
 }
 
 case "$1" in
@@ -12,10 +12,10 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        i3lock -c 000000 && systemctl suspend
+        lock && systemctl suspend
         ;;
     hibernate)
-        i3lock -c 000000 && systemctl hibernate
+        lock && systemctl hibernate
         ;;
     reboot)
         sudo systemctl reboot

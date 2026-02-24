@@ -22,9 +22,8 @@ exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id sleep 2 && flameshot
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id greenclip daemon
-exec --no-startup-id bash -c '[[ $HOSTNAME == "bmo" ]] && setxkbmap us -variant alt-intl && xmodmap ~/.Xmodmap'
-exec --no-startup-id bash -c '[[ $HOSTNAME == "moochacho" ]] && setxkbmap br -variant abnt2 && xmodmap ~/.Xmodmap'
-exec --no-startup-id bash -c '[[ $HOSTNAME == "moochacho" ]] && autorandr off && autorandr -c'
+exec --no-startup-id bash -c '[ "$(hostname)" = "bmo" ] && setxkbmap us -variant alt-intl && xmodmap ~/.Xmodmap'
+exec --no-startup-id bash -c '[ "$(hostname)" = "moochacho" ] && setxkbmap br -variant abnt2 && xmodmap ~/.Xmodmap && autorandr off && autorandr -c'
 exec --no-startup-id ~/.bin/xidlehook-lock
 exec_always --no-startup-id ~/.bin/set-keyboard-repeat
 exec_always --no-startup-id xset -dpms
@@ -123,8 +122,8 @@ bindsym $mod+z focus mode_toggle
 # %%hotkey: focus the parent container
 bindsym $mod+a focus parent
 
-# %%hotkey: focus the child container
-bindsym $mod+d focus child
+# %%hotkey: app launcher
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # %%hotkey: jump workspace prev
 bindsym $mod+Left workspace prev
@@ -255,10 +254,10 @@ hide_edge_borders none
 #}}}
 # Theme colors          ----------------------------------------------------- {{{
 
-client.focused #4398EB #4398EB #000000 #DDDDDD
-client.focused_inactive #333333 #333333 #888888 #292D2E
-client.unfocused #333333 #333333 #888888 #292D2E
-client.urgent #2F343A #900000 #FFFFFF #900000
+client.focused          #89b4fa #89b4fa #1e1e2e #f5e0dc
+client.focused_inactive #45475a #45475a #cdd6f4 #45475a
+client.unfocused        #313244 #313244 #6c7086 #313244
+client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8
 
 #}}}
 # Window rules          ----------------------------------------------------- {{{
@@ -312,26 +311,5 @@ for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 42
 # %%hotkey: launch otter-launcher
 bindsym $mod+f [class="scratchpad-launcher"] scratchpad show
 bindsym $mod+space [class="scratchpad-launcher"] scratchpad show
-
-#}}}
-# Multi-monitor         ----------------------------------------------------- {{{
-
-# %%hotkey: multi monitor menu
-bindsym $mod+F10 mode "$multi_monitor"
-
-set $multi_monitor (1) DEFAULT (2) HDMI-L (3) HDMI-R (4) HDMI-U (5) HDMI (6) PRES-HDMI
-mode "$multi_monitor" {
-    bindsym 1 exec --no-startup-id xrandr --output eDP1 --off && xrandr --output HDMI1 --off && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 2 exec --no-startup-id xrandr --output HDMI1 --auto --left-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 3 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 4 exec --no-startup-id xrandr --output HDMI1 --auto --above eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 5 exec --no-startup-id xrandr --output HDMI1 --auto --right-of eDP1 && feh --bg-fill ~/.wallpaper.png, mode "default"
-    bindsym 6 exec --no-startup-id xrandr --output HDMI1 --auto --same-as eDP1, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+F10 mode "default"
-}
 
 #}}}
