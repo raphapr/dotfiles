@@ -67,7 +67,7 @@ run_cmd() {
     elif [[ $1 == '--reboot' ]]; then
       sudo systemctl reboot
     elif [[ $1 == '--suspend' ]]; then
-      i3lock -c 000000 && systemctl suspend
+      systemctl suspend
     elif [[ $1 == '--logout' ]]; then
       if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
         openbox --exit

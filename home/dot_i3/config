@@ -27,7 +27,7 @@ exec --no-startup-id bash -c '[ "$(hostname)" = "moochacho" ] && setxkbmap br -v
 exec --no-startup-id ~/.bin/xidlehook-lock
 exec_always --no-startup-id ~/.bin/set-keyboard-repeat
 exec_always --no-startup-id xset -dpms
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --show-failed-attempts --ignore-empty-password -c 000000
+exec_always --no-startup-id bash -c 'pkill -x xss-lock; xss-lock --session=$(loginctl show-seat seat0 --property=ActiveSession --value) --transfer-sleep-lock -- ~/.bin/locker'
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #}}}

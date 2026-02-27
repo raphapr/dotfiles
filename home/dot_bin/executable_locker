@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Locker script for xss-lock --transfer-sleep-lock.
+#
+I3LOCK_OPTS=(--nofork --show-failed-attempts --ignore-empty-password -c 000000)
+
+if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
+    # Launched before sleep: wait for autorandr to settle before i3lock grabs
+    # the display — autorandr runs on resume and may reconfigure outputs,
+    # causing i3lock to lose its screen grab if it starts too early.
+    # The delay is safe here: systemd won't proceed with suspend until
+    # XSS_SLEEP_LOCK_FD is closed, which only happens after i3lock is ready.
+    sleep 1
+
+    kill_i3lock() { pkill -xu "$EUID" i3lock; }
+    trap kill_i3lock TERM INT
+
+    i3lock "${I3LOCK_OPTS[@]}" {XSS_SLEEP_LOCK_FD}<&-
+    exec {XSS_SLEEP_LOCK_FD}<&-
+
+    while kill_i3lock -0; do sleep 0.5; done
+else
+    # Launched for idle timeout or manual loginctl lock-session — no delay.
+    trap 'kill %%' TERM INT
+    i3lock "${I3LOCK_OPTS[@]}" &
+    wait
+fi
