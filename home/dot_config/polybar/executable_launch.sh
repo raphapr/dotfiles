@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Load mise shims to ensure tools like kubectl are in PATH
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 # Terminate already running bar instances
 killall -q polybar
 

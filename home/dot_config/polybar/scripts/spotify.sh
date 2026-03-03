@@ -1,27 +1,20 @@
 #!/bin/sh
 
 PLAYER="spotify"
-STATUS=$(playerctl -p "$PLAYER" status)
-VOLUME=$(playerctl -p "$PLAYER" metadata --format "{{ volume }}")
-CURRENT_TRACK=$(playerctl metadata -p "$PLAYER" --format "{{ artist }}: {{ title }}")
 MAX_LENGTH=60
 
-print_status() {
-  if [ "$STATUS" = "Playing" ]; then
-    STATUS=""
-  else
-    STATUS=""
-  fi
-  if [ "$VOLUME" = "0.0" ]; then
-    VOLUME=""
-  else
-    VOLUME=""
-  fi
+# Single playerctl call for all metadata
+OUTPUT=$(playerctl -p "$PLAYER" metadata --format "{{ status }}|{{ volume }}|{{ artist }}: {{ title }}" 2>/dev/null)
 
-  if [ ${#CURRENT_TRACK} -gt $MAX_LENGTH ]; then
+STATUS=$(echo "$OUTPUT" | cut -d'|' -f1)
+VOLUME=$(echo "$OUTPUT" | cut -d'|' -f2)
+CURRENT_TRACK=$(echo "$OUTPUT" | cut -d'|' -f3)
+
+[ "$STATUS" = "Playing" ] && STATUS_ICON=$(printf '\uf04b') || STATUS_ICON=$(printf '\uf04c')
+[ "$VOLUME" = "0.0" ] && VOLUME_ICON=$(printf '\uf026') || VOLUME_ICON=$(printf '\uf028')
+
+if [ ${#CURRENT_TRACK} -gt $MAX_LENGTH ]; then
     CURRENT_TRACK="${CURRENT_TRACK:0:$MAX_LENGTH}..."
-  fi
-  echo "${CURRENT_TRACK} $STATUS $VOLUME"
-}
+fi
 
-print_status
+echo "${CURRENT_TRACK} $STATUS_ICON $VOLUME_ICON"

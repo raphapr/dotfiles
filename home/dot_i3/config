@@ -237,6 +237,9 @@ bindsym XF86AudioPrev  exec --no-startup-id playerctl previous
 bindsym XF86MonBrightnessUp   exec --no-startup-id "brightnessctl set 10%+"
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 10%-"
 
+# %%hotkey: kubectl context switcher
+bindsym $mod+m exec --no-startup-id ~/.bin/rofi-kubectl-ctx
+
 # %%hotkey: mute spotify player
 bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
 
