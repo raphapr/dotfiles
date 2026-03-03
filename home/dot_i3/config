@@ -19,7 +19,7 @@ exec --no-startup-id thunar --daemon
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id telegram-desktop -startintray
-exec --no-startup-id sleep 2 && flameshot
+exec --no-startup-id sleep 2 && flameshot  # delay needed: flameshot fails if started before tray is ready
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id greenclip daemon
 exec --no-startup-id bash -c '[ "$(hostname)" = "bmo" ] && setxkbmap us -variant alt-intl && xmodmap ~/.Xmodmap'
@@ -147,10 +147,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ccedilla resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width  10 px or 10 ppt
+        bindsym j resize grow   height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow   width  10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -185,7 +185,6 @@ bindsym $mod2+6 move container to workspace 6
 bindsym $mod2+7 move container to workspace 7
 bindsym $mod2+8 move container to workspace 8
 bindsym $mod2+9 move container to workspace 9
-bindsym $mod2+0 move container to workspace 10
 
 #}}}
 # Custom Shortcuts      ----------------------------------------------------- {{{
@@ -197,7 +196,7 @@ bindsym $mod+slash exec --no-startup-id $BROWSER --private-window
 bindsym $mod+Return exec --no-startup-id $TERM
 
 # %%hotkey: open tmux session main
-bindsym $mod2+Return exec $TERM -e $HOME/.bin/tmux-session main
+bindsym $mod2+Return exec --no-startup-id $TERM -e $HOME/.bin/tmux-session main
 
 # %%hotkey: browser
 bindsym $mod+q exec --no-startup-id $BROWSER
@@ -228,15 +227,15 @@ bindsym XF86AudioLowerVolume exec --no-startup-id ~/.bin/volume down
 bindsym XF86AudioMute        exec --no-startup-id ~/.bin/volume mute
 
 # media player controller
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioStop exec playerctl stop
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay  exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioStop  exec --no-startup-id playerctl stop
+bindsym XF86AudioNext  exec --no-startup-id playerctl next
+bindsym XF86AudioPrev  exec --no-startup-id playerctl previous
 
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id  "brightnessctl set 25%+"
-bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 25%-"
+bindsym XF86MonBrightnessUp   exec --no-startup-id "brightnessctl set 10%+"
+bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 10%-"
 
 # %%hotkey: mute spotify player
 bindsym $mod+comma exec --no-startup-id ~/.bin/playerctl-mute-toggle
@@ -258,6 +257,7 @@ client.focused          #89b4fa #89b4fa #1e1e2e #f5e0dc
 client.focused_inactive #45475a #45475a #cdd6f4 #45475a
 client.unfocused        #313244 #313244 #6c7086 #313244
 client.urgent           #f38ba8 #f38ba8 #1e1e2e #f38ba8
+client.background       #1e1e2e
 
 #}}}
 # Window rules          ----------------------------------------------------- {{{
@@ -298,15 +298,15 @@ set $journal kitty --instance-group scratchpad-journal --class=scratchpad-journa
 set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -c 'otter-launcher'
 
 # %%hotkey: launch journal scratchpad in case accidentally closed or whatever
-bindsym $mod+F11 exec $journal
-exec $journal
+bindsym $mod+F11 exec --no-startup-id $journal
+exec --no-startup-id $journal
 for_window [class="scratchpad-journal"] move to scratchpad, resize set width 1000 height 600
 # %%hotkey: launch scratchpad-journal
 bindsym F11 [class="scratchpad-journal"] scratchpad show
 
 # %%hotkey: launch otter-launcher scratchpad in case accidentally closed or whatever
-bindsym $mod2+f exec $launcher
-exec $launcher
+bindsym $mod2+f exec --no-startup-id $launcher
+exec --no-startup-id $launcher
 for_window [class="scratchpad-launcher"] move to scratchpad, resize set width 420 height 330, border none
 # %%hotkey: launch otter-launcher
 bindsym $mod+f [class="scratchpad-launcher"] scratchpad show
