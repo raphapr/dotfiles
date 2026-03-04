@@ -23,7 +23,6 @@ return {
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      provider = "tmux",
       events = {
         reload = true,
       },
