@@ -23,6 +23,7 @@ stern = "1.33.0"
 'npm:tokscale'='latest'
 'npm:google'='latest'
 'go:golang.org/x/tools/gopls' = '0.20.0'
+'github:onllm-dev/onWatch' = 'latest'
 "vfox:mise-plugins/vfox-gcloud" = "latest"
 
 

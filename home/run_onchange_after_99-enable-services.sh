@@ -6,3 +6,4 @@ echo ">> Enabling systemd services..."
 systemctl --user daemon-reload
 systemctl --user --now enable psd
 systemctl --user --now enable redshift
+systemctl --user --now enable onwatch

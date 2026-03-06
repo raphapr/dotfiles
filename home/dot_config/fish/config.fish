@@ -18,7 +18,7 @@ set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
 # load sensistive environment variables
-source $HOME/.env_files/personal
+source $HOME/.env_files/core
 
 if status is-interactive; and test -n "$DISPLAY"
     ~/.bin/set-keyboard-repeat
