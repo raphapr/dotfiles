@@ -5,12 +5,9 @@
 I3LOCK_OPTS=(--nofork --show-failed-attempts --ignore-empty-password -c 000000)
 
 if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
-    # Launched before sleep: wait for autorandr to settle before i3lock grabs
-    # the display — autorandr runs on resume and may reconfigure outputs,
-    # causing i3lock to lose its screen grab if it starts too early.
-    # The delay is safe here: systemd won't proceed with suspend until
-    # XSS_SLEEP_LOCK_FD is closed, which only happens after i3lock is ready.
-    sleep 1
+    # Launched before sleep via --transfer-sleep-lock.
+    # systemd holds suspend until XSS_SLEEP_LOCK_FD is closed (i3lock ready).
+    # Do NOT sleep here — InhibitDelayMaxSec is only 5-10s and every ms counts.
 
     kill_i3lock() { pkill -xu "$EUID" i3lock; }
     trap kill_i3lock TERM INT

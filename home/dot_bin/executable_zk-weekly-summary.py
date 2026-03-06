@@ -217,15 +217,11 @@ def parse_daily_note(content):
     lines = content.split("\n")
     tasks = {"governance": [], "project": [], "support": []}
 
-    # Extract all hashtags from the note
-    note_hashtags = extract_hashtags(content)
-
     for line in lines:
         # Match task lines: - [x], - [-], - [ ]
         if re.match(r"^\s*-\s*\[[x\-\s]\]", line):
-            # Extract hashtags from this specific line
+            # Extract hashtags from this specific line only
             line_hashtags = extract_hashtags(line)
-            all_hashtags = note_hashtags | line_hashtags
 
             # Extract Jira issue key(s) from markdown links before cleaning
             # Matches [PROJ-123](url) or bare PROJ-123 patterns
@@ -245,7 +241,7 @@ def parse_daily_note(content):
                     task_text = f"{key}: {task_text}"
 
             if task_text:
-                category = categorize_task(line, all_hashtags)
+                category = categorize_task(line, line_hashtags)
                 tasks[category].append(task_text)
 
     return tasks
@@ -499,8 +495,6 @@ tags: [journal, weekly]
 ---
 
 # Weekly Summary
-
-{summary["overview"]}
 
 ## Governance
 
