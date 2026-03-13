@@ -108,7 +108,7 @@ abbr -a vim nvim
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias ot 'otter-launcher'
 alias oc 'OPENCODE_CONFIG_CONTENT=\'{"model":"anthropic/claude-sonnet-4-6","small_model":"anthropic/claude-haiku-4-5"}\' opencode --agent OpenCoder'
-alias occ 'OPENCODE_CONFIG_CONTENT=\'{"model":"github-copilot/claude-sonnet-4-5","small_model":"github-copilot/claude-haiku-4-5"}\' opencode --agent OpenCoder'
+alias occ 'OPENCODE_CONFIG_CONTENT=\'{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}\' opencode --agent OpenCoder'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
