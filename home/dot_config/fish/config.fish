@@ -107,8 +107,7 @@ abbr -a v nvim
 abbr -a vim nvim
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias ot 'otter-launcher'
-alias oc 'OPENCODE_CONFIG_CONTENT=\'{"model":"anthropic/claude-sonnet-4-6","small_model":"anthropic/claude-haiku-4-5"}\' opencode --agent OpenCoder'
-alias occ 'OPENCODE_CONFIG_CONTENT=\'{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}\' opencode --agent OpenCoder'
+alias oc 'opencode --agent OpenCoder'
 # edit
 alias sof  'source ~/.config/fish/config.fish'
 alias sb 'source ~/.bashrc'
@@ -483,6 +482,14 @@ end
 
 function opsignin
   eval "$(op signin)"
+end
+
+# }}}
+# occ                 {{{
+
+function occ
+    set -x OPENCODE_CONFIG_CONTENT '{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}'
+    opencode --agent OpenCoder $argv
 end
 
 # }}}

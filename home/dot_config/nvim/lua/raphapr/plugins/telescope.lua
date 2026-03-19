@@ -14,6 +14,14 @@ return {
     lazy = true,
     cmd = "Telescope",
     config = function()
+      -- Neovim 0.11 removed ft_to_lang from nvim-treesitter.parsers; shim it back
+      local ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
+      if ok and ts_parsers and not ts_parsers.ft_to_lang then
+        ts_parsers.ft_to_lang = function(ft)
+          return vim.treesitter.language.get_lang(ft) or ft
+        end
+      end
+
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local action_layout = require("telescope.actions.layout")
@@ -38,7 +46,7 @@ return {
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
           preview = {
-            treesitter = false,
+            treesitter = { enable = false },
           },
           history = {
             path = vim.fn.stdpath("data") .. "/telescope_history",

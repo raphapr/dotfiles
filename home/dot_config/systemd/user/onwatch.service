@@ -1,15 +1,20 @@
 [Unit]
 Description=onWatch - AI API Quota Tracker
-Documentation=https://github.com/onllm-dev/onWatch
+Documentation=https://github.com/onllm-dev/onwatch
 After=network-online.target
 Wants=network-online.target
+StartLimitBurst=3
+StartLimitIntervalSec=120
 
 [Service]
 Type=simple
-WorkingDirectory=%h/.onwatch
-ExecStart=%h/.local/share/mise/shims/onwatch --debug
+WorkingDirectory=/home/raphael/.onwatch
+ExecStart=/home/raphael/.onwatch/bin/onwatch --debug
 Restart=always
 RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=onwatch
 
 [Install]
 WantedBy=default.target

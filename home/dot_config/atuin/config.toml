@@ -54,6 +54,11 @@ style = "compact"
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
 show_preview = true
+search_mode = "daemon-fuzzy"
+
+[daemon]
+enabled = true
+autostart = true
 
 ## what to do when the escape key is pressed when searching
 ## possible values: return-original, return-query

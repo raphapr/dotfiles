@@ -2,7 +2,7 @@
 """
 zk Weekly Summary Generator
 Uses LiteLLM + Gemini 2.5 Flash-Lite to generate AI-powered weekly summaries
-Categorizes tasks into: governance, project, support, core
+Categorizes tasks into: core, governance, project, support
 """
 
 import os
@@ -101,6 +101,17 @@ FRONTMATTER_TITLE_RE = re.compile(r"^title:\s*(.+)$", re.MULTILINE)
 EMPTY_SUMMARY = {cat: [] for cat in CATEGORIES}
 
 DEFAULT_NOTEBOOK = str(Path.home() / "Cloud" / "Sync" / "notebook")
+
+
+# ---------------------------------------------------------------------------
+# Utilities
+# ---------------------------------------------------------------------------
+
+
+def _die(message: str) -> None:
+    """Print an error message to stderr and exit."""
+    print(f"Error: {message}", file=sys.stderr)
+    sys.exit(1)
 
 
 # ---------------------------------------------------------------------------
@@ -487,12 +498,6 @@ def create_weekly_note(
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
-
-
-def _die(message: str) -> None:
-    """Print an error message to stderr and exit."""
-    print(f"Error: {message}", file=sys.stderr)
-    sys.exit(1)
 
 
 def _build_arg_parser() -> argparse.ArgumentParser:
