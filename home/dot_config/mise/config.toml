@@ -2,6 +2,7 @@
 node= "latest"
 terraform='1.5.7'
 opentofu='1.7.2'
+python = "latest"
 go= "1.24"
 kubectl='1.29.0'
 shellcheck='0.8.0'
@@ -24,7 +25,8 @@ stern = "1.33.0"
 'npm:google'='latest'
 'go:golang.org/x/tools/gopls' = '0.20.0'
 'github:onllm-dev/onWatch' = 'latest'
-"vfox:mise-plugins/vfox-gcloud" = "latest"
+'vfox:mise-plugins/vfox-gcloud' = "latest"
+'pipx:github/spec-kit' = 'latest'
 
 
 [settings]
