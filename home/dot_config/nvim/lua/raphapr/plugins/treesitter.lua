@@ -17,7 +17,7 @@ return {
           [".*/templates/.*%.yml.tmpl"] = "gotmpl",
         },
       })
-      require("nvim-treesitter.config").setup({
+      require("nvim-treesitter.configs").setup({
         sync_install = false,
         auto_install = true,
         ignore_install = {},

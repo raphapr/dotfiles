@@ -27,7 +27,7 @@ url = "https://raw.githubusercontent.com/docker/docker-ce/master/components/cli/
 refreshPeriod = "168h"
 [".config/fish/themes/catppuccin-mocha.theme"]
 type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Mocha.theme"
+url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/catppuccin-mocha.theme"
 refreshPeriod = "168h"
 [".local/bin"]
 type = "archive"
