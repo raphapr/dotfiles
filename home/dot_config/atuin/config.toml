@@ -54,7 +54,7 @@ style = "compact"
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
 show_preview = true
-search_mode = "daemon-fuzzy"
+search_mode = "fuzzy"
 
 [daemon]
 enabled = true
