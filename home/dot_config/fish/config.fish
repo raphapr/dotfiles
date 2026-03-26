@@ -11,7 +11,9 @@ set -gx BROWSER firefox
 set -gx GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 set -gx FZF_DEFAULT_OPTS "--height 50%"
 set -gx ZK_NOTEBOOK_DIR $HOME/Cloud/Sync/notebook
-set -gx GPG_TTY (tty)
+if status is-interactive
+    set -gx GPG_TTY (tty)
+end
 
 # Locale settings
 set -gx LANG en_US.UTF-8
@@ -24,31 +26,35 @@ if status is-interactive; and test -n "$DISPLAY"
     ~/.bin/set-keyboard-repeat
 end
 
-# PATH setup (using fish_add_path for idempotent, deduplicated paths)
-fish_add_path $GOPATH/bin
-fish_add_path ~/.local/bin
-fish_add_path ~/.bin
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.krew/bin
-fish_add_path ~/.opencode/bin
-
-# npm
+# npm / bun / pnpm env vars
 set -gx NPM_PACKAGES $HOME/.npm-packages
-fish_add_path $NPM_PACKAGES/bin
 set -gx MANPATH $NPM_PACKAGES/share/man $MANPATH
-
-# bun
 set -gx BUN_INSTALL $HOME/.bun
-fish_add_path $BUN_INSTALL/bin
 
-# pnpm
-fish_add_path ~/.local/share/pnpm/bin
+# PATH setup (batched for efficiency)
+fish_add_path \
+    $GOPATH/bin \
+    ~/.local/bin \
+    ~/.bin \
+    ~/.cargo/bin \
+    ~/.krew/bin \
+    ~/.opencode/bin \
+    $NPM_PACKAGES/bin \
+    $BUN_INSTALL/bin \
+    ~/.local/share/pnpm/bin
 
 # awscli shell completion
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
 
-# 1password shell completion
-op completion fish | source
+# 1password shell completion (cached — op startup is slow)
+if status is-interactive
+    set -l _op_cache ~/.cache/fish/op_completion.fish
+    if not test -f $_op_cache; or test (command -v op) -nt $_op_cache
+        mkdir -p ~/.cache/fish
+        op completion fish > $_op_cache
+    end
+    source $_op_cache
+end
 
  #}}}
 # Bindings        ---------------------------------------------- {{{
@@ -82,16 +88,32 @@ end
 # }}}
 # Plugins         ---------------------------------------------- {{{
 
-
 set -gx ATUIN_NOBIND true
-direnv hook fish | source
-mise activate fish | source
-starship init fish | source
-zoxide init fish | source
-fzf --fish | source
+
+# Load and cache a plugin's init script.
+# Usage: __plugin_load <name> <bin> <init-args...>
+#   name      — cache file stem (e.g. "direnv")
+#   bin       — binary to check mtime against (e.g. "direnv")
+#   init-args — command + args to generate the init script (e.g. "hook fish")
+function __plugin_load
+    set -l name $argv[1]
+    set -l bin  $argv[2]
+    set -l args $argv[3..]
+    set -l cache ~/.cache/fish/$name.fish
+    if not test -f $cache; or test (command -v $bin) -nt $cache
+        $bin $args > $cache
+    end
+    source $cache
+end
 
 if status is-interactive
-    atuin init fish | source
+    mkdir -p ~/.cache/fish
+    __plugin_load direnv  direnv  hook fish
+    __plugin_load mise    mise    activate fish
+    __plugin_load starship starship init fish
+    __plugin_load zoxide  zoxide  init fish
+    __plugin_load fzf     fzf     --fish
+    __plugin_load atuin   atuin   init fish
 end
 
 # }}}
@@ -173,6 +195,7 @@ alias backlog 'nvim ~/Cloud/Sync/notebook/backlog.md'
 # edit             {{{
 
 alias sof  'source ~/.config/fish/config.fish'
+alias fish-cache-clear 'rm -f ~/.cache/fish/*.fish'
 alias sb 'source ~/.bashrc'
 alias et 'nvim ~/.tmux/tmux.conf'
 alias ef 'nvim ~/.config/fish/config.fish'
