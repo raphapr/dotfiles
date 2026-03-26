@@ -38,8 +38,8 @@ fc-cache
 # virtualfish
 ########################################################
 
-pip install --upgrade --break-system-packages pip
-pip install --upgrade --no-deps --break-system-packages virtualenv filelock distlib virtualfish
+pip install --upgrade --user pip
+pip install --upgrade --no-deps --user virtualenv filelock distlib virtualfish
 vf install
 vf addplugins global_requirements
 

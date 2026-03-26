@@ -18,7 +18,7 @@ if [ ! -d ~/.local/share/ptpython ]; then
   mkdir -p ~/.local/share/ptpython
 fi
 
-if [ -f ~/.local/share/ptpython/history ]; then
+if [ ! -f ~/.local/share/ptpython/history ]; then
   ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
 fi
 
@@ -37,10 +37,13 @@ sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
 # copy home udev rules to /etc/udev/rules.d
 ########################################################
 
-sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
-sudo mkinitcpio -P
-echo "Udev rules copied and initramfs rebuilt"
-echo "Warning: no udev rules found"
+if compgen -G "${HOME}/.config/udev/rules.d/*.rules" >/dev/null 2>&1; then
+  sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
+  sudo mkinitcpio -P
+  echo "Udev rules copied and initramfs rebuilt"
+else
+  echo "Warning: no udev rules found, skipping"
+fi
 
 ########################################################
 # firefox user.js

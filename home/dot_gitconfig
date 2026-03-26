@@ -37,7 +37,7 @@
 
   pamadd = !FILES=`git status -s | awk '{ print $2 }' | fzf -x -m` && git add --all ${FILES}
 
-  pr = "!f() { hub pull-request; };f"
+  pr = "!gh pr create"
 
 [branch]
   sort = committerdate

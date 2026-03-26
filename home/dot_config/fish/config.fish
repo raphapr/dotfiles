@@ -356,8 +356,7 @@ function __ssh_agent_is_started -d "check if ssh agent is already started"
       return 1
    end
 
-   ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep -q ssh-agent
-   #pgrep ssh-agent
+   pgrep -x ssh-agent > /dev/null
    return $status
 end
 
@@ -383,7 +382,7 @@ end
 # aws-profile       {{{
 
 function aws-profile
-    export AWS_PROFILE=(grep "^\[.*]" ~/.aws/config | tr -d "[]" | sed 's/profile.//g' | fzf --height 20% +m)
+    set -gx AWS_PROFILE (grep "^\[.*]" ~/.aws/config | tr -d "[]" | sed 's/profile.//g' | fzf --height 20% +m)
     commandline -f repaint
 end
 
@@ -517,7 +516,7 @@ end
 # occ               {{{
 
 function occ
-    set -x OPENCODE_CONFIG_CONTENT '{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}'
+    set -lx OPENCODE_CONFIG_CONTENT '{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}'
     opencode --agent OpenCoder $argv
 end
 
