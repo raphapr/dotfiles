@@ -99,46 +99,20 @@ end
 
 # misc             {{{
 
+alias cat 'bat'
+alias ps 'procs'
 alias lash 'eza -l'
 alias l 'eza'
-alias lt 'eza -T --icons'
 alias K 'kill -9'
-abbr -a v nvim
-abbr -a vim nvim
+alias grep 'rg'
+alias rg 'rg --smart-case'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias ot 'otter-launcher'
 alias oc 'opencode --agent OpenCoder'
-# edit
-alias sof  'source ~/.config/fish/config.fish'
-alias sb 'source ~/.bashrc'
-alias et 'nvim ~/.tmux/tmux.conf'
-alias ef 'nvim ~/.config/fish/config.fish'
-alias eb 'nvim ~/.bashrc'
-alias ev 'nvim +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
-alias i3c 'nvim ~/.i3/config'
-alias httpf 'nvim +"cd ~/Cloud/Sync/code/http-files" +":Telescope find_files"'
-alias xmerge 'xrdb -merge ~/.Xresources'
-# notes
-alias notes 'nvim +"cd ~/Cloud/Sync/notebook" +":ZkTags"'
-alias daily 'zk daily'
-alias tomorrow 'zk tomorrow'
-alias weekly 'zk weekly'
-alias backlog 'nvim ~/Cloud/Sync/notebook/backlog.md'
-# git
-abbr -a g git
-abbr -a gpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
-abbr -a gpush 'git push origin (git rev-parse --abbrev-ref HEAD)'
-alias gclean "git clean -fdx && git stash"
-alias gco "git checkout (git branch | fzf | tr -d [:space:])"
-alias gwip 'git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip-- [skip ci]"'
-alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
-#  ptpython
 alias ptpython "python -m ptpython"
-# '-' as shortcut to cd -
+abbr -a v nvim
+abbr -a vim nvim
 abbr -a -- - 'cd -'
-# ripgrep
-alias rg 'rg --smart-case'
-# chezmoi
 abbr -a cz chezmoi
 abbr -a cdiff 'chezmoi diff'
 
@@ -185,6 +159,38 @@ alias kd 'k describe'
 alias kaf 'k apply -f'
 alias kexec 'k exec -it'
 alias kdebug 'kubectl-debug'
+
+# }}}
+# notes            {{{
+
+alias notes 'nvim +"cd ~/Cloud/Sync/notebook" +":ZkTags"'
+alias daily 'zk daily'
+alias tomorrow 'zk tomorrow'
+alias weekly 'zk weekly'
+alias backlog 'nvim ~/Cloud/Sync/notebook/backlog.md'
+
+# }}}
+# edit             {{{
+
+alias sof  'source ~/.config/fish/config.fish'
+alias sb 'source ~/.bashrc'
+alias et 'nvim ~/.tmux/tmux.conf'
+alias ef 'nvim ~/.config/fish/config.fish'
+alias eb 'nvim ~/.bashrc'
+alias ev 'nvim +"cd ~/.config/nvim/lua/raphapr" ~/.config/nvim/lua/raphapr/init.lua'
+alias i3c 'nvim ~/.i3/config'
+alias xmerge 'xrdb -merge ~/.Xresources'
+
+# }}}
+# git              {{{
+
+abbr -a g git
+abbr -a gpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
+abbr -a gpush 'git push origin (git rev-parse --abbrev-ref HEAD)'
+alias gclean "git clean -fdx && git stash"
+alias gco "git checkout (git branch | fzf | tr -d [:space:])"
+alias gwip 'git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip-- [skip ci]"'
+alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
 
 # }}}
 
@@ -485,7 +491,7 @@ function opsignin
 end
 
 # }}}
-# occ                 {{{
+# occ               {{{
 
 function occ
     set -x OPENCODE_CONFIG_CONTENT '{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}'
