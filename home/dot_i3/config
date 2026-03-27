@@ -298,7 +298,7 @@ for_window [title="WhatsDesk"] move to workspace 2
 # Scratchpads           ----------------------------------------------------- {{{
 
 set $journal kitty --instance-group scratchpad-journal --class=scratchpad-journal -e $HOME/.bin/tmux-session scratchpad-journal
-set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -c 'otter-launcher'
+set $launcher kitty --instance-group scratchpad-launcher --class=scratchpad-launcher -e fish -lc 'otter-launcher'
 
 # %%hotkey: launch journal scratchpad in case accidentally closed or whatever
 bindsym $mod+F11 exec --no-startup-id $journal

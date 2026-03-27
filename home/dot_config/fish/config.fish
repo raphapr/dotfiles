@@ -41,7 +41,8 @@ fish_add_path \
     ~/.opencode/bin \
     $NPM_PACKAGES/bin \
     $BUN_INSTALL/bin \
-    ~/.local/share/pnpm/bin
+    ~/.local/share/pnpm/bin \
+    ~/.local/share/mise/shims
 
 # awscli shell completion
 complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
@@ -108,12 +109,12 @@ end
 
 if status is-interactive
     mkdir -p ~/.cache/fish
-    __plugin_load direnv  direnv  hook fish
-    __plugin_load mise    mise    activate fish
-    __plugin_load starship starship init fish
-    __plugin_load zoxide  zoxide  init fish
-    __plugin_load fzf     fzf     --fish
-    __plugin_load atuin   atuin   init fish
+    __plugin_load direnv    direnv hook fish
+    __plugin_load mise      mise activate fish
+    __plugin_load starship  starship init fish
+    __plugin_load zoxide    zoxide init fish
+    __plugin_load fzf       fzf --fish
+    __plugin_load atuin     atuin init fish
 end
 
 # }}}
@@ -122,7 +123,6 @@ end
 # misc             {{{
 
 alias cat 'bat'
-alias ps 'procs'
 alias lash 'eza -l'
 alias l 'eza'
 alias K 'kill -9'
