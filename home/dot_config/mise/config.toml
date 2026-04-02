@@ -29,6 +29,7 @@ stern = "1.33.0"
 'github:onllm-dev/onWatch' = 'latest'
 'vfox:mise-plugins/vfox-gcloud' = "latest"
 'pipx:github/spec-kit' = 'latest'
+tflint = "0.61.0"
 
 
 [settings]

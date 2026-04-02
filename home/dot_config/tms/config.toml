@@ -1,4 +1,5 @@
 default_session = "main"
+bookmarks = []
 
 [[search_dirs]]
 path = "/home/raphael/repos"

@@ -132,6 +132,11 @@ function M.setup()
     cmd = { "gopls", "-remote", "unix;/tmp/gopls-daemon-socket" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_markers = { "go.work", "go.mod", ".git" },
+    settings = {
+      gopls = {
+        buildFlags = { "-tags=integration" },
+      },
+    },
   })
 
   -- Harper
