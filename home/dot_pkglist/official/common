@@ -62,6 +62,7 @@ bluez-libs
 bluez-utils
 boost-libs
 bpf
+breeze-cursors5
 brightnessctl
 brotli
 btop
@@ -73,6 +74,7 @@ c-ares
 ca-certificates
 ca-certificates-mozilla
 ca-certificates-utils
+caddy
 cairo
 cairomm
 cairomm-1.16
@@ -149,7 +151,6 @@ ecryptfs-utils
 edk2-ovmf
 efibootmgr
 efivar
-electron
 electron37
 electron38
 electron39
@@ -547,10 +548,12 @@ libaemu
 libaio
 libappindicator
 libarchive
+libasan
 libass
 libassuan
 libasyncns
 libatasmart
+libatomic
 libavc1394
 libavif
 libavtp
@@ -619,13 +622,16 @@ libfontenc
 libfreeaptx
 libftdi
 libfyaml
+libgcc
 libgcrypt
 libgee
+libgfortran
 libgirepository
 libgit2
 libglvnd
 libgme
 libgnomekbd
+libgomp
 libgpg-error
 libgphoto2
 libgsf
@@ -656,8 +662,8 @@ libldac
 libldap
 liblqr
 liblrdf
+liblsan
 libltc
-libluv
 libmad
 libmakepkg-dropins
 libmanette
@@ -698,6 +704,7 @@ libnma-gtk4
 libnotify
 libnsl
 libnvme
+libobjc
 libogg
 libopenmpt
 libopenraw
@@ -720,6 +727,7 @@ libptytty
 libpulse
 libqmi
 libqrtr-glib
+libquadmath
 libraqm
 libraw1394
 libretls
@@ -744,6 +752,7 @@ libspectre
 libsrtp
 libssh
 libssh2
+libstdc++
 libstemmer
 libsynctex
 libsysprof-capture
@@ -757,6 +766,8 @@ libtirpc
 libtool
 libtraceevent
 libtracefs
+libtsan
+libubsan
 libunibreak
 libunistring
 libunwind
@@ -776,7 +787,6 @@ libvoikko
 libvorbis
 libvpl
 libvpx
-libvterm
 libwacom
 libwbclient
 libwebp
@@ -860,7 +870,6 @@ lshw
 lsof
 lua
 lua51
-lua51-lpeg
 luajit
 luarocks
 luit
@@ -911,6 +920,7 @@ mhwd-nvidia-570xx
 mhwd-nvidia-575xx
 miniupnpc
 minizip
+minizip-ng
 mjpegtools
 mkinitcpio
 mkinitcpio-busybox
@@ -924,7 +934,6 @@ mpdecimal
 mpfr
 mpg123
 mpv
-msgpack-c
 mtdev
 mtools
 mtpfs
@@ -937,7 +946,6 @@ ncdu
 ncurses
 ndctl
 neon
-neovim
 net-snmp
 net-tools
 netpbm
@@ -983,6 +991,7 @@ opencore-amr
 openexr
 openh264
 openjpeg2
+openjph
 openmpi
 openpmix
 openssh
@@ -1148,6 +1157,7 @@ python-pexpect
 python-pgspecial
 python-pillow
 python-pip
+python-pkg_resources
 python-platformdirs
 python-prctl
 python-prompt_toolkit
@@ -1163,6 +1173,7 @@ python-pygments
 python-pyqt5
 python-pyqt5-sip
 python-pysocks
+python-python-discovery
 python-pytz
 python-pyxdg
 python-requests
@@ -1246,6 +1257,7 @@ qt6-svg
 qt6-tools
 qt6-translations
 qt6-wayland
+qt6ct
 ranger
 raptor
 rav1e
@@ -1338,6 +1350,7 @@ smbclient
 smplayer
 snapd-glib
 snappy
+sndio
 socat
 sof-firmware
 sord
@@ -1400,13 +1413,6 @@ tpm2-tss
 traceroute
 transmission-gtk
 tree
-tree-sitter
-tree-sitter-c
-tree-sitter-lua
-tree-sitter-markdown
-tree-sitter-query
-tree-sitter-vim
-tree-sitter-vimdoc
 tslib
 ttf-bitstream-vera
 ttf-dejavu
@@ -1427,7 +1433,6 @@ udiskie
 udisks2
 ueberzug
 unace
-unibilium
 unrar
 unzip
 update-grub
@@ -1492,7 +1497,6 @@ xcb-util-renderutil
 xcb-util-wm
 xcb-util-xrm
 xclip
-xcursor-breeze
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 xdg-dbus-proxy
@@ -1568,6 +1572,7 @@ zenity
 zensu
 zeromq
 zimg
+zint
 zip
 zix
 zk
@@ -1579,4 +1584,3 @@ zsh
 zstd
 zvbi
 zxing-cpp
-zram-generator

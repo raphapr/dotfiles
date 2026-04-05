@@ -30,6 +30,7 @@ stern = "1.33.0"
 'vfox:mise-plugins/vfox-gcloud' = "latest"
 'pipx:github/spec-kit' = 'latest'
 tflint = "0.61.0"
+neovim = "0.12.0"
 
 
 [settings]

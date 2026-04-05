@@ -4,12 +4,14 @@ auracle-git
 aws-session-manager-plugin
 bluetooth-autoconnect
 circleci-cli-bin
-cursor-bin
+claude-code
 cursor-cli
 dropbox
+fiddler-appimage
 giblib
 gnu-netcat
 gomplate-bin
+google-chrome
 green-recorder
 gtk-engines
 gtk2
@@ -27,6 +29,7 @@ numix-icon-theme-git
 otter-launcher
 perl-pgtop
 qpdfview
+r-quick-share
 rofi-greenclip
 rofi-power-menu
 slack-desktop
