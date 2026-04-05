@@ -94,19 +94,6 @@ with_argument = true
 url_encode = true
 unbind_proc = true
 
-# fd is needed to run below functions
-[[modules]]
-description = "open files (fzf)"
-prefix = "fo"
-cmd = "fd --type f | fzf --with-nth -1 --reverse --padding 1,3 --prompt 'Open Files: ' | setsid -f xargs -r -I [] xdg-open '[]'"
-
-[[modules]]
-description = "open folders (yazi)"
-prefix = "yz"
-cmd = """
-fd --type d | fzf --with-nth -1 --reverse --padding 1,3 --prompt 'Open Folders: ' | xargs -r -I [] setsid -f kitty -e yazi '[]'
-"""
-
 [[modules]]
 description = "search youtube"
 prefix = "\u001B[32myt\u001B[0m"
@@ -132,21 +119,16 @@ url_encode = true
 unbind_proc = true
 
 [[modules]]
-description = "search apps with fsel"
-prefix = "ss"
-cmd = "fsel -r -d -ss '{}'"
-with_argument = true
-
-[[modules]]
 description = "launch apps instantly"
 prefix = "pp"
 cmd = "fsel -r -d -p '{}'"
 with_argument = true
 
 [[modules]]
-description = "i3 keys"
-prefix = "ik"
-cmd = "~/.bin/dmenu-i3-keys"
+description = "desktop launcher"
+prefix = "rr"
+cmd = "rofi -show run"
+unbind_proc = true
 
 [[modules]]
 description = "clipboard history"
