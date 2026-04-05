@@ -18,7 +18,13 @@ function M.setup()
     end,
   })
 
-  vim.lsp.set_log_level("off")
+  vim.lsp.log.set_level("off")
+
+  -- Compat commands removed in 0.12 (replaced by :lsp and :checkhealth vim.lsp)
+  vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", { desc = "Show LSP Info" })
+  vim.api.nvim_create_user_command("LspRestart", "lsp restart", { desc = "Restart LSP" })
+  vim.api.nvim_create_user_command("LspStop", "lsp stop", { desc = "Stop LSP" })
+  vim.api.nvim_create_user_command("LspStart", "lsp start", { desc = "Start LSP" })
 
   -- Setup diagnostics
   require("raphapr.lsp.diagnostics").setup()

@@ -1,6 +1,15 @@
 local opt = vim.opt
 local g = vim.g
 
+-- Suppress vim.tbl_flatten deprecation warnings from third-party plugins
+local _deprecate = vim.deprecate
+vim.deprecate = function(name, ...)
+  if name == "vim.tbl_flatten" then
+    return
+  end
+  _deprecate(name, ...)
+end
+
 -------------------------------------- globals -----------------------------------------
 
 -- disable netrw in favor of nvim-tree
@@ -90,12 +99,9 @@ set foldtext=MyFoldText()
 
 -- Toggle all folds
 vim.keymap.set("n", "zt", function()
-  local get_opt = vim.api.nvim_win_get_option
-  local set_opt = vim.api.nvim_win_set_option
-
-  if get_opt(0, "foldlevel") >= 20 then
-    set_opt(0, "foldlevel", 0)
+  if vim.wo.foldlevel >= 20 then
+    vim.wo.foldlevel = 0
   else
-    set_opt(0, "foldlevel", 20)
+    vim.wo.foldlevel = 20
   end
 end, { noremap = true, silent = true, desc = "Fold: Toggle all folds" })

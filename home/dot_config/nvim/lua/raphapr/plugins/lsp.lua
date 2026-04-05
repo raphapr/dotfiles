@@ -62,7 +62,6 @@ return {
       { "mason-org/mason-lspconfig.nvim" },
       { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
       { "rafamadriz/friendly-snippets" },
-      { "neovim/nvim-lspconfig" },
     },
     config = function()
       require("raphapr.lsp").setup()

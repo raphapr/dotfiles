@@ -1,80 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master", -- v1.x (main) requires Neovim 0.12+; master is the stable legacy branch
+    branch = "main",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    cmd = { "TSInstall", "TSUpdate", "TSUninstall" },
     config = function()
-      vim.filetype.add({
-        extension = {
-          gotmpl = "gotmpl",
-          gohtml = "gotmpl",
-          gohtmltmpl = "gotmpl",
-          gotexttmpl = "gotmpl",
-          tmpl = "gotmpl",
-        },
-        pattern = {
-          [".*/templates/.*%.yml.tmpl"] = "gotmpl",
-        },
-      })
-      require("nvim-treesitter.configs").setup({
-        sync_install = false,
-        auto_install = true,
-        ignore_install = {},
-        modules = {},
-        ensure_installed = {
-          "c",
-          "lua",
-          "luadoc",
-          "rust",
-          "dockerfile",
-          "python",
-          "bash",
-          "json",
-          "markdown",
-          "markdown_inline",
-          "cmake",
-          "fish",
-          "comment",
-          "go",
-          "gomod",
-          "gowork",
-          "html",
-          "regex",
-          "hcl",
-          "vim",
-          "terraform",
-          "http",
-          "xml",
-          "json",
-          "yaml",
-          "graphql",
-          "tmux",
-          "gitcommit",
-          "helm",
-          "csv",
-          "clojure",
-          "css",
-          "gitignore",
-          "ruby",
-          "gosum",
-          "gotmpl",
-          "diff",
-        },
-        highlight = {
-          enable = true,
-          disable = { "vim" },
-          additional_vim_regex_highlighting = false,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            node_incremental = "v",
-            node_decremental = "V",
-          },
-        },
-      })
+      require("nvim-treesitter").setup()
     end,
   },
 }
