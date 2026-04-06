@@ -1,0 +1,7 @@
+#!/bin/bash
+# Free page cache before suspend so amdgpu can buffer VRAM into RAM
+case "$1" in
+    pre)
+        echo 3 > /proc/sys/vm/drop_caches
+        ;;
+esac

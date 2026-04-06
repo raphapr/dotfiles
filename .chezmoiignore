@@ -50,6 +50,7 @@ target/
 {{- if ne .chezmoi.hostname "moochacho" }}
 # Desktop-specific configs
 .config/autorandr/moochacho/
+.config/system/executable_amdgpu-vram-presleep
 {{- end }}
 
 {{- if ne .chezmoi.hostname "bmo" }}
