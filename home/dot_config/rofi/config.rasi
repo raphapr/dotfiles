@@ -181,4 +181,8 @@ configuration {
 */
 }
 
+configuration {
+  kb-cancel: "Escape,Super+f,Super+space";
+}
+
 @theme "~/.config/rofi/launchers/type-1/style-11.rasi"
