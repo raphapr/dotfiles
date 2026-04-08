@@ -26,6 +26,10 @@ if [ ! -d ~/.config/opencode ]; then
   ln -sf ~/Cloud/Sync/opencode ~/.config/opencode
 fi
 
+if [ ! -d ~/opencode-mem ]; then
+  ln -sf ~/Cloud/Sync/opencode-mem ~/.opencode-mem
+fi
+
 ########################################################
 # aftersleep script
 ########################################################

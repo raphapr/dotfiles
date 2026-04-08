@@ -120,6 +120,17 @@ end
 # }}}
 # Aliases         ---------------------------------------------- {{{
 
+# claude accounts  {{{
+
+function claude-personal
+    CLAUDE_CONFIG_DIR=~/.claude-personal claude $argv
+end
+
+function claude-loadsmart
+    CLAUDE_CONFIG_DIR=~/.claude-loadsmart claude $argv
+end
+
+# }}}
 # misc             {{{
 
 alias cat 'bat'
@@ -129,7 +140,7 @@ alias K 'kill -9'
 alias grep 'rg'
 alias rg 'rg --smart-case'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
-alias oc 'opencode --agent Architect'
+alias oc 'opencode --agent Oracle'
 alias ptpython "python -m ptpython"
 abbr -a v nvim
 abbr -a vim nvim
