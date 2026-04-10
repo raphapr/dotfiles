@@ -25,9 +25,11 @@ stern = "1.33.0"
 'npm:google'='latest'
 'npm:opencode-claude-auth' = 'latest'
 'npm:@googleworkspace/cli' = '0.22.1'
+'npm:opencode-swarm-plugin' = 'latest'
 'go:golang.org/x/tools/gopls' = '0.20.0'
 'vfox:mise-plugins/vfox-gcloud' = "latest"
-'pipx:github/spec-kit' = 'latest'
+'pipx:Priivacy-ai/spec-kitty' = 'latest'
+
 tflint = "0.61.0"
 neovim = "0.12.0"
 
