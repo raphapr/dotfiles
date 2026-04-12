@@ -26,10 +26,11 @@ if status is-interactive; and test -n "$DISPLAY"
     ~/.bin/set-keyboard-repeat
 end
 
-# npm / bun / pnpm env vars
+# general env vars
 set -gx NPM_PACKAGES $HOME/.npm-packages
 set -gx MANPATH $NPM_PACKAGES/share/man $MANPATH
 set -gx BUN_INSTALL $HOME/.bun
+set -gx ANTHROPIC_ENABLE_1M_CONTEXT true
 
 # PATH setup (batched for efficiency)
 fish_add_path \
