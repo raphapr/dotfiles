@@ -26,46 +26,6 @@ if [ ! -d ~/.config/opencode ]; then
   ln -sf ~/Cloud/Sync/opencode ~/.config/opencode
 fi
 
-if [ ! -d ~/opencode-mem ]; then
-  ln -sf ~/Cloud/Sync/opencode-mem ~/.opencode-mem
-fi
-
-########################################################
-# aftersleep script
-########################################################
-
-sudo cp "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
-sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
-
-########################################################
-# copy home udev rules to /etc/udev/rules.d
-########################################################
-
-if compgen -G "${HOME}/.config/udev/rules.d/*.rules" >/dev/null 2>&1; then
-  sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
-  sudo mkinitcpio -P
-  echo "Udev rules copied and initramfs rebuilt"
-else
-  echo "Warning: no udev rules found, skipping"
-fi
-
-########################################################
-# firefox user.js
-########################################################
-
-if [ -d "${HOME}"/.mozilla/firefox ]; then
-  FIREFOX_PROFILE_DIR=$(find "${HOME}"/.mozilla/firefox -maxdepth 1 -name "*.default-release" | head -n 1)
-  if [ -n "$FIREFOX_PROFILE_DIR" ]; then
-    ln -sf ~/.mozilla/firefox/user.js "$FIREFOX_PROFILE_DIR/user.js"
-    echo "Firefox user.js symlink created in $FIREFOX_PROFILE_DIR"
-    if [ ! -d "$FIREFOX_PROFILE_DIR/chrome" ]; then
-      mkdir "$FIREFOX_PROFILE_DIR/chrome"
-    fi
-    ln -sf ~/.mozilla/firefox/userChrome.css "$FIREFOX_PROFILE_DIR/chrome/userChrome.css"
-    echo "Firefox userChrome.css symlink created in $FIREFOX_PROFILE_DIR/chrome"
-  else
-    echo "No Firefox default-release profile found."
-  fi
-else
-  echo "Firefox directory not found."
+if [ ! -d ~/.opencode-mem/data ]; then
+  ln -sf ~/Cloud/Sync/opencode-mem/data ~/.opencode-mem/data
 fi
