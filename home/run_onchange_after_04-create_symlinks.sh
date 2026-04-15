@@ -25,7 +25,3 @@ fi
 if [ ! -d ~/.config/opencode ]; then
   ln -sf ~/Cloud/Sync/opencode ~/.config/opencode
 fi
-
-if [ ! -d ~/.opencode-mem/data ]; then
-  ln -sf ~/Cloud/Sync/opencode-mem/data ~/.opencode-mem/data
-fi
