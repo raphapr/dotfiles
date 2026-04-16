@@ -15,6 +15,11 @@ if status is-interactive
     set -gx GPG_TTY (tty)
 end
 
+# Inside tmux, hide Kitty identity to prevent graphics protocol leaks
+if test -n "$TMUX"
+    set -e KITTY_WINDOW_ID
+end
+
 # Locale settings
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
