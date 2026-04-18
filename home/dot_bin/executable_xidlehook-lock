@@ -8,7 +8,7 @@ xidlehook \
   `# Dim the screen after 5 minutes, undim if user becomes active` \
   --timer 300 \
   'brightnessctl set 125-; notify-send "Screen will be locked in 30s"' \
-  'britghtness set 125+' \
+  'brightnessctl set 125+' \
   `# Undim & lock after 30 more seconds` \
   --timer 30 \
   'loginctl lock-session; brightnessctl set 125+' \

@@ -12,7 +12,7 @@ if [[ -e /dev/fd/${XSS_SLEEP_LOCK_FD:--1} ]]; then
     kill_i3lock() { pkill -xu "$EUID" i3lock; }
     trap kill_i3lock TERM INT
 
-    i3lock "${I3LOCK_OPTS[@]}" {XSS_SLEEP_LOCK_FD}<&-
+    i3lock "${I3LOCK_OPTS[@]}" ${XSS_SLEEP_LOCK_FD}<&-
     exec {XSS_SLEEP_LOCK_FD}<&-
 
     while kill_i3lock -0; do sleep 0.5; done

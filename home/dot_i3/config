@@ -18,7 +18,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id Telegram -startintray
 exec --no-startup-id sleep 2 && flameshot  # delay needed: flameshot fails if started before tray is ready
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id greenclip daemon
