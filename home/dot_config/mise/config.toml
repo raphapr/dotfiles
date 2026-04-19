@@ -23,7 +23,6 @@ stern = "1.33.0"
 "npm:opencode-ai"= "1.3.17"
 'npm:tokscale'='latest'
 'npm:google'='latest'
-'npm:opencode-claude-auth' = 'latest'
 'npm:@googleworkspace/cli' = '0.22.1'
 'go:golang.org/x/tools/gopls' = '0.20.0'
 'vfox:mise-plugins/vfox-gcloud' = "latest"
