@@ -146,7 +146,7 @@ alias K 'kill -9'
 alias grep 'rg'
 alias rg 'rg --smart-case'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
-alias oc 'opencode --port 0 --agent Oracle'
+alias oc 'opencode --port 0 --agent Architect'
 alias ptpython "python -m ptpython"
 abbr -a v nvim
 abbr -a vim nvim
@@ -533,7 +533,7 @@ end
 
 function occ
     set -lx OPENCODE_CONFIG_CONTENT '{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}'
-    opencode --port 0 --agent Oracle $argv
+    opencode --port 0 --agent Architect $argv
 end
 
 # }}}
@@ -541,7 +541,7 @@ end
 
 function ocs
     set -lx OPENCODE_CONFIG_CONTENT '{"model":"anthropic/claude-sonnet-4-6","small_model":"anthropic/claude-haiku-4-5"}'
-    opencode --port 0 --agent Oracle $argv
+    opencode --port 0 --agent Architect $argv
 end
 
 # }}}
