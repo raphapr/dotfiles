@@ -126,17 +126,6 @@ end
 # }}}
 # Aliases         ---------------------------------------------- {{{
 
-# claude accounts  {{{
-
-function claude-personal
-    CLAUDE_CONFIG_DIR=~/.claude-personal claude $argv
-end
-
-function claude-loadsmart
-    CLAUDE_CONFIG_DIR=~/.claude-loadsmart claude $argv
-end
-
-# }}}
 # misc             {{{
 
 alias cat 'bat'
@@ -545,5 +534,10 @@ function ocs
 end
 
 # }}}
+
+# }}}
+# Hooks           ---------------------------------------------- {{{
+
+aisw shell-hook fish | source
 
 # }}}
