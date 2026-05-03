@@ -1,0 +1,39 @@
+[Unit]
+Description=OmniRouter Smart AI Router
+Documentation=https://www.omniroute.dev/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Process management
+Type=simple
+ExecStart=/home/raphael/.local/share/mise/shims/omniroute
+
+# Working directory and user context
+WorkingDirectory=%h/.omniroute
+Environment="PATH=/home/raphael/.local/share/mise/shims:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Resource limits (optional, adjust to your system)
+MemoryMax=1G
+
+# Logging: capture stdout/stderr to journalctl
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=omnirouter
+
+# Restart policy: restart on failure with exponential backoff
+Restart=on-failure
+StartLimitBurst=5
+StartLimitIntervalSec=60s
+RestartSec=5s
+
+# Service hardening (optional but recommended)
+NoNewPrivileges=true
+
+# Stop timeout: give omnirouter 10 seconds to shut down gracefully
+TimeoutStopSec=10
+
+[Install]
+# Enable for boot: systemctl --user enable omnirouter
+# This will start the service at system boot (requires --user flag and proper environment)
+WantedBy=default.target
