@@ -31,7 +31,7 @@ neovim = "0.12.0"
 "npm:lean-ctx-bin" = "latest"
 "npm:get-shit-done-cc" = "latest"
 "npm:@aws-amplify/cli" = "14.3.0"
-"npm:omniroute" = "3.7.5"
+"npm:omniroute" = "3.7.8"
 "npm:@mariozechner/pi-coding-agent" = "latest"
 
 [settings]
