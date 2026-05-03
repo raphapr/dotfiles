@@ -517,21 +517,5 @@ function opsignin
 end
 
 # }}}
-# occ               {{{
-
-function occ
-    set -lx OPENCODE_CONFIG_CONTENT '{"model":"github-copilot/claude-sonnet-4-6","small_model":"github-copilot/claude-haiku-4-5"}'
-    opencode --port 0 --agent Architect $argv
-end
-
-# }}}
-# ocs               {{{
-
-function ocs
-    set -lx OPENCODE_CONFIG_CONTENT '{"model":"anthropic/claude-sonnet-4-6","small_model":"anthropic/claude-haiku-4-5"}'
-    opencode --port 0 --agent Architect $argv
-end
-
-# }}}
 
 # }}}
