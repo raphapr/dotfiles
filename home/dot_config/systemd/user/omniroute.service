@@ -23,8 +23,6 @@ SyslogIdentifier=omnirouter
 
 # Restart policy: restart on failure with exponential backoff
 Restart=on-failure
-StartLimitBurst=5
-StartLimitIntervalSec=60s
 RestartSec=5s
 
 # Service hardening (optional but recommended)
