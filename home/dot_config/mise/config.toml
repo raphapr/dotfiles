@@ -1,5 +1,5 @@
 [tools]
-node= "latest"
+node= "22"
 terraform='1.5.7'
 opentofu='1.7.2'
 python = "3.13"
@@ -31,6 +31,8 @@ neovim = "0.12.0"
 "npm:lean-ctx-bin" = "latest"
 "npm:get-shit-done-cc" = "latest"
 "npm:@aws-amplify/cli" = "14.3.0"
+"npm:omniroute" = "3.7.5"
+"npm:@mariozechner/pi-coding-agent" = "latest"
 
 [settings]
 experimental = true

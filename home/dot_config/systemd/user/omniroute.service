@@ -7,7 +7,7 @@ Wants=network-online.target
 [Service]
 # Process management
 Type=simple
-ExecStart=/home/raphael/.local/share/mise/shims/omniroute
+ExecStart=/home/raphael/.local/share/mise/shims/omniroute --no-open
 
 # Working directory and user context
 WorkingDirectory=%h/.omniroute
