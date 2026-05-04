@@ -14,18 +14,10 @@ if [ ! -d ~/.krew ]; then
   ln -sf ~/Cloud/Sync/krew ~/.krew
 fi
 
-if [ ! -d ~/.local/share/ptpython ]; then
-  mkdir -p ~/.local/share/ptpython
-fi
-
-if [ ! -f ~/.local/share/ptpython/history ]; then
-  ln -sf ~/Cloud/Sync/ptpython_history ~/.local/share/ptpython/history
-fi
-
 if [ ! -d ~/.config/opencode ]; then
   ln -sf ~/Cloud/Sync/opencode ~/.config/opencode
 fi
 
-if [ ! -d ~/pi ]; then
-  ln -sf ~/Cloud/Sync/pi ~/.pi
+if [ ! -d ~/.omniroute ]; then
+  ln -sf ~/Cloud/Sync/omniroute ~/.omniroute
 fi
