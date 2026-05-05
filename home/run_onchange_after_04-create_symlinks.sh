@@ -18,6 +18,6 @@ if [ ! -d ~/.config/opencode ]; then
   ln -sf ~/Cloud/Sync/opencode ~/.config/opencode
 fi
 
-if [ ! -d ~/.omniroute ]; then
-  ln -sf ~/Cloud/Sync/omniroute ~/.omniroute
+if [ ! -d ~/.pi ]; then
+  ln -sf ~/Cloud/Sync/pi ~/.pi
 fi

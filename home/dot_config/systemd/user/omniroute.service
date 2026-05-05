@@ -19,7 +19,7 @@ MemoryMax=1G
 # Logging: capture stdout/stderr to journalctl
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=omnirouter
+SyslogIdentifier=omniroute
 
 # Restart policy: restart on failure with exponential backoff
 Restart=on-failure
@@ -28,10 +28,10 @@ RestartSec=5s
 # Service hardening (optional but recommended)
 NoNewPrivileges=true
 
-# Stop timeout: give omnirouter 10 seconds to shut down gracefully
+# Stop timeout: give omniroute 10 seconds to shut down gracefully
 TimeoutStopSec=10
 
 [Install]
-# Enable for boot: systemctl --user enable omnirouter
+# Enable for boot: systemctl --user enable omniroute
 # This will start the service at system boot (requires --user flag and proper environment)
 WantedBy=default.target
