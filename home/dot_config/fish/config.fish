@@ -11,10 +11,13 @@ set -gx BROWSER firefox
 set -gx GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 set -gx FZF_DEFAULT_OPTS "--height 50%"
 set -gx ZK_NOTEBOOK_DIR $HOME/Cloud/Sync/notebook
-set -gx POWERLINE_NERD_FONTS 1
 if status is-interactive
     set -gx GPG_TTY (tty)
 end
+
+# pi
+set -gx POWERLINE_NERD_FONTS 1
+set -gx PI_ASK_USER_DISPLAY_MODE "inline"
 
 # Inside tmux, hide Kitty identity to prevent graphics protocol leaks
 if test -n "$TMUX"
