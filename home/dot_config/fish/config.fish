@@ -18,6 +18,7 @@ end
 # pi
 set -gx POWERLINE_NERD_FONTS 1
 set -gx PI_ASK_USER_DISPLAY_MODE "inline"
+set -gx CODEMAPPER_BIN $HOME/.local/share/mise/installs/cargo-https-github-com-p1rallels-codemapper/ref-main/bin/cm
 
 # Inside tmux, hide Kitty identity to prevent graphics protocol leaks
 if test -n "$TMUX"
