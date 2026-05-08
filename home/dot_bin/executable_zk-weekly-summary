@@ -1,3 +1,0 @@
-#!/bin/bash
-# GEMINI_API_KEY is required for LiteLLM to work
-exec uvx --from litellm --with litellm python3 ~/.bin/zk-weekly-summary.py "$@"
