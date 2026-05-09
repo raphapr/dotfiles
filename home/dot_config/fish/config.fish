@@ -48,7 +48,6 @@ fish_add_path \
     ~/.bin \
     ~/.cargo/bin \
     ~/.krew/bin \
-    ~/.opencode/bin \
     $NPM_PACKAGES/bin \
     $BUN_INSTALL/bin \
     ~/.local/share/pnpm/bin \
@@ -139,7 +138,6 @@ alias K 'kill -9'
 alias grep 'rg'
 alias rg 'rg --smart-case'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
-alias oc 'opencode --port 0 --agent Architect'
 alias ptpython "python -m ptpython"
 abbr -a v nvim
 abbr -a vim nvim

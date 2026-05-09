@@ -34,3 +34,9 @@ type = "archive"
 url = "https://github.com/OpsLevel/opslevel-mcp/releases/download/v2025.8.5/opslevel-mcp-linux-amd64.tar.gz"
 executable = true
 refreshPeriod = "168h"
+
+[".pi"]
+type = "git-repo"
+url = "https://github.com/raphapr/pi-config.git"
+clone.args = ["--depth", "1"]
+refreshPeriod = "168h"
