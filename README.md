@@ -74,4 +74,3 @@ chezmoi init raphapr --apply
 
 - **chezmoi** - Dotfiles manager
 - **yay** - AUR helper
-- **psd** - Profile-sync-daemon for browser profile management
