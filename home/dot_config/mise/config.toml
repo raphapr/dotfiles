@@ -20,7 +20,6 @@ stern = "1.33.0"
 'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
-"npm:opencode-ai"= "latest"
 'npm:tokscale'='latest'
 'npm:google'='latest'
 'npm:@googleworkspace/cli' = '0.22.1'

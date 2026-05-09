@@ -1,6 +1,8 @@
 #!/bin/bash
 # Deploy system-level files that live outside $HOME
 
+HOSTNAME=$(hostname)
+
 ########################################################
 # zram-generator config
 ########################################################
@@ -14,8 +16,25 @@ sudo chmod 644 /etc/systemd/zram-generator.conf
 # aftersleep script
 ########################################################
 
-sudo cp "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
-sudo chown root: /usr/lib/systemd/system-sleep/aftersleep
+if [[ "$HOSTNAME" == "bmo" ]]; then
+  # ath11k must be unloaded before sleep; the legacy hook restarted NetworkManager too early.
+  sudo rm -f /usr/lib/systemd/system-sleep/aftersleep
+else
+  sudo install -Dm755 "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
+fi
+
+########################################################
+# ath11k suspend/resume services
+########################################################
+
+# {{ include "dot_config/systemd/system/ath11k-suspend.service" | sha256sum }}
+# {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
+if [[ "$HOSTNAME" == "bmo" ]]; then
+  echo ">> Deploying ath11k suspend/resume services..."
+  sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-suspend.service /etc/systemd/system/ath11k-suspend.service
+  sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-resume.service /etc/systemd/system/ath11k-resume.service
+  sudo systemctl daemon-reload
+fi
 
 ########################################################
 # copy home udev rules to /etc/udev/rules.d
