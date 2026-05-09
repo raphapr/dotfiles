@@ -6,8 +6,14 @@
 set -euo pipefail
 
 GREENCLIP_CACHE="${GREENCLIP_CACHE_DIR:-/tmp/greenclip}"
-PREVIEW_SCRIPT="/tmp/greenclip-preview-helper.sh"
-IMAGE_LIST_FILE="/tmp/greenclip-image-list.txt"
+TMP_DIR="$(mktemp -d)"
+PREVIEW_SCRIPT="$TMP_DIR/greenclip-preview-helper.sh"
+IMAGE_LIST_FILE="$TMP_DIR/greenclip-image-list.txt"
+
+cleanup() {
+  rm -rf "$TMP_DIR"
+}
+trap cleanup EXIT
 
 cat >"$PREVIEW_SCRIPT" <<'PREVIEW_EOF'
 #!/usr/bin/env bash
@@ -48,7 +54,7 @@ if [[ ! -d "$GREENCLIP_CACHE" ]]; then
   exit 1
 fi
 
->"$IMAGE_LIST_FILE"
+: >"$IMAGE_LIST_FILE"
 
 while IFS= read -r file; do
   if [[ -f "$file" ]]; then
@@ -73,7 +79,6 @@ if [[ ! -s "$IMAGE_LIST_FILE" ]]; then
   echo "1. Make sure greenclip daemon is running: greenclip daemon &"
   echo "2. Check that image support is enabled in ~/.config/greenclip.toml"
   echo "3. Copy a small image (<500KB) to clipboard"
-  rm -f "$IMAGE_LIST_FILE" "$PREVIEW_SCRIPT"
   exit 0
 fi
 
@@ -102,5 +107,3 @@ if [[ -n "$selection" ]]; then
     echo "✗ Error: File not found: $selected_file"
   fi
 fi
-
-rm -f "$PREVIEW_SCRIPT" "$IMAGE_LIST_FILE"

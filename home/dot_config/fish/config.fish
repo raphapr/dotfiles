@@ -13,6 +13,7 @@ set -gx FZF_DEFAULT_OPTS "--height 50%"
 set -gx ZK_NOTEBOOK_DIR $HOME/Cloud/Sync/notebook
 if status is-interactive
     set -gx GPG_TTY (tty)
+    command -q gpg-connect-agent; and gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
 end
 
 # pi

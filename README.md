@@ -8,6 +8,8 @@ Personal dotfiles for Arch-based Linux systems, managed with [chezmoi](https://c
 
 ```bash
 sudo pacman -S chezmoi
+# Install the 1Password CLI (`op`) before applying secret-backed templates.
+eval $(op signin)
 chezmoi init raphapr --apply
 ```
 
@@ -19,7 +21,13 @@ chezmoi init raphapr --apply
    sudo pacman -S chezmoi
    ```
 
-2. Initialize and apply:
+2. Sign in to 1Password before rendering secret-backed templates:
+
+   ```bash
+   eval $(op signin)
+   ```
+
+3. Initialize and apply:
    ```bash
    chezmoi init raphapr
    chezmoi apply

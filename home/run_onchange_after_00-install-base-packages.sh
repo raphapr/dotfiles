@@ -4,7 +4,8 @@ set -euo pipefail
 
 declare -r PKGLIST=$HOME/.pkglist
 declare -r PKG_BASE=$PKGLIST/base/packages
-declare -r PKGLOG="/tmp/install-base-packages_$(date +%Y%m%d_%H%M%S).log"
+PKGLOG="/tmp/install-base-packages_$(date +%Y%m%d_%H%M%S).log"
+readonly PKGLOG
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
@@ -13,6 +14,30 @@ log() {
 error() {
   log "ERROR: $*" >&2
 }
+
+confirm_install() {
+  local description="$1"
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Install $description? [y/N] " reply
+  elif read -r -p "Install $description? [y/N] " reply 2>/dev/null </dev/tty; then
+    :
+  else
+    echo "No TTY available; skipping $description."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping $description."
+    exit 0
+    ;;
+  esac
+}
+
+confirm_install "base packages"
 
 echo ">> Installing base packages..."
 

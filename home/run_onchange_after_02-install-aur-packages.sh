@@ -3,8 +3,10 @@
 set -euo pipefail
 
 declare -r PKGLIST=$HOME/.pkglist
-declare -r HOSTNAME=$(hostname)
-declare -r PKGLOG="/tmp/install-aur-packages_$(date +%Y%m%d_%H%M%S).log"
+HOSTNAME="$(hostname)"
+readonly HOSTNAME
+PKGLOG="/tmp/install-aur-packages_$(date +%Y%m%d_%H%M%S).log"
+readonly PKGLOG
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
@@ -12,6 +14,28 @@ log() {
 
 error() {
   log "ERROR: $*" >&2
+}
+
+confirm_install() {
+  local description="$1"
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Install $description? [y/N] " reply
+  elif read -r -p "Install $description? [y/N] " reply 2>/dev/null </dev/tty; then
+    :
+  else
+    echo "No TTY available; skipping $description."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping $description."
+    exit 0
+    ;;
+  esac
 }
 
 install_aur_packages_from_file() {
@@ -46,6 +70,8 @@ install_aur_packages_from_file() {
   done <"$pkg_file"
 }
 
+confirm_install "AUR packages for hostname: $HOSTNAME"
+
 echo ">> Installing AUR packages for hostname: $HOSTNAME"
 
 ########################################################
@@ -78,4 +104,5 @@ log "Failed installations: ${#failed_packages[@]} packages"
 if [[ ${#failed_packages[@]} -gt 0 ]]; then
   error "Failed AUR packages: ${failed_packages[*]}"
   log "Check log file: $PKGLOG"
+  exit 1
 fi

@@ -19,4 +19,6 @@ args = ["-d", {{ `"{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"` }}]
 pager = "diff-so-fancy"
 
 [onepassword]
-  prompt = true
+  # Avoid TTY prompts in non-interactive chezmoi commands.
+  # Run `eval $(op signin)` first when a session is required.
+  prompt = false
