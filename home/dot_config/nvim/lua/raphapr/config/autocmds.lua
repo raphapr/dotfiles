@@ -30,6 +30,32 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Set highlight for Zk hashtags in markdown files within the ZK_NOTEBOOK_DIR
+local zk_hashtag_group = vim.api.nvim_create_augroup("ZkHashtagHighlight", { clear = true })
+local zk_hashtag_pattern = [[\v(^|[[:space:]\[({])\zs#[A-Za-z][A-Za-z0-9_/-]*]]
+
+local function resolved_path(path)
+  if not path or path == "" then
+    return ""
+  end
+
+  return vim.fs.normalize(vim.fn.resolve(vim.fn.fnamemodify(path, ":p"))):gsub("/$", "")
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = zk_hashtag_group,
+  pattern = "markdown",
+  callback = function()
+    local notebook_dir = resolved_path(vim.env.ZK_NOTEBOOK_DIR)
+    local buffer_path = resolved_path(vim.api.nvim_buf_get_name(0))
+    if notebook_dir == "" or not vim.startswith(buffer_path, notebook_dir .. "/") then
+      return
+    end
+
+    vim.cmd("syntax match Identifier @" .. zk_hashtag_pattern .. "@ containedin=ALL")
+  end,
+})
+
 -- Disable diagnostic virtual/underline text when in insert mode
 vim.api.nvim_create_autocmd("InsertEnter", {
   callback = function()

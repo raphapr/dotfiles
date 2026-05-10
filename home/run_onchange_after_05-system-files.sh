@@ -16,10 +16,7 @@ sudo chmod 644 /etc/systemd/zram-generator.conf
 # aftersleep script
 ########################################################
 
-if [[ "$HOSTNAME" == "bmo" ]]; then
-  # ath11k must be unloaded before sleep; the legacy hook restarted NetworkManager too early.
-  sudo rm -f /usr/lib/systemd/system-sleep/aftersleep
-else
+if [[ "$HOSTNAME" == "moochacho" ]]; then
   sudo install -Dm755 "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
 fi
 
