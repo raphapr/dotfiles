@@ -198,8 +198,8 @@ bindsym $mod+slash exec --no-startup-id $BROWSER --private-window
 # %%hotkey: start terminal
 bindsym $mod+Return exec --no-startup-id $TERM
 
-# %%hotkey: open tmux session main
-bindsym $mod2+Return exec --no-startup-id $TERM -e $HOME/.bin/tmux-session main
+# %%hotkey: open the main tmux session
+bindsym $mod2+Return exec --no-startup-id $TERM -e $HOME/.bin/tmux-session raphael
 
 # %%hotkey: browser
 bindsym $mod+q exec --no-startup-id $BROWSER

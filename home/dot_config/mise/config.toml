@@ -11,7 +11,6 @@ terraform-ls='0.36.4'
 yazi = "latest"
 stern = "1.33.0"
 'cargo:eza'='latest'
-'cargo:tmux-sessionizer'='latest'
 'cargo:atuin'='latest'
 'cargo:yazi-fm'='latest'
 "cargo:yazi-cli"= 'latest'
@@ -33,6 +32,7 @@ neovim = "0.12.0"
 "npm:@mariozechner/pi-coding-agent" = "latest"
 "cargo:https://github.com/p1rallels/codemapper" = "branch:main"
 "npm:surf-cli" = "latest"
+"cargo:https://github.com/jrmoulton/tmux-sessionizer" = "latest"
 
 [settings]
 experimental = true

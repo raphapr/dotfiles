@@ -63,4 +63,6 @@ Thumbs.db
 *.backup
 
 # Superpowers files
-docs/superpowers
+docs/superpowers/*.md
+docs/plans/*.md
+docs/specs/*.md
