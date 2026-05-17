@@ -74,7 +74,8 @@ chezmoi init raphapr --apply
 - **flameshot** - Screenshot tool
 - **atuin** - Shell history with sync
 - **zathura** - Document viewer
-- **tms** - tmux session manager
+- **sesh** - tmux session manager
+- **television** - Portable and hackable fuzzy finder
 - **k9s** - Kubernetes CLI manager
 - **zk** - Plain text note-taking
 

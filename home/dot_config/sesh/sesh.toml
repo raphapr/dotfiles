@@ -1,0 +1,9 @@
+[[plugins]]
+name = "sesh"
+prefix = ";s "
+src_once = "sesh list -d -c -t -T"
+cmd = "sesh connect --switch %RESULT%"
+keep_sort = true
+recalculate_score = true
+show_icon_when_single = true
+switcher_only = true

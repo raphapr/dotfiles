@@ -52,19 +52,6 @@ fish_add_path \
     ~/.local/share/pnpm/bin \
     ~/.local/share/mise/shims
 
-# awscli shell completion
-complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); ~/.local/bin/aws_completer | sed \'s/ $//\'; end)'
-
-# 1password shell completion (cached — op startup is slow)
-if status is-interactive
-    set -l _op_cache ~/.cache/fish/op_completion.fish
-    if not test -f $_op_cache; or test (command -v op) -nt $_op_cache
-        mkdir -p ~/.cache/fish
-        op completion fish > $_op_cache
-    end
-    source $_op_cache
-end
-
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
@@ -170,6 +157,20 @@ alias tmux 'tmux -f ~/.tmux/tmux.conf'
 alias ts 'tmux source ~/.tmux/tmux.conf'
 alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
+
+# }}}
+# sesh             {{{
+
+abbr -a s sesh
+alias sl 'sesh list -i -d'
+alias sp 'sesh picker -i -d -H'
+alias sc 'sesh connect'
+alias sr 'sesh connect --root (pwd)'
+
+# }}}
+# television       {{{
+
+abbr -a tvs 'tv sesh'
 
 # }}}
 # curl-trace       {{{
