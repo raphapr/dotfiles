@@ -57,7 +57,6 @@ bindsym $mod2+b border toggle
 bindsym $mod+BackSpace kill
 
 # %%hotkey: rofi run mode
-bindsym $mod+f exec rofi -show drun
 bindsym $mod+space exec rofi -show drun
 # %%hotkey: rofi window mode
 bindsym $mod+Tab exec rofi -show window
@@ -65,6 +64,9 @@ bindsym $mod+Tab exec rofi -show window
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-clipboard
 # %%hotkey: rofi-powermenu
 bindsym $mod+0 exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
+
+# %%hotkey: rofi-powermenu
+bindsym $mod+f exec --no-startup-id ~/.bin/rofi-sesh
 
 # %%hotkey: 1password
 bindsym $mod+y exec --no-startup-id 1password --quick-access

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+choice="$(sesh list -t | rofi -dmenu -i -matching fuzzy -p 'tmux')" || exit 0
+[[ -n "$choice" ]] || exit 0
+
+if [[ -n "${TMUX:-}" ]]; then
+  exec sesh connect "$choice"
+fi
+
+if ! command -v kitty >/dev/null 2>&1; then
+  printf 'sesh-rofi: kitty not found\n' >&2
+  exit 1
+fi
+
+exec kitty -e sesh connect "$choice"
