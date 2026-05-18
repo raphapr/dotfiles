@@ -1,9 +1,21 @@
-[[plugins]]
-name = "sesh"
-prefix = ";s "
-src_once = "sesh list -d -c -t -T"
-cmd = "sesh connect --switch %RESULT%"
-keep_sort = true
-recalculate_score = true
-show_icon_when_single = true
-switcher_only = true
+blacklist = ["scratchpad-journal"]
+
+[[session]]
+name = "raphael"
+path = "~"
+
+[[session]]
+name = "pi-conf"
+path = "~/.pi"
+
+[[session]]
+name = "chezmoi"
+path = "~/.local/share/chezmoi"
+
+[[session]]
+name = "nvim-conf"
+path = "~/.config/nvim/lua/raphapr"
+
+[[session]]
+name = "notebook"
+path = "~/Cloud/Sync/notebook"
