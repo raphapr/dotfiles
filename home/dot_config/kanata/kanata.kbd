@@ -53,8 +53,8 @@
  p (t! homerowmod $tot 160 p rctl)
  ; (t! homerowmod $tot 160 ; rsft)
 
- ;; map caps to control
- caps lctl
+ ;; caps: tap = tmux prefix (C-o), hold = lctl
+ caps (tap-hold $tot $hold-time C-o lctl)
 
  ;; define each other letter as typing-layer trigger
  w (multi w @.tp) e (multi e @.tp) r (multi r @.tp) t (multi t @.tp) y (multi y @.tp) u (multi u @.tp) i (multi i @.tp) o (multi o @.tp)

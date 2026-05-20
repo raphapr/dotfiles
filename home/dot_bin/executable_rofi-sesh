@@ -1,16 +1,72 @@
 #!/usr/bin/env bash
+# rofi-sesh: two-mode session picker
+#   sessions  current tmux sessions (sesh list -t)
+#   repos     ghq repos, relative to $REPOS_ROOT, for sesh to attach/create
+#
+# Inspired by the C-o ('o') tmux binding in ~/.tmux/tmux.conf.
+# Switch modi inside rofi with Shift+Right / Shift+Left.
+
 set -euo pipefail
 
-choice="$(sesh list -t | rofi -dmenu -i -matching fuzzy -p 'tmux')" || exit 0
-[[ -n "$choice" ]] || exit 0
+REPOS_ROOT="${REPOS_ROOT:-$HOME/repos}"
 
-if [[ -n "${TMUX:-}" ]]; then
-  exec sesh connect "$choice"
-fi
+connect() {
+  local target="$1"
 
-if ! command -v kitty >/dev/null 2>&1; then
-  printf 'sesh-rofi: kitty not found\n' >&2
-  exit 1
-fi
+  if [[ -n "${TMUX:-}" ]]; then
+    sesh connect "$target"
+    return
+  fi
 
-exec kitty -e sesh connect "$choice"
+  if ! command -v kitty >/dev/null 2>&1; then
+    printf 'rofi-sesh: kitty not found\n' >&2
+    exit 1
+  fi
+
+  # Detach: rofi waits on the script-mode child, so backgrounding lets
+  # rofi close immediately while kitty keeps running.
+  setsid -f kitty -e sesh connect "$target" >/dev/null 2>&1 < /dev/null
+}
+
+list_sessions() {
+  sesh list -t
+}
+
+list_repos() {
+  ghq list -p | sed -e "s|^${REPOS_ROOT}/||"
+}
+
+cmd="${1:-menu}"
+
+case "$cmd" in
+  sessions)
+    if [[ $# -ge 2 ]]; then
+      connect "$2"
+    else
+      list_sessions
+    fi
+    ;;
+  repos)
+    if [[ $# -ge 2 ]]; then
+      # Selection is relative; rebuild absolute path for sesh.
+      connect "${REPOS_ROOT}/$2"
+    else
+      list_repos
+    fi
+    ;;
+  menu)
+    self="$(readlink -f "$0")"
+    exec rofi -show sessions \
+      -modi "sessions:${self} sessions,repos:${self} repos" \
+      -i -matching fuzzy \
+      -no-custom \
+      -kb-element-next '' \
+      -kb-element-prev '' \
+      -kb-mode-next 'Tab,Shift+Right,Control+Tab' \
+      -kb-mode-previous 'ISO_Left_Tab,Shift+Left,Control+ISO_Left_Tab'
+    ;;
+  *)
+    printf 'rofi-sesh: unknown command: %s\n' "$cmd" >&2
+    exit 1
+    ;;
+esac
