@@ -18,7 +18,7 @@
 set -euo pipefail
 
 GHQ_ROOT="${GHQ_ROOT:-$HOME/repos}"
-PLANS_ROOT="$HOME/.pi/orchestra/plans"
+PLANS_ROOT="$HOME/.pi/orchestra/docs"
 EDITOR_CMD="${EDITOR:-nvim}"
 
 force_picker=0
