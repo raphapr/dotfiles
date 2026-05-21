@@ -1,0 +1,11 @@
+[Unit]
+Description=Unload ath11k_pci before sleep
+Before=sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -lc 'if /usr/bin/lsmod | /usr/bin/grep -q "^ath11k_pci"; then /usr/bin/modprobe -r ath11k_pci; fi'
+TimeoutStartSec=30
+
+[Install]
+WantedBy=sleep.target

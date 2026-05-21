@@ -1,0 +1,13 @@
+[Unit]
+Description=Reload ath11k_pci and restart NetworkManager after resume
+After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/bin/modprobe -r ath11k_pci
+ExecStart=/usr/bin/modprobe ath11k_pci
+ExecStart=/usr/bin/systemctl restart NetworkManager.service
+TimeoutStartSec=30
+
+[Install]
+WantedBy=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
