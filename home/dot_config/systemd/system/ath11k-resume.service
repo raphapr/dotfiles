@@ -1,13 +1,17 @@
 [Unit]
 Description=Reload ath11k_pci and restart NetworkManager after resume
-After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target NetworkManager.service
+After=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target
 
 [Service]
 Type=oneshot
-ExecStart=-/usr/bin/modprobe -r ath11k_pci
-ExecStart=/usr/bin/modprobe ath11k_pci
-ExecStart=/usr/bin/systemctl restart NetworkManager.service
-TimeoutStartSec=30
+RemainAfterExit=yes
+# ExecStop runs on resume (when the sleep target deactivates).
+# Sleep first to let the PCIe link settle before re-probing ath11k.
+ExecStop=/usr/bin/sleep 5
+ExecStop=-/usr/bin/modprobe -r ath11k_pci
+ExecStop=/usr/bin/modprobe ath11k_pci
+ExecStop=/usr/bin/systemctl restart NetworkManager.service
+TimeoutStopSec=30
 
 [Install]
 WantedBy=suspend.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target

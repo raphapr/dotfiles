@@ -13,5 +13,5 @@ if [[ "$HOSTNAME" == "moochacho" ]]; then
 fi
 
 if [[ "$HOSTNAME" == "bmo" ]]; then
-  sudo systemctl enable ath11k-suspend.service ath11k-resume.service
+  sudo systemctl enable ath11k-resume.service
 fi

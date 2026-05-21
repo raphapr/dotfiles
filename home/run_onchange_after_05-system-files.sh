@@ -28,7 +28,6 @@ if [[ "$HOSTNAME" == "bmo" ]]; then
   # {{ include "dot_config/systemd/system/ath11k-suspend.service" | sha256sum }}
   # {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
   echo ">> Deploying ath11k suspend/resume services..."
-  sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-suspend.service /etc/systemd/system/ath11k-suspend.service
   sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-resume.service /etc/systemd/system/ath11k-resume.service
   sudo systemctl daemon-reload
 fi
