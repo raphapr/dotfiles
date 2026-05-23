@@ -5,6 +5,10 @@ name = "raphael"
 path = "~"
 
 [[session]]
+name = "screen2"
+path = "~"
+
+[[session]]
 name = "pi-conf"
 path = "~/.pi"
 
@@ -15,7 +19,3 @@ path = "~/.local/share/chezmoi"
 [[session]]
 name = "nvim-conf"
 path = "~/.config/nvim/lua/raphapr"
-
-[[session]]
-name = "notebook"
-path = "~/Cloud/Sync/notebook"

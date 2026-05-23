@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
-# rofi-sesh: two-mode session picker
-#   sessions  current tmux sessions (sesh list -t)
-#   repos     ghq repos, relative to $REPOS_ROOT, for sesh to attach/create
+# rofi-sesh: single-mode session picker.
+#
+# Lists, in one fuzzy-matchable view:
+#   - current tmux sessions      (sesh list -t)
+#   - configured sesh sessions   (sesh list -c)
+#   - ghq repos under $REPOS_ROOT
+# Each row is prefixed with a nerd-font glyph so the three kinds are
+# visually distinct. The glyph also tells us how to resolve the target
+# when the user picks a row.
 #
 # Inspired by the C-o ('o') tmux binding in ~/.tmux/tmux.conf.
-# Switch modi inside rofi with Shift+Right / Shift+Left.
 
 set -euo pipefail
 
 REPOS_ROOT="${REPOS_ROOT:-$HOME/repos}"
+
+# Glyph that marks ghq-repo rows. nf-cod-repo (U+EA62), distinct from the
+# icons sesh emits for tmux and configured sessions so routing on the
+# leading glyph is unambiguous. Stored as a bash unicode escape to keep the
+# source file pure ASCII.
+REPO_ICON=$'\uea62'
 
 connect() {
   local target="$1"
@@ -29,11 +40,26 @@ connect() {
 }
 
 list_sessions() {
-  sesh list -t
+  # -t tmux, -c configured, -d dedupe so attached sessions don't appear twice.
+  # -i icons distinguish tmux vs configured; -n drops ANSI color (rofi
+  # script-mode renders the codes literally otherwise).
+  sesh list -t -c -d -i -n
+  # ghq repos, with our own glyph so connect_selection can route them.
+  ghq list -p | sed -e "s|^${REPOS_ROOT}/||" -e "s|^|${REPO_ICON} |"
 }
 
-list_repos() {
-  ghq list -p | sed -e "s|^${REPOS_ROOT}/||"
+connect_selection() {
+  local selection="$1"
+  local glyph="${selection%% *}"
+  local rest="${selection#* }"
+
+  if [[ "$glyph" == "$REPO_ICON" ]]; then
+    # Repo rows carry a path relative to REPOS_ROOT; sesh needs the absolute
+    # path to spawn a session in that directory.
+    connect "${REPOS_ROOT}/${rest}"
+  else
+    connect "$rest"
+  fi
 }
 
 cmd="${1:-menu}"
@@ -41,29 +67,19 @@ cmd="${1:-menu}"
 case "$cmd" in
   sessions)
     if [[ $# -ge 2 ]]; then
-      connect "$2"
+      connect_selection "$2"
     else
       list_sessions
-    fi
-    ;;
-  repos)
-    if [[ $# -ge 2 ]]; then
-      # Selection is relative; rebuild absolute path for sesh.
-      connect "${REPOS_ROOT}/$2"
-    else
-      list_repos
     fi
     ;;
   menu)
     self="$(readlink -f "$0")"
     exec rofi -show sessions \
-      -modi "sessions:${self} sessions,repos:${self} repos" \
+      -modi "sessions:${self} sessions" \
       -i -matching fuzzy \
       -no-custom \
       -kb-element-next '' \
-      -kb-element-prev '' \
-      -kb-mode-next 'Tab,Shift+Right,Control+Tab' \
-      -kb-mode-previous 'ISO_Left_Tab,Shift+Left,Control+ISO_Left_Tab'
+      -kb-element-prev ''
     ;;
   *)
     printf 'rofi-sesh: unknown command: %s\n' "$cmd" >&2
