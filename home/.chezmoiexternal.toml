@@ -45,6 +45,6 @@ refreshPeriod = "168h"
 [".pi"]
 type = "git-repo"
 url = "git@github.com:raphapr/pi-config.git"
-clone.args = ["--depth", "1", "--branch", "main", "--single-branch"]
-pull.args = ["--ff-only"]
+clone.args = ["--branch", "main", "--single-branch", "--recurse-submodules"]
+pull.args = ["--ff-only", "--recurse-submodules"]
 refreshPeriod = "168h"
