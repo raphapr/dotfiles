@@ -57,7 +57,6 @@ function M.setup()
           path = "[path]",
           luasnip = "[snip]",
           buffer = "[buf]",
-          gh_issues = "[issue]",
           cmp_yanky = "[yanky]",
           render_markdown = "[markdown]",
           fish = "[fish]",

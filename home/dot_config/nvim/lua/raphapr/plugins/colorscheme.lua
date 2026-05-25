@@ -6,10 +6,7 @@ return {
     opts = {
       flavour = "mocha",
       integrations = {
-        overseer = true,
-        codecompanion = true,
         flash = true,
-        fzf = true,
         gitsigns = true,
         markdown = true,
         cmp = true,

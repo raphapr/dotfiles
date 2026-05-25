@@ -69,10 +69,3 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   end,
 })
 
--- Set formatprg to jq for json files (rest.nvim)
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "json",
-  callback = function()
-    vim.api.nvim_set_option_value("formatprg", "jq", { scope = "local" })
-  end,
-})
