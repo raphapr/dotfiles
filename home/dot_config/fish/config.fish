@@ -65,11 +65,11 @@ function fish_user_key_bindings
     bind -M insert \ca "aws-profile"
     bind \ca "aws-profile"
 
-    bind -M insert \cx "kubectl ctx; commandline -f repaint"
-    bind \cx "kubectl ctx"
+    bind -M insert \cx "kubie ctx; commandline -f repaint"
+    bind \cx "kubie ctx"
 
-    bind -M insert \cn "kubectl ns; commandline -f repaint"
-    bind \cn "kubectl ns"
+    bind -M insert \cn "kubie ns; commandline -f repaint"
+    bind \cn "kubie ns"
 
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
@@ -166,11 +166,6 @@ alias sl 'sesh list -i -d'
 alias sp 'sesh picker -i -d -H'
 alias sc 'sesh connect'
 alias sr 'sesh connect --root (pwd)'
-
-# }}}
-# television       {{{
-
-abbr -a tvs 'tv sesh'
 
 # }}}
 # curl-trace       {{{
