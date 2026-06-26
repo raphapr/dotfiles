@@ -519,5 +519,13 @@ function opsignin
 end
 
 # }}}
+# pi                {{{
+
+function pi
+    clear -x
+    command pi $argv
+end
+
+# }}}
 
 # }}}
