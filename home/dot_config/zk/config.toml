@@ -46,7 +46,7 @@ template = "daily.md"
 paths = ["journal/weekly"]
 
 [group.weekly.note]
-filename = "{{format-date now '%Y'}}-W{{format-date now '%W'}}"
+filename = "{{format-date now '%Y'}}-W{{format-date now '%V'}}"
 template = "weekly.md"
 
 # MARKDOWN SETTINGS
