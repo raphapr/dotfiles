@@ -32,7 +32,7 @@ set -gx LC_ALL en_US.UTF-8
 source $HOME/.env_files/core
 
 if status is-interactive; and test -n "$DISPLAY"
-    ~/.bin/set-keyboard-repeat
+    ~/.bin/set-keyboard-repeat &
 end
 
 # general env vars
