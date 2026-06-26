@@ -52,6 +52,10 @@ fish_add_path \
     ~/.local/share/pnpm/bin \
     ~/.local/share/mise/shims
 
+if test "$KUBIE_ACTIVE" = 1
+     set -gx KUBE_PROMPT_ENABLED 1
+ end
+
  #}}}
 # Bindings        ---------------------------------------------- {{{
 
