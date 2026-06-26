@@ -17,7 +17,6 @@ return {
     config = function()
       require("scope").setup({})
       require("telescope").load_extension("scope")
-      vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#AB47BC" })
     end,
   },
   -------------------------------------- tiny-inline-diagnostic.nvim --------------------

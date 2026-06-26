@@ -52,9 +52,6 @@ opt.backupskip = "/tmp/*,/private/tmp/*"
 -- show cursor column
 opt.cursorcolumn = true
 
--- improve performance
-opt.ttyfast = true
-
 -- Auto-reload files when changed outside of Neovim
 vim.o.autoread = true
 

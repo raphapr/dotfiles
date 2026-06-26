@@ -21,18 +21,7 @@ return {
         lualine_c = { { "filename", path = 1 } },
         lualine_x = { { get_venv }, "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },
-        lualine_z = {
-          "location",
-          {
-            function()
-              local schema = require("yaml-companion").get_buf_schema(0)
-              if schema.result[1].name == "none" then
-                return ""
-              end
-              return schema.result[1].name
-            end,
-          },
-        },
+        lualine_z = { "location" },
       },
       inactive_sections = {
         lualine_a = {},

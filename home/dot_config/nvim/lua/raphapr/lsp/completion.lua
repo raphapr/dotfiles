@@ -23,7 +23,6 @@ function M.setup()
       { name = "render-markdown" },
       { name = "buffer", keyword_length = 3 },
       { name = "luasnip", keyword_length = 2 },
-      { name = "cmp_yanky" },
       { name = "lazydev", group_index = 0 },
     },
     mapping = cmp.mapping.preset.insert({
@@ -57,7 +56,6 @@ function M.setup()
           path = "[path]",
           luasnip = "[snip]",
           buffer = "[buf]",
-          cmp_yanky = "[yanky]",
           render_markdown = "[markdown]",
           fish = "[fish]",
         },
