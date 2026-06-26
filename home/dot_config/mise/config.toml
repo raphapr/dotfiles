@@ -30,8 +30,6 @@ neovim = "0.12.0"
 "npm:get-shit-done-cc" = "latest"
 "npm:@aws-amplify/cli" = "14.3.0"
 "npm:@earendil-works/pi-coding-agent" = "latest"
-"cargo:https://github.com/p1rallels/codemapper" = "branch:main"
-"npm:surf-cli" = "latest"
 
 [settings]
 experimental = true
