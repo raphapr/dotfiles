@@ -21,6 +21,7 @@ stern = "1.33.0"
 'npm:neovim'='latest'
 'npm:tokscale'='latest'
 'npm:google'='latest'
+"npm:hunkdiff"= "latest"
 'npm:@googleworkspace/cli' = '0.22.1'
 'go:golang.org/x/tools/gopls' = '0.20.0'
 'vfox:mise-plugins/vfox-gcloud' = "latest"
