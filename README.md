@@ -75,9 +75,17 @@ chezmoi init raphapr --apply
 - **atuin** - Shell history with sync
 - **zathura** - Document viewer
 - **sesh** - tmux session manager
-- **television** - Portable and hackable fuzzy finder
 - **k9s** - Kubernetes CLI manager
+- **kubie** - Kubernetes context and namespace switcher
 - **zk** - Plain text note-taking
+- **bat** - `cat` clone with syntax highlighting and git integration
+- **eza** - Modern replacement for `ls`
+
+### Harness
+
+- **pi** - Terminal-based AI coding agent
+- **cymbal** - Language-agnostic code navigation CLI
+- **hunk** - Terminal diff-review tool with inline annotations for AI agents
 
 ### System
 
