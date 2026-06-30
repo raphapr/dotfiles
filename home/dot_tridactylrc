@@ -9,6 +9,12 @@ bind <Esc> nohlsearch
 bind <C-o> mode ignore
 bind --mode=ignore <C-o> mode normal
 bind yd tabduplicate
+" Re-source this config (with confirmation message)
+bind ,s composite source ; fillcmdline_tmp 2000 tridactylrc reloaded
+
+" Show custom keybindings from ~/.tridactylrc
+command show_custom_bindings js (async () => { const result = await tri.native.run("cat ~/.config/tridactyl/show-custom-bindings.js"); const script = typeof result === "string" ? result : (result && (result.content || result.stdout || "")) || ""; if (!script) throw new Error("No show-custom-bindings.js content returned"); eval(script); })()
+bind ,, show_custom_bindings
 
 " Hints
 bind f hint
@@ -22,11 +28,21 @@ autocmd DocStart mail.google.com mode ignore
 autocmd DocStart meet.google.com mode ignore
 autocmd DocStart kodekloud.com mode ignore
 
-" Git{Hub,Lab} git clone via SSH yank
-bind gy composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+" Copy current page as Markdown
+command yank_markdown_page js (async () => { const url = location.href.split("?")[0].replace(/\/$/, ""); const pr = location.hostname === "github.com" ? location.pathname.match(/^\/[^/]+\/[^/]+\/pull\/(\d+)/) : null; const title = pr ? "PR #" + pr[1] : (document.title || url).trim(); await tri.excmds.clipboard("yank", "[" + title + "](" + url + ")"); })()
+bind ym yank_markdown_page
 
-" Make `gi` on GitHub take you to the search box
-bindurl ^https://github.com gi hint -Vc .AppHeader-searchButton
+" GitHub/GitLab ghq clone yank
+bindurl ^https://(github|gitlab)\.com/[^/]+/[^/]+ yg composite js "ghq clone " + location.pathname.split("/").slice(1, 3).join("/").replace(/\.git$/, "") | clipboard yank
+
+" Jira ticket markdown yank
+command yank_jira_ticket js (async () => { const url = location.href.split("?")[0].replace(/\/$/, ""); const m = url.match(/\/browse\/([A-Z][A-Z0-9]+-\d+)/); const key = m ? m[1] : ""; const el = document.querySelector('[data-testid="issue.views.issue-base.foundation.summary.heading"]') || document.querySelector("h1"); const title = ((el ? el.textContent : document.title.replace(key, "").replace(/\s*[-–—]\s*Jira.*$/, "")) || "").trim(); await tri.excmds.clipboard("yank", "- [] [" + key + "](" + url + "): " + title + " #support"); })()
+bindurl ^https://[^/]+\.atlassian\.net/browse/ yj yank_jira_ticket
+
+
+" Open a code-review tmux window for the current GitHub PR
+command open_pr_review js (() => { const m = location.pathname.match(/^\/[^/]+\/([^/]+)\/pull\/(\d+)/); if (!m) { return tri.excmds.fillcmdline_tmp(3000, "Not a GitHub PR page"); } const sq = (s) => "'" + String(s).replace(/'/g, "'\\''") + "'"; const cmd = "tmux new-window -n " + sq("review:" + m[1] + "#" + m[2]) + " " + sq("cd ~/repos && pi " + sq("/skill:code-review " + location.href)); tri.native.run(cmd); })()
+bindurl ^https://github\.com/[^/]+/[^/]+/pull/\d+ ,r open_pr_review
 
 " Quickmarks
 " Use go/gn/gw to open in current tab/ new tab / new win
@@ -34,7 +50,7 @@ quickmark p https://github.com/pulls
 quickmark r https://reddit.com
 quickmark g https://github.com/notifications?query=is%3Aunread
 
-# searchurls
+" searchurls
 set searchurls.ddg    https://duckduckgo.com/?q=
 set searchurls.wiki   https://en.wikipedia.org/wiki/Special:Search/
 set searchurls.yt     https://www.youtube.com/results?search_query=
@@ -43,8 +59,3 @@ set searchurls.reddit https://www.reddit.com/search/?q=
 set searchurls.amazon https://www.amazon.com.br/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=
 set searchurls.ml     https://lista.mercadolivre.com.br/
 set searchurls.camb   https://dictionary.cambridge.org/dictionary/english-portuguese/
-
-bind ,, composite js tri.native.run("tmux new-window -n \"review:" + window.location.pathname.split('/')[2] + "#" + window.location.pathname.split('/')[4] + "\" \"cd ~/repos && pi '/skill:code-review " + window.location.href + "'\"")
-
-" syntax highlighting
-set filetype=tridactyl
