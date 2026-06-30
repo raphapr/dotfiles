@@ -1,36 +1,35 @@
 [tools]
 node= "22"
 terraform='1.5.7'
-opentofu='1.7.2'
 python = "3.13"
 go= "1.24"
 kubectl='1.32.0'
 shellcheck='0.10.0'
 helm='3.17.0'
 terraform-ls='0.36.4'
+tflint = "0.61.0"
 yazi = "latest"
+neovim = "stable"
 'cargo:eza'='latest'
 'cargo:atuin'='latest'
 'cargo:yazi-fm'='latest'
 "cargo:yazi-cli"= 'latest'
 "cargo:kanata"= 'latest'
-"cargo:fsel"= "3.4.1"
 'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
 'npm:tokscale'='latest'
 'npm:google'='latest'
 "npm:hunkdiff"= "latest"
-'npm:@googleworkspace/cli' = '0.22.1'
-'go:golang.org/x/tools/gopls' = '0.20.0'
+'npm:@googleworkspace/cli' = 'latest'
+'go:golang.org/x/tools/gopls' = '0.22.0'
 'vfox:mise-plugins/vfox-gcloud' = "latest"
-tflint = "0.61.0"
-neovim = "0.12.0"
 "npm:lean-ctx-bin" = "latest"
 "npm:get-shit-done-cc" = "latest"
 "npm:@aws-amplify/cli" = "14.3.0"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "ubi:1broseidon/cymbal" = "latest"
+"github:raphapr/pimux" = "0.1.0"
 
 [settings]
 experimental = true
