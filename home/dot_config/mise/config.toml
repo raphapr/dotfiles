@@ -28,7 +28,8 @@ neovim = "stable"
 "npm:get-shit-done-cc" = "latest"
 "npm:@aws-amplify/cli" = "14.3.0"
 "npm:@earendil-works/pi-coding-agent" = "latest"
-"ubi:1broseidon/cymbal" = "latest"
+"github:1broseidon/cymbal" = "latest"
+"github:DataDog/pup" = "latest"
 "github:raphapr/pimux" = "0.1.0"
 
 [settings]
