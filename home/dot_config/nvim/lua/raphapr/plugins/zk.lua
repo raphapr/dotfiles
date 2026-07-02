@@ -11,7 +11,9 @@ return {
             name = "zk",
           },
           on_attach = function(client, bufnr)
-            vim.diagnostic.config({ signs = false, underline = false })
+            -- Scope to zk's namespace; a global config() would disable
+            -- signs/underline for every LSP in the session
+            vim.diagnostic.config({ signs = false, underline = false }, vim.lsp.diagnostic.get_namespace(client.id))
           end,
         },
       })

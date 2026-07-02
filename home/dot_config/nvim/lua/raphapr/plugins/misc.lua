@@ -1,6 +1,6 @@
 return {
   -------------------------------------- misc -------------------------------------------
-  "editorconfig/editorconfig-vim",
+  -- editorconfig support is built into Neovim >= 0.9
   "tridactyl/vim-tridactyl",
   "norcalli/nvim-colorizer.lua",
   { "mg979/vim-visual-multi", event = "BufRead" },

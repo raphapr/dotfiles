@@ -35,20 +35,16 @@ return {
     dependencies = "nvim-lua/plenary.nvim",
     event = "VeryLazy",
     config = function()
-      require("gitlinker").setup({ mappings = "<leader>ty" })
-      vim.api.nvim_set_keymap(
-        "n",
-        "<leader>ty",
-        '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-        { silent = true, desc = "Git: Open permalink in browser" }
-      )
+      -- mappings = nil: keymaps are defined manually below with open_in_browser
+      -- instead of the default copy-to-clipboard action
+      require("gitlinker").setup({ mappings = nil })
+      vim.keymap.set("n", "<leader>ty", function()
+        require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser })
+      end, { silent = true, desc = "Git: Open permalink in browser" })
 
-      vim.api.nvim_set_keymap(
-        "v",
-        "<leader>ty",
-        '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-        { desc = "Git: Open permalink in browser" }
-      )
+      vim.keymap.set("v", "<leader>ty", function()
+        require("gitlinker").get_buf_range_url("v", { action_callback = require("gitlinker.actions").open_in_browser })
+      end, { silent = true, desc = "Git: Open permalink in browser" })
     end,
   },
 }
