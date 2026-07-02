@@ -128,6 +128,7 @@ alias K 'kill -9'
 alias grep 'rg'
 alias rg 'rg --smart-case'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
+alias neogit 'nvim -c Neogit'
 alias ptpython "python -m ptpython"
 abbr -a v nvim
 abbr -a vim nvim
