@@ -9,7 +9,6 @@ function M.setup()
     "pyright",
     "bashls",
     "terraformls",
-    "tflint",
     "yamlls",
     "dockerls",
     "gopls",
@@ -30,14 +29,10 @@ function M.setup()
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
     root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
+    -- runtime/workspace/globals are handled by lazydev.nvim
     settings = {
       Lua = {
-        runtime = { version = "LuaJIT" },
-        diagnostics = { globals = { "vim" } },
-        workspace = {
-          library = vim.api.nvim_get_runtime_file("", true),
-          checkThirdParty = false,
-        },
+        workspace = { checkThirdParty = false },
         telemetry = { enable = false },
       },
     },
@@ -93,24 +88,15 @@ function M.setup()
     root_markers = { ".git" },
   })
 
-  -- Terraform
+  -- Terraform. tflint is intentionally NOT enabled here: it ran a second
+  -- langserver per buffer with --call-module-type=all, adding load without
+  -- fixing the freeze. Run tflint from the CLI when needed. The freeze is
+  -- terraform-ls loading ~580MB of aws/kubernetes/helm provider schemas on a
+  -- low-RAM machine; scoping the root did not help, so default markers stay.
   vim.lsp.config("terraformls", {
     cmd = { "terraform-ls", "serve" },
     filetypes = { "terraform", "terraform-vars" },
     root_markers = { ".terraform", ".git" },
-  })
-
-  -- TFLint
-  vim.lsp.config("tflint", {
-    cmd = {
-      "tflint",
-      "--disable-rule=terraform_required_providers",
-      "--disable-rule=terraform_module_pinned_source",
-      "--call-module-type=all",
-      "--langserver",
-    },
-    filetypes = { "terraform" },
-    root_markers = { ".terraform", ".git", ".tflint.hcl" },
   })
 
   -- YAML

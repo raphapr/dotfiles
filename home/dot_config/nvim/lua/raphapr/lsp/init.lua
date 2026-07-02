@@ -29,8 +29,7 @@ function M.setup()
   -- Setup diagnostics
   require("raphapr.lsp.diagnostics").setup()
 
-  -- Setup completion
-  require("raphapr.lsp.completion").setup()
+  -- Completion is set up by the nvim-cmp plugin spec (plugins/lsp.lua)
 
   -- Setup LSP servers using native vim.lsp
   require("raphapr.lsp.servers").setup()
