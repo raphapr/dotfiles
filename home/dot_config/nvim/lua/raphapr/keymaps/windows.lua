@@ -14,8 +14,8 @@ vim.keymap.set("n", "<Down>", ":resize -5<cr>", { desc = "resize split downwards
 vim.keymap.set("n", "<Right>", ":vertical resize +5<cr>", { desc = "resize vsplit to the right by 5 columns" })
 vim.keymap.set("n", "<Left>", ":vertical resize -5<cr>", { desc = "resize vsplit to the left by 5 columns" })
 
--- Close window
-vim.keymap.set("n", "zz", ":q<CR>", { noremap = true, desc = "close the current window" })
+-- Close window (was `zz`, which shadowed the built-in center-cursor command)
+vim.keymap.set("n", "<leader>q", ":q<CR>", { noremap = true, desc = "close the current window" })
 
 -- Tmux integration
 local function open_tmux_pane()

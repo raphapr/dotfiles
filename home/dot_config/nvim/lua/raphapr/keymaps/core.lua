@@ -12,9 +12,6 @@ vim.keymap.set("v", "J", [[:'<,'>move'>+<cr>gv=gv]], { noremap = true, desc = "m
 vim.keymap.set("v", "<", "<gv", { noremap = true, desc = "select block and indent left" })
 vim.keymap.set("v", ">", ">gv", { noremap = true, desc = "select block and indent right" })
 
--- copy entire line without the newline at the end
-vim.keymap.set("n", "Y", "y$", { noremap = true, desc = "copy entire line without the newline at the end" })
-
 -- page up/down half a page and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, desc = "scroll down half a page" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, desc = "scroll up half a page" })
