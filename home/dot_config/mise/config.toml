@@ -20,7 +20,6 @@ neovim = "stable"
 'npm:neovim'='latest'
 'npm:tokscale'='latest'
 'npm:google'='latest'
-"npm:hunkdiff"= "latest"
 'npm:@googleworkspace/cli' = 'latest'
 'go:golang.org/x/tools/gopls' = '0.22.0'
 'vfox:mise-plugins/vfox-gcloud' = "latest"
@@ -31,6 +30,7 @@ neovim = "stable"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
 "github:raphapr/pimux" = "0.1.0"
+"github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
 
 [settings]
 experimental = true

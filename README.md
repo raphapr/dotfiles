@@ -85,7 +85,6 @@ chezmoi init raphapr --apply
 
 - **pi** - Terminal-based AI coding agent
 - **cymbal** - Language-agnostic code navigation CLI
-- **hunk** - Terminal diff-review tool with inline annotations for AI agents
 
 ### System
 
