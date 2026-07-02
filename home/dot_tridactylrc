@@ -36,7 +36,7 @@ bind ym yank_markdown_page
 bindurl ^https://(github|gitlab)\.com/[^/]+/[^/]+ yg composite js "ghq clone " + location.pathname.split("/").slice(1, 3).join("/").replace(/\.git$/, "") | clipboard yank
 
 " Jira ticket markdown yank
-command yank_jira_ticket js (async () => { const url = location.href.split("?")[0].replace(/\/$/, ""); const m = url.match(/\/browse\/([A-Z][A-Z0-9]+-\d+)/); const key = m ? m[1] : ""; const el = document.querySelector('[data-testid="issue.views.issue-base.foundation.summary.heading"]') || document.querySelector("h1"); const title = ((el ? el.textContent : document.title.replace(key, "").replace(/\s*[-–—]\s*Jira.*$/, "")) || "").trim(); await tri.excmds.clipboard("yank", "- [] [" + key + "](" + url + "): " + title + " #support"); })()
+command yank_jira_ticket js (async () => { const url = location.href.split("?")[0].replace(/\/$/, ""); const m = url.match(/\/browse\/([A-Z][A-Z0-9]+-\d+)/); const key = m ? m[1] : ""; const el = document.querySelector('[data-testid="issue.views.issue-base.foundation.summary.heading"]') || document.querySelector("h1"); const title = ((el ? el.textContent : document.title.replace(key, "").replace(/\s*[-–—]\s*Jira.*$/, "")) || "").trim(); await tri.excmds.clipboard("yank", "- [ ] [" + key + "](" + url + "): " + title + " #support"); })()
 bindurl ^https://[^/]+\.atlassian\.net/browse/ yj yank_jira_ticket
 
 
