@@ -3,7 +3,6 @@
 auracle-git
 aws-session-manager-plugin
 bluetooth-autoconnect
-circleci-cli-bin
 claude-code
 cursor-cli
 dropbox
@@ -41,7 +40,6 @@ xdg-su
 xidlehook
 zoom
 zsa-keymapp-bin
-cymbal
 memreserver
 sesh-bin
 kubie

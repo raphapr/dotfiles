@@ -1,0 +1,14 @@
+#!/bin/bash
+# Re-runs whenever the mise config changes.
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+
+set -euo pipefail
+
+if ! command -v mise >/dev/null 2>&1; then
+  echo ">> mise not installed; skipping tool sync."
+  exit 0
+fi
+
+echo ">> Syncing mise tools..."
+mise install --yes
+mise prune --yes

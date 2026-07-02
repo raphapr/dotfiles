@@ -43,7 +43,6 @@ autoconf-archive
 automake
 autorandr
 avahi
-aws-cli
 ayatana-ido
 b43-fwcutter
 base
@@ -197,7 +196,6 @@ fribidi
 fuse-common
 fuse2
 fuse3
-fzf
 game-devices-udev
 garcon
 gavl
@@ -1560,7 +1558,6 @@ xz
 yajl
 yarn
 yay
-yazi
 yelp-tools
 yelp-xsl
 yyjson

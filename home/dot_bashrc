@@ -131,12 +131,11 @@ if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 fi
 
-# fzf initialization
-# shellcheck source=/dev/null
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # mise
 eval "$($HOME/.cargo/bin/mise activate bash)"
+
+# fzf initialization (installed via mise; must come after mise activate)
+command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash)"
 
 # }}}
 # Aliases             ---------------------------------------------- {{{

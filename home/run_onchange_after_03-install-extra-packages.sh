@@ -3,7 +3,6 @@
 set -euo pipefail
 
 readonly FONT_DIR="$HOME/.local/share/fonts"
-readonly AWS_CLI_GPG_FINGERPRINT="FB5DB77FD5C118B80511ADA8A6310ACC4672475C"
 
 confirm_install() {
   local description="$1"
@@ -37,11 +36,6 @@ echo ">> Installing extra packages..."
 
 cargo install cargo-binstall
 cargo binstall mise
-
-pushd "$HOME" >/dev/null
-mise install
-mise upgrade
-popd >/dev/null
 
 ########################################################
 # yazi
@@ -80,14 +74,6 @@ else
 fi
 
 ########################################################
-# fzf
-########################################################
-
-if [[ ! -f "$HOME"/.fzf/bin/fzf ]]; then
-  echo -e "y" | ~/.fzf/install --no-bash --no-zsh
-fi
-
-########################################################
 # github cli extensions
 ########################################################
 
@@ -104,43 +90,6 @@ install_gh_extension() {
 
 install_gh_extension dlvhdr/gh-dash
 install_gh_extension seachicken/gh-poi
-
-########################################################
-# awscli
-########################################################
-
-if ! command -v gpg >/dev/null 2>&1; then
-  echo "gpg is required to verify the AWS CLI installer." >&2
-  exit 1
-fi
-
-AWS_TMP_DIR="$(mktemp -d)"
-cleanup_aws_tmp_dir() {
-  rm -rf "$AWS_TMP_DIR"
-}
-trap cleanup_aws_tmp_dir EXIT
-
-pushd "$AWS_TMP_DIR" >/dev/null
-curl -fsSLO "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
-curl -fsSLO "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig"
-
-if ! gpg --list-keys "$AWS_CLI_GPG_FINGERPRINT" >/dev/null 2>&1; then
-  gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys "$AWS_CLI_GPG_FINGERPRINT"
-fi
-
-actual_fingerprint="$(gpg --with-colons --fingerprint "$AWS_CLI_GPG_FINGERPRINT" | awk -F: '$1 == "fpr" { print $10; exit }')"
-if [[ "$actual_fingerprint" != "$AWS_CLI_GPG_FINGERPRINT" ]]; then
-  echo "Unexpected AWS CLI signing key fingerprint: $actual_fingerprint" >&2
-  exit 1
-fi
-
-gpg --verify awscli-exe-linux-x86_64.zip.sig awscli-exe-linux-x86_64.zip
-unzip -q awscli-exe-linux-x86_64.zip
-./aws/install --update -i ~/.local/aws-cli -b ~/.local/bin
-popd >/dev/null
-
-cleanup_aws_tmp_dir
-trap - EXIT
 
 ########################################################
 # kanata
