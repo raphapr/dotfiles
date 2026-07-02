@@ -19,7 +19,7 @@ g.loaded_netrwPlugin = 1
 -------------------------------------- options -----------------------------------------
 
 -- disable mouse
-vim.cmd([[set mouse=]])
+opt.mouse = ""
 
 -- true colors
 opt.termguicolors = true
@@ -59,6 +59,9 @@ vim.o.autoread = true
 local constants = require("raphapr.config.constants")
 opt.backup = true
 opt.swapfile = false
+-- nvim does not create these directories automatically
+vim.fn.mkdir(constants.paths.undodir, "p")
+vim.fn.mkdir(constants.paths.backupdir, "p")
 opt.undodir = constants.paths.undodir
 opt.backupdir = constants.paths.backupdir
 
