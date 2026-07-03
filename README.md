@@ -85,6 +85,7 @@ chezmoi init raphapr --apply
 
 - **pi** - Terminal-based AI coding agent
 - **cymbal** - Language-agnostic code navigation CLI
+- **headroom** - Context-compression layer for AI agents
 
 ### System
 

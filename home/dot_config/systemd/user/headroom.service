@@ -1,0 +1,18 @@
+[Unit]
+Description=Headroom context-compression proxy for AI agents
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Run the mise-managed Headroom CLI. `latest` follows the version selected by mise.
+ExecStart=%h/.local/share/mise/installs/pipx-headroom-ai/latest/bin/headroom proxy --port 8787 --memory --no-memory-tools --code-aware
+Environment=HEADROOM_TELEMETRY=off
+Environment=HEADROOM_UPDATE_CHECK=off
+Restart=on-failure
+RestartSec=5
+# Cold start pulls the Kompress model; give it room before failing.
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
