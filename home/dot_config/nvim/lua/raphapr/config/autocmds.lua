@@ -30,9 +30,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Set highlight for Zk hashtags in markdown files within the ZK_NOTEBOOK_DIR
+-- Highlight Zk hashtags in markdown files within ZK_NOTEBOOK_DIR.
+-- Uses matchadd (priority > 100) so it wins over treesitter highlighting.
 local zk_hashtag_group = vim.api.nvim_create_augroup("ZkHashtagHighlight", { clear = true })
 local zk_hashtag_pattern = [[\v(^|[[:space:]\[({])\zs#[A-Za-z][A-Za-z0-9_/-]*]]
+
+vim.api.nvim_set_hl(0, "ZkHashtag", { link = "Identifier", default = true })
 
 local function resolved_path(path)
   if not path or path == "" then
@@ -42,17 +45,27 @@ local function resolved_path(path)
   return vim.fs.normalize(vim.fn.resolve(vim.fn.fnamemodify(path, ":p"))):gsub("/$", "")
 end
 
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
   group = zk_hashtag_group,
-  pattern = "markdown",
-  callback = function()
+  pattern = "*.md",
+  callback = function(event)
+    if vim.bo[event.buf].filetype ~= "markdown" then
+      return
+    end
+
     local notebook_dir = resolved_path(vim.env.ZK_NOTEBOOK_DIR)
-    local buffer_path = resolved_path(vim.api.nvim_buf_get_name(0))
+    local buffer_path = resolved_path(vim.api.nvim_buf_get_name(event.buf))
     if notebook_dir == "" or not vim.startswith(buffer_path, notebook_dir .. "/") then
       return
     end
 
-    vim.cmd("syntax match Identifier @" .. zk_hashtag_pattern .. "@ containedin=ALL")
+    -- matchadd is window-local; drop stale matches before re-adding
+    for _, m in ipairs(vim.fn.getmatches()) do
+      if m.group == "ZkHashtag" then
+        vim.fn.matchdelete(m.id)
+      end
+    end
+    vim.fn.matchadd("ZkHashtag", zk_hashtag_pattern, 200)
   end,
 })
 
