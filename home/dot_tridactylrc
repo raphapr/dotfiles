@@ -11,6 +11,9 @@ bind --mode=ignore <C-o> mode normal
 bind yd tabduplicate
 " Re-source this config (with confirmation message)
 bind ,s composite source ; fillcmdline_tmp 2000 tridactylrc reloaded
+" Hard reset: wipe stored config then re-source from this RC file (destructive)
+command hardreload composite sanitise tridactyllocal tridactylsync ; source ; fillcmdline_tmp 2000 tridactylrc hard-reloaded (storage wiped)
+bind ,S hardreload
 
 " Show custom keybindings from ~/.tridactylrc
 command show_custom_bindings js (async () => { const result = await tri.native.run("cat ~/.config/tridactyl/show-custom-bindings.js"); const script = typeof result === "string" ? result : (result && (result.content || result.stdout || "")) || ""; if (!script) throw new Error("No show-custom-bindings.js content returned"); eval(script); })()
