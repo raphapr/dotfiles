@@ -56,14 +56,19 @@ chezmoi init raphapr --apply
 
 - **neovim** - Best editor ever
 - **direnv** - Environment variable manager
-- **mise** - Development tool version manager
-- **lazygit** - Terminal UI for git
+- **mise** - Development tool version and package manager
+- **neogit** - Magit-style git interface for Neovim
 
 ### File Management
 
 - **yazi** - Terminal file manager
 - **thunar** - GUI file manager
 - **zoxide** - Smarter cd command
+
+### Browser
+
+- **firefox** - Web browser
+- **tridactyl** - Vim-like keybindings for Firefox
 
 ### Utilities
 
