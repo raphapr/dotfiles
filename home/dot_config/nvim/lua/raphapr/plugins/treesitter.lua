@@ -14,6 +14,7 @@ local ensure_installed = {
   "markdown_inline",
   "python",
   "terraform",
+  "tmux",
   "toml",
   "typescript",
   "yaml",
