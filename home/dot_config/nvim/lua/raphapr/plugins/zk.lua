@@ -21,8 +21,31 @@ return {
       local function opts(desc)
         return { noremap = true, silent = true, desc = "zk: " .. desc }
       end
+
+      local function open_daily_note()
+        local command = { "zk" }
+        if vim.env.ZK_NOTEBOOK_DIR and vim.env.ZK_NOTEBOOK_DIR ~= "" then
+          vim.list_extend(command, { "--notebook-dir", vim.env.ZK_NOTEBOOK_DIR, "-W", vim.env.ZK_NOTEBOOK_DIR })
+        end
+        vim.list_extend(command, { "new", "--no-input", "--print-path", "--date", os.date("%Y-%m-%d"), "journal/daily" })
+
+        local output = vim.fn.systemlist(command)
+        if vim.v.shell_error ~= 0 or not output[1] or output[1] == "" then
+          vim.notify(table.concat(output, "\n"), vim.log.levels.ERROR)
+          return
+        end
+
+        local note_path = vim.fn.fnamemodify(output[1], ":p")
+        local current_path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
+        if note_path == current_path then
+          return
+        end
+
+        vim.cmd.edit(vim.fn.fnameescape(note_path))
+      end
+
       map("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts("Create new note"))
-      map("n", "<leader>zd", "<Cmd>ZkNew { dir = 'journal/daily', date = 'today' }<CR>", opts("Daily note (today)"))
+      vim.keymap.set("n", "<leader>zd", open_daily_note, opts("Daily note (today)"))
       map("n", "<leader>zr", "<Cmd>ZkNew { dir = 'journal/daily', date = 'tomorrow' }<CR>", opts("Daily note (tomorrow)"))
       map("n", "<leader>zw", "<Cmd>ZkNew { dir = 'journal/weekly', date = 'today' }<CR>", opts("Weekly note"))
       map("n", "<leader>zo", "<Cmd>ZkNotes { sort = {'modified'} }<CR>", opts("Open notes"))
