@@ -45,7 +45,7 @@ local function resolved_path(path)
   return vim.fs.normalize(vim.fn.resolve(vim.fn.fnamemodify(path, ":p"))):gsub("/$", "")
 end
 
-vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType" }, {
+vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType", "WinEnter" }, {
   group = zk_hashtag_group,
   pattern = "*.md",
   callback = function(event)
