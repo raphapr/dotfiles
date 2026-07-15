@@ -5,10 +5,10 @@
 set -euo pipefail
 
 if ! command -v mise >/dev/null 2>&1; then
-  echo ">> mise not installed; skipping tool sync."
-  exit 0
+  echo ">> mise is required but was not installed by the previous bootstrap step." >&2
+  exit 1
 fi
 
 echo ">> Syncing mise tools..."
 mise install --yes
-mise prune --yes
+echo ">> Skipping destructive prune; review with: mise prune --dry-run"

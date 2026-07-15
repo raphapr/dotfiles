@@ -1,32 +1,11 @@
 #!/bin/bash
+# Re-runs whenever pinned Yazi packages or global Python requirements change.
+# yazi packages: {{ include "dot_config/yazi/package.toml" | sha256sum }}
+# Python requirements: {{ include "dot_virtualenvs/global_requirements.txt" | sha256sum }}
 
 set -euo pipefail
 
 readonly FONT_DIR="$HOME/.local/share/fonts"
-
-confirm_install() {
-  local description="$1"
-  local reply=""
-
-  if [[ -t 0 ]]; then
-    read -r -p "Install $description? [y/N] " reply
-  elif read -r -p "Install $description? [y/N] " reply 2>/dev/null </dev/tty; then
-    :
-  else
-    echo "No TTY available; skipping $description."
-    exit 0
-  fi
-
-  case "${reply,,}" in
-  y | yes) ;;
-  *)
-    echo "Skipping $description."
-    exit 0
-    ;;
-  esac
-}
-
-confirm_install "extra packages"
 
 echo ">> Installing extra packages..."
 
@@ -41,9 +20,7 @@ cargo binstall mise
 # yazi
 ########################################################
 
-ya pack -a yazi-rs/flavors:catppuccin-mocha
-ya pack -a dedukun/bookmarks
-ya pack --upgrade
+ya pkg install
 
 ########################################################
 # fonts
