@@ -57,13 +57,13 @@ vim.o.autoread = true
 
 -- undo / backup
 local constants = require("raphapr.config.constants")
-opt.backup = true
+opt.backup = false
 opt.swapfile = false
--- nvim does not create these directories automatically
-vim.fn.mkdir(constants.paths.undodir, "p")
-vim.fn.mkdir(constants.paths.backupdir, "p")
+-- Keep persistent undo in a user-private state directory.
+vim.fn.mkdir(constants.paths.undodir, "p", 448)
+vim.uv.fs_chmod(constants.paths.undodir, 448)
 opt.undodir = constants.paths.undodir
-opt.backupdir = constants.paths.backupdir
+
 
 -- prepend mise shims to PATH
 vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH

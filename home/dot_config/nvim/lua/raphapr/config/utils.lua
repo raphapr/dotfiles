@@ -3,16 +3,18 @@ local U = {}
 function U.go_to_definition_split()
   vim.lsp.buf.definition({
     on_list = function(options)
-      -- if there are multiple items, warn the user
+      if #options.items == 0 then
+        vim.notify("No definition found", vim.log.levels.INFO)
+        return
+      end
+
       if #options.items > 1 then
         vim.notify("Multiple items found, opening first one", vim.log.levels.WARN)
       end
 
-      -- Open the first item in a vertical split
       local item = options.items[1]
-      local cmd = "vsplit +" .. item.lnum .. " " .. item.filename .. "|" .. "normal " .. item.col .. "|"
-
-      vim.cmd(cmd)
+      vim.cmd("vsplit " .. vim.fn.fnameescape(item.filename))
+      vim.api.nvim_win_set_cursor(0, { item.lnum, math.max(item.col - 1, 0) })
     end,
   })
 end

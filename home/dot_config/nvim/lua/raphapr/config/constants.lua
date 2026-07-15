@@ -8,7 +8,6 @@ M.paths = {
   backlog = "~/Cloud/Sync/notebook/backlog.md",
   luasnip = "~/.config/nvim/lua/raphapr/luasnip/",
   undodir = vim.fn.stdpath("state") .. "/undo",
-  backupdir = vim.fn.stdpath("state") .. "/backup",
 }
 
 -- Leaders

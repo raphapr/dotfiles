@@ -1,6 +1,9 @@
 local M = {}
 
 function M.setup()
+  local runtime_dir = vim.env.XDG_RUNTIME_DIR or ("/run/user/" .. vim.uv.os_get_passwd().uid)
+  local gopls_socket = "unix;" .. runtime_dir .. "/gopls-daemon-socket"
+
   local servers = {
     "lua_ls",
     "ts_ls",
@@ -115,7 +118,7 @@ function M.setup()
 
   -- Go
   vim.lsp.config("gopls", {
-    cmd = { "gopls", "-remote", "unix;/tmp/gopls-daemon-socket" },
+    cmd = { "gopls", "-remote", gopls_socket },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_markers = { "go.work", "go.mod", ".git" },
     settings = {

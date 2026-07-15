@@ -15,7 +15,6 @@ return {
         ring = {
           history_length = 100,
           storage = "sqlite",
-          -- Synced dir on purpose: yank history is shared across machines
           storage_path = os.getenv("HOME") .. "/Cloud/Sync/yanky.db",
         },
         system_clipboard = {

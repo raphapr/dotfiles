@@ -13,7 +13,7 @@ return {
   keys = {
     {
       "<leader>mz",
-      ":Zen<cr>",
+      ":ZenMode<cr>",
       mode = { "n", "x" },
       desc = "Misc: Toggle Zen Mode",
       silent = true,
