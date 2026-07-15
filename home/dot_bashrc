@@ -111,9 +111,8 @@ shopt -s histappend
 # Combine multiline commands into one in history
 shopt -s cmdhist
 
-# After each command, save and reload history
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-#export PROMPT_COMMAND="history -a"
+# After each command, append this shell's history and import only new entries.
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a && history -n"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000

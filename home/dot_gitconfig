@@ -35,7 +35,7 @@
   lll = log -u
   pl = pull --ff-only
 
-  pamadd = !FILES=`git status -s | awk '{ print $2 }' | fzf -x -m` && git add --all ${FILES}
+  pamadd = "!f() { git ls-files --modified --others --deleted --exclude-standard -z | fzf --read0 --print0 --multi | git add --pathspec-from-file=- --pathspec-file-nul; }; f"
 
   pr = "!gh pr create"
 
@@ -75,9 +75,9 @@
 [status]
   showUntrackedFiles = all
 
-# get go private packages (https://go.dev/doc/faq#git_https)
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+# Use SSH only for Loadsmart private repositories.
+[url "ssh://git@github.com/loadsmart/"]
+  insteadOf = https://github.com/loadsmart/
 
 [ghq]
-	root = /home/raphael/repos
+  root = ~/repos

@@ -3,7 +3,7 @@
 # disable fish greeting message
 set fish_greeting
 
-set -gx SHELL fish
+set -gx SHELL /usr/bin/fish
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go
 set -gx GOBIN $HOME/go/bin
@@ -30,10 +30,6 @@ set -gx LC_ALL en_US.UTF-8
 
 # load sensistive environment variables
 source $HOME/.env_files/core
-
-if status is-interactive; and test -n "$DISPLAY"
-    ~/.bin/set-keyboard-repeat &
-end
 
 # general env vars
 set -gx NPM_PACKAGES $HOME/.npm-packages
@@ -217,7 +213,6 @@ alias xmerge 'xrdb -merge ~/.Xresources'
 abbr -a g git
 abbr -a gpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
 abbr -a gpush 'git push origin (git rev-parse --abbrev-ref HEAD)'
-alias gclean "git clean -fdx && git stash"
 alias gco "git checkout (git branch | fzf | tr -d [:space:])"
 alias gwip 'git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip-- [skip ci]"'
 alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
