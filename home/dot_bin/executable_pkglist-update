@@ -1,26 +1,24 @@
 #!/bin/bash
 
-PKGLIST=$HOME/.pkglist
-PKGLIST_OFFICIAL=$PKGLIST/official/common
-PKGLIST_AUR=$PKGLIST/aur/packages
+set -euo pipefail
 
-# Create the output directories if they don't exist
-mkdir -p "$PKGLIST"
+PKGLIST="$HOME/.pkglist"
+PKGLIST_OFFICIAL="$PKGLIST/official/common"
+PKGLIST_AUR="$PKGLIST/aur/packages"
 
-# Backup the packages installed from official repositories
-pacman -Qn | cut -d' ' -f1 >"$PKGLIST_OFFICIAL"
+mkdir -p "$(dirname "$PKGLIST_OFFICIAL")" "$(dirname "$PKGLIST_AUR")"
 
-if [[ $? -ne 0 ]]; then
-  printf "Error: Failed to list official packages.\n" >&2
-  exit 1
-fi
+official_tmp="$(mktemp "${PKGLIST_OFFICIAL}.XXXXXX")"
+aur_tmp="$(mktemp "${PKGLIST_AUR}.XXXXXX")"
+trap 'rm -f "$official_tmp" "$aur_tmp"' EXIT
 
-printf "Successfully backed up package lists to $PKGLIST\n"
+# Keep only explicitly installed packages. Write to temporary files so a
+# failed pacman query never truncates the tracked manifests.
+pacman -Qqen >"$official_tmp"
+pacman -Qqem >"$aur_tmp"
 
-# Backup list of packages installed from the AUR
-pacman -Qqm | cut -d' ' -f1 >"$PKGLIST_AUR"
+mv "$official_tmp" "$PKGLIST_OFFICIAL"
+mv "$aur_tmp" "$PKGLIST_AUR"
+trap - EXIT
 
-if [[ $? -ne 0 ]]; then
-  printf "Error: Failed to list AUR packages.\n" >&2
-  exit 1
-fi
+printf 'Successfully backed up package lists to %s\n' "$PKGLIST"
