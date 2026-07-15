@@ -1,7 +1,10 @@
 -- ~/.config/yazi/init.lua
 require("bookmarks"):setup({
-  save_last_directory = true,
-  persist = "all",
+  last_directory = {
+    enable = true,
+    persist = true,
+    mode = "dir",
+  },
   notify = {
     enable = true,
     timeout = 1,
