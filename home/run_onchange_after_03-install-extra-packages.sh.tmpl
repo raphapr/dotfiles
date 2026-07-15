@@ -7,6 +7,27 @@ set -euo pipefail
 
 readonly FONT_DIR="$HOME/.local/share/fonts"
 
+confirm_install() {
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Install extra packages? [y/N] " reply
+  elif ! read -r -p "Install extra packages? [y/N] " reply 2>/dev/null </dev/tty; then
+    echo "No TTY available; skipping extra packages."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping extra packages."
+    exit 0
+    ;;
+  esac
+}
+
+confirm_install
+
 echo ">> Installing extra packages..."
 
 ########################################################

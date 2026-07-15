@@ -17,6 +17,27 @@ error() {
   log "ERROR: $*" >&2
 }
 
+confirm_install() {
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Install base packages? [y/N] " reply
+  elif ! read -r -p "Install base packages? [y/N] " reply 2>/dev/null </dev/tty; then
+    echo "No TTY available; skipping base packages."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping base packages."
+    exit 0
+    ;;
+  esac
+}
+
+confirm_install
+
 echo ">> Installing base packages..."
 
 ########################################################

@@ -16,6 +16,25 @@ error() {
   log "ERROR: $*" >&2
 }
 
+confirm_install() {
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Install AUR packages? [y/N] " reply
+  elif ! read -r -p "Install AUR packages? [y/N] " reply 2>/dev/null </dev/tty; then
+    echo "No TTY available; skipping AUR packages."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping AUR packages."
+    exit 0
+    ;;
+  esac
+}
+
 read_aur_packages() {
   local pkg_file="$1"
 
@@ -26,6 +45,8 @@ read_aur_packages() {
 
   mapfile -t packages < <(grep -Ev '^[[:space:]]*(#|$)' "$pkg_file")
 }
+
+confirm_install
 
 echo ">> Installing AUR packages..."
 

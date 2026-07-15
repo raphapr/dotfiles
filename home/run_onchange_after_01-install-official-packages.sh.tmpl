@@ -20,6 +20,25 @@ error() {
   log "ERROR: $*" >&2
 }
 
+confirm_install() {
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Install official packages for hostname $HOSTNAME? [y/N] " reply
+  elif ! read -r -p "Install official packages for hostname $HOSTNAME? [y/N] " reply 2>/dev/null </dev/tty; then
+    echo "No TTY available; skipping official packages."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping official packages."
+    exit 0
+    ;;
+  esac
+}
+
 append_packages_from_file() {
   local pkg_file="$1"
   local description="$2"
@@ -34,6 +53,8 @@ append_packages_from_file() {
   packages+=("${file_packages[@]}")
   log "Queued ${#file_packages[@]} $description."
 }
+
+confirm_install
 
 echo ">> Installing official packages for hostname: $HOSTNAME"
 
