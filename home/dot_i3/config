@@ -34,6 +34,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # General options       ----------------------------------------------------- {{{
 
 workspace_layout tabbed
+workspace_auto_back_and_forth yes
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -126,9 +127,6 @@ bindsym $mod+z focus mode_toggle
 
 # %%hotkey: focus the parent container
 bindsym $mod+a focus parent
-
-# %%hotkey: app launcher
-bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # %%hotkey: jump workspace prev
 bindsym $mod+Left workspace prev
