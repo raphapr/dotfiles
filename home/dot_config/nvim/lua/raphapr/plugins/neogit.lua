@@ -8,7 +8,7 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     keys = {
-      { "<leader>tn", "<cmd>Neogit<CR>", desc = "Git: Neogit" },
+      { "<leader>gn", "<cmd>Neogit<CR>", desc = "Git: Neogit" },
     },
     opts = {
       integrations = {

@@ -1,13 +1,4 @@
 return {
-  -------------------------------------- fugitive ---------------------------------------
-  {
-    "tpope/vim-fugitive",
-    event = { "VeryLazy" },
-    cmd = { "G", "Git", "Gclog", "Gvdiffsplit" },
-    keys = {
-      { "<leader>tb", ":Git blame<CR>", silent = true, desc = "Git: Blame" },
-    },
-  },
   -------------------------------------- gitsigns ---------------------------------------
   {
     "lewis6991/gitsigns.nvim",
@@ -20,13 +11,16 @@ return {
     },
     config = function()
       require("gitsigns").setup()
+      local U = require("raphapr.config.utils")
+      vim.keymap.set("n", "<leader>go", function()
+        U.run_async({ "gh", "browse" }, "GitHub")
+      end, { silent = true, desc = "Git: Open project in browser" })
       vim.keymap.set(
         "n",
-        "<leader>to",
-        ":!gh browse<CR><CR>",
-        { silent = true, noremap = true, desc = "Git: Open the github project in the browser" }
+        "<leader>gb",
+        ":Gitsigns toggle_current_line_blame<CR>",
+        { desc = "Git: Toggle current line blame" }
       )
-      vim.keymap.set("n", "<leader>tl", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Git: Toggle current line blame" })
     end,
   },
   -------------------------------------- gitlinker --------------------------------------
@@ -38,11 +32,11 @@ return {
       -- mappings = nil: keymaps are defined manually below with open_in_browser
       -- instead of the default copy-to-clipboard action
       require("gitlinker").setup({ mappings = nil })
-      vim.keymap.set("n", "<leader>ty", function()
+      vim.keymap.set("n", "<leader>gy", function()
         require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser })
       end, { silent = true, desc = "Git: Open permalink in browser" })
 
-      vim.keymap.set("v", "<leader>ty", function()
+      vim.keymap.set("v", "<leader>gy", function()
         require("gitlinker").get_buf_range_url("v", { action_callback = require("gitlinker.actions").open_in_browser })
       end, { silent = true, desc = "Git: Open permalink in browser" })
     end,

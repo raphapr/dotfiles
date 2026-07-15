@@ -19,4 +19,25 @@ function U.go_to_definition_split()
   })
 end
 
+function U.run_async(command, description)
+  if vim.fn.executable(command[1]) ~= 1 then
+    vim.notify(command[1] .. " is not executable", vim.log.levels.ERROR, { title = description })
+    return
+  end
+
+  vim.system(command, { text = true }, function(result)
+    if result.code == 0 then
+      return
+    end
+
+    vim.schedule(function()
+      local message = vim.trim(result.stderr or "")
+      if message == "" then
+        message = description .. " failed with exit code " .. result.code
+      end
+      vim.notify(message, vim.log.levels.ERROR, { title = description })
+    end)
+  end)
+end
+
 return U

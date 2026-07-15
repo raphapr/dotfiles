@@ -1,8 +1,12 @@
 -- Basic editing and navigation keymaps
 
--- arrow keys for visual lines
-vim.keymap.set("n", "j", "gj", { noremap = true, desc = "move cursor down" })
-vim.keymap.set("n", "k", "gk", { noremap = true, desc = "move cursor up" })
+-- Move by visual lines unless an explicit count requests file lines.
+vim.keymap.set("n", "j", function()
+  return vim.v.count == 0 and "gj" or "j"
+end, { expr = true, noremap = true, desc = "move cursor down" })
+vim.keymap.set("n", "k", function()
+  return vim.v.count == 0 and "gk" or "k"
+end, { expr = true, noremap = true, desc = "move cursor up" })
 
 -- move selected area up or down
 vim.keymap.set("v", "K", [[:'<,'>move-2<cr>gv=gv]], { noremap = true, desc = "move selected area up" })
@@ -24,7 +28,12 @@ vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last qu
 
 -- Copy/paste with system clipboard
 vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Clipboard: Copy to system clipboard" })
-vim.keymap.set({ "n", "x" }, "gY", '"+y$', { desc = "Clipboard: Copy to system clipboard without the new line at the end" })
+vim.keymap.set(
+  { "n", "x" },
+  "gY",
+  '"+y$',
+  { desc = "Clipboard: Copy to system clipboard without the new line at the end" }
+)
 vim.keymap.set("n", "gp", '"+p', { desc = "Clipboard: Paste from system clipboard" })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
 vim.keymap.set("x", "gp", '"+P', { desc = "Clipboard: Paste from system clipboard" })

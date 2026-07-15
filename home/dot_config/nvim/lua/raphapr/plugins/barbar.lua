@@ -31,6 +31,10 @@ return {
       { "<A-Left>", "<Cmd>BufferMovePrevious<CR>" },
       { "<A-p>", "<Cmd>BufferPin<CR>" },
       { "<A-i>", "<Cmd>BufferPick<CR>" },
+      { "<leader>b>", "<cmd>BufferMoveNext<CR>", desc = "Buffer: Move next" },
+      { "<leader>b<", "<cmd>BufferMovePrevious<CR>", desc = "Buffer: Move previous" },
+      { "<leader>bP", "<cmd>BufferPin<CR>", desc = "Buffer: Toggle pin" },
+      { "<leader>bi", "<cmd>BufferPick<CR>", desc = "Buffer: Pick" },
     },
   },
 }

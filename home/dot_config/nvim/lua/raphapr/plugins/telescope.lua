@@ -1,3 +1,9 @@
+local function telescope_builtin(name, options)
+  return function()
+    require("telescope.builtin")[name](options or {})
+  end
+end
+
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -13,6 +19,30 @@ return {
     },
     lazy = true,
     cmd = "Telescope",
+    keys = {
+      { "<C-p>", telescope_builtin("find_files", { hidden = true }), desc = "Find: Files" },
+      { "<C-y>", telescope_builtin("buffers"), desc = "Buffer: List" },
+      { "<leader>ff", telescope_builtin("find_files", { hidden = true }), desc = "Find: Files" },
+      {
+        "<leader>fz",
+        function()
+          require("telescope").extensions.zoxide.list()
+        end,
+        desc = "Find: Directory with zoxide",
+      },
+      { "<leader>fg", telescope_builtin("live_grep"), desc = "Find: Live grep" },
+      { "<leader>fs", telescope_builtin("grep_string"), mode = { "n", "v" }, desc = "Find: Current string" },
+      { "<leader>fh", telescope_builtin("help_tags"), desc = "Find: Help tags" },
+      { "<leader>fk", telescope_builtin("keymaps"), desc = "Find: Keymaps" },
+      { "<leader>fc", telescope_builtin("command_history"), desc = "Find: Command history" },
+      { "<leader>fe", telescope_builtin("search_history"), desc = "Find: Search history" },
+      { "<leader>fo", telescope_builtin("oldfiles"), desc = "Find: Old files" },
+      { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Find: Project TODOs" },
+      { "<leader>fy", telescope_builtin("lsp_document_symbols"), desc = "Find: Document symbols" },
+      { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "Find: Undo tree" },
+      { "<leader>bb", telescope_builtin("buffers"), desc = "Buffer: List" },
+      { "<leader>bs", "<cmd>Telescope scope buffers<CR>", desc = "Buffer: List scope" },
+    },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -74,24 +104,6 @@ return {
           },
         },
       })
-
-      local telescope_builtin = require("telescope.builtin")
-      local telescope_extensions = telescope.extensions
-
-      vim.keymap.set("n", "<C-p>", ":Telescope find_files hidden=true<CR>", { noremap = true, silent = true, desc = "Telescope: Find files" })
-      vim.keymap.set("n", "<C-y>", telescope_builtin.buffers, { desc = "Telescope: Buffers" })
-      vim.keymap.set("n", "<leader>gz", telescope_extensions.zoxide.list, { desc = "Telescope: (zoxide) cd directory" }) -- ctrl+f for builtin.find_files
-      vim.keymap.set("n", "<leader>gg", telescope_builtin.live_grep, { desc = "Telescope: Live grep" })
-      vim.keymap.set({ "n", "v" }, "<leader>gs", telescope_builtin.grep_string, { desc = "Telescope: grep string" })
-      vim.keymap.set("n", "<leader>gh", telescope_builtin.help_tags, { desc = "Telescope: Help tags" })
-      vim.keymap.set("n", "<leader>gk", telescope_builtin.keymaps, { desc = "Telescope: Keymaps" })
-      vim.keymap.set("n", "<leader>gc", telescope_builtin.command_history, { desc = "Telescope: Command history" })
-      vim.keymap.set("n", "<leader>ge", telescope_builtin.search_history, { desc = "Telescope: Search history" })
-      vim.keymap.set("n", "<leader>go", telescope_builtin.oldfiles, { desc = "Telescope: Old files" })
-      vim.keymap.set("n", "<leader>gp", ":Telescope scope buffers<CR>", { desc = "Telescope: List buffers (scope)" })
-      vim.keymap.set("n", "<leader>gt", ":TodoTelescope<CR>", { desc = "Telescope: Search through all project todos" })
-      vim.keymap.set("n", "<leader>gl", telescope_builtin.lsp_document_symbols, { desc = "Telescope: LSP document symbols" })
-      vim.keymap.set("n", "<leader>gu", ":Telescope undo<CR>", { desc = "Telescope: Undo tree" })
     end,
   },
 }
