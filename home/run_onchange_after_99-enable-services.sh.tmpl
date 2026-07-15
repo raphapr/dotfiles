@@ -1,0 +1,28 @@
+#!/bin/bash
+# Reconcile managed services whenever their units or drop-ins change.
+# gopls unit: {{ include "dot_config/systemd/user/gopls.service" | sha256sum }}
+# headroom unit: {{ include "dot_config/systemd/user/headroom.service" | sha256sum }}
+# kanata unit: {{ include "dot_config/systemd/user/kanata.service" | sha256sum }}
+# redshift override: {{ include "dot_config/systemd/user/redshift.service.d/override.conf" | sha256sum }}
+# ath11k unit: {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
+
+set -euo pipefail
+
+HOSTNAME="$(hostname)"
+readonly HOSTNAME
+
+echo ">> Enabling systemd services..."
+
+systemctl --user daemon-reload
+systemctl --user enable --now redshift.service gopls.service headroom.service
+
+if [[ "$HOSTNAME" == "moochacho" ]]; then
+  sudo systemctl daemon-reload
+  sudo systemctl enable memreserver.service
+fi
+
+if [[ "$HOSTNAME" == "bmo" ]]; then
+  systemctl --user enable --now kanata.service
+  sudo systemctl daemon-reload
+  sudo systemctl enable ath11k-resume.service
+fi

@@ -1,7 +1,10 @@
 #!/bin/bash
 # Deploy system-level files that live outside $HOME
 
-HOSTNAME=$(hostname)
+set -euo pipefail
+
+HOSTNAME="$(hostname)"
+readonly HOSTNAME
 
 ########################################################
 # zram-generator config
@@ -9,13 +12,14 @@ HOSTNAME=$(hostname)
 
 # {{ include "dot_config/system/zram-generator.conf" | sha256sum }}
 echo ">> Deploying zram-generator config..."
-sudo cp ~/.config/system/zram-generator.conf /etc/systemd/zram-generator.conf
-sudo chmod 644 /etc/systemd/zram-generator.conf
+sudo install -Dm644 "$HOME/.config/system/zram-generator.conf" /etc/systemd/zram-generator.conf
+sudo systemctl daemon-reload
 
 ########################################################
 # aftersleep script
 ########################################################
 
+# {{ include "dot_config/systemd/scripts/executable_aftersleep.sh" | sha256sum }}
 if [[ "$HOSTNAME" == "moochacho" ]]; then
   sudo install -Dm755 "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
 fi
@@ -25,9 +29,8 @@ fi
 ########################################################
 
 if [[ "$HOSTNAME" == "bmo" ]]; then
-  # {{ include "dot_config/systemd/system/ath11k-suspend.service" | sha256sum }}
   # {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
-  echo ">> Deploying ath11k suspend/resume services..."
+  echo ">> Deploying ath11k resume service..."
   sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-resume.service /etc/systemd/system/ath11k-resume.service
   sudo systemctl daemon-reload
 fi
@@ -36,8 +39,10 @@ fi
 # copy home udev rules to /etc/udev/rules.d
 ########################################################
 
+# {{ include "dot_config/udev/rules.d/90-disable-mouse.rules" | sha256sum }}
 if compgen -G "${HOME}/.config/udev/rules.d/*.rules" >/dev/null 2>&1; then
   sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
+  sudo udevadm control --reload-rules
   sudo mkinitcpio -P
   echo "Udev rules copied and initramfs rebuilt"
 else
