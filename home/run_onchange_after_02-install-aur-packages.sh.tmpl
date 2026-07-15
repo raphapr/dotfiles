@@ -1,0 +1,59 @@
+#!/bin/bash
+# Re-runs whenever the AUR package manifest changes.
+# package manifest hash: {{ include "dot_pkglist/aur/packages" | sha256sum }}
+
+set -euo pipefail
+
+declare -r PKGLIST=$HOME/.pkglist
+PKGLOG="/tmp/install-aur-packages_$(date +%Y%m%d_%H%M%S).log"
+readonly PKGLOG
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
+}
+
+error() {
+  log "ERROR: $*" >&2
+}
+
+read_aur_packages() {
+  local pkg_file="$1"
+
+  if [[ ! -f "$pkg_file" ]]; then
+    error "AUR package list not found at $pkg_file"
+    return 1
+  fi
+
+  mapfile -t packages < <(grep -Ev '^[[:space:]]*(#|$)' "$pkg_file")
+}
+
+echo ">> Installing AUR packages..."
+
+########################################################
+# Validation
+########################################################
+
+if ! command -v yay &>/dev/null; then
+  error "yay not found - installing yay first..."
+  sudo pacman -S yay --needed --noconfirm
+fi
+
+########################################################
+# AUR package installation
+########################################################
+
+packages=()
+read_aur_packages "$PKGLIST/aur/packages"
+
+########################################################
+# Summary
+########################################################
+
+if [[ ${#packages[@]} -eq 0 ]]; then
+  log "No AUR packages listed; nothing to install."
+  exit 0
+fi
+
+log "Installing ${#packages[@]} AUR packages in one transaction..."
+yay -S --needed --noconfirm "${packages[@]}"
+log "AUR installation complete!"

@@ -1,0 +1,73 @@
+#!/bin/bash
+# Re-runs whenever an official package manifest changes.
+# common manifest hash: {{ include "dot_pkglist/official/common" | sha256sum }}
+# bmo manifest hash: {{ include "dot_pkglist/official/bmo" | sha256sum }}
+# moochacho manifest hash: {{ include "dot_pkglist/official/moochacho" | sha256sum }}
+
+set -euo pipefail
+
+declare -r PKGLIST=$HOME/.pkglist
+HOSTNAME="$(hostname)"
+readonly HOSTNAME
+PKGLOG="/tmp/install-official-packages_$(date +%Y%m%d_%H%M%S).log"
+readonly PKGLOG
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
+}
+
+error() {
+  log "ERROR: $*" >&2
+}
+
+append_packages_from_file() {
+  local pkg_file="$1"
+  local description="$2"
+  local -a file_packages=()
+
+  if [[ ! -f "$pkg_file" ]]; then
+    log "Package list not found at $pkg_file, skipping $description"
+    return 0
+  fi
+
+  mapfile -t file_packages < <(grep -Ev '^[[:space:]]*(#|$)' "$pkg_file")
+  packages+=("${file_packages[@]}")
+  log "Queued ${#file_packages[@]} $description."
+}
+
+echo ">> Installing official packages for hostname: $HOSTNAME"
+
+########################################################
+# Package installation
+########################################################
+
+packages=()
+
+# Install common packages for all hosts
+append_packages_from_file "$PKGLIST/official/common" "common packages"
+
+# Install hostname-specific packages
+case "$HOSTNAME" in
+"bmo")
+  append_packages_from_file "$PKGLIST/official/bmo" "bmo-specific packages"
+  ;;
+"moochacho")
+  append_packages_from_file "$PKGLIST/official/moochacho" "moochacho-specific packages"
+  ;;
+*)
+  log "Unknown hostname: $HOSTNAME, installing common packages only"
+  ;;
+esac
+
+########################################################
+# Summary
+########################################################
+
+if [[ ${#packages[@]} -eq 0 ]]; then
+  log "No official packages listed; nothing to install."
+  exit 0
+fi
+
+log "Installing ${#packages[@]} official packages in one transaction..."
+sudo pacman -S --needed --noconfirm "${packages[@]}"
+log "Official package installation complete!"

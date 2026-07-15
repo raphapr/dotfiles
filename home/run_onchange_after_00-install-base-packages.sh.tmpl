@@ -1,0 +1,50 @@
+#!/bin/bash
+# Re-runs whenever the base package manifest changes.
+# package manifest hash: {{ include "dot_pkglist/base/packages" | sha256sum }}
+
+set -euo pipefail
+
+declare -r PKGLIST=$HOME/.pkglist
+declare -r PKG_BASE=$PKGLIST/base/packages
+PKGLOG="/tmp/install-base-packages_$(date +%Y%m%d_%H%M%S).log"
+readonly PKGLOG
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
+}
+
+error() {
+  log "ERROR: $*" >&2
+}
+
+echo ">> Installing base packages..."
+
+########################################################
+# Update system first
+########################################################
+log "Updating system packages..."
+sudo pacman -Syu --needed
+
+########################################################
+# Validation
+########################################################
+
+if [[ ! -f "$PKG_BASE" ]]; then
+  error "Base package list not found at $PKG_BASE"
+  exit 1
+fi
+
+########################################################
+# pacman
+########################################################
+
+mapfile -t packages < <(grep -Ev '^[[:space:]]*(#|$)' "$PKG_BASE")
+
+if [[ ${#packages[@]} -eq 0 ]]; then
+  log "No base packages listed; nothing to install."
+  exit 0
+fi
+
+log "Installing ${#packages[@]} base packages in one transaction..."
+sudo pacman -S --needed --noconfirm "${packages[@]}"
+log "Base installation complete!"
