@@ -1,18 +1,29 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-statefile=~/.screensaver-state
-pid=$(pidof xidlehook)
+set -euo pipefail
 
-if [ -z "$pid" ]; then
+: "${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR must be set}"
+
+readonly statefile="$HOME/.screensaver-state"
+readonly inhibitor_pidfile="$XDG_RUNTIME_DIR/presentation-mode.pid"
+
+presentation_mode_active() {
+  [[ -s "$inhibitor_pidfile" ]] && kill -0 "$(<"$inhibitor_pidfile")" 2>/dev/null
+}
+
+if presentation_mode_active; then
+  kill "$(<"$inhibitor_pidfile")"
+  rm -f "$inhibitor_pidfile"
   ~/.bin/xidlehook-lock &
   xset s on
-  systemctl unmask suspend.target
-  notify-send "Scrensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
-  echo "%{F#4DB6AC} ON" >"$statefile"
+  notify-send "Screensaver" "ON" -i /usr/share/icons/Numix/32/devices/system.svg
+  printf '%%{F#4DB6AC} ON\n' >"$statefile"
 else
-  kill "$pid"
+  pkill -u "$UID" -x xidlehook 2>/dev/null || true
   xset s off
-  systemctl mask suspend.target
-  notify-send "Scrensaver" "OFF" -i /usr/share/icons/Numix/32/devices/system.svg
-  echo "%{F#FF5252} OFF" >"$statefile"
+  systemd-inhibit --what=idle --who="presentation mode" --why="user disabled idle locking" --mode=block sleep infinity &
+  inhibitor_pid=$!
+  printf '%s\n' "$inhibitor_pid" >"$inhibitor_pidfile"
+  notify-send "Screensaver" "OFF (presentation mode)" -i /usr/share/icons/Numix/32/devices/system.svg
+  printf '%%{F#FF5252} OFF\n' >"$statefile"
 fi

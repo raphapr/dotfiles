@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-# Run xidlehook
+set -euo pipefail
+
+: "${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR must be set}"
+
+# Run xidlehook. Keep locking active for fullscreen applications; use an
+# explicit presentation-mode tool instead of leaving the session unlocked.
 xidlehook \
-  --socket "/tmp/xidlehook.sock" \
-  `# Don't lock when there's a fullscreen application` \
-  --not-when-fullscreen \
+  --socket "$XDG_RUNTIME_DIR/xidlehook.sock" \
   `# Dim the screen after 5 minutes, undim if user becomes active` \
   --timer 300 \
   'brightnessctl set 125-; notify-send "Screen will be locked in 30s"' \
