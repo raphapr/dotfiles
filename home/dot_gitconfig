@@ -75,9 +75,9 @@
 [status]
   showUntrackedFiles = all
 
-# Use SSH only for Loadsmart private repositories.
-[url "ssh://git@github.com/loadsmart/"]
-  insteadOf = https://github.com/loadsmart/
+# get go private packages (https://go.dev/doc/faq#git_https)
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 
 [ghq]
   root = ~/repos
