@@ -9,10 +9,7 @@
 sleep 1
 
 setxkbmap -option keypad:pointerkeys
-xmodmap ~/.Xmodmap
 
-~/.bin/set-keyboard-repeat
-
-[[ -f $HOME/.Xresources ]] && xrdb -merge $HOME/.Xresources
+[ -f "$HOME/.Xresources" ] && xrdb -merge "$HOME/.Xresources"
 
 exec dbus-launch --sh-syntax --exit-with-session i3 --shmlog-size=26214400

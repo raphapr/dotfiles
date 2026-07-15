@@ -10,10 +10,6 @@ RATE=${2:-30}
 # Set keyboard repeat rate
 xset r rate "$DELAY" "$RATE"
 
-# Reapply xkb options to kanata's virtual keyboard device (caps:none gets lost on device reinit)
-setxkbmap -option caps:none
-
-# If Caps Lock is still on after kanata grabs the keyboard, force it off
-if xset q | grep -q "Caps Lock:   on"; then
-  xdotool key Caps_Lock
-fi
+# Clear stale XKB options, preserve pointer keys, and map Caps Lock to
+# Control_L consistently, including after Kanata recreates its device.
+setxkbmap -option '' -option keypad:pointerkeys -option ctrl:nocaps
