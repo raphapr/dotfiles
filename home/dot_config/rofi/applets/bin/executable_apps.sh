@@ -6,6 +6,7 @@
 ## Applets : Favorite Applications
 
 # Import Current Theme
+# shellcheck source=/dev/null disable=SC2154
 source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
@@ -22,11 +23,11 @@ elif [[ ( "$theme" == *'type-2'* ) || ( "$theme" == *'type-4'* ) ]]; then
 fi
 
 # CMDs (add your apps here)
-term_cmd='alacritty'
+term_cmd='kitty'
 file_cmd='thunar'
 text_cmd='geany'
 web_cmd='firefox'
-music_cmd='alacritty -e ncmpcpp'
+music_cmd='kitty -e ncmpcpp'
 setting_cmd='xfce4-settings-manager'
 
 # Options
@@ -83,22 +84,22 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $option_1)
+    "$option_1")
 		run_cmd --opt1
         ;;
-    $option_2)
+    "$option_2")
 		run_cmd --opt2
         ;;
-    $option_3)
+    "$option_3")
 		run_cmd --opt3
         ;;
-    $option_4)
+    "$option_4")
 		run_cmd --opt4
         ;;
-    $option_5)
+    "$option_5")
 		run_cmd --opt5
         ;;
-    $option_6)
+    "$option_6")
 		run_cmd --opt6
         ;;
 esac

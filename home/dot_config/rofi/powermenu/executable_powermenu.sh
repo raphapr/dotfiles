@@ -16,7 +16,6 @@ theme='style-1'
 
 # CMDs
 uptime="$(uptime -p | sed -e 's/up //g')"
-host=$(hostname)
 
 # Options
 shutdown=''
@@ -63,9 +62,9 @@ run_cmd() {
   selected="$(confirm_exit)"
   if [[ "$selected" == "$yes" ]]; then
     if [[ $1 == '--shutdown' ]]; then
-      sudo systemctl poweroff
+      systemctl poweroff || notify-send -u critical "Power menu" "Power off failed"
     elif [[ $1 == '--reboot' ]]; then
-      sudo systemctl reboot
+      systemctl reboot || notify-send -u critical "Power menu" "Reboot failed"
     elif [[ $1 == '--suspend' ]]; then
       systemctl suspend
     elif [[ $1 == '--logout' ]]; then
@@ -87,23 +86,23 @@ run_cmd() {
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-$shutdown)
+"$shutdown")
   run_cmd --shutdown
   ;;
-$reboot)
+"$reboot")
   run_cmd --reboot
   ;;
-$lock)
+"$lock")
   if [[ -x '/usr/bin/betterlockscreen' ]]; then
     betterlockscreen -l
   elif [[ -x '/usr/bin/i3lock' ]]; then
     i3lock -c 000000
   fi
   ;;
-$suspend)
+"$suspend")
   run_cmd --suspend
   ;;
-$logout)
+"$logout")
   run_cmd --logout
   ;;
 esac

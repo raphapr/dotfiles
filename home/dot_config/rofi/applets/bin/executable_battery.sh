@@ -6,6 +6,7 @@
 ## Applets : Battery
 
 # Import Current Theme
+# shellcheck source=/dev/null disable=SC2154
 source "$HOME"/.config/rofi/applets/shared/theme.bash
 theme="$type/$style"
 
@@ -102,7 +103,6 @@ run_rofi() {
 
 # Execute Command
 run_cmd() {
-	polkit_cmd="pkexec env PATH=$PATH DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY"
 	if [[ "$1" == '--opt1' ]]; then
 		notify-send -u low " Remaining : ${percentage}%"
 	elif [[ "$1" == '--opt2' ]]; then
@@ -110,23 +110,23 @@ run_cmd() {
 	elif [[ "$1" == '--opt3' ]]; then
 		xfce4-power-manager-settings
 	elif [[ "$1" == '--opt4' ]]; then
-		${polkit_cmd} alacritty -e powertop
+		kitty -e sudo powertop
 	fi
 }
 
 # Actions
 chosen="$(run_rofi)"
 case ${chosen} in
-    $option_1)
+    "$option_1")
 		run_cmd --opt1
         ;;
-    $option_2)
+    "$option_2")
 		run_cmd --opt2
         ;;
-    $option_3)
+    "$option_3")
 		run_cmd --opt3
         ;;
-    $option_4)
+    "$option_4")
 		run_cmd --opt4
         ;;
 esac
