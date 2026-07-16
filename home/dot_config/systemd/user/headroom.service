@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 # Run the mise-managed Headroom CLI. `latest` follows the version selected by mise.
-ExecStart=%h/.local/share/mise/installs/pipx-headroom-ai/latest/bin/headroom proxy --port 8787 --memory --no-memory-tools --code-aware
+ExecStart=%h/.local/share/mise/installs/pipx-headroom-ai/latest/bin/headroom proxy --port 8787 --memory --no-memory-tools --code-aware --lossless
 Environment=HEADROOM_TELEMETRY=off
 Environment=HEADROOM_UPDATE_CHECK=off
 Restart=on-failure
