@@ -23,6 +23,21 @@ return {
       )
     end,
   },
+  -------------------------------------- review.nvim ------------------------------------
+  {
+    "georgeguimaraes/review.nvim",
+    version = "v*",
+    dependencies = {
+      "esmuellert/codediff.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    cmd = "Review",
+    keys = {
+      { "<leader>gr", "<cmd>Review<cr>", desc = "Git: Review changes" },
+      { "<leader>gR", "<cmd>Review commits<cr>", desc = "Git: Review commits" },
+    },
+    opts = {},
+  },
   -------------------------------------- gitlinker --------------------------------------
   {
     "ruifm/gitlinker.nvim",
