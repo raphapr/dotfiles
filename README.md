@@ -86,6 +86,7 @@ chezmoi init raphapr --apply
 - **zk** - Plain text note-taking
 - **bat** - `cat` clone with syntax highlighting and git integration
 - **eza** - Modern replacement for `ls`
+- **ghq** - Git repository management tool
 
 ### Agentic Development
 
