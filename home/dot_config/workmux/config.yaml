@@ -1,14 +1,18 @@
 nerdfont: true
 agent: pi
-# theme: default
+theme: night-sorbet
 
 status_icons:
-  working: "*"
-  waiting: "?"
-  done: "+"
+  working: "🤖" # Agent is processing
+  waiting: "💬" # Agent needs input (auto-clears on focus)
+  done: "✅" # Agent finished (auto-clears on focus)
 
 panes:
-  - command: ""
+  - command: "<agent>"
+    focus: true
+
+pre_remove:
+  - /home/raphael/.bin/workmux-pre-remove
 
 files:
   copy:

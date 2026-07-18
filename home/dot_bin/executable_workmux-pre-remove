@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${WM_WORKTREE_PATH:?workmux did not set WM_WORKTREE_PATH}"
+: "${WM_PROJECT_ROOT:?workmux did not set WM_PROJECT_ROOT}"
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/workmux"
+mkdir -p "$state_dir"
+nohup "$HOME/.bin/pi-session-rehome" \
+  "$WM_WORKTREE_PATH" "$WM_PROJECT_ROOT" \
+  </dev/null >>"$state_dir/pi-session-rehome.log" 2>&1 &
+
+# Preserve workmux's default fast node_modules cleanup, which a custom
+# pre_remove hook would otherwise replace.
+if [[ -f "$WM_PROJECT_ROOT/pnpm-lock.yaml" ||
+  -f "$WM_PROJECT_ROOT/package-lock.json" ||
+  -f "$WM_PROJECT_ROOT/yarn.lock" ]]; then
+  trash_dir=$(mktemp -d)
+  trap 'rm -rf "$trash_dir"' EXIT
+
+  find . -name node_modules -type d -prune -print0 |
+    while IFS= read -r -d '' directory; do
+      unique_name=$(printf '%s\n' "${directory#./}" | tr '/' '_')
+      mv -- "$directory" "$trash_dir/$unique_name" ||
+        printf 'Warning: failed to move %s\n' "$directory" >&2
+    done
+
+  if [[ -n "$(ls -A "$trash_dir")" ]]; then
+    trap - EXIT
+    nohup rm -rf "$trash_dir" >/dev/null 2>&1 &
+  fi
+fi

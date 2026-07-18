@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+"""Move Pi sessions from a deleted worktree to its main repository."""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import shutil
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+
+def log(message: str) -> None:
+    print(f"{time.strftime('%Y-%m-%dT%H:%M:%S%z')} {message}", flush=True)
+
+
+def session_dir_for(cwd: Path, sessions_root: Path) -> Path:
+    encoded = re.sub(r"[/\\:]", "-", str(cwd).lstrip("/\\"))
+    return sessions_root / f"--{encoded}--"
+
+
+def rewrite_session(source: Path, destination: Path, old_cwd: Path, new_cwd: Path, old_dir: Path, new_dir: Path) -> bool:
+    with source.open("rb") as input_file:
+        first_line = input_file.readline()
+        try:
+            header = json.loads(first_line)
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            log(f"skip malformed session: {source}")
+            return False
+
+        if header.get("type") != "session" or Path(header.get("cwd", "")).absolute() != old_cwd:
+            log(f"skip session with unexpected cwd: {source}")
+            return False
+
+        header["cwd"] = str(new_cwd)
+        parent_session = header.get("parentSession")
+        if isinstance(parent_session, str):
+            try:
+                relative_parent = Path(parent_session).absolute().relative_to(old_dir)
+                header["parentSession"] = str(new_dir / relative_parent)
+            except ValueError:
+                pass
+
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        if destination.exists():
+            destination = destination.with_name(f"{destination.stem}-migrated-{time.time_ns()}{destination.suffix}")
+
+        fd, temporary_name = tempfile.mkstemp(prefix=f".{destination.name}.", dir=destination.parent)
+        try:
+            with os.fdopen(fd, "wb") as output_file:
+                output_file.write((json.dumps(header, ensure_ascii=False, separators=(",", ":")) + "\n").encode())
+                shutil.copyfileobj(input_file, output_file)
+                output_file.flush()
+                os.fsync(output_file.fileno())
+            os.chmod(temporary_name, source.stat().st_mode)
+            os.replace(temporary_name, destination)
+        finally:
+            if os.path.exists(temporary_name):
+                os.unlink(temporary_name)
+
+    source.unlink()
+    log(f"moved {source.name} -> {destination}")
+    return True
+
+
+def main() -> int:
+    if len(sys.argv) != 3:
+        print("usage: pi-session-rehome WORKTREE_PATH PROJECT_ROOT", file=sys.stderr)
+        return 2
+
+    os.chdir("/")
+    old_cwd = Path(sys.argv[1]).expanduser().absolute()
+    new_cwd = Path(sys.argv[2]).expanduser().absolute()
+    timeout = int(os.environ.get("PI_SESSION_REHOME_WAIT_SECONDS", "600"))
+    deadline = time.monotonic() + timeout
+
+    while old_cwd.exists() and time.monotonic() < deadline:
+        time.sleep(0.25)
+    if old_cwd.exists():
+        log(f"worktree still exists after {timeout}s; skipping: {old_cwd}")
+        return 0
+
+    # Give the terminal process a moment to flush its final session write.
+    time.sleep(0.5)
+
+    agent_dir = Path(os.environ.get("PI_CODING_AGENT_DIR", "~/.pi/agent")).expanduser().absolute()
+    sessions_root = agent_dir / "sessions"
+    old_dir = session_dir_for(old_cwd, sessions_root)
+    new_dir = session_dir_for(new_cwd, sessions_root)
+
+    if not old_dir.is_dir():
+        log(f"no session directory: {old_dir}")
+        return 0
+
+    moved = 0
+    for source in sorted(old_dir.glob("*.jsonl")):
+        if rewrite_session(source, new_dir / source.name, old_cwd, new_cwd, old_dir, new_dir):
+            moved += 1
+
+    try:
+        old_dir.rmdir()
+    except OSError:
+        pass
+
+    log(f"completed: moved {moved} session(s) from {old_cwd} to {new_cwd}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
