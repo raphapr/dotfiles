@@ -34,3 +34,7 @@ fi
 if command -v op >/dev/null 2>&1; then
   op completion fish > "$COMPLETION_DIR/op.fish"
 fi
+
+if command -v workmux >/dev/null 2>&1; then
+  workmux completions fish > "$COMPLETION_DIR/workmux.fish"
+fi

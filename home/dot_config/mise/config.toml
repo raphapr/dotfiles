@@ -32,7 +32,7 @@ uv = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
-"github:raphapr/pimux" = "0.1.0"
+"github:raine/workmux" = "latest"
 "github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 

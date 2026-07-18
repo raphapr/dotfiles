@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+working_dir=${1:-$PWD}
+left_pane=$(tmux new-window -P -F '#{pane_id}' -c "$working_dir")
+
+tmux split-window -h -l 50% -c "$working_dir" nvim
+tmux split-window -v -l 30% -c "$working_dir"
+tmux send-keys -t "$left_pane" pi Enter
+tmux select-pane -t "$left_pane"

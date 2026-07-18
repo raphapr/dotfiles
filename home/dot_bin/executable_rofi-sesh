@@ -36,7 +36,7 @@ connect() {
 
   # Detach: rofi waits on the script-mode child, so backgrounding lets
   # rofi close immediately while kitty keeps running.
-  setsid -f kitty -e sesh connect "$target" >/dev/null 2>&1 < /dev/null
+  setsid -f kitty -e sesh connect "$target" >/dev/null 2>&1 </dev/null
 }
 
 list_sessions() {
@@ -45,7 +45,7 @@ list_sessions() {
   # script-mode renders the codes literally otherwise).
   sesh list -t -c -d -i -n
   # ghq repos, with our own glyph so connect_selection can route them.
-  ghq list -p | sed -e "s|^${REPOS_ROOT}/||" -e "s|^|${REPO_ICON} |"
+  ghq-list-projects
 }
 
 connect_selection() {
@@ -65,24 +65,24 @@ connect_selection() {
 cmd="${1:-menu}"
 
 case "$cmd" in
-  sessions)
-    if [[ $# -ge 2 ]]; then
-      connect_selection "$2"
-    else
-      list_sessions
-    fi
-    ;;
-  menu)
-    self="$(readlink -f "$0")"
-    exec rofi -show sessions \
-      -modi "sessions:${self} sessions" \
-      -i -matching fuzzy \
-      -no-custom \
-      -kb-element-next '' \
-      -kb-element-prev ''
-    ;;
-  *)
-    printf 'rofi-sesh: unknown command: %s\n' "$cmd" >&2
-    exit 1
-    ;;
+sessions)
+  if [[ $# -ge 2 ]]; then
+    connect_selection "$2"
+  else
+    list_sessions
+  fi
+  ;;
+menu)
+  self="$(readlink -f "$0")"
+  exec rofi -show sessions \
+    -modi "sessions:${self} sessions" \
+    -i -matching fuzzy \
+    -no-custom \
+    -kb-element-next '' \
+    -kb-element-prev ''
+  ;;
+*)
+  printf 'rofi-sesh: unknown command: %s\n' "$cmd" >&2
+  exit 1
+  ;;
 esac

@@ -1,0 +1,15 @@
+nerdfont: true
+agent: pi
+# theme: default
+
+status_icons:
+  working: "*"
+  waiting: "?"
+  done: "+"
+
+panes:
+  - command: ""
+
+files:
+  copy:
+    - .env

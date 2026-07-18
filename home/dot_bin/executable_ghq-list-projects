@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly REPOS_ROOT="${REPOS_ROOT:-$HOME/repos}"
+readonly REPO_ICON="${REPO_ICON:-$'\uea62'}"
+
+ghq list -p | sed -E \
+  -e '/_worktrees(\/|$)/d' \
+  -e "s|^${REPOS_ROOT}/||" \
+  -e "s|^|${REPO_ICON} |"

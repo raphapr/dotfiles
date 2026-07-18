@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+case "$(nmcli -t -f CONNECTIVITY general 2>/dev/null)" in
+    full) printf 'ok' ;;
+    *) printf 'nok' ;;
+esac

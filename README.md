@@ -51,6 +51,8 @@ chezmoi init raphapr --apply
 - **fish** - Modern shell
 - **starship** - Cross-shell prompt
 - **tmux** - Terminal multiplexer
+- **sesh** - tmux session manager
+- **workmux** - Parallel development in tmux with git worktrees
 
 ### Editor & Development
 
@@ -79,14 +81,13 @@ chezmoi init raphapr --apply
 - **flameshot** - Screenshot tool
 - **atuin** - Shell history with sync
 - **zathura** - Document viewer
-- **sesh** - tmux session manager
 - **k9s** - Kubernetes CLI manager
 - **kubie** - Kubernetes context and namespace switcher
 - **zk** - Plain text note-taking
 - **bat** - `cat` clone with syntax highlighting and git integration
 - **eza** - Modern replacement for `ls`
 
-### Harness
+### Agentic Development
 
 - **pi** - Terminal-based AI coding agent
 - **cymbal** - Language-agnostic code navigation CLI

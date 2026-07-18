@@ -1,4 +1,4 @@
-blacklist = ["scratchpad-journal"]
+blacklist = ["scratchpad-journal", '_worktrees(/.*)?$']
 
 [[session]]
 name = "raphael"
