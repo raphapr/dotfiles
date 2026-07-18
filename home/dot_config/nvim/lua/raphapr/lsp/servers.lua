@@ -15,7 +15,6 @@ function M.setup()
     "yamlls",
     "dockerls",
     "gopls",
-    "harper_ls",
     "ruff",
   }
 
@@ -124,26 +123,6 @@ function M.setup()
     settings = {
       gopls = {
         buildFlags = { "-tags=integration" },
-      },
-    },
-  })
-
-  -- Harper
-  vim.lsp.config("harper_ls", {
-    filetypes = { "markdown" },
-    settings = {
-      ["harper-ls"] = {
-        userDictPath = "~/Cloud/Sync/harper_dictionary",
-        isolateEnglish = true,
-        linters = {
-          SentenceCapitalization = false,
-        },
-        codeActions = {
-          forceStable = true,
-        },
-        markdown = {
-          IgnoreLinkTitle = true,
-        },
       },
     },
   })

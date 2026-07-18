@@ -58,7 +58,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
-      -- Explicit dependency: ruff and harper_ls rely on nvim-lspconfig's
+      -- Explicit dependency: ruff rely on nvim-lspconfig's
       -- bundled defaults for cmd/filetypes
       { "neovim/nvim-lspconfig" },
       { "williamboman/mason.nvim" },
