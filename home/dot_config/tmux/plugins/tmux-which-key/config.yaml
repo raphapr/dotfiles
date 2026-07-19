@@ -67,6 +67,10 @@ items:
       - name: Kill
         key: X
         command: 'confirm-before -p "Kill session #S?" kill-session'
+      - separator: true
+      - name: Back
+        key: BSpace
+        command: 'show-wk-menu #{@wk_menu_root}'
 
   - name: +Windows
     key: w
@@ -96,6 +100,10 @@ items:
       - name: Kill
         key: X
         command: 'confirm-before -p "Kill window #W?" kill-window'
+      - separator: true
+      - name: Back
+        key: BSpace
+        command: 'show-wk-menu #{@wk_menu_root}'
 
   - name: +Panes
     key: p
@@ -138,6 +146,10 @@ items:
             key: l
             command: resize-pane -R 5
             transient: true
+          - separator: true
+          - name: Back
+            key: BSpace
+            command: 'show-wk-menu #{@wk_menu_panes}'
       - separator: true
       - name: Toggle zoom
         key: z
@@ -154,6 +166,10 @@ items:
       - name: Kill
         key: X
         command: 'confirm-before -p "Kill pane #P?" kill-pane'
+      - separator: true
+      - name: Back
+        key: BSpace
+        command: 'show-wk-menu #{@wk_menu_root}'
 
   - name: +Workflow
     key: d
@@ -180,6 +196,10 @@ items:
       - name: Open URL
         key: u
         command: run-shell -b $HOME/.tmux/plugins/tmux-fzf-url/fzf-url.sh
+      - separator: true
+      - name: Back
+        key: BSpace
+        command: 'show-wk-menu #{@wk_menu_root}'
 
   - name: +Client
     key: C
@@ -203,6 +223,10 @@ items:
       - name: Detach
         key: d
         command: detach-client
+      - separator: true
+      - name: Back
+        key: BSpace
+        command: 'show-wk-menu #{@wk_menu_root}'
 
   - name: Copy mode
     key: c

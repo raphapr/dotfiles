@@ -38,6 +38,7 @@
   pamadd = "!f() { git ls-files --modified --others --deleted --exclude-standard -z | fzf --read0 --print0 --multi | git add --pathspec-from-file=- --pathspec-file-nul; }; f"
 
   pr = "!gh pr create"
+	workmux-base = "!f() { git config --get \"branch.$(git branch --show-current).workmux-base\"; }; f"
 
 [branch]
   sort = committerdate
