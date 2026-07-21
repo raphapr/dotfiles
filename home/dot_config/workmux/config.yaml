@@ -16,4 +16,6 @@ pre_remove:
 
 files:
   copy:
-    - .env
+    - "**/.env"
+    - "**/.terraform"
+    - "**/.venv"

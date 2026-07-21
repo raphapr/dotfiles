@@ -129,7 +129,7 @@ alias neogit 'nvim -c Neogit'
 alias review 'nvim -c Review'
 alias ptpython "python -m ptpython"
 alias cdr "cd (tmux display-message -p '#{session_path}')"
-alias orchestra-docs 'nvim +"cd ~/.pi/agent/orchestra-docs"'
+alias orchestra-docs 'nvim +"cd ~/.pi/agent/orchestra-docs" +":NvimTreeToggle"'
 abbr -a v nvim
 abbr -a vim nvim
 abbr -a -- - 'cd -'
