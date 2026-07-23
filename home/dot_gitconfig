@@ -39,6 +39,7 @@
 
   pr = "!gh pr create"
 	workmux-base = "!f() { git config --get \"branch.$(git branch --show-current).workmux-base\"; }; f"
+	workmux-set-base = "!f() { branch=$(git branch --show-current); [ -n \"$branch\" ] && [ \"$#\" -eq 1 ] || { echo \"usage: git workmux-set-base <branch>\" >&2; return 2; }; git config \"branch.$branch.workmux-base\" \"$1\"; }; f"
 
 [branch]
   sort = committerdate
