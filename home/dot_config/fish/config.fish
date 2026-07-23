@@ -519,22 +519,5 @@ function opsignin
 end
 
 # }}}
-# workmux           {{{
-
-function workmux
-  if test "$argv[1]" != add
-    command workmux $argv
-    return
-  end
-
-  set -l default_shell (tmux show-option -gqv default-shell)
-  tmux set-option -g default-shell /usr/bin/bash
-  command workmux $argv
-  set -l workmux_status $status
-  tmux set-option -g default-shell "$default_shell"
-  return $workmux_status
-end
-
-# }}}
 
 # }}}
