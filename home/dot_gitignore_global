@@ -62,7 +62,5 @@ Thumbs.db
 *.bak
 *.backup
 
-# Superpowers files
-docs/superpowers/*.md
-docs/plans/*.md
-docs/specs/*.md
+# Understand-Anything plugin
+.ua
