@@ -215,11 +215,6 @@ alias xmerge 'xrdb -merge ~/.Xresources'
 # git              {{{
 
 abbr -a g git
-abbr -a gpull 'git pull origin (git rev-parse --abbrev-ref HEAD)'
-abbr -a gpush 'git push origin (git rev-parse --abbrev-ref HEAD)'
-alias gco "git checkout (git branch | fzf | tr -d [:space:])"
-alias gwip 'git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip-- [skip ci]"'
-alias gunwip='git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1'
 
 # }}}
 
@@ -519,5 +514,4 @@ function opsignin
 end
 
 # }}}
-
 # }}}
