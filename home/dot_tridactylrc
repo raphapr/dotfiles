@@ -44,7 +44,7 @@ bindurl ^https://[^/]+\.atlassian\.net/browse/ yj yank_jira_ticket
 
 
 " Open a code-review tmux window for the current GitHub PR
-command open_pr_review js (() => { const m = location.pathname.match(/^\/[^/]+\/([^/]+)\/pull\/(\d+)/); if (!m) { return tri.excmds.fillcmdline_tmp(3000, "Not a GitHub PR page"); } const sq = (s) => "'" + String(s).replace(/'/g, "'\\''") + "'"; const cmd = "tmux new-window -n " + sq("review:" + m[1] + "#" + m[2]) + " " + sq("cd ~/repos && pi " + sq("/skill:code-review " + location.href)); tri.native.run(cmd); })()
+command open_pr_review js (() => { const m = location.pathname.match(/^\/([^/]+)\/([^/]+)\/pull\/(\d+)/); if (!m) { return tri.excmds.fillcmdline_tmp(3000, "Not a GitHub PR page"); } const [, owner, repo, num] = m; const sq = (s) => "'" + String(s).replace(/'/g, "'\\''") + "'"; const win = "review:" + repo + "#" + num; const inner = sq("cd ~/repos/github.com/" + owner + "/" + repo + " || cd ~/repos; pi " + sq("/skill:code-review " + location.href) + "; exec $SHELL"); const cmd = "tmux select-window -t " + sq("=" + win) + " 2>/dev/null || tmux new-window -n " + sq(win) + " " + inner + " 2>/dev/null || tmux new-session -d -s review -n " + sq(win) + " " + inner; tri.native.run(cmd).catch(() => tri.excmds.fillcmdline_tmp(3000, "native.run failed")); })()
 bindurl ^https://github\.com/[^/]+/[^/]+/pull/\d+ ,r open_pr_review
 
 " Quickmarks
