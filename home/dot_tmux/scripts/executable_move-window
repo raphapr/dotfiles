@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+current=$(tmux display-message -p '#{session_name}')
+source=$(tmux display-message -p '#{session_name}:#{window_index}')
+window=$(tmux display-message -p '#{window_name}')
+if ! target="$({
+  tmux list-sessions -F '#{session_name}	#{session_windows} windows'
+} | awk -F '\t' -v current="$current" '$1 != current' |
+  fzf-tmux -p 60%,50% --prompt "Move ${source} (${window}) to session: " |
+  cut -f1)"; then
+  exit 0
+fi
+
+[ -n "$target" ] && tmux move-window -a -s "$source" -t "$target"

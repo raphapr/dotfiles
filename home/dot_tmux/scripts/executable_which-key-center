@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+replacement="-y '#{popup_centre_y}'"
+
+tmux show-options -g command-alias 2>/dev/null |
+sed -n 's/^command-alias\[\([0-9][0-9]*\)\].*/\1/p' |
+while IFS= read -r index; do
+  current=$(tmux show-options -gv "command-alias[$index]" 2>/dev/null) || continue
+  updated=$(printf '%s' "$current" | sed "s|-y 'C'|$replacement|")
+  [ "$current" = "$updated" ] || tmux set-option -g "command-alias[$index]" "$updated"
+done
