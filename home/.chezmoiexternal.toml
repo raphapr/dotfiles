@@ -30,12 +30,6 @@ type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/catppuccin-mocha.theme"
 refreshPeriod = "168h"
 
-[".local/bin"]
-type = "archive"
-url = "https://github.com/OpsLevel/opslevel-mcp/releases/download/v2025.8.5/opslevel-mcp-linux-amd64.tar.gz"
-executable = true
-refreshPeriod = "168h"
-
 [".pi"]
 type = "git-repo"
 url = "git@github.com:raphapr/pi-config.git"
