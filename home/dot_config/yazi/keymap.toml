@@ -1,19 +1,24 @@
 [[mgr.prepend_keymap]]
-on = [ "m" ]
-run = "plugin bookmarks save"
+on = "m"
+run = "plugin yamb -- save"
 desc = "Save current position as a bookmark"
 
 [[mgr.prepend_keymap]]
-on = [ "'" ]
-run = "plugin bookmarks jump"
+on = "'"
+run = "plugin yamb -- jump_by_key"
 desc = "Jump to a bookmark"
 
 [[mgr.prepend_keymap]]
 on = [ "b", "d" ]
-run = "plugin bookmarks delete"
+run = "plugin yamb -- delete_by_key"
 desc = "Delete a bookmark"
 
 [[mgr.prepend_keymap]]
 on = [ "b", "D" ]
-run = "plugin bookmarks delete_all"
+run = "plugin yamb -- delete_all"
 desc = "Delete all bookmarks"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "r" ]
+run = "plugin yamb -- rename_by_key"
+desc = "Edit a bookmark"
