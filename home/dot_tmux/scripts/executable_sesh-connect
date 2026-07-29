@@ -6,7 +6,7 @@ export REPO_ICON=$repo_icon REPOS_ROOT=$repos_root
 
 choice="$(
   { sesh list -t -c --icons; ghq-list-projects; } | fzf-tmux -p 80%,70% \
-    --no-sort --ansi --border-label ' sesh ' --prompt '⚡  ' \
+    --no-sort --ansi --with-shell 'bash -c' --border-label ' sesh ' --prompt '⚡  ' \
     --header '  ^a all ^t tmux ^g configs ^x/^f ghq ^d tmux kill' \
     --bind 'tab:down,btab:up' \
     --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list -t -c --icons; ghq-list-projects)' \
