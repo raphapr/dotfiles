@@ -20,6 +20,7 @@ usage = "latest"
 "cargo:yazi-cli"= 'latest'
 "cargo:kanata"= 'latest'
 "cargo:https://github.com/raine/tmux-agent-usage"= 'latest'
+'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
 'npm:neovim'='latest'
 'npm:google'='latest'
@@ -33,7 +34,6 @@ usage = "latest"
 "github:DataDog/pup" = "latest"
 "github:raine/workmux" = "latest"
 "github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
-"github:agavra/tuicr" = "latest"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 
 [settings]
