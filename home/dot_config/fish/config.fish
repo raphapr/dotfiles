@@ -514,4 +514,9 @@ function opsignin
 end
 
 # }}}
+# vaulted           {{{
+
+alias vshare 'xclip -selection clipboard -o | vaulted --views 1 --expires 1h'
+
+# }}}
 # }}}

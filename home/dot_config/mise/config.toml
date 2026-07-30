@@ -35,6 +35,7 @@ usage = "latest"
 "github:raine/workmux" = "latest"
 "github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
+"npm:vaulted-cli" = "latest"
 
 [settings]
 experimental = true
