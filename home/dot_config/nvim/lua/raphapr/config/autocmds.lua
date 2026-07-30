@@ -1,3 +1,12 @@
+-- Use Neovim's built-in syntax until tmux reaches nvim-treesitter's main branch.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tmux",
+  callback = function(event)
+    vim.cmd.syntax("enable")
+    vim.bo[event.buf].syntax = "tmux"
+  end,
+})
+
 -- YAML file settings
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "yaml", "yml" },

@@ -23,9 +23,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSUpdate", "TSUninstall" },
     config = function()
       local ts = require("nvim-treesitter")
       ts.setup()
@@ -36,6 +35,9 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("TreesitterStart", { clear = true }),
         callback = function(event)
+          if event.match == "tmux" then
+            return
+          end
           local lang = vim.treesitter.language.get_lang(event.match)
           if lang and vim.treesitter.language.add(lang) then
             vim.treesitter.start(event.buf, lang)
