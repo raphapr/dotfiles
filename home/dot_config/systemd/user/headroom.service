@@ -1,15 +1,22 @@
 [Unit]
 Description=Headroom context-compression proxy for AI agents
+# Never give up permanently: a busy port at login must not leave every agent
+# without a proxy until it is noticed and started by hand.
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
 # Run the mise-managed Headroom CLI. `latest` follows the version selected by mise.
-ExecStart=%h/.local/share/mise/installs/pipx-headroom-ai/latest/bin/headroom proxy --port 8787 --code-aware --lossless --memory --learn
+# --learn is omitted deliberately: it writes headroom:learn marker sections into
+# AGENTS.md in whichever repo a request comes from, including tracked ones.
+# --no-rate-limit: 60rpm/100k tpm defaults only produce spurious 429s for a
+# single-user local proxy whose individual requests already exceed 100k tokens.
+ExecStart=%h/.local/share/mise/installs/pipx-headroom-ai/latest/bin/headroom proxy --port 8787 --code-aware --lossless --memory --no-rate-limit
 Environment=HEADROOM_TELEMETRY=off
 Environment=HEADROOM_UPDATE_CHECK=off
 # Memory/CCR roots resolve to {cwd}/.headroom; pin cwd so they can't move.
 WorkingDirectory=%h
-Restart=on-failure
+Restart=always
 RestartSec=5
 
 [Install]

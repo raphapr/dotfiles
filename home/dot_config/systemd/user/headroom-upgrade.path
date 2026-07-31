@@ -1,0 +1,15 @@
+[Unit]
+Description=Restart Headroom when mise swaps the installed version
+
+# mise repoints installs/pipx-headroom-ai/latest on upgrade and deletes the old
+# version directory. The running proxy keeps serving from an unlinked
+# site-packages and fails only on lazily imported modules, so it never exits and
+# Restart= never fires. Watch the parent directory: inotify on the symlink
+# itself would not see a repoint, but adding or removing a version directory
+# changes the parent's mtime.
+[Path]
+PathChanged=%h/.local/share/mise/installs/pipx-headroom-ai
+Unit=headroom.service
+
+[Install]
+WantedBy=default.target
