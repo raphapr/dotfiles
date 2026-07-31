@@ -236,3 +236,15 @@ user_pref("browser.fullscreen.autohide", false);
 /****************************************************************************
  * END: BETTERFOX                                                           *
  ****************************************************************************/
+
+/****************************************************************************
+ * OVERRIDES: DNS/connection latency                                        *
+ ****************************************************************************/
+// Preconnect on user intent (hover, urlbar typing). Betterfox zeroes these,
+// which forces DNS+TCP+TLS to run serially after the click. Page-scraping
+// prefetch (network.prefetch-next, network.dns.disablePrefetch*) stays off.
+user_pref("network.http.speculative-parallel-limit", 6);
+user_pref("browser.urlbar.speculativeConnect.enabled", true);
+
+// DoH with plain-DNS fallback: resolves over a warm HTTP/2 conn, no cold UDP.
+user_pref("network.trr.mode", 2);
