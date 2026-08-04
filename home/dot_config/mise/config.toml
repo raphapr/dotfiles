@@ -32,7 +32,7 @@ usage = "latest"
 "npm:@openai/codex" = "latest"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
-"github:raine/workmux" = "latest"
+"github:raine/workmux" = "0.1.232"
 "github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 "npm:vaulted-cli" = "latest"
