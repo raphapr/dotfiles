@@ -1,0 +1,20 @@
+worktree-path = "{{ repo_path }}/../{{ repo }}__worktrees/{{ branch | sanitize }}"
+
+[[pre-start]]
+copy-files = '''
+rsync -a --ignore-existing --prune-empty-dirs \
+  --exclude='.git/' \
+  --include='*/' \
+  --include='**/.env' \
+  --include='**/.ua' --include='**/.ua/***' \
+  --include='**/.terraform' --include='**/.terraform/***' \
+  --include='**/.venv' --include='**/.venv/***' \
+  --exclude='*' \
+  {{ primary_worktree_path }}/ {{ worktree_path }}/
+'''
+
+[[pre-remove]]
+cleanup = "/home/raphael/.bin/worktree-pre-remove {{ worktree_path }} {{ primary_worktree_path }}"
+
+[[pre-remove]]
+pane = "tmux kill-window -t {{ repo }}:wm-{{ branch | sanitize }} 2>/dev/null || true"

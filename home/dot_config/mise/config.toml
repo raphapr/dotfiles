@@ -19,6 +19,7 @@ usage = "latest"
 'cargo:yazi-fm'='latest'
 "cargo:yazi-cli"= 'latest'
 "cargo:kanata"= 'latest'
+"cargo:worktrunk"= 'latest'
 "cargo:https://github.com/raphapr/tmux-agent-usage"= 'latest'
 'npm:git-recent'='latest'
 'npm:jsonlint'='latest'
@@ -32,7 +33,6 @@ usage = "latest"
 "npm:@openai/codex" = "latest"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
-"github:raine/workmux" = "0.1.232"
 "github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 "npm:vaulted-cli" = "latest"

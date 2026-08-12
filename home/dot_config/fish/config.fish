@@ -117,7 +117,7 @@ end
 
 # misc             {{{
 
-alias wk 'workmux'
+alias jm 'jumpmux'
 alias cat 'bat'
 alias lash 'eza -l'
 alias l 'eza'

@@ -52,7 +52,7 @@ chezmoi init raphapr --apply
 - **starship** - Cross-shell prompt
 - **tmux** - Terminal multiplexer
 - **sesh** - tmux session manager
-- **workmux** - Parallel development in tmux with git worktrees
+- **jumpmux** - Terminal dashboard for moving between Git worktrees and live agents in tmux
 
 ### Editor & Development
 
@@ -60,6 +60,7 @@ chezmoi init raphapr --apply
 - **direnv** - Environment variable manager
 - **mise** - Development tool version and package manager
 - **neogit** - Magit-style git interface for Neovim
+- **worktrunk** - Git worktree manager
 
 ### File Management
 

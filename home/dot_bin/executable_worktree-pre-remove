@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 2 ]]; then
+  printf 'Usage: %s <worktree-path> <project-root>\n' "${0##*/}" >&2
+  exit 2
+fi
+
+worktree_path=$1
+project_root=$2
+[[ -d "$worktree_path" ]] || { printf 'Worktree not found: %s\n' "$worktree_path" >&2; exit 1; }
+[[ -d "$project_root" ]] || { printf 'Project root not found: %s\n' "$project_root" >&2; exit 1; }
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/worktree-hooks"
+mkdir -p "$state_dir"
+nohup "$HOME/.bin/pi-session-rehome" \
+  "$worktree_path" "$project_root" \
+  </dev/null >>"$state_dir/pi-session-rehome.log" 2>&1 &
+
+# Move node_modules aside so worktree deletion returns quickly.
+if [[ -f "$project_root/pnpm-lock.yaml" ||
+  -f "$project_root/package-lock.json" ||
+  -f "$project_root/yarn.lock" ]]; then
+  trash_dir=$(mktemp -d)
+  trap 'rm -rf "$trash_dir"' EXIT
+
+  find "$worktree_path" -name node_modules -type d -prune -print0 |
+    while IFS= read -r -d '' directory; do
+      unique_name=$(printf '%s\n' "${directory#"$worktree_path"/}" | tr '/' '_')
+      mv -- "$directory" "$trash_dir/$unique_name" ||
+        printf 'Warning: failed to move %s\n' "$directory" >&2
+    done
+
+  if [[ -n "$(ls -A "$trash_dir")" ]]; then
+    trap - EXIT
+    nohup rm -rf "$trash_dir" >/dev/null 2>&1 &
+  fi
+fi

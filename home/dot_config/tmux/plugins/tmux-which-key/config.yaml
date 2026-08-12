@@ -14,7 +14,7 @@ position:
 
 custom_variables:
   - name: log_info
-    value: '#[fg=#a6e3a1,italics]'
+    value: "#[fg=#a6e3a1,italics]"
 
 macros:
   - name: reload-config
@@ -26,10 +26,7 @@ macros:
       - 'run-shell "sesh connect --root \"##{pane_current_path}\""'
   - name: workflow-dashboard
     commands:
-      - 'display-popup -h 40 -w 150 -E "workmux dashboard --session --tab agents"'
-  - name: workflow-sidebar
-    commands:
-      - 'run-shell "workmux sidebar --session"'
+      - 'display-popup -h 40 -w 150 -E "jumpmux"'
   - name: workflow-dev-layout
     commands:
       - 'run-shell "$HOME/.tmux/scripts/dev-layout \"##{pane_current_path}\""'
@@ -70,7 +67,7 @@ items:
       - separator: true
       - name: Back
         key: BSpace
-        command: 'show-wk-menu #{@wk_menu_root}'
+        command: "show-wk-menu #{@wk_menu_root}"
 
   - name: +Windows
     key: w
@@ -92,7 +89,7 @@ items:
         command: next-window
       - name: Move to session
         key: m
-        command: "command-prompt -p \"move window to:\" \"move-window -t '%%'\""
+        command: 'command-prompt -p "move window to:" "move-window -t ''%%''"'
       - separator: true
       - name: Rename
         key: R
@@ -103,7 +100,7 @@ items:
       - separator: true
       - name: Back
         key: BSpace
-        command: 'show-wk-menu #{@wk_menu_root}'
+        command: "show-wk-menu #{@wk_menu_root}"
 
   - name: +Panes
     key: p
@@ -149,7 +146,7 @@ items:
           - separator: true
           - name: Back
             key: BSpace
-            command: 'show-wk-menu #{@wk_menu_panes}'
+            command: "show-wk-menu #{@wk_menu_panes}"
       - separator: true
       - name: Toggle zoom
         key: z
@@ -169,7 +166,7 @@ items:
       - separator: true
       - name: Back
         key: BSpace
-        command: 'show-wk-menu #{@wk_menu_root}'
+        command: "show-wk-menu #{@wk_menu_root}"
 
   - name: +Workflow
     key: d
@@ -177,9 +174,6 @@ items:
       - name: Worktree dashboard
         key: w
         macro: workflow-dashboard
-      - name: Workmux sidebar
-        key: s
-        macro: workflow-sidebar
       - name: Dev layout
         key: d
         macro: workflow-dev-layout
@@ -199,7 +193,7 @@ items:
       - separator: true
       - name: Back
         key: BSpace
-        command: 'show-wk-menu #{@wk_menu_root}'
+        command: "show-wk-menu #{@wk_menu_root}"
 
   - name: +Client
     key: C
@@ -218,7 +212,7 @@ items:
         command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/clean_plugins
       - separator: true
       - name: Customize tmux
-        key: ','
+        key: ","
         command: customize-mode -Z
       - name: Detach
         key: d
@@ -226,7 +220,7 @@ items:
       - separator: true
       - name: Back
         key: BSpace
-        command: 'show-wk-menu #{@wk_menu_root}'
+        command: "show-wk-menu #{@wk_menu_root}"
 
   - name: Copy mode
     key: c
@@ -235,5 +229,5 @@ items:
     key: r
     macro: reload-config
   - name: List keys
-    key: '?'
+    key: "?"
     command: list-keys -N
