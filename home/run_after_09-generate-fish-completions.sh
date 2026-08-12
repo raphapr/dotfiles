@@ -13,9 +13,6 @@ else
   rm -f "$COMPLETION_DIR/aws.fish"
 fi
 
-if command -v sesh >/dev/null 2>&1; then
-  sesh completion fish >"$COMPLETION_DIR/sesh.fish"
-fi
 
 if command -v tv >/dev/null 2>&1; then
   tv completions fish >"$COMPLETION_DIR/tv.fish"

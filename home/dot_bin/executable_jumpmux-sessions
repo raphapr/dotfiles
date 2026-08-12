@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+jumpmux="$HOME/go/bin/jumpmux"
+json=$($jumpmux sessions list --json)
+index=$(printf '%s' "$json" | jq -r '.[] | "\(.icon) \(.name)  \(.path)" | gsub("[[:cntrl:]]"; " ")' |
+  rofi -dmenu -i -no-custom -p 'Sessions' -format i)
+[ -n "$index" ] || exit 0
+
+id=$(printf '%s' "$json" | jq -r --argjson index "$index" '.[$index].id')
+exec kitty --class jumpmux --title jumpmux-sessions "$jumpmux" sessions open "$id"

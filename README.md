@@ -51,8 +51,7 @@ chezmoi init raphapr --apply
 - **fish** - Modern shell
 - **starship** - Cross-shell prompt
 - **tmux** - Terminal multiplexer
-- **sesh** - tmux session manager
-- **jumpmux** - Terminal dashboard for moving between Git worktrees and live agents in tmux
+- **jumpmux** - Terminal dashboard for moving between Git worktrees, live agents and sessions in tmux
 
 ### Editor & Development
 

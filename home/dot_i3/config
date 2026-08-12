@@ -65,8 +65,8 @@ bindsym $mod+n exec --no-startup-id ~/.bin/rofi-clipboard
 # %%hotkey: rofi-powermenu
 bindsym $mod+0 exec --no-startup-id ~/.config/rofi/powermenu/powermenu.sh
 
-# %%hotkey: rofi-powermenu
-bindsym $mod+f exec --no-startup-id ~/.bin/rofi-sesh
+# %%hotkey: jumpmux sessions
+bindsym $mod+f exec --no-startup-id ~/.bin/jumpmux-sessions
 
 # %%hotkey: 1password
 bindsym $mod+y exec --no-startup-id 1password --quick-access

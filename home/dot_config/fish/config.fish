@@ -164,15 +164,6 @@ alias ta 'tmux attach -t'
 alias tk 'tmux kill-session -t'
 
 # }}}
-# sesh             {{{
-
-abbr -a s sesh
-alias sl 'sesh list -i -d'
-alias sp 'sesh picker -i -d -H'
-alias sc 'sesh connect'
-alias sr 'sesh connect --root (pwd)'
-
-# }}}
 # curl-trace       {{{
 
 alias curl-trace='curl -w "@$HOME/.curl-format" -o /dev/null -s'

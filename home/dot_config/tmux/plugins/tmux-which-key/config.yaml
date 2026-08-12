@@ -21,9 +21,6 @@ macros:
     commands:
       - source-file $HOME/.tmux/tmux.conf
       - display-message "#{log_info}Reloaded tmux config"
-  - name: session-current-project
-    commands:
-      - 'run-shell "sesh connect --root \"##{pane_current_path}\""'
   - name: workflow-dashboard
     commands:
       - 'display-popup -h 40 -w 150 -E "jumpmux"'
@@ -47,7 +44,7 @@ items:
         command: choose-tree -Zs
       - name: Last session
         key: l
-        command: run-shell "sesh last"
+        command: run-shell "/home/raphael/go/bin/jumpmux sessions last"
       - name: Previous
         key: p
         command: switch-client -p
