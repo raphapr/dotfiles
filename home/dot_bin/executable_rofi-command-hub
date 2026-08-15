@@ -1,0 +1,39 @@
+#!/bin/sh
+
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+list_commands() {
+  printf '%s\n' \
+    Applications \
+    Windows \
+    Clipboard \
+    "Tmux sessions" \
+    "Kubernetes context" \
+    "Kubernetes namespace" \
+    "Keyboard layout" \
+    "Audio controls" \
+    Screenshots \
+    Keybindings \
+    Power
+}
+
+if [ "${1:-}" = "--list" ]; then
+  list_commands
+  exit
+fi
+
+choice=$(list_commands | rofi -dmenu -i -p "Command")
+
+case "$choice" in
+  Applications) exec rofi -show drun ;;
+  Windows) exec rofi -show window ;;
+  Clipboard) exec "$HOME/.bin/rofi-clipboard" ;;
+  "Tmux sessions") exec "$HOME/.bin/jumpmux-sessions" ;;
+  "Kubernetes context") exec "$HOME/.bin/rofi-kubectl-ctx" ;;
+  "Kubernetes namespace") exec "$HOME/.bin/rofi-kubectl-ns" ;;
+  "Keyboard layout") exec "$HOME/.bin/klayout-toggle" ;;
+  "Audio controls") exec kitty --class=wiremix -e wiremix ;;
+  Screenshots) exec flameshot gui ;;
+  Keybindings) exec "$HOME/.bin/dmenu-i3-keys" ;;
+  Power) exec "$HOME/.config/rofi/powermenu/powermenu.sh" ;;
+esac

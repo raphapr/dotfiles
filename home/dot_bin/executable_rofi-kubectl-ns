@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+if ! namespaces=$(kubectl get namespaces -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' 2>&1); then
+  notify-send -u critical "kubectl" "$namespaces"
+  exit 1
+fi
+
+current=$(kubectl config view --minify -o jsonpath='{..namespace}' 2>/dev/null)
+current=${current:-default}
+namespace=$(printf '%s' "$namespaces" | sort | rofi -dmenu -i -p "kubectl ns ($current)")
+
+[ -n "$namespace" ] || exit
+
+if kubectl config set-context --current --namespace="$namespace" >/dev/null; then
+  notify-send "kubectl" "Namespace: $namespace"
+else
+  notify-send -u critical "kubectl" "Failed to set namespace: $namespace"
+  exit 1
+fi
