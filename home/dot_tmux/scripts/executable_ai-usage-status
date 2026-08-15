@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+json="$(timeout 30 ai-usagebar usage --json 2>/dev/null)" || {
+  printf '#[fg=#f38ba8]CX ? #[fg=#6c7086]│ #[fg=#f38ba8]CC ?'
+  exit
+}
+
+jq -r '
+  def color($severity):
+    if $severity == "low" then "#a6e3a1"
+    elif $severity == "mid" then "#f9e2af"
+    elif $severity == "high" then "#fab387"
+    else "#f38ba8"
+    end;
+
+  def entry($id): (.entries | map(select(.id == $id)) | .[0]);
+  def metric($entry; $prefix):
+    (($entry.metrics // []) | map(select(.label | startswith($prefix))) | .[0]);
+  def unavailable($label): "#[fg=#f38ba8]\($label) ?";
+  def paint($metric; $text): "#[fg=\(color($metric.severity))]\($text)";
+
+  def codex:
+    entry("openai") as $entry
+    | if $entry == null or $entry.status != "ready" or $entry.stale or ($entry.metrics | length) == 0 then
+        unavailable("CX")
+      else
+        $entry.metrics[0] as $weekly
+        | paint($weekly; "CX wk:\($weekly.value)")
+      end;
+
+  def claude:
+    entry("anthropic") as $entry
+    | metric($entry; "Session") as $session
+    | metric($entry; "Weekly") as $weekly
+    | if $entry == null or $entry.status != "ready" or $entry.stale or $session == null or $weekly == null then
+        unavailable("CC")
+      else
+        "#[fg=#cba6f7]CC "
+        + paint($session; "5h:\($session.value)")
+        + " "
+        + paint($weekly; "wk:\($weekly.value)")
+      end;
+
+  codex + " #[fg=#6c7086]│ " + claude
+' <<<"$json" 2>/dev/null || printf '#[fg=#f38ba8]CX ? #[fg=#6c7086]│ #[fg=#f38ba8]CC ?'

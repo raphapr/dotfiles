@@ -270,6 +270,7 @@ client.background       #1e1e2e
 # floating windows
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
+for_window [class="^pritunl$"] floating enable, move position center, resize set width 900 height 700
 for_window [window_role="About"] floating enable
 for_window [window_role="Organizer"] floating enable
 for_window [window_role="Preferences"] floating enable
@@ -299,6 +300,14 @@ for_window [title="^\.WhatsApp"] move to workspace 2
 # Scratchpads           ----------------------------------------------------- {{{
 
 set $journal kitty --instance-group scratchpad-journal --class=scratchpad-journal -e $HOME/.bin/tmux-session scratchpad-journal
+set $ai_usage kitty --instance-group scratchpad-ai-usage --class=scratchpad-ai-usage -e ai-usagebar-tui
+
+# %%hotkey: launch AI usage scratchpad if closed
+bindsym $mod+shift+g exec --no-startup-id $ai_usage
+exec --no-startup-id $ai_usage
+for_window [class="scratchpad-ai-usage"] move to scratchpad, resize set width 875 height 600
+# %%hotkey: toggle AI usage scratchpad
+bindsym $mod+g [class="scratchpad-ai-usage"] scratchpad show
 
 # %%hotkey: launch journal scratchpad in case accidentally closed or whatever
 bindsym $mod+F11 exec --no-startup-id $journal
