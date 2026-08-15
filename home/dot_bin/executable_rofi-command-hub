@@ -2,6 +2,8 @@
 
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
+kitty_class_prefix=command-hub-
+
 list_commands() {
   printf '%s\n' \
     "󰀻  Applications" \
@@ -28,18 +30,18 @@ fi
 choice=$(list_commands | rofi -dmenu -i -p "Command")
 
 case "$choice" in
-  *Applications) exec rofi -show drun ;;
-  *Windows) exec rofi -show window ;;
-  *Clipboard) exec "$HOME/.bin/rofi-clipboard" ;;
-  *"Tmux sessions") exec "$HOME/.bin/jumpmux-sessions" ;;
-  *"Kubernetes context") exec "$HOME/.bin/rofi-kubectl-ctx" ;;
-  *"Kubernetes namespace") exec "$HOME/.bin/rofi-kubectl-ns" ;;
-  *"Keyboard layout") exec "$HOME/.bin/klayout-toggle" ;;
-  *"Audio controls") exec kitty --class=wiremix -e wiremix ;;
-  *"System resources") exec kitty --class=btop -e btop ;;
-  *Bluetooth) exec kitty --class=bluetui -e bluetui ;;
-  *"Wi-Fi") exec kitty --class=impala -e impala ;;
-  *Screenshots) exec flameshot gui ;;
-  *Keybindings) exec "$HOME/.bin/dmenu-i3-keys" ;;
-  *Power) exec "$HOME/.config/rofi/powermenu/powermenu.sh" ;;
+*Applications) exec rofi -show drun ;;
+*Windows) exec rofi -show window ;;
+*Clipboard) exec "$HOME/.bin/rofi-clipboard" ;;
+*"Tmux sessions") exec "$HOME/.bin/jumpmux-sessions" ;;
+*"Kubernetes context") exec "$HOME/.bin/rofi-kubectl-ctx" ;;
+*"Kubernetes namespace") exec "$HOME/.bin/rofi-kubectl-ns" ;;
+*"Keyboard layout") exec "$HOME/.bin/klayout-toggle" ;;
+*"Audio controls") exec kitty --class="${kitty_class_prefix}wiremix" -e wiremix ;;
+*"System resources") exec kitty --class="${kitty_class_prefix}btop" -e btop ;;
+*Bluetooth) exec kitty --class="${kitty_class_prefix}bluetui" -e bluetui ;;
+*"Wi-Fi") exec kitty --class="${kitty_class_prefix}impala" -e impala ;;
+*Screenshots) exec flameshot gui ;;
+*Keybindings) exec "$HOME/.bin/dmenu-i3-keys" ;;
+*Power) exec "$HOME/.config/rofi/powermenu/powermenu.sh" ;;
 esac

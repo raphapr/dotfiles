@@ -8,4 +8,4 @@ index=$(printf '%s' "$json" | jq -r '.[] | "\(.icon) \(.name)  \(.path)" | gsub(
 [ -n "$index" ] || exit 0
 
 id=$(printf '%s' "$json" | jq -r --argjson index "$index" '.[$index].id')
-exec kitty --class jumpmux --title jumpmux-sessions "$jumpmux" session open "$id"
+exec kitty "$jumpmux" session open "$id"

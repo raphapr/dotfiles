@@ -264,7 +264,7 @@ client.background       #1e1e2e
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
 for_window [class="^pritunl$"] floating enable, move position center, resize set width 900 height 700
-for_window [class="^(wiremix|bluetui|impala|jumpmux|btop)$"] floating enable, move position center, resize set width 1000 height 650
+for_window [class="^command-hub-"] floating enable, move position center, resize set width 1000 height 650
 for_window [window_role="About"] floating enable
 for_window [window_role="Organizer"] floating enable
 for_window [window_role="Preferences"] floating enable
