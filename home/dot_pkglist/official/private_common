@@ -27,7 +27,7 @@ bcprov
 bind
 bison
 blas
-blueman
+bluetui
 bluez-utils
 boost-libs
 bpf
@@ -155,11 +155,13 @@ hunspell
 hwloc
 i3-wm
 i3lock
+impala
 inetutils
 iniparser
 install-grub
 intel-ucode
 inxi
+iwd
 jasper
 java-commons-lang
 jfsutils
@@ -290,7 +292,6 @@ nano-syntax-highlighting
 ncdu
 ndctl
 net-tools
-network-manager-applet
 networkmanager
 networkmanager-openconnect
 networkmanager-openvpn
@@ -527,3 +528,4 @@ zoxide
 zram-generator
 zsa-udev
 zsh
+network-manager-applet

@@ -6,6 +6,27 @@ set -euo pipefail
 HOSTNAME="$(hostname)"
 readonly HOSTNAME
 
+confirm_system_changes() {
+  local reply=""
+
+  if [[ -t 0 ]]; then
+    read -r -p "Deploy system files and rebuild initramfs? [y/N] " reply
+  elif ! read -r -p "Deploy system files and rebuild initramfs? [y/N] " reply 2>/dev/null </dev/tty; then
+    echo "No TTY available; skipping system changes."
+    exit 0
+  fi
+
+  case "${reply,,}" in
+  y | yes) ;;
+  *)
+    echo "Skipping system changes."
+    exit 0
+    ;;
+  esac
+}
+
+confirm_system_changes
+
 ########################################################
 # zram-generator config
 ########################################################
@@ -14,6 +35,14 @@ readonly HOSTNAME
 echo ">> Deploying zram-generator config..."
 sudo install -Dm644 "$HOME/.config/system/zram-generator.conf" /etc/systemd/zram-generator.conf
 sudo systemctl daemon-reload
+
+########################################################
+# NetworkManager Wi-Fi backend (required by impala)
+########################################################
+
+# {{ include "dot_config/system/NetworkManager-iwd.conf" | sha256sum }}
+echo ">> Deploying NetworkManager iwd backend config..."
+sudo install -Dm644 "$HOME/.config/system/NetworkManager-iwd.conf" /etc/NetworkManager/conf.d/iwd.conf
 
 ########################################################
 # aftersleep script
