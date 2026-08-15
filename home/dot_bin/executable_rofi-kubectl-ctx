@@ -1,3 +1,5 @@
 #!/bin/bash
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 ctx=$(kubectl config get-contexts -o name 2>/dev/null | rofi -dmenu -p "kubectl ctx")
 [ -n "$ctx" ] && kubectl config use-context "$ctx" && notify-send "kubectl" "Switched to $ctx"
