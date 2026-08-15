@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 json="$(timeout 30 ai-usagebar usage --json 2>/dev/null)" || {
   printf '#[fg=#f38ba8]CX ? #[fg=#6c7086]│ #[fg=#f38ba8]CC ?'
   exit
