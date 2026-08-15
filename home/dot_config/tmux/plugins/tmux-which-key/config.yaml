@@ -20,20 +20,28 @@ macros:
   - name: reload-config
     commands:
       - source-file $HOME/.tmux/tmux.conf
+      - refresh-client -S
       - display-message "#{log_info}Reloaded tmux config"
-  - name: workflow-dashboard
+  - name: jumpmux-agents
     commands:
-      - 'display-popup -h 40 -w 150 -E "jumpmux"'
-  - name: workflow-dev-layout
+      - 'display-popup -h 40 -w 140 -E "jumpmux"'
+  - name: jumpmux-sessions
+    commands:
+      - 'display-popup -h 50 -w 140 -E "jumpmux -t sessions"'
+  - name: dev-layout
     commands:
       - 'run-shell "$HOME/.tmux/scripts/dev-layout \"##{pane_current_path}\""'
-  - name: workflow-extract-text
+  - name: extract-text
     commands:
       - 'run-shell "$HOME/.tmux/plugins/extrakto/scripts/open.sh \"##{pane_id}\""'
+  - name: toggle-sync
+    commands:
+      - set-window-option synchronize-panes
+      - 'display-message "Sync panes ##{?pane_synchronized,ON,OFF}"'
 
 items:
   - name: Command prompt
-    key: space
+    key: ":"
     command: command-prompt
 
   - name: +Sessions
@@ -43,24 +51,21 @@ items:
         key: s
         command: choose-tree -Zs
       - name: Last session
-        key: l
-        command: run-shell "/home/raphael/go/bin/jumpmux sessions last"
+        key: C-o
+        command: run-shell "/home/raphael/go/bin/jumpmux session last"
       - name: Previous
-        key: p
+        key: P
         command: switch-client -p
       - name: Next
-        key: n
+        key: N
         command: switch-client -n
-      - name: Current project
-        key: r
-        macro: session-current-project
       - separator: true
       - name: Rename
-        key: R
-        command: 'command-prompt -p "Rename session:" -I "#S" "rename-session -- \"%%\""'
+        key: "&"
+        command: 'command-prompt -I "#S" -p "Rename active session to:" { rename-session "%%" }'
       - name: Kill
-        key: X
-        command: 'confirm-before -p "Kill session #S?" kill-session'
+        key: "*"
+        command: 'confirm-before -p "Kill current session?" kill-session'
       - separator: true
       - name: Back
         key: BSpace
@@ -76,23 +81,20 @@ items:
         key: c
         command: 'new-window -c "#{pane_current_path}"'
       - name: Last
-        key: l
+        key: b
         command: last-window
-      - name: Previous
-        key: p
-        command: previous-window
       - name: Next
         key: n
         command: next-window
       - name: Move to session
-        key: m
-        command: 'command-prompt -p "move window to:" "move-window -t ''%%''"'
+        key: C-w
+        command: 'run-shell "$HOME/.tmux/scripts/move-window"'
       - separator: true
       - name: Rename
-        key: R
-        command: 'command-prompt -p "Rename window:" -I "#W" "rename-window -- \"%%\""'
+        key: ","
+        command: 'command-prompt -F -I "#{window_name}" -p "Rename window:" { rename-window -t "#{window_id}" "%%" }'
       - name: Kill
-        key: X
+        key: Q
         command: 'confirm-before -p "Kill window #W?" kill-window'
       - separator: true
       - name: Back
@@ -103,41 +105,41 @@ items:
     key: p
     menu:
       - name: Split horizontal
-        key: h
+        key: "/"
         command: 'split-window -h -c "#{pane_current_path}"'
       - name: Split vertical
-        key: v
+        key: "-"
         command: 'split-window -v -c "#{pane_current_path}"'
       - separator: true
       - name: Left
-        key: Left
+        key: h
         command: select-pane -L
       - name: Down
-        key: Down
+        key: j
         command: select-pane -D
       - name: Up
-        key: Up
+        key: k
         command: select-pane -U
       - name: Right
-        key: Right
+        key: l
         command: select-pane -R
       - name: +Resize
         key: r
         menu:
           - name: Left
-            key: h
+            key: H
             command: resize-pane -L 5
             transient: true
           - name: Down
-            key: j
+            key: J
             command: resize-pane -D 5
             transient: true
           - name: Up
-            key: k
+            key: K
             command: resize-pane -U 5
             transient: true
           - name: Right
-            key: l
+            key: L
             command: resize-pane -R 5
             transient: true
           - separator: true
@@ -145,20 +147,23 @@ items:
             key: BSpace
             command: "show-wk-menu #{@wk_menu_panes}"
       - separator: true
+      - name: Move to window
+        key: C-p
+        command: 'run-shell "$HOME/.tmux/scripts/move-pane"'
+      - name: Swap clockwise
+        key: S
+        command: swap-pane -D
       - name: Toggle zoom
         key: z
         command: resize-pane -Z
       - name: Power zoom
         key: Z
         command: run-shell $HOME/.tmux/plugins/tmux-power-zoom/scripts/power_zoom.sh
-      - name: Sync on
+      - name: Toggle sync
         key: y
-        command: 'set-window-option synchronize-panes on ; display-message "Sync panes ON"'
-      - name: Sync off
-        key: Y
-        command: 'set-window-option synchronize-panes off ; display-message "Sync panes OFF"'
+        macro: toggle-sync
       - name: Kill
-        key: X
+        key: x
         command: 'confirm-before -p "Kill pane #P?" kill-pane'
       - separator: true
       - name: Back
@@ -168,25 +173,28 @@ items:
   - name: +Workflow
     key: d
     menu:
-      - name: Worktree dashboard
-        key: w
-        macro: workflow-dashboard
+      - name: Jumpmux agents
+        key: m
+        macro: jumpmux-agents
+      - name: Jumpmux sessions
+        key: o
+        macro: jumpmux-sessions
       - name: Dev layout
-        key: d
-        macro: workflow-dev-layout
+        key: W
+        macro: dev-layout
       - separator: true
-      - name: Tmux FZF
-        key: f
-        command: run-shell -b $HOME/.tmux/plugins/tmux-fzf/main.sh
+      - name: File picker
+        key: C-f
+        command: 'display-popup -E "$HOME/.tmux/plugins/tmux-file-picker/tmux-file-picker"'
       - name: Path picker
-        key: p
-        command: run-shell $HOME/.tmux/plugins/tmux-fpp/fpp.tmux start edit
+        key: f
+        command: 'run-shell "$HOME/.tmux/plugins/tmux-fpp/fpp.tmux start edit"'
       - name: Extract text
-        key: e
-        macro: workflow-extract-text
+        key: Tab
+        macro: extract-text
       - name: Open URL
         key: u
-        command: run-shell -b $HOME/.tmux/plugins/tmux-fzf-url/fzf-url.sh
+        command: 'run-shell -b "$HOME/.tmux/plugins/tmux-fzf-url/fzf-url.sh screen"'
       - separator: true
       - name: Back
         key: BSpace
@@ -198,18 +206,25 @@ items:
       - name: Reload config
         key: r
         macro: reload-config
+      - name: Mouse on
+        key: e
+        command: 'set-option -g mouse on ; display-message "Mouse Mode ON"'
+      - name: Mouse off
+        key: E
+        command: 'set-option -g mouse off ; display-message "Mouse Mode OFF"'
+      - separator: true
       - name: Install plugins
-        key: i
+        key: I
         command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/install_plugins
       - name: Update plugins
-        key: u
+        key: U
         command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/update_plugins
       - name: Clean plugins
-        key: c
+        key: M-u
         command: run-shell $TMUX_PLUGIN_MANAGER_PATH/tpm/bindings/clean_plugins
       - separator: true
       - name: Customize tmux
-        key: ","
+        key: C
         command: customize-mode -Z
       - name: Detach
         key: d
@@ -220,8 +235,11 @@ items:
         command: "show-wk-menu #{@wk_menu_root}"
 
   - name: Copy mode
-    key: c
+    key: "["
     command: copy-mode
+  - name: Paste buffer
+    key: "]"
+    command: paste-buffer
   - name: Reload config
     key: r
     macro: reload-config
