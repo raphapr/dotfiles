@@ -17,17 +17,15 @@
     sticky_history = yes
     line_height = 0
     separator_height = 2
+    separator_color = frame
     padding = 8
     horizontal_padding = 8
-    separator_frame_color = "#585858"
+    frame_width = 1
+    frame_color = "#89B4FA"
     startup_notification = false
     # https://github.com/knopwob/dunst/issues/26#issuecomment-36159395
     #icon_position = left
     #icon_folders = /usr/share/icons/elementary/actions/16/
-
-[frame]
-    frame_width = 1
-    frame_color = "#383838"
 
 [shortcuts]
     close = ctrl+space
@@ -36,16 +34,19 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#181818"
-    foreground = "#E3C7AF"
+    background = "#1E1E2E"
+    foreground = "#A6ADC8"
+    frame_color = "#45475A"
     timeout = 5
 
 [urgency_normal]
-    background = "#181818"
-    foreground = "#E3C7AF"
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
+    frame_color = "#89B4FA"
     timeout = 20
 
 [urgency_critical]
-    background = "#181818"
-    foreground = "#E3C7AF"
-timeout = 0
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
+    frame_color = "#F38BA8"
+    timeout = 0
