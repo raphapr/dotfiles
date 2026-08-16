@@ -263,20 +263,12 @@ client.background       #1e1e2e
 
 # floating windows
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
-for_window [title="Lock Screen — 1Password"] floating enable resize set 800 500
+for_window [title="Lock Screen — 1Password"] floating enable, resize set 800 500
 for_window [class="^pritunl$"] floating enable, move position center, resize set width 900 height 700
 for_window [class="^command-hub-"] floating enable, move position center, resize set width 1000 height 650
-for_window [window_role="About"] floating enable
-for_window [window_role="Organizer"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="page-info"] floating enable
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="toolbox"] floating enable
-for_window [window_role="webconsole"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
+for_window [window_role="About|Organizer|Preferences|pop-up|task_dialog|toolbox|webconsole"] floating enable, move position center, resize set width 1000 height 650
+for_window [window_role="bubble|page-info"] floating enable
+for_window [window_type="menu"] floating enable, move position center, resize set width 1000 height 650
 
 # Browser window groups
 for_window [title="^\.Main.*"] move to workspace 1
