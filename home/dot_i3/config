@@ -58,7 +58,7 @@ bindsym $mod+BackSpace kill
 
 # %%hotkey: rofi command hub
 bindsym $mod+space exec --no-startup-id ~/.bin/rofi-command-hub
-# %%hotkey: rofi run mode
+# %%hotkey: rofi app launcher (drun)
 bindsym $mod+d exec rofi -show drun
 # %%hotkey: rofi window mode
 bindsym $mod+Tab exec rofi -show window
@@ -102,6 +102,7 @@ bindsym $mod+b split v
 
 # %%hotkey: enter fullscreen mode for the focused container
 bindsym F12 fullscreen
+# %%hotkey: enter fullscreen mode for the focused container (alternative)
 bindsym $mod+F12 fullscreen
 
 # %%hotkey: container layout - stacking
@@ -187,7 +188,7 @@ bindsym $mod2+9 move container to workspace 9
 #}}}
 # Custom Shortcuts      ----------------------------------------------------- {{{
 
-# %%hotkey: google chrome incognito
+# %%hotkey: firefox private window
 bindsym $mod+slash exec --no-startup-id $BROWSER --private-window
 
 # %%hotkey: start terminal
@@ -296,18 +297,14 @@ for_window [title="^\.WhatsApp"] move to workspace 2
 set $journal kitty --instance-group scratchpad-journal --class=scratchpad-journal -e $HOME/.bin/tmux-session scratchpad-journal
 set $ai_usage kitty --instance-group scratchpad-ai-usage --class=scratchpad-ai-usage -e ai-usagebar-tui
 
-# %%hotkey: launch AI usage scratchpad if closed
-bindsym $mod+shift+g exec --no-startup-id $ai_usage
 exec --no-startup-id $ai_usage
 for_window [class="scratchpad-ai-usage"] move to scratchpad, resize set width 875 height 600
-# %%hotkey: toggle AI usage scratchpad
-bindsym $mod+g [class="scratchpad-ai-usage"] scratchpad show
+# %%hotkey: toggle AI usage scratchpad, relaunch if closed
+bindsym $mod+g exec --no-startup-id i3-msg '[class="scratchpad-ai-usage"] scratchpad show' || $ai_usage
 
-# %%hotkey: launch journal scratchpad in case accidentally closed or whatever
-bindsym $mod+F11 exec --no-startup-id $journal
 exec --no-startup-id $journal
 for_window [class="scratchpad-journal"] move to scratchpad, resize set width 1000 height 600
-# %%hotkey: launch scratchpad-journal
-bindsym F11 [class="scratchpad-journal"] scratchpad show
+# %%hotkey: toggle journal scratchpad, relaunch if closed
+bindsym F11 exec --no-startup-id i3-msg '[class="scratchpad-journal"] scratchpad show' || $journal
 
 #}}}
