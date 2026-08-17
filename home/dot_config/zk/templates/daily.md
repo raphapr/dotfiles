@@ -6,6 +6,6 @@ tags: [journal, daily]
 
 # Tasks
 
-- [ ] Unchecked
-- [x] Checked
-- [-] Todo
+# Work Log
+
+# Notes

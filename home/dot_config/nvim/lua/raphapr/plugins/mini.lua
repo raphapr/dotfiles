@@ -63,6 +63,7 @@ return {
           { mode = "n", keys = "<leader>x", desc = "Diagnostics" },
           { mode = "n", keys = "<leader>e", desc = "Edit" },
           { mode = "n", keys = "<leader>m", desc = "Miscellaneous" },
+          { mode = "n", keys = "<leader>t", desc = "Tasks" },
           { mode = "n", keys = "<leader>z", desc = "zk" },
           { mode = "n", keys = "<leader>l", desc = "LSP" },
           { mode = "n", keys = "go", desc = "Go" },
@@ -73,6 +74,7 @@ return {
           { mode = "x", keys = "<leader>f", desc = "Find" },
           { mode = "x", keys = "<leader>g", desc = "Git" },
           { mode = "x", keys = "<leader>b", desc = "Base64" },
+          { mode = "x", keys = "<leader>t", desc = "Tasks" },
           { mode = "x", keys = "<leader>z", desc = "zk" },
         },
       })

@@ -15,7 +15,7 @@ for FILE in "$DIR"/*.md; do
   FILE_YEAR=$(date -d "$FILE_DATE" +%Y)
 
   if [ "$FILE_WEEK" -eq "$CURRENT_WEEK" ] && [ "$FILE_YEAR" -eq "$CURRENT_YEAR" ]; then
-    TASKS=$(sed -n '/# Tasks/,/# Notes/p' "$FILE" | sed '/# Tasks/d' | sed '/# Notes/d')
+    TASKS=$(sed -n '/# Tasks/,/# Notes/p' "$FILE" | sed '/^# \(Tasks\|Work Log\|Notes\)$/d')
     if [ -n "$TASKS" ]; then
       echo "[[$SUB_DIR/$FILE_DATE|$FILE_DATE]]"
       echo "$TASKS"
