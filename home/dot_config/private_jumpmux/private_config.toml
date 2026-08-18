@@ -1,0 +1,40 @@
+theme = "catppuccin-mocha"
+
+default_scope = "all"
+
+[preview]
+agents = true
+worktrees = true
+sessions = false
+
+[sessions]
+exclude = ['scratchpad-journal','cliamp','_worktrees(/.*)?$']
+discovery_command = ["ghq","list","-p"]
+
+[[sessions.entries]]
+name = "code-review"
+path = "~"
+
+[[sessions.entries]]
+name = "raphael"
+path = "~"
+
+[[sessions.entries]]
+name = "screen2"
+path = "~"
+
+[[sessions.entries]]
+name = "chezmoi"
+path = "~/.local/share/chezmoi"
+
+[[sessions.entries]]
+name = "pi-conf"
+path = "~/.pi"
+
+[[sessions.entries]]
+name = "nvim-conf"
+path = "~/.config/nvim/lua/raphapr"
+
+[[sessions.entries]]
+name = "tmux-conf"
+path = "~/.tmux"

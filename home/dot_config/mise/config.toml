@@ -54,6 +54,7 @@ zoxide = "latest"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
 "github:bjarneo/cliamp" = "latest"
+"github:raphapr/jumpmux" = "latest"
 "github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 "npm:vaulted-cli" = "latest"
