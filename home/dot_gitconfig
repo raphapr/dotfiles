@@ -38,7 +38,7 @@
   pamadd = "!f() { git ls-files --modified --others --deleted --exclude-standard -z | fzf --read0 --print0 --multi | git add --pathspec-from-file=- --pathspec-file-nul; }; f"
 
   pr = "!gh pr create"
-	commit-gen = "!f() { pi -p --no-session --model openai-codex/gpt-5.6-luna:medium \"/skill:commit commit the current changes now. $*\"; }; f"
+	commit-gen = "!f() { pi -p --no-session -ne --model openai-codex/gpt-5.6-luna:medium \"/skill:commit commit the current changes now. $*\"; }; f"
 
 [branch]
   sort = committerdate
