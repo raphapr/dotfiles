@@ -1,0 +1,15 @@
+eq_preset = "Custom"
+
+eq = [-2, 0, 0, 0, 0, 0, 0, 0, 0, -1]
+theme = "catppuccin"
+
+provider = "spotify"
+visualizer = "Stereo"
+vis_volume_linked = false
+
+log_level = "warn"
+
+speed = 1.00
+[spotify]
+client_id = "${CLIAMP_SPOTIFY_CLIENT_ID}"
+bitrate   = 320

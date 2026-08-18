@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLAYER="spotify"
+PLAYER="cliamp,spotify"
 MAX_LENGTH=60
 
 # Single playerctl call for all metadata
