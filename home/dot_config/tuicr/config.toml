@@ -1,0 +1,4 @@
+theme = "catppuccin-mocha"
+appearance = "dark"
+diff_view = "unified"
+leader = ","

@@ -30,6 +30,7 @@ stylua = "latest"
 tree-sitter = "latest"
 yarn = "latest"
 zoxide = "latest"
+"github:agavra/tuicr" = "0.23.0"
 "aqua:hairyhenderson/gomplate" = "latest"
 "github:ankitpokhrel/jira-cli" = "latest"
 'cargo:eza'='latest'
@@ -52,8 +53,7 @@ zoxide = "latest"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
 "github:bjarneo/cliamp" = "latest"
-"github:raphapr/jumpmux" = "latest"
-"github:CircleCI-Public/circleci-cli" = "1.0.42707-pre"
+"github:CircleCI-Public/circleci-cli" = "1.0.48633"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 "npm:vaulted-cli" = "latest"
 
