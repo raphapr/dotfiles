@@ -4,8 +4,8 @@ eq = [-2, 0, 0, 0, 0, 0, 0, 0, 0, -1]
 theme = "catppuccin"
 
 provider = "spotify"
-visualizer = "Stereo"
-vis_volume_linked = false
+visualizer = "ClassicPeak"
+vis_volume_linked = true
 
 log_level = "warn"
 
