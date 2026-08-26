@@ -56,6 +56,7 @@ zoxide = "latest"
 "github:CircleCI-Public/circleci-cli" = "1.0.48633"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 "npm:vaulted-cli" = "latest"
+"npm:@mermaid-js/mermaid-cli" = "latest"
 
 [settings]
 experimental = true
