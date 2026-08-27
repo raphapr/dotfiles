@@ -73,6 +73,7 @@
   prune = true
 [rebase]
   autoStash = true
+	gpgsign = true
 [status]
   showUntrackedFiles = all
 
@@ -82,3 +83,5 @@
 
 [ghq]
   root = ~/repos
+[cherry-pick]
+	gpgsign = true
