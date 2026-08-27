@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Reclaim disk space from regenerable caches. -n = dry run.
+set -uo pipefail
+
+DRY=0
+[[ ${1:-} == "-n" ]] && DRY=1
+
+free_kb() { df --output=avail -k / | tail -1; }
+BEFORE=$(free_kb)
+
+run() {
+	if ((DRY)); then
+		echo "  would run: $*"
+	else
+		echo "  $*"
+		"$@" >/dev/null 2>&1 || echo "    (skipped: failed or not installed)"
+	fi
+}
+
+# rm -rf needs shell globbing, so it can't go through run()
+nuke() {
+	for p in "$@"; do
+		[[ -e $p ]] || continue
+		if ((DRY)); then
+			echo "  would delete: $p ($(du -sh "$p" 2>/dev/null | cut -f1))"
+		else
+			echo "  rm -rf $p"
+			rm -rf "$p"
+		fi
+	done
+}
+
+echo "== Tier 1: package manager caches =="
+command -v uv >/dev/null && run uv cache clean
+command -v go >/dev/null && run go clean -modcache
+command -v npm >/dev/null && run npm cache clean --force
+nuke ~/.cache/yay/* ~/.cache/spotify
+
+echo "== Tier 2: rebuilt on next use =="
+command -v paccache >/dev/null && run sudo paccache -rk1
+command -v mise >/dev/null && run mise prune --yes
+nuke ~/.cache/ms-playwright ~/.cache/puppeteer ~/.cache/pip \
+	~/.cache/go-build ~/.cache/goimports
+
+echo "== Tier 3: trash and logs =="
+nuke ~/.local/share/Trash/files/* ~/.local/share/Trash/info/*
+run sudo journalctl --vacuum-size=200M
+
+AFTER=$(free_kb)
+echo
+if ((DRY)); then
+	echo "Dry run. Nothing deleted."
+else
+	echo "Reclaimed: $(numfmt --from-unit=1024 --to=iec -- $((AFTER - BEFORE)))"
+fi
+echo "Free on /: $(numfmt --from-unit=1024 --to=iec -- "$AFTER")"
