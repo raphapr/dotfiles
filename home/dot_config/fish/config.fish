@@ -111,6 +111,7 @@ if status is-interactive
     __plugin_load zoxide    zoxide init fish
     __plugin_load fzf       fzf --fish
     __plugin_load atuin     atuin init fish
+    fish_user_key_bindings
 end
 
 # }}}
