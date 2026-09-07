@@ -22,11 +22,10 @@ return {
     })
 
     require("conform").setup({
-      lsp_fallback = true,
       formatters_by_ft = {
         terraform = { "terraform_fmt" },
         sh = { "shfmt" },
-        go = { "goimports", "gofmt" },
+        go = { "goimports" },
         python = { "ruff_format" },
         lua = { "stylua" },
         javascript = { "prettier" },

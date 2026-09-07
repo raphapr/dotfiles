@@ -1,5 +1,5 @@
 require("colorizer").setup({
-  "!md",
-  "!yml",
+  "*",
+  "!markdown",
   "!yaml",
 })

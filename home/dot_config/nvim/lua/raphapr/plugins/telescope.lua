@@ -20,6 +20,7 @@ return {
     lazy = true,
     cmd = "Telescope",
     keys = {
+      { "<leader>gs", telescope_builtin("git_status"), desc = "Git: Status" },
       { "<C-p>", telescope_builtin("find_files", { hidden = true }), desc = "Find: Files" },
       { "<C-y>", telescope_builtin("buffers"), desc = "Buffer: List" },
       { "<leader>ff", telescope_builtin("find_files", { hidden = true }), desc = "Find: Files" },
@@ -59,11 +60,6 @@ return {
         + actions.move_selection_next
         + actions.move_selection_next
 
-      telescope.load_extension("media_files")
-      telescope.load_extension("zoxide")
-      telescope.load_extension("yank_history")
-      telescope.load_extension("undo")
-      telescope.load_extension("ui-select")
       telescope.setup({
         defaults = {
           file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
@@ -104,6 +100,12 @@ return {
           },
         },
       })
+      telescope.load_extension("media_files")
+      telescope.load_extension("zoxide")
+      telescope.load_extension("yank_history")
+      telescope.load_extension("undo")
+      telescope.load_extension("ui-select")
+      telescope.load_extension("scope")
     end,
   },
 }

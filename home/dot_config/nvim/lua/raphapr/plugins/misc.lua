@@ -16,7 +16,6 @@ return {
     event = "VeryLazy",
     config = function()
       require("scope").setup({})
-      require("telescope").load_extension("scope")
     end,
   },
   -------------------------------------- tiny-inline-diagnostic.nvim --------------------
@@ -25,7 +24,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("tiny-inline-diagnostic").setup({
-        multiple_diag_under_cursor = true,
+        options = { show_all_diags_on_cursorline = true },
       })
     end,
   },

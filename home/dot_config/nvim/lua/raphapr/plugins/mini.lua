@@ -2,13 +2,24 @@ return {
   {
     "echasnovski/mini.nvim",
     version = "*",
-    event = { "User LazyUIEnter", "LspAttach" },
+    event = { "BufReadPre", "BufNewFile", "User LazyUIEnter", "LspAttach" },
     keys = {
       { "<C-e>", ":lua require('mini.bufremove').delete()<CR>", silent = true },
       { "<leader>bd", ":lua require('mini.bufremove').delete()<CR>", silent = true, desc = "Buffer: Delete" },
       { "<Esc>", "<ESC>:noh<CR>:lua require('mini.notify').clear()<CR>", silent = true },
+      {
+        "<leader>gd",
+        function()
+          require("mini.diff").toggle_overlay()
+        end,
+        desc = "Git: Toggle diff overlay",
+      },
     },
     config = function()
+      require("mini.diff").setup({
+        view = { style = "number" },
+        mappings = { apply = "<leader>ga" }, -- Keep gh for yank history.
+      })
       require("mini.indentscope").setup()
       require("mini.bufremove").setup()
       require("mini.surround").setup()
@@ -56,7 +67,6 @@ return {
           miniclue.gen_clues.z(),
 
           -- Normal mode
-          { mode = "n", keys = "<leader>v", desc = "venv-selector" },
           { mode = "n", keys = "<leader>f", desc = "Find" },
           { mode = "n", keys = "<leader>b", desc = "Buffers" },
           { mode = "n", keys = "<leader>g", desc = "Git" },

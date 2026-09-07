@@ -13,8 +13,6 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- Use 2-space indentation for YAML
     vim.api.nvim_command("setlocal ts=2 sts=2 sw=2 expandtab")
-    -- Highlight tabs as errors
-    vim.api.nvim_command("match Error /\\t/")
   end,
 })
 
@@ -39,12 +37,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Highlight Zk hashtags in markdown files within ZK_NOTEBOOK_DIR.
--- Uses matchadd (priority > 100) so it wins over treesitter highlighting.
-local zk_hashtag_group = vim.api.nvim_create_augroup("ZkHashtagHighlight", { clear = true })
+-- Window-local highlights must follow the buffer displayed in each window.
+local buffer_highlight_group = vim.api.nvim_create_augroup("BufferHighlights", { clear = true })
 local zk_hashtag_pattern = [[\v(^|[[:space:]\[({])\zs#[A-Za-z][A-Za-z0-9_/-]*]]
 
 vim.api.nvim_set_hl(0, "ZkHashtag", { link = "Identifier", default = true })
+vim.api.nvim_set_hl(0, "YamlTabError", { link = "Error", default = true })
 
 local function resolved_path(path)
   if not path or path == "" then
@@ -55,26 +53,31 @@ local function resolved_path(path)
 end
 
 vim.api.nvim_create_autocmd({ "BufWinEnter", "FileType", "WinEnter" }, {
-  group = zk_hashtag_group,
-  pattern = "*.md",
+  group = buffer_highlight_group,
   callback = function(event)
-    if vim.bo[event.buf].filetype ~= "markdown" then
-      return
-    end
+    for _, win in ipairs(vim.fn.win_findbuf(event.buf)) do
+      vim.api.nvim_win_call(win, function()
+        for _, match in ipairs(vim.fn.getmatches()) do
+          if match.group == "ZkHashtag" or match.group == "YamlTabError" then
+            vim.fn.matchdelete(match.id)
+          end
+        end
 
-    local notebook_dir = resolved_path(vim.env.ZK_NOTEBOOK_DIR)
-    local buffer_path = resolved_path(vim.api.nvim_buf_get_name(event.buf))
-    if notebook_dir == "" or not vim.startswith(buffer_path, notebook_dir .. "/") then
-      return
-    end
+        local filetype = vim.bo[event.buf].filetype
+        if filetype == "yaml" or filetype == "yml" then
+          vim.fn.matchadd("YamlTabError", [[\t]])
+        end
+        if filetype ~= "markdown" then
+          return
+        end
 
-    -- matchadd is window-local; drop stale matches before re-adding
-    for _, m in ipairs(vim.fn.getmatches()) do
-      if m.group == "ZkHashtag" then
-        vim.fn.matchdelete(m.id)
-      end
+        local notebook_dir = resolved_path(vim.env.ZK_NOTEBOOK_DIR)
+        local buffer_path = resolved_path(vim.api.nvim_buf_get_name(event.buf))
+        if notebook_dir ~= "" and vim.startswith(buffer_path, notebook_dir .. "/") then
+          vim.fn.matchadd("ZkHashtag", zk_hashtag_pattern, 200)
+        end
+      end)
     end
-    vim.fn.matchadd("ZkHashtag", zk_hashtag_pattern, 200)
   end,
 })
 
@@ -90,4 +93,3 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     require("tiny-inline-diagnostic").enable()
   end,
 })
-

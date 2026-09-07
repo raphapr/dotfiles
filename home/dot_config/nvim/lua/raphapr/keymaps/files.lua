@@ -8,6 +8,16 @@ vim.keymap.set("n", "<Tab>", ":BufferNext<CR>", { silent = true, desc = "switch 
 vim.keymap.set("n", "<S-Tab>", ":BufferPrevious<CR>", { silent = true, desc = "switch to previous buffer" })
 vim.keymap.set("n", "<leader>bn", ":BufferNext<CR>", { silent = true, desc = "Buffer: Next" })
 vim.keymap.set("n", "<leader>bp", ":BufferPrevious<CR>", { silent = true, desc = "Buffer: Previous" })
+vim.keymap.set("n", "<leader>by", function()
+  local path = vim.api.nvim_buf_get_name(0)
+  if path == "" then
+    vim.notify("Buffer has no file path", vim.log.levels.WARN)
+    return
+  end
+  local location = string.format("%s:L%d:C%d", path, vim.fn.line("."), vim.fn.col("."))
+  vim.fn.setreg("+", location, "v")
+  vim.notify("Copied: " .. location, vim.log.levels.INFO)
+end, { desc = "Buffer: Copy path, line and column" })
 
 -- open common configuration files
 vim.keymap.set(

@@ -20,7 +20,7 @@ function M.setup()
 
   require("mason").setup()
   require("mason-lspconfig").setup({
-    automatic_installation = false,
+    automatic_enable = false,
     ensure_installed = servers,
   })
 
