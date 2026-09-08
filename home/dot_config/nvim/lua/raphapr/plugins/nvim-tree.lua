@@ -39,7 +39,8 @@ return {
         actions = {
           change_dir = {
             enable = true,
-            global = true,
+            -- window-local cd so tree root changes don't trigger auto-session project switches
+            global = false,
           },
         },
         view = {

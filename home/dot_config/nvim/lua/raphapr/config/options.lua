@@ -52,6 +52,9 @@ opt.backupskip = "/tmp/*,/private/tmp/*"
 -- show cursor column
 opt.cursorcolumn = true
 
+-- auto-session recommends localoptions so filetype/indent survive restore
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- Auto-reload files when changed outside of Neovim
 vim.o.autoread = true
 

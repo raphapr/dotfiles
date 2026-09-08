@@ -17,7 +17,17 @@ return {
       path = 2,
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch", "diff", "diagnostics" },
+        lualine_b = {
+          {
+            function()
+              return require("auto-session.lib").current_session_name(true)
+            end,
+            icon = "",
+          },
+          "branch",
+          "diff",
+          "diagnostics",
+        },
         lualine_c = { { "filename", path = 1 } },
         lualine_x = { { get_venv }, "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },
