@@ -12,6 +12,7 @@ set -gx GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 set -gx FZF_DEFAULT_OPTS "--height 50%"
 set -gx ZK_NOTEBOOK_DIR $HOME/Cloud/Sync/notebook
 set -gx PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium
+set -gx MCP_UI_VIEWER none
 if status is-interactive
     set -gx GPG_TTY (tty)
     command -q gpg-connect-agent; and gpg-connect-agent updatestartuptty /bye >/dev/null 2>&1
