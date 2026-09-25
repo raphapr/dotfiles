@@ -52,7 +52,7 @@ zoxide = "latest"
 "npm:@openai/codex" = "latest"
 "github:1broseidon/cymbal" = "latest"
 "github:DataDog/pup" = "latest"
-"github:loadsmart/lumper" = "3.0.1"
+"github:loadsmart/lumper" = "3.0.2"
 "github:bjarneo/cliamp" = "latest"
 "github:CircleCI-Public/circleci-cli" = "1.0.48633"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }

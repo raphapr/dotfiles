@@ -10,6 +10,7 @@ set $PRINT      flameshot gui
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
 
+exec --no-startup-id snixembed --fork
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
 exec --no-startup-id udiskie
