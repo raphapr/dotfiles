@@ -101,6 +101,7 @@ font-manager
 freerdp
 freetype2
 game-devices-udev
+gamemode
 garcon
 gavl
 gcc
@@ -171,7 +172,6 @@ lib32-alsa-plugins
 lib32-at-spi2-core
 lib32-cairo
 lib32-colord
-lib32-flex
 lib32-freeglut
 lib32-fribidi
 lib32-gdk-pixbuf2
@@ -394,6 +394,7 @@ scrot
 serf
 smplayer
 snapd-glib
+snixembed
 socat
 sof-firmware
 squashfs-tools
@@ -404,6 +405,7 @@ subversion
 sudo
 sysfsutils
 sysstat
+tailscale
 tcpdump
 telegram-desktop
 terminus-font
