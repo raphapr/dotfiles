@@ -14,7 +14,7 @@ Type=simple
 ExecStart=%h/.local/share/mise/installs/pipx-headroom-ai/latest/bin/headroom proxy --port 8787 --code-aware --lossless --no-rate-limit
 Environment=HEADROOM_TELEMETRY=off
 Environment=HEADROOM_UPDATE_CHECK=off
-# Memory/CCR roots resolve to {cwd}/.headroom; pin cwd so they can't move.
+# Headroom workspace state, such as logs, resolves to {cwd}/.headroom; pin cwd so it cannot move.
 WorkingDirectory=%h
 Restart=always
 RestartSec=5
