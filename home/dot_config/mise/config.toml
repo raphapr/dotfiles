@@ -58,6 +58,7 @@ zoxide = "latest"
 "pipx:headroom-ai" = { version = "latest", extras = "all" }
 "npm:vaulted-cli" = "latest"
 "npm:@mermaid-js/mermaid-cli" = "latest"
+"ubi:1broseidon/cymbal" = "0.17.0"
 
 [settings]
 experimental = true
