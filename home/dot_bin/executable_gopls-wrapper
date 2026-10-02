@@ -1,4 +1,4 @@
 #!/bin/bash
 
-eval "$($HOME/.cargo/bin/mise activate bash)"
+eval "$(mise activate bash)"
 exec gopls "$@"

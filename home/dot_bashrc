@@ -131,7 +131,7 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 # mise
-eval "$($HOME/.cargo/bin/mise activate bash)"
+eval "$(mise activate bash)"
 
 # fzf initialization (installed via mise; must come after mise activate)
 command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash)"

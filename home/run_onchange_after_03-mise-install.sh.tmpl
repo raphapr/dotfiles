@@ -1,0 +1,23 @@
+#!/bin/bash
+# Re-runs whenever the mise config changes.
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+
+set -euo pipefail
+
+# One-time migration from the cargo-installed mise to pacman's /usr/bin/mise.
+# Every shim symlinks to the binary that created it, and the fish activation
+# cache calls shims/mise, so both must be rebuilt once the old binary is gone.
+if [[ -x /usr/bin/mise && -e "$HOME/.cargo/bin/mise" ]]; then
+  echo ">> Replacing ~/.cargo/bin/mise with /usr/bin/mise..."
+  rm -f "$HOME/.cargo/bin/mise" "$HOME/.cargo/bin/cargo-binstall" "$HOME/.cache/fish/mise.fish"
+  /usr/bin/mise reshim --force
+fi
+
+if ! command -v mise >/dev/null 2>&1; then
+  echo ">> mise not found; install it with: sudo pacman -S mise" >&2
+  exit 1
+fi
+
+echo ">> Syncing mise tools..."
+mise install --yes
+echo ">> Skipping destructive prune; review with: mise prune --dry-run"

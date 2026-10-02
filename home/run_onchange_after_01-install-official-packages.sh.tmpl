@@ -1,94 +1,44 @@
 #!/bin/bash
-# Re-runs whenever an official package manifest changes.
+# Re-runs whenever a package manifest for this host changes.
+# base manifest hash: {{ include "dot_pkglist/base/packages" | sha256sum }}
 # common manifest hash: {{ include "dot_pkglist/official/private_common" | sha256sum }}
-# bmo manifest hash: {{ include "dot_pkglist/official/bmo" | sha256sum }}
-# moochacho manifest hash: {{ include "dot_pkglist/official/moochacho" | sha256sum }}
+{{- $hostList := printf "dot_pkglist/official/%s" .chezmoi.hostname }}
+{{- if stat (joinPath .chezmoi.sourceDir $hostList) }}
+# {{ .chezmoi.hostname }} manifest hash: {{ include $hostList | sha256sum }}
+{{- end }}
 
 set -euo pipefail
 
-declare -r PKGLIST=$HOME/.pkglist
-HOSTNAME="$(hostname)"
-readonly HOSTNAME
-PKGLOG="/tmp/install-official-packages_$(date +%Y%m%d_%H%M%S).log"
-readonly PKGLOG
+{{ template "confirm.sh" (printf "Update the system and install official packages for %s?" .chezmoi.hostname) }}
 
-log() {
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
-}
+readonly PKGLIST=$HOME/.pkglist
+packages=()
 
-error() {
-  log "ERROR: $*" >&2
-}
-
-confirm_install() {
-  local reply=""
-
-  if [[ -t 0 ]]; then
-    read -r -p "Install official packages for hostname $HOSTNAME? [y/N] " reply
-  elif ! read -r -p "Install official packages for hostname $HOSTNAME? [y/N] " reply 2>/dev/null </dev/tty; then
-    echo "No TTY available; skipping official packages."
-    exit 0
-  fi
-
-  case "${reply,,}" in
-  y | yes) ;;
-  *)
-    echo "Skipping official packages."
-    exit 0
-    ;;
-  esac
-}
-
-append_packages_from_file() {
+queue_packages() {
   local pkg_file="$1"
-  local description="$2"
   local -a file_packages=()
 
   if [[ ! -f "$pkg_file" ]]; then
-    log "Package list not found at $pkg_file, skipping $description"
+    echo "No package list at $pkg_file, skipping."
     return 0
   fi
 
   mapfile -t file_packages < <(grep -Ev '^[[:space:]]*(#|$)' "$pkg_file")
   packages+=("${file_packages[@]}")
-  log "Queued ${#file_packages[@]} $description."
+  echo "Queued ${#file_packages[@]} packages from $pkg_file."
 }
 
-confirm_install
+echo ">> Updating system packages..."
+sudo pacman -Syu
 
-echo ">> Installing official packages for hostname: $HOSTNAME"
-
-########################################################
-# Package installation
-########################################################
-
-packages=()
-
-# Install common packages for all hosts
-append_packages_from_file "$PKGLIST/official/common" "common packages"
-
-# Install hostname-specific packages
-case "$HOSTNAME" in
-"bmo")
-  append_packages_from_file "$PKGLIST/official/bmo" "bmo-specific packages"
-  ;;
-"moochacho")
-  append_packages_from_file "$PKGLIST/official/moochacho" "moochacho-specific packages"
-  ;;
-*)
-  log "Unknown hostname: $HOSTNAME, installing common packages only"
-  ;;
-esac
-
-########################################################
-# Summary
-########################################################
+queue_packages "$PKGLIST/base/packages"
+queue_packages "$PKGLIST/official/common"
+queue_packages "$PKGLIST/official/{{ .chezmoi.hostname }}"
 
 if [[ ${#packages[@]} -eq 0 ]]; then
-  log "No official packages listed; nothing to install."
+  echo "No official packages listed; nothing to install."
   exit 0
 fi
 
-log "Installing ${#packages[@]} official packages in one transaction..."
+echo ">> Installing ${#packages[@]} official packages in one transaction..."
 sudo pacman -S --needed --noconfirm "${packages[@]}"
-log "Official package installation complete!"

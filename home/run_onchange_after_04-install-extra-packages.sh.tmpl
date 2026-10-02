@@ -1,41 +1,20 @@
 #!/bin/bash
-# Re-runs whenever pinned Yazi packages or global Python requirements change.
+# Re-runs whenever this script, pinned Yazi packages, global Python requirements, or bundled fonts change.
 # yazi packages: {{ include "dot_config/yazi/package.toml" | sha256sum }}
 # Python requirements: {{ include "dot_virtualenvs/global_requirements.txt" | sha256sum }}
+# fonts:{{ range glob (joinPath .chezmoi.sourceDir "dot_config/rofi/fonts/*") }} {{ include . | sha256sum }}{{ end }}
 
 set -euo pipefail
 
 readonly FONT_DIR="$HOME/.local/share/fonts"
 
-confirm_install() {
-  local reply=""
-
-  if [[ -t 0 ]]; then
-    read -r -p "Install extra packages? [y/N] " reply
-  elif ! read -r -p "Install extra packages? [y/N] " reply 2>/dev/null </dev/tty; then
-    echo "No TTY available; skipping extra packages."
-    exit 0
-  fi
-
-  case "${reply,,}" in
-  y | yes) ;;
-  *)
-    echo "Skipping extra packages."
-    exit 0
-    ;;
-  esac
-}
-
-confirm_install
+{{ template "confirm.sh" "Install extra packages?" }}
 
 echo ">> Installing extra packages..."
 
-########################################################
-# mise
-########################################################
-
-cargo install cargo-binstall
-cargo binstall mise
+# chezmoi may run this without mise activated (fresh install); shims expose
+# mise-managed ya, pip, and npm. mise's Python also avoids Arch's PEP 668 block.
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 ########################################################
 # yazi
@@ -88,27 +67,6 @@ install_gh_extension() {
 
 install_gh_extension dlvhdr/gh-dash
 install_gh_extension seachicken/gh-poi
-
-########################################################
-# kanata
-########################################################
-
-if [ "$(hostname)" = "bmo" ]; then
-  if ! getent group uinput >/dev/null; then
-    sudo groupadd --system uinput
-  fi
-  sudo usermod -aG input "$USER"
-  sudo usermod -aG uinput "$USER"
-  echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' |
-    sudo tee /etc/udev/rules.d/99-input.rules >/dev/null
-
-  sudo udevadm control --reload-rules
-  sudo udevadm trigger
-
-  sudo modprobe uinput
-
-  systemctl --user --now enable kanata
-fi
 
 ########################################################
 # set fish shell theme

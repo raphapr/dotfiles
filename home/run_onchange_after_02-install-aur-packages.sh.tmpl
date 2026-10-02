@@ -4,77 +4,26 @@
 
 set -euo pipefail
 
-declare -r PKGLIST=$HOME/.pkglist
-PKGLOG="/tmp/install-aur-packages_$(date +%Y%m%d_%H%M%S).log"
-readonly PKGLOG
+{{ template "confirm.sh" "Install AUR packages?" }}
 
-log() {
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$PKGLOG"
-}
+readonly PKG_AUR=$HOME/.pkglist/aur/packages
 
-error() {
-  log "ERROR: $*" >&2
-}
-
-confirm_install() {
-  local reply=""
-
-  if [[ -t 0 ]]; then
-    read -r -p "Install AUR packages? [y/N] " reply
-  elif ! read -r -p "Install AUR packages? [y/N] " reply 2>/dev/null </dev/tty; then
-    echo "No TTY available; skipping AUR packages."
-    exit 0
-  fi
-
-  case "${reply,,}" in
-  y | yes) ;;
-  *)
-    echo "Skipping AUR packages."
-    exit 0
-    ;;
-  esac
-}
-
-read_aur_packages() {
-  local pkg_file="$1"
-
-  if [[ ! -f "$pkg_file" ]]; then
-    error "AUR package list not found at $pkg_file"
-    return 1
-  fi
-
-  mapfile -t packages < <(grep -Ev '^[[:space:]]*(#|$)' "$pkg_file")
-}
-
-confirm_install
-
-echo ">> Installing AUR packages..."
-
-########################################################
-# Validation
-########################################################
-
-if ! command -v yay &>/dev/null; then
-  error "yay not found - installing yay first..."
-  sudo pacman -S yay --needed --noconfirm
+if [[ ! -f "$PKG_AUR" ]]; then
+  echo "AUR package list not found at $PKG_AUR" >&2
+  exit 1
 fi
 
-########################################################
-# AUR package installation
-########################################################
+if ! command -v yay >/dev/null 2>&1; then
+  echo ">> yay not found; installing it..."
+  sudo pacman -S --needed --noconfirm yay
+fi
 
-packages=()
-read_aur_packages "$PKGLIST/aur/packages"
-
-########################################################
-# Summary
-########################################################
+mapfile -t packages < <(grep -Ev '^[[:space:]]*(#|$)' "$PKG_AUR")
 
 if [[ ${#packages[@]} -eq 0 ]]; then
-  log "No AUR packages listed; nothing to install."
+  echo "No AUR packages listed; nothing to install."
   exit 0
 fi
 
-log "Installing ${#packages[@]} AUR packages in one transaction..."
+echo ">> Installing ${#packages[@]} AUR packages in one transaction..."
 yay -S --needed --noconfirm "${packages[@]}"
-log "AUR installation complete!"
