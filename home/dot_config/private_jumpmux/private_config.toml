@@ -8,7 +8,7 @@ worktrees = true
 sessions = false
 
 [sessions]
-exclude = ['scratchpad-journal','cliamp','_worktrees(/.*)?$']
+exclude = ['^scratchpad-journal$','^cliamp$','__worktrees/']
 discovery_command = ["ghq","list","-p"]
 
 [[sessions.entries]]
