@@ -1,31 +1,10 @@
 #!/bin/bash
-# Deploy system-level files that live outside $HOME
+# Deploy system-level files that live outside $HOME.
+# Re-runs whenever this script or a hashed file below changes.
 
 set -euo pipefail
 
-HOSTNAME="$(hostname)"
-readonly HOSTNAME
-
-confirm_system_changes() {
-  local reply=""
-
-  if [[ -t 0 ]]; then
-    read -r -p "Deploy system files and rebuild initramfs? [y/N] " reply
-  elif ! read -r -p "Deploy system files and rebuild initramfs? [y/N] " reply 2>/dev/null </dev/tty; then
-    echo "No TTY available; skipping system changes."
-    exit 0
-  fi
-
-  case "${reply,,}" in
-  y | yes) ;;
-  *)
-    echo "Skipping system changes."
-    exit 0
-    ;;
-  esac
-}
-
-confirm_system_changes
+{{ template "confirm.sh" "Deploy system files?" }}
 
 ########################################################
 # zram-generator config
@@ -41,39 +20,62 @@ sudo systemctl daemon-reload
 ########################################################
 
 # {{ include "dot_config/system/NetworkManager-iwd.conf" | sha256sum }}
-echo ">> Deploying NetworkManager iwd backend config..."
-sudo install -Dm644 "$HOME/.config/system/NetworkManager-iwd.conf" /etc/NetworkManager/conf.d/iwd.conf
+readonly NM_CONF=/etc/NetworkManager/conf.d/iwd.conf
+if ! cmp -s "$HOME/.config/system/NetworkManager-iwd.conf" "$NM_CONF"; then
+  echo ">> Deploying NetworkManager iwd backend config..."
+  sudo install -Dm644 "$HOME/.config/system/NetworkManager-iwd.conf" "$NM_CONF"
+  # NetworkManager reads the Wi-Fi backend only at startup.
+  sudo systemctl try-restart NetworkManager.service
+fi
+{{- if eq .chezmoi.hostname "moochacho" }}
 
 ########################################################
 # aftersleep script
 ########################################################
 
 # {{ include "dot_config/systemd/scripts/executable_aftersleep.sh" | sha256sum }}
-if [[ "$HOSTNAME" == "moochacho" ]]; then
-  sudo install -Dm755 "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
-fi
+sudo install -Dm755 "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/systemd/system-sleep/aftersleep
+{{- end }}
+{{- if eq .chezmoi.hostname "bmo" }}
 
 ########################################################
-# ath11k suspend/resume services (bmo: WiFi can hang s2idle)
+# ath11k suspend/resume services (WiFi can hang s2idle)
 ########################################################
 
-if [[ "$HOSTNAME" == "bmo" ]]; then
-  # {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
-  echo ">> Deploying ath11k resume service..."
-  sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-resume.service /etc/systemd/system/ath11k-resume.service
-  sudo systemctl daemon-reload
+# {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
+echo ">> Deploying ath11k resume service..."
+sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-resume.service /etc/systemd/system/ath11k-resume.service
+sudo systemctl daemon-reload
+
+########################################################
+# kanata: /dev/uinput access
+########################################################
+
+echo ">> Granting $USER access to /dev/uinput for kanata..."
+if ! getent group uinput >/dev/null; then
+  sudo groupadd --system uinput
 fi
+# Check this session's groups, not /etc/group: membership applies only after relogin.
+if [[ " $(id -nG) " != *" uinput "* ]]; then
+  echo "Log out and back in before kanata can open /dev/uinput."
+fi
+sudo usermod -aG input,uinput "$USER"
+echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' |
+  sudo tee /etc/udev/rules.d/99-input.rules >/dev/null
+# modprobe only lasts until reboot; modules-load.d loads it on every boot.
+echo uinput | sudo tee /etc/modules-load.d/uinput.conf >/dev/null
+sudo modprobe uinput
+{{- end }}
 
 ########################################################
 # copy home udev rules to /etc/udev/rules.d
 ########################################################
 
-# {{ include "dot_config/udev/rules.d/90-disable-mouse.rules" | sha256sum }}
+#{{ range glob (joinPath .chezmoi.sourceDir "dot_config/udev/rules.d/*.rules") }} {{ include . | sha256sum }}{{ end }}
 if compgen -G "${HOME}/.config/udev/rules.d/*.rules" >/dev/null 2>&1; then
   sudo cp "${HOME}"/.config/udev/rules.d/*.rules /etc/udev/rules.d/
-  sudo udevadm control --reload-rules
-  sudo mkinitcpio -P
-  echo "Udev rules copied and initramfs rebuilt"
 else
-  echo "Warning: no udev rules found, skipping"
+  echo "Warning: no home udev rules found, skipping copy"
 fi
+sudo udevadm control --reload-rules
+sudo udevadm trigger
