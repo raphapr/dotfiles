@@ -23,11 +23,15 @@ jq -r '
 
   def codex:
     entry("openai") as $entry
-    | if $entry == null or $entry.status != "ready" or $entry.stale or ($entry.metrics | length) == 0 then
+    | metric($entry; "Codex 5h") as $session
+    | metric($entry; "Codex weekly") as $weekly
+    | if $entry == null or $entry.status != "ready" or $entry.stale or $session == null or $weekly == null then
         unavailable("CX")
       else
-        $entry.metrics[0] as $weekly
-        | paint($weekly; "CX wk:\($weekly.value)")
+        "#[fg=#cba6f7]CX "
+        + paint($session; "5h:\($session.value)")
+        + " "
+        + paint($weekly; "wk:\($weekly.value)")
       end;
 
   def claude:
