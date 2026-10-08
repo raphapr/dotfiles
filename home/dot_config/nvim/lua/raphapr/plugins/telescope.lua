@@ -102,7 +102,6 @@ return {
       })
       telescope.load_extension("media_files")
       telescope.load_extension("zoxide")
-      telescope.load_extension("yank_history")
       telescope.load_extension("undo")
       telescope.load_extension("ui-select")
       telescope.load_extension("scope")

@@ -2,7 +2,7 @@ return {
   {
     "gbprod/yanky.nvim",
     dependencies = { "kkharji/sqlite.lua" },
-    lazy = true,
+    event = "VeryLazy",
     keys = {
       { "gh", ":Telescope yank_history<CR>", noremap = true, silent = true, desc = "Yanky History" },
     },
