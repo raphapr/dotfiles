@@ -3,7 +3,7 @@
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 json="$(timeout 30 ai-usagebar usage --json 2>/dev/null)" || {
-  printf '#[fg=#f38ba8]CX ? #[fg=#6c7086]│ #[fg=#f38ba8]CC ?'
+  printf '#[fg=#cba6f7,bold]CX#[nobold] #[fg=#f38ba8]? #[fg=#585b70]│ #[fg=#cba6f7,bold]CC#[nobold] #[fg=#f38ba8]?'
   exit
 }
 
@@ -18,8 +18,10 @@ jq -r '
   def entry($id): (.entries | map(select(.id == $id)) | .[0]);
   def metric($entry; $prefix):
     (($entry.metrics // []) | map(select(.label | startswith($prefix))) | .[0]);
-  def unavailable($label): "#[fg=#f38ba8]\($label) ?";
-  def paint($metric; $text): "#[fg=\(color($metric.severity))]\($text)";
+  def name($label): "#[fg=#cba6f7,bold]\($label)#[nobold]";
+  def unavailable($label): "\(name($label)) #[fg=#f38ba8]?";
+  def paint($metric; $label): "#[fg=#7f849c]\($label) #[fg=\(color($metric.severity))]\($metric.value)";
+  def pair($session; $weekly): paint($session; "S") + " " + paint($weekly; "W");
 
   def codex:
     entry("openai") as $entry
@@ -28,10 +30,7 @@ jq -r '
     | if $entry == null or $entry.status != "ready" or $entry.stale or $session == null or $weekly == null then
         unavailable("CX")
       else
-        "#[fg=#cba6f7]CX "
-        + paint($session; "5h:\($session.value)")
-        + " "
-        + paint($weekly; "wk:\($weekly.value)")
+        name("CX") + " " + pair($session; $weekly)
       end;
 
   def claude:
@@ -41,11 +40,8 @@ jq -r '
     | if $entry == null or $entry.status != "ready" or $entry.stale or $session == null or $weekly == null then
         unavailable("CC")
       else
-        "#[fg=#cba6f7]CC "
-        + paint($session; "5h:\($session.value)")
-        + " "
-        + paint($weekly; "wk:\($weekly.value)")
+        name("CC") + " " + pair($session; $weekly)
       end;
 
-  codex + " #[fg=#6c7086]│ " + claude
-' <<<"$json" 2>/dev/null || printf '#[fg=#f38ba8]CX ? #[fg=#6c7086]│ #[fg=#f38ba8]CC ?'
+  codex + " #[fg=#585b70]│ " + claude
+' <<<"$json" 2>/dev/null || printf '#[fg=#cba6f7,bold]CX#[nobold] #[fg=#f38ba8]? #[fg=#585b70]│ #[fg=#cba6f7,bold]CC#[nobold] #[fg=#f38ba8]?'
