@@ -24,7 +24,14 @@ function M.setup()
   vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", { desc = "Show LSP Info" })
   vim.api.nvim_create_user_command("LspRestart", "lsp restart", { desc = "Restart LSP" })
   vim.api.nvim_create_user_command("LspStop", "lsp stop", { desc = "Stop LSP" })
-  vim.api.nvim_create_user_command("LspStart", "lsp start", { desc = "Start LSP" })
+  -- Bare `:lsp enable` would also enable every nvim-lspconfig config for the filetype
+  -- (e.g. stylua); re-enabling only the enabled ones restarts what `:lsp stop` killed.
+  vim.api.nvim_create_user_command("LspStart", function()
+    local configs = vim.lsp.get_configs({ enabled = true, filetype = vim.bo.filetype })
+    vim.lsp.enable(vim.tbl_map(function(config)
+      return config.name
+    end, configs))
+  end, { desc = "Start LSP" })
 
   -- Setup diagnostics
   require("raphapr.lsp.diagnostics").setup()
