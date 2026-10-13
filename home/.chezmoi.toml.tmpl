@@ -20,5 +20,6 @@ pager = "diff-so-fancy"
 
 [onepassword]
   # Avoid TTY prompts in non-interactive chezmoi commands.
-  # Run `eval $(op signin)` first when a session is required.
+  # Auth goes through the 1Password app (Settings > Developer >
+  # Integrate with 1Password CLI); no `op signin` session needed.
   prompt = false
