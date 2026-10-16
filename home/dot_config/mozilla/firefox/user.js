@@ -161,14 +161,12 @@ user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("browser.discovery.enabled", false);
 user_pref("browser.shell.checkDefaultBrowser", false);
-user_pref(
-  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
-  false,
-);
-user_pref(
-  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
-  false,
-);
+// prettier-ignore
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+// prettier-ignore
+user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+// Open links from other apps (e.g. PWAs) in a new tab of the existing window
+user_pref("browser.link.open_newwindow.override.external", 3);
 user_pref("browser.preferences.moreFromMozilla", false);
 user_pref("browser.aboutConfig.showWarning", false);
 user_pref("browser.aboutwelcome.enabled", false);
