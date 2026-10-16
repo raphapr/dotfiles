@@ -22,25 +22,27 @@ jq -r '
   def unavailable($label): "\(name($label)) #[fg=#f38ba8]?";
   def paint($metric; $label): "#[fg=#7f849c]\($label) #[fg=\(color($metric.severity))]\($metric.value)";
   def pair($session; $weekly): paint($session; "S") + " " + paint($weekly; "W");
+  # ai-usagebar serves cached figures flagged stale when the API rate-limits (429).
+  def stale_mark($entry): if $entry.stale then " #[fg=#585b70]⏸" else "" end;
 
   def codex:
     entry("openai") as $entry
     | metric($entry; "Codex 5h") as $session
     | metric($entry; "Codex weekly") as $weekly
-    | if $entry == null or $entry.status != "ready" or $entry.stale or $session == null or $weekly == null then
+    | if $entry == null or $entry.status != "ready" or $session == null or $weekly == null then
         unavailable("CX")
       else
-        name("CX") + " " + pair($session; $weekly)
+        name("CX") + " " + pair($session; $weekly) + stale_mark($entry)
       end;
 
   def claude:
     entry("anthropic") as $entry
     | metric($entry; "Session") as $session
     | metric($entry; "Weekly") as $weekly
-    | if $entry == null or $entry.status != "ready" or $entry.stale or $session == null or $weekly == null then
+    | if $entry == null or $entry.status != "ready" or $session == null or $weekly == null then
         unavailable("CC")
       else
-        name("CC") + " " + pair($session; $weekly)
+        name("CC") + " " + pair($session; $weekly) + stale_mark($entry)
       end;
 
   codex + " #[fg=#585b70]│ " + claude
