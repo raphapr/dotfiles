@@ -6,6 +6,8 @@ set $BROWSER    firefox
 set $TERM       kitty -1
 set $FM         thunar
 set $PRINT      flameshot gui
+# Own scope under user@.service so systemd-oomd can kill the app.
+set $scope      systemd-run --user --scope --quiet
 
 # }}}
 # Startup apps          ----------------------------------------------------- {{{
@@ -14,12 +16,12 @@ exec --no-startup-id snixembed --fork
 exec --no-startup-id nm-applet
 exec --no-startup-id volnoti
 exec --no-startup-id udiskie
-exec --no-startup-id dropbox start
+exec --no-startup-id $scope dropbox start
 exec --no-startup-id picom -b
 exec --no-startup-id thunar --daemon
 exec --no-startup-id autorandr --change && feh --bg-fill ~/.wallpaper.png
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id Telegram -startintray
+exec --no-startup-id $scope Telegram -startintray
 exec --no-startup-id sleep 2 && flameshot  # delay needed: flameshot fails if started before tray is ready
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id greenclip daemon
@@ -66,7 +68,7 @@ bindsym $mod+Tab exec rofi -show window
 # %%hotkey: show clipboard history
 bindsym $mod+n exec --no-startup-id ~/.bin/rofi-clipboard
 # %%hotkey: 1password
-bindsym $mod+y exec --no-startup-id 1password --quick-access
+bindsym $mod+y exec --no-startup-id $scope 1password --quick-access
 
 # %%hotkey: change focus left
 bindsym $mod+h focus left
@@ -190,16 +192,16 @@ bindsym $mod2+9 move container to workspace 9
 # Custom Shortcuts      ----------------------------------------------------- {{{
 
 # %%hotkey: firefox private window
-bindsym $mod+slash exec --no-startup-id $BROWSER --private-window
+bindsym $mod+slash exec --no-startup-id $scope $BROWSER --private-window
 
 # %%hotkey: start terminal
-bindsym $mod+Return exec --no-startup-id $TERM
+bindsym $mod+Return exec --no-startup-id $scope $TERM
 
 # %%hotkey: open the main tmux session
-bindsym $mod2+Return exec --no-startup-id $TERM -e $HOME/.bin/tmux-session raphael
+bindsym $mod2+Return exec --no-startup-id $scope $TERM -e $HOME/.bin/tmux-session raphael
 
 # %%hotkey: browser
-bindsym $mod+q exec --no-startup-id $BROWSER
+bindsym $mod+q exec --no-startup-id $scope $BROWSER
 
 # %%hotkey: flameshot print screen
 bindsym --release $mod+Print exec --no-startup-id unset SESSION_MANAGER && $PRINT
@@ -290,14 +292,14 @@ for_window [title="^\.WhatsApp"] move to workspace 2
 set $journal kitty --instance-group scratchpad-journal --class=scratchpad-journal -e $HOME/.bin/tmux-session scratchpad-journal
 set $ai_usage kitty --instance-group scratchpad-ai-usage --class=scratchpad-ai-usage -e ai-usagebar-tui
 
-exec --no-startup-id $ai_usage
+exec --no-startup-id $scope $ai_usage
 for_window [class="scratchpad-ai-usage"] move to scratchpad, resize set width 875 height 600
 # %%hotkey: toggle AI usage scratchpad, relaunch if closed
-bindsym $mod+g exec --no-startup-id i3-msg '[class="scratchpad-ai-usage"] scratchpad show' || $ai_usage
+bindsym $mod+g exec --no-startup-id i3-msg '[class="scratchpad-ai-usage"] scratchpad show' || $scope $ai_usage
 
-exec --no-startup-id $journal
+exec --no-startup-id $scope $journal
 for_window [class="scratchpad-journal"] move to scratchpad, resize set width 1000 height 600
 # %%hotkey: toggle journal scratchpad, relaunch if closed
-bindsym F11 exec --no-startup-id i3-msg '[class="scratchpad-journal"] scratchpad show' || $journal
+bindsym F11 exec --no-startup-id i3-msg '[class="scratchpad-journal"] scratchpad show' || $scope $journal
 
 #}}}

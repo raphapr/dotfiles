@@ -16,6 +16,21 @@ sudo install -Dm644 "$HOME/.config/system/zram-generator.conf" /etc/systemd/zram
 sudo systemctl daemon-reload
 
 ########################################################
+# systemd-oomd: kill early instead of thrashing into a freeze
+########################################################
+
+#{{ range glob (joinPath .chezmoi.sourceDir "dot_config/system/systemd-oomd/*.conf") }} {{ include . | sha256sum }}{{ end }}
+echo ">> Deploying systemd-oomd config..."
+readonly OOMD_SRC="$HOME/.config/system/systemd-oomd"
+sudo install -Dm644 "$OOMD_SRC/oomd.conf" /etc/systemd/oomd.conf.d/10-tune.conf
+sudo install -Dm644 "$OOMD_SRC/root-slice.conf" /etc/systemd/system/-.slice.d/10-oomd.conf
+sudo install -Dm644 "$OOMD_SRC/user-service.conf" /etc/systemd/system/user@.service.d/10-oomd.conf
+sudo install -Dm644 "$OOMD_SRC/session-scope.conf" /etc/systemd/system/session-.scope.d/10-oomd.conf
+sudo systemctl daemon-reload
+# oomd reads oomd.conf only at startup; no-op if it isn't running yet.
+sudo systemctl try-restart systemd-oomd.service
+
+########################################################
 # NetworkManager Wi-Fi backend (required by impala)
 ########################################################
 

@@ -13,6 +13,8 @@ echo ">> Enabling systemd services..."
 
 systemctl --user daemon-reload
 systemctl --user enable --now redshift.service gopls.service
+# Config is deployed by run_onchange_after_05-system-files.sh.
+sudo systemctl enable --now systemd-oomd.service
 {{- if eq .chezmoi.hostname "moochacho" }}
 
 sudo systemctl daemon-reload

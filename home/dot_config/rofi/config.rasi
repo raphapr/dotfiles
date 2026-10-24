@@ -26,7 +26,7 @@ configuration {
 
 	/*---------- SSH settings ----------*/
 	ssh-client: "ssh";
-	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";
+	ssh-command: "systemd-run --user --scope --quiet {terminal} -e {ssh-client} {host} [-p {port}]";
 	parse-hosts: true;
 	parse-known-hosts: true;
 
@@ -46,9 +46,10 @@ configuration {
     }
 
 	/*---------- Run settings ----------*/
-	run-command: "{cmd}";
+	/* Own scope under user@.service so systemd-oomd can kill the app. */
+	run-command: "systemd-run --user --scope --quiet {cmd}";
 	run-list-command: "";
-	run-shell-command: "{terminal} -e {cmd}";
+	run-shell-command: "systemd-run --user --scope --quiet {terminal} -e {cmd}";
 
 	/*---------- Fallback Icon ----------*/
 	run,drun {
