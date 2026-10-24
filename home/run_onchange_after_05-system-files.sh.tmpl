@@ -54,15 +54,6 @@ sudo install -Dm755 "${HOME}"/.config/systemd/scripts/aftersleep.sh /usr/lib/sys
 {{- if eq .chezmoi.hostname "bmo" }}
 
 ########################################################
-# ath11k suspend/resume services (WiFi can hang s2idle)
-########################################################
-
-# {{ include "dot_config/systemd/system/ath11k-resume.service" | sha256sum }}
-echo ">> Deploying ath11k resume service..."
-sudo install -Dm644 "${HOME}"/.config/systemd/system/ath11k-resume.service /etc/systemd/system/ath11k-resume.service
-sudo systemctl daemon-reload
-
-########################################################
 # kanata: /dev/uinput access
 ########################################################
 
