@@ -265,6 +265,8 @@ client.background       #1e1e2e
 # Window rules          ----------------------------------------------------- {{{
 
 # floating windows
+# flameshot capture overlay must float over all monitors, or i3 tiles and hides it
+for_window [class="flameshot" title="flameshot"] floating enable, border pixel 0, move absolute position 0 0
 for_window [class="Steam" instance="Steam" title="Friends"] floating enable
 for_window [title="Lock Screen — 1Password"] floating enable, resize set 800 500
 for_window [class="^pritunl$"] floating enable, move position center, resize set width 900 height 700
