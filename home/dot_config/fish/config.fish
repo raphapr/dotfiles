@@ -76,6 +76,9 @@ function fish_user_key_bindings
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
 
+    bind \cg _atuin_ai_resume
+    bind -M insert \cg _atuin_ai_resume
+
     bind -M insert \cj history-search-forward
     bind \cj history-search-forward
 
@@ -136,6 +139,8 @@ abbr -a vim nvim
 abbr -a -- - 'cd -'
 abbr -a cz chezmoi
 abbr -a cdiff 'chezmoi diff'
+# abbr, not alias: conf.d/atuin-resume.fish matches the typed `atuin resume`
+abbr -a resume 'atuin resume'
 
 # }}}
 # pacman           {{{
