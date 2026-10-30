@@ -65,8 +65,12 @@ vim.uv.fs_chmod(constants.paths.undodir, 448)
 opt.undodir = constants.paths.undodir
 
 
--- prepend mise shims to PATH
-vim.env.PATH = vim.env.HOME .. "/.local/share/mise/shims:" .. vim.env.PATH
+-- Append mise shims as a fallback for sessions started without mise activated.
+-- Shims add ~80ms per spawn, so real install paths from the shell must win.
+local mise_shims = vim.env.HOME .. "/.local/share/mise/shims"
+if not vim.tbl_contains(vim.split(vim.env.PATH, ":", { plain = true }), mise_shims) then
+  vim.env.PATH = vim.env.PATH .. ":" .. mise_shims
+end
 
 -------------------------------------- folding -----------------------------------------
 

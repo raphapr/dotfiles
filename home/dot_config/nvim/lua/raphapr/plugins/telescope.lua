@@ -62,7 +62,7 @@ return {
 
       telescope.setup({
         defaults = {
-          file_ignore_patterns = { ".git/", "node_modules", ".gem/" },
+          file_ignore_patterns = { "%.git/", "node_modules", "%.gem/" },
           preview = {
             treesitter = { enable = false },
           },
@@ -90,6 +90,13 @@ return {
               ["<C-u>"] = moveUp,
               ["<C-d>"] = moveDown,
             },
+          },
+        },
+        pickers = {
+          find_files = {
+            -- telescope appends --hidden for fd; exclude .git so its internals
+            -- are not listed and then filtered in Lua.
+            find_command = { "fd", "--type", "f", "--color", "never", "--exclude", ".git" },
           },
         },
         extensions = {

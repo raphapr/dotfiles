@@ -1,13 +1,17 @@
 return {
   -------------------------------------- misc -------------------------------------------
   -- editorconfig support is built into Neovim >= 0.9
-  "tridactyl/vim-tridactyl",
-  "norcalli/nvim-colorizer.lua",
+  { "tridactyl/vim-tridactyl", ft = "tridactyl" },
   { "mg979/vim-visual-multi", event = "BufRead" },
   { "towolf/vim-helm", ft = { "helm" } },
-  { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
   { "hashivim/vim-terraform", ft = { "terraform" } },
-  { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TodoTelescope", "TodoTrouble", "TodoQuickFix", "TodoLocList" },
+    opts = {},
+  },
   { "andymass/vim-matchup", event = "BufReadPost" },
   { "mcauley-penney/visual-whitespace.nvim", config = true, keys = { "v", "V", "<C-v>" } },
   -------------------------------------- scope.nvim -------------------------------------

@@ -17,6 +17,7 @@ return {
   {
     "ray-x/go.nvim",
     dependencies = {
+      { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
       { "mfussenegger/nvim-dap" },
       { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
       { "theHamsta/nvim-dap-virtual-text" },

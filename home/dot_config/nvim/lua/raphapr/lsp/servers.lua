@@ -44,14 +44,12 @@ function M.setup()
   vim.lsp.config("ts_ls", {
     cmd = { "typescript-language-server", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-    root_markers = { "package.json", "tsconfig.json", ".git" },
   })
 
   -- ESLint
   vim.lsp.config("eslint", {
     cmd = { "vscode-eslint-language-server", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-    root_markers = { ".eslintrc.js", ".eslintrc.json", ".eslintrc.yaml", ".eslintrc.yml", "package.json", ".git" },
   })
 
   -- JSON

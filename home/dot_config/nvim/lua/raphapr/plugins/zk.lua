@@ -1,7 +1,21 @@
 return {
   {
     "zk-org/zk-nvim",
-    lazy = false,
+    ft = "markdown",
+    cmd = { "ZkNew", "ZkNotes", "ZkTags", "ZkMatch", "ZkBacklinks", "ZkLinks", "ZkIndex", "ZkCd", "ZkInsertLink" },
+    -- Triggers only; config below defines the real mappings.
+    keys = {
+      { "<leader>zn", desc = "zk: Create new note" },
+      { "<leader>zd", desc = "zk: Daily note (today)" },
+      { "<leader>zr", desc = "zk: Daily note (tomorrow)" },
+      { "<leader>zw", desc = "zk: Weekly note" },
+      { "<leader>zo", desc = "zk: Open notes" },
+      { "<leader>zt", desc = "zk: Open notes by tags" },
+      { "<leader>zs", desc = "zk: Search notes" },
+      { "<leader>zb", desc = "zk: Open notes linking to the current buffer" },
+      { "<leader>zl", desc = "zk: Open notes linked by the current buffer" },
+      { "<leader>zm", mode = "v", desc = "zk: Search notes by selection" },
+    },
     config = function()
       require("zk").setup({
         picker = "telescope",

@@ -2,24 +2,31 @@ return {
   {
     "echasnovski/mini.nvim",
     version = "*",
-    event = { "BufReadPre", "BufNewFile", "User LazyUIEnter", "LspAttach" },
+    event = { "BufReadPre", "BufNewFile", "LspAttach" },
     keys = {
       { "<C-e>", ":lua require('mini.bufremove').delete()<CR>", silent = true },
       { "<leader>bd", ":lua require('mini.bufremove').delete()<CR>", silent = true, desc = "Buffer: Delete" },
-      { "<Esc>", "<ESC>:noh<CR>:lua require('mini.notify').clear()<CR>", silent = true },
+      -- Must stay a <Cmd> string: :nohlsearch has no effect when run inside a function.
       {
-        "<leader>gd",
-        function()
-          require("mini.diff").toggle_overlay()
-        end,
-        desc = "Git: Toggle diff overlay",
+        "<Esc>",
+        "<Cmd>nohlsearch<Bar>lua require('mini.notify').clear()<CR>",
+        desc = "Clear search highlight and notifications",
       },
     },
     config = function()
-      require("mini.diff").setup({
-        view = { style = "number" },
-        mappings = { apply = "<leader>ga" }, -- Keep gh for yank history.
-      })
+      -- Hex color highlighting, skipped in markdown and yaml.
+      local hipatterns = require("mini.hipatterns")
+      local hex_color = hipatterns.gen_highlighter.hex_color()
+      local hex_pattern = hex_color.pattern
+      hex_color.pattern = function(buf_id)
+        local filetype = vim.bo[buf_id].filetype
+        if filetype == "markdown" or filetype == "yaml" then
+          return nil
+        end
+        return hex_pattern(buf_id)
+      end
+      hipatterns.setup({ highlighters = { hex_color = hex_color } })
+
       require("mini.indentscope").setup()
       require("mini.bufremove").setup()
       require("mini.surround").setup()

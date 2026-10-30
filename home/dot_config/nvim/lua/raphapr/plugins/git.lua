@@ -3,20 +3,19 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      { "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Git: Toggle current line blame" },
+      { "<leader>gd", "<cmd>Gitsigns preview_hunk_inline<CR>", desc = "Git: Preview hunk inline" },
+      { "<leader>ga", "<cmd>Gitsigns stage_hunk<CR>", desc = "Git: Stage hunk" },
+      { "<leader>ga", ":Gitsigns stage_hunk<CR>", mode = "x", silent = true, desc = "Git: Stage selected lines" },
+    },
     opts = {
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
       numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
       linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
     },
-    config = function(_, opts)
-      require("gitsigns").setup(opts)
-      local U = require("raphapr.config.utils")
-      vim.keymap.set("n", "<leader>go", function()
-        U.run_async({ "gh", "browse" }, "GitHub")
-      end, { silent = true, desc = "Git: Open project in browser" })
-      vim.keymap.set("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Git: Toggle current line blame" })
-    end,
   },
   -------------------------------------- gitlinker --------------------------------------
   {

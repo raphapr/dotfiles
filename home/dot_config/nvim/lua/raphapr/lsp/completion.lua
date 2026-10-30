@@ -5,6 +5,7 @@ function M.setup()
   local lspkind = require("lspkind")
 
   require("luasnip.loaders.from_vscode").lazy_load()
+  require("luasnip.loaders.from_lua").lazy_load({ paths = { require("raphapr.config.constants").paths.luasnip } })
 
   cmp.setup({
     preselect = "item",
@@ -56,7 +57,7 @@ function M.setup()
           path = "[path]",
           luasnip = "[snip]",
           buffer = "[buf]",
-          render_markdown = "[markdown]",
+          ["render-markdown"] = "[markdown]",
           fish = "[fish]",
         },
       }),

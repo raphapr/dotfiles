@@ -56,6 +56,11 @@ vim.keymap.set(
   { silent = true, desc = "Misc: Load current lua file" }
 )
 
+-- GitHub integration
+vim.keymap.set("n", "<leader>go", function()
+  U.run_async({ "gh", "browse" }, "GitHub")
+end, { silent = true, desc = "Git: Open project in browser" })
+
 -- CircleCI integration
 vim.keymap.set("n", "<leader>mi", function()
   U.run_async({ "circleci", "project", "open" }, "CircleCI")

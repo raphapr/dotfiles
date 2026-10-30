@@ -1,10 +1,9 @@
 local function get_venv()
   local venv = vim.env.VIRTUAL_ENV
-  if venv then
-    return "venv:" .. venv:match(".*/(.*)$") .. ""
-  else
-    return ""
+  if venv and venv ~= "" then
+    return "venv:" .. vim.fs.basename(venv)
   end
+  return ""
 end
 
 return {
@@ -14,7 +13,6 @@ return {
     opts = {
       options = { theme = "catppuccin-nvim" },
       extensions = { "nvim-tree", "trouble", "lazy" },
-      path = 2,
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },

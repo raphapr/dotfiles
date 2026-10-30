@@ -2,14 +2,14 @@ return {
 
   {
     "romgrk/barbar.nvim",
-    priority = 100,
     event = { "BufReadPre", "BufNewFile", "VeryLazy" },
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       { "lewis6991/gitsigns.nvim" },
     },
     init = function()
-      vim.g.barbar_auto_setup = true
+      -- lazy calls setup(opts); auto-setup would run setup a second time
+      vim.g.barbar_auto_setup = false
     end,
     opts = {
       tabpages = true,
