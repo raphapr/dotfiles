@@ -19,31 +19,21 @@ local ensure_installed = {
   "yaml",
 }
 
-return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    lazy = false,
-    build = ":TSUpdate",
-    config = function()
-      local ts = require("nvim-treesitter")
-      ts.setup()
-      ts.install(ensure_installed)
+local ts = require("nvim-treesitter")
+ts.setup()
+ts.install(ensure_installed)
 
-      -- The main branch does not enable highlighting by itself;
-      -- start treesitter when a parser is available for the filetype
-      vim.api.nvim_create_autocmd("FileType", {
-        group = vim.api.nvim_create_augroup("TreesitterStart", { clear = true }),
-        callback = function(event)
-          if event.match == "tmux" then
-            return
-          end
-          local lang = vim.treesitter.language.get_lang(event.match)
-          if lang and vim.treesitter.language.add(lang) then
-            vim.treesitter.start(event.buf, lang)
-          end
-        end,
-      })
-    end,
-  },
-}
+-- The main branch does not enable highlighting by itself;
+-- start treesitter when a parser is available for the filetype
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("TreesitterStart", { clear = true }),
+  callback = function(event)
+    if event.match == "tmux" then
+      return
+    end
+    local lang = vim.treesitter.language.get_lang(event.match)
+    if lang and vim.treesitter.language.add(lang) then
+      vim.treesitter.start(event.buf, lang)
+    end
+  end,
+})

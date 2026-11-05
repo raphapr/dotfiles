@@ -19,13 +19,13 @@ function U.go_to_definition_split()
   })
 end
 
-function U.run_async(command, description)
+function U.run_async(command, description, opts)
   if vim.fn.executable(command[1]) ~= 1 then
     vim.notify(command[1] .. " is not executable", vim.log.levels.ERROR, { title = description })
     return
   end
 
-  vim.system(command, { text = true }, function(result)
+  vim.system(command, vim.tbl_extend("force", { text = true }, opts or {}), function(result)
     if result.code == 0 then
       return
     end

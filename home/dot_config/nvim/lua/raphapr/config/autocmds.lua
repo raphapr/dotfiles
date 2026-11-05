@@ -44,6 +44,29 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- Cursor column and current line number highlight only in the active window
+-- ('cursorlineopt' is "number", so 'cursorline' only colors the number).
+-- Floats (pickers, hover) and special buffers keep their own settings.
+local function set_cursor_marks(enabled)
+  if vim.api.nvim_win_get_config(0).relative ~= "" or vim.bo.buftype ~= "" then
+    return
+  end
+  vim.wo.cursorline = enabled
+  vim.wo.cursorcolumn = enabled
+end
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
+  group = group,
+  callback = function()
+    set_cursor_marks(true)
+  end,
+})
+vim.api.nvim_create_autocmd("WinLeave", {
+  group = group,
+  callback = function()
+    set_cursor_marks(false)
+  end,
+})
+
 -- Highlight yank region
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = group,

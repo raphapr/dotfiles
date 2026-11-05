@@ -3,11 +3,7 @@ local M = {}
 function M.setup()
   vim.opt.signcolumn = "yes"
 
-  local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-  vim.lsp.config("*", {
-    capabilities = capabilities,
-  })
+  -- blink.cmp registers its capabilities for every server via vim.lsp.config("*").
 
   -- LspAttach is where you enable features that only work
   -- if there is a lsp active in the file
@@ -33,12 +29,8 @@ function M.setup()
     end, configs))
   end, { desc = "Start LSP" })
 
-  -- Setup diagnostics
   require("raphapr.lsp.diagnostics").setup()
-
-  -- Completion is set up by the nvim-cmp plugin spec (plugins/lsp.lua)
-
-  -- Setup LSP servers using native vim.lsp
+  require("raphapr.lsp.completion").setup()
   require("raphapr.lsp.servers").setup()
 end
 

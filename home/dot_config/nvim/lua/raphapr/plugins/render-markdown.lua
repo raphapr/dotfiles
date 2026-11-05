@@ -1,16 +1,10 @@
-return {
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "echasnovski/mini.nvim" },
-    lazy = true,
-    ft = { "markdown", "gitcommit" },
-    config = function()
-      require("render-markdown").setup({
-        file_types = { "markdown", "gitcommit" },
-        html = { enabled = false },
-        latex = { enabled = false },
-      })
-      vim.keymap.set("n", "<leader>mt", ":lua require('render-markdown').toggle()<CR>", { noremap = true, desc = "Misc: Toggle render-markdown" })
-    end,
-  },
-}
+require("render-markdown").setup({
+  file_types = { "markdown", "gitcommit" },
+  html = { enabled = false },
+  latex = { enabled = false },
+  -- In-process LSP, so blink.cmp gets callout and checkbox completions.
+  completions = { lsp = { enabled = true } },
+})
+vim.keymap.set("n", "<leader>mt", function()
+  require("render-markdown").toggle()
+end, { desc = "Misc: Toggle render-markdown" })

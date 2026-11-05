@@ -6,7 +6,6 @@ M.paths = {
   fish_config = "~/.config/fish/config.fish",
   i3_config = "~/.i3/config",
   backlog = "~/Cloud/Sync/notebook/backlog.md",
-  luasnip = "~/.config/nvim/lua/raphapr/luasnip/",
   undodir = vim.fn.stdpath("state") .. "/undo",
 }
 

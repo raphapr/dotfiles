@@ -1,15 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
--- Suppress vim.tbl_flatten deprecation warnings from third-party plugins
-local _deprecate = vim.deprecate
-vim.deprecate = function(name, ...)
-  if name == "vim.tbl_flatten" then
-    return
-  end
-  _deprecate(name, ...)
-end
-
 -------------------------------------- globals -----------------------------------------
 
 -- disable netrw in favor of nvim-tree
@@ -49,8 +40,29 @@ opt.undolevels = 1000
 opt.undoreload = 10000
 opt.backupskip = "/tmp/*,/private/tmp/*"
 
--- show cursor column
+-- cursor column and a highlighted current line number, without a cursor line
+-- bar (autocmds.lua keeps both to the active window)
 opt.cursorcolumn = true
+opt.cursorline = true
+opt.cursorlineopt = "number"
+
+-- no `~` after the end of a buffer, blank fold filler, hatched diff filler lines,
+-- and no vertical split line (dim_inactive already sets windows apart)
+opt.fillchars = { eob = " ", fold = " ", diff = "╱", vert = " " }
+
+-- Helm chart templates (replaces vim-helm's detection)
+local function helm_template(path)
+  if vim.fs.root(path, "Chart.yaml") then
+    return "helm"
+  end
+end
+vim.filetype.add({
+  pattern = {
+    [".*/templates/.*%.ya?ml"] = { helm_template, { priority = 10 } },
+    [".*/templates/.*%.tpl"] = { helm_template, { priority = 10 } },
+    [".*/templates/NOTES%.txt"] = { helm_template, { priority = 10 } },
+  },
+})
 
 -- Auto-reload files when changed outside of Neovim
 vim.o.autoread = true
@@ -83,22 +95,8 @@ set foldlevelstart=0   " It begins with marks closed
 nmap <Space> za
 vmap <Space> za
 
-function! MyFoldText() "
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
-
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
-
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-endfunction "
-set foldtext=MyFoldText()
+" Empty foldtext shows the folded line with its syntax colors.
+set foldtext=
 ]])
 
 -- Toggle all folds

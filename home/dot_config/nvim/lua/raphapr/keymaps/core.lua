@@ -26,6 +26,26 @@ vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true, desc = "jump to next qu
 vim.keymap.set("n", "[Q", ":cfirst<CR>", { silent = true, desc = "jump to first quickfix item" })
 vim.keymap.set("n", "]Q", ":clast<CR>", { silent = true, desc = "jump to last quickfix item" })
 
+-- Diagnostics and LSP lists in quickfix/loclist
+local function toggle(list)
+  local is_open = list == "c" and vim.fn.getqflist({ winid = 0 }).winid ~= 0 or list == "l" and vim.fn.getloclist(0, { winid = 0 }).winid ~= 0
+  vim.cmd(list .. (is_open and "close" or "open"))
+end
+vim.keymap.set("n", "<leader>xx", vim.diagnostic.setqflist, { desc = "Diagnostics: Workspace (quickfix)" })
+vim.keymap.set("n", "<leader>xb", vim.diagnostic.setloclist, { desc = "Diagnostics: Buffer (loclist)" })
+vim.keymap.set("n", "<leader>xs", function()
+  vim.lsp.buf.document_symbol()
+end, { desc = "Diagnostics: Symbols (loclist)" })
+vim.keymap.set("n", "<leader>xl", function()
+  vim.lsp.buf.references()
+end, { desc = "Diagnostics: LSP references (quickfix)" })
+vim.keymap.set("n", "<leader>xL", function()
+  toggle("l")
+end, { desc = "Diagnostics: Toggle location list" })
+vim.keymap.set("n", "<leader>xq", function()
+  toggle("c")
+end, { desc = "Diagnostics: Toggle quickfix list" })
+
 -- Copy/paste with system clipboard
 vim.keymap.set({ "n", "x" }, "gy", '"+y', { desc = "Clipboard: Copy to system clipboard" })
 vim.keymap.set(

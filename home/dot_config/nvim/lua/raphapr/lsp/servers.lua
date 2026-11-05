@@ -1,37 +1,39 @@
 local M = {}
 
+-- Mason package names; nvim-lspconfig provides cmd, filetypes and root markers.
+local mason_packages = {
+  "bash-language-server",
+  "dockerfile-language-server",
+  "eslint-lsp",
+  "fish-lsp",
+  "gopls",
+  "json-lsp",
+  "lua-language-server",
+  "pyright",
+  "ruff",
+  "terraform-ls",
+  "typescript-language-server",
+  "yaml-language-server",
+}
+
+local function ensure_installed()
+  local registry = require("mason-registry")
+  registry.refresh(vim.schedule_wrap(function()
+    for _, name in ipairs(mason_packages) do
+      local ok, package = pcall(registry.get_package, name)
+      if ok and not package:is_installed() and not package:is_installing() then
+        package:install()
+      end
+    end
+  end))
+end
+
 function M.setup()
-  local runtime_dir = vim.env.XDG_RUNTIME_DIR or ("/run/user/" .. vim.uv.os_get_passwd().uid)
-  local gopls_socket = "unix;" .. runtime_dir .. "/gopls-daemon-socket"
-
-  local servers = {
-    "lua_ls",
-    "ts_ls",
-    "eslint",
-    "jsonls",
-    "pyright",
-    "bashls",
-    "terraformls",
-    "yamlls",
-    "dockerls",
-    "gopls",
-    "ruff",
-  }
-
   require("mason").setup()
-  require("mason-lspconfig").setup({
-    automatic_enable = false,
-    ensure_installed = servers,
-  })
+  ensure_installed()
 
-  -- Configure LSP servers
-
-  -- Lua
   vim.lsp.config("lua_ls", {
-    cmd = { "lua-language-server" },
-    filetypes = { "lua" },
-    root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
-    -- runtime/workspace/globals are handled by lazydev.nvim
+    -- runtime/library come from lua/raphapr/.luarc.json
     settings = {
       Lua = {
         workspace = { checkThirdParty = false },
@@ -40,30 +42,7 @@ function M.setup()
     },
   })
 
-  -- TypeScript
-  vim.lsp.config("ts_ls", {
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-  })
-
-  -- ESLint
-  vim.lsp.config("eslint", {
-    cmd = { "vscode-eslint-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-  })
-
-  -- JSON
-  vim.lsp.config("jsonls", {
-    cmd = { "vscode-json-language-server", "--stdio" },
-    filetypes = { "json", "jsonc" },
-    root_markers = { ".git" },
-  })
-
-  -- Python
   vim.lsp.config("pyright", {
-    cmd = { "pyright-langserver", "--stdio" },
-    filetypes = { "python" },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
     settings = {
       pyright = {
         analysis = {
@@ -78,46 +57,15 @@ function M.setup()
     },
   })
 
-  -- Ruff
-  vim.lsp.config("ruff", {})
+  -- tflint is intentionally NOT enabled: it ran a second langserver per buffer
+  -- with --call-module-type=all, adding load without fixing the freeze. Run
+  -- tflint from the CLI when needed. The freeze is terraform-ls loading ~580MB
+  -- of aws/kubernetes/helm provider schemas on a low-RAM machine; scoping the
+  -- root did not help, so nvim-lspconfig's default markers stay.
 
-  -- Bash
-  vim.lsp.config("bashls", {
-    cmd = { "bash-language-server", "start" },
-    filetypes = { "sh", "bash" },
-    root_markers = { ".git" },
-  })
-
-  -- Terraform. tflint is intentionally NOT enabled here: it ran a second
-  -- langserver per buffer with --call-module-type=all, adding load without
-  -- fixing the freeze. Run tflint from the CLI when needed. The freeze is
-  -- terraform-ls loading ~580MB of aws/kubernetes/helm provider schemas on a
-  -- low-RAM machine; scoping the root did not help, so default markers stay.
-  vim.lsp.config("terraformls", {
-    cmd = { "terraform-ls", "serve" },
-    filetypes = { "terraform", "terraform-vars" },
-    root_markers = { ".terraform", ".git" },
-  })
-
-  -- YAML
-  vim.lsp.config("yamlls", {
-    cmd = { "yaml-language-server", "--stdio" },
-    filetypes = { "yaml", "yaml.docker-compose" },
-    root_markers = { ".git" },
-  })
-
-  -- Docker
-  vim.lsp.config("dockerls", {
-    cmd = { "docker-langserver", "--stdio" },
-    filetypes = { "dockerfile" },
-    root_markers = { "Dockerfile", ".git" },
-  })
-
-  -- Go
+  local runtime_dir = vim.env.XDG_RUNTIME_DIR or ("/run/user/" .. vim.uv.os_get_passwd().uid)
   vim.lsp.config("gopls", {
-    cmd = { "gopls", "-remote", gopls_socket },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_markers = { "go.work", "go.mod", ".git" },
+    cmd = { "gopls", "-remote", "unix;" .. runtime_dir .. "/gopls-daemon-socket" },
     settings = {
       gopls = {
         buildFlags = { "-tags=integration" },
@@ -125,10 +73,28 @@ function M.setup()
     },
   })
 
-  -- Enable all configured language servers
-  for _, server in ipairs(servers) do
-    vim.lsp.enable(server)
-  end
+  vim.lsp.enable({
+    "bashls",
+    "dockerls",
+    "eslint",
+    "fish_lsp",
+    "gopls",
+    "jsonls",
+    "lua_ls",
+    "pyright",
+    "ruff",
+    "terraformls",
+    "ts_ls",
+    "yamlls",
+  })
+
+  vim.api.nvim_create_user_command("GoModTidy", function()
+    vim.cmd.write()
+    vim.cmd("!go mod tidy -v")
+    vim.cmd.LspRestart()
+    vim.notify("go mod tidy finished")
+  end, { desc = "Go: Run go mod tidy and restart lsp" })
+  vim.keymap.set("n", "gom", "<cmd>GoModTidy<CR>", { desc = "Go: Run go mod tidy and restart lsp" })
 end
 
 return M
