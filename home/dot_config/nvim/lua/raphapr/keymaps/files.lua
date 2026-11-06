@@ -18,25 +18,53 @@ vim.keymap.set("n", "<leader>by", function()
   vim.fn.setreg("+", location, "v")
   vim.notify("Copied: " .. location, vim.log.levels.INFO)
 end, { desc = "Buffer: Copy path, line and column" })
+-- Selected (or cursor) lines: first, last and "12" or "12-20".
+local function selected_lines()
+  local first, last = vim.fn.line("v"), vim.fn.line(".")
+  if first > last then
+    first, last = last, first
+  end
+  return first, last, first == last and tostring(first) or (first .. "-" .. last)
+end
+
+local function repo_relative(path)
+  return vim.fs.relpath(vim.fs.root(0, ".git") or vim.fn.getcwd(), path) or path
+end
+
 vim.keymap.set({ "n", "x" }, "<leader>yf", function()
   local path = vim.api.nvim_buf_get_name(0)
   if path == "" then
     vim.notify("Buffer has no file path", vim.log.levels.WARN)
     return
   end
-  local root = vim.fs.root(0, ".git") or vim.fn.getcwd()
-  local relative = vim.fs.relpath(root, path) or path
-  local first, last = vim.fn.line("v"), vim.fn.line(".")
-  if first > last then
-    first, last = last, first
-  end
-  local location = relative .. ":" .. (first == last and first or (first .. "-" .. last))
+  local _, _, range = selected_lines()
+  local location = repo_relative(path) .. ":" .. range
   vim.fn.setreg("+", location)
   vim.notify("Copied: " .. location, vim.log.levels.INFO)
   if vim.fn.mode() ~= "n" then
     vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "n", false)
   end
 end, { desc = "Yank: Repo-relative path:line" })
+vim.keymap.set("x", "<leader>cc", function()
+  local path = vim.api.nvim_buf_get_name(0)
+  local first, last, range = selected_lines()
+  local lines = vim.api.nvim_buf_get_lines(0, first - 1, last, false)
+  local location = (path == "" and "[No Name]" or repo_relative(path)) .. ":" .. range
+  -- A fence longer than any backtick run in the code keeps it intact.
+  local longest = 2
+  for _, line in ipairs(lines) do
+    for run in line:gmatch("`+") do
+      longest = math.max(longest, #run)
+    end
+  end
+  local fence = string.rep("`", longest + 1)
+  local block = { "`" .. location .. "`", "", fence .. vim.bo.filetype }
+  vim.list_extend(block, lines)
+  table.insert(block, fence)
+  vim.fn.setreg("+", table.concat(block, "\n") .. "\n")
+  vim.notify("Copied code block: " .. location, vim.log.levels.INFO)
+  vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "n", false)
+end, { desc = "Code: Copy selection as Markdown code block" })
 
 -- open common configuration files
 vim.keymap.set(
@@ -86,11 +114,7 @@ vim.keymap.set({ "n", "x" }, "<leader>gy", function()
     vim.notify("Buffer has no file path", vim.log.levels.WARN)
     return
   end
-  local first, last = vim.fn.line("v"), vim.fn.line(".")
-  if first > last then
-    first, last = last, first
-  end
-  local range = first == last and tostring(first) or (first .. "-" .. last)
+  local _, _, range = selected_lines()
   -- gh resolves the path relative to cwd, so run it from the file's directory.
   U.run_async({ "gh", "browse", "--commit", vim.fs.basename(path) .. ":" .. range }, "GitHub", { cwd = vim.fs.dirname(path) })
   if vim.fn.mode() ~= "n" then

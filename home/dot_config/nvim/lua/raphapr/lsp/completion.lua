@@ -73,6 +73,27 @@ function M.setup()
       },
     },
     cmdline = {
+      -- In `:` Up/Down move through the open menu; otherwise (and in `/`
+      -- searches) they recall history as usual.
+      keymap = {
+        preset = "cmdline",
+        ["<Up>"] = {
+          function(cmp)
+            if vim.fn.getcmdtype() == ":" then
+              return cmp.select_prev()
+            end
+          end,
+          "fallback",
+        },
+        ["<Down>"] = {
+          function(cmp)
+            if vim.fn.getcmdtype() == ":" then
+              return cmp.select_next()
+            end
+          end,
+          "fallback",
+        },
+      },
       completion = { menu = { auto_show = true } },
     },
   })

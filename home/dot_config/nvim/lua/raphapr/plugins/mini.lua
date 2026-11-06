@@ -99,6 +99,11 @@ require("mini.pick").setup({
   -- Prompt on the bottom border, best matches next to it (fzf-style).
   options = { content_from_bottom = true },
   mappings = {
+    -- Old Telescope keys. <C-i> is <Tab> in terminals, so preview moves to <C-h>.
+    choose_in_vsplit = "<C-s>",
+    choose_in_split = "<C-i>",
+    toggle_preview = "<C-h>",
+    scroll_left = "", -- default <C-h>; frees it for preview
     move_down = "<C-j>",
     move_up = "<C-k>",
     history_prev = { char = "<Up>", func = recall(-1) },

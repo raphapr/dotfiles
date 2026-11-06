@@ -16,8 +16,13 @@ local function on_attach(bufnr)
   vim.keymap.set("n", "s", api.node.open.vertical, opts("Open: Vertical Split"))
   vim.keymap.set("n", "i", api.node.open.horizontal, opts("Open: Horizontal Split"))
   vim.keymap.set("n", "T", open_tab_silent, opts("Open Tab Silent"))
-  -- Same split keys as the pickers: <C-s> horizontal, <C-v> vertical, <C-t> tab.
-  vim.keymap.set("n", "<C-s>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+  vim.keymap.set("n", "X", api.node.expand, opts("Expand Folder Recursively"))
+  -- Picker keys: <C-s> vertical, <C-i> horizontal, <C-h> preview, <C-t> tab.
+  -- <C-i> and <Tab> are one key in most terminals, so map both.
+  vim.keymap.set("n", "<C-s>", api.node.open.vertical, opts("Open: Vertical Split"))
+  vim.keymap.set("n", "<C-i>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+  vim.keymap.set("n", "<Tab>", api.node.open.horizontal, opts("Open: Horizontal Split"))
+  vim.keymap.set("n", "<C-h>", api.node.open.preview, opts("Open Preview"))
 end
 
 require("nvim-tree").setup({

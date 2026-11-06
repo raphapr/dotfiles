@@ -21,6 +21,7 @@ require("codediff").setup({
     line_stats = { enabled = true },
   },
   diff = {
+    layout = "inline", -- toggle side-by-side with t
     compact = true, -- fold unchanged code; toggle with gc
     compact_context_lines = 8,
     compact_sync_folds = true,
