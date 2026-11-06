@@ -33,6 +33,10 @@ hipatterns.setup({
 -- Query history persisted across sessions (mini.pick has none built in).
 local history_path = vim.fn.stdpath("state") .. "/mini-pick-history"
 local history = vim.uv.fs_stat(history_path) and vim.fn.readfile(history_path) or {}
+if #history > 1000 then
+  history = vim.list_slice(history, #history - 999)
+  vim.fn.writefile(history, history_path)
+end
 local history_index = #history + 1
 
 local function recall(step)
@@ -86,10 +90,8 @@ vim.api.nvim_create_autocmd("User", {
       return
     end
     table.insert(history, query)
-    while #history > 1000 do
-      table.remove(history, 1)
-    end
-    vim.fn.writefile(history, history_path)
+    -- Append, so several Neovim instances don't overwrite each other's queries.
+    vim.fn.writefile({ query }, history_path, "a")
   end,
 })
 
@@ -140,7 +142,8 @@ end
 local function grep_current()
   local text
   if vim.fn.mode():find("[vV\22]") then
-    text = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n")
+    -- First line only: rg cannot search for a line break.
+    text = vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."))[1]
     vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx", false)
   else
     text = vim.fn.expand("<cword>")
