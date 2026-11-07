@@ -39,11 +39,13 @@ chezmoi init raphapr --apply
 
 - **i3wm** - Tiling window manager
 - **polybar** - Status bar
+- **picom** - Compositor
 - **rofi** - Application launcher and menu system
 - **dunst** - Notification daemon
 - **feh** - Image viewer and wallpaper setter
 - **redshift** - Screen color temperature adjuster
 - **autorandr** - Display configuration manager
+- **kanata** - Keyboard remapper
 
 ### Terminal & Shell
 
@@ -58,8 +60,8 @@ chezmoi init raphapr --apply
 - **neovim** - Best editor ever
 - **direnv** - Environment variable manager
 - **mise** - Development tool version and package manager
-- **neogit** - Magit-style git interface for Neovim
 - **worktrunk** - Git worktree manager
+- **github-cli** - GitHub CLI, with the gh-dash and gh-poi extensions
 
 ### File Management
 
@@ -87,11 +89,13 @@ chezmoi init raphapr --apply
 - **bat** - `cat` clone with syntax highlighting and git integration
 - **eza** - Modern replacement for `ls`
 - **ghq** - Git repository management tool
+- **cliamp** - Terminal music player
 
 ### Agentic Development
 
 - **pi** - Terminal-based AI coding agent
 - **cymbal** - Language-agnostic code navigation CLI
+- **ai-usagebar** - AI agent rate-limit usage in Polybar and tmux
 
 ### System
 
