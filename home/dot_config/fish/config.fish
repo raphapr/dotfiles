@@ -516,8 +516,23 @@ end
 alias vshare 'xclip -selection clipboard -o | vaulted --views 1 --expires 1h'
 
 # }}}
-# }}}
+# review            {{{
 
+# Review working tree changes in Neovim, or the branch when clean.
+function review
+    git rev-parse --is-inside-work-tree &>/dev/null; or begin
+        echo "review: not inside a git repository" >&2
+        return 1
+    end
+
+    if test -n "$(git status --porcelain)"
+        nvim -c Review
+    else
+        nvim -c 'Review branch'
+    end
+end
+
+# }}}
 # circleci          {{{
 
 function ci --description 'Open CircleCI pipelines for the current repo/branch'
