@@ -51,10 +51,10 @@ fish_add_path \
     ~/.local/share/mise/shims
 
 if test "$KUBIE_ACTIVE" = 1
-     set -gx KUBE_PROMPT_ENABLED 1
- end
+    set -gx KUBE_PROMPT_ENABLED 1
+end
 
- #}}}
+#}}}
 # Bindings        ---------------------------------------------- {{{
 
 function fish_user_key_bindings
@@ -64,8 +64,8 @@ function fish_user_key_bindings
     bind -M insert \cf accept-autosuggestion
     bind \cf accept-autosuggestion
 
-    bind -M insert \ca "aws-profile"
-    bind \ca "aws-profile"
+    bind -M insert \ca aws-profile
+    bind \ca aws-profile
 
     bind -M insert \cx "kubie ctx; commandline -f repaint"
     bind \cx "kubie ctx"
@@ -98,23 +98,23 @@ set -gx ATUIN_NOBIND true
 #   init-args — command + args to generate the init script (e.g. "hook fish")
 function __plugin_load
     set -l name $argv[1]
-    set -l bin  $argv[2]
+    set -l bin $argv[2]
     set -l args $argv[3..]
     set -l cache ~/.cache/fish/$name.fish
     if not test -f $cache; or test (command -v $bin) -nt $cache
-        $bin $args > $cache
+        $bin $args >$cache
     end
     source $cache
 end
 
 if status is-interactive
     mkdir -p ~/.cache/fish
-    __plugin_load direnv    direnv hook fish
-    __plugin_load mise      mise activate fish
-    __plugin_load starship  starship init fish
-    __plugin_load zoxide    zoxide init fish
-    __plugin_load fzf       fzf --fish
-    __plugin_load atuin     atuin init fish
+    __plugin_load direnv direnv hook fish
+    __plugin_load mise mise activate fish
+    __plugin_load starship starship init fish
+    __plugin_load zoxide zoxide init fish
+    __plugin_load fzf fzf --fish
+    __plugin_load atuin atuin init fish
     fish_user_key_bindings
 end
 
@@ -123,12 +123,12 @@ end
 
 # misc             {{{
 
-alias jm 'jumpmux'
-alias cat 'bat'
+alias jm jumpmux
+alias cat bat
 alias lash 'eza -l'
-alias l 'eza'
+alias l eza
 alias K 'kill -9'
-alias grep 'rg'
+alias grep rg
 alias rg 'rg --smart-case'
 alias vcd 'nvim -c "lua require\'telescope\'.extensions.zoxide.list{}"'
 alias neogit 'nvim -c Neogit'
@@ -158,7 +158,7 @@ function save_history --on-event fish_preexec
     history --save
 end
 
-alias hm 'history --merge'  # read and merge history from disk
+alias hm 'history --merge' # read and merge history from disk
 
 # }}}
 # tmux             {{{
@@ -184,7 +184,7 @@ alias ke 'k edit'
 alias kd 'k describe'
 alias kaf 'k apply -f'
 alias kexec 'k exec -it'
-alias kdebug 'kubectl-debug'
+alias kdebug kubectl-debug
 
 # }}}
 # notes            {{{
@@ -198,7 +198,7 @@ alias backlog 'nvim ~/Cloud/Sync/notebook/backlog.md'
 # }}}
 # edit             {{{
 
-alias sof  'source ~/.config/fish/config.fish'
+alias sof 'source ~/.config/fish/config.fish'
 alias fish-cache-clear 'rm -f ~/.cache/fish/*.fish'
 alias sb 'source ~/.bashrc'
 alias et 'nvim ~/.tmux/tmux.conf'
@@ -222,7 +222,7 @@ abbr -a g git
 
 # copy file content
 function copy
-   xclip -sel clip < $argv
+    xclip -sel clip <$argv
 end
 
 # }}}
@@ -268,7 +268,7 @@ function __systemctl
     set -l cmd
     set -l sudo_cmd
 
-    if test "$scope" = "user"
+    if test "$scope" = user
         set cmd systemctl --user
     else
         set cmd systemctl
@@ -294,86 +294,137 @@ function __systemctl
         case list-files
             $cmd list-unit-files
         case log
-            if test "$scope" = "user"
+            if test "$scope" = user
                 journalctl --user
             else
                 sudo journalctl
             end
         case wants
-            $cmd show -p "Wants" $target.target
+            $cmd show -p Wants $target.target
         case analyze
             systemd-analyze $target
     end
 end
 
 # System service shortcuts (0.*)
-function 0.start;      __systemctl system start $argv; end
-function 0.restart;    __systemctl system restart $argv; end
-function 0.stop;       __systemctl system stop $argv; end
-function 0.enable;     __systemctl system enable $argv; end
-function 0.disable;    __systemctl system disable $argv; end
-function 0.status;     __systemctl system status $argv; end
-function 0.reload;     __systemctl system reload $argv; end
-function 0.list;       __systemctl system list; end
-function 0.failed;     __systemctl system failed; end
-function 0.list-files; __systemctl system list-files; end
-function 0.log;        __systemctl system log; end
-function 0.wants;      __systemctl system wants $argv; end
-function 0.analyze;    __systemctl system analyze $argv; end
+function 0.start
+    __systemctl system start $argv
+end
+function 0.restart
+    __systemctl system restart $argv
+end
+function 0.stop
+    __systemctl system stop $argv
+end
+function 0.enable
+    __systemctl system enable $argv
+end
+function 0.disable
+    __systemctl system disable $argv
+end
+function 0.status
+    __systemctl system status $argv
+end
+function 0.reload
+    __systemctl system reload $argv
+end
+function 0.list
+    __systemctl system list
+end
+function 0.failed
+    __systemctl system failed
+end
+function 0.list-files
+    __systemctl system list-files
+end
+function 0.log
+    __systemctl system log
+end
+function 0.wants
+    __systemctl system wants $argv
+end
+function 0.analyze
+    __systemctl system analyze $argv
+end
 
 # User service shortcuts (1.*)
-function 1.start;      __systemctl user start $argv; end
-function 1.restart;    __systemctl user restart $argv; end
-function 1.stop;       __systemctl user stop $argv; end
-function 1.enable;     __systemctl user enable $argv; end
-function 1.disable;    __systemctl user disable $argv; end
-function 1.status;     __systemctl user status $argv; end
-function 1.reload;     __systemctl user reload $argv; end
-function 1.list;       __systemctl user list; end
-function 1.failed;     __systemctl user failed; end
-function 1.list-files; __systemctl user list-files; end
-function 1.log;        __systemctl user log; end
-function 1.wants;      __systemctl user wants $argv; end
+function 1.start
+    __systemctl user start $argv
+end
+function 1.restart
+    __systemctl user restart $argv
+end
+function 1.stop
+    __systemctl user stop $argv
+end
+function 1.enable
+    __systemctl user enable $argv
+end
+function 1.disable
+    __systemctl user disable $argv
+end
+function 1.status
+    __systemctl user status $argv
+end
+function 1.reload
+    __systemctl user reload $argv
+end
+function 1.list
+    __systemctl user list
+end
+function 1.failed
+    __systemctl user failed
+end
+function 1.list-files
+    __systemctl user list-files
+end
+function 1.log
+    __systemctl user log
+end
+function 1.wants
+    __systemctl user wants $argv
+end
 
 # }}}
 # su                {{{
 
 function su
-        /bin/su --shell=/usr/bin/fish $argv
+    /bin/su --shell=/usr/bin/fish $argv
 end
 
 # }}}
 # sshagent          {{{
 
 function __ssh_agent_is_started -d "check if ssh agent is already started"
-   if begin; test -f $SSH_ENV; and test -z "$SSH_AGENT_PID"; end
-      source $SSH_ENV > /dev/null
-   end
+    if begin
+            test -f $SSH_ENV; and test -z "$SSH_AGENT_PID"
+        end
+        source $SSH_ENV >/dev/null
+    end
 
-   if test -z "$SSH_AGENT_PID"
-      return 1
-   end
+    if test -z "$SSH_AGENT_PID"
+        return 1
+    end
 
-   pgrep -x ssh-agent > /dev/null
-   return $status
+    pgrep -x ssh-agent >/dev/null
+    return $status
 end
 
-
 function __ssh_agent_start -d "start a new ssh agent"
-   ssh-agent -c | sed 's/^echo/#echo/' > $SSH_ENV
-   chmod 600 $SSH_ENV
-   source $SSH_ENV > /dev/null
-   true  # suppress errors from setenv, i.e. set -gx
+    ssh-agent -c | sed 's/^echo/#echo/' >$SSH_ENV
+    chmod 600 $SSH_ENV
+    source $SSH_ENV >/dev/null
+    true # suppress errors from setenv, i.e. set -gx
 end
 
 function sshagent --description "Start ssh-agent if not started yet, or uses already started ssh-agent."
-   if test -z "$SSH_ENV"
-      set -xg SSH_ENV $HOME/.ssh/environment
-   end
+    if test -z "$SSH_ENV"
+        set -xg SSH_ENV $HOME/.ssh/environment
+    end
 
-   if not __ssh_agent_is_started
-      __ssh_agent_start
-   end
+    if not __ssh_agent_is_started
+        __ssh_agent_start
+    end
 end
 
 # }}}
@@ -495,19 +546,19 @@ end
 # yazi              {{{
 
 function y
-	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		builtin cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
 end
 
 # }}}
 # opsignin          {{{
 
 function opsignin
-  eval "$(op signin)"
+    eval "$(op signin)"
 end
 
 # }}}
@@ -543,5 +594,7 @@ function ci --description 'Open CircleCI pipelines for the current repo/branch'
     end
     xdg-open "https://app.circleci.com/pipelines/github/loadsmart/$repo?branch="(string escape --style=url (git rev-parse --abbrev-ref HEAD))
 end
+
+# }}}
 
 # }}}
