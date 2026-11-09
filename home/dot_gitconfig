@@ -18,7 +18,6 @@
   ci = commit -m
   cia = commit --amend
   co = checkout
-  commit = commit -s
 
   ff = merge --ff-only origin/HEAD
   poh = push origin HEAD

@@ -51,8 +51,3 @@ target/
 # Desktop-specific configs
 .config/autorandr/moochacho/
 {{- end }}
-
-{{- if ne .chezmoi.hostname "bmo" }}
-# Laptop-specific configs
-.config/autorandr/bmo/
-{{- end }}

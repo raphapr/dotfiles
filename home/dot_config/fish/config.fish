@@ -252,7 +252,7 @@ end
 
 # copyright 2007 - 2010 Christopher Bratusek
 function wininfo
-    xprop | grep -w "WM_NAME\|WM_CLASS\|WM_WINDOW_ROLE\|_NET_WM_STATE"
+    xprop | command grep -w "WM_NAME\|WM_CLASS\|WM_WINDOW_ROLE\|_NET_WM_STATE"
 end
 
 # }}}
