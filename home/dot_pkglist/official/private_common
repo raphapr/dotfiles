@@ -21,6 +21,7 @@ avahi
 ayatana-ido
 b43-fwcutter
 base
+base-devel
 bash-completion
 bcprov
 bind
@@ -37,7 +38,6 @@ capstone
 cblas
 chafa
 chezmoi
-chromium
 chrony
 clang
 cmake
@@ -70,7 +70,6 @@ docker
 docker-buildx
 docker-compose
 dosfstools
-downgrade
 dpkg
 dtc
 dunst
@@ -121,6 +120,7 @@ glibc-locales
 gnome-keyring
 gnome-themes-extra
 godot
+gopls
 gparted
 gptfdisk
 graphviz
@@ -267,6 +267,7 @@ mesa-utils
 mhwd
 mhwd-db
 miniupnpc
+mise
 mkinitcpio-openswap
 modemmanager
 most
