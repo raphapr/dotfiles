@@ -7,7 +7,7 @@ set -gx SHELL /usr/bin/fish
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go
 set -gx GOBIN $HOME/go/bin
-set -gx BROWSER firefox
+set -gx BROWSER $HOME/.bin/browse
 set -gx GPGKEY DBC876419930B2EB8447BFEFFA70B2729F47724C
 set -gx FZF_DEFAULT_OPTS "--height 50%"
 set -gx ZK_NOTEBOOK_DIR $HOME/Cloud/Sync/notebook

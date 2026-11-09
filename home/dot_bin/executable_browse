@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+url="$1"
+host=$(printf '%s' "$url" | sed -E 's#^[a-zA-Z]+://([^/:?]+).*#\1#')
+
+chrome_hosts=(
+  '*.jumpcloud.com'
+  '*.datadoghq.com'
+  '*.datadoghq.eu'
+  '*.grafana.net'
+  '*grafana*'
+  '*kibana*'
+  '*.elastic-cloud.com'
+  '*.found.io'
+  '*.awsapps.com'
+  '*.aws.amazon.com'
+  '*.signin.aws'
+  'signin.aws'
+  'accounts.google.com'
+  'internal-support.loadsmart.com'
+)
+
+for pat in "${chrome_hosts[@]}"; do
+  # shellcheck disable=SC2053  # glob match is intentional
+  if [[ $host == $pat ]]; then
+    exec google-chrome-stable --profile-directory="Profile 1" "$url"
+  fi
+done
+exec firefox "$url"

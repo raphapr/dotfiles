@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Browse
+Exec=/home/raphael/.bin/browse %u
+Type=Application
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;
+NoDisplay=true
