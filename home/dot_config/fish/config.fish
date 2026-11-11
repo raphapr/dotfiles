@@ -587,11 +587,13 @@ end
 # circleci          {{{
 
 function ci --description 'Open CircleCI pipelines for the current repo/branch'
-    set -l repo (basename (git rev-parse --show-toplevel 2>/dev/null))
+    # Worktree directories are named after the branch, so derive the repo from origin.
+    set -l url (git remote get-url origin 2>/dev/null)
     or begin
-        echo "not a git repository" >&2
+        echo "not a git repository with an origin remote" >&2
         return 1
     end
+    set -l repo (string replace -r '\.git$' '' -- (path basename -- $url))
     xdg-open "https://app.circleci.com/pipelines/github/loadsmart/$repo?branch="(string escape --style=url (git rev-parse --abbrev-ref HEAD))
 end
 
