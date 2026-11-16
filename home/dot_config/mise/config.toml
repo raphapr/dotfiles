@@ -1,6 +1,6 @@
 [tools]
 node= "22"
-terraform='1.5.7'
+terraform="1.16"
 python = "3.13"
 go= "1.24"
 kubectl='1.32.0'

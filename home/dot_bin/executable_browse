@@ -2,22 +2,9 @@
 url="$1"
 host=$(printf '%s' "$url" | sed -E 's#^[a-zA-Z]+://([^/:?]+).*#\1#')
 
-chrome_hosts=(
-  '*.jumpcloud.com'
-  '*.datadoghq.com'
-  '*.datadoghq.eu'
-  '*.grafana.net'
-  '*grafana*'
-  '*kibana*'
-  '*.elastic-cloud.com'
-  '*.found.io'
-  '*.awsapps.com'
-  '*.aws.amazon.com'
-  '*.signin.aws'
-  'signin.aws'
-  'accounts.google.com'
-  'internal-support.loadsmart.com'
-)
+hosts_file="${XDG_CONFIG_HOME:-$HOME/.config}/browse/chrome-hosts"
+chrome_hosts=()
+[[ -r $hosts_file ]] && mapfile -t chrome_hosts < <(grep -vE '^[[:space:]]*(#|$)' "$hosts_file")
 
 for pat in "${chrome_hosts[@]}"; do
   # shellcheck disable=SC2053  # glob match is intentional

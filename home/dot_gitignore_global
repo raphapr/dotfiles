@@ -64,3 +64,8 @@ Thumbs.db
 
 # Understand-Anything plugin
 .ua
+
+# mise personal config
+mise.local.toml
+.mise.local.toml
+mise.*.local.toml
