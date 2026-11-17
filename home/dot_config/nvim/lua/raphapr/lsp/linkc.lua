@@ -28,7 +28,10 @@ end
 function source:execute(ctx, _, callback)
   local url = vim.trim(vim.fn.getreg("+"))
   local pr = url:match("https://github%.com/.+/pull/(%d+)")
-  local label = pr and ("#" .. pr) or url:match("https://.+%.atlassian%.net/browse/([A-Z]+%-%d+)") or ""
+  -- Jira serves issues at both /browse/KEY-1 and the newer /jira/browse/KEY-1.
+  local jira = url:match("^https://[^/]+%.atlassian%.net/browse/([A-Z][A-Z0-9]*%-%d+)")
+    or url:match("^https://[^/]+%.atlassian%.net/jira/browse/([A-Z][A-Z0-9]*%-%d+)")
+  local label = pr and ("#" .. pr) or jira or ""
 
   local row = ctx.bounds.line_number - 1
   local start = ctx.bounds.start_col - 1
