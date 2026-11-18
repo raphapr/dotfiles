@@ -221,9 +221,13 @@ abbr -a g git
 
 # copy              {{{
 
-# copy file content
+# copy file content, or stdin when piped (ls | copy)
 function copy
-    xclip -sel clip <$argv
+    if test (count $argv) -gt 0
+        cat $argv | xclip -sel clip
+    else
+        xclip -sel clip
+    end
 end
 
 # }}}
