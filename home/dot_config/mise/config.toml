@@ -51,9 +51,9 @@ zoxide = "latest"
 "github:DataDog/pup" = "latest"
 "github:loadsmart/lumper" = "3.0.2"
 "github:bjarneo/cliamp" = "latest"
-"github:CircleCI-Public/circleci-cli" = "1.0.48633"
-"npm:vaulted-cli" = "latest"
-"npm:@mermaid-js/mermaid-cli" = "latest"
+"github:CircleCI-Public/circleci-cli" = "1.15.0"
+"npm:vaulted-cli" = "1.0.1"
+"npm:@mermaid-js/mermaid-cli" = "12.0.0"
 lefthook = "latest"
 "github:opensec-git/Pi-Bolt" = { version = "latest", version_prefix = "bolt-v" }
 
