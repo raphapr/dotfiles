@@ -57,3 +57,6 @@ vim.keymap.set(
 vim.keymap.set("n", "gp", '"+p', { desc = "Clipboard: Paste from system clipboard" })
 -- Paste in Visual with `P` to not copy selected text (`:h v_P`)
 vim.keymap.set("x", "gp", '"+P', { desc = "Clipboard: Paste from system clipboard" })
+
+-- Replaces Ex mode. Skips review.nvim's export-on-close (q).
+vim.keymap.set("n", "Q", "<cmd>qa!<CR>", { desc = "Quit Neovim without saving" })
